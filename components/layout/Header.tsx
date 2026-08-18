@@ -15,28 +15,39 @@ export async function Header({ locale }: { locale: Locale }) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-stone-dark/60 bg-warm-white/90 backdrop-blur">
-      <Container className="flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center" aria-label="Nature Walks Sri Lanka — home">
-          <Image src="/logo.svg" alt="Nature Walks Sri Lanka" width={200} height={40} priority />
+      <Container className="flex h-16 items-center justify-between gap-4 lg:h-20">
+        <Link
+          href="/"
+          className="flex shrink-0 items-center"
+          aria-label="Nature Walks Sri Lanka — home"
+        >
+          <Image
+            src="/logo.svg"
+            alt="Nature Walks Sri Lanka"
+            width={200}
+            height={40}
+            priority
+            className="h-7 w-auto lg:h-10"
+          />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label="Primary">
           {navigation.main.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="font-utility text-xs uppercase tracking-wide text-charcoal/80 transition-colors hover:text-forest"
+              className="whitespace-nowrap font-utility text-xs uppercase tracking-wide text-charcoal/80 transition-colors hover:text-forest"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           <LocaleSwitcher />
           <Link
             href={navigation.checkAvailability.href}
-            className="rounded-full border border-forest px-5 py-2.5 font-utility text-xs uppercase tracking-wide text-forest transition-colors hover:bg-forest hover:text-warm-white"
+            className="whitespace-nowrap rounded-full border border-forest px-4 py-2.5 font-utility text-xs uppercase tracking-wide text-forest transition-colors hover:bg-forest hover:text-warm-white xl:px-5"
           >
             {navigation.checkAvailability.label}
           </Link>
@@ -48,6 +59,7 @@ export async function Header({ locale }: { locale: Locale }) {
             menu: t("menu"),
             close: t("close"),
             checkAvailability: navigation.checkAvailability.label,
+            language: t("language"),
           }}
         />
       </Container>

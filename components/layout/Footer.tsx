@@ -15,8 +15,8 @@ export async function Footer({ locale }: { locale: Locale }) {
 
   return (
     <footer className="border-t border-stone-dark/60 bg-charcoal text-warm-white">
-      <Container className="grid gap-12 py-16 md:grid-cols-4">
-        <div className="md:col-span-2">
+      <Container className="grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 sm:gap-8 md:grid-cols-4 md:gap-12">
+        <div className="sm:col-span-2">
           <Image
             src="/logo.svg"
             alt="Nature Walks Sri Lanka"
@@ -65,7 +65,7 @@ export async function Footer({ locale }: { locale: Locale }) {
           </p>
           <ul className="mt-4 space-y-3 text-sm text-warm-white/80">
             <li>{navigation.contact.address}</li>
-            <li>
+            <li className="break-words">
               <a href={`mailto:${navigation.contact.email}`} className="hover:text-warm-white">
                 {navigation.contact.email}
               </a>

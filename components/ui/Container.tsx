@@ -10,7 +10,7 @@ export function Container({
   as?: React.ElementType;
 }) {
   return (
-    <Tag className={cn("mx-auto w-full max-w-7xl px-6 md:px-10", className)}>
+    <Tag className={cn("mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10", className)}>
       {children}
     </Tag>
   );

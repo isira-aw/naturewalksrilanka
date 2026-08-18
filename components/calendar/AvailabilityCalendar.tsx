@@ -140,16 +140,16 @@ export function AvailabilityCalendar({
           type="button"
           aria-label="Previous month"
           onClick={() => setVisibleMonth((m) => addMonths(m, -1))}
-          className="h-9 w-9 rounded-full border border-charcoal/20 text-charcoal hover:border-forest hover:text-forest"
+          className="-ml-2.5 flex h-11 w-11 items-center justify-center rounded-full border border-charcoal/20 text-charcoal hover:border-forest hover:text-forest"
         >
           ‹
         </button>
-        <p className="font-display text-lg text-charcoal">{monthLabel}</p>
+        <p className="font-display text-base text-charcoal sm:text-lg">{monthLabel}</p>
         <button
           type="button"
           aria-label="Next month"
           onClick={() => setVisibleMonth((m) => addMonths(m, 1))}
-          className="h-9 w-9 rounded-full border border-charcoal/20 text-charcoal hover:border-forest hover:text-forest"
+          className="-mr-2.5 flex h-11 w-11 items-center justify-center rounded-full border border-charcoal/20 text-charcoal hover:border-forest hover:text-forest"
         >
           ›
         </button>

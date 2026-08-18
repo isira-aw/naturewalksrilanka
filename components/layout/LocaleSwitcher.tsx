@@ -21,7 +21,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
             aria-current={locale === active}
             onClick={() => router.replace(pathname, { locale })}
             className={cn(
-              "transition-colors",
+              "-my-2 px-1 py-2 transition-colors",
               locale === active ? "text-forest" : "text-charcoal/50 hover:text-forest"
             )}
           >
