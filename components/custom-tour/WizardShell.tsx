@@ -155,7 +155,15 @@ export function WizardShell({ locale, whatsappNumber }: { locale: string; whatsa
                   isComplete && "text-charcoal/70"
                 )}
               >
-                <span>{String(stepNumber).padStart(2, "0")}</span>
+                <span
+                  className={cn(
+                    "flex h-6 w-6 items-center justify-center rounded-full transition-colors",
+                    isCurrent && "bg-forest text-warm-white",
+                    !isCurrent && "border border-current/40"
+                  )}
+                >
+                  {String(stepNumber).padStart(2, "0")}
+                </span>
                 <span className="hidden sm:inline">{stepLabels[index]}</span>
               </span>
             </li>

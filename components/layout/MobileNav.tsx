@@ -32,7 +32,7 @@ export function MobileNav({
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
         onClick={() => setOpen(true)}
-        className="-mr-2.5 flex h-11 w-11 items-center justify-center font-utility text-xs uppercase tracking-wide text-charcoal"
+        className="-mr-1 flex h-11 min-w-11 items-center justify-center whitespace-nowrap px-2 font-utility text-xs uppercase tracking-wide text-charcoal"
       >
         {labels.menu}
       </button>
@@ -50,7 +50,7 @@ export function MobileNav({
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="-mr-2.5 flex h-11 w-11 items-center justify-center font-utility text-xs uppercase tracking-wide text-charcoal"
+                className="-mr-1 flex h-11 min-w-11 items-center justify-center whitespace-nowrap px-2 font-utility text-xs uppercase tracking-wide text-charcoal"
               >
                 {labels.close}
               </button>
