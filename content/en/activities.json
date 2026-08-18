@@ -1,0 +1,8 @@
+[
+  { "slug": "birding", "name": "Birding", "description": "Sri Lanka holds over 30 endemic bird species. Nandana, a Field Ornithology Group member, leads birding across the island's rainforests, highlands and dry-zone parks." },
+  { "slug": "wildlife-safari", "name": "Wildlife Safari", "description": "Leopard, elephant, sloth bear and more, tracked across Wilpattu and Yala National Parks." },
+  { "slug": "trekking", "name": "Trekking", "description": "Nature walks and hill-country trails, from Ella Rock to Horton Plains and the Sinharaja rainforest." },
+  { "slug": "culture-history", "name": "Culture & History", "description": "Ancient cities, cave temples, the Temple of the Sacred Tooth Relic, and Kandy's cultural traditions." },
+  { "slug": "adventure-sports", "name": "Adventure Sports", "description": "White-water rafting, canyoning and zip-lining around Kithulgala's rainforest river." },
+  { "slug": "beach", "name": "Beach", "description": "Coastal leisure time on the south coast, paired with Galle's Dutch Fort." }
+]

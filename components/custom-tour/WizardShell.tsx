@@ -1,0 +1,241 @@
+"use client";
+
+import { useEffect, useReducer, useState } from "react";
+import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils/cn";
+import type { DateRangeValue } from "@/components/calendar/AvailabilityCalendar";
+import { TravelersStep } from "./steps/TravelersStep";
+import { DatesStep } from "./steps/DatesStep";
+import { InterestsStep } from "./steps/InterestsStep";
+import { AccommodationStep } from "./steps/AccommodationStep";
+import { ContactStep } from "./steps/ContactStep";
+import { ReviewStep } from "./steps/ReviewStep";
+
+export type WizardState = {
+  step: number;
+  travelers: number;
+  dateRange: DateRangeValue;
+  interests: string[];
+  accommodation: string[];
+  accommodationNotes: string;
+  name: string;
+  email: string;
+  phone: string;
+  country: string;
+  requirements: string;
+};
+
+type WizardAction =
+  | { type: "SET_TRAVELERS"; value: number }
+  | { type: "SET_DATE_RANGE"; value: DateRangeValue }
+  | { type: "TOGGLE_INTEREST"; value: string }
+  | { type: "TOGGLE_ACCOMMODATION"; value: string }
+  | { type: "SET_ACCOMMODATION_NOTES"; value: string }
+  | { type: "SET_FIELD"; field: "name" | "email" | "phone" | "country" | "requirements"; value: string }
+  | { type: "GO_NEXT" }
+  | { type: "GO_BACK" };
+
+const TOTAL_STEPS = 6;
+
+const initialState: WizardState = {
+  step: 1,
+  travelers: 2,
+  dateRange: { start: null, end: null },
+  interests: [],
+  accommodation: [],
+  accommodationNotes: "",
+  name: "",
+  email: "",
+  phone: "",
+  country: "",
+  requirements: "",
+};
+
+function toggleValue(list: string[], value: string) {
+  return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
+}
+
+function reducer(state: WizardState, action: WizardAction): WizardState {
+  switch (action.type) {
+    case "SET_TRAVELERS":
+      return { ...state, travelers: Math.max(1, action.value) };
+    case "SET_DATE_RANGE":
+      return { ...state, dateRange: action.value };
+    case "TOGGLE_INTEREST":
+      return { ...state, interests: toggleValue(state.interests, action.value) };
+    case "TOGGLE_ACCOMMODATION":
+      return { ...state, accommodation: toggleValue(state.accommodation, action.value) };
+    case "SET_ACCOMMODATION_NOTES":
+      return { ...state, accommodationNotes: action.value };
+    case "SET_FIELD":
+      return { ...state, [action.field]: action.value };
+    case "GO_NEXT":
+      return { ...state, step: Math.min(TOTAL_STEPS, state.step + 1) };
+    case "GO_BACK":
+      return { ...state, step: Math.max(1, state.step - 1) };
+    default:
+      return state;
+  }
+}
+
+function isValidEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+export function WizardShell({ locale, whatsappNumber }: { locale: string; whatsappNumber: string }) {
+  const t = useTranslations("customTour");
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [error, setError] = useState<string | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resetting the enter-transition flag when the step changes is the point of the effect
+    setVisible(false);
+    const id = requestAnimationFrame(() => setVisible(true));
+    return () => cancelAnimationFrame(id);
+  }, [state.step]);
+
+  const stepKeys = ["travelers", "dates", "interests", "accommodation", "contact", "review"] as const;
+  const stepLabels = stepKeys.map((key) => t(`steps.${key}`));
+
+  function validateCurrentStep(): string | null {
+    switch (state.step) {
+      case 1:
+        if (state.travelers < 1) return t("travelersLabel");
+        return null;
+      case 2:
+        if (!state.dateRange.start || !state.dateRange.end) return t("datesHelp");
+        return null;
+      case 3:
+        if (state.interests.length === 0) return t("interestsLabel");
+        return null;
+      case 4:
+        return null;
+      case 5:
+        if (!state.name.trim() || !isValidEmail(state.email) || !state.phone.trim()) {
+          return t("contactName") + " / " + t("contactEmail") + " / " + t("contactPhone");
+        }
+        return null;
+      default:
+        return null;
+    }
+  }
+
+  function handleNext() {
+    const validationError = validateCurrentStep();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+    setError(null);
+    dispatch({ type: "GO_NEXT" });
+  }
+
+  function handleBack() {
+    setError(null);
+    dispatch({ type: "GO_BACK" });
+  }
+
+  return (
+    <div>
+      <ol className="flex flex-wrap items-center gap-x-2 gap-y-3 font-utility text-xs uppercase tracking-wide text-charcoal/50">
+        {stepKeys.map((key, index) => {
+          const stepNumber = index + 1;
+          const isCurrent = stepNumber === state.step;
+          const isComplete = stepNumber < state.step;
+          return (
+            <li key={key} className="flex items-center gap-2">
+              {index > 0 && <span aria-hidden="true" className="text-charcoal/20">—</span>}
+              <span
+                aria-current={isCurrent ? "step" : undefined}
+                className={cn(
+                  "flex items-center gap-1.5",
+                  isCurrent && "text-forest",
+                  isComplete && "text-charcoal/70"
+                )}
+              >
+                <span>{String(stepNumber).padStart(2, "0")}</span>
+                <span className="hidden sm:inline">{stepLabels[index]}</span>
+              </span>
+            </li>
+          );
+        })}
+      </ol>
+      <p className="sr-only" role="status">
+        Step {state.step} of {TOTAL_STEPS}: {stepLabels[state.step - 1]}
+      </p>
+
+      <div
+        key={state.step}
+        className={cn(
+          "mt-10 transition-all duration-200 ease-out",
+          visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
+        )}
+      >
+        {state.step === 1 && (
+          <TravelersStep
+            value={state.travelers}
+            onChange={(value) => dispatch({ type: "SET_TRAVELERS", value })}
+          />
+        )}
+        {state.step === 2 && (
+          <DatesStep
+            locale={locale}
+            value={state.dateRange}
+            onChange={(value) => dispatch({ type: "SET_DATE_RANGE", value })}
+          />
+        )}
+        {state.step === 3 && (
+          <InterestsStep
+            value={state.interests}
+            onToggle={(value) => dispatch({ type: "TOGGLE_INTEREST", value })}
+          />
+        )}
+        {state.step === 4 && (
+          <AccommodationStep
+            value={state.accommodation}
+            onToggle={(value) => dispatch({ type: "TOGGLE_ACCOMMODATION", value })}
+            notes={state.accommodationNotes}
+            onNotesChange={(value) => dispatch({ type: "SET_ACCOMMODATION_NOTES", value })}
+          />
+        )}
+        {state.step === 5 && (
+          <ContactStep
+            name={state.name}
+            email={state.email}
+            phone={state.phone}
+            country={state.country}
+            requirements={state.requirements}
+            onChange={(field, value) => dispatch({ type: "SET_FIELD", field, value })}
+          />
+        )}
+        {state.step === 6 && (
+          <ReviewStep state={state} locale={locale} whatsappNumber={whatsappNumber} />
+        )}
+      </div>
+
+      {error && (
+        <p role="alert" className="mt-6 text-sm text-clay">
+          {error}
+        </p>
+      )}
+
+      <div className="mt-10 flex items-center justify-between border-t border-charcoal/10 pt-8">
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={handleBack}
+          disabled={state.step === 1}
+        >
+          {t("back")}
+        </Button>
+        {state.step < TOTAL_STEPS && (
+          <Button type="button" variant="primary" onClick={handleNext}>
+            {t("next")}
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+}

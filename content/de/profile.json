@@ -1,0 +1,23 @@
+{
+  "_reviewStatus": "needs-native-review",
+  "name": "Nandana Hewagamage",
+  "experience": "20+ Jahre",
+  "languages": [],
+  "certification": "Zertifiziert von der Sri Lanka Tourism Board",
+  "philosophy": "Eine Reise durch Sri Lanka sollte von jemandem geführt werden, der das Land so kennt, wie ein Naturforscher einen Waldpfad kennt — am Klang, an der Jahreszeit, aus jahrelangem Gehen.",
+  "story": "1990 begann Nandana seine Laufbahn bei Sri Lankas Department of Wildlife Conservation als Naturkunde-Ausbilder für Schulen und Dorfgemeinschaften und arbeitete dabei mit universitären Forschungsprogrammen zur Vogel-, Pflanzen- und Insektenwelt der Insel zusammen. Er ist Mitglied der Field Ornithology Group der University of Colombo. 1999 wechselte er in den Abenteuer-Ökotourismus und führte Trekkingtouren sowie abenteuerorientierte Reisen mit Wildwasser-Rafting, Canyoning und Zip-Lining durch, bevor er sich 2002 als staatlich geprüfter Reiseleiter und Dozent qualifizierte — mit Schwerpunkt auf Vogelbeobachtung, Tierwelt, Wildtierfotografie und Trekking sowie kulturellen und historischen Touren. 2017 gründete er, nach jahrelanger Führungstätigkeit für große Reiseunternehmen, Nature Walks Sri Lanka, um Reisenden ein persönliches, individuell zugeschnittenes Erlebnis der Tierwelt und Kultur der Insel zu bieten.",
+  "specialties": [
+    "Vogelbeobachtung",
+    "Tierwelt",
+    "Wildtierfotografie",
+    "Trekking",
+    "Kultur & Geschichte"
+  ],
+  "stats": [
+    { "value": "20+", "label": "Jahre als Reiseleiter" },
+    { "value": "CONTENT_REQUIRED", "label": "Sprachen" },
+    { "value": "Sri Lanka", "label": "Seine Heimat" }
+  ],
+  "portraitImage": "/images/nandana-portrait.jpg",
+  "_note": "Languages list not yet confirmed — brief states 5 languages but does not name them. Leave as CONTENT_REQUIRED until Nandana confirms."
+}

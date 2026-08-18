@@ -1,0 +1,8 @@
+[
+  { "slug": "birding", "name": "Observation des oiseaux", "description": "Le Sri Lanka compte plus de 30 espèces d'oiseaux endémiques. Nandana, membre du Field Ornithology Group, guide des sorties d'observation à travers les forêts tropicales, les hauts plateaux et les parcs de la zone sèche de l'île.", "_reviewStatus": "needs-native-review" },
+  { "slug": "wildlife-safari", "name": "Safari faune sauvage", "description": "Léopards, éléphants, ours paresseux et bien plus, traqués à travers les parcs nationaux de Wilpattu et de Yala.", "_reviewStatus": "needs-native-review" },
+  { "slug": "trekking", "name": "Randonnée", "description": "Balades nature et sentiers des hautes terres, du Ella Rock aux plaines de Horton en passant par la forêt tropicale de Sinharaja.", "_reviewStatus": "needs-native-review" },
+  { "slug": "culture-history", "name": "Culture & Histoire", "description": "Cités antiques, temples-grottes, le Temple de la Dent sacrée, et les traditions culturelles de Kandy.", "_reviewStatus": "needs-native-review" },
+  { "slug": "adventure-sports", "name": "Sports d'aventure", "description": "Rafting en eaux vives, canyoning et tyrolienne le long de la rivière forestière de Kithulgala.", "_reviewStatus": "needs-native-review" },
+  { "slug": "beach", "name": "Plage", "description": "Détente balnéaire sur la côte sud, associée à la visite du fort hollandais de Galle.", "_reviewStatus": "needs-native-review" }
+]

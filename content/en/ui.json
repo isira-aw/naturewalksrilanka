@@ -1,0 +1,154 @@
+{
+  "nav": {
+    "home": "Home",
+    "journeys": "Journeys",
+    "customTour": "Custom Tour",
+    "aboutNandana": "About Nandana",
+    "sriLanka": "Sri Lanka",
+    "checkAvailability": "Check Availability",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "hero": {
+    "eyebrow": "Discover Sri Lanka",
+    "titleLine1": "Beyond the",
+    "titleLine2": "ordinary",
+    "subtitle": "Private journeys through the wild heart of Sri Lanka, guided by Nandana Hewagamage.",
+    "ctaPrimary": "Explore Tours",
+    "ctaSecondary": "Build Your Journey"
+  },
+  "tours": {
+    "sectionEyebrow": "Journeys",
+    "sectionTitle": "How long would you like to explore Sri Lanka?",
+    "custom": "Custom",
+    "cta": "Explore Journey",
+    "daysLabel": "Days",
+    "included": "What's included",
+    "excluded": "Not included",
+    "itineraryTitle": "Day by day",
+    "highlightsTitle": "Highlights",
+    "destinationsTitle": "Destinations",
+    "activitiesTitle": "Activities",
+    "customizeCta": "Customize This Journey",
+    "availabilityCta": "Check Availability",
+    "whatsappCta": "Discuss This Journey"
+  },
+  "customTour": {
+    "eyebrow": "Custom Tour",
+    "titleLine1": "Your Sri Lanka.",
+    "titleLine2": "Your way.",
+    "intro": "Tell Nandana how you'd like to experience Sri Lanka, and he'll shape a private journey around it.",
+    "start": "Build My Journey",
+    "steps": {
+      "travelers": "Travelers",
+      "dates": "Dates",
+      "interests": "Interests",
+      "accommodation": "Accommodation",
+      "contact": "Contact Information",
+      "review": "Review"
+    },
+    "back": "Back",
+    "next": "Continue",
+    "travelersLabel": "How many travelers?",
+    "datesLabel": "When would you like to travel?",
+    "datesHelp": "Select a start and end date. Nandana's calendar will be checked automatically.",
+    "interestsLabel": "What are you most interested in?",
+    "interests": {
+      "wildlife": "Wildlife",
+      "trekking": "Trekking",
+      "culture": "Culture",
+      "birding": "Birding",
+      "beach": "Beach",
+      "photography": "Photography",
+      "adventure": "Adventure"
+    },
+    "accommodationLabel": "Preferred accommodation style",
+    "accommodation": {
+      "budget": "Budget",
+      "comfortable": "Comfortable",
+      "boutique": "Boutique",
+      "luxury": "Luxury",
+      "ecoLodge": "Eco Lodge",
+      "recommend": "Not sure — recommend for me"
+    },
+    "accommodationNotesLabel": "Anything else about accommodation?",
+    "contactName": "Name",
+    "contactEmail": "Email",
+    "contactPhone": "WhatsApp / Phone",
+    "contactCountry": "Country",
+    "requirementsLabel": "Tell Nandana about your ideal journey…",
+    "reviewTitle": "Review your journey",
+    "submit": "Discuss My Journey on WhatsApp"
+  },
+  "calendar": {
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "selected": "Selected",
+    "today": "Today",
+    "daysSelected": "{count} days selected",
+    "rangeUnavailable": "Some of your selected dates are unavailable. Please choose another range.",
+    "rangeAvailable": "Nandana is available for these dates.",
+    "loading": "Checking availability…",
+    "error": "We couldn't check availability right now. Please try again in a moment or contact Nandana directly on WhatsApp.",
+    "invalidRange": "Please select a valid travel period."
+  },
+  "nandana": {
+    "introEyebrow": "Who is Nandana",
+    "introTitle": "A lifetime spent walking through Sri Lanka.",
+    "whyEyebrow": "Why Travel With Nandana",
+    "whyTitle": "A private guide, not a private van.",
+    "whyPoints": [
+      { "title": "Field-trained, not scripted", "description": "Nandana's guiding grew out of wildlife conservation fieldwork, not a tour-desk script — he reads a forest the way he reads a room." },
+      { "title": "Nationally certified", "description": "A Sri Lanka Tourism Board certified national guide since 2002, specializing in birding, wildlife, trekking and cultural tours." },
+      { "title": "One guide, one journey", "description": "You travel with Nandana himself, not a rotating roster of drivers — your itinerary is shaped around you." }
+    ]
+  },
+  "sriLanka": {
+    "eyebrow": "Sri Lanka",
+    "title": "Rainforest, highland and coast — closer together than you'd expect.",
+    "body": "From Wilpattu's dry-zone leopard country to Sinharaja's endemic-rich rainforest canopy, from Kandy's hill temples to the reef off Trincomalee, Sri Lanka compresses a continent's worth of habitat into a single island.",
+    "cta": "See the Destinations"
+  },
+  "availability": {
+    "eyebrow": "Availability",
+    "title": "Is Nandana available for your dates?",
+    "subtitle": "Check his calendar directly — no waiting on an email reply.",
+    "cta": "Check Availability"
+  },
+  "conservation": {
+    "eyebrow": "Conservation",
+    "title": "Guiding rooted in fieldwork, not just hospitality.",
+    "quote": "Nandana began his career with Sri Lanka's Department of Wildlife Conservation and remains a member of the Field Ornithology Group of the University of Colombo — conservation isn't a footnote to his tours, it's where his guiding started."
+  },
+  "testimonials": {
+    "eyebrow": "Testimonials",
+    "title": "From travelers who've walked this route",
+    "emptyState": "Traveler stories are being gathered here — check back soon, or ask Nandana directly on WhatsApp for references."
+  },
+  "finalCta": {
+    "eyebrow": "Start Planning",
+    "title": "Your Sri Lanka begins with a conversation.",
+    "subtitle": "No forms, no wait — just message Nandana directly on WhatsApp."
+  },
+  "whatsapp": {
+    "talkToNandana": "Talk to Nandana",
+    "askNandana": "Ask Nandana",
+    "discussJourney": "Discuss This Journey",
+    "buildJourney": "Build My Journey",
+    "finalCta": "Start Planning on WhatsApp"
+  },
+  "footer": {
+    "tagline": "Private nature and wildlife journeys through Sri Lanka.",
+    "navigation": "Navigation",
+    "journeys": "Journeys",
+    "contact": "Contact",
+    "language": "Language",
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "rights": "All rights reserved."
+  },
+  "common": {
+    "contentRequired": "Content required — to be confirmed with Nandana",
+    "comingSoon": "Coming soon"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "journeys": "Voyages",
+    "customTour": "Circuit sur mesure",
+    "aboutNandana": "À propos de Nandana",
+    "sriLanka": "Sri Lanka",
+    "checkAvailability": "Vérifier les disponibilités",
+    "menu": "Menu",
+    "close": "Fermer"
+  },
+  "hero": {
+    "eyebrow": "Découvrez le Sri Lanka",
+    "titleLine1": "Au-delà de",
+    "titleLine2": "l'ordinaire",
+    "subtitle": "Des voyages privés au cœur sauvage du Sri Lanka, guidés par Nandana Hewagamage.",
+    "ctaPrimary": "Découvrir les circuits",
+    "ctaSecondary": "Créer votre voyage"
+  },
+  "tours": {
+    "sectionEyebrow": "Voyages",
+    "sectionTitle": "Combien de temps souhaitez-vous explorer le Sri Lanka ?",
+    "custom": "Sur mesure",
+    "cta": "Découvrir le voyage",
+    "daysLabel": "Jours",
+    "included": "Ce qui est inclus",
+    "excluded": "Non inclus",
+    "itineraryTitle": "Jour par jour",
+    "highlightsTitle": "Points forts",
+    "destinationsTitle": "Destinations",
+    "activitiesTitle": "Activités",
+    "customizeCta": "Personnaliser ce voyage",
+    "availabilityCta": "Vérifier les disponibilités",
+    "whatsappCta": "Discuter de ce voyage"
+  },
+  "customTour": {
+    "eyebrow": "Circuit sur mesure",
+    "titleLine1": "Votre Sri Lanka.",
+    "titleLine2": "À votre façon.",
+    "intro": "Dites à Nandana comment vous souhaitez vivre le Sri Lanka, et il façonnera un voyage privé à votre image.",
+    "start": "Créer mon voyage",
+    "steps": {
+      "travelers": "Voyageurs",
+      "dates": "Dates",
+      "interests": "Centres d'intérêt",
+      "accommodation": "Hébergement",
+      "contact": "Coordonnées",
+      "review": "Récapitulatif"
+    },
+    "back": "Retour",
+    "next": "Continuer",
+    "travelersLabel": "Combien de voyageurs ?",
+    "datesLabel": "Quand souhaitez-vous voyager ?",
+    "datesHelp": "Sélectionnez une date de début et de fin. Le calendrier de Nandana sera vérifié automatiquement.",
+    "interestsLabel": "Qu'est-ce qui vous intéresse le plus ?",
+    "interests": {
+      "wildlife": "Faune sauvage",
+      "trekking": "Randonnée",
+      "culture": "Culture",
+      "birding": "Observation des oiseaux",
+      "beach": "Plage",
+      "photography": "Photographie",
+      "adventure": "Aventure"
+    },
+    "accommodationLabel": "Style d'hébergement préféré",
+    "accommodation": {
+      "budget": "Économique",
+      "comfortable": "Confortable",
+      "boutique": "Boutique",
+      "luxury": "Luxe",
+      "ecoLodge": "Éco-lodge",
+      "recommend": "Je ne sais pas — laissez-moi une recommandation"
+    },
+    "accommodationNotesLabel": "Autre chose à propos de l'hébergement ?",
+    "contactName": "Nom",
+    "contactEmail": "E-mail",
+    "contactPhone": "WhatsApp / Téléphone",
+    "contactCountry": "Pays",
+    "requirementsLabel": "Parlez à Nandana du voyage de vos rêves…",
+    "reviewTitle": "Récapitulatif de votre voyage",
+    "submit": "Discuter de mon voyage sur WhatsApp"
+  },
+  "calendar": {
+    "available": "Disponible",
+    "unavailable": "Indisponible",
+    "selected": "Sélectionné",
+    "today": "Aujourd'hui",
+    "daysSelected": "{count} jours sélectionnés",
+    "rangeUnavailable": "Certaines des dates sélectionnées ne sont pas disponibles. Veuillez choisir une autre période.",
+    "rangeAvailable": "Nandana est disponible à ces dates.",
+    "loading": "Vérification des disponibilités…",
+    "error": "Nous n'avons pas pu vérifier les disponibilités pour le moment. Merci de réessayer dans quelques instants ou de contacter Nandana directement sur WhatsApp.",
+    "invalidRange": "Veuillez sélectionner une période de voyage valide."
+  },
+  "nandana": {
+    "introEyebrow": "Qui est Nandana",
+    "introTitle": "Toute une vie à parcourir le Sri Lanka.",
+    "whyEyebrow": "Pourquoi voyager avec Nandana",
+    "whyTitle": "Un guide privé, pas un simple van privé.",
+    "whyPoints": [
+      { "title": "Formé sur le terrain, pas sur un script", "description": "L'expérience de guide de Nandana vient du travail de terrain en conservation de la faune, pas d'un script d'agence — il lit une forêt comme d'autres lisent une pièce." },
+      { "title": "Certifié au niveau national", "description": "Guide national certifié par le Sri Lanka Tourism Board depuis 2002, spécialisé dans l'observation des oiseaux, la faune, le trekking et les circuits culturels." },
+      { "title": "Un guide, un voyage", "description": "Vous voyagez avec Nandana lui-même, et non avec des chauffeurs qui se relaient — votre itinéraire est pensé autour de vous." }
+    ]
+  },
+  "sriLanka": {
+    "eyebrow": "Sri Lanka",
+    "title": "Forêt tropicale, hautes terres et littoral — plus proches qu'on ne le pense.",
+    "body": "Du territoire des léopards de la zone sèche de Wilpattu à la canopée de la forêt tropicale endémique de Sinharaja, des temples des collines de Kandy au récif de Trincomalee, le Sri Lanka concentre la richesse d'un continent sur une seule île.",
+    "cta": "Découvrir les destinations"
+  },
+  "availability": {
+    "eyebrow": "Disponibilité",
+    "title": "Nandana est-il disponible à vos dates ?",
+    "subtitle": "Consultez directement son calendrier — sans attendre de réponse par e-mail.",
+    "cta": "Vérifier la disponibilité"
+  },
+  "conservation": {
+    "eyebrow": "Conservation",
+    "title": "Un guidage enraciné dans le travail de terrain, pas seulement dans l'accueil.",
+    "quote": "Nandana a commencé sa carrière au sein du Department of Wildlife Conservation du Sri Lanka et reste membre du Field Ornithology Group de l'université de Colombo — la conservation n'est pas un détail dans ses voyages, c'est là que son métier de guide a commencé."
+  },
+  "testimonials": {
+    "eyebrow": "Témoignages",
+    "title": "Des voyageurs qui ont déjà parcouru cette route",
+    "emptyState": "Les témoignages de voyageurs seront bientôt rassemblés ici — revenez plus tard, ou demandez directement des références à Nandana sur WhatsApp."
+  },
+  "finalCta": {
+    "eyebrow": "Commencer à planifier",
+    "title": "Votre Sri Lanka commence par une conversation.",
+    "subtitle": "Pas de formulaire, pas d'attente — écrivez directement à Nandana sur WhatsApp."
+  },
+  "whatsapp": {
+    "talkToNandana": "Parler à Nandana",
+    "askNandana": "Demander à Nandana",
+    "discussJourney": "Discuter de ce voyage",
+    "buildJourney": "Créer mon voyage",
+    "finalCta": "Commencer à planifier sur WhatsApp"
+  },
+  "footer": {
+    "tagline": "Voyages privés au cœur de la nature et de la faune du Sri Lanka.",
+    "navigation": "Navigation",
+    "journeys": "Voyages",
+    "contact": "Contact",
+    "language": "Langue",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions générales",
+    "rights": "Tous droits réservés."
+  },
+  "common": {
+    "contentRequired": "Contenu à confirmer avec Nandana",
+    "comingSoon": "Bientôt disponible"
+  }
+}

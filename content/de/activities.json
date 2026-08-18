@@ -1,0 +1,8 @@
+[
+  { "slug": "birding", "name": "Vogelbeobachtung", "description": "Sri Lanka beherbergt über 30 endemische Vogelarten. Nandana, Mitglied der Field Ornithology Group, führt Vogelbeobachtungen durch die Regenwälder, das Hochland und die Trockenzonen-Nationalparks der Insel.", "_reviewStatus": "needs-native-review" },
+  { "slug": "wildlife-safari", "name": "Wildtier-Safari", "description": "Leopard, Elefant, Lippenbär und mehr — aufgespürt in den Nationalparks Wilpattu und Yala.", "_reviewStatus": "needs-native-review" },
+  { "slug": "trekking", "name": "Trekking", "description": "Naturwanderungen und Pfade im Hochland, vom Ella Rock über die Horton Plains bis zum Regenwald von Sinharaja.", "_reviewStatus": "needs-native-review" },
+  { "slug": "culture-history", "name": "Kultur & Geschichte", "description": "Antike Städte, Höhlentempel, der Tempel der Heiligen Zahnreliquie und die kulturellen Traditionen Kandys.", "_reviewStatus": "needs-native-review" },
+  { "slug": "adventure-sports", "name": "Abenteuersport", "description": "Wildwasser-Rafting, Canyoning und Zip-Lining am Regenwaldfluss von Kithulgala.", "_reviewStatus": "needs-native-review" },
+  { "slug": "beach", "name": "Strand", "description": "Entspannte Stunden an der Südküste, kombiniert mit einem Besuch der niederländischen Festung von Galle.", "_reviewStatus": "needs-native-review" }
+]

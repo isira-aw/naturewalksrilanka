@@ -1,0 +1,25 @@
+{
+  "main": [
+    { "label": "Startseite", "href": "/" },
+    { "label": "Reisen", "href": "/tours" },
+    { "label": "Individuelle Reise", "href": "/custom-tour" },
+    { "label": "Über Nandana", "href": "/about-nandana" },
+    { "label": "Sri Lanka", "href": "/destinations" }
+  ],
+  "checkAvailability": { "label": "Verfügbarkeit prüfen", "href": "/custom-tour" },
+  "footerLinks": [
+    { "label": "Kontakt", "href": "/contact" },
+    { "label": "Datenschutz", "href": "/privacy" }
+  ],
+  "social": {
+    "facebook": "https://www.facebook.com/profile.php?id=100094015616273",
+    "instagram": "https://www.instagram.com/nandana_bird_guide",
+    "youtube": "https://www.youtube.com/channel/UC95R79JukIopEswMD1Oc4qg"
+  },
+  "contact": {
+    "email": "naturewalksrilanka@gmail.com",
+    "phone": "+94 77 966 9367",
+    "whatsappNumber": "94779669367",
+    "address": "81/1, Acton Estate, Welimada Road, Bandarawela, Sri Lanka"
+  }
+}

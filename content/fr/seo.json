@@ -1,0 +1,25 @@
+{
+  "siteName": "Nature Walks Sri Lanka",
+  "titleTemplate": "%s | Nature Walks Sri Lanka",
+  "defaultTitle": "Nature Walks Sri Lanka — Voyage nature Sri Lanka et safaris privés avec Nandana Hewagamage",
+  "defaultDescription": "Voyage au Sri Lanka en privé avec Nandana Hewagamage : safaris animaliers, observation des oiseaux, trekking Sri Lanka et culture, sur mesure et vérifiés selon les disponibilités en temps réel.",
+  "ogImage": "/images/og-default.jpg",
+  "keywords": [
+    "voyage au Sri Lanka",
+    "circuit Sri Lanka",
+    "voyage nature Sri Lanka",
+    "guide Sri Lanka",
+    "voyage privé Sri Lanka",
+    "trekking Sri Lanka",
+    "safari faune Sri Lanka",
+    "circuit sur mesure Sri Lanka"
+  ],
+  "pages": {
+    "home": { "title": "Voyage privé au Sri Lanka — Nature et faune sauvage", "description": "Découvrez un voyage au Sri Lanka au-delà de l'ordinaire — safaris animaliers, observation des oiseaux et circuits culturels guidés par Nandana Hewagamage, guide national certifié par l'Office du tourisme du Sri Lanka." },
+    "tours": { "title": "Circuit Sri Lanka — Voyages de 10, 12, 16 et 18 jours", "description": "Quatre voyages nature Sri Lanka en privé, entre safaris animaliers, observation des oiseaux, hautes terres et culture, guidés par Nandana Hewagamage." },
+    "customTour": { "title": "Créer un circuit sur mesure au Sri Lanka", "description": "Concevez un voyage privé Sri Lanka personnalisé avec Nandana — choisissez vos dates, vos centres d'intérêt et votre hébergement, puis échangez directement sur WhatsApp." },
+    "aboutNandana": { "title": "À propos de Nandana Hewagamage", "description": "Plus de 20 ans à guider la faune et la culture du Sri Lanka, du Département de la conservation de la faune sauvage à la fondation de Nature Walks Sri Lanka." },
+    "destinations": { "title": "Guide Sri Lanka — Destinations", "description": "Les parcs nationaux, cités antiques et sentiers des hautes terres visités lors d'un voyage Nature Walks Sri Lanka." },
+    "contact": { "title": "Contacter Nandana Hewagamage", "description": "Contactez Nandana pour commencer à planifier votre voyage privé Sri Lanka." }
+  }
+}

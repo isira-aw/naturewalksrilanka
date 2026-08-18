@@ -1,0 +1,8 @@
+<svg viewBox="0 0 320 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">Nature Walks Sri Lanka</title>
+  <circle cx="24" cy="32" r="20" fill="#024E2A" />
+  <path d="M14 36c4-14 16-18 20-18-2 4-2 10-6 14-4 4-10 5-14 4Z" fill="#FAF7F0" />
+  <path d="M16 38c3-3 7-5 12-6" stroke="#FAF7F0" stroke-width="1.4" fill="none" stroke-linecap="round" />
+  <text x="58" y="28" font-family="Georgia, serif" font-size="19" letter-spacing="0.5" fill="#1C1E1B">Nature Walks</text>
+  <text x="58" y="48" font-family="Georgia, serif" font-size="19" letter-spacing="0.5" fill="#024E2A">Sri Lanka</text>
+</svg>
