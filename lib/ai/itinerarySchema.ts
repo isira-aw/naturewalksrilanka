@@ -10,6 +10,7 @@ export const itineraryOptionSchema = z.object({
   travelMinutesFromPrevious: z.number().nullable(),
   distanceKmFromPrevious: z.number().nullable(),
   suitability: z.string(),
+  recommended: z.boolean().default(false),
 });
 
 export const itineraryDaySchema = z.object({

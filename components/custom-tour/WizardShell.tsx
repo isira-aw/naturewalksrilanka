@@ -218,7 +218,7 @@ export function WizardShell({
       <div
         key={state.step}
         className={cn(
-          "mt-10 transition-all duration-200 ease-out",
+          "mt-10 max-w-3xl transition-all duration-200 ease-out",
           visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
         )}
       >
@@ -280,12 +280,12 @@ export function WizardShell({
       </div>
 
       {error && (
-        <p role="alert" className="mt-6 text-sm text-clay">
+        <p role="alert" className="mt-6 max-w-3xl text-sm text-clay">
           {error}
         </p>
       )}
 
-      <div className="mt-10 flex items-center justify-between border-t border-charcoal/10 pt-8">
+      <div className="mt-10 flex max-w-3xl items-center justify-between border-t border-charcoal/10 pt-8">
         <Button
           type="button"
           variant="secondary"

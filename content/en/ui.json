@@ -84,7 +84,10 @@
       "dayLabel": "Day {day}",
       "skip": "Skip this step",
       "regenerate": "Start over",
-      "distanceLabel": "{km} km · {minutes} min from previous day",
+      "distanceLabel": "{km} km from the previous stop · about {duration} by road",
+      "recommendedLabel": "Our pick for you",
+      "recommendedBadge": "Recommended",
+      "otherOptionsLabel": "Other options for this day",
       "selectedSummaryTitle": "Your suggested route"
     },
     "contactName": "Name",

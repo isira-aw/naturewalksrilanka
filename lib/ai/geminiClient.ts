@@ -30,8 +30,9 @@ const responseSchema = {
                 travelMinutesFromPrevious: { type: Type.NUMBER, nullable: true },
                 distanceKmFromPrevious: { type: Type.NUMBER, nullable: true },
                 suitability: { type: Type.STRING },
+                recommended: { type: Type.BOOLEAN },
               },
-              required: ["slug", "name", "lat", "lng", "description", "keywords", "suitability"],
+              required: ["slug", "name", "lat", "lng", "description", "keywords", "suitability", "recommended"],
             },
           },
         },
@@ -71,6 +72,8 @@ For each day of the trip, propose 3 to 5 candidate location options a traveler c
 - keep the overall route geographically sensible (avoid criss-crossing the island unnecessarily)
 
 For each option return: slug, name, lat, lng, a one-sentence description, up to 6 short keywords, travelMinutesFromPrevious and distanceKmFromPrevious (null for day 1), and a one-sentence "suitability" note referencing the traveler's interests and/or the season.
+
+For each day, set recommended: true on exactly ONE of that day's options — the single best match considering interests, season/safety, and route efficiency — and recommended: false on all the others.
 
 Return ONLY the structured itinerary JSON.`;
 }

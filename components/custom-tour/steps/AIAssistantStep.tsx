@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
@@ -42,6 +42,7 @@ export function AIAssistantStep({
   onSelectDay: (dayIndex: number, slug: string) => void;
 }) {
   const t = useTranslations("customTour.aiAssistant");
+  const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
 
   const selectedRoute = useMemo(() => {
     if (!itinerary) return [];
@@ -53,6 +54,19 @@ export function AIAssistantStep({
   const currentDayIndex = selections.length;
   const currentDay = itinerary?.days[currentDayIndex];
   const isComplete = Boolean(itinerary) && currentDayIndex >= (itinerary?.days.length ?? 0);
+
+  // The model itself marks one option per day as `recommended`, weighing season/
+  // safety and route efficiency alongside interests — falls back to the first
+  // option only if the model response is missing the flag entirely.
+  const recommendedOption = useMemo(() => {
+    if (!currentDay || currentDay.options.length === 0) return null;
+    return currentDay.options.find((opt) => opt.recommended) ?? currentDay.options[0];
+  }, [currentDay]);
+
+  const otherOptions = useMemo(() => {
+    if (!currentDay || !recommendedOption) return currentDay?.options ?? [];
+    return currentDay.options.filter((opt) => opt !== recommendedOption);
+  }, [currentDay, recommendedOption]);
 
   async function handleGenerate() {
     if (!dateRange.start || !dateRange.end) return;
@@ -129,6 +143,7 @@ export function AIAssistantStep({
           <SriLankaMap
             candidates={currentDay?.options ?? []}
             selectedRoute={selectedRoute}
+            hoveredSlug={hoveredSlug}
           />
 
           {!isComplete && currentDay && (
@@ -136,16 +151,44 @@ export function AIAssistantStep({
               <h3 className="font-utility text-xs uppercase tracking-wide text-charcoal/60">
                 {t("dayLabel", { day: currentDay.day })}
               </h3>
-              <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                {currentDay.options.map((option) => (
-                  <DayCard
-                    key={option.slug}
-                    option={option}
-                    selected={selections[currentDayIndex] === option.slug}
-                    onSelect={() => onSelectDay(currentDayIndex, option.slug)}
-                  />
-                ))}
-              </div>
+
+              {recommendedOption && (
+                <div className="mt-3">
+                  <span className="font-utility text-xs uppercase tracking-wide text-forest">
+                    {t("recommendedLabel")}
+                  </span>
+                  <div className="mt-2">
+                    <DayCard
+                      option={recommendedOption}
+                      selected={selections[currentDayIndex] === recommendedOption.slug}
+                      recommended
+                      onSelect={() => onSelectDay(currentDayIndex, recommendedOption.slug)}
+                      onHoverChange={(hovered) =>
+                        setHoveredSlug(hovered ? recommendedOption.slug : null)
+                      }
+                    />
+                  </div>
+                </div>
+              )}
+
+              {otherOptions.length > 0 && (
+                <div className="mt-4">
+                  <span className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+                    {t("otherOptionsLabel")}
+                  </span>
+                  <div className="mt-2 grid gap-3 sm:grid-cols-2">
+                    {otherOptions.map((option, index) => (
+                      <DayCard
+                        key={`${index}-${option.slug}`}
+                        option={option}
+                        selected={selections[currentDayIndex] === option.slug}
+                        onSelect={() => onSelectDay(currentDayIndex, option.slug)}
+                        onHoverChange={(hovered) => setHoveredSlug(hovered ? option.slug : null)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -156,7 +199,7 @@ export function AIAssistantStep({
               </h3>
               <ol className="mt-3 space-y-2">
                 {selectedRoute.map((option, index) => (
-                  <li key={option.slug} className="text-sm text-charcoal">
+                  <li key={`${index}-${option.slug}`} className="text-sm text-charcoal">
                     <span className="text-charcoal/50">{t("dayLabel", { day: index + 1 })}:</span>{" "}
                     {option.name}
                   </li>

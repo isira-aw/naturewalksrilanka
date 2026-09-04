@@ -84,7 +84,10 @@
       "dayLabel": "Jour {day}",
       "skip": "Passer cette étape",
       "regenerate": "Recommencer",
-      "distanceLabel": "{km} km · {minutes} min depuis la veille",
+      "distanceLabel": "{km} km depuis l'étape précédente · environ {duration} de route",
+      "recommendedLabel": "Notre recommandation pour vous",
+      "recommendedBadge": "Recommandé",
+      "otherOptionsLabel": "Autres options pour ce jour",
       "selectedSummaryTitle": "Votre itinéraire suggéré"
     },
     "contactName": "Nom",

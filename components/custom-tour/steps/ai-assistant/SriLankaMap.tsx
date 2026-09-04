@@ -7,12 +7,12 @@ import type { ItineraryOption } from "@/lib/ai/itinerarySchema";
 
 const SRI_LANKA_CENTER: [number, number] = [7.6, 80.7];
 
-function pin(color: string) {
+function pin(color: string, size = 14) {
   return L.divIcon({
     className: "",
-    html: `<span style="display:block;width:14px;height:14px;border-radius:9999px;background:${color};border:2px solid white;box-shadow:0 0 0 1px rgba(0,0,0,0.2)"></span>`,
-    iconSize: [14, 14],
-    iconAnchor: [7, 7],
+    html: `<span style="display:block;width:${size}px;height:${size}px;border-radius:9999px;background:${color};border:2px solid white;box-shadow:0 0 0 1px rgba(0,0,0,0.2)"></span>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
   });
 }
 
@@ -22,11 +22,14 @@ const selectedPin = pin("#2f4f3a");
 export function SriLankaMap({
   candidates,
   selectedRoute,
+  hoveredSlug,
 }: {
   candidates: ItineraryOption[];
   selectedRoute: ItineraryOption[];
+  hoveredSlug?: string | null;
 }) {
   const routePositions: [number, number][] = selectedRoute.map((opt) => [opt.lat, opt.lng]);
+  const hoveredPin = pin("#2f4f3a", 22);
 
   return (
     <MapContainer
@@ -42,14 +45,22 @@ export function SriLankaMap({
       {routePositions.length > 1 && (
         <Polyline positions={routePositions} pathOptions={{ color: "#2f4f3a", weight: 3 }} />
       )}
-      {selectedRoute.map((opt) => (
-        <Marker key={`selected-${opt.slug}`} position={[opt.lat, opt.lng]} icon={selectedPin}>
-          <Tooltip>{opt.name}</Tooltip>
+      {selectedRoute.map((opt, index) => (
+        <Marker
+          key={`selected-${index}-${opt.slug}`}
+          position={[opt.lat, opt.lng]}
+          icon={opt.slug === hoveredSlug ? hoveredPin : selectedPin}
+        >
+          <Tooltip permanent={opt.slug === hoveredSlug}>{opt.name}</Tooltip>
         </Marker>
       ))}
-      {candidates.map((opt) => (
-        <Marker key={`candidate-${opt.slug}`} position={[opt.lat, opt.lng]} icon={candidatePin}>
-          <Tooltip>{opt.name}</Tooltip>
+      {candidates.map((opt, index) => (
+        <Marker
+          key={`candidate-${index}-${opt.slug}`}
+          position={[opt.lat, opt.lng]}
+          icon={opt.slug === hoveredSlug ? hoveredPin : candidatePin}
+        >
+          <Tooltip permanent={opt.slug === hoveredSlug}>{opt.name}</Tooltip>
         </Marker>
       ))}
     </MapContainer>

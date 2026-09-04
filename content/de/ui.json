@@ -84,7 +84,10 @@
       "dayLabel": "Tag {day}",
       "skip": "Diesen Schritt überspringen",
       "regenerate": "Neu starten",
-      "distanceLabel": "{km} km · {minutes} Min. vom Vortag",
+      "distanceLabel": "{km} km ab der vorherigen Station · ca. {duration} Fahrzeit",
+      "recommendedLabel": "Unsere Empfehlung für Sie",
+      "recommendedBadge": "Empfohlen",
+      "otherOptionsLabel": "Weitere Optionen für diesen Tag",
       "selectedSummaryTitle": "Ihre vorgeschlagene Route"
     },
     "contactName": "Name",

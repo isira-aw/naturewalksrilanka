@@ -68,7 +68,7 @@ export default async function CustomTourPage({
         />
         <p className="mt-6 max-w-2xl text-lg text-charcoal/70">{t("intro")}</p>
 
-        <div className="mt-14 max-w-3xl">
+        <div className="mt-14">
           <WizardShell
             locale={l}
             whatsappNumber={navigation.contact.whatsappNumber}
