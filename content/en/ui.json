@@ -45,6 +45,7 @@
       "dates": "Dates",
       "interests": "Interests",
       "accommodation": "Accommodation",
+      "aiAssistant": "AI Travel Assistant",
       "contact": "Contact Information",
       "review": "Review"
     },
@@ -73,6 +74,22 @@
       "recommend": "Not sure — recommend for me"
     },
     "accommodationNotesLabel": "Anything else about accommodation?",
+    "aiAssistant": {
+      "title": "Let AI sketch a route for you",
+      "intro": "Based on everything you've told us, we can suggest a day-by-day route around Sri Lanka — you pick your favorite option each day.",
+      "generateCta": "Generate my itinerary",
+      "loading": "Building your itinerary…",
+      "error": "We couldn't generate an itinerary right now. Please continue and discuss your trip with Nandana directly.",
+      "rateLimited": "You've reached the itinerary limit for this device today. Please continue and discuss your trip with Nandana directly.",
+      "dayLabel": "Day {day}",
+      "skip": "Skip this step",
+      "regenerate": "Start over",
+      "distanceLabel": "{km} km from the previous stop · about {duration} by road",
+      "recommendedLabel": "Our pick for you",
+      "recommendedBadge": "Recommended",
+      "otherOptionsLabel": "Other options for this day",
+      "selectedSummaryTitle": "Your suggested route"
+    },
     "contactName": "Name",
     "contactEmail": "Email",
     "contactPhone": "WhatsApp / Phone",

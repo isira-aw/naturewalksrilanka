@@ -53,7 +53,7 @@ export default async function ToursPage({
   ]);
 
   return (
-    <section className="bg-warm-white py-24 md:py-32">
+    <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
       <Container>
         <SectionHeading eyebrow={t("sectionEyebrow")} title={t("sectionTitle")} />
         <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

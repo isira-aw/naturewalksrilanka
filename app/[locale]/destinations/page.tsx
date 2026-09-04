@@ -55,7 +55,7 @@ export default async function DestinationsPage({
   ]);
 
   return (
-    <section className="bg-warm-white py-24 md:py-32">
+    <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
       <Container>
         <SectionHeading eyebrow={t("sriLanka.eyebrow")} title={t("tours.destinationsTitle")} />
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/80">

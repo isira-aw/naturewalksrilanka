@@ -8,6 +8,7 @@ import { getContent } from "@/lib/content/loader";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { WizardShell } from "@/components/custom-tour/WizardShell";
+import { isAiAssistantEnabled } from "@/lib/ai/config";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -53,7 +54,7 @@ export default async function CustomTourPage({
   ]);
 
   return (
-    <section className="bg-warm-white py-24 md:py-32">
+    <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
       <Container>
         <SectionHeading
           eyebrow={t("eyebrow")}
@@ -67,8 +68,12 @@ export default async function CustomTourPage({
         />
         <p className="mt-6 max-w-2xl text-lg text-charcoal/70">{t("intro")}</p>
 
-        <div className="mt-14 max-w-3xl">
-          <WizardShell locale={l} whatsappNumber={navigation.contact.whatsappNumber} />
+        <div className="mt-14">
+          <WizardShell
+            locale={l}
+            whatsappNumber={navigation.contact.whatsappNumber}
+            aiAssistantEnabled={isAiAssistantEnabled()}
+          />
         </div>
       </Container>
     </section>
