@@ -3,7 +3,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { SRI_LANKA_LOCATIONS } from "./sriLankaLocations";
 import { itineraryPlanSchema, type ItineraryPlan, type ItineraryRequest } from "./itinerarySchema";
 
-const MODEL = "gemini-2.5-flash";
+const MODEL = "gemini-3.6-flash";
 const MAX_OUTPUT_TOKENS = 8192;
 const MAX_DAYS = 14;
 
@@ -104,10 +104,14 @@ export async function generateItinerary(request: ItineraryRequest): Promise<Itin
     if (!text) return null;
 
     const parsed = itineraryPlanSchema.safeParse(JSON.parse(text));
-    if (!parsed.success) return null;
+    if (!parsed.success) {
+      console.error("[ai-assistant] itinerary schema validation failed", parsed.error.issues);
+      return null;
+    }
 
     return parsed.data;
-  } catch {
+  } catch (err) {
+    console.error("[ai-assistant] itinerary generation failed", err);
     return null;
   }
 }
