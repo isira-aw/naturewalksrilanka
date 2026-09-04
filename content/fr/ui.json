@@ -45,6 +45,7 @@
       "dates": "Dates",
       "interests": "Centres d'intérêt",
       "accommodation": "Hébergement",
+      "aiAssistant": "Assistant de voyage IA",
       "contact": "Coordonnées",
       "review": "Récapitulatif"
     },
@@ -73,6 +74,19 @@
       "recommend": "Je ne sais pas — laissez-moi une recommandation"
     },
     "accommodationNotesLabel": "Autre chose à propos de l'hébergement ?",
+    "aiAssistant": {
+      "title": "Laissez l'IA esquisser un itinéraire",
+      "intro": "À partir de tout ce que vous nous avez indiqué, nous pouvons vous proposer un itinéraire jour par jour à travers le Sri Lanka — vous choisissez votre option préférée chaque jour.",
+      "generateCta": "Générer mon itinéraire",
+      "loading": "Création de votre itinéraire…",
+      "error": "Nous n'avons pas pu générer d'itinéraire pour le moment. Veuillez continuer et discuter de votre voyage directement avec Nandana.",
+      "rateLimited": "Vous avez atteint la limite quotidienne d'itinéraires pour cet appareil. Veuillez continuer et discuter de votre voyage directement avec Nandana.",
+      "dayLabel": "Jour {day}",
+      "skip": "Passer cette étape",
+      "regenerate": "Recommencer",
+      "distanceLabel": "{km} km · {minutes} min depuis la veille",
+      "selectedSummaryTitle": "Votre itinéraire suggéré"
+    },
     "contactName": "Nom",
     "contactEmail": "E-mail",
     "contactPhone": "WhatsApp / Téléphone",

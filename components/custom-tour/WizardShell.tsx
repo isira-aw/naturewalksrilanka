@@ -5,10 +5,12 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils/cn";
 import type { DateRangeValue } from "@/components/calendar/AvailabilityCalendar";
+import type { ItineraryPlan } from "@/lib/ai/itinerarySchema";
 import { TravelersStep } from "./steps/TravelersStep";
 import { DatesStep } from "./steps/DatesStep";
 import { InterestsStep } from "./steps/InterestsStep";
 import { AccommodationStep } from "./steps/AccommodationStep";
+import { AIAssistantStep, type AiAssistantStatus } from "./steps/AIAssistantStep";
 import { ContactStep } from "./steps/ContactStep";
 import { ReviewStep } from "./steps/ReviewStep";
 
@@ -19,6 +21,9 @@ export type WizardState = {
   interests: string[];
   accommodation: string[];
   accommodationNotes: string;
+  aiItinerary: ItineraryPlan | null;
+  aiSelections: string[];
+  aiStatus: AiAssistantStatus;
   name: string;
   email: string;
   phone: string;
@@ -32,11 +37,24 @@ type WizardAction =
   | { type: "TOGGLE_INTEREST"; value: string }
   | { type: "TOGGLE_ACCOMMODATION"; value: string }
   | { type: "SET_ACCOMMODATION_NOTES"; value: string }
+  | { type: "SET_AI_STATUS"; value: AiAssistantStatus }
+  | { type: "SET_AI_ITINERARY"; value: ItineraryPlan | null }
+  | { type: "SELECT_AI_DAY_OPTION"; dayIndex: number; slug: string }
   | { type: "SET_FIELD"; field: "name" | "email" | "phone" | "country" | "requirements"; value: string }
-  | { type: "GO_NEXT" }
+  | { type: "GO_NEXT"; totalSteps: number }
   | { type: "GO_BACK" };
 
-const TOTAL_STEPS = 6;
+const BASE_STEP_KEYS = ["travelers", "dates", "interests", "accommodation", "contact", "review"] as const;
+
+function buildStepKeys(aiAssistantEnabled: boolean) {
+  if (!aiAssistantEnabled) return [...BASE_STEP_KEYS];
+  const accommodationIndex = BASE_STEP_KEYS.indexOf("accommodation");
+  return [
+    ...BASE_STEP_KEYS.slice(0, accommodationIndex + 1),
+    "aiAssistant",
+    ...BASE_STEP_KEYS.slice(accommodationIndex + 1),
+  ];
+}
 
 const initialState: WizardState = {
   step: 1,
@@ -45,6 +63,9 @@ const initialState: WizardState = {
   interests: [],
   accommodation: [],
   accommodationNotes: "",
+  aiItinerary: null,
+  aiSelections: [],
+  aiStatus: "idle",
   name: "",
   email: "",
   phone: "",
@@ -68,10 +89,19 @@ function reducer(state: WizardState, action: WizardAction): WizardState {
       return { ...state, accommodation: toggleValue(state.accommodation, action.value) };
     case "SET_ACCOMMODATION_NOTES":
       return { ...state, accommodationNotes: action.value };
+    case "SET_AI_STATUS":
+      return { ...state, aiStatus: action.value };
+    case "SET_AI_ITINERARY":
+      return { ...state, aiItinerary: action.value, aiSelections: [] };
+    case "SELECT_AI_DAY_OPTION": {
+      const next = state.aiSelections.slice(0, action.dayIndex);
+      next[action.dayIndex] = action.slug;
+      return { ...state, aiSelections: next };
+    }
     case "SET_FIELD":
       return { ...state, [action.field]: action.value };
     case "GO_NEXT":
-      return { ...state, step: Math.min(TOTAL_STEPS, state.step + 1) };
+      return { ...state, step: Math.min(action.totalSteps, state.step + 1) };
     case "GO_BACK":
       return { ...state, step: Math.max(1, state.step - 1) };
     default:
@@ -83,7 +113,15 @@ function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
-export function WizardShell({ locale, whatsappNumber }: { locale: string; whatsappNumber: string }) {
+export function WizardShell({
+  locale,
+  whatsappNumber,
+  aiAssistantEnabled = false,
+}: {
+  locale: string;
+  whatsappNumber: string;
+  aiAssistantEnabled?: boolean;
+}) {
   const t = useTranslations("customTour");
   const [state, dispatch] = useReducer(reducer, initialState);
   const [error, setError] = useState<string | null>(null);
@@ -96,23 +134,26 @@ export function WizardShell({ locale, whatsappNumber }: { locale: string; whatsa
     return () => cancelAnimationFrame(id);
   }, [state.step]);
 
-  const stepKeys = ["travelers", "dates", "interests", "accommodation", "contact", "review"] as const;
+  const stepKeys = buildStepKeys(aiAssistantEnabled);
   const stepLabels = stepKeys.map((key) => t(`steps.${key}`));
+  const totalSteps = stepKeys.length;
+  const currentStepKey = stepKeys[state.step - 1];
 
   function validateCurrentStep(): string | null {
-    switch (state.step) {
-      case 1:
+    switch (currentStepKey) {
+      case "travelers":
         if (state.travelers < 1) return t("travelersLabel");
         return null;
-      case 2:
+      case "dates":
         if (!state.dateRange.start || !state.dateRange.end) return t("datesHelp");
         return null;
-      case 3:
+      case "interests":
         if (state.interests.length === 0) return t("interestsLabel");
         return null;
-      case 4:
+      case "accommodation":
+      case "aiAssistant":
         return null;
-      case 5:
+      case "contact":
         if (!state.name.trim() || !isValidEmail(state.email) || !state.phone.trim()) {
           return t("contactName") + " / " + t("contactEmail") + " / " + t("contactPhone");
         }
@@ -129,7 +170,7 @@ export function WizardShell({ locale, whatsappNumber }: { locale: string; whatsa
       return;
     }
     setError(null);
-    dispatch({ type: "GO_NEXT" });
+    dispatch({ type: "GO_NEXT", totalSteps });
   }
 
   function handleBack() {
@@ -171,7 +212,7 @@ export function WizardShell({ locale, whatsappNumber }: { locale: string; whatsa
         })}
       </ol>
       <p className="sr-only" role="status">
-        Step {state.step} of {TOTAL_STEPS}: {stepLabels[state.step - 1]}
+        Step {state.step} of {totalSteps}: {stepLabels[state.step - 1]}
       </p>
 
       <div
@@ -181,26 +222,26 @@ export function WizardShell({ locale, whatsappNumber }: { locale: string; whatsa
           visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
         )}
       >
-        {state.step === 1 && (
+        {currentStepKey === "travelers" && (
           <TravelersStep
             value={state.travelers}
             onChange={(value) => dispatch({ type: "SET_TRAVELERS", value })}
           />
         )}
-        {state.step === 2 && (
+        {currentStepKey === "dates" && (
           <DatesStep
             locale={locale}
             value={state.dateRange}
             onChange={(value) => dispatch({ type: "SET_DATE_RANGE", value })}
           />
         )}
-        {state.step === 3 && (
+        {currentStepKey === "interests" && (
           <InterestsStep
             value={state.interests}
             onToggle={(value) => dispatch({ type: "TOGGLE_INTEREST", value })}
           />
         )}
-        {state.step === 4 && (
+        {currentStepKey === "accommodation" && (
           <AccommodationStep
             value={state.accommodation}
             onToggle={(value) => dispatch({ type: "TOGGLE_ACCOMMODATION", value })}
@@ -208,7 +249,22 @@ export function WizardShell({ locale, whatsappNumber }: { locale: string; whatsa
             onNotesChange={(value) => dispatch({ type: "SET_ACCOMMODATION_NOTES", value })}
           />
         )}
-        {state.step === 5 && (
+        {currentStepKey === "aiAssistant" && (
+          <AIAssistantStep
+            travelers={state.travelers}
+            dateRange={state.dateRange}
+            interests={state.interests}
+            accommodation={state.accommodation}
+            accommodationNotes={state.accommodationNotes}
+            itinerary={state.aiItinerary}
+            selections={state.aiSelections}
+            status={state.aiStatus}
+            onStatusChange={(value) => dispatch({ type: "SET_AI_STATUS", value })}
+            onItinerary={(value) => dispatch({ type: "SET_AI_ITINERARY", value })}
+            onSelectDay={(dayIndex, slug) => dispatch({ type: "SELECT_AI_DAY_OPTION", dayIndex, slug })}
+          />
+        )}
+        {currentStepKey === "contact" && (
           <ContactStep
             name={state.name}
             email={state.email}
@@ -218,7 +274,7 @@ export function WizardShell({ locale, whatsappNumber }: { locale: string; whatsa
             onChange={(field, value) => dispatch({ type: "SET_FIELD", field, value })}
           />
         )}
-        {state.step === 6 && (
+        {currentStepKey === "review" && (
           <ReviewStep state={state} locale={locale} whatsappNumber={whatsappNumber} />
         )}
       </div>
@@ -238,7 +294,7 @@ export function WizardShell({ locale, whatsappNumber }: { locale: string; whatsa
         >
           {t("back")}
         </Button>
-        {state.step < TOTAL_STEPS && (
+        {state.step < totalSteps && (
           <Button type="button" variant="primary" onClick={handleNext}>
             {t("next")}
           </Button>
