@@ -56,7 +56,7 @@ export default async function ContactPage({
   const page = seo.pages.contact;
 
   return (
-    <section className="bg-warm-white py-24 md:py-32">
+    <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
       <Container className="max-w-3xl">
         <SectionHeading eyebrow={t("finalCta.eyebrow")} title={page.title} />
         <p className="mt-6 text-lg leading-relaxed text-charcoal/80">{page.description}</p>

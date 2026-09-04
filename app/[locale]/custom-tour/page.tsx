@@ -54,7 +54,7 @@ export default async function CustomTourPage({
   ]);
 
   return (
-    <section className="bg-warm-white py-24 md:py-32">
+    <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
       <Container>
         <SectionHeading
           eyebrow={t("eyebrow")}

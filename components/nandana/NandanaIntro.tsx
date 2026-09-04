@@ -12,7 +12,7 @@ export function NandanaIntro({
   title: string;
 }) {
   return (
-    <section className="bg-warm-white py-24 md:py-32">
+    <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
       <div className="mx-auto grid max-w-7xl gap-16 px-6 md:grid-cols-2 md:px-10">
         <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm md:order-2">
           <Image

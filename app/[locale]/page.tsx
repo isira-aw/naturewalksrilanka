@@ -103,7 +103,7 @@ export default async function HomePage({
         }}
       />
 
-      <section className="bg-warm-white py-24 md:py-32">
+      <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
         <Container>
           <SectionHeading eyebrow={t("tours.sectionEyebrow")} title={t("tours.sectionTitle")} />
           <div className="mt-14">
@@ -139,7 +139,7 @@ export default async function HomePage({
         }}
       />
 
-      <section className="bg-warm-white py-24 md:py-32">
+      <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
         <Container>
           <SectionHeading eyebrow={t("sriLanka.eyebrow")} title={t("tours.destinationsTitle")} />
           <div className="mt-14">

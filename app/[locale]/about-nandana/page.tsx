@@ -71,7 +71,7 @@ export default async function AboutNandanaPage({
         ])}
       />
 
-      <section className="bg-warm-white pt-20 pb-4 md:pt-28">
+      <section className="bg-warm-white py-4 pt-4 md:pb-4 md:pt-20">
         <Container>
           <SectionHeading eyebrow={t("nandana.introEyebrow")} title={profile.name} />
           <p className="mt-4 max-w-2xl font-utility text-sm uppercase tracking-wide text-charcoal/60">
