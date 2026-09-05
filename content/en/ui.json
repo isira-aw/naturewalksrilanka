@@ -18,6 +18,15 @@
     "ctaPrimary": "Explore Tours",
     "ctaSecondary": "Build Your Journey"
   },
+  "home": {
+    "introEyebrow": "Nature Walks Sri Lanka",
+    "introTitle": "Private journeys, led by one naturalist guide.",
+    "introBody": "Unhurried travel through Sri Lanka's rainforests, national parks and hill country — shaped around what you want to see, and guided from your first message to your last morning on the island.",
+    "guideBody": "Nandana started out in wildlife conservation in 1990, working with village communities and university research teams on Sri Lanka's birds, plants and insects. He qualified as a national guide in 2002, and in 2017 founded Nature Walks Sri Lanka so travellers could have one guide for the whole journey.",
+    "guideCta": "Read Nandana's story",
+    "journeysCta": "See all journeys",
+    "placesCta": "See all destinations"
+  },
   "tours": {
     "sectionEyebrow": "Journeys",
     "sectionTitle": "How long would you like to explore Sri Lanka?",
@@ -95,6 +104,8 @@
   },
   "nandana": {
     "introEyebrow": "Who is Nandana",
+    "experienceLabel": "Experience",
+    "certificationLabel": "Certification",
     "introTitle": "A lifetime spent walking through Sri Lanka.",
     "whyEyebrow": "Why Travel With Nandana",
     "whyTitle": "A private guide, not a private van.",
@@ -149,6 +160,7 @@
     "rights": "All rights reserved."
   },
   "common": {
+    "addressLabel": "Address",
     "contentRequired": "Content required — to be confirmed with Nandana",
     "comingSoon": "Coming soon"
   }

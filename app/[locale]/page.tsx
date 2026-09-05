@@ -5,19 +5,16 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
+import { Link } from "@/i18n/navigation";
 import { HomeHero } from "@/components/hero/HomeHero";
-import { NandanaIntro } from "@/components/nandana/NandanaIntro";
-import { WhyNandana } from "@/components/nandana/WhyNandana";
-import { SriLankaStory } from "@/components/destinations/SriLankaStory";
+import { HomeIntro } from "@/components/home/HomeIntro";
+import { GuideIntro } from "@/components/home/GuideIntro";
+import { PlacesSection } from "@/components/home/PlacesSection";
+import { TrustSection } from "@/components/home/TrustSection";
 import { DurationSelector } from "@/components/tours/DurationSelector";
-import { CustomTourTeaser } from "@/components/custom-tour/CustomTourTeaser";
-import { AvailabilityTeaser } from "@/components/calendar/AvailabilityTeaser";
-import { DestinationGrid } from "@/components/destinations/DestinationGrid";
-import { ConservationSection } from "@/components/nandana/ConservationSection";
 import { TestimonialSection } from "@/components/testimonials/TestimonialSection";
 import { FinalCTA } from "@/components/whatsapp/FinalCTA";
-import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Section } from "@/components/ui/Section";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/seo/jsonld";
 
@@ -81,89 +78,86 @@ export default async function HomePage({
           subtitle: t("hero.subtitle"),
           ctaPrimary: t("hero.ctaPrimary"),
           ctaSecondary: t("hero.ctaSecondary"),
+          meta: `${profile.experience} · ${profile.certification}`,
+          whatsapp: t("whatsapp.talkToNandana"),
         }}
         navigation={navigation}
       />
 
-      <NandanaIntro profile={profile} eyebrow={t("nandana.introEyebrow")} title={t("nandana.introTitle")} />
-
-      <WhyNandana
-        profile={profile}
-        eyebrow={t("nandana.whyEyebrow")}
-        title={t("nandana.whyTitle")}
-        points={whyPoints}
+      <HomeIntro
+        eyebrow={t("home.introEyebrow")}
+        title={t("home.introTitle")}
+        body={t("home.introBody")}
       />
 
-      <SriLankaStory
+      <GuideIntro
+        profile={profile}
+        labels={{
+          eyebrow: t("nandana.introEyebrow"),
+          body: t("home.guideBody"),
+          cta: t("home.guideCta"),
+        }}
+      />
+
+      <Section tone="warm">
+        <div className="max-w-2xl">
+          <p className="font-utility text-xs uppercase tracking-[0.2em] text-forest">
+            {t("tours.sectionEyebrow")}
+          </p>
+          <h2 className="mt-4 font-display text-3xl leading-tight tracking-tight text-charcoal md:text-4xl">
+            {t("tours.sectionTitle")}
+          </h2>
+        </div>
+
+        <div className="mt-12">
+          <DurationSelector
+            tours={tours}
+            labels={{
+              cta: t("tours.cta"),
+              daysLabel: t("tours.daysLabel"),
+              highlightsTitle: t("tours.highlightsTitle"),
+              custom: t("tours.custom"),
+            }}
+          />
+        </div>
+
+        <Link
+          href="/tours"
+          className="mt-12 inline-block font-medium text-forest underline underline-offset-8 transition-colors hover:text-forest-dark"
+        >
+          {t("home.journeysCta")}
+        </Link>
+      </Section>
+
+      <PlacesSection
+        destinations={featuredDestinations}
         labels={{
           eyebrow: t("sriLanka.eyebrow"),
           title: t("sriLanka.title"),
           body: t("sriLanka.body"),
-          cta: t("sriLanka.cta"),
+          cta: t("home.placesCta"),
         }}
       />
 
-      <section className="bg-warm-white py-24 md:py-32">
-        <Container>
-          <SectionHeading eyebrow={t("tours.sectionEyebrow")} title={t("tours.sectionTitle")} />
-          <div className="mt-14">
-            <DurationSelector
-              tours={tours}
-              labels={{
-                cta: t("tours.cta"),
-                daysLabel: t("tours.daysLabel"),
-                highlightsTitle: t("tours.highlightsTitle"),
-                custom: t("tours.custom"),
-              }}
-            />
-          </div>
-        </Container>
-      </section>
-
-      <CustomTourTeaser
+      <TrustSection
         labels={{
-          eyebrow: t("customTour.eyebrow"),
-          titleLine1: t("customTour.titleLine1"),
-          titleLine2: t("customTour.titleLine2"),
-          intro: t("customTour.intro"),
-          start: t("customTour.start"),
+          eyebrow: t("nandana.whyEyebrow"),
+          title: t("nandana.whyTitle"),
+          note: t("conservation.quote"),
         }}
+        points={whyPoints}
       />
 
-      <AvailabilityTeaser
-        labels={{
-          eyebrow: t("availability.eyebrow"),
-          title: t("availability.title"),
-          subtitle: t("availability.subtitle"),
-          cta: t("availability.cta"),
-        }}
-      />
-
-      <section className="bg-warm-white py-24 md:py-32">
-        <Container>
-          <SectionHeading eyebrow={t("sriLanka.eyebrow")} title={t("tours.destinationsTitle")} />
-          <div className="mt-14">
-            <DestinationGrid destinations={featuredDestinations} />
-          </div>
-        </Container>
-      </section>
-
-      <ConservationSection
-        labels={{
-          eyebrow: t("conservation.eyebrow"),
-          title: t("conservation.title"),
-          quote: t("conservation.quote"),
-        }}
-      />
-
-      <TestimonialSection
-        testimonials={testimonials}
-        labels={{
-          eyebrow: t("testimonials.eyebrow"),
-          title: t("testimonials.title"),
-          emptyState: t("testimonials.emptyState"),
-        }}
-      />
+      {testimonials.items.length > 0 && (
+        <TestimonialSection
+          testimonials={testimonials}
+          labels={{
+            eyebrow: t("testimonials.eyebrow"),
+            title: t("testimonials.title"),
+            emptyState: t("testimonials.emptyState"),
+          }}
+        />
+      )}
 
       <FinalCTA
         whatsappNumber={navigation.contact.whatsappNumber}
@@ -173,6 +167,7 @@ export default async function HomePage({
           subtitle: t("finalCta.subtitle"),
           cta: t("whatsapp.finalCta"),
         }}
+        secondary={{ href: "/custom-tour", label: t("customTour.start") }}
       />
     </>
   );

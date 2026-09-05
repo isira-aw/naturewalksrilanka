@@ -2,15 +2,24 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { Destination } from "@/lib/content/schema";
 
-export function DestinationGrid({ destinations }: { destinations: Destination[] }) {
+export function DestinationGrid({
+  destinations,
+  /** Mosaic layout (every 5th tile enlarged) — off gives a uniform, calmer grid. */
+  mosaic = true,
+  className = "grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
+}: {
+  destinations: Destination[];
+  mosaic?: boolean;
+  className?: string;
+}) {
   return (
-    <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+    <div className={`grid gap-3 sm:gap-4 ${className}`}>
       {destinations.map((d, i) => (
         <Link
           key={d.slug}
           href={`/destinations/${d.slug}`}
           className={`group relative aspect-[3/4] overflow-hidden rounded-sm ${
-            i % 5 === 0 ? "lg:col-span-2 lg:row-span-2 lg:aspect-square" : ""
+            mosaic && i % 5 === 0 ? "lg:col-span-2 lg:row-span-2 lg:aspect-square" : ""
           }`}
         >
           <Image

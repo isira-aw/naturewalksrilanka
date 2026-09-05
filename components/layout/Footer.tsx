@@ -22,7 +22,9 @@ export async function Footer({ locale }: { locale: Locale }) {
             alt="Nature Walks Sri Lanka"
             width={200}
             height={40}
-            className="invert"
+            /* brightness-0 first, so the mark goes white rather than
+               inverting green to magenta on the dark footer. */
+            className="h-8 w-auto brightness-0 invert"
           />
           <p className="mt-4 max-w-sm text-sm text-warm-white/70">{t("tagline")}</p>
           <div className="mt-6 flex gap-4 text-sm text-warm-white/70">
@@ -80,7 +82,7 @@ export async function Footer({ locale }: { locale: Locale }) {
             <p className="mb-2 font-utility text-xs uppercase tracking-wide text-warm-white/50">
               {t("language")}
             </p>
-            <LocaleSwitcher className="text-warm-white/70" />
+            <LocaleSwitcher tone="inverted" />
           </div>
         </div>
       </Container>

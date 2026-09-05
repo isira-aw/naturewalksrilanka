@@ -5,6 +5,7 @@ import type { Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
 import { Container } from "@/components/ui/Container";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { NavLinks } from "./NavLinks";
 import { MobileNav } from "./MobileNav";
 
 export async function Header({ locale }: { locale: Locale }) {
@@ -32,15 +33,7 @@ export async function Header({ locale }: { locale: Locale }) {
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label="Primary">
-          {navigation.main.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="whitespace-nowrap font-utility text-xs uppercase tracking-wide text-charcoal/80 transition-colors hover:text-forest"
-            >
-              {item.label}
-            </Link>
-          ))}
+          <NavLinks items={navigation.main} />
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">

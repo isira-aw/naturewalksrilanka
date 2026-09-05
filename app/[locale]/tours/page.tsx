@@ -5,7 +5,7 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TourCard } from "@/components/tours/TourCard";
 
@@ -53,19 +53,17 @@ export default async function ToursPage({
   ]);
 
   return (
-    <section className="bg-warm-white py-24 md:py-32">
-      <Container>
-        <SectionHeading eyebrow={t("sectionEyebrow")} title={t("sectionTitle")} />
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {tours.map((tour) => (
-            <TourCard
-              key={tour.slug}
-              tour={tour}
-              labels={{ cta: t("cta"), daysLabel: t("daysLabel") }}
-            />
-          ))}
-        </div>
-      </Container>
-    </section>
+    <Section tone="warm">
+      <SectionHeading eyebrow={t("sectionEyebrow")} title={t("sectionTitle")} />
+      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {tours.map((tour) => (
+          <TourCard
+            key={tour.slug}
+            tour={tour}
+            labels={{ cta: t("cta"), daysLabel: t("daysLabel") }}
+          />
+        ))}
+      </div>
+    </Section>
   );
 }
