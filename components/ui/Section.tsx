@@ -14,10 +14,14 @@ const tones: Record<Tone, string> = {
   charcoal: "bg-charcoal text-warm-white",
 };
 
+/**
+ * Top padding sits tighter than bottom, so a section's heading reads as
+ * belonging to the content under it rather than floating between two blocks.
+ */
 const sizes = {
-  compact: "py-16 md:py-20",
-  default: "py-20 md:py-28",
-  spacious: "py-24 md:py-36",
+  compact: "pt-12 pb-16 md:pt-16 md:pb-20",
+  default: "pt-16 pb-20 md:pt-20 md:pb-28",
+  spacious: "pt-20 pb-24 md:pt-24 md:pb-36",
 };
 
 export function Section({

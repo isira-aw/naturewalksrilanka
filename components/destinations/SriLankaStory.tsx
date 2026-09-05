@@ -7,7 +7,7 @@ export function SriLankaStory({
   labels: { eyebrow: string; title: string; body: string; cta: string };
 }) {
   return (
-    <section className="bg-warm-white py-24 md:py-32">
+    <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
       <div className="mx-auto grid max-w-7xl gap-2 px-6 md:grid-cols-3 md:px-10">
         <div className="relative aspect-[3/4] overflow-hidden md:col-span-1">
           <Image src="/images/story-1.jpg" alt="Wilpattu dry-zone landscape" fill sizes="33vw" className="object-cover" />

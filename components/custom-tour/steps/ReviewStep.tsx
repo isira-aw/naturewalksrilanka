@@ -52,6 +52,10 @@ export function ReviewStep({
     )
     .map((key) => t(`accommodation.${key}`));
 
+  const aiRouteNames = state.aiSelections
+    .map((slug, index) => state.aiItinerary?.days[index]?.options.find((opt) => opt.slug === slug)?.name)
+    .filter((name): name is string => Boolean(name));
+
   const message = buildCustomTourMessage(
     {
       travelers: state.travelers,
@@ -60,6 +64,7 @@ export function ReviewStep({
       interests: interestLabels,
       accommodation: accommodationLabels,
       accommodationNotes: state.accommodationNotes,
+      aiRoute: aiRouteNames,
       name: state.name,
       email: state.email,
       phone: state.phone,
@@ -95,6 +100,12 @@ export function ReviewStep({
         />
         {state.accommodationNotes.trim() && (
           <ReviewRow label={t("accommodationNotesLabel")} value={state.accommodationNotes} />
+        )}
+        {aiRouteNames.length > 0 && (
+          <ReviewRow
+            label={t("aiAssistant.selectedSummaryTitle")}
+            value={aiRouteNames.map((name, index) => `${t("aiAssistant.dayLabel", { day: index + 1 })}: ${name}`).join("\n")}
+          />
         )}
         <ReviewRow label={t("contactName")} value={state.name || "-"} />
         <ReviewRow label={t("contactEmail")} value={state.email || "-"} />

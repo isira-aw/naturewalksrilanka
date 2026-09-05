@@ -54,6 +54,7 @@
       "dates": "Termine",
       "interests": "Interessen",
       "accommodation": "Unterkunft",
+      "aiAssistant": "KI-Reiseassistent",
       "contact": "Kontaktdaten",
       "review": "Überprüfung"
     },
@@ -82,6 +83,23 @@
       "recommend": "Nicht sicher — empfehlen Sie mir etwas"
     },
     "accommodationNotesLabel": "Gibt es sonst noch etwas zur Unterkunft?",
+    "aiAssistant": {
+      "title": "Lassen Sie die KI eine Route entwerfen",
+      "intro": "Basierend auf Ihren Angaben können wir eine Tag-für-Tag-Route durch Sri Lanka vorschlagen — Sie wählen jeden Tag Ihre bevorzugte Option.",
+      "generateCta": "Meine Reiseroute erstellen",
+      "loading": "Ihre Reiseroute wird erstellt…",
+      "error": "Wir konnten gerade keine Reiseroute erstellen. Bitte fahren Sie fort und besprechen Sie Ihre Reise direkt mit Nandana.",
+      "rateLimited": "Sie haben das heutige Limit für Reiserouten auf diesem Gerät erreicht. Bitte fahren Sie fort und besprechen Sie Ihre Reise direkt mit Nandana.",
+      "dayLabel": "Tag {day}",
+      "skip": "Diesen Schritt überspringen",
+      "regenerate": "Neu starten",
+      "backDay": "Zurück zum vorherigen Tag",
+      "distanceLabel": "{km} km ab der vorherigen Station · ca. {duration} Fahrzeit",
+      "recommendedLabel": "Unsere Empfehlung für Sie",
+      "recommendedBadge": "Empfohlen",
+      "otherOptionsLabel": "Weitere Optionen für diesen Tag",
+      "selectedSummaryTitle": "Ihre vorgeschlagene Route"
+    },
     "contactName": "Name",
     "contactEmail": "E-Mail",
     "contactPhone": "WhatsApp / Telefon",

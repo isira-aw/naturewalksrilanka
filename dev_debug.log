@@ -1,0 +1,20 @@
+
+> naturewalksrilanka@0.1.0 dev
+> next dev
+
+▲ Next.js 16.3.1 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.8.183:3000
+- Environments: .env
+✓ Ready in 2.5s
+✓ Running next.config.ts took 226ms
+
+ GET /en/custom-tour 200 in 8.4s (next.js: 1427ms, proxy.ts: 1078ms, generate-params: 4.0s, application-code: 1938ms)
+ POST /api/calendar/availability 200 in 6.2s (next.js: 4.5s, application-code: 1680ms)
+ POST /api/calendar/availability 200 in 1032ms (next.js: 16ms, application-code: 1016ms)
+ GET /en/custom-tour 200 in 540ms (next.js: 52ms, proxy.ts: 28ms, generate-params: 22ms, application-code: 437ms)
+GOOGLE_CALENDAR_DEBUG {"kind":"calendar#freeBusy","timeMin":"2026-09-05T00:00:00.000Z","timeMax":"2026-09-06T00:00:00.000Z","calendars":{"isira.aw@gmail.com":{"busy":[]}}}
+ POST /api/calendar/availability 200 in 956ms (next.js: 28ms, application-code: 927ms)
+GOOGLE_CALENDAR_DEBUG {"kind":"calendar#freeBusy","timeMin":"2026-09-04T00:00:00.000Z","timeMax":"2026-09-07T00:00:00.000Z","calendars":{"isira.aw@gmail.com":{"busy":[]}}}
+ POST /api/calendar/availability 200 in 1002ms (next.js: 11ms, application-code: 991ms)
+ GET /en/custom-tour 200 in 467ms (next.js: 40ms, proxy.ts: 20ms, generate-params: 21ms, application-code: 387ms)

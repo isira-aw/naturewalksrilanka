@@ -8,6 +8,7 @@ import { getContent } from "@/lib/content/loader";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { WizardShell } from "@/components/custom-tour/WizardShell";
+import { isAiAssistantEnabled } from "@/lib/ai/config";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -66,8 +67,13 @@ export default async function CustomTourPage({
       />
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/70">{t("intro")}</p>
 
-      <div className="mt-12 max-w-3xl">
-        <WizardShell locale={l} whatsappNumber={navigation.contact.whatsappNumber} />
+      {/* Full container width, not max-w-3xl: the AI assistant step renders a map. */}
+      <div className="mt-12">
+        <WizardShell
+          locale={l}
+          whatsappNumber={navigation.contact.whatsappNumber}
+          aiAssistantEnabled={isAiAssistantEnabled()}
+        />
       </div>
     </Section>
   );

@@ -5,6 +5,7 @@ export type CustomTourWhatsAppInput = {
   interests: string[];
   accommodation: string[];
   accommodationNotes: string;
+  aiRoute: string[];
   name: string;
   email: string;
   phone: string;
@@ -52,6 +53,12 @@ export function buildCustomTourMessage(input: CustomTourWhatsAppInput, locale: s
   if (input.accommodationNotes.trim()) {
     lines.push("Accommodation notes:");
     lines.push(input.accommodationNotes.trim());
+    lines.push("");
+  }
+
+  if (input.aiRoute.length) {
+    lines.push("AI-suggested route:");
+    input.aiRoute.forEach((place, index) => lines.push(`Day ${index + 1}: ${place}`));
     lines.push("");
   }
 
