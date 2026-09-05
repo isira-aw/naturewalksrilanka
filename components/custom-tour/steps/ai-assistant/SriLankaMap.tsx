@@ -36,7 +36,7 @@ export function SriLankaMap({
       center={SRI_LANKA_CENTER}
       zoom={7}
       scrollWheelZoom={false}
-      className="h-72 w-full rounded-xl border border-charcoal/10"
+      className="h-72 w-full rounded-xl border border-charcoal/10 lg:h-[480px]"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -51,7 +51,9 @@ export function SriLankaMap({
           position={[opt.lat, opt.lng]}
           icon={opt.slug === hoveredSlug ? hoveredPin : selectedPin}
         >
-          <Tooltip permanent={opt.slug === hoveredSlug}>{opt.name}</Tooltip>
+          <Tooltip permanent direction="top" offset={[0, -8]} className="!text-xs">
+            {opt.name}
+          </Tooltip>
         </Marker>
       ))}
       {candidates.map((opt, index) => (
@@ -60,7 +62,9 @@ export function SriLankaMap({
           position={[opt.lat, opt.lng]}
           icon={opt.slug === hoveredSlug ? hoveredPin : candidatePin}
         >
-          <Tooltip permanent={opt.slug === hoveredSlug}>{opt.name}</Tooltip>
+          <Tooltip permanent direction="top" offset={[0, -8]} className="!text-xs">
+            {opt.name}
+          </Tooltip>
         </Marker>
       ))}
     </MapContainer>

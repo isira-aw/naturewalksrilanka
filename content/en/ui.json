@@ -84,6 +84,7 @@
       "dayLabel": "Day {day}",
       "skip": "Skip this step",
       "regenerate": "Start over",
+      "backDay": "Back to previous day",
       "distanceLabel": "{km} km from the previous stop · about {duration} by road",
       "recommendedLabel": "Our pick for you",
       "recommendedBadge": "Recommended",

@@ -50,7 +50,7 @@ export function DayCard({
           {option.name}
         </span>
         {recommended && (
-          <span className="shrink-0 rounded-full bg-forest px-2 py-0.5 font-utility text-[10px] uppercase tracking-wide text-cream">
+          <span className="shrink-0 rounded-full bg-forest px-2 py-0.5 font-utility text-[10px] uppercase tracking-wide text-white">
             {t("recommendedBadge")}
           </span>
         )}
