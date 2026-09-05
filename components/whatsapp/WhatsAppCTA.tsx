@@ -2,17 +2,25 @@ import { cn } from "@/lib/utils/cn";
 import { buildWhatsAppUrl } from "@/lib/whatsapp/buildMessage";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-wide transition-colors duration-200";
+  "inline-flex items-center justify-center gap-2 font-medium tracking-wide transition-colors duration-200";
 
 const variants = {
-  primary: "bg-forest text-warm-white hover:bg-forest-dark border border-forest",
-  secondary: "bg-transparent text-charcoal border border-charcoal/30 hover:border-forest hover:text-forest",
-  inverted: "bg-warm-white text-forest hover:bg-stone",
+  primary: "rounded-full bg-forest text-warm-white hover:bg-forest-dark border border-forest",
+  secondary:
+    "rounded-full bg-transparent text-charcoal border border-charcoal/30 hover:border-forest hover:text-forest",
+  inverted: "rounded-full bg-warm-white text-forest hover:bg-stone",
+  /** Text-only, for use on a dark photograph or panel. */
+  quiet: "text-warm-white/75 hover:text-warm-white",
 };
 
 const sizes = {
   md: "px-6 py-3 text-sm",
   lg: "px-8 py-4 text-base",
+};
+
+const quietSizes = {
+  md: "text-sm",
+  lg: "text-base",
 };
 
 export function WhatsAppCTA({
@@ -35,7 +43,12 @@ export function WhatsAppCTA({
       href={buildWhatsAppUrl(phone, message)}
       target="_blank"
       rel="noopener noreferrer"
-      className={cn(base, variants[variant], sizes[size], className)}
+      className={cn(
+        base,
+        variants[variant],
+        variant === "quiet" ? quietSizes[size] : sizes[size],
+        className
+      )}
     >
       <WhatsAppIcon className="h-4 w-4" />
       {children}

@@ -5,12 +5,11 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { NandanaIntro } from "@/components/nandana/NandanaIntro";
 import { WhyNandana } from "@/components/nandana/WhyNandana";
-import { WhatsAppCTA } from "@/components/whatsapp/WhatsAppCTA";
-import { buildGeneralMessage } from "@/lib/whatsapp/buildMessage";
+import { FinalCTA } from "@/components/whatsapp/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildPersonJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/jsonld";
 
@@ -71,45 +70,39 @@ export default async function AboutNandanaPage({
         ])}
       />
 
-      <section className="bg-warm-white py-4 pt-4 md:pb-4 md:pt-20">
-        <Container>
-          <SectionHeading eyebrow={t("nandana.introEyebrow")} title={profile.name} />
-          <p className="mt-4 max-w-2xl font-utility text-sm uppercase tracking-wide text-charcoal/60">
-            {profile.experience} · {profile.certification}
-          </p>
+      <Section tone="warm" size="compact" className="pb-0 md:pb-0">
+        <SectionHeading eyebrow={t("nandana.introEyebrow")} title={profile.name} />
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/70">
+          {profile.philosophy}
+        </p>
 
-          <dl className="mt-10 grid gap-8 border-t border-stone-dark pt-8 sm:grid-cols-3">
-            <div>
-              <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-                {t("tours.sectionEyebrow")}
-              </dt>
-              <dd className="mt-2 text-charcoal/80">{profile.experience}</dd>
-            </div>
-            <div>
-              <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-                {languagesLabel}
-              </dt>
-              <dd className="mt-2 text-charcoal/80">
-                {profile.languages.length > 0
-                  ? profile.languages.join(", ")
-                  : tCommon("contentRequired")}
-              </dd>
-            </div>
-            <div>
-              <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-                {t("nandana.whyEyebrow")}
-              </dt>
-              <dd className="mt-2 text-charcoal/80">{profile.certification}</dd>
-            </div>
-          </dl>
-        </Container>
-      </section>
+        <dl className="mt-10 grid gap-8 border-t border-stone-dark pt-8 sm:grid-cols-3">
+          <div>
+            <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+              {t("nandana.experienceLabel")}
+            </dt>
+            <dd className="mt-2 text-charcoal/80">{profile.experience}</dd>
+          </div>
+          <div>
+            <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+              {languagesLabel}
+            </dt>
+            <dd className="mt-2 text-charcoal/80">
+              {profile.languages.length > 0
+                ? profile.languages.join(", ")
+                : tCommon("contentRequired")}
+            </dd>
+          </div>
+          <div>
+            <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+              {t("nandana.certificationLabel")}
+            </dt>
+            <dd className="mt-2 text-charcoal/80">{profile.certification}</dd>
+          </div>
+        </dl>
+      </Section>
 
-      <NandanaIntro
-        profile={profile}
-        eyebrow={t("nandana.introEyebrow")}
-        title={t("nandana.introTitle")}
-      />
+      <NandanaIntro profile={profile} title={t("nandana.introTitle")} />
 
       <WhyNandana
         profile={profile}
@@ -118,27 +111,16 @@ export default async function AboutNandanaPage({
         points={whyPoints}
       />
 
-      <section className="bg-forest py-24 text-center md:py-28">
-        <Container>
-          <p className="font-utility text-xs uppercase tracking-[0.2em] text-warm-white/70">
-            {t("finalCta.eyebrow")}
-          </p>
-          <h2 className="mt-3 font-display text-3xl leading-tight text-warm-white md:text-4xl">
-            {t("finalCta.title")}
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-warm-white/80">{t("finalCta.subtitle")}</p>
-          <div className="mt-8 flex justify-center">
-            <WhatsAppCTA
-              phone={navigation.contact.whatsappNumber}
-              message={buildGeneralMessage()}
-              variant="inverted"
-              size="lg"
-            >
-              {t("whatsapp.talkToNandana")}
-            </WhatsAppCTA>
-          </div>
-        </Container>
-      </section>
+      <FinalCTA
+        whatsappNumber={navigation.contact.whatsappNumber}
+        labels={{
+          eyebrow: t("finalCta.eyebrow"),
+          title: t("finalCta.title"),
+          subtitle: t("finalCta.subtitle"),
+          cta: t("whatsapp.talkToNandana"),
+        }}
+        secondary={{ href: "/custom-tour", label: t("customTour.start") }}
+      />
     </>
   );
 }

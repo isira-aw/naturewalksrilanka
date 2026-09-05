@@ -5,7 +5,7 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { WizardShell } from "@/components/custom-tour/WizardShell";
 import { isAiAssistantEnabled } from "@/lib/ai/config";
@@ -54,28 +54,27 @@ export default async function CustomTourPage({
   ]);
 
   return (
-    <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
-      <Container>
-        <SectionHeading
-          eyebrow={t("eyebrow")}
-          title={
-            <>
-              {t("titleLine1")}
-              <br />
-              {t("titleLine2")}
-            </>
-          }
-        />
-        <p className="mt-6 max-w-2xl text-lg text-charcoal/70">{t("intro")}</p>
+    <Section tone="warm">
+      <SectionHeading
+        eyebrow={t("eyebrow")}
+        title={
+          <>
+            {t("titleLine1")}
+            <br />
+            {t("titleLine2")}
+          </>
+        }
+      />
+      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/70">{t("intro")}</p>
 
-        <div className="mt-14">
-          <WizardShell
-            locale={l}
-            whatsappNumber={navigation.contact.whatsappNumber}
-            aiAssistantEnabled={isAiAssistantEnabled()}
-          />
-        </div>
-      </Container>
-    </section>
+      {/* Full container width, not max-w-3xl: the AI assistant step renders a map. */}
+      <div className="mt-12">
+        <WizardShell
+          locale={l}
+          whatsappNumber={navigation.contact.whatsappNumber}
+          aiAssistantEnabled={isAiAssistantEnabled()}
+        />
+      </div>
+    </Section>
   );
 }

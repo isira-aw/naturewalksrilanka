@@ -18,6 +18,15 @@
     "ctaPrimary": "Découvrir les circuits",
     "ctaSecondary": "Créer votre voyage"
   },
+  "home": {
+    "introEyebrow": "Nature Walks Sri Lanka",
+    "introTitle": "Des voyages privés, menés par un seul guide naturaliste.",
+    "introBody": "Un voyage sans hâte à travers les forêts tropicales, les parcs nationaux et les hautes terres du Sri Lanka — construit autour de ce que vous souhaitez voir, et accompagné de votre premier message à votre dernier matin sur l'île.",
+    "guideBody": "Nandana a commencé dans la conservation de la faune en 1990, aux côtés des communautés villageoises et d'équipes de recherche universitaires, autour des oiseaux, des plantes et des insectes du Sri Lanka. Devenu guide national en 2002, il a fondé Nature Walks Sri Lanka en 2017 pour que les voyageurs aient un seul guide tout au long du voyage.",
+    "guideCta": "Lire l'histoire de Nandana",
+    "journeysCta": "Voir tous les voyages",
+    "placesCta": "Voir toutes les destinations"
+  },
   "tours": {
     "sectionEyebrow": "Voyages",
     "sectionTitle": "Combien de temps souhaitez-vous explorer le Sri Lanka ?",
@@ -113,6 +122,8 @@
   },
   "nandana": {
     "introEyebrow": "Qui est Nandana",
+    "experienceLabel": "Expérience",
+    "certificationLabel": "Certification",
     "introTitle": "Toute une vie à parcourir le Sri Lanka.",
     "whyEyebrow": "Pourquoi voyager avec Nandana",
     "whyTitle": "Un guide privé, pas un simple van privé.",
@@ -167,6 +178,7 @@
     "rights": "Tous droits réservés."
   },
   "common": {
+    "addressLabel": "Adresse",
     "contentRequired": "Contenu à confirmer avec Nandana",
     "comingSoon": "Bientôt disponible"
   }

@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { WhatsAppCTA } from "@/components/whatsapp/WhatsAppCTA";
 import { buildGeneralMessage } from "@/lib/whatsapp/buildMessage";
@@ -56,57 +56,55 @@ export default async function ContactPage({
   const page = seo.pages.contact;
 
   return (
-    <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
-      <Container className="max-w-3xl">
-        <SectionHeading eyebrow={t("finalCta.eyebrow")} title={page.title} />
-        <p className="mt-6 text-lg leading-relaxed text-charcoal/80">{page.description}</p>
+    <Section tone="warm" containerClassName="max-w-3xl">
+      <SectionHeading eyebrow={t("finalCta.eyebrow")} title={page.title} />
+      <p className="mt-6 text-lg leading-relaxed text-charcoal/70">{page.description}</p>
 
-        <dl className="mt-12 space-y-6 border-t border-stone-dark pt-8">
-          <div>
-            <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-              {t("customTour.contactEmail")}
-            </dt>
-            <dd className="mt-1 text-lg text-charcoal">
-              <a href={`mailto:${navigation.contact.email}`} className="hover:text-forest">
-                {navigation.contact.email}
-              </a>
-            </dd>
-          </div>
-          <div>
-            <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-              {t("customTour.contactPhone")}
-            </dt>
-            <dd className="mt-1 text-lg text-charcoal">
-              <a href={`tel:${navigation.contact.phone}`} className="hover:text-forest">
-                {navigation.contact.phone}
-              </a>
-            </dd>
-          </div>
-          <div>
-            <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-              {t("nav.sriLanka")}
-            </dt>
-            <dd className="mt-1 text-lg text-charcoal">{navigation.contact.address}</dd>
-          </div>
-        </dl>
-
-        <div className="mt-12 flex flex-wrap gap-4">
-          <WhatsAppCTA
-            phone={navigation.contact.whatsappNumber}
-            message={buildGeneralMessage()}
-            variant="primary"
-            size="lg"
-          >
-            {t("whatsapp.talkToNandana")}
-          </WhatsAppCTA>
-          <Link
-            href="/custom-tour"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-charcoal/30 px-8 py-4 text-base font-medium tracking-wide text-charcoal transition-colors duration-200 hover:border-forest hover:text-forest"
-          >
-            {t("customTour.start")}
-          </Link>
+      <dl className="mt-12 space-y-6 border-t border-stone-dark pt-8">
+        <div>
+          <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+            {t("customTour.contactEmail")}
+          </dt>
+          <dd className="mt-1 text-lg text-charcoal">
+            <a href={`mailto:${navigation.contact.email}`} className="hover:text-forest">
+              {navigation.contact.email}
+            </a>
+          </dd>
         </div>
-      </Container>
-    </section>
+        <div>
+          <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+            {t("customTour.contactPhone")}
+          </dt>
+          <dd className="mt-1 text-lg text-charcoal">
+            <a href={`tel:${navigation.contact.phone}`} className="hover:text-forest">
+              {navigation.contact.phone}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+            {t("common.addressLabel")}
+          </dt>
+          <dd className="mt-1 text-lg text-charcoal">{navigation.contact.address}</dd>
+        </div>
+      </dl>
+
+      <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <WhatsAppCTA
+          phone={navigation.contact.whatsappNumber}
+          message={buildGeneralMessage()}
+          variant="primary"
+          size="lg"
+        >
+          {t("whatsapp.talkToNandana")}
+        </WhatsAppCTA>
+        <Link
+          href="/custom-tour"
+          className="font-medium text-forest underline underline-offset-8 transition-colors hover:text-forest-dark"
+        >
+          {t("customTour.start")}
+        </Link>
+      </div>
+    </Section>
   );
 }

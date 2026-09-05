@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/cn";
 import type { Navigation } from "@/lib/content/schema";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { NavLinks } from "./NavLinks";
 
 export function MobileNav({
   navigation,
@@ -55,17 +56,12 @@ export function MobileNav({
                 {labels.close}
               </button>
             </div>
-            <nav className="mt-8 flex flex-col gap-1">
-              {navigation.main.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="py-3 font-display text-2xl text-charcoal hover:text-forest sm:text-3xl"
-                >
-                  {item.label}
-                </Link>
-              ))}
+            <nav className="mt-8 flex flex-col gap-1" aria-label="Primary">
+              <NavLinks
+                items={navigation.main}
+                variant="mobile"
+                onNavigate={() => setOpen(false)}
+              />
             </nav>
 
             <div className="mt-8">

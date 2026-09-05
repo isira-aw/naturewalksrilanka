@@ -5,7 +5,7 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { DestinationGrid } from "@/components/destinations/DestinationGrid";
 
@@ -55,16 +55,14 @@ export default async function DestinationsPage({
   ]);
 
   return (
-    <section className="bg-warm-white py-4 pb-24 pt-16 md:pb-32 md:pt-20">
-      <Container>
-        <SectionHeading eyebrow={t("sriLanka.eyebrow")} title={t("tours.destinationsTitle")} />
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/80">
-          {t("sriLanka.body")}
-        </p>
-        <div className="mt-14">
-          <DestinationGrid destinations={destinations} />
-        </div>
-      </Container>
-    </section>
+    <Section tone="warm">
+      <SectionHeading eyebrow={t("sriLanka.eyebrow")} title={t("tours.destinationsTitle")} />
+      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/70">
+        {t("sriLanka.body")}
+      </p>
+      <div className="mt-12">
+        <DestinationGrid destinations={destinations} />
+      </div>
+    </Section>
   );
 }
