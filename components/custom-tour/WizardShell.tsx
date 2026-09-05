@@ -40,6 +40,7 @@ type WizardAction =
   | { type: "SET_AI_STATUS"; value: AiAssistantStatus }
   | { type: "SET_AI_ITINERARY"; value: ItineraryPlan | null }
   | { type: "SELECT_AI_DAY_OPTION"; dayIndex: number; slug: string }
+  | { type: "BACK_AI_DAY_OPTION" }
   | { type: "SET_FIELD"; field: "name" | "email" | "phone" | "country" | "requirements"; value: string }
   | { type: "GO_NEXT"; totalSteps: number }
   | { type: "GO_BACK" };
@@ -98,6 +99,8 @@ function reducer(state: WizardState, action: WizardAction): WizardState {
       next[action.dayIndex] = action.slug;
       return { ...state, aiSelections: next };
     }
+    case "BACK_AI_DAY_OPTION":
+      return { ...state, aiSelections: state.aiSelections.slice(0, -1) };
     case "SET_FIELD":
       return { ...state, [action.field]: action.value };
     case "GO_NEXT":
@@ -262,6 +265,7 @@ export function WizardShell({
             onStatusChange={(value) => dispatch({ type: "SET_AI_STATUS", value })}
             onItinerary={(value) => dispatch({ type: "SET_AI_ITINERARY", value })}
             onSelectDay={(dayIndex, slug) => dispatch({ type: "SELECT_AI_DAY_OPTION", dayIndex, slug })}
+            onBackDay={() => dispatch({ type: "BACK_AI_DAY_OPTION" })}
           />
         )}
         {currentStepKey === "contact" && (

@@ -84,6 +84,7 @@
       "dayLabel": "Jour {day}",
       "skip": "Passer cette étape",
       "regenerate": "Recommencer",
+      "backDay": "Retour au jour précédent",
       "distanceLabel": "{km} km depuis l'étape précédente · environ {duration} de route",
       "recommendedLabel": "Notre recommandation pour vous",
       "recommendedBadge": "Recommandé",

@@ -28,6 +28,7 @@ export function AIAssistantStep({
   onStatusChange,
   onItinerary,
   onSelectDay,
+  onBackDay,
 }: {
   travelers: number;
   dateRange: DateRangeValue;
@@ -40,6 +41,7 @@ export function AIAssistantStep({
   onStatusChange: (status: AiAssistantStatus) => void;
   onItinerary: (itinerary: ItineraryPlan | null) => void;
   onSelectDay: (dayIndex: number, slug: string) => void;
+  onBackDay: () => void;
 }) {
   const t = useTranslations("customTour.aiAssistant");
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
@@ -139,77 +141,98 @@ export function AIAssistantStep({
       )}
 
       {status === "ready" && itinerary && (
-        <div className="mt-6 space-y-6">
-          <SriLankaMap
-            candidates={currentDay?.options ?? []}
-            selectedRoute={selectedRoute}
-            hoveredSlug={hoveredSlug}
-          />
-
-          {!isComplete && currentDay && (
-            <div>
-              <h3 className="font-utility text-xs uppercase tracking-wide text-charcoal/60">
-                {t("dayLabel", { day: currentDay.day })}
-              </h3>
-
-              {recommendedOption && (
-                <div className="mt-3">
-                  <span className="font-utility text-xs uppercase tracking-wide text-forest">
-                    {t("recommendedLabel")}
-                  </span>
-                  <div className="mt-2">
-                    <DayCard
-                      option={recommendedOption}
-                      selected={selections[currentDayIndex] === recommendedOption.slug}
-                      recommended
-                      onSelect={() => onSelectDay(currentDayIndex, recommendedOption.slug)}
-                      onHoverChange={(hovered) =>
-                        setHoveredSlug(hovered ? recommendedOption.slug : null)
-                      }
-                    />
-                  </div>
+        <div className="mt-6 lg:grid lg:grid-cols-[1fr_360px] lg:items-start lg:gap-8">
+          <div className="lg:order-1">
+            {!isComplete && currentDay && (
+              <div>
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="font-utility text-xs uppercase tracking-wide text-charcoal/60">
+                    {t("dayLabel", { day: currentDay.day })}
+                  </h3>
+                  {currentDayIndex > 0 && (
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      className="px-4 py-2 text-xs"
+                      onClick={onBackDay}
+                    >
+                      {t("backDay")}
+                    </Button>
+                  )}
                 </div>
-              )}
 
-              {otherOptions.length > 0 && (
-                <div className="mt-4">
-                  <span className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-                    {t("otherOptionsLabel")}
-                  </span>
-                  <div className="mt-2 grid gap-3 sm:grid-cols-2">
-                    {otherOptions.map((option, index) => (
+                {recommendedOption && (
+                  <div className="mt-3">
+                    <span className="font-utility text-xs uppercase tracking-wide text-forest">
+                      {t("recommendedLabel")}
+                    </span>
+                    <div className="mt-2">
                       <DayCard
-                        key={`${index}-${option.slug}`}
-                        option={option}
-                        selected={selections[currentDayIndex] === option.slug}
-                        onSelect={() => onSelectDay(currentDayIndex, option.slug)}
-                        onHoverChange={(hovered) => setHoveredSlug(hovered ? option.slug : null)}
+                        option={recommendedOption}
+                        selected={selections[currentDayIndex] === recommendedOption.slug}
+                        recommended
+                        onSelect={() => onSelectDay(currentDayIndex, recommendedOption.slug)}
+                        onHoverChange={(hovered) =>
+                          setHoveredSlug(hovered ? recommendedOption.slug : null)
+                        }
                       />
-                    ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          )}
+                )}
 
-          {isComplete && (
-            <div>
-              <h3 className="font-utility text-xs uppercase tracking-wide text-charcoal/60">
-                {t("selectedSummaryTitle")}
-              </h3>
-              <ol className="mt-3 space-y-2">
-                {selectedRoute.map((option, index) => (
-                  <li key={`${index}-${option.slug}`} className="text-sm text-charcoal">
-                    <span className="text-charcoal/50">{t("dayLabel", { day: index + 1 })}:</span>{" "}
-                    {option.name}
-                  </li>
-                ))}
-              </ol>
-              <Button type="button" variant="secondary" className="mt-4" onClick={handleRegenerate}>
-                {t("regenerate")}
-              </Button>
-            </div>
-          )}
+                {otherOptions.length > 0 && (
+                  <div className="mt-4">
+                    <span className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+                      {t("otherOptionsLabel")}
+                    </span>
+                    <div className="mt-2 grid gap-3 sm:grid-cols-2">
+                      {otherOptions.map((option, index) => (
+                        <DayCard
+                          key={`${index}-${option.slug}`}
+                          option={option}
+                          selected={selections[currentDayIndex] === option.slug}
+                          onSelect={() => onSelectDay(currentDayIndex, option.slug)}
+                          onHoverChange={(hovered) => setHoveredSlug(hovered ? option.slug : null)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {isComplete && (
+              <div>
+                <h3 className="font-utility text-xs uppercase tracking-wide text-charcoal/60">
+                  {t("selectedSummaryTitle")}
+                </h3>
+                <ol className="mt-3 space-y-2">
+                  {selectedRoute.map((option, index) => (
+                    <li key={`${index}-${option.slug}`} className="text-sm text-charcoal">
+                      <span className="text-charcoal/50">{t("dayLabel", { day: index + 1 })}:</span>{" "}
+                      {option.name}
+                    </li>
+                  ))}
+                </ol>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <Button type="button" variant="secondary" onClick={onBackDay}>
+                    {t("backDay")}
+                  </Button>
+                  <Button type="button" variant="secondary" onClick={handleRegenerate}>
+                    {t("regenerate")}
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="mt-6 lg:order-2 lg:sticky lg:top-24 lg:mt-0">
+            <SriLankaMap
+              candidates={currentDay?.options ?? []}
+              selectedRoute={selectedRoute}
+              hoveredSlug={hoveredSlug}
+            />
+          </div>
         </div>
       )}
     </div>
