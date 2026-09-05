@@ -1,6 +1,6 @@
 "use client";
 
-import { MapContainer, TileLayer, Marker, Polyline, Tooltip } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Polyline } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { ItineraryOption } from "@/lib/ai/itinerarySchema";
@@ -36,7 +36,7 @@ export function SriLankaMap({
       center={SRI_LANKA_CENTER}
       zoom={7}
       scrollWheelZoom={false}
-      className="h-72 w-full rounded-xl border border-charcoal/10 lg:h-[480px]"
+      className="h-72 w-full rounded-xl border border-charcoal/10 lg:h-[520px] xl:h-[560px]"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -50,22 +50,14 @@ export function SriLankaMap({
           key={`selected-${index}-${opt.slug}`}
           position={[opt.lat, opt.lng]}
           icon={opt.slug === hoveredSlug ? hoveredPin : selectedPin}
-        >
-          <Tooltip permanent direction="top" offset={[0, -8]} className="!text-xs">
-            {opt.name}
-          </Tooltip>
-        </Marker>
+        />
       ))}
       {candidates.map((opt, index) => (
         <Marker
           key={`candidate-${index}-${opt.slug}`}
           position={[opt.lat, opt.lng]}
           icon={opt.slug === hoveredSlug ? hoveredPin : candidatePin}
-        >
-          <Tooltip permanent direction="top" offset={[0, -8]} className="!text-xs">
-            {opt.name}
-          </Tooltip>
-        </Marker>
+        />
       ))}
     </MapContainer>
   );

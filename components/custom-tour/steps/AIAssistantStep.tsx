@@ -137,11 +137,18 @@ export function AIAssistantStep({
       )}
 
       {status === "loading" && (
-        <p className="mt-6 text-sm text-charcoal/70">{t("loading")}</p>
+        <div className="mt-8 flex flex-col items-center gap-4 py-6 text-center">
+          <span className="relative flex h-12 w-12 items-center justify-center">
+            <span className="absolute h-full w-full animate-ping rounded-full bg-forest/30" />
+            <span className="absolute h-full w-full animate-pulse rounded-full border-2 border-forest/40" />
+            <span className="h-3 w-3 rounded-full bg-forest" />
+          </span>
+          <p className="text-sm text-charcoal/70">{t("loading")}</p>
+        </div>
       )}
 
       {status === "ready" && itinerary && (
-        <div className="mt-6 lg:grid lg:grid-cols-[1fr_360px] lg:items-start lg:gap-8">
+        <div className="mt-6 lg:grid lg:grid-cols-[1fr_420px] lg:items-start lg:gap-10 xl:grid-cols-[1fr_480px]">
           <div className="lg:order-1">
             {!isComplete && currentDay && (
               <div>
@@ -185,7 +192,7 @@ export function AIAssistantStep({
                     <span className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
                       {t("otherOptionsLabel")}
                     </span>
-                    <div className="mt-2 grid gap-3 sm:grid-cols-2">
+                    <div className="mt-2 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                       {otherOptions.map((option, index) => (
                         <DayCard
                           key={`${index}-${option.slug}`}
