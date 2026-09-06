@@ -4,11 +4,14 @@ import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import { cn } from "@/lib/utils/cn";
 import type { Experience } from "@/lib/content/schema";
 
 export type ExperienceLabels = {
   readMore: string;
   close: string;
+  add: string;
+  added: string;
   location: string;
   bestTime: string;
   duration: string;
@@ -23,10 +26,14 @@ export type ExperienceLabels = {
 export function ExperienceDialog({
   experience,
   labels,
+  selected,
+  onToggle,
   onClose,
 }: {
   experience: Experience | null;
   labels: ExperienceLabels;
+  selected: boolean;
+  onToggle: (slug: string) => void;
   onClose: () => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -153,6 +160,27 @@ export function ExperienceDialog({
                   </ul>
                 </div>
               )}
+            </div>
+
+            <div className="flex items-center justify-end gap-3 border-t border-stone-dark px-5 py-4 sm:px-7">
+              <button
+                type="button"
+                onClick={() => onToggle(experience.slug)}
+                aria-pressed={selected}
+                className={cn(
+                  "flex min-h-11 w-full items-center justify-center gap-2 rounded-full border px-6 font-medium transition-colors sm:w-auto",
+                  selected
+                    ? "border-forest bg-forest text-warm-white hover:bg-forest-dark"
+                    : "border-forest text-forest hover:bg-forest hover:text-warm-white"
+                )}
+              >
+                {selected && (
+                  <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" strokeWidth="2.2" className="h-3 w-3" aria-hidden="true">
+                    <path d="M1 5.2 4.3 8.5 11 1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
+                {selected ? labels.added : labels.add}
+              </button>
             </div>
           </motion.div>
         </motion.div>

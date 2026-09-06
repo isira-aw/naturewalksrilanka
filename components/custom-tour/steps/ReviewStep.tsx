@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { buildCustomTourMessage, buildWhatsAppUrl } from "@/lib/whatsapp/buildMessage";
+import type { Experience } from "@/lib/content/schema";
 import type { WizardState } from "../WizardShell";
 import { StepHeading } from "./StepHeading";
 
@@ -36,12 +37,20 @@ export function ReviewStep({
   state,
   locale,
   whatsappNumber,
+  experiences,
 }: {
   state: WizardState;
   locale: string;
   whatsappNumber: string;
+  experiences: Experience[];
 }) {
   const t = useTranslations("customTour");
+
+  /* Ordered by the content file rather than by click order, so the enquiry
+     reads the same way the wizard showed them. */
+  const chosenIdeas = experiences
+    .filter((experience) => state.selectedExperiences.includes(experience.slug))
+    .map((experience) => `${experience.title} — ${experience.location}`);
 
   const interestLabels = state.interests
     .filter((key): key is (typeof INTEREST_KEYS)[number] => (INTEREST_KEYS as readonly string[]).includes(key))
@@ -65,6 +74,7 @@ export function ReviewStep({
       interests: interestLabels,
       accommodation: accommodationLabels,
       accommodationNotes: state.accommodationNotes,
+      journeyIdeas: chosenIdeas,
       aiRoute: aiRouteNames,
       name: state.name,
       email: state.email,
@@ -101,6 +111,9 @@ export function ReviewStep({
         />
         {state.accommodationNotes.trim() && (
           <ReviewRow label={t("accommodationNotesLabel")} value={state.accommodationNotes} />
+        )}
+        {chosenIdeas.length > 0 && (
+          <ReviewRow label={t("suggestionsSelectedLabel")} value={chosenIdeas.join("\n")} />
         )}
         {aiRouteNames.length > 0 && (
           <ReviewRow

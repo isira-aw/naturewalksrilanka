@@ -25,10 +25,14 @@ export function InterestsStep({
   value,
   onToggle,
   experiences,
+  selectedExperiences,
+  onToggleExperience,
 }: {
   value: string[];
   onToggle: (value: string) => void;
   experiences: Experience[];
+  selectedExperiences: string[];
+  onToggleExperience: (slug: string) => void;
 }) {
   const t = useTranslations("customTour");
   const matching = experiences.filter((experience) => value.includes(experience.category));
@@ -76,11 +80,15 @@ export function InterestsStep({
       <div className="mt-8 lg:mt-0">
         <SuggestionsPanel
           experiences={matching}
+          selected={selectedExperiences}
+          onToggle={onToggleExperience}
           labels={{
             title: t("suggestionsTitle"),
             empty: t("suggestionsEmpty"),
             count: t("suggestionsCount", { count: matching.length }),
             readMore: t("suggestionsReadMore"),
+            add: t("suggestionsAdd"),
+            added: t("suggestionsAdded"),
             close: t("suggestionsClose"),
             location: t("suggestionsLocation"),
             bestTime: t("suggestionsBestTime"),

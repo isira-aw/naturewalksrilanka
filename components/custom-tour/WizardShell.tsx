@@ -22,6 +22,8 @@ export type WizardState = {
   travelers: number;
   dateRange: DateRangeValue;
   interests: string[];
+  /** Slugs of the prebuilt journey ideas the traveller ticked. */
+  selectedExperiences: string[];
   accommodation: string[];
   accommodationNotes: string;
   aiItinerary: ItineraryPlan | null;
@@ -37,7 +39,8 @@ export type WizardState = {
 type WizardAction =
   | { type: "SET_TRAVELERS"; value: number }
   | { type: "SET_DATE_RANGE"; value: DateRangeValue }
-  | { type: "TOGGLE_INTEREST"; value: string }
+  | { type: "TOGGLE_INTEREST"; value: string; experiences: Experience[] }
+  | { type: "TOGGLE_EXPERIENCE"; value: string }
   | { type: "TOGGLE_ACCOMMODATION"; value: string }
   | { type: "SET_ACCOMMODATION_NOTES"; value: string }
   | { type: "SET_AI_STATUS"; value: AiAssistantStatus }
@@ -70,6 +73,7 @@ const initialState: WizardState = {
   travelers: 2,
   dateRange: { start: null, end: null },
   interests: [],
+  selectedExperiences: [],
   accommodation: [],
   accommodationNotes: "",
   aiItinerary: null,
@@ -95,8 +99,26 @@ function reducer(state: WizardState, action: WizardAction): WizardState {
       };
     case "SET_DATE_RANGE":
       return { ...state, dateRange: action.value };
-    case "TOGGLE_INTEREST":
-      return { ...state, interests: toggleValue(state.interests, action.value) };
+    case "TOGGLE_INTEREST": {
+      const interests = toggleValue(state.interests, action.value);
+      /* Dropping a category drops the ideas that belonged to it — otherwise a
+         de-selected category's ideas would still ride along to WhatsApp. */
+      const stillVisible = new Set(
+        action.experiences
+          .filter((experience) => interests.includes(experience.category))
+          .map((experience) => experience.slug)
+      );
+      return {
+        ...state,
+        interests,
+        selectedExperiences: state.selectedExperiences.filter((slug) => stillVisible.has(slug)),
+      };
+    }
+    case "TOGGLE_EXPERIENCE":
+      return {
+        ...state,
+        selectedExperiences: toggleValue(state.selectedExperiences, action.value),
+      };
     case "TOGGLE_ACCOMMODATION":
       return { ...state, accommodation: toggleValue(state.accommodation, action.value) };
     case "SET_ACCOMMODATION_NOTES":
@@ -252,8 +274,10 @@ export function WizardShell({
             {currentStepKey === "interests" && (
               <InterestsStep
                 value={state.interests}
-                onToggle={(value) => dispatch({ type: "TOGGLE_INTEREST", value })}
+                onToggle={(value) => dispatch({ type: "TOGGLE_INTEREST", value, experiences })}
                 experiences={experiences}
+                selectedExperiences={state.selectedExperiences}
+                onToggleExperience={(value) => dispatch({ type: "TOGGLE_EXPERIENCE", value })}
               />
             )}
             {currentStepKey === "accommodation" && (
@@ -291,7 +315,12 @@ export function WizardShell({
               />
             )}
             {currentStepKey === "review" && (
-              <ReviewStep state={state} locale={locale} whatsappNumber={whatsappNumber} />
+              <ReviewStep
+                state={state}
+                locale={locale}
+                whatsappNumber={whatsappNumber}
+                experiences={experiences}
+              />
             )}
           </motion.div>
         </AnimatePresence>
