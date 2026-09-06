@@ -95,9 +95,14 @@
       "contact": "Yhteystiedot",
       "review": "Yhteenveto"
     },
+    "stepOf": "Vaihe {current} / {total}",
+    "required": "pakollinen",
+    "optional": "valinnainen",
     "back": "Takaisin",
     "next": "Jatka",
     "travelersLabel": "Montako matkustajaa?",
+    "travelersDecrease": "Yksi matkustaja vähemmän",
+    "travelersIncrease": "Yksi matkustaja lisää",
     "datesLabel": "Milloin haluat matkustaa?",
     "datesHelp": "Valitse saapumispäiväsi ja sen jälkeen lähtöpäiväsi. Opastamme ympäri vuoden, joten mikä tahansa ajankohta järjestyy.",
     "datesHint": "Valitse ensin saapuminen ja sitten lähtö.",
@@ -109,6 +114,7 @@
     "datesSelected": "{count} päivää Sri Lankassa",
     "datesInvalid": "Valitse saapumispäivä ja sitä myöhempi lähtöpäivä.",
     "interestsLabel": "Mikä kiinnostaa sinua eniten?",
+    "interestsHint": "Valitse niin monta kuin haluat — ne ratkaisevat, minkä puistojen, polkujen ja kylien ympärille reitti rakennetaan.",
     "interests": {
       "wildlife": "Eläimet",
       "trekking": "Vaellus",
@@ -119,6 +125,7 @@
       "adventure": "Seikkailu"
     },
     "accommodationLabel": "Toivottu majoitustyyli",
+    "accommodationHint": "Valitse yksi tai useampi tyyli, tai anna meidän suositella jokaiselle pysähdykselle sopivaa.",
     "accommodation": {
       "budget": "Edullinen",
       "comfortable": "Mukava",
@@ -149,9 +156,14 @@
     "contactEmail": "Sähköposti",
     "contactPhone": "WhatsApp / puhelin",
     "contactCountry": "Maa",
+    "contactHint": "Jotta voimme vastata sinulle. Mitään ei tallenneta tälle sivustolle — vastauksesi menevät suoraan WhatsApp-viestiin, jonka lähetät itse.",
     "requirementsLabel": "Kerro meille ihannematkastasi…",
     "reviewTitle": "Tarkista matkasi",
-    "submit": "Keskustele matkastani WhatsAppissa"
+    "reviewHint": "Tarkista, että kaikki on oikein, ja lähetä se WhatsAppissa.",
+    "submit": "Keskustele matkastani WhatsAppissa",
+    "errorTravelers": "Anna vähintään yksi matkustaja.",
+    "errorInterests": "Valitse vähintään yksi kiinnostuksen kohde.",
+    "errorContact": "Lisää nimesi, kelvollinen sähköpostiosoite ja puhelinnumero."
   },
   "nandana": {
     "introEyebrow": "Kuka on Nandana",

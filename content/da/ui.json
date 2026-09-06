@@ -95,9 +95,14 @@
       "contact": "Kontaktoplysninger",
       "review": "Oversigt"
     },
+    "stepOf": "Trin {current} af {total}",
+    "required": "påkrævet",
+    "optional": "valgfrit",
     "back": "Tilbage",
     "next": "Videre",
     "travelersLabel": "Hvor mange rejsende?",
+    "travelersDecrease": "Én rejsende færre",
+    "travelersIncrease": "Én rejsende mere",
     "datesLabel": "Hvornår vil du rejse?",
     "datesHelp": "Vælg din ankomstdato og derefter din afrejsedato. Vi guider året rundt, så alle datoer kan lade sig gøre.",
     "datesHint": "Vælg først ankomst og derefter afrejse.",
@@ -109,6 +114,7 @@
     "datesSelected": "{count} dage i Sri Lanka",
     "datesInvalid": "Vælg en ankomstdato og en afrejsedato, der ligger efter den.",
     "interestsLabel": "Hvad interesserer dig mest?",
+    "interestsHint": "Vælg så mange du vil — det afgør, hvilke parker, stier og byer vi bygger ruten op om.",
     "interests": {
       "wildlife": "Dyreliv",
       "trekking": "Vandring",
@@ -119,6 +125,7 @@
       "adventure": "Eventyr"
     },
     "accommodationLabel": "Foretrukken type overnatning",
+    "accommodationHint": "Vælg en eller flere typer, eller lad os anbefale noget for hvert stop.",
     "accommodation": {
       "budget": "Budget",
       "comfortable": "Komfortabel",
@@ -149,9 +156,14 @@
     "contactEmail": "E-mail",
     "contactPhone": "WhatsApp / telefon",
     "contactCountry": "Land",
+    "contactHint": "Så vi kan svare dig. Intet gemmes på siden — dine svar går direkte ind i en WhatsApp-besked, du selv sender.",
     "requirementsLabel": "Fortæl os om din ideelle rejse…",
     "reviewTitle": "Se din rejse igennem",
-    "submit": "Tal om min rejse på WhatsApp"
+    "reviewHint": "Tjek at det hele ser rigtigt ud, og send det så på WhatsApp.",
+    "submit": "Tal om min rejse på WhatsApp",
+    "errorTravelers": "Angiv mindst én rejsende.",
+    "errorInterests": "Vælg mindst én interesse.",
+    "errorContact": "Tilføj dit navn, en gyldig e-mailadresse og et telefonnummer."
   },
   "nandana": {
     "introEyebrow": "Hvem er Nandana",

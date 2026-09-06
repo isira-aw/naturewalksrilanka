@@ -95,9 +95,14 @@
       "contact": "Contactgegevens",
       "review": "Overzicht"
     },
+    "stepOf": "Stap {current} van {total}",
+    "required": "verplicht",
+    "optional": "optioneel",
     "back": "Terug",
     "next": "Verder",
     "travelersLabel": "Met hoeveel reizigers?",
+    "travelersDecrease": "Eén reiziger minder",
+    "travelersIncrease": "Eén reiziger meer",
     "datesLabel": "Wanneer wil je reizen?",
     "datesHelp": "Kies je aankomstdatum en daarna je vertrekdatum. Wij gidsen het hele jaar door, dus elke datum is mogelijk.",
     "datesHint": "Kies eerst je aankomst en daarna je vertrek.",
@@ -109,6 +114,7 @@
     "datesSelected": "{count} dagen in Sri Lanka",
     "datesInvalid": "Kies een aankomstdatum en een vertrekdatum die daarna ligt.",
     "interestsLabel": "Waarin ben je het meest geïnteresseerd?",
+    "interestsHint": "Kies er zoveel als je wilt — het bepaalt rond welke parken, paden en dorpen we de route bouwen.",
     "interests": {
       "wildlife": "Wilde dieren",
       "trekking": "Trekking",
@@ -119,6 +125,7 @@
       "adventure": "Avontuur"
     },
     "accommodationLabel": "Voorkeur voor accommodatie",
+    "accommodationHint": "Kies een of meer stijlen, of laat ons per stop iets aanraden.",
     "accommodation": {
       "budget": "Budget",
       "comfortable": "Comfortabel",
@@ -149,9 +156,14 @@
     "contactEmail": "E-mail",
     "contactPhone": "WhatsApp / telefoon",
     "contactCountry": "Land",
+    "contactHint": "Zodat we je kunnen antwoorden. Er wordt niets op deze site opgeslagen — je antwoorden gaan rechtstreeks in een WhatsApp-bericht dat je zelf verstuurt.",
     "requirementsLabel": "Vertel ons over je ideale reis…",
     "reviewTitle": "Bekijk je reis",
-    "submit": "Bespreek mijn reis via WhatsApp"
+    "reviewHint": "Controleer of alles klopt en stuur het daarna via WhatsApp.",
+    "submit": "Bespreek mijn reis via WhatsApp",
+    "errorTravelers": "Vul minstens één reiziger in.",
+    "errorInterests": "Kies minstens één interesse.",
+    "errorContact": "Vul je naam, een geldig e-mailadres en een telefoonnummer in."
   },
   "nandana": {
     "introEyebrow": "Wie is Nandana",

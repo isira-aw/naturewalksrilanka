@@ -95,9 +95,14 @@
       "contact": "Datos de contacto",
       "review": "Resumen"
     },
+    "stepOf": "Paso {current} de {total}",
+    "required": "obligatorio",
+    "optional": "opcional",
     "back": "Atrás",
     "next": "Continuar",
     "travelersLabel": "¿Cuántos viajeros sois?",
+    "travelersDecrease": "Un viajero menos",
+    "travelersIncrease": "Un viajero más",
     "datesLabel": "¿Cuándo quieres viajar?",
     "datesHelp": "Elige tu fecha de llegada y después la de salida. Guiamos todo el año, así que cualquier fecha es posible.",
     "datesHint": "Selecciona primero la llegada y después la salida.",
@@ -109,6 +114,7 @@
     "datesSelected": "{count} días en Sri Lanka",
     "datesInvalid": "Elige una fecha de llegada y una fecha de salida posterior.",
     "interestsLabel": "¿Qué es lo que más te interesa?",
+    "interestsHint": "Elige los que quieras: definen en torno a qué parques, senderos y pueblos construimos la ruta.",
     "interests": {
       "wildlife": "Fauna salvaje",
       "trekking": "Trekking",
@@ -119,6 +125,7 @@
       "adventure": "Aventura"
     },
     "accommodationLabel": "Tipo de alojamiento preferido",
+    "accommodationHint": "Elige uno o varios estilos, o deja que te recomendemos algo en cada parada.",
     "accommodation": {
       "budget": "Económico",
       "comfortable": "Confortable",
@@ -149,9 +156,14 @@
     "contactEmail": "Correo electrónico",
     "contactPhone": "WhatsApp / teléfono",
     "contactCountry": "País",
+    "contactHint": "Para poder responderte. No se guarda nada en este sitio: tus respuestas van directas a un mensaje de WhatsApp que envías tú.",
     "requirementsLabel": "Cuéntanos cómo sería tu viaje ideal…",
     "reviewTitle": "Revisa tu viaje",
-    "submit": "Consultar mi viaje por WhatsApp"
+    "reviewHint": "Comprueba que todo está bien y envíanoslo por WhatsApp.",
+    "submit": "Consultar mi viaje por WhatsApp",
+    "errorTravelers": "Indica al menos un viajero.",
+    "errorInterests": "Elige al menos un interés.",
+    "errorContact": "Añade tu nombre, un correo electrónico válido y un teléfono."
   },
   "nandana": {
     "introEyebrow": "Quién es Nandana",

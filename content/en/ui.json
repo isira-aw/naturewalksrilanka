@@ -95,9 +95,14 @@
       "contact": "Contact Information",
       "review": "Review"
     },
+    "stepOf": "Step {current} of {total}",
+    "required": "required",
+    "optional": "optional",
     "back": "Back",
     "next": "Continue",
     "travelersLabel": "How many travelers?",
+    "travelersDecrease": "One traveller fewer",
+    "travelersIncrease": "One traveller more",
     "datesLabel": "When would you like to travel?",
     "datesHelp": "Pick your arrival date, then your departure date. We guide year-round, so any dates can be arranged.",
     "datesHint": "Select your arrival, then your departure.",
@@ -109,6 +114,7 @@
     "datesSelected": "{count} days in Sri Lanka",
     "datesInvalid": "Please choose an arrival date and a departure date after it.",
     "interestsLabel": "What are you most interested in?",
+    "interestsHint": "Pick as many as you like — it shapes which parks, trails and towns we build the route around.",
     "interests": {
       "wildlife": "Wildlife",
       "trekking": "Trekking",
@@ -119,6 +125,7 @@
       "adventure": "Adventure"
     },
     "accommodationLabel": "Preferred accommodation style",
+    "accommodationHint": "Choose one or more styles, or let us recommend something for each stop.",
     "accommodation": {
       "budget": "Budget",
       "comfortable": "Comfortable",
@@ -149,9 +156,14 @@
     "contactEmail": "Email",
     "contactPhone": "WhatsApp / Phone",
     "contactCountry": "Country",
+    "contactHint": "So we can reply to you. Nothing is stored on this site — your answers go straight into a WhatsApp message you send yourself.",
     "requirementsLabel": "Tell us about your ideal journey…",
     "reviewTitle": "Review your journey",
-    "submit": "Discuss My Journey on WhatsApp"
+    "reviewHint": "Check everything reads right, then send it over on WhatsApp.",
+    "submit": "Discuss My Journey on WhatsApp",
+    "errorTravelers": "Please enter at least one traveller.",
+    "errorInterests": "Please choose at least one interest.",
+    "errorContact": "Please add your name, a valid email address and a phone number."
   },
   "nandana": {
     "introEyebrow": "Who is Nandana",

@@ -2,7 +2,9 @@
 
 import { useTranslations } from "next-intl";
 import { buildCustomTourMessage, buildWhatsAppUrl } from "@/lib/whatsapp/buildMessage";
+import { RouteIcon } from "@/components/ui/icons";
 import type { WizardState } from "../WizardShell";
+import { StepHeading } from "./StepHeading";
 
 const INTEREST_KEYS = [
   "wildlife",
@@ -78,9 +80,9 @@ export function ReviewStep({
 
   return (
     <div>
-      <h2 className="font-display text-2xl text-charcoal">{t("reviewTitle")}</h2>
+      <StepHeading icon={RouteIcon} title={t("reviewTitle")} hint={t("reviewHint")} />
 
-      <dl className="mt-6 divide-y divide-charcoal/10 rounded-xl border border-charcoal/10">
+      <dl className="mt-8 divide-y divide-stone-dark overflow-hidden rounded-2xl border border-stone-dark bg-warm-white">
         <ReviewRow label={t("travelersLabel")} value={String(state.travelers)} />
         <ReviewRow
           label={t("datesLabel")}
@@ -120,7 +122,7 @@ export function ReviewStep({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 text-base font-medium tracking-wide text-warm-white transition-colors duration-200 hover:bg-forest-dark"
+        className="mt-8 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 text-base font-medium tracking-wide text-warm-white transition-colors duration-200 hover:bg-forest-dark sm:w-auto"
       >
         <WhatsAppIcon className="h-4 w-4" />
         {t("submit")}
