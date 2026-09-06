@@ -9,6 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { HomeHero } from "@/components/hero/HomeHero";
 import { HomeIntro } from "@/components/home/HomeIntro";
 import { GuideIntro } from "@/components/home/GuideIntro";
+import { ServicesSection, type Service } from "@/components/home/ServicesSection";
 import { PlacesSection } from "@/components/home/PlacesSection";
 import { TrustSection } from "@/components/home/TrustSection";
 import { DurationSelector } from "@/components/tours/DurationSelector";
@@ -63,6 +64,7 @@ export default async function HomePage({
   ]);
 
   const whyPoints = t.raw("nandana.whyPoints") as { title: string; description: string }[];
+  const services = t.raw("home.services") as Service[];
   const featuredDestinations = destinations.slice(0, 8);
 
   return (
@@ -79,7 +81,7 @@ export default async function HomePage({
           ctaPrimary: t("hero.ctaPrimary"),
           ctaSecondary: t("hero.ctaSecondary"),
           meta: `${profile.experience} · ${profile.certification}`,
-          whatsapp: t("whatsapp.talkToNandana"),
+          whatsapp: t("whatsapp.talkToUs"),
         }}
         navigation={navigation}
       />
@@ -90,10 +92,20 @@ export default async function HomePage({
         body={t("home.introBody")}
       />
 
+      <ServicesSection
+        labels={{
+          eyebrow: t("home.servicesEyebrow"),
+          title: t("home.servicesTitle"),
+          body: t("home.servicesBody"),
+        }}
+        services={services}
+      />
+
       <GuideIntro
         profile={profile}
         labels={{
           eyebrow: t("nandana.introEyebrow"),
+          role: t("home.guideRole"),
           body: t("home.guideBody"),
           cta: t("home.guideCta"),
         }}

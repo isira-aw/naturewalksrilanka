@@ -4,15 +4,15 @@ import type { Profile } from "@/lib/content/schema";
 import { Section } from "@/components/ui/Section";
 
 /**
- * Home-page version of "who is Nandana": a short, human summary and the two
- * facts that build trust. The full story stays on the About page.
+ * Home-page version of "who is Nandana": the founder and lead guide behind the
+ * company, in short. The full story stays on the About page.
  */
 export function GuideIntro({
   profile,
   labels,
 }: {
   profile: Profile;
-  labels: { eyebrow: string; body: string; cta: string };
+  labels: { eyebrow: string; role: string; body: string; cta: string };
 }) {
   return (
     <Section tone="stone">
@@ -34,6 +34,9 @@ export function GuideIntro({
           <h2 className="mt-4 font-display text-3xl leading-tight tracking-tight text-charcoal md:text-4xl">
             {profile.name}
           </h2>
+          <p className="mt-2 font-utility text-xs uppercase tracking-[0.12em] text-charcoal/55">
+            {labels.role}
+          </p>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-charcoal/75">{labels.body}</p>
 

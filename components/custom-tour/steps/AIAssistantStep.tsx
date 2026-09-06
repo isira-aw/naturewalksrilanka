@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
-import type { DateRangeValue } from "@/components/calendar/AvailabilityCalendar";
+import type { DateRangeValue } from "@/lib/tour/dateRange";
 import type { ItineraryPlan } from "@/lib/ai/itinerarySchema";
 
 const SriLankaMap = dynamic(

@@ -1,8 +1,8 @@
 {
   "siteName": "Nature Walks Sri Lanka",
   "titleTemplate": "%s | Nature Walks Sri Lanka",
-  "defaultTitle": "Nature Walks Sri Lanka — Private Nature & Wildlife Tours with Nandana Hewagamage",
-  "defaultDescription": "Private Sri Lanka tours guided by Nandana Hewagamage: wildlife safaris, birding, trekking and culture, tailored to you and checked against real-time availability.",
+  "defaultTitle": "Nature Walks Sri Lanka — Private Nature & Wildlife Tours with Certified Guides",
+  "defaultDescription": "Private Sri Lanka tours from Nature Walks Sri Lanka, founded by Nandana Hewagamage: certified guides, accommodation and transport arranged for wildlife safaris, birding, trekking and culture.",
   "ogImage": "/images/og-default.jpg",
   "keywords": [
     "Sri Lanka private tours",
@@ -12,14 +12,34 @@
     "Sri Lanka private guide",
     "Sri Lanka wildlife guide",
     "Sri Lanka trekking tours",
-    "Sri Lanka birding tours"
+    "Sri Lanka birding tours",
+    "Sri Lanka certified tour guide",
+    "Sri Lanka tour operator"
   ],
   "pages": {
-    "home": { "title": "Private Nature & Wildlife Tours in Sri Lanka", "description": "Discover Sri Lanka beyond the ordinary — private wildlife, birding and culture journeys guided by Nandana Hewagamage, a Sri Lanka Tourism Board certified national guide." },
-    "tours": { "title": "Sri Lanka Tour Journeys — 10, 12, 16 & 18 Days", "description": "Four private Sri Lanka journeys covering wildlife safaris, birding, hill country and culture, guided by Nandana Hewagamage." },
-    "customTour": { "title": "Build a Custom Sri Lanka Tour", "description": "Design a private, personalized Sri Lanka journey with Nandana — choose your dates, interests and accommodation, then discuss it directly on WhatsApp." },
-    "aboutNandana": { "title": "About Nandana Hewagamage", "description": "20+ years guiding Sri Lanka's wildlife and culture, from the Department of Wildlife Conservation to founding Nature Walks Sri Lanka." },
-    "destinations": { "title": "Sri Lanka Destinations", "description": "The national parks, ancient cities and highland trails visited on a Nature Walks Sri Lanka journey." },
-    "contact": { "title": "Contact Nandana Hewagamage", "description": "Get in touch with Nandana to start planning your private Sri Lanka journey." }
+    "home": {
+      "title": "Private Nature & Wildlife Tours in Sri Lanka",
+      "description": "Discover Sri Lanka beyond the ordinary — private wildlife, birding and culture journeys from Nature Walks Sri Lanka, with guides certified by the Sri Lanka Tourism Board, plus accommodation and transport arranged throughout."
+    },
+    "tours": {
+      "title": "Sri Lanka Tour Journeys — 10, 12, 16 & 18 Days",
+      "description": "Four private Sri Lanka journeys covering wildlife safaris, birding, hill country and culture, guided by the certified team at Nature Walks Sri Lanka."
+    },
+    "customTour": {
+      "title": "Build a Custom Sri Lanka Tour",
+      "description": "Design a private, personalized Sri Lanka journey with Nature Walks Sri Lanka — choose your dates, interests and accommodation, then discuss it directly on WhatsApp."
+    },
+    "aboutNandana": {
+      "title": "About Nandana Hewagamage",
+      "description": "20+ years guiding Sri Lanka's wildlife and culture, from the Department of Wildlife Conservation to founding Nature Walks Sri Lanka."
+    },
+    "destinations": {
+      "title": "Sri Lanka Destinations",
+      "description": "The national parks, ancient cities and highland trails visited on a Nature Walks Sri Lanka journey."
+    },
+    "contact": {
+      "title": "Contact Nature Walks Sri Lanka",
+      "description": "Get in touch with Nandana Hewagamage and the Nature Walks Sri Lanka team to start planning your private Sri Lanka journey."
+    }
   }
 }

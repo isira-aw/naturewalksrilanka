@@ -4,7 +4,7 @@ import { useEffect, useReducer, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils/cn";
-import type { DateRangeValue } from "@/components/calendar/AvailabilityCalendar";
+import { isValidRange, type DateRangeValue } from "@/lib/tour/dateRange";
 import type { ItineraryPlan } from "@/lib/ai/itinerarySchema";
 import { TravelersStep } from "./steps/TravelersStep";
 import { DatesStep } from "./steps/DatesStep";
@@ -148,7 +148,7 @@ export function WizardShell({
         if (state.travelers < 1) return t("travelersLabel");
         return null;
       case "dates":
-        if (!state.dateRange.start || !state.dateRange.end) return t("datesHelp");
+        if (!isValidRange(state.dateRange)) return t("datesInvalid");
         return null;
       case "interests":
         if (state.interests.length === 0) return t("interestsLabel");
@@ -234,7 +234,6 @@ export function WizardShell({
         )}
         {currentStepKey === "dates" && (
           <DatesStep
-            locale={locale}
             value={state.dateRange}
             onChange={(value) => dispatch({ type: "SET_DATE_RANGE", value })}
           />

@@ -1,0 +1,23 @@
+{
+  "name": "Nandana Hewagamage",
+  "experience": "Yli 20 vuotta",
+  "languages": [],
+  "certification": "Sri Lanka Tourism Boardin sertifioima",
+  "philosophy": "Matkaa Sri Lankan halki pitäisi johtaa joku, joka tuntee maan niin kuin luontotutkija tuntee metsäpolun — korvakuulolta, vuodenajoittain, vuosien kulkemisen jäljiltä.",
+  "story": "Vuonna 1990 Nandana aloitti uransa Sri Lankan luonnonsuojeluvirastossa koulujen ja kyläyhteisöjen luontokoulutusvastaavana ja työskenteli saaren linnustoa, kasveja ja hyönteisiä tutkivien yliopisto-ohjelmien rinnalla. Hän on Colombon yliopiston Field Ornithology Groupin jäsen. Vuonna 1999 hän siirtyi seikkailuekomatkailuun — vaellusmatkoihin ja seikkailulliseen matkailuun, kuten koskenlaskuun, canyoningiin ja vaijeriliukuihin — ennen kuin valmistui vuonna 2002 kansalliseksi matkaoppaaksi ja kouluttajaksi erikoisaloinaan lintujen tarkkailu, eläimet, luontokuvaus ja vaellus sekä kulttuuri- ja historiamatkat. Vuonna 2017, opastettuaan vuosia suurille matkanjärjestäjille, hän perusti Nature Walks Sri Lankan tarjotakseen matkailijoille omistautuneen ja henkilökohtaisen kokemuksen saaren luonnosta ja kulttuurista.",
+  "specialties": [
+    "Lintujen tarkkailu",
+    "Eläimet",
+    "Luontokuvaus",
+    "Vaellus",
+    "Kulttuuri ja historia"
+  ],
+  "stats": [
+    { "value": "20+", "label": "Vuotta oppaana" },
+    { "value": "CONTENT_REQUIRED", "label": "Kieltä" },
+    { "value": "Sri Lanka", "label": "Hänen kotinsa" }
+  ],
+  "portraitImage": "/images/nandana-portrait.jpg",
+  "_note": "Languages list not yet confirmed — brief states 5 languages but does not name them. Leave as CONTENT_REQUIRED until Nandana confirms.",
+  "_reviewStatus": "needs-native-review"
+}

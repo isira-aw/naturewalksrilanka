@@ -82,7 +82,7 @@ export type Testimonials = z.infer<typeof testimonialsSchema>;
 export const navLinkSchema = z.object({ label: z.string(), href: z.string() });
 export const navigationSchema = z.object({
   main: z.array(navLinkSchema),
-  checkAvailability: navLinkSchema,
+  primaryCta: navLinkSchema,
   footerLinks: z.array(navLinkSchema),
   social: z.object({
     facebook: z.string().optional(),
@@ -95,6 +95,7 @@ export const navigationSchema = z.object({
     whatsappNumber: z.string(),
     address: z.string(),
   }),
+  _reviewStatus: z.string().optional(),
 });
 export type Navigation = z.infer<typeof navigationSchema>;
 
@@ -107,6 +108,7 @@ export const seoSchema = z.object({
   ogImage: z.string(),
   keywords: z.array(z.string()),
   pages: z.record(z.string(), seoPageSchema),
+  _reviewStatus: z.string().optional(),
 });
 export type Seo = z.infer<typeof seoSchema>;
 

@@ -1,0 +1,8 @@
+[
+  { "slug": "birding", "name": "Vogels kijken", "description": "Sri Lanka telt meer dan 30 endemische vogelsoorten. Nandana, lid van de Field Ornithology Group, begeleidt vogelexcursies door de regenwouden, hooglanden en droge-zoneparken van het eiland.", "_reviewStatus": "needs-native-review" },
+  { "slug": "wildlife-safari", "name": "Wildsafari", "description": "Luipaard, olifant, lippenbeer en meer, gevolgd in de nationale parken Wilpattu en Yala.", "_reviewStatus": "needs-native-review" },
+  { "slug": "trekking", "name": "Trekking", "description": "Natuurwandelingen en bergpaden, van Ella Rock tot Horton Plains en het regenwoud van Sinharaja.", "_reviewStatus": "needs-native-review" },
+  { "slug": "culture-history", "name": "Cultuur en geschiedenis", "description": "Oude steden, grottempels, de Tempel van de Tand en de culturele tradities van Kandy.", "_reviewStatus": "needs-native-review" },
+  { "slug": "adventure-sports", "name": "Avontuursport", "description": "Wildwaterraften, canyoning en ziplining rond de regenwoudrivier bij Kithulgala.", "_reviewStatus": "needs-native-review" },
+  { "slug": "beach", "name": "Strand", "description": "Ontspannen aan de zuidkust, gecombineerd met een bezoek aan het Nederlandse fort van Galle.", "_reviewStatus": "needs-native-review" }
+]

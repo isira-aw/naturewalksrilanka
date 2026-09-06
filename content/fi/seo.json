@@ -1,0 +1,26 @@
+{
+  "siteName": "Nature Walks Sri Lanka",
+  "titleTemplate": "%s | Nature Walks Sri Lanka",
+  "defaultTitle": "Nature Walks Sri Lanka — Yksityisiä luonto- ja eläinmatkoja sertifioitujen oppaiden kanssa",
+  "defaultDescription": "Yksityismatkoja Sri Lankassa Nature Walks Sri Lankan järjestäminä. Yrityksen perusti Nandana Hewagamage: sertifioidut oppaat, majoitus ja kuljetukset safareille, lintumatkoille, vaelluksille ja kulttuurikohteisiin.",
+  "ogImage": "/images/og-default.jpg",
+  "keywords": [
+    "yksityismatka Sri Lanka",
+    "luontomatka Sri Lanka",
+    "safari Sri Lanka",
+    "räätälöity matka Sri Lanka",
+    "yksityisopas Sri Lanka",
+    "lintumatka Sri Lanka",
+    "vaellus Sri Lanka",
+    "sertifioitu opas Sri Lanka"
+  ],
+  "pages": {
+    "home": { "title": "Yksityisiä luonto- ja eläinmatkoja Sri Lankassa", "description": "Koe Sri Lanka tavanomaisen tuolla puolen — yksityisiä eläin-, lintu- ja kulttuurimatkoja Nature Walks Sri Lankalta, oppaina Sri Lanka Tourism Boardin sertifioimat ammattilaiset sekä majoitus ja kuljetukset järjestettyinä." },
+    "tours": { "title": "Sri Lankan kiertomatkat — 10, 12, 16 ja 18 päivää", "description": "Neljä yksityismatkaa Sri Lankassa: safareita, lintujen tarkkailua, ylänköjä ja kulttuuria Nature Walks Sri Lankan sertifioidun tiimin opastuksella." },
+    "customTour": { "title": "Rakenna räätälöity matka Sri Lankaan", "description": "Suunnittele yksityinen ja henkilökohtainen matka Sri Lankaan Nature Walks Sri Lankan kanssa — valitse päivämäärät, kiinnostuksen kohteet ja majoitus ja keskustele niistä suoraan WhatsAppissa." },
+    "aboutNandana": { "title": "Tietoa Nandana Hewagamagesta", "description": "Yli 20 vuotta Sri Lankan luonnon ja kulttuurin opastusta luonnonsuojeluvirastosta Nature Walks Sri Lankan perustamiseen." },
+    "destinations": { "title": "Sri Lankan kohteet", "description": "Kansallispuistot, muinaiskaupungit ja ylänköpolut, joissa Nature Walks Sri Lankan matkalla vieraillaan." },
+    "contact": { "title": "Ota yhteyttä Nature Walks Sri Lankaan", "description": "Ota yhteyttä Nandana Hewagamageen ja Nature Walks Sri Lankan tiimiin ja aloita yksityismatkasi suunnittelu." }
+  },
+  "_reviewStatus": "needs-native-review"
+}

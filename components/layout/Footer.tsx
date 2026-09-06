@@ -82,7 +82,7 @@ export async function Footer({ locale }: { locale: Locale }) {
             <p className="mb-2 font-utility text-xs uppercase tracking-wide text-warm-white/50">
               {t("language")}
             </p>
-            <LocaleSwitcher tone="inverted" />
+            <LocaleSwitcher tone="inverted" label={t("language")} className="max-w-44" />
           </div>
         </div>
       </Container>
