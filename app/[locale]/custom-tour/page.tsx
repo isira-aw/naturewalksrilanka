@@ -48,9 +48,10 @@ export default async function CustomTourPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, navigation] = await Promise.all([
+  const [t, navigation, experiences] = await Promise.all([
     getTranslations({ locale: l, namespace: "customTour" }),
     getContent(l, "navigation"),
+    getContent(l, "experiences"),
   ]);
 
   return (
@@ -65,13 +66,15 @@ export default async function CustomTourPage({
           </>
         }
       />
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/70">{t("intro")}</p>
+      <p className="mt-6 max-w-2xl leading-relaxed text-charcoal/70 md:text-lg">{t("intro")}</p>
 
-      {/* Full container width, not max-w-3xl: the AI assistant step renders a map. */}
-      <div className="mt-12">
+      {/* Full container width, not max-w-3xl: the AI assistant step renders a
+          map, and the progress rail sits in its own column on desktop. */}
+      <div className="mt-10 md:mt-14">
         <WizardShell
           locale={l}
           whatsappNumber={navigation.contact.whatsappNumber}
+          experiences={experiences}
           aiAssistantEnabled={isAiAssistantEnabled()}
         />
       </div>

@@ -96,7 +96,7 @@ export default async function ContactPage({
           variant="primary"
           size="lg"
         >
-          {t("whatsapp.talkToNandana")}
+          {t("whatsapp.talkToUs")}
         </WhatsAppCTA>
         <Link
           href="/custom-tour"

@@ -1,7 +1,11 @@
 import { Section } from "@/components/ui/Section";
+import { Reveal } from "@/components/ui/Reveal";
+import { BadgeIcon, BinocularsIcon, ChatIcon, LeafIcon } from "@/components/ui/icons";
+
+const ICONS = [BadgeIcon, BinocularsIcon, ChatIcon];
 
 /**
- * The credibility block — three reasons, stated plainly, closed by the
+ * The credibility block — three reasons, one icon each, closed by the
  * conservation note that explains where the guiding came from.
  */
 export function TrustSection({
@@ -13,27 +17,32 @@ export function TrustSection({
 }) {
   return (
     <Section tone="warm">
-      <div className="max-w-2xl">
+      <Reveal className="max-w-2xl">
         <p className="font-utility text-xs uppercase tracking-[0.2em] text-forest">
           {labels.eyebrow}
         </p>
         <h2 className="mt-4 font-display text-3xl leading-tight tracking-tight text-charcoal md:text-4xl">
           {labels.title}
         </h2>
-      </div>
+      </Reveal>
 
-      <div className="mt-14 grid gap-10 border-t border-stone-dark pt-10 md:grid-cols-3 md:gap-12">
-        {points.map((point) => (
-          <div key={point.title}>
-            <h3 className="font-display text-xl text-charcoal">{point.title}</h3>
-            <p className="mt-3 leading-relaxed text-charcoal/70">{point.description}</p>
-          </div>
-        ))}
-      </div>
+      <ul className="mt-12 grid gap-10 border-t border-stone-dark pt-10 md:grid-cols-3 md:gap-12">
+        {points.map((point, index) => {
+          const Icon = ICONS[index % ICONS.length];
+          return (
+            <Reveal as="li" key={point.title} delay={index * 0.08}>
+              <Icon className="h-7 w-7 text-forest" />
+              <h3 className="mt-4 font-display text-xl text-charcoal">{point.title}</h3>
+              <p className="mt-2 leading-relaxed text-charcoal/65">{point.description}</p>
+            </Reveal>
+          );
+        })}
+      </ul>
 
-      <p className="mt-14 max-w-2xl border-l-2 border-clay pl-5 leading-relaxed text-charcoal/60">
-        {labels.note}
-      </p>
+      <Reveal className="mt-14 flex max-w-2xl gap-4 rounded-2xl bg-stone/60 p-6">
+        <LeafIcon className="h-6 w-6 shrink-0 text-clay" />
+        <p className="leading-relaxed text-charcoal/65">{labels.note}</p>
+      </Reveal>
     </Section>
   );
 }

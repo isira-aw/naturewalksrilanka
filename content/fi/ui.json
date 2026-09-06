@@ -1,0 +1,247 @@
+{
+  "nav": {
+    "home": "Etusivu",
+    "journeys": "Matkat",
+    "customTour": "Räätälöity matka",
+    "aboutNandana": "Tietoa Nandanasta",
+    "sriLanka": "Sri Lanka",
+    "menu": "Valikko",
+    "close": "Sulje",
+    "language": "Kieli"
+  },
+  "hero": {
+    "eyebrow": "Nature Walks Sri Lanka",
+    "titleLine1": "Tavanomaisen",
+    "titleLine2": "tuolle puolen",
+    "subtitle": "Yksityismatkoja saaren villiin sydämeen.",
+    "ctaPrimary": "Tutustu matkoihin",
+    "ctaSecondary": "Rakenna oma matkasi"
+  },
+  "home": {
+    "introEyebrow": "Nature Walks Sri Lanka",
+    "introTitle": "Yksi yritys koko matkalle.",
+    "introBody": "Sertifioidut oppaat, majoitus ja kuljetukset — meidän järjestäminämme ensimmäisestä viestistäsi viimeiseen aamuusi saarella.",
+    "stats": [
+      {
+        "value": "20+",
+        "label": "Vuotta oppaana"
+      },
+      {
+        "value": "30+",
+        "label": "Kotoperäistä lintulajia"
+      },
+      {
+        "value": "15",
+        "label": "Kohdetta"
+      },
+      {
+        "value": "100%",
+        "label": "Sertifioituja oppaita"
+      }
+    ],
+    "servicesEyebrow": "Mitä järjestämme",
+    "servicesTitle": "Kaikki mitä matka vaatii, samasta paikasta.",
+    "services": [
+      {
+        "title": "Sertifioidut oppaat",
+        "short": "Oma tiimimme, Sri Lanka Tourism Boardin sertifioima."
+      },
+      {
+        "title": "Majoitus",
+        "short": "Hotellit, boutique-kohteet ja ekolodget, meidän varaaminamme."
+      },
+      {
+        "title": "Kuljetukset",
+        "short": "Yksityisauto ja kokenut kuljettaja, lentokentältä lentokentälle."
+      },
+      {
+        "title": "Oma reittisi",
+        "short": "Rakennettu sen ympärille, mitä haluat nähdä — ja muokattavissa matkalla."
+      }
+    ],
+    "guideRole": "Perustaja ja pääopas",
+    "guideBody": "Nandana aloitti luonnonsuojelutyössä 1990, valmistui kansalliseksi oppaaksi 2002 ja perusti Nature Walks Sri Lankan 2017. Hän opastaa yhä itse matkoja.",
+    "guideCta": "Lue Nandanan tarina",
+    "journeysCta": "Katso kaikki matkat",
+    "placesCta": "Katso kaikki kohteet"
+  },
+  "tours": {
+    "sectionEyebrow": "Matkat",
+    "sectionTitle": "Kuinka pitkään haluat tutustua Sri Lankaan?",
+    "custom": "Räätälöity",
+    "cta": "Tutustu matkaan",
+    "daysLabel": "Päivää",
+    "included": "Sisältyy hintaan",
+    "excluded": "Ei sisälly",
+    "itineraryTitle": "Päivä kerrallaan",
+    "highlightsTitle": "Kohokohdat",
+    "destinationsTitle": "Kohteet",
+    "activitiesTitle": "Aktiviteetit",
+    "customizeCta": "Muokkaa tätä matkaa",
+    "whatsappCta": "Kysy tästä matkasta"
+  },
+  "customTour": {
+    "eyebrow": "Räätälöity matka",
+    "titleLine1": "Sinun Sri Lankasi.",
+    "titleLine2": "Sinun tavallasi.",
+    "intro": "Kerro, miten haluat kokea Sri Lankan, niin rakennamme sen ympärille yksityismatkan — opas, majoitus ja kuljetukset mukaan lukien.",
+    "start": "Rakenna matkani",
+    "steps": {
+      "travelers": "Matkustajat",
+      "dates": "Päivämäärät",
+      "interests": "Kiinnostukset",
+      "accommodation": "Majoitus",
+      "aiAssistant": "Tekoälyavustaja",
+      "contact": "Yhteystiedot",
+      "review": "Yhteenveto"
+    },
+    "stepOf": "Vaihe {current} / {total}",
+    "required": "pakollinen",
+    "optional": "valinnainen",
+    "back": "Takaisin",
+    "next": "Jatka",
+    "travelersLabel": "Montako matkustajaa?",
+    "travelersDecrease": "Yksi matkustaja vähemmän",
+    "travelersIncrease": "Yksi matkustaja lisää",
+    "travelersHint": "1–12 matkustajaa yksityismatkalla.",
+    "datesLabel": "Milloin haluat matkustaa?",
+    "datesHelp": "Valitse saapumispäiväsi ja sen jälkeen lähtöpäiväsi. Opastamme ympäri vuoden, joten mikä tahansa ajankohta järjestyy.",
+    "datesHint": "Valitse ensin saapuminen ja sitten lähtö.",
+    "datesStart": "Saapuminen",
+    "datesEnd": "Lähtö",
+    "datesPreviousMonth": "Edellinen kuukausi",
+    "datesNextMonth": "Seuraava kuukausi",
+    "datesClear": "Tyhjennä",
+    "datesSelected": "{count} päivää Sri Lankassa",
+    "datesInvalid": "Valitse saapumispäivä ja sitä myöhempi lähtöpäivä.",
+    "interestsLabel": "Mikä kiinnostaa sinua eniten?",
+    "interestsHint": "Valitse yksi tai useampi. Sopivat matkaideat ilmestyvät viereen.",
+    "interests": {
+      "wildlife": "Eläimet",
+      "trekking": "Vaellus",
+      "culture": "Kulttuuri",
+      "birding": "Lintujen tarkkailu",
+      "beach": "Ranta",
+      "photography": "Valokuvaus",
+      "adventure": "Seikkailu"
+    },
+    "suggestionsTitle": "Matkaideat",
+    "suggestionsEmpty": "Valitse kategoria nähdäksesi siihen sopivat valmiit matkaideat.",
+    "suggestionsCount": "{count} osumaa",
+    "suggestionsReadMore": "Lue lisää",
+    "suggestionsAdd": "Lisää kyselyyn",
+    "suggestionsAdded": "Lisätty",
+    "suggestionsSelectedLabel": "Matkaideat",
+    "suggestionsClose": "Sulje",
+    "suggestionsLocation": "Sijainti",
+    "suggestionsBestTime": "Paras ajankohta",
+    "suggestionsDuration": "Ehdotettu kesto",
+    "suggestionsHighlights": "Mitä voit nähdä",
+    "accommodationLabel": "Toivottu majoitustyyli",
+    "accommodationHint": "Valitse yksi tai useampi tyyli, tai anna meidän suositella jokaiselle pysähdykselle sopivaa.",
+    "accommodation": {
+      "budget": "Edullinen",
+      "comfortable": "Mukava",
+      "boutique": "Boutique",
+      "luxury": "Luksus",
+      "ecoLodge": "Ekolodge",
+      "recommend": "En osaa sanoa — suositelkaa minulle"
+    },
+    "accommodationNotesLabel": "Muuta majoitukseen liittyvää?",
+    "aiAssistant": {
+      "title": "Anna tekoälyn hahmotella reitti",
+      "intro": "Kaiken kertomasi perusteella voimme ehdottaa päiväkohtaisen reitin ympäri Sri Lankaa — valitset joka päivälle mieluisimman vaihtoehdon.",
+      "generateCta": "Luo matkasuunnitelmani",
+      "loading": "Matkasuunnitelmaa kootaan…",
+      "error": "Emme voineet luoda matkasuunnitelmaa juuri nyt. Jatka eteenpäin ja keskustele matkastasi suoraan kanssamme.",
+      "rateLimited": "Olet saavuttanut tämän laitteen päivittäisen matkasuunnitelmarajan. Jatka eteenpäin ja keskustele matkastasi suoraan kanssamme.",
+      "dayLabel": "Päivä {day}",
+      "skip": "Ohita tämä vaihe",
+      "regenerate": "Aloita alusta",
+      "backDay": "Takaisin edelliseen päivään",
+      "distanceLabel": "{km} km edellisestä pysähdyksestä · noin {duration} maanteitse",
+      "recommendedLabel": "Meidän valintamme sinulle",
+      "recommendedBadge": "Suositeltu",
+      "otherOptionsLabel": "Muut vaihtoehdot tälle päivälle",
+      "selectedSummaryTitle": "Ehdotettu reittisi"
+    },
+    "contactName": "Nimi",
+    "contactEmail": "Sähköposti",
+    "contactPhone": "WhatsApp / puhelin",
+    "contactCountry": "Maa",
+    "contactHint": "Jotta voimme vastata sinulle. Mitään ei tallenneta tälle sivustolle — vastauksesi menevät suoraan WhatsApp-viestiin, jonka lähetät itse.",
+    "requirementsLabel": "Kerro meille ihannematkastasi…",
+    "reviewTitle": "Tarkista matkasi",
+    "reviewHint": "Tarkista, että kaikki on oikein, ja lähetä se WhatsAppissa.",
+    "submit": "Keskustele matkastani WhatsAppissa",
+    "errorTravelers": "Anna vähintään yksi matkustaja.",
+    "errorInterests": "Valitse vähintään yksi kiinnostuksen kohde.",
+    "errorContact": "Lisää nimesi, kelvollinen sähköpostiosoite ja puhelinnumero."
+  },
+  "nandana": {
+    "introEyebrow": "Kuka on Nandana",
+    "experienceLabel": "Kokemus",
+    "certificationLabel": "Sertifiointi",
+    "introTitle": "Elämä kuljettuna Sri Lankan halki.",
+    "whyEyebrow": "Miksi matkustaa kanssamme",
+    "whyTitle": "Opasyritys, ei varaustiski.",
+    "whyPoints": [
+      {
+        "title": "Jokainen opas sertifioitu",
+        "description": "Kaikki oppaamme ovat Sri Lanka Tourism Boardin sertifioimia."
+      },
+      {
+        "title": "Koulutettu maastossa",
+        "description": "Opastus kasvoi kenttätyöstä — kouluttajana Nandana itse."
+      },
+      {
+        "title": "Yksi yritys, yksi matka",
+        "description": "Oppaat, majoitus ja kuljetukset meiltä — yksi numero kaikkeen."
+      }
+    ]
+  },
+  "sriLanka": {
+    "eyebrow": "Sri Lanka",
+    "title": "Sademetsä, ylängöt ja rannikko — lähempänä toisiaan kuin uskoisit.",
+    "body": "Wilpattun kuivan vyöhykkeen leopardimailta Sinharajan kotoperäisiä lajeja kuhisevaan sademetsään, Kandyn vuoristotemppeleistä Trincomaleen edustan riuttaan — Sri Lanka tiivistää mantereellisen kirjon elinympäristöjä yhdelle saarelle.",
+    "cta": "Katso kohteet"
+  },
+  "conservation": {
+    "eyebrow": "Luonnonsuojelu",
+    "title": "Opastusta, joka juontuu kenttätyöstä eikä pelkästä vieraanvaraisuudesta.",
+    "quote": "Nandana aloitti uransa Sri Lankan luonnonsuojeluvirastossa ja on edelleen Colombon yliopiston Field Ornithology Groupin jäsen — luonnonsuojelu ei ole alaviite matkoillamme, vaan siitä koko opastus sai alkunsa."
+  },
+  "testimonials": {
+    "eyebrow": "Kokemuksia",
+    "title": "Matkalaisilta, jotka ovat kulkeneet tämän reitin",
+    "emptyState": "Kokoamme tänne matkalaisten kertomuksia — palaa pian takaisin tai pyydä meiltä suosituksia WhatsAppissa."
+  },
+  "finalCta": {
+    "eyebrow": "Aloita suunnittelu",
+    "title": "Sinun Sri Lankasi alkaa keskustelusta.",
+    "subtitle": "Ei lomakkeita, ei odottelua — viesti suoraan Nature Walks Sri Lankalle WhatsAppissa."
+  },
+  "whatsapp": {
+    "talkToUs": "Ota yhteyttä",
+    "askUs": "Kysy meiltä",
+    "discussJourney": "Kysy tästä matkasta",
+    "buildJourney": "Rakenna matkani",
+    "finalCta": "Aloita suunnittelu WhatsAppissa"
+  },
+  "footer": {
+    "tagline": "Yksityisiä luonto- ja eläinmatkoja Sri Lankassa: sertifioidut oppaat, majoitus ja kuljetukset järjestettynä koko matkan ajaksi.",
+    "navigation": "Navigointi",
+    "journeys": "Matkat",
+    "contact": "Yhteystiedot",
+    "language": "Kieli",
+    "privacy": "Tietosuojaseloste",
+    "terms": "Ehdot",
+    "rights": "Kaikki oikeudet pidätetään."
+  },
+  "common": {
+    "addressLabel": "Osoite",
+    "contentRequired": "Sisältö vahvistettava Nandanan kanssa",
+    "comingSoon": "Tulossa pian"
+  },
+  "_reviewStatus": "needs-native-review"
+}

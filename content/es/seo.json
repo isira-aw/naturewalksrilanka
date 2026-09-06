@@ -1,0 +1,26 @@
+{
+  "siteName": "Nature Walks Sri Lanka",
+  "titleTemplate": "%s | Nature Walks Sri Lanka",
+  "defaultTitle": "Nature Walks Sri Lanka — Viajes privados de naturaleza y fauna con guías certificados",
+  "defaultDescription": "Viajes privados por Sri Lanka con Nature Walks Sri Lanka, empresa fundada por Nandana Hewagamage: guías certificados, alojamiento y transporte organizados para safaris, observación de aves, trekking y cultura.",
+  "ogImage": "/images/og-default.jpg",
+  "keywords": [
+    "viajes privados Sri Lanka",
+    "viajes de naturaleza Sri Lanka",
+    "safari Sri Lanka",
+    "viaje a medida Sri Lanka",
+    "guía privado Sri Lanka",
+    "viaje ornitológico Sri Lanka",
+    "trekking Sri Lanka",
+    "guía certificado Sri Lanka"
+  ],
+  "pages": {
+    "home": { "title": "Viajes privados de naturaleza y fauna en Sri Lanka", "description": "Descubre Sri Lanka más allá de lo habitual: viajes privados de fauna, aves y cultura con Nature Walks Sri Lanka, con guías certificados por la Junta de Turismo de Sri Lanka y alojamiento y transporte incluidos." },
+    "tours": { "title": "Viajes por Sri Lanka — 10, 12, 16 y 18 días", "description": "Cuatro viajes privados por Sri Lanka con safaris, observación de aves, montaña y cultura, guiados por el equipo certificado de Nature Walks Sri Lanka." },
+    "customTour": { "title": "Diseña un viaje a medida por Sri Lanka", "description": "Diseña un viaje privado y personalizado por Sri Lanka con Nature Walks Sri Lanka: elige fechas, intereses y alojamiento y coméntalo después directamente por WhatsApp." },
+    "aboutNandana": { "title": "Sobre Nandana Hewagamage", "description": "Más de 20 años guiando la naturaleza y la cultura de Sri Lanka, del Departamento de Conservación de la Fauna a la fundación de Nature Walks Sri Lanka." },
+    "destinations": { "title": "Destinos de Sri Lanka", "description": "Los parques nacionales, ciudades antiguas y senderos de montaña que se visitan en un viaje de Nature Walks Sri Lanka." },
+    "contact": { "title": "Contacta con Nature Walks Sri Lanka", "description": "Ponte en contacto con Nandana Hewagamage y el equipo de Nature Walks Sri Lanka para empezar a planificar tu viaje privado por Sri Lanka." }
+  },
+  "_reviewStatus": "needs-native-review"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Nandana Hewagamage",
+  "experience": "20+ jaar",
+  "languages": [],
+  "certification": "Gecertificeerd door de Sri Lanka Tourism Board",
+  "philosophy": "Een reis door Sri Lanka hoort geleid te worden door iemand die het land kent zoals een bioloog een bospad kent — op het gehoor, op het seizoen, door er jarenlang te lopen.",
+  "story": "In 1990 begon Nandana zijn loopbaan bij het Department of Wildlife Conservation van Sri Lanka als natuureducatiemedewerker voor scholen en dorpsgemeenschappen, waarbij hij samenwerkte met universitaire onderzoeksprogramma's naar de vogels, planten en insecten van het eiland. Hij is lid van de Field Ornithology Group van de Universiteit van Colombo. In 1999 stapte hij over naar avontuurlijk ecotoerisme — trekkingtochten en avontuurlijke reizen met wildwaterraften, canyoning en ziplining — voordat hij zich in 2002 kwalificeerde als nationaal toeristengids en docent, gespecialiseerd in vogels kijken, wilde dieren, natuurfotografie en trekking, evenals culturele en historische rondreizen. In 2017, na jaren gidsen voor grote reisorganisaties, richtte hij Nature Walks Sri Lanka op om reizigers een toegewijde, persoonlijke kennismaking met de natuur en cultuur van het eiland te bieden.",
+  "specialties": [
+    "Vogels kijken",
+    "Wilde dieren",
+    "Natuurfotografie",
+    "Trekking",
+    "Cultuur en geschiedenis"
+  ],
+  "stats": [
+    { "value": "20+", "label": "Jaar als gids" },
+    { "value": "CONTENT_REQUIRED", "label": "Talen" },
+    { "value": "Sri Lanka", "label": "Zijn thuis" }
+  ],
+  "portraitImage": "/images/nandana-portrait.jpg",
+  "_note": "Languages list not yet confirmed — brief states 5 languages but does not name them. Leave as CONTENT_REQUIRED until Nandana confirms.",
+  "_reviewStatus": "needs-native-review"
+}

@@ -161,7 +161,7 @@ export default async function DestinationDetailPage({
               message={buildGeneralMessage()}
               variant="secondary"
             >
-              {t("whatsapp.askNandana")}
+              {t("whatsapp.askUs")}
             </WhatsAppCTA>
           </div>
         </Container>

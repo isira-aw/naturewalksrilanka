@@ -5,24 +5,62 @@
     "customTour": "Custom Tour",
     "aboutNandana": "About Nandana",
     "sriLanka": "Sri Lanka",
-    "checkAvailability": "Check Availability",
     "menu": "Menu",
     "close": "Close",
     "language": "Language"
   },
   "hero": {
-    "eyebrow": "Discover Sri Lanka",
+    "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Beyond the",
     "titleLine2": "ordinary",
-    "subtitle": "Private journeys through the wild heart of Sri Lanka, guided by Nandana Hewagamage.",
+    "subtitle": "Private journeys through the wild heart of the island.",
     "ctaPrimary": "Explore Tours",
     "ctaSecondary": "Build Your Journey"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Private journeys, led by one naturalist guide.",
-    "introBody": "Unhurried travel through Sri Lanka's rainforests, national parks and hill country — shaped around what you want to see, and guided from your first message to your last morning on the island.",
-    "guideBody": "Nandana started out in wildlife conservation in 1990, working with village communities and university research teams on Sri Lanka's birds, plants and insects. He qualified as a national guide in 2002, and in 2017 founded Nature Walks Sri Lanka so travellers could have one guide for the whole journey.",
+    "introTitle": "One company for the whole journey.",
+    "introBody": "Certified guides, accommodation and transport — arranged by us, from your first message to your last morning on the island.",
+    "stats": [
+      {
+        "value": "20+",
+        "label": "Years guiding"
+      },
+      {
+        "value": "30+",
+        "label": "Endemic bird species"
+      },
+      {
+        "value": "15",
+        "label": "Destinations"
+      },
+      {
+        "value": "100%",
+        "label": "Certified guides"
+      }
+    ],
+    "servicesEyebrow": "What We Arrange",
+    "servicesTitle": "Everything a journey needs, from one place.",
+    "services": [
+      {
+        "title": "Certified guides",
+        "short": "Our own team, certified by the Sri Lanka Tourism Board."
+      },
+      {
+        "title": "Accommodation",
+        "short": "Hotels, boutique stays and eco lodges, booked for you."
+      },
+      {
+        "title": "Transport",
+        "short": "Private vehicle, experienced driver, airport to airport."
+      },
+      {
+        "title": "Your itinerary",
+        "short": "Built around what you want to see — and adjusted as you go."
+      }
+    ],
+    "guideRole": "Founder & lead guide",
+    "guideBody": "Nandana began in wildlife conservation in 1990, qualified as a national guide in 2002, and founded Nature Walks Sri Lanka in 2017. He still leads tours himself.",
     "guideCta": "Read Nandana's story",
     "journeysCta": "See all journeys",
     "placesCta": "See all destinations"
@@ -40,14 +78,13 @@
     "destinationsTitle": "Destinations",
     "activitiesTitle": "Activities",
     "customizeCta": "Customize This Journey",
-    "availabilityCta": "Check Availability",
     "whatsappCta": "Discuss This Journey"
   },
   "customTour": {
     "eyebrow": "Custom Tour",
     "titleLine1": "Your Sri Lanka.",
     "titleLine2": "Your way.",
-    "intro": "Tell Nandana how you'd like to experience Sri Lanka, and he'll shape a private journey around it.",
+    "intro": "Tell us how you'd like to experience Sri Lanka, and we'll shape a private journey around it — guide, accommodation and transport included.",
     "start": "Build My Journey",
     "steps": {
       "travelers": "Travelers",
@@ -58,12 +95,27 @@
       "contact": "Contact Information",
       "review": "Review"
     },
+    "stepOf": "Step {current} of {total}",
+    "required": "required",
+    "optional": "optional",
     "back": "Back",
     "next": "Continue",
     "travelersLabel": "How many travelers?",
+    "travelersDecrease": "One traveller fewer",
+    "travelersIncrease": "One traveller more",
+    "travelersHint": "Between 1 and 12 travellers on a private journey.",
     "datesLabel": "When would you like to travel?",
-    "datesHelp": "Select a start and end date. Nandana's calendar will be checked automatically.",
+    "datesHelp": "Pick your arrival date, then your departure date. We guide year-round, so any dates can be arranged.",
+    "datesHint": "Select your arrival, then your departure.",
+    "datesStart": "Arrival",
+    "datesEnd": "Departure",
+    "datesPreviousMonth": "Previous month",
+    "datesNextMonth": "Next month",
+    "datesClear": "Clear",
+    "datesSelected": "{count} days in Sri Lanka",
+    "datesInvalid": "Please choose an arrival date and a departure date after it.",
     "interestsLabel": "What are you most interested in?",
+    "interestsHint": "Pick one or more. Matching journey ideas appear alongside.",
     "interests": {
       "wildlife": "Wildlife",
       "trekking": "Trekking",
@@ -73,7 +125,20 @@
       "photography": "Photography",
       "adventure": "Adventure"
     },
+    "suggestionsTitle": "Journey ideas",
+    "suggestionsEmpty": "Choose a category to see the prebuilt journey ideas that match it.",
+    "suggestionsCount": "{count} matching",
+    "suggestionsReadMore": "Read more",
+    "suggestionsAdd": "Add to enquiry",
+    "suggestionsAdded": "Added",
+    "suggestionsSelectedLabel": "Journey ideas",
+    "suggestionsClose": "Close",
+    "suggestionsLocation": "Location",
+    "suggestionsBestTime": "Best time of year",
+    "suggestionsDuration": "Suggested length",
+    "suggestionsHighlights": "What you might see",
     "accommodationLabel": "Preferred accommodation style",
+    "accommodationHint": "Choose one or more styles, or let us recommend something for each stop.",
     "accommodation": {
       "budget": "Budget",
       "comfortable": "Comfortable",
@@ -88,8 +153,8 @@
       "intro": "Based on everything you've told us, we can suggest a day-by-day route around Sri Lanka — you pick your favorite option each day.",
       "generateCta": "Generate my itinerary",
       "loading": "Building your itinerary…",
-      "error": "We couldn't generate an itinerary right now. Please continue and discuss your trip with Nandana directly.",
-      "rateLimited": "You've reached the itinerary limit for this device today. Please continue and discuss your trip with Nandana directly.",
+      "error": "We couldn't generate an itinerary right now. Please continue and discuss your trip with us directly.",
+      "rateLimited": "You've reached the itinerary limit for this device today. Please continue and discuss your trip with us directly.",
       "dayLabel": "Day {day}",
       "skip": "Skip this step",
       "regenerate": "Start over",
@@ -104,33 +169,35 @@
     "contactEmail": "Email",
     "contactPhone": "WhatsApp / Phone",
     "contactCountry": "Country",
-    "requirementsLabel": "Tell Nandana about your ideal journey…",
+    "contactHint": "So we can reply to you. Nothing is stored on this site — your answers go straight into a WhatsApp message you send yourself.",
+    "requirementsLabel": "Tell us about your ideal journey…",
     "reviewTitle": "Review your journey",
-    "submit": "Discuss My Journey on WhatsApp"
-  },
-  "calendar": {
-    "available": "Available",
-    "unavailable": "Unavailable",
-    "selected": "Selected",
-    "today": "Today",
-    "daysSelected": "{count} days selected",
-    "rangeUnavailable": "Some of your selected dates are unavailable. Please choose another range.",
-    "rangeAvailable": "Nandana is available for these dates.",
-    "loading": "Checking availability…",
-    "error": "We couldn't check availability right now. Please try again in a moment or contact Nandana directly on WhatsApp.",
-    "invalidRange": "Please select a valid travel period."
+    "reviewHint": "Check everything reads right, then send it over on WhatsApp.",
+    "submit": "Discuss My Journey on WhatsApp",
+    "errorTravelers": "Please enter at least one traveller.",
+    "errorInterests": "Please choose at least one interest.",
+    "errorContact": "Please add your name, a valid email address and a phone number."
   },
   "nandana": {
     "introEyebrow": "Who is Nandana",
     "experienceLabel": "Experience",
     "certificationLabel": "Certification",
     "introTitle": "A lifetime spent walking through Sri Lanka.",
-    "whyEyebrow": "Why Travel With Nandana",
-    "whyTitle": "A private guide, not a private van.",
+    "whyEyebrow": "Why Travel With Us",
+    "whyTitle": "A guiding company, not a booking desk.",
     "whyPoints": [
-      { "title": "Field-trained, not scripted", "description": "Nandana's guiding grew out of wildlife conservation fieldwork, not a tour-desk script — he reads a forest the way he reads a room." },
-      { "title": "Nationally certified", "description": "A Sri Lanka Tourism Board certified national guide since 2002, specializing in birding, wildlife, trekking and cultural tours." },
-      { "title": "One guide, one journey", "description": "You travel with Nandana himself, not a rotating roster of drivers — your itinerary is shaped around you." }
+      {
+        "title": "Every guide certified",
+        "description": "All our guides are certified by the Sri Lanka Tourism Board."
+      },
+      {
+        "title": "Field-trained, not scripted",
+        "description": "Guiding that grew out of conservation fieldwork, taught by Nandana himself."
+      },
+      {
+        "title": "One company, one journey",
+        "description": "Guides, stays and transport from us — one number for anything."
+      }
     ]
   },
   "sriLanka": {
@@ -139,36 +206,30 @@
     "body": "From Wilpattu's dry-zone leopard country to Sinharaja's endemic-rich rainforest canopy, from Kandy's hill temples to the reef off Trincomalee, Sri Lanka compresses a continent's worth of habitat into a single island.",
     "cta": "See the Destinations"
   },
-  "availability": {
-    "eyebrow": "Availability",
-    "title": "Is Nandana available for your dates?",
-    "subtitle": "Check his calendar directly — no waiting on an email reply.",
-    "cta": "Check Availability"
-  },
   "conservation": {
     "eyebrow": "Conservation",
     "title": "Guiding rooted in fieldwork, not just hospitality.",
-    "quote": "Nandana began his career with Sri Lanka's Department of Wildlife Conservation and remains a member of the Field Ornithology Group of the University of Colombo — conservation isn't a footnote to his tours, it's where his guiding started."
+    "quote": "Nandana began his career with Sri Lanka's Department of Wildlife Conservation and remains a member of the Field Ornithology Group of the University of Colombo — conservation isn't a footnote to our tours, it's where the guiding started."
   },
   "testimonials": {
     "eyebrow": "Testimonials",
     "title": "From travelers who've walked this route",
-    "emptyState": "Traveler stories are being gathered here — check back soon, or ask Nandana directly on WhatsApp for references."
+    "emptyState": "Traveler stories are being gathered here — check back soon, or message us on WhatsApp for references."
   },
   "finalCta": {
     "eyebrow": "Start Planning",
     "title": "Your Sri Lanka begins with a conversation.",
-    "subtitle": "No forms, no wait — just message Nandana directly on WhatsApp."
+    "subtitle": "No forms, no wait — message Nature Walks Sri Lanka directly on WhatsApp."
   },
   "whatsapp": {
-    "talkToNandana": "Talk to Nandana",
-    "askNandana": "Ask Nandana",
+    "talkToUs": "Talk to us",
+    "askUs": "Ask a question",
     "discussJourney": "Discuss This Journey",
     "buildJourney": "Build My Journey",
     "finalCta": "Start Planning on WhatsApp"
   },
   "footer": {
-    "tagline": "Private nature and wildlife journeys through Sri Lanka.",
+    "tagline": "Private nature and wildlife journeys through Sri Lanka, with certified guides, accommodation and transport arranged throughout.",
     "navigation": "Navigation",
     "journeys": "Journeys",
     "contact": "Contact",

@@ -13,7 +13,7 @@ export function MobileNav({
   labels,
 }: {
   navigation: Navigation;
-  labels: { menu: string; close: string; checkAvailability: string; language: string };
+  labels: { menu: string; close: string; primaryCta: string; language: string };
 }) {
   const [open, setOpen] = useState(false);
 
@@ -68,17 +68,17 @@ export function MobileNav({
               <p className="mb-3 font-utility text-xs uppercase tracking-wide text-charcoal/50">
                 {labels.language}
               </p>
-              <LocaleSwitcher className="text-sm" />
+              <LocaleSwitcher label={labels.language} className="max-w-56" />
             </div>
 
             <Link
-              href={navigation.checkAvailability.href}
+              href={navigation.primaryCta.href}
               onClick={() => setOpen(false)}
               className={cn(
                 "mt-8 inline-flex min-h-14 items-center justify-center rounded-full bg-forest px-6 py-4 text-center font-medium text-warm-white"
               )}
             >
-              {labels.checkAvailability}
+              {labels.primaryCta}
             </Link>
           </div>,
           document.body

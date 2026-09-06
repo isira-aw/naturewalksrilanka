@@ -1,0 +1,98 @@
+{
+  "18-days": {
+    "title": "18 dagen",
+    "tagline": "Vogels, wilde dieren, cultuur en avontuur — met een zomervakantie",
+    "summary": "De complete doorkruising van het wilde en culturele hart van Sri Lanka: nationale parken in de droge zone, oude steden, theeplantages in het heuvelland, de trein naar Ella en het regenwoud van Sinharaja, met een afsluiting aan zee.",
+    "highlights": [
+      "Nationaal Park Wilpattu — luipaard, lippenbeer, olifant",
+      "Rondleiding door de oude stad Anuradhapura en de Mihintale-tempel",
+      "Trincomalee: Pigeon Island en dolfijnen spotten",
+      "De Leeuwenrots van Sigiriya, Pidurangala, Polonnaruwa en Minneriya",
+      "De Tempel van de Tand in Kandy en het theegebied",
+      "Wildwaterraften, canyoning en ziplining bij Kithulgala",
+      "De trein naar Ella, de Nine Arch Bridge en Little Adam's Peak",
+      "Safari in Nationaal Park Yala",
+      "Vogels kijken in het regenwoud van Sinharaja, UNESCO-werelderfgoed"
+    ],
+    "itinerary": [
+      { "location": "Negombo", "title": "Aankomst en boottocht over het Nederlandse kanaal", "description": "Aankomst op de luchthaven van Colombo en rit naar Negombo (ongeveer een half uur)." },
+      { "location": "Negombo → Anuradhapura", "title": "Wilpattu en de oude stad", "description": "De vismarkt van Negombo, Nationaal Park Wilpattu, een rondleiding door de oude stad Anuradhapura en de Mihintale-tempel. Wilpattu is het grootste nationale park van Sri Lanka, bekend om luipaard, lippenbeer, olifant, zijn natuurlijke meren (villus) en de vogels van de droge zone." },
+      { "location": "Trincomalee", "title": "Kust, rif en dolfijnen", "description": "Stadstour door Trincomalee, Pigeon Island en dolfijnen spotten." },
+      { "location": "Sigiriya", "title": "De Leeuwenrots en het oude Polonnaruwa", "description": "De Leeuwenrots, de Pidurangala-tempel, een rondleiding door de oude stad Polonnaruwa, een optionele dorpstour en Nationaal Park Minneriya." },
+      { "location": "Kandy", "title": "Tempel, thee en cultuur", "description": "De grottempel van Dambulla, een kruiden- en specerijentuin, een cultureel dansprogramma in Kandy, de Tempel van de Tand, een bezoek aan een theefabriek en een stadstour door Kandy." },
+      { "location": "Kithulgala", "title": "Met de trein het hoogland in en avontuursport", "description": "Treinreis richting Nuwara Eliya, vogels kijken en een natuurwandeling, plus avontuursport — wildwaterraften, canyoning en ziplining." },
+      { "location": "Ella", "title": "De trein naar Ella en paden door het heuvelland", "description": "Treinreis naar Ella, de Nine Arch Bridge, Little Adam's Peak, de Ravana-waterval en Nildiya Pokuna, met Ella Rock en ziplining als optionele uitbreidingen." },
+      { "location": "Nationaal Park Yala / Tissamaharama", "title": "Safari in Yala", "description": "Een hele dag safari in Nationaal Park Yala." },
+      { "location": "Regenwoud Sinharaja", "title": "Vogels kijken in het regenwoud", "description": "Vogels kijken en een natuurwandeling door het regenwoud van Sinharaja, UNESCO-werelderfgoed en het rijkste laaglandregenwoud van Sri Lanka voor endemische soorten." },
+      { "location": "Vertrek", "title": "Vertrek", "description": "Transfer naar de luchthaven voor je vlucht terug." }
+    ]
+  },
+  "16-days": {
+    "title": "16 dagen",
+    "tagline": "Natuur, cultuur en avontuur — met een strandvakantie",
+    "summary": "Een reis vol natuur en cultuur door de droge zone, het heuvelland en de hooglanden van het eiland, met als afsluiting twee dagen ontspannen aan de zuidkust bij Mirissa.",
+    "highlights": [
+      "Nationaal Park Wilpattu en de oude stad Anuradhapura",
+      "Trincomalee: Pigeon Island en dolfijnen spotten",
+      "De Leeuwenrots van Sigiriya, Polonnaruwa en Nationaal Park Minneriya",
+      "De Tempel van de Tand in Kandy en het theegebied",
+      "Nationaal Park Horton Plains",
+      "De trein naar Ella, de Nine Arch Bridge en Little Adam's Peak",
+      "Safari in Nationaal Park Yala",
+      "Het strand van Mirissa en het Nederlandse fort van Galle"
+    ],
+    "itinerary": [
+      { "location": "Negombo", "title": "Aankomst en boottocht over het Nederlandse kanaal", "description": "Aankomst op de luchthaven van Colombo en rit naar Negombo (ongeveer een half uur)." },
+      { "location": "Negombo → Anuradhapura", "title": "Wilpattu en de oude stad", "description": "De vismarkt van Negombo, Nationaal Park Wilpattu, een rondleiding door de oude stad Anuradhapura en de Mihintale-tempel." },
+      { "location": "Trincomalee", "title": "Kust, rif en dolfijnen", "description": "Stadstour door Trincomalee, Pigeon Island en dolfijnen spotten." },
+      { "location": "Sigiriya", "title": "De Leeuwenrots en het oude Polonnaruwa", "description": "De Leeuwenrots, de Pidurangala-tempel, een rondleiding door de oude stad Polonnaruwa, een optionele dorpstour en Nationaal Park Minneriya." },
+      { "location": "Kandy", "title": "Tempel, thee en cultuur", "description": "De grottempel van Dambulla, een kruiden- en specerijentuin, een cultureel dansprogramma in Kandy, de Tempel van de Tand, een bezoek aan een theefabriek en een stadstour door Kandy." },
+      { "location": "Nuwara Eliya", "title": "Nationaal Park Horton Plains", "description": "Een dag in het berggrasland en nevelwoud van Nationaal Park Horton Plains." },
+      { "location": "Ella", "title": "De trein naar Ella en paden door het heuvelland", "description": "Treinreis naar Ella, de Nine Arch Bridge, Little Adam's Peak, de Ravana-waterval en Nildiya Pokuna, met Ella Rock en ziplining als optionele uitbreidingen." },
+      { "location": "Nationaal Park Yala / Tissamaharama", "title": "Safari in Yala", "description": "Een hele dag safari in Nationaal Park Yala." },
+      { "location": "Strand van Mirissa", "title": "Ontspannen aan zee en het fort van Galle", "description": "Vrije tijd op het strand en een bezoek aan het Nederlandse fort van Galle." },
+      { "location": "Vertrek", "title": "Vertrek", "description": "Transfer naar de luchthaven voor je vlucht terug." }
+    ]
+  },
+  "12-days": {
+    "title": "12 dagen",
+    "tagline": "Vogel- en wildlifereis",
+    "summary": "Een compacte rondreis langs natuur en cultuur — nationale parken in de droge zone, de oude steden, het theegebied bij Kandy, de trein naar Ella en een safari in Yala — op maat van een korter verblijf.",
+    "highlights": [
+      "Nationaal Park Wilpattu en de oude stad Anuradhapura",
+      "De Leeuwenrots van Sigiriya, Polonnaruwa en Nationaal Park Minneriya",
+      "De Tempel van de Tand in Kandy en het theegebied",
+      "De trein naar Ella, de Nine Arch Bridge en Little Adam's Peak",
+      "Safari in Nationaal Park Yala"
+    ],
+    "itinerary": [
+      { "location": "Negombo", "title": "Aankomst en boottocht over het Nederlandse kanaal", "description": "Aankomst op de luchthaven van Colombo en rit naar Negombo (ongeveer een half uur)." },
+      { "location": "Negombo → Anuradhapura", "title": "Wilpattu en de oude stad", "description": "De vismarkt van Negombo, Nationaal Park Wilpattu, een rondleiding door de oude stad Anuradhapura en de Mihintale-tempel." },
+      { "location": "Sigiriya", "title": "De Leeuwenrots en het oude Polonnaruwa", "description": "De Leeuwenrots, de Pidurangala-tempel, een rondleiding door de oude stad Polonnaruwa en Nationaal Park Minneriya." },
+      { "location": "Kandy", "title": "Tempel, thee en cultuur", "description": "De grottempel van Dambulla, een kruiden- en specerijentuin, een cultureel dansprogramma in Kandy, de Tempel van de Tand, een bezoek aan een theefabriek en een stadstour door Kandy." },
+      { "location": "Ella", "title": "De trein naar Ella en paden door het heuvelland", "description": "Treinreis naar Ella, de Nine Arch Bridge, Little Adam's Peak en de Ravana-waterval." },
+      { "location": "Nationaal Park Yala / Tissamaharama", "title": "Safari in Yala", "description": "Een hele dag safari in Nationaal Park Yala." },
+      { "location": "Regenwoud Sinharaja", "title": "Vogels kijken in het regenwoud en vertrek", "description": "Vogels kijken en een natuurwandeling door het regenwoud van Sinharaja, gevolgd door de transfer naar de luchthaven voor je vlucht terug." }
+    ]
+  },
+  "10-days": {
+    "title": "10 dagen",
+    "tagline": "Vogel- en natuurreis",
+    "summary": "Een rondreis gericht op endemische vogels, door het regenwoud van Kithulgala, de hooglanden van Nuwara Eliya en Horton Plains, een safari in Yala en het laaglandregenwoud van Sinharaja.",
+    "highlights": [
+      "Het regenwoud van Kithulgala en de Kelani-rivier",
+      "Victoria Park, Nuwara Eliya",
+      "Het bergnevelwoud van Horton Plains",
+      "Safari op luipaard en lippenbeer in Nationaal Park Yala",
+      "Regenwoud Sinharaja — UNESCO-werelderfgoed"
+    ],
+    "itinerary": [
+      { "location": "Kithulgala", "title": "De rand van het regenwoud en de Kelani-rivier", "description": "Aankomst op de luchthaven en rit naar Kithulgala. Aan de overkant van de Kelani-rivier begint dicht regenwoud; het dorp wordt omringd door bos dat veel vogelsoorten aantrekt, en de rivier zelf staat bekend om het wildwaterraften. Overnachting bij Forest Edge Kithulgala." },
+      { "location": "Nuwara Eliya", "title": "Victoria Park", "description": "Een klein park in het centrum van Nuwara Eliya. Overnachting in Nuwara Eliya." },
+      { "location": "Horton Plains", "title": "Bergen en nevelwoud", "description": "Een dag in het berg- en nevelwoudgebied van Horton Plains. Overnachting in Nuwara Eliya." },
+      { "location": "Tissamaharama", "title": "Vogels kijken onderweg", "description": "Na het ontbijt rijden we naar Tissamaharama, met onderweg een stop om vogels te kijken in een vogelreservaat. 's Middags vogels kijken rond de waterreservoirs van Tissamaharama. Overnachting in een hotel in Tissamaharama." },
+      { "location": "Nationaal Park Yala", "title": "Safari van een hele dag", "description": "Vroeg in de ochtend vertrek voor een hele dag vogels en zoogdieren spotten in Nationaal Park Yala, een park in de droge zone met struikjungle, waterreservoirs, brakke lagunes en rivierlandschappen — het beste park van het land om luipaard en lippenbeer te zien. Overnachting in een hotel in Tissamaharama." },
+      { "location": "Regenwoud Sinharaja", "title": "Vogels kijken in het laaglandregenwoud", "description": "Rit naar het regenwoud van Sinharaja, UNESCO-werelderfgoed met de rijkste biodiversiteit van Azië en de thuisbasis van vrijwel alle endemische planten en dieren van Sri Lanka. Vogels kijken in de middag en de volgende dagen. Overnachting in een hotel bij Sinharaja. Op de laatste avond rijden we naar de luchthaven voor je vlucht terug." }
+    ]
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "nav": {
+    "home": "Home",
+    "journeys": "Reizen",
+    "customTour": "Reis op maat",
+    "aboutNandana": "Over Nandana",
+    "sriLanka": "Sri Lanka",
+    "menu": "Menu",
+    "close": "Sluiten",
+    "language": "Taal"
+  },
+  "hero": {
+    "eyebrow": "Nature Walks Sri Lanka",
+    "titleLine1": "Voorbij het",
+    "titleLine2": "gewone",
+    "subtitle": "Privéreizen door het wilde hart van het eiland.",
+    "ctaPrimary": "Bekijk de reizen",
+    "ctaSecondary": "Stel je reis samen"
+  },
+  "home": {
+    "introEyebrow": "Nature Walks Sri Lanka",
+    "introTitle": "Eén bedrijf voor de hele reis.",
+    "introBody": "Gecertificeerde gidsen, accommodatie en vervoer — door ons geregeld, van je eerste bericht tot je laatste ochtend op het eiland.",
+    "stats": [
+      {
+        "value": "20+",
+        "label": "Jaar als gids"
+      },
+      {
+        "value": "30+",
+        "label": "Endemische vogelsoorten"
+      },
+      {
+        "value": "15",
+        "label": "Bestemmingen"
+      },
+      {
+        "value": "100%",
+        "label": "Gecertificeerde gidsen"
+      }
+    ],
+    "servicesEyebrow": "Wat wij regelen",
+    "servicesTitle": "Alles wat een reis nodig heeft, op één plek.",
+    "services": [
+      {
+        "title": "Gecertificeerde gidsen",
+        "short": "Ons eigen team, gecertificeerd door de Sri Lanka Tourism Board."
+      },
+      {
+        "title": "Accommodatie",
+        "short": "Hotels, boutiquehotels en eco-lodges, door ons geboekt."
+      },
+      {
+        "title": "Vervoer",
+        "short": "Privéauto met ervaren chauffeur, van luchthaven tot luchthaven."
+      },
+      {
+        "title": "Jouw route",
+        "short": "Gebouwd rond wat jij wilt zien — en onderweg bijgesteld."
+      }
+    ],
+    "guideRole": "Oprichter en hoofdgids",
+    "guideBody": "Nandana begon in 1990 in het natuurbehoud, werd in 2002 gediplomeerd nationaal gids en richtte in 2017 Nature Walks Sri Lanka op. Hij begeleidt nog altijd zelf reizen.",
+    "guideCta": "Lees het verhaal van Nandana",
+    "journeysCta": "Bekijk alle reizen",
+    "placesCta": "Bekijk alle bestemmingen"
+  },
+  "tours": {
+    "sectionEyebrow": "Reizen",
+    "sectionTitle": "Hoe lang wil je Sri Lanka ontdekken?",
+    "custom": "Op maat",
+    "cta": "Bekijk deze reis",
+    "daysLabel": "Dagen",
+    "included": "Wat is inbegrepen",
+    "excluded": "Niet inbegrepen",
+    "itineraryTitle": "Dag voor dag",
+    "highlightsTitle": "Hoogtepunten",
+    "destinationsTitle": "Bestemmingen",
+    "activitiesTitle": "Activiteiten",
+    "customizeCta": "Pas deze reis aan",
+    "whatsappCta": "Bespreek deze reis"
+  },
+  "customTour": {
+    "eyebrow": "Reis op maat",
+    "titleLine1": "Jouw Sri Lanka.",
+    "titleLine2": "Op jouw manier.",
+    "intro": "Vertel ons hoe je Sri Lanka wilt beleven, dan bouwen wij daar een privéreis omheen — inclusief gids, accommodatie en vervoer.",
+    "start": "Stel mijn reis samen",
+    "steps": {
+      "travelers": "Reizigers",
+      "dates": "Data",
+      "interests": "Interesses",
+      "accommodation": "Accommodatie",
+      "aiAssistant": "AI-reisassistent",
+      "contact": "Contactgegevens",
+      "review": "Overzicht"
+    },
+    "stepOf": "Stap {current} van {total}",
+    "required": "verplicht",
+    "optional": "optioneel",
+    "back": "Terug",
+    "next": "Verder",
+    "travelersLabel": "Met hoeveel reizigers?",
+    "travelersDecrease": "Eén reiziger minder",
+    "travelersIncrease": "Eén reiziger meer",
+    "travelersHint": "Van 1 tot 12 reizigers op een privéreis.",
+    "datesLabel": "Wanneer wil je reizen?",
+    "datesHelp": "Kies je aankomstdatum en daarna je vertrekdatum. Wij gidsen het hele jaar door, dus elke datum is mogelijk.",
+    "datesHint": "Kies eerst je aankomst en daarna je vertrek.",
+    "datesStart": "Aankomst",
+    "datesEnd": "Vertrek",
+    "datesPreviousMonth": "Vorige maand",
+    "datesNextMonth": "Volgende maand",
+    "datesClear": "Wissen",
+    "datesSelected": "{count} dagen in Sri Lanka",
+    "datesInvalid": "Kies een aankomstdatum en een vertrekdatum die daarna ligt.",
+    "interestsLabel": "Waarin ben je het meest geïnteresseerd?",
+    "interestsHint": "Kies er een of meer. Passende reisideeën verschijnen ernaast.",
+    "interests": {
+      "wildlife": "Wilde dieren",
+      "trekking": "Trekking",
+      "culture": "Cultuur",
+      "birding": "Vogels kijken",
+      "beach": "Strand",
+      "photography": "Fotografie",
+      "adventure": "Avontuur"
+    },
+    "suggestionsTitle": "Reisideeën",
+    "suggestionsEmpty": "Kies een categorie om de bijbehorende kant-en-klare reisideeën te zien.",
+    "suggestionsCount": "{count} passend",
+    "suggestionsReadMore": "Lees meer",
+    "suggestionsAdd": "Aan aanvraag toevoegen",
+    "suggestionsAdded": "Toegevoegd",
+    "suggestionsSelectedLabel": "Reisideeën",
+    "suggestionsClose": "Sluiten",
+    "suggestionsLocation": "Locatie",
+    "suggestionsBestTime": "Beste reistijd",
+    "suggestionsDuration": "Voorgestelde duur",
+    "suggestionsHighlights": "Wat je kunt zien",
+    "accommodationLabel": "Voorkeur voor accommodatie",
+    "accommodationHint": "Kies een of meer stijlen, of laat ons per stop iets aanraden.",
+    "accommodation": {
+      "budget": "Budget",
+      "comfortable": "Comfortabel",
+      "boutique": "Boutique",
+      "luxury": "Luxe",
+      "ecoLodge": "Eco-lodge",
+      "recommend": "Weet ik niet — adviseer mij"
+    },
+    "accommodationNotesLabel": "Nog iets over de accommodatie?",
+    "aiAssistant": {
+      "title": "Laat AI een route voor je schetsen",
+      "intro": "Op basis van alles wat je ons hebt verteld, stellen we een route per dag door Sri Lanka voor — jij kiest elke dag je favoriete optie.",
+      "generateCta": "Maak mijn routevoorstel",
+      "loading": "Je route wordt samengesteld…",
+      "error": "We konden nu geen route genereren. Ga verder en bespreek je reis rechtstreeks met ons.",
+      "rateLimited": "Je hebt het maximum aantal routevoorstellen voor dit apparaat vandaag bereikt. Ga verder en bespreek je reis rechtstreeks met ons.",
+      "dayLabel": "Dag {day}",
+      "skip": "Sla deze stap over",
+      "regenerate": "Opnieuw beginnen",
+      "backDay": "Terug naar de vorige dag",
+      "distanceLabel": "{km} km vanaf de vorige stop · ongeveer {duration} over de weg",
+      "recommendedLabel": "Onze keuze voor jou",
+      "recommendedBadge": "Aanbevolen",
+      "otherOptionsLabel": "Andere opties voor deze dag",
+      "selectedSummaryTitle": "Jouw voorgestelde route"
+    },
+    "contactName": "Naam",
+    "contactEmail": "E-mail",
+    "contactPhone": "WhatsApp / telefoon",
+    "contactCountry": "Land",
+    "contactHint": "Zodat we je kunnen antwoorden. Er wordt niets op deze site opgeslagen — je antwoorden gaan rechtstreeks in een WhatsApp-bericht dat je zelf verstuurt.",
+    "requirementsLabel": "Vertel ons over je ideale reis…",
+    "reviewTitle": "Bekijk je reis",
+    "reviewHint": "Controleer of alles klopt en stuur het daarna via WhatsApp.",
+    "submit": "Bespreek mijn reis via WhatsApp",
+    "errorTravelers": "Vul minstens één reiziger in.",
+    "errorInterests": "Kies minstens één interesse.",
+    "errorContact": "Vul je naam, een geldig e-mailadres en een telefoonnummer in."
+  },
+  "nandana": {
+    "introEyebrow": "Wie is Nandana",
+    "experienceLabel": "Ervaring",
+    "certificationLabel": "Certificering",
+    "introTitle": "Een leven lang wandelen door Sri Lanka.",
+    "whyEyebrow": "Waarom met ons reizen",
+    "whyTitle": "Een gidsenbedrijf, geen boekingsbalie.",
+    "whyPoints": [
+      {
+        "title": "Elke gids gecertificeerd",
+        "description": "Al onze gidsen zijn gecertificeerd door de Sri Lanka Tourism Board."
+      },
+      {
+        "title": "Getraind in het veld",
+        "description": "Gidsen dat voortkwam uit veldwerk, met Nandana als opleider."
+      },
+      {
+        "title": "Eén bedrijf, één reis",
+        "description": "Gidsen, verblijven en vervoer van ons — één nummer voor alles."
+      }
+    ]
+  },
+  "sriLanka": {
+    "eyebrow": "Sri Lanka",
+    "title": "Regenwoud, hoogland en kust — dichter bij elkaar dan je verwacht.",
+    "body": "Van het luipaardgebied in de droge zone van Wilpattu tot het endemische regenwoud van Sinharaja, van de tempels in de heuvels van Kandy tot het rif voor Trincomalee: Sri Lanka perst een continent aan leefgebieden samen op één eiland.",
+    "cta": "Bekijk de bestemmingen"
+  },
+  "conservation": {
+    "eyebrow": "Natuurbehoud",
+    "title": "Gidsen dat geworteld is in veldwerk, niet alleen in gastvrijheid.",
+    "quote": "Nandana begon zijn loopbaan bij het Department of Wildlife Conservation van Sri Lanka en is nog altijd lid van de Field Ornithology Group van de Universiteit van Colombo — natuurbehoud is geen voetnoot bij onze reizen, het is waar het gidsen begon."
+  },
+  "testimonials": {
+    "eyebrow": "Ervaringen",
+    "title": "Van reizigers die deze route liepen",
+    "emptyState": "Verhalen van reizigers worden hier verzameld — kom binnenkort terug of stuur ons een WhatsApp-bericht voor referenties."
+  },
+  "finalCta": {
+    "eyebrow": "Begin met plannen",
+    "title": "Jouw Sri Lanka begint met een gesprek.",
+    "subtitle": "Geen formulieren, geen wachttijd — stuur Nature Walks Sri Lanka rechtstreeks een bericht via WhatsApp."
+  },
+  "whatsapp": {
+    "talkToUs": "Neem contact op",
+    "askUs": "Stel een vraag",
+    "discussJourney": "Bespreek deze reis",
+    "buildJourney": "Stel mijn reis samen",
+    "finalCta": "Begin met plannen via WhatsApp"
+  },
+  "footer": {
+    "tagline": "Privéreizen door de natuur en de dierenwereld van Sri Lanka, met gecertificeerde gidsen, accommodatie en vervoer volledig geregeld.",
+    "navigation": "Navigatie",
+    "journeys": "Reizen",
+    "contact": "Contact",
+    "language": "Taal",
+    "privacy": "Privacybeleid",
+    "terms": "Voorwaarden",
+    "rights": "Alle rechten voorbehouden."
+  },
+  "common": {
+    "addressLabel": "Adres",
+    "contentRequired": "Inhoud nog te bevestigen met Nandana",
+    "comingSoon": "Binnenkort beschikbaar"
+  },
+  "_reviewStatus": "needs-native-review"
+}

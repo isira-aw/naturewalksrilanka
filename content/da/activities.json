@@ -1,0 +1,8 @@
+[
+  { "slug": "birding", "name": "Fuglekiggeri", "description": "Sri Lanka har over 30 endemiske fuglearter. Nandana, der er medlem af Field Ornithology Group, guider fugleture i øens regnskove, højland og tørzoneparker.", "_reviewStatus": "needs-native-review" },
+  { "slug": "wildlife-safari", "name": "Safari", "description": "Leopard, elefant, læbebjørn og meget mere, sporet i nationalparkerne Wilpattu og Yala.", "_reviewStatus": "needs-native-review" },
+  { "slug": "trekking", "name": "Vandring", "description": "Naturvandringer og bjergstier, fra Ella Rock til Horton Plains og Sinharaja-regnskoven.", "_reviewStatus": "needs-native-review" },
+  { "slug": "culture-history", "name": "Kultur og historie", "description": "Gamle byer, huletempler, Tandtemplet og Kandys kulturelle traditioner.", "_reviewStatus": "needs-native-review" },
+  { "slug": "adventure-sports", "name": "Eventyrsport", "description": "River rafting, canyoning og zipline ved regnskovsfloden i Kithulgala.", "_reviewStatus": "needs-native-review" },
+  { "slug": "beach", "name": "Strand", "description": "Afslapning ved sydkysten kombineret med et besøg i Galles hollandske fort.", "_reviewStatus": "needs-native-review" }
+]

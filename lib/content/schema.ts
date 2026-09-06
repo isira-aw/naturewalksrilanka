@@ -66,6 +66,50 @@ export const activitySchema = z.object({
 export type Activity = z.infer<typeof activitySchema>;
 export const activitiesSchema = z.array(activitySchema);
 
+/**
+ * A prebuilt itinerary idea, tied to exactly one interest category. The wizard
+ * shows the ones matching whatever categories the traveller ticks, so an idea
+ * must never straddle two categories — author a separate entry per category
+ * rather than tagging one entry "wildlife + photography".
+ */
+export const experienceHighlightSchema = z.object({
+  name: z.string(),
+  note: z.string().optional(),
+  /** Optional per-highlight photo (e.g. the bird itself); rendered when present. */
+  image: z.string().optional(),
+});
+export type ExperienceHighlight = z.infer<typeof experienceHighlightSchema>;
+
+export const experienceSchema = z.object({
+  slug: z.string(),
+  category: z.enum([
+    "wildlife",
+    "trekking",
+    "culture",
+    "birding",
+    "beach",
+    "photography",
+    "adventure",
+  ]),
+  title: z.string(),
+  location: z.string(),
+  /** Season the idea is written for, e.g. "December – April". */
+  bestTime: z.string(),
+  /** How long the idea runs, e.g. "2 days". */
+  duration: z.string(),
+  /** One line, shown on the card in the wizard. */
+  summary: z.string(),
+  /** Full text, shown only inside the dialog. */
+  description: z.string(),
+  images: z.array(z.string()).min(1),
+  highlights: z.array(experienceHighlightSchema),
+  contentRequired: z.boolean().optional(),
+  _note: z.string().optional(),
+  _reviewStatus: z.string().optional(),
+});
+export type Experience = z.infer<typeof experienceSchema>;
+export const experiencesSchema = z.array(experienceSchema);
+
 export const testimonialSchema = z.object({
   author: z.string(),
   country: z.string().optional(),
@@ -82,7 +126,7 @@ export type Testimonials = z.infer<typeof testimonialsSchema>;
 export const navLinkSchema = z.object({ label: z.string(), href: z.string() });
 export const navigationSchema = z.object({
   main: z.array(navLinkSchema),
-  checkAvailability: navLinkSchema,
+  primaryCta: navLinkSchema,
   footerLinks: z.array(navLinkSchema),
   social: z.object({
     facebook: z.string().optional(),
@@ -95,6 +139,7 @@ export const navigationSchema = z.object({
     whatsappNumber: z.string(),
     address: z.string(),
   }),
+  _reviewStatus: z.string().optional(),
 });
 export type Navigation = z.infer<typeof navigationSchema>;
 
@@ -107,6 +152,7 @@ export const seoSchema = z.object({
   ogImage: z.string(),
   keywords: z.array(z.string()),
   pages: z.record(z.string(), seoPageSchema),
+  _reviewStatus: z.string().optional(),
 });
 export type Seo = z.infer<typeof seoSchema>;
 
@@ -115,6 +161,7 @@ export const contentSchemas = {
   tours: toursSchema,
   destinations: destinationsSchema,
   activities: activitiesSchema,
+  experiences: experiencesSchema,
   testimonials: testimonialsSchema,
   navigation: navigationSchema,
   seo: seoSchema,
