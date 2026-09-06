@@ -103,6 +103,7 @@
     "travelersLabel": "Hvor mange rejsende?",
     "travelersDecrease": "Én rejsende færre",
     "travelersIncrease": "Én rejsende mere",
+    "travelersHint": "Mellem 1 og 12 rejsende på en privat rejse.",
     "datesLabel": "Hvornår vil du rejse?",
     "datesHelp": "Vælg din ankomstdato og derefter din afrejsedato. Vi guider året rundt, så alle datoer kan lade sig gøre.",
     "datesHint": "Vælg først ankomst og derefter afrejse.",
@@ -114,7 +115,7 @@
     "datesSelected": "{count} dage i Sri Lanka",
     "datesInvalid": "Vælg en ankomstdato og en afrejsedato, der ligger efter den.",
     "interestsLabel": "Hvad interesserer dig mest?",
-    "interestsHint": "Vælg så mange du vil — det afgør, hvilke parker, stier og byer vi bygger ruten op om.",
+    "interestsHint": "Vælg en eller flere. Matchende rejseidéer dukker op ved siden af.",
     "interests": {
       "wildlife": "Dyreliv",
       "trekking": "Vandring",
@@ -124,6 +125,15 @@
       "photography": "Fotografi",
       "adventure": "Eventyr"
     },
+    "suggestionsTitle": "Rejseidéer",
+    "suggestionsEmpty": "Vælg en kategori for at se de færdige rejseidéer, der matcher den.",
+    "suggestionsCount": "{count} match",
+    "suggestionsReadMore": "Læs mere",
+    "suggestionsClose": "Luk",
+    "suggestionsLocation": "Sted",
+    "suggestionsBestTime": "Bedste årstid",
+    "suggestionsDuration": "Foreslået længde",
+    "suggestionsHighlights": "Det kan du se",
     "accommodationLabel": "Foretrukken type overnatning",
     "accommodationHint": "Vælg en eller flere typer, eller lad os anbefale noget for hvert stop.",
     "accommodation": {

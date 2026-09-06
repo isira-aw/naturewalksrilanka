@@ -2,10 +2,10 @@
 
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils/cn";
-import { TravellersIcon } from "@/components/ui/icons";
+import { MAX_TRAVELERS, MIN_TRAVELERS } from "../WizardShell";
 import { StepHeading } from "./StepHeading";
 
-/** Most enquiries are one of these; the counter stays for everything else. */
+/** Most enquiries are one of these; the counter covers everything in between. */
 const QUICK_PICKS = [1, 2, 4, 6];
 
 export function TravelersStep({
@@ -19,20 +19,24 @@ export function TravelersStep({
 
   return (
     <fieldset>
-      <StepHeading as="legend" icon={TravellersIcon} title={t("travelersLabel")} />
+      <StepHeading as="legend" title={t("travelersLabel")} hint={t("travelersHint")} />
 
       <div className="mt-8 flex w-full max-w-xs items-center justify-between rounded-2xl border border-stone-dark bg-warm-white p-3">
         <CounterButton
           label={t("travelersDecrease")}
-          onClick={() => onChange(Math.max(1, value - 1))}
-          disabled={value <= 1}
+          onClick={() => onChange(value - 1)}
+          disabled={value <= MIN_TRAVELERS}
         >
           −
         </CounterButton>
         <span className="font-display text-4xl text-charcoal tabular-nums" aria-live="polite">
           {value}
         </span>
-        <CounterButton label={t("travelersIncrease")} onClick={() => onChange(value + 1)}>
+        <CounterButton
+          label={t("travelersIncrease")}
+          onClick={() => onChange(value + 1)}
+          disabled={value >= MAX_TRAVELERS}
+        >
           +
         </CounterButton>
       </div>

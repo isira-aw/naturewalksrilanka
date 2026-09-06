@@ -1,0 +1,364 @@
+[
+  {
+    "slug": "sinharaja-endemic-mornings",
+    "category": "birding",
+    "title": "Amaneceres endémicos en Sinharaja",
+    "location": "Bosque lluvioso de Sinharaja, Sabaragamuwa",
+    "bestTime": "Diciembre – abril",
+    "duration": "2–3 días",
+    "summary": "Caminatas al amanecer tras las aves endémicas del bosque lluvioso, con un guía que conoce las rutas de las bandadas.",
+    "description": "Sinharaja es el único lugar de la isla donde se pueden encontrar casi todas las aves endémicas de Sri Lanka en un mismo bosque. Recorremos los senderos de investigación con la primera luz, cuando pasan las bandadas mixtas de alimentación: a menudo veinte aves o más cruzando el camino a la vez. Las tardes son para las especies más discretas del sotobosque y para las ranas, lagartos y mariposas del bosque. Con dos noches aprovechas dos amaneceres; con tres, el viaje resulta cómodo en lugar de apresurado.",
+    "images": [
+      "/images/story-2.jpg",
+      "/images/story-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lanka Blue Magpie",
+        "note": "Endémica — casi siempre con la bandada"
+      },
+      {
+        "name": "Red-faced Malkoha",
+        "note": "Endémica — dosel alto, mejor con luz temprana"
+      },
+      {
+        "name": "Serendib Scops Owl",
+        "note": "Endémica — especie de caminata nocturna"
+      },
+      {
+        "name": "Ashy-headed Laughingthrush",
+        "note": "Endémica — grupos ruidosos en el sotobosque"
+      },
+      {
+        "name": "Green-billed Coucal",
+        "note": "Endémica — se oye más de lo que se ve"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "highland-birding-horton-plains",
+    "category": "birding",
+    "title": "Aves de altura en Horton Plains",
+    "location": "Horton Plains y Nuwara Eliya, Tierras Altas Centrales",
+    "bestTime": "Enero – marzo",
+    "duration": "2 días",
+    "summary": "Bosque nuboso y pradera de montaña, para los endemismos que solo viven en altura.",
+    "description": "Por encima de los 2.000 metros el bosque cambia por completo, y las aves con él. Empezamos temprano en los senderos de Horton Plains, con la niebla todavía baja, y por la tarde trabajamos Victoria Park en Nuwara Eliya: pequeño, pero fiable para los migrantes invernales. Mañanas frías — lleva una capa más, algo que sorprende a casi todo el mundo en el trópico.",
+    "images": [
+      "/images/story-1.jpg",
+      "/images/hero-2.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lanka Whistling Thrush",
+        "note": "Endémica — primera luz, junto a los arroyos"
+      },
+      {
+        "name": "Sri Lanka Bush Warbler",
+        "note": "Endémica — bordes de la pradera"
+      },
+      {
+        "name": "Yellow-eared Bulbul",
+        "note": "Endémica — común pero muy fotogénica"
+      },
+      {
+        "name": "Kashmir Flycatcher",
+        "note": "Migrante invernal — Victoria Park"
+      },
+      {
+        "name": "Pied Thrush",
+        "note": "Migrante invernal — arroyos umbríos del parque"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "yala-leopard-tracking",
+    "category": "wildlife",
+    "title": "Rastreo de leopardos en Yala",
+    "location": "Parque Nacional de Yala, Provincia Meridional",
+    "bestTime": "Febrero – julio",
+    "duration": "2 días",
+    "summary": "Safaris de día completo en el parque con mayor densidad de leopardos del mundo.",
+    "description": "El bloque uno de Yala concentra leopardos como ningún otro lugar del planeta, y un día entero dentro del parque —en vez del habitual circuito de media jornada— es lo que convierte un avistamiento en probable y no en cuestión de suerte. Matorral, lagunas y afloramientos rocosos en la misma ruta, así que el día da mucho más que los felinos: elefantes, oso bezudo en la época adecuada y aves de zona seca en cada embalse.",
+    "images": [
+      "/images/hero-2.jpg",
+      "/images/tours/tour-12-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Leopardo de Sri Lanka",
+        "note": "Rocas al amanecer"
+      },
+      {
+        "name": "Oso bezudo",
+        "note": "Mejores opciones cuando fructifica el palu, junio–julio"
+      },
+      {
+        "name": "Elefante asiático",
+        "note": "En los embalses a última hora de la tarde"
+      },
+      {
+        "name": "Cocodrilo de las marismas",
+        "note": "Orillas de las lagunas, todo el día"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "wilpattu-villus",
+    "category": "wildlife",
+    "title": "Wilpattu y sus villus",
+    "location": "Parque Nacional de Wilpattu, Provincia Noroccidental",
+    "bestTime": "Febrero – octubre",
+    "duration": "2 días",
+    "summary": "El parque más grande de la isla, más tranquilo que Yala, articulado en torno a lagos naturales.",
+    "description": "Wilpattu es mucho mayor que Yala y recibe una fracción de los vehículos, así que la experiencia es más lenta y solitaria: puedes sentarte junto a un villu, uno de los lagos naturales de orilla arenosa, y esperar a que el parque venga a ti. Ver leopardo aquí exige más paciencia que en Yala, pero el paisaje compensa.",
+    "images": [
+      "/images/tours/tour-18-days.jpg",
+      "/images/hero-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Leopardo de Sri Lanka",
+        "note": "Espera paciente en los villus"
+      },
+      {
+        "name": "Oso bezudo",
+        "note": "Matorral abierto a primera hora"
+      },
+      {
+        "name": "Ciervo moteado y sambar",
+        "note": "En todos los lagos"
+      },
+      {
+        "name": "Tántalo indio",
+        "note": "Aguas someras del villu"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "ella-hill-trails",
+    "category": "trekking",
+    "title": "Senderos de Ella",
+    "location": "Ella, Provincia de Uva",
+    "bestTime": "Enero – marzo, julio – septiembre",
+    "duration": "2 días",
+    "summary": "Little Adam's Peak al amanecer, Ella Rock después del desayuno y té de por medio.",
+    "description": "Ella se asienta en una brecha entre montañas, y por eso todas las caminatas terminan en un mirador. Little Adam's Peak es una hora tranquila antes del desayuno; Ella Rock, media jornada seria por terreno más áspero. Entre medias quedan el Puente de los Nueve Arcos, la cascada de Ravana y plantaciones de té que se cruzan a pie. Ideal para quien quiere montaña sin un trekking de varios días.",
+    "images": [
+      "/images/hero-1.jpg",
+      "/images/tours/tour-16-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Little Adam's Peak",
+        "note": "Una hora de subida, mejor al amanecer"
+      },
+      {
+        "name": "Ella Rock",
+        "note": "Media jornada, con tramos empinados"
+      },
+      {
+        "name": "Puente de los Nueve Arcos",
+        "note": "Hazlo coincidir con el paso del tren"
+      },
+      {
+        "name": "Cascada de Ravana",
+        "note": "En su mejor momento tras las lluvias"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "knuckles-forest-walk",
+    "category": "trekking",
+    "title": "Travesía del bosque de Knuckles",
+    "location": "Bosque de Conservación de Knuckles, Provincia Central",
+    "bestTime": "Enero – abril",
+    "duration": "2–3 días",
+    "summary": "Bosque nuboso, caminos de aldea y la cresta, a pie y lejos de la carretera.",
+    "description": "La cordillera de Knuckles es el paisaje de montaña menos visitado de Sri Lanka: bosque de altura, aldeas con terrazas de arroz y una cresta que se despeja por encima de las nubes a media mañana. La ruta se recorre entre casas de aldea en lugar de hoteles, y ahí está la gracia: es la parte del país que todavía funciona al ritmo del caminante.",
+    "images": [
+      "/images/story-1.jpg",
+      "/images/hero-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Miradores de la cresta",
+        "note": "Despejado temprano, nublado hacia el mediodía"
+      },
+      {
+        "name": "Bosque nuboso de montaña",
+        "note": "Cubierto de musgo, fresco, lleno de endemismos"
+      },
+      {
+        "name": "Terrazas de aldea",
+        "note": "Arrozales todavía trabajados a mano"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "ancient-cities-loop",
+    "category": "culture",
+    "title": "Las ciudades antiguas",
+    "location": "Anuradhapura, Polonnaruwa y Sigiriya",
+    "bestTime": "Mayo – septiembre",
+    "duration": "3 días",
+    "summary": "Dos capitales antiguas y la fortaleza de roca que queda entre ambas, a las horas adecuadas.",
+    "description": "Anuradhapura y Polonnaruwa fueron capitales de la isla durante más de mil años entre las dos, y la fortaleza de Sigiriya está en el camino que las une. La clave es el horario: Sigiriya antes del calor, Polonnaruwa en bicicleta a última hora de la tarde y Anuradhapura al ritmo de los rituales junto al árbol bo sagrado, no al de los autocares.",
+    "images": [
+      "/images/tours/tour-16-days.jpg",
+      "/images/tours/tour-18-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Roca del León de Sigiriya",
+        "note": "Entra a la apertura, antes del calor"
+      },
+      {
+        "name": "Polonnaruwa en bicicleta",
+        "note": "Llano, con sombra, mejor por la tarde"
+      },
+      {
+        "name": "Sri Maha Bodhi",
+        "note": "Anuradhapura — ofrendas al atardecer"
+      },
+      {
+        "name": "Templos rupestres de Dambulla",
+        "note": "Techos pintados, en la misma ruta"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "kandy-temple-and-tea",
+    "category": "culture",
+    "title": "Kandy, templo y té",
+    "location": "Kandy, Provincia Central",
+    "bestTime": "Todo el año — festival en julio/agosto",
+    "duration": "2 días",
+    "summary": "El Templo del Diente en la puja del atardecer y, después, las plantaciones de té sobre la ciudad.",
+    "description": "Kandy se disfruta despacio: el Templo del Diente Sagrado en la puja del atardecer, cuando arrancan los tambores; una mañana en el jardín botánico de Peradeniya; y una tarde en una fábrica de té en activo, en las colinas sobre la ciudad, donde todo el proceso ocurre delante de ti. Si viajas en julio o agosto, la Esala Perahera llena las calles durante diez noches.",
+    "images": [
+      "/images/tours/tour-12-days.jpg",
+      "/images/story-2.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Templo del Diente Sagrado",
+        "note": "Puja del atardecer, tambores en la puerta"
+      },
+      {
+        "name": "Jardín botánico de Peradeniya",
+        "note": "Por la mañana, antes de los grupos"
+      },
+      {
+        "name": "Una fábrica de té en activo",
+        "note": "De la hoja al paquete en una visita"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "south-coast-and-galle",
+    "category": "beach",
+    "title": "Costa sur y el fuerte de Galle",
+    "location": "Mirissa y Galle, Provincia Meridional",
+    "bestTime": "Noviembre – abril",
+    "duration": "2–3 días",
+    "summary": "Días tranquilos en la costa sur, con el fuerte holandés de Galle a una tarde de distancia.",
+    "description": "La costa sur suele ser el final del viaje: unos días sin prisa en Mirissa y una tarde recorriendo las murallas de Galle Fort, que conviene visitar al caer el día, cuando los muros retienen la luz y las calles interiores se refrescan. Entre diciembre y abril pasan ballenas azules frente a la costa, por si quieres un madrugón más.",
+    "images": [
+      "/images/hero-1.jpg",
+      "/images/tours/tour-16-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Murallas de Galle Fort",
+        "note": "Paseo a última hora de la tarde"
+      },
+      {
+        "name": "Playa de Mirissa",
+        "note": "Mar en calma de noviembre a abril"
+      },
+      {
+        "name": "Ballenas azules",
+        "note": "Diciembre – abril, salida temprana"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "rainforest-photography",
+    "category": "photography",
+    "title": "Días de fotografía en el bosque lluvioso",
+    "location": "Sinharaja y Kithulgala",
+    "bestTime": "Diciembre – marzo",
+    "duration": "3 días",
+    "summary": "Organizado alrededor de la luz, no de una lista: escondites, mañanas lentas y teleobjetivos.",
+    "description": "Un viaje al ritmo de la fotografía: nos quedamos donde la luz es buena en lugar de sumar kilómetros. Primeras horas en el borde del bosque para las bandadas mixtas, mediodía para el trabajo macro con ranas, lagartos y hojarasca, y última hora para el dosel visto desde arriba en Kithulgala. El ritmo del vehículo y de la caminata lo marca lo que estés fotografiando, y Nandana guía a fotógrafos de naturaleza desde 2002.",
+    "images": [
+      "/images/story-2.jpg",
+      "/images/tours/tour-10-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Bandadas mixtas de alimentación",
+        "note": "Las dos primeras horas tras el amanecer"
+      },
+      {
+        "name": "Ranas y lagartos endémicos",
+        "note": "Sujetos macro, a la sombra del mediodía"
+      },
+      {
+        "name": "El dosel desde arriba",
+        "note": "Cresta de Kithulgala, con luz de tarde"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "kithulgala-river-adventure",
+    "category": "adventure",
+    "title": "Días de río en Kithulgala",
+    "location": "Kithulgala, Provincia de Sabaragamuwa",
+    "bestTime": "Mayo – diciembre",
+    "duration": "2 días",
+    "summary": "Rafting, barranquismo y tirolina, al borde del bosque lluvioso.",
+    "description": "El río Kelani a su paso por Kithulgala corre en grado 2–3 entre bosque lluvioso, lo que lo convierte en la base de aventura de la isla: rafting por la mañana, barranquismo en las cascadas por la tarde y una tirolina sobre el valle para quien siga en pie. Todo se realiza con los operadores locales autorizados con los que trabajamos, y ese mismo bosque está lleno de aves si quieres un segundo día tranquilo.",
+    "images": [
+      "/images/tours/tour-10-days.jpg",
+      "/images/story-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Rafting en aguas bravas",
+        "note": "Grado 2–3, no hace falta experiencia"
+      },
+      {
+        "name": "Barranquismo",
+        "note": "Descenso de cascadas, media jornada"
+      },
+      {
+        "name": "Tirolina",
+        "note": "Sobre el valle del río"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  }
+]

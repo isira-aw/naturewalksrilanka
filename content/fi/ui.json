@@ -103,6 +103,7 @@
     "travelersLabel": "Montako matkustajaa?",
     "travelersDecrease": "Yksi matkustaja vähemmän",
     "travelersIncrease": "Yksi matkustaja lisää",
+    "travelersHint": "1–12 matkustajaa yksityismatkalla.",
     "datesLabel": "Milloin haluat matkustaa?",
     "datesHelp": "Valitse saapumispäiväsi ja sen jälkeen lähtöpäiväsi. Opastamme ympäri vuoden, joten mikä tahansa ajankohta järjestyy.",
     "datesHint": "Valitse ensin saapuminen ja sitten lähtö.",
@@ -114,7 +115,7 @@
     "datesSelected": "{count} päivää Sri Lankassa",
     "datesInvalid": "Valitse saapumispäivä ja sitä myöhempi lähtöpäivä.",
     "interestsLabel": "Mikä kiinnostaa sinua eniten?",
-    "interestsHint": "Valitse niin monta kuin haluat — ne ratkaisevat, minkä puistojen, polkujen ja kylien ympärille reitti rakennetaan.",
+    "interestsHint": "Valitse yksi tai useampi. Sopivat matkaideat ilmestyvät viereen.",
     "interests": {
       "wildlife": "Eläimet",
       "trekking": "Vaellus",
@@ -124,6 +125,15 @@
       "photography": "Valokuvaus",
       "adventure": "Seikkailu"
     },
+    "suggestionsTitle": "Matkaideat",
+    "suggestionsEmpty": "Valitse kategoria nähdäksesi siihen sopivat valmiit matkaideat.",
+    "suggestionsCount": "{count} osumaa",
+    "suggestionsReadMore": "Lue lisää",
+    "suggestionsClose": "Sulje",
+    "suggestionsLocation": "Sijainti",
+    "suggestionsBestTime": "Paras ajankohta",
+    "suggestionsDuration": "Ehdotettu kesto",
+    "suggestionsHighlights": "Mitä voit nähdä",
     "accommodationLabel": "Toivottu majoitustyyli",
     "accommodationHint": "Valitse yksi tai useampi tyyli, tai anna meidän suositella jokaiselle pysähdykselle sopivaa.",
     "accommodation": {

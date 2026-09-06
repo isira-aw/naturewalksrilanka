@@ -103,6 +103,7 @@
     "travelersLabel": "How many travelers?",
     "travelersDecrease": "One traveller fewer",
     "travelersIncrease": "One traveller more",
+    "travelersHint": "Between 1 and 12 travellers on a private journey.",
     "datesLabel": "When would you like to travel?",
     "datesHelp": "Pick your arrival date, then your departure date. We guide year-round, so any dates can be arranged.",
     "datesHint": "Select your arrival, then your departure.",
@@ -114,7 +115,7 @@
     "datesSelected": "{count} days in Sri Lanka",
     "datesInvalid": "Please choose an arrival date and a departure date after it.",
     "interestsLabel": "What are you most interested in?",
-    "interestsHint": "Pick as many as you like — it shapes which parks, trails and towns we build the route around.",
+    "interestsHint": "Pick one or more. Matching journey ideas appear alongside.",
     "interests": {
       "wildlife": "Wildlife",
       "trekking": "Trekking",
@@ -124,6 +125,15 @@
       "photography": "Photography",
       "adventure": "Adventure"
     },
+    "suggestionsTitle": "Journey ideas",
+    "suggestionsEmpty": "Choose a category to see the prebuilt journey ideas that match it.",
+    "suggestionsCount": "{count} matching",
+    "suggestionsReadMore": "Read more",
+    "suggestionsClose": "Close",
+    "suggestionsLocation": "Location",
+    "suggestionsBestTime": "Best time of year",
+    "suggestionsDuration": "Suggested length",
+    "suggestionsHighlights": "What you might see",
     "accommodationLabel": "Preferred accommodation style",
     "accommodationHint": "Choose one or more styles, or let us recommend something for each stop.",
     "accommodation": {

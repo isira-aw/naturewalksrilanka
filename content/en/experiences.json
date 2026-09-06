@@ -1,0 +1,353 @@
+[
+  {
+    "slug": "sinharaja-endemic-mornings",
+    "category": "birding",
+    "title": "Sinharaja endemic mornings",
+    "location": "Sinharaja Rain Forest, Sabaragamuwa",
+    "bestTime": "December – April",
+    "duration": "2–3 days",
+    "summary": "Dawn walks after Sri Lanka's rainforest endemics, with a guide who knows the flock routes.",
+    "description": "Sinharaja is the one place on the island where most of Sri Lanka's endemic birds can be found in a single forest. We walk the research trails at first light, when the mixed-species feeding flocks move through — often twenty or more birds crossing the path at once. Afternoons are for the quieter understorey species and for the rainforest's frogs, lizards and butterflies. Two nights lets you take two dawns; three makes the trip comfortable rather than rushed.",
+    "images": [
+      "/images/story-2.jpg",
+      "/images/story-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lanka Blue Magpie",
+        "note": "Endemic — usually with the feeding flock"
+      },
+      {
+        "name": "Red-faced Malkoha",
+        "note": "Endemic — high canopy, best in early light"
+      },
+      {
+        "name": "Serendib Scops Owl",
+        "note": "Endemic — a night walk species"
+      },
+      {
+        "name": "Ashy-headed Laughingthrush",
+        "note": "Endemic — noisy understorey groups"
+      },
+      {
+        "name": "Green-billed Coucal",
+        "note": "Endemic — heard more often than seen"
+      }
+    ],
+    "contentRequired": true
+  },
+  {
+    "slug": "highland-birding-horton-plains",
+    "category": "birding",
+    "title": "Highland birding at Horton Plains",
+    "location": "Horton Plains & Nuwara Eliya, Central Highlands",
+    "bestTime": "January – March",
+    "duration": "2 days",
+    "summary": "Cloud forest and montane grassland, for the endemics that live only at altitude.",
+    "description": "Above 2,000 metres the forest changes completely, and so do the birds. We start early on the Horton Plains trails while the mist is still down, then work Victoria Park in Nuwara Eliya in the afternoon, which is small but reliably good for wintering migrants. Cold mornings — bring a layer, which surprises most people about the tropics.",
+    "images": [
+      "/images/story-1.jpg",
+      "/images/hero-2.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lanka Whistling Thrush",
+        "note": "Endemic — first light, near streams"
+      },
+      {
+        "name": "Sri Lanka Bush Warbler",
+        "note": "Endemic — grassland edges"
+      },
+      {
+        "name": "Yellow-eared Bulbul",
+        "note": "Endemic — common but photogenic"
+      },
+      {
+        "name": "Kashmir Flycatcher",
+        "note": "Winter migrant — Victoria Park"
+      },
+      {
+        "name": "Pied Thrush",
+        "note": "Winter migrant — shaded park streams"
+      }
+    ],
+    "contentRequired": true
+  },
+  {
+    "slug": "yala-leopard-tracking",
+    "category": "wildlife",
+    "title": "Yala leopard tracking",
+    "location": "Yala National Park, Southern Province",
+    "bestTime": "February – July",
+    "duration": "2 days",
+    "summary": "Full-day safaris in the park with the densest leopard population in the world.",
+    "description": "Yala's block one holds leopards at a density found nowhere else, and a full day inside the park — rather than the usual half-day circuit — is what makes a sighting likely rather than lucky. Scrub jungle, lagoons and rock outcrops in the same drive, so the day gives you far more than the cats: elephant, sloth bear in the right season, and dry-zone birds around every water tank.",
+    "images": [
+      "/images/hero-2.jpg",
+      "/images/tours/tour-12-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lankan leopard",
+        "note": "Rock outcrops in the early morning"
+      },
+      {
+        "name": "Sloth bear",
+        "note": "Best odds when the palu fruits, June–July"
+      },
+      {
+        "name": "Asian elephant",
+        "note": "Around the tanks late afternoon"
+      },
+      {
+        "name": "Mugger crocodile",
+        "note": "Lagoon edges, all day"
+      }
+    ],
+    "contentRequired": true
+  },
+  {
+    "slug": "wilpattu-villus",
+    "category": "wildlife",
+    "title": "Wilpattu and its villus",
+    "location": "Wilpattu National Park, North Western Province",
+    "bestTime": "February – October",
+    "duration": "2 days",
+    "summary": "The island's largest park, quieter than Yala, built around natural lakes.",
+    "description": "Wilpattu is far bigger than Yala and sees a fraction of the vehicles, so the experience is slower and more solitary — you can sit at a villu, one of the park's natural sand-rimmed lakes, and simply wait for it to come to you. Leopard sightings take more patience here than at Yala, but the setting is the reward.",
+    "images": [
+      "/images/tours/tour-18-days.jpg",
+      "/images/hero-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lankan leopard",
+        "note": "Patient waiting at the villus"
+      },
+      {
+        "name": "Sloth bear",
+        "note": "Open scrub in the early morning"
+      },
+      {
+        "name": "Spotted deer and sambar",
+        "note": "Around every lake"
+      },
+      {
+        "name": "Painted stork",
+        "note": "Villu shallows"
+      }
+    ],
+    "contentRequired": true
+  },
+  {
+    "slug": "ella-hill-trails",
+    "category": "trekking",
+    "title": "Ella hill trails",
+    "location": "Ella, Uva Province",
+    "bestTime": "January – March, July – September",
+    "duration": "2 days",
+    "summary": "Little Adam's Peak at sunrise, Ella Rock after breakfast, tea country in between.",
+    "description": "Ella sits in a gap in the hills, which is why the walks here all end in a view. Little Adam's Peak is a gentle hour before breakfast; Ella Rock is a proper half-day on rougher ground. Between them are the Nine Arch Bridge, the Ravana waterfall and tea estates you walk straight through. Good for anyone who wants hill country without a multi-day trek.",
+    "images": [
+      "/images/hero-1.jpg",
+      "/images/tours/tour-16-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Little Adam's Peak",
+        "note": "About an hour up, best at sunrise"
+      },
+      {
+        "name": "Ella Rock",
+        "note": "Half a day, steep in places"
+      },
+      {
+        "name": "Nine Arch Bridge",
+        "note": "Time it with a passing train"
+      },
+      {
+        "name": "Ravana waterfall",
+        "note": "Fullest just after the rains"
+      }
+    ],
+    "contentRequired": true
+  },
+  {
+    "slug": "knuckles-forest-walk",
+    "category": "trekking",
+    "title": "Knuckles forest crossing",
+    "location": "Knuckles Conservation Forest, Central Province",
+    "bestTime": "January – April",
+    "duration": "2–3 days",
+    "summary": "Cloud forest, village paths and the ridgeline, on foot and away from the road.",
+    "description": "The Knuckles range is the least visited of Sri Lanka's mountain landscapes: montane forest, terraced rice villages and a ridgeline that clears above the cloud by mid-morning. The route is walked between village guesthouses rather than hotels, which is the point of it — this is the part of the country that still runs at walking pace.",
+    "images": [
+      "/images/story-1.jpg",
+      "/images/hero-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Ridgeline viewpoints",
+        "note": "Clear early, cloud in by noon"
+      },
+      {
+        "name": "Montane cloud forest",
+        "note": "Mossy, endemic-rich, cool"
+      },
+      {
+        "name": "Village terraces",
+        "note": "Rice cultivation still worked by hand"
+      }
+    ],
+    "contentRequired": true
+  },
+  {
+    "slug": "ancient-cities-loop",
+    "category": "culture",
+    "title": "The ancient cities",
+    "location": "Anuradhapura, Polonnaruwa & Sigiriya",
+    "bestTime": "May – September",
+    "duration": "3 days",
+    "summary": "Two ancient capitals and the rock fortress between them, at the right hours.",
+    "description": "Anuradhapura and Polonnaruwa were the island's capitals for well over a thousand years between them, and Sigiriya's rock fortress sits on the road that links the two. The trick is timing: Sigiriya before the heat, Polonnaruwa by bicycle in the late afternoon, Anuradhapura around the rituals at the sacred bo tree rather than around the tour buses.",
+    "images": [
+      "/images/tours/tour-16-days.jpg",
+      "/images/tours/tour-18-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sigiriya Lion Rock",
+        "note": "Start at opening, before the heat"
+      },
+      {
+        "name": "Polonnaruwa by bicycle",
+        "note": "Flat, shaded, best late afternoon"
+      },
+      {
+        "name": "Sri Maha Bodhi",
+        "note": "Anuradhapura — evening offerings"
+      },
+      {
+        "name": "Dambulla cave temples",
+        "note": "Painted ceilings, on the route"
+      }
+    ],
+    "contentRequired": true
+  },
+  {
+    "slug": "kandy-temple-and-tea",
+    "category": "culture",
+    "title": "Kandy, temple and tea",
+    "location": "Kandy, Central Province",
+    "bestTime": "All year — festival season July/August",
+    "duration": "2 days",
+    "summary": "The Temple of the Tooth at evening puja, then the tea estates above the town.",
+    "description": "Kandy is best taken slowly: the Temple of the Sacred Tooth Relic at the evening puja when the drummers start, a morning in the botanical gardens at Peradeniya, and an afternoon in a working tea factory on the hills above town where the whole process runs in front of you. If you travel in July or August, the Esala Perahera fills the streets for ten nights.",
+    "images": [
+      "/images/tours/tour-12-days.jpg",
+      "/images/story-2.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Temple of the Sacred Tooth Relic",
+        "note": "Evening puja, drummers at the gate"
+      },
+      {
+        "name": "Peradeniya botanical gardens",
+        "note": "Morning, before the coach parties"
+      },
+      {
+        "name": "A working tea factory",
+        "note": "Leaf to packet in one visit"
+      }
+    ],
+    "contentRequired": true
+  },
+  {
+    "slug": "south-coast-and-galle",
+    "category": "beach",
+    "title": "South coast and Galle Fort",
+    "location": "Mirissa & Galle, Southern Province",
+    "bestTime": "November – April",
+    "duration": "2–3 days",
+    "summary": "Quiet days on the south coast, with the Dutch fort at Galle an afternoon away.",
+    "description": "The south coast is where a journey tends to end: a few unhurried days at Mirissa, and one afternoon walking the ramparts of Galle Fort, which is best entered late in the day when the walls hold the light and the streets inside cool down. Blue whales pass offshore between December and April for anyone who wants one more early start.",
+    "images": [
+      "/images/hero-1.jpg",
+      "/images/tours/tour-16-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Galle Fort ramparts",
+        "note": "Late afternoon walk"
+      },
+      {
+        "name": "Mirissa beach",
+        "note": "Calm seas November – April"
+      },
+      {
+        "name": "Blue whales offshore",
+        "note": "December – April, early departure"
+      }
+    ],
+    "contentRequired": true
+  },
+  {
+    "slug": "rainforest-photography",
+    "category": "photography",
+    "title": "Rainforest photography days",
+    "location": "Sinharaja & Kithulgala",
+    "bestTime": "December – March",
+    "duration": "3 days",
+    "summary": "Built around the light, not the checklist — hides, slow mornings, long lenses.",
+    "description": "A photography-paced trip: we stay put where the light is good instead of covering ground. Early mornings at the forest edge for mixed flocks, the middle of the day for macro work on frogs, lizards and leaf litter, and late afternoon for the canopy from above at Kithulgala. Vehicle and walking pace are set by what you are shooting, and Nandana has guided wildlife photographers since 2002.",
+    "images": [
+      "/images/story-2.jpg",
+      "/images/tours/tour-10-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Mixed feeding flocks",
+        "note": "First two hours after dawn"
+      },
+      {
+        "name": "Endemic frogs and lizards",
+        "note": "Macro subjects, midday shade"
+      },
+      {
+        "name": "Canopy from above",
+        "note": "Kithulgala ridge, late light"
+      }
+    ],
+    "contentRequired": true
+  },
+  {
+    "slug": "kithulgala-river-adventure",
+    "category": "adventure",
+    "title": "Kithulgala river days",
+    "location": "Kithulgala, Sabaragamuwa Province",
+    "bestTime": "May – December",
+    "duration": "2 days",
+    "summary": "White-water rafting, canyoning and a zip line, on the edge of the rainforest.",
+    "description": "The Kelani river at Kithulgala runs grade 2–3 through rainforest, which makes it the island's adventure base: rafting in the morning, canyoning at the waterfalls in the afternoon, and a zip line across the valley for anyone still standing. All of it runs with licensed local operators we work with, and the same forest is full of birds if you want a quiet second day.",
+    "images": [
+      "/images/tours/tour-10-days.jpg",
+      "/images/story-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "White-water rafting",
+        "note": "Grade 2–3, no experience needed"
+      },
+      {
+        "name": "Canyoning",
+        "note": "Waterfall descents, half a day"
+      },
+      {
+        "name": "Zip line",
+        "note": "Across the river valley"
+      }
+    ],
+    "contentRequired": true
+  }
+]

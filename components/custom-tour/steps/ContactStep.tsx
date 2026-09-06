@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ChatIcon } from "@/components/ui/icons";
 import { StepHeading } from "./StepHeading";
 
 type ContactField = "name" | "email" | "phone" | "country" | "requirements";
@@ -28,7 +27,7 @@ export function ContactStep({
 
   return (
     <fieldset>
-      <StepHeading as="legend" icon={ChatIcon} title={t("steps.contact")} hint={t("contactHint")} />
+      <StepHeading as="legend" title={t("steps.contact")} hint={t("contactHint")} />
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
         <Field

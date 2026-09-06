@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { DateRangeCalendar } from "@/components/custom-tour/DateRangeCalendar";
-import { CalendarIcon } from "@/components/ui/icons";
 import { countDays, type DateRangeValue } from "@/lib/tour/dateRange";
 import { StepHeading } from "./StepHeading";
 
@@ -20,7 +19,7 @@ export function DatesStep({
 
   return (
     <div>
-      <StepHeading icon={CalendarIcon} title={t("datesLabel")} hint={t("datesHelp")} />
+      <StepHeading title={t("datesLabel")} hint={t("datesHelp")} />
 
       <div className="mt-8">
         <DateRangeCalendar

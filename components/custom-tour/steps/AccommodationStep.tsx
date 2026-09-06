@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils/cn";
-import { LodgeIcon } from "@/components/ui/icons";
 import { StepHeading } from "./StepHeading";
 
 const ACCOMMODATION_KEYS = [
@@ -32,7 +31,6 @@ export function AccommodationStep({
       <fieldset>
         <StepHeading
           as="legend"
-          icon={LodgeIcon}
           title={t("accommodationLabel")}
           hint={t("accommodationHint")}
         />

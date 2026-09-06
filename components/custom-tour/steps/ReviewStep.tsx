@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { buildCustomTourMessage, buildWhatsAppUrl } from "@/lib/whatsapp/buildMessage";
-import { RouteIcon } from "@/components/ui/icons";
 import type { WizardState } from "../WizardShell";
 import { StepHeading } from "./StepHeading";
 
@@ -80,7 +79,7 @@ export function ReviewStep({
 
   return (
     <div>
-      <StepHeading icon={RouteIcon} title={t("reviewTitle")} hint={t("reviewHint")} />
+      <StepHeading title={t("reviewTitle")} hint={t("reviewHint")} />
 
       <dl className="mt-8 divide-y divide-stone-dark overflow-hidden rounded-2xl border border-stone-dark bg-warm-white">
         <ReviewRow label={t("travelersLabel")} value={String(state.travelers)} />

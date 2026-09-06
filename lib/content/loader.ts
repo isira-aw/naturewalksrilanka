@@ -6,6 +6,7 @@ import type {
   Tour,
   Destination,
   Activity,
+  Experience,
   Testimonials,
   Navigation,
   Seo,
@@ -16,6 +17,7 @@ type ContentMap = {
   tours: Tour[];
   destinations: Destination[];
   activities: Activity[];
+  experiences: Experience[];
   testimonials: Testimonials;
   navigation: Navigation;
   seo: Seo;
@@ -26,6 +28,7 @@ const loaders: { [K in keyof ContentMap]: (locale: Locale) => Promise<unknown> }
   tours: (locale) => import(`@/content/${locale}/tours.json`).then((m) => m.default),
   destinations: (locale) => import(`@/content/${locale}/destinations.json`).then((m) => m.default),
   activities: (locale) => import(`@/content/${locale}/activities.json`).then((m) => m.default),
+  experiences: (locale) => import(`@/content/${locale}/experiences.json`).then((m) => m.default),
   testimonials: (locale) => import(`@/content/${locale}/testimonials.json`).then((m) => m.default),
   navigation: (locale) => import(`@/content/${locale}/navigation.json`).then((m) => m.default),
   seo: (locale) => import(`@/content/${locale}/seo.json`).then((m) => m.default),

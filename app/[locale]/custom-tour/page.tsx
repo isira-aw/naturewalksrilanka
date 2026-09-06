@@ -48,9 +48,10 @@ export default async function CustomTourPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, navigation] = await Promise.all([
+  const [t, navigation, experiences] = await Promise.all([
     getTranslations({ locale: l, namespace: "customTour" }),
     getContent(l, "navigation"),
+    getContent(l, "experiences"),
   ]);
 
   return (
@@ -73,6 +74,7 @@ export default async function CustomTourPage({
         <WizardShell
           locale={l}
           whatsappNumber={navigation.contact.whatsappNumber}
+          experiences={experiences}
           aiAssistantEnabled={isAiAssistantEnabled()}
         />
       </div>

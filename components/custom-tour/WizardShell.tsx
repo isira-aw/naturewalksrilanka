@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils/cn";
+import type { Experience } from "@/lib/content/schema";
 import { StepProgressBar, StepProgressRail } from "./StepProgress";
 import { isValidRange, type DateRangeValue } from "@/lib/tour/dateRange";
 import type { ItineraryPlan } from "@/lib/ai/itinerarySchema";
@@ -60,6 +61,10 @@ function buildStepKeys(aiAssistantEnabled: boolean) {
   ];
 }
 
+/** The party sizes the company takes: a solo traveller up to a group of twelve. */
+export const MIN_TRAVELERS = 1;
+export const MAX_TRAVELERS = 12;
+
 const initialState: WizardState = {
   step: 1,
   travelers: 2,
@@ -84,7 +89,10 @@ function toggleValue(list: string[], value: string) {
 function reducer(state: WizardState, action: WizardAction): WizardState {
   switch (action.type) {
     case "SET_TRAVELERS":
-      return { ...state, travelers: Math.max(1, action.value) };
+      return {
+        ...state,
+        travelers: Math.min(MAX_TRAVELERS, Math.max(MIN_TRAVELERS, action.value)),
+      };
     case "SET_DATE_RANGE":
       return { ...state, dateRange: action.value };
     case "TOGGLE_INTEREST":
@@ -124,10 +132,12 @@ function isValidEmail(value: string) {
 export function WizardShell({
   locale,
   whatsappNumber,
+  experiences,
   aiAssistantEnabled = false,
 }: {
   locale: string;
   whatsappNumber: string;
+  experiences: Experience[];
   aiAssistantEnabled?: boolean;
 }) {
   const t = useTranslations("customTour");
@@ -155,7 +165,9 @@ export function WizardShell({
   function validateCurrentStep(): string | null {
     switch (currentStepKey) {
       case "travelers":
-        if (state.travelers < 1) return t("errorTravelers");
+        if (state.travelers < MIN_TRAVELERS || state.travelers > MAX_TRAVELERS) {
+          return t("errorTravelers");
+        }
         return null;
       case "dates":
         if (!isValidRange(state.dateRange)) return t("datesInvalid");
@@ -222,7 +234,7 @@ export function WizardShell({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className={cn(currentStepKey !== "aiAssistant" && "max-w-3xl")}
+            className={cn(!["aiAssistant", "interests"].includes(currentStepKey) && "max-w-3xl")}
           >
             {currentStepKey === "travelers" && (
               <TravelersStep
@@ -241,6 +253,7 @@ export function WizardShell({
               <InterestsStep
                 value={state.interests}
                 onToggle={(value) => dispatch({ type: "TOGGLE_INTEREST", value })}
+                experiences={experiences}
               />
             )}
             {currentStepKey === "accommodation" && (
