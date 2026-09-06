@@ -13,37 +13,54 @@
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Ud over",
     "titleLine2": "det sædvanlige",
-    "subtitle": "Private rejser gennem Sri Lankas vilde hjerte — guider, overnatning og transport arrangeret af ét selskab, du kan kontakte direkte.",
+    "subtitle": "Private rejser gennem øens vilde hjerte.",
     "ctaPrimary": "Se rejserne",
     "ctaSecondary": "Sammensæt din rejse"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Ét selskab til hele rejsen — guider, overnatning og vejen derimellem.",
-    "introBody": "Nature Walks Sri Lanka blev grundlagt af Nandana Hewagamage, så rejsende har én betroet kontakt på øen. Alle vores guider er certificeret af Sri Lanka Tourism Board, og vi arrangerer overnatning, transport og rejseplanen omkring dem — fra din første besked til din sidste morgen her.",
+    "introTitle": "Ét selskab til hele rejsen.",
+    "introBody": "Certificerede guider, overnatning og transport — arrangeret af os, fra din første besked til din sidste morgen på øen.",
+    "stats": [
+      {
+        "value": "20+",
+        "label": "År som guide"
+      },
+      {
+        "value": "30+",
+        "label": "Endemiske fuglearter"
+      },
+      {
+        "value": "15",
+        "label": "Destinationer"
+      },
+      {
+        "value": "100%",
+        "label": "Certificerede guider"
+      }
+    ],
     "servicesEyebrow": "Det arrangerer vi",
     "servicesTitle": "Alt, hvad en rejse kræver, fra ét sted.",
-    "servicesBody": "Kom til os med dine datoer og en idé om, hvad du gerne vil se. Vi sætter resten sammen og er til at få fat på hele vejen igennem.",
     "services": [
       {
         "title": "Certificerede guider",
-        "description": "Natur-, fugle-, vandre- og kulturguider fra vores eget team — alle certificeret af Sri Lanka Tourism Board."
+        "short": "Vores eget team, certificeret af Sri Lanka Tourism Board."
       },
       {
         "title": "Overnatning",
-        "description": "Hoteller, boutiquehoteller og økolodges valgt efter din rute og dit budget, booket og bekræftet af os."
+        "short": "Hoteller, boutiquehoteller og økolodges, booket af os."
       },
       {
         "title": "Transport",
-        "description": "Privat transport med erfarne chauffører hele rejsen igennem, plus lufthavnstransfer og al indenrigstransport, din rute kræver."
+        "short": "Privat bil og erfaren chauffør, fra lufthavn til lufthavn."
       },
       {
         "title": "Din rejseplan",
-        "description": "En dag-for-dag-rute bygget op om det, du faktisk vil se, og justeret undervejs, hvis vejret eller dyrelivet lægger op til noget andet."
+        "short": "Bygget op om det, du vil se — og justeret undervejs."
       }
     ],
     "guideRole": "Grundlægger og chefguide",
-    "guideBody": "Nandana startede inden for naturbevarelse i 1990 og arbejdede sammen med landsbysamfund og universitetets forskerhold om Sri Lankas fugle, planter og insekter. Han blev uddannet national guide i 2002 og grundlagde i 2017 Nature Walks Sri Lanka, så rejsende kunne have ét selskab — og én guide — hele rejsen igennem. Han guider stadig selv.",
+    "guideBody": "Nandana startede i naturbevarelse i 1990, blev uddannet national guide i 2002 og grundlagde Nature Walks Sri Lanka i 2017. Han guider stadig selv.",
     "guideCta": "Læs Nandanas historie",
     "journeysCta": "Se alle rejser",
     "placesCta": "Se alle destinationer"
@@ -82,9 +99,13 @@
     "next": "Videre",
     "travelersLabel": "Hvor mange rejsende?",
     "datesLabel": "Hvornår vil du rejse?",
-    "datesHelp": "Vælg din ankomst- og afrejsedato. Vi guider året rundt, så alle datoer kan lade sig gøre.",
+    "datesHelp": "Vælg din ankomstdato og derefter din afrejsedato. Vi guider året rundt, så alle datoer kan lade sig gøre.",
+    "datesHint": "Vælg først ankomst og derefter afrejse.",
     "datesStart": "Ankomst",
     "datesEnd": "Afrejse",
+    "datesPreviousMonth": "Forrige måned",
+    "datesNextMonth": "Næste måned",
+    "datesClear": "Ryd",
     "datesSelected": "{count} dage i Sri Lanka",
     "datesInvalid": "Vælg en ankomstdato og en afrejsedato, der ligger efter den.",
     "interestsLabel": "Hvad interesserer dig mest?",
@@ -142,15 +163,15 @@
     "whyPoints": [
       {
         "title": "Alle guider er certificerede",
-        "description": "Alle guider hos Nature Walks Sri Lanka er certificeret af Sri Lanka Tourism Board — du bliver aldrig sendt videre til en freelancer uden licens på en del af turen."
+        "description": "Alle vores guider er certificeret af Sri Lanka Tourism Board."
       },
       {
-        "title": "Trænet i felten, ikke efter et manuskript",
-        "description": "Vores guidning er vokset ud af feltarbejde med naturbevarelse frem for et manuskript fra en turistskranke, og Nandana træner og leder stadig selv holdet."
+        "title": "Trænet i felten",
+        "description": "Guidning, der er vokset ud af feltarbejde — oplært af Nandana selv."
       },
       {
         "title": "Ét selskab, én rejse",
-        "description": "Guider, overnatning og transport kommer alt sammen fra os, så der er ét nummer at ringe til, uanset hvad — både før du ankommer, og mens du er her."
+        "description": "Guider, overnatning og transport fra os — ét nummer til det hele."
       }
     ]
   },

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { Destination } from "@/lib/content/schema";
 import { Section } from "@/components/ui/Section";
+import { Reveal } from "@/components/ui/Reveal";
 
 /**
  * Sri Lanka in one section. Deliberately typographic rather than a photo grid:
@@ -19,28 +20,28 @@ export function PlacesSection({
   return (
     <Section tone="stone">
       <div className="grid gap-12 md:grid-cols-12 md:gap-16">
-        <div className="md:col-span-5">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm">
+        <Reveal className="md:col-span-5">
+          <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
             <Image
               src="/images/story-1.jpg"
               alt="Dry-zone landscape in Sri Lanka's north west"
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
             />
           </div>
-          <div className="relative mt-4 ml-auto aspect-[4/3] w-2/3 overflow-hidden rounded-sm">
+          <div className="group relative mt-4 ml-auto aspect-[4/3] w-2/3 overflow-hidden rounded-2xl">
             <Image
               src="/images/story-2.jpg"
               alt="Rainforest canopy in Sinharaja"
               fill
               sizes="(min-width: 768px) 27vw, 66vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
             />
           </div>
-        </div>
+        </Reveal>
 
-        <div className="md:col-span-7 md:pt-8">
+        <Reveal delay={0.1} className="md:col-span-7 md:pt-8">
           <p className="font-utility text-xs uppercase tracking-[0.2em] text-forest">
             {labels.eyebrow}
           </p>
@@ -59,8 +60,14 @@ export function PlacesSection({
                   <span className="font-display text-lg text-charcoal transition-colors group-hover:text-forest">
                     {d.name}
                   </span>
-                  <span className="font-utility text-xs uppercase tracking-[0.12em] text-charcoal/50">
+                  <span className="flex items-center gap-2 font-utility text-xs uppercase tracking-[0.12em] text-charcoal/50 transition-colors group-hover:text-forest">
                     {d.region}
+                    <span
+                      aria-hidden="true"
+                      className="-translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+                    >
+                      →
+                    </span>
                   </span>
                 </Link>
               </li>
@@ -73,7 +80,7 @@ export function PlacesSection({
           >
             {labels.cta}
           </Link>
-        </div>
+        </Reveal>
       </div>
     </Section>
   );

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { Profile } from "@/lib/content/schema";
 import { Section } from "@/components/ui/Section";
+import { Reveal } from "@/components/ui/Reveal";
 
 /**
  * Home-page version of "who is Nandana": the founder and lead guide behind the
@@ -17,17 +18,17 @@ export function GuideIntro({
   return (
     <Section tone="stone">
       <div className="grid items-center gap-12 md:grid-cols-12 md:gap-16">
-        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm md:col-span-5">
+        <Reveal className="group relative aspect-[4/5] w-full overflow-hidden rounded-2xl md:col-span-5">
           <Image
             src={profile.portraitImage}
             alt={`Portrait of ${profile.name} in the field`}
             fill
             sizes="(min-width: 768px) 40vw, 100vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
           />
-        </div>
+        </Reveal>
 
-        <div className="md:col-span-7">
+        <Reveal delay={0.1} className="md:col-span-7">
           <p className="font-utility text-xs uppercase tracking-[0.2em] text-forest">
             {labels.eyebrow}
           </p>
@@ -55,7 +56,7 @@ export function GuideIntro({
           >
             {labels.cta}
           </Link>
-        </div>
+        </Reveal>
       </div>
     </Section>
   );

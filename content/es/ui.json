@@ -13,37 +13,54 @@
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Más allá de",
     "titleLine2": "lo habitual",
-    "subtitle": "Viajes privados por el corazón salvaje de Sri Lanka: guías, alojamiento y transporte organizados por una sola empresa con la que hablas directamente.",
+    "subtitle": "Viajes privados por el corazón salvaje de la isla.",
     "ctaPrimary": "Ver los viajes",
     "ctaSecondary": "Diseña tu viaje"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Una sola empresa para todo el viaje: guías, alojamiento y los caminos entre ellos.",
-    "introBody": "Nandana Hewagamage fundó Nature Walks Sri Lanka para que los viajeros tuvieran un único contacto de confianza en la isla. Todos nuestros guías están certificados por la Junta de Turismo de Sri Lanka, y nosotros organizamos el alojamiento, el transporte y el itinerario a su alrededor, desde tu primer mensaje hasta tu última mañana aquí.",
+    "introTitle": "Una sola empresa para todo el viaje.",
+    "introBody": "Guías certificados, alojamiento y transporte, organizados por nosotros desde tu primer mensaje hasta tu última mañana en la isla.",
+    "stats": [
+      {
+        "value": "20+",
+        "label": "Años guiando"
+      },
+      {
+        "value": "30+",
+        "label": "Aves endémicas"
+      },
+      {
+        "value": "15",
+        "label": "Destinos"
+      },
+      {
+        "value": "100%",
+        "label": "Guías certificados"
+      }
+    ],
     "servicesEyebrow": "Lo que organizamos",
     "servicesTitle": "Todo lo que un viaje necesita, desde un mismo sitio.",
-    "servicesBody": "Escríbenos con tus fechas y una idea de lo que quieres ver. Nosotros montamos el resto y seguimos disponibles durante todo el viaje.",
     "services": [
       {
         "title": "Guías certificados",
-        "description": "Guías de naturaleza, aves, trekking y cultura de nuestro propio equipo, todos certificados por la Junta de Turismo de Sri Lanka."
+        "short": "Nuestro propio equipo, certificado por la Junta de Turismo de Sri Lanka."
       },
       {
         "title": "Alojamiento",
-        "description": "Hoteles, alojamientos boutique y eco-lodges elegidos según tu ruta y tu presupuesto, reservados y confirmados por nosotros."
+        "short": "Hoteles, alojamientos boutique y eco-lodges, reservados por nosotros."
       },
       {
         "title": "Transporte",
-        "description": "Vehículos privados con conductores experimentados durante todo el viaje, además de traslados al aeropuerto y cualquier desplazamiento interno que necesite tu ruta."
+        "short": "Vehículo privado y conductor experimentado, de aeropuerto a aeropuerto."
       },
       {
         "title": "Tu itinerario",
-        "description": "Una ruta día a día construida en torno a lo que de verdad quieres ver, y ajustada sobre la marcha si el tiempo o la fauna aconsejan otra cosa."
+        "short": "Construido en torno a lo que quieres ver, y ajustado sobre la marcha."
       }
     ],
     "guideRole": "Fundador y guía principal",
-    "guideBody": "Nandana empezó en la conservación de la fauna en 1990, trabajando con comunidades rurales y equipos universitarios de investigación sobre las aves, plantas e insectos de Sri Lanka. Se acreditó como guía nacional en 2002 y en 2017 fundó Nature Walks Sri Lanka para que los viajeros tuvieran una sola empresa —y un solo guía— durante todo el viaje. Sigue guiando viajes él mismo.",
+    "guideBody": "Nandana empezó en la conservación de la fauna en 1990, se acreditó como guía nacional en 2002 y fundó Nature Walks Sri Lanka en 2017. Sigue guiando viajes él mismo.",
     "guideCta": "Lee la historia de Nandana",
     "journeysCta": "Ver todos los viajes",
     "placesCta": "Ver todos los destinos"
@@ -82,9 +99,13 @@
     "next": "Continuar",
     "travelersLabel": "¿Cuántos viajeros sois?",
     "datesLabel": "¿Cuándo quieres viajar?",
-    "datesHelp": "Elige tu fecha de llegada y de salida. Guiamos todo el año, así que cualquier fecha es posible.",
+    "datesHelp": "Elige tu fecha de llegada y después la de salida. Guiamos todo el año, así que cualquier fecha es posible.",
+    "datesHint": "Selecciona primero la llegada y después la salida.",
     "datesStart": "Llegada",
     "datesEnd": "Salida",
+    "datesPreviousMonth": "Mes anterior",
+    "datesNextMonth": "Mes siguiente",
+    "datesClear": "Borrar",
     "datesSelected": "{count} días en Sri Lanka",
     "datesInvalid": "Elige una fecha de llegada y una fecha de salida posterior.",
     "interestsLabel": "¿Qué es lo que más te interesa?",
@@ -142,15 +163,15 @@
     "whyPoints": [
       {
         "title": "Todos los guías certificados",
-        "description": "Todos los guías de Nature Walks Sri Lanka están certificados por la Junta de Turismo de Sri Lanka: nunca te dejamos en manos de un autónomo sin licencia para un tramo del viaje."
+        "description": "Todos nuestros guías están certificados por la Junta de Turismo de Sri Lanka."
       },
       {
-        "title": "Formados en el campo, no con un guion",
-        "description": "Nuestra forma de guiar nació del trabajo de campo en conservación, no de un guion de mostrador turístico, y Nandana sigue formando y dirigiendo al equipo personalmente."
+        "title": "Formados en el campo",
+        "description": "Un guiado nacido del trabajo de campo, enseñado por el propio Nandana."
       },
       {
         "title": "Una empresa, un viaje",
-        "description": "Guías, alojamiento y transporte salen de nosotros, así que hay un único número al que llamar para cualquier cosa, antes de llegar y mientras estás aquí."
+        "description": "Guías, alojamiento y transporte nuestros: un único número para todo."
       }
     ]
   },

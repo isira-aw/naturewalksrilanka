@@ -10,12 +10,14 @@ import { HomeHero } from "@/components/hero/HomeHero";
 import { HomeIntro } from "@/components/home/HomeIntro";
 import { GuideIntro } from "@/components/home/GuideIntro";
 import { ServicesSection, type Service } from "@/components/home/ServicesSection";
+import { StatsBand, type Stat } from "@/components/home/StatsBand";
 import { PlacesSection } from "@/components/home/PlacesSection";
 import { TrustSection } from "@/components/home/TrustSection";
 import { DurationSelector } from "@/components/tours/DurationSelector";
 import { TestimonialSection } from "@/components/testimonials/TestimonialSection";
 import { FinalCTA } from "@/components/whatsapp/FinalCTA";
 import { Section } from "@/components/ui/Section";
+import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/seo/jsonld";
 
@@ -65,6 +67,7 @@ export default async function HomePage({
 
   const whyPoints = t.raw("nandana.whyPoints") as { title: string; description: string }[];
   const services = t.raw("home.services") as Service[];
+  const stats = t.raw("home.stats") as Stat[];
   const featuredDestinations = destinations.slice(0, 8);
 
   return (
@@ -92,11 +95,12 @@ export default async function HomePage({
         body={t("home.introBody")}
       />
 
+      <StatsBand stats={stats} />
+
       <ServicesSection
         labels={{
           eyebrow: t("home.servicesEyebrow"),
           title: t("home.servicesTitle"),
-          body: t("home.servicesBody"),
         }}
         services={services}
       />
@@ -112,14 +116,14 @@ export default async function HomePage({
       />
 
       <Section tone="warm">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <p className="font-utility text-xs uppercase tracking-[0.2em] text-forest">
             {t("tours.sectionEyebrow")}
           </p>
           <h2 className="mt-4 font-display text-3xl leading-tight tracking-tight text-charcoal md:text-4xl">
             {t("tours.sectionTitle")}
           </h2>
-        </div>
+        </Reveal>
 
         <div className="mt-12">
           <DurationSelector

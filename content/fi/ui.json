@@ -13,37 +13,54 @@
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Tavanomaisen",
     "titleLine2": "tuolle puolen",
-    "subtitle": "Yksityismatkoja Sri Lankan villiin sydämeen — oppaat, majoitus ja kuljetukset järjestää yksi yritys, johon saat suoran yhteyden.",
+    "subtitle": "Yksityismatkoja saaren villiin sydämeen.",
     "ctaPrimary": "Tutustu matkoihin",
     "ctaSecondary": "Rakenna oma matkasi"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Yksi yritys koko matkalle — oppaat, majoitukset ja matka niiden välillä.",
-    "introBody": "Nandana Hewagamage perusti Nature Walks Sri Lankan, jotta matkailijoilla olisi saarella yksi luotettava yhteyshenkilö. Jokainen oppaamme on Sri Lanka Tourism Boardin sertifioima, ja me järjestämme majoituksen, kuljetukset ja reitin heidän ympärilleen — ensimmäisestä viestistäsi viimeiseen aamuusi täällä.",
+    "introTitle": "Yksi yritys koko matkalle.",
+    "introBody": "Sertifioidut oppaat, majoitus ja kuljetukset — meidän järjestäminämme ensimmäisestä viestistäsi viimeiseen aamuusi saarella.",
+    "stats": [
+      {
+        "value": "20+",
+        "label": "Vuotta oppaana"
+      },
+      {
+        "value": "30+",
+        "label": "Kotoperäistä lintulajia"
+      },
+      {
+        "value": "15",
+        "label": "Kohdetta"
+      },
+      {
+        "value": "100%",
+        "label": "Sertifioituja oppaita"
+      }
+    ],
     "servicesEyebrow": "Mitä järjestämme",
     "servicesTitle": "Kaikki mitä matka vaatii, samasta paikasta.",
-    "servicesBody": "Kerro meille matkapäiväsi ja ajatuksesi siitä, mitä haluat nähdä. Me kokoamme loput ja olemme tavoitettavissa koko matkan ajan.",
     "services": [
       {
         "title": "Sertifioidut oppaat",
-        "description": "Luonto-, lintu-, vaellus- ja kulttuurioppaita omasta tiimistämme — jokainen heistä Sri Lanka Tourism Boardin sertifioima."
+        "short": "Oma tiimimme, Sri Lanka Tourism Boardin sertifioima."
       },
       {
         "title": "Majoitus",
-        "description": "Hotelleja, boutique-kohteita ja ekolodgeja, jotka valitaan reittisi ja budjettisi mukaan sekä varataan ja vahvistetaan meidän kauttamme."
+        "short": "Hotellit, boutique-kohteet ja ekolodget, meidän varaaminamme."
       },
       {
         "title": "Kuljetukset",
-        "description": "Yksityisauto ja kokenut kuljettaja koko matkan ajaksi, lisäksi lentokenttäkuljetukset ja kaikki reittisi vaatimat siirtymiset saarella."
+        "short": "Yksityisauto ja kokenut kuljettaja, lentokentältä lentokentälle."
       },
       {
         "title": "Oma reittisi",
-        "description": "Päivä päivältä rakennettu reitti sen ympärille, mitä todella haluat nähdä — ja jota muokataan matkan aikana, jos sää tai eläimet niin vaativat."
+        "short": "Rakennettu sen ympärille, mitä haluat nähdä — ja muokattavissa matkalla."
       }
     ],
     "guideRole": "Perustaja ja pääopas",
-    "guideBody": "Nandana aloitti luonnonsuojelutyössä vuonna 1990 ja työskenteli kyläyhteisöjen ja yliopistojen tutkimusryhmien kanssa Sri Lankan lintujen, kasvien ja hyönteisten parissa. Hän valmistui kansalliseksi oppaaksi vuonna 2002 ja perusti vuonna 2017 Nature Walks Sri Lankan, jotta matkailijoilla olisi yksi yritys — ja yksi opas — koko matkan ajan. Hän opastaa yhä itse matkoja.",
+    "guideBody": "Nandana aloitti luonnonsuojelutyössä 1990, valmistui kansalliseksi oppaaksi 2002 ja perusti Nature Walks Sri Lankan 2017. Hän opastaa yhä itse matkoja.",
     "guideCta": "Lue Nandanan tarina",
     "journeysCta": "Katso kaikki matkat",
     "placesCta": "Katso kaikki kohteet"
@@ -82,9 +99,13 @@
     "next": "Jatka",
     "travelersLabel": "Montako matkustajaa?",
     "datesLabel": "Milloin haluat matkustaa?",
-    "datesHelp": "Valitse saapumis- ja lähtöpäiväsi. Opastamme ympäri vuoden, joten mikä tahansa ajankohta järjestyy.",
+    "datesHelp": "Valitse saapumispäiväsi ja sen jälkeen lähtöpäiväsi. Opastamme ympäri vuoden, joten mikä tahansa ajankohta järjestyy.",
+    "datesHint": "Valitse ensin saapuminen ja sitten lähtö.",
     "datesStart": "Saapuminen",
     "datesEnd": "Lähtö",
+    "datesPreviousMonth": "Edellinen kuukausi",
+    "datesNextMonth": "Seuraava kuukausi",
+    "datesClear": "Tyhjennä",
     "datesSelected": "{count} päivää Sri Lankassa",
     "datesInvalid": "Valitse saapumispäivä ja sitä myöhempi lähtöpäivä.",
     "interestsLabel": "Mikä kiinnostaa sinua eniten?",
@@ -142,15 +163,15 @@
     "whyPoints": [
       {
         "title": "Jokainen opas sertifioitu",
-        "description": "Kaikki Nature Walks Sri Lankan oppaat ovat Sri Lanka Tourism Boardin sertifioimia — sinua ei koskaan luovuteta matkan osuudeksi lisensoimattomalle freelancerille."
+        "description": "Kaikki oppaamme ovat Sri Lanka Tourism Boardin sertifioimia."
       },
       {
-        "title": "Koulutettu maastossa, ei käsikirjoituksella",
-        "description": "Opastuksemme on kasvanut luonnonsuojelun kenttätyöstä, ei matkatoimiston käsikirjoituksesta, ja Nandana kouluttaa ja johtaa tiimiä edelleen itse."
+        "title": "Koulutettu maastossa",
+        "description": "Opastus kasvoi kenttätyöstä — kouluttajana Nandana itse."
       },
       {
         "title": "Yksi yritys, yksi matka",
-        "description": "Oppaat, majoitus ja kuljetukset tulevat kaikki meiltä, joten kaikkeen on yksi numero — sekä ennen saapumistasi että täällä ollessasi."
+        "description": "Oppaat, majoitus ja kuljetukset meiltä — yksi numero kaikkeen."
       }
     ]
   },

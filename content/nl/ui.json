@@ -13,37 +13,54 @@
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Voorbij het",
     "titleLine2": "gewone",
-    "subtitle": "Privéreizen door het wilde hart van Sri Lanka — gidsen, accommodatie en vervoer geregeld door één bedrijf dat je rechtstreeks kunt bereiken.",
+    "subtitle": "Privéreizen door het wilde hart van het eiland.",
     "ctaPrimary": "Bekijk de reizen",
     "ctaSecondary": "Stel je reis samen"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Eén bedrijf voor de hele reis — gidsen, verblijven en alles daartussenin.",
-    "introBody": "Nature Walks Sri Lanka is opgericht door Nandana Hewagamage, zodat reizigers één vertrouwd aanspreekpunt op het eiland hebben. Elke gids die wij meesturen is gecertificeerd door de Sri Lanka Tourism Board, en wij regelen de accommodatie, het vervoer en de route eromheen — vanaf je eerste bericht tot je laatste ochtend hier.",
+    "introTitle": "Eén bedrijf voor de hele reis.",
+    "introBody": "Gecertificeerde gidsen, accommodatie en vervoer — door ons geregeld, van je eerste bericht tot je laatste ochtend op het eiland.",
+    "stats": [
+      {
+        "value": "20+",
+        "label": "Jaar als gids"
+      },
+      {
+        "value": "30+",
+        "label": "Endemische vogelsoorten"
+      },
+      {
+        "value": "15",
+        "label": "Bestemmingen"
+      },
+      {
+        "value": "100%",
+        "label": "Gecertificeerde gidsen"
+      }
+    ],
     "servicesEyebrow": "Wat wij regelen",
     "servicesTitle": "Alles wat een reis nodig heeft, op één plek.",
-    "servicesBody": "Kom naar ons met je data en een idee van wat je wilt zien. Wij zetten de rest in elkaar en blijven tijdens de hele reis bereikbaar.",
     "services": [
       {
         "title": "Gecertificeerde gidsen",
-        "description": "Natuur-, vogel-, trekking- en cultuurgidsen uit ons eigen team — allemaal gecertificeerd door de Sri Lanka Tourism Board."
+        "short": "Ons eigen team, gecertificeerd door de Sri Lanka Tourism Board."
       },
       {
         "title": "Accommodatie",
-        "description": "Hotels, boutiquehotels en eco-lodges die passen bij je route en je budget, door ons geboekt en bevestigd."
+        "short": "Hotels, boutiquehotels en eco-lodges, door ons geboekt."
       },
       {
         "title": "Vervoer",
-        "description": "Privévervoer met ervaren chauffeurs voor de hele reis, inclusief luchthaventransfers en alle binnenlandse verplaatsingen die je route vraagt."
+        "short": "Privéauto met ervaren chauffeur, van luchthaven tot luchthaven."
       },
       {
         "title": "Jouw route",
-        "description": "Een dagprogramma opgebouwd rond wat jij echt wilt zien, onderweg bijgesteld als het weer of de dieren daar aanleiding toe geven."
+        "short": "Gebouwd rond wat jij wilt zien — en onderweg bijgesteld."
       }
     ],
     "guideRole": "Oprichter en hoofdgids",
-    "guideBody": "Nandana begon in 1990 in het natuurbehoud en werkte met dorpsgemeenschappen en universitaire onderzoeksteams aan de vogels, planten en insecten van Sri Lanka. In 2002 werd hij gediplomeerd nationaal gids en in 2017 richtte hij Nature Walks Sri Lanka op, zodat reizigers één bedrijf — en één gids — voor de hele reis zouden hebben. Hij begeleidt nog altijd zelf reizen.",
+    "guideBody": "Nandana begon in 1990 in het natuurbehoud, werd in 2002 gediplomeerd nationaal gids en richtte in 2017 Nature Walks Sri Lanka op. Hij begeleidt nog altijd zelf reizen.",
     "guideCta": "Lees het verhaal van Nandana",
     "journeysCta": "Bekijk alle reizen",
     "placesCta": "Bekijk alle bestemmingen"
@@ -82,9 +99,13 @@
     "next": "Verder",
     "travelersLabel": "Met hoeveel reizigers?",
     "datesLabel": "Wanneer wil je reizen?",
-    "datesHelp": "Kies je aankomst- en vertrekdatum. Wij gidsen het hele jaar door, dus elke datum is mogelijk.",
+    "datesHelp": "Kies je aankomstdatum en daarna je vertrekdatum. Wij gidsen het hele jaar door, dus elke datum is mogelijk.",
+    "datesHint": "Kies eerst je aankomst en daarna je vertrek.",
     "datesStart": "Aankomst",
     "datesEnd": "Vertrek",
+    "datesPreviousMonth": "Vorige maand",
+    "datesNextMonth": "Volgende maand",
+    "datesClear": "Wissen",
     "datesSelected": "{count} dagen in Sri Lanka",
     "datesInvalid": "Kies een aankomstdatum en een vertrekdatum die daarna ligt.",
     "interestsLabel": "Waarin ben je het meest geïnteresseerd?",
@@ -142,15 +163,15 @@
     "whyPoints": [
       {
         "title": "Elke gids gecertificeerd",
-        "description": "Alle gidsen van Nature Walks Sri Lanka zijn gecertificeerd door de Sri Lanka Tourism Board — je wordt nooit voor een deel van de reis aan een gids zonder licentie overgedragen."
+        "description": "Al onze gidsen zijn gecertificeerd door de Sri Lanka Tourism Board."
       },
       {
-        "title": "Getraind in het veld, niet volgens een script",
-        "description": "Ons gidsen is voortgekomen uit veldwerk in natuurbehoud in plaats van uit een script achter een toeristenbalie, en Nandana traint en begeleidt het team nog altijd zelf."
+        "title": "Getraind in het veld",
+        "description": "Gidsen dat voortkwam uit veldwerk, met Nandana als opleider."
       },
       {
         "title": "Eén bedrijf, één reis",
-        "description": "Gidsen, accommodatie en vervoer komen allemaal van ons, dus er is één nummer om te bellen voor alles — voordat je aankomt en terwijl je hier bent."
+        "description": "Gidsen, verblijven en vervoer van ons — één nummer voor alles."
       }
     ]
   },

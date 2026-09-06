@@ -234,6 +234,7 @@ export function WizardShell({
         )}
         {currentStepKey === "dates" && (
           <DatesStep
+            locale={locale}
             value={state.dateRange}
             onChange={(value) => dispatch({ type: "SET_DATE_RANGE", value })}
           />
