@@ -45,6 +45,32 @@ export const tourSchema = z.object({
 export type Tour = z.infer<typeof tourSchema>;
 export const toursSchema = z.array(tourSchema);
 
+/** One photograph in a destination's gallery. */
+export const destinationImageSchema = z.object({
+  src: z.string(),
+  alt: z.string(),
+  /** Shown under the photograph in the gallery; omit for a silent image. */
+  caption: z.string().optional(),
+});
+export type DestinationImage = z.infer<typeof destinationImageSchema>;
+
+/** A titled block of prose on a destination page. */
+export const destinationSectionSchema = z.object({
+  title: z.string(),
+  body: z.string(),
+});
+
+/** A short label/value pair for the facts strip (season, time needed, terrain). */
+export const destinationFactSchema = z.object({
+  label: z.string(),
+  value: z.string(),
+});
+
+/**
+ * Everything past `activities` is optional on purpose: the English files carry
+ * the full write-up, and the other locales still validate while they hold only
+ * the short description. A destination page renders whatever is present.
+ */
 export const destinationSchema = z.object({
   slug: z.string(),
   name: z.string(),
@@ -52,6 +78,17 @@ export const destinationSchema = z.object({
   description: z.string(),
   image: z.string(),
   activities: z.array(z.string()),
+  /** Full-bleed photograph at the top of the page; falls back to `image`. */
+  heroImage: z.string().optional(),
+  gallery: z.array(destinationImageSchema).optional(),
+  /** The opening paragraph — what this place actually is. */
+  intro: z.string().optional(),
+  sections: z.array(destinationSectionSchema).optional(),
+  /** Species and sights a visitor can reasonably hope to see here. */
+  wildlife: z.array(z.string()).optional(),
+  facts: z.array(destinationFactSchema).optional(),
+  goodToKnow: z.array(z.string()).optional(),
+  _note: z.string().optional(),
   _reviewStatus: z.string().optional(),
 });
 export type Destination = z.infer<typeof destinationSchema>;

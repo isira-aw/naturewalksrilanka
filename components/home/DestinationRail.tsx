@@ -4,8 +4,8 @@ import Image from "next/image";
 import { motion, useTransform } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import type { Destination } from "@/lib/content/schema";
-import { ArrowLabel, CarouselButton, Kicker, Rise, Words, viewport } from "./primitives";
-import { useRail } from "./useRail";
+import { ArrowLabel, CarouselButton, Kicker, Rise, Words, viewport } from "@/components/ui/motion";
+import { useRail } from "@/components/ui/useRail";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 

@@ -5,11 +5,12 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
-import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { NandanaIntro } from "@/components/nandana/NandanaIntro";
+import { PageHero } from "@/components/ui/PageHero";
+import { Kicker, Rise } from "@/components/ui/motion";
+import { NandanaStory } from "@/components/nandana/NandanaStory";
 import { WhyNandana } from "@/components/nandana/WhyNandana";
-import { FinalCTA } from "@/components/whatsapp/FinalCTA";
+import { ConservationNote } from "@/components/nandana/ConservationNote";
+import { PlanCta } from "@/components/whatsapp/PlanCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildPersonJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/jsonld";
 
@@ -70,39 +71,50 @@ export default async function AboutNandanaPage({
         ])}
       />
 
-      <Section tone="warm" size="compact" className="pb-0 md:pb-0">
-        <SectionHeading eyebrow={t("nandana.introEyebrow")} title={profile.name} />
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/70">
-          {profile.philosophy}
-        </p>
+      <PageHero
+        eyebrow={t("nandana.introEyebrow")}
+        title={profile.name}
+        lead={profile.philosophy}
+        image={{
+          src: "/images/hero-2.jpg",
+          alt: "Birdwatching with spotting scopes beside a dry-zone lagoon",
+        }}
+        meta={[profile.experience, profile.certification]}
+      />
 
-        <dl className="mt-10 grid gap-8 border-t border-stone-dark pt-8 sm:grid-cols-3">
-          <div>
-            <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-              {t("nandana.experienceLabel")}
-            </dt>
-            <dd className="mt-2 text-charcoal/80">{profile.experience}</dd>
-          </div>
-          <div>
-            <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-              {languagesLabel}
-            </dt>
-            <dd className="mt-2 text-charcoal/80">
-              {profile.languages.length > 0
-                ? profile.languages.join(", ")
-                : tCommon("contentRequired")}
-            </dd>
-          </div>
-          <div>
-            <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-              {t("nandana.certificationLabel")}
-            </dt>
-            <dd className="mt-2 text-charcoal/80">{profile.certification}</dd>
-          </div>
-        </dl>
-      </Section>
+      <section className="bg-warm-white pt-16 pb-4 md:pt-24 md:pb-6">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
+          <Kicker>{t("destinations.atAGlance")}</Kicker>
+          <Rise delay={0.1}>
+            <dl className="mt-8 border-t border-charcoal/15">
+              <div className="grid gap-1 border-b border-charcoal/15 py-5 md:grid-cols-12 md:gap-8">
+                <dt className="font-utility text-[11px] uppercase tracking-[0.15em] text-charcoal/45 md:col-span-3">
+                  {t("nandana.experienceLabel")}
+                </dt>
+                <dd className="text-charcoal/80 md:col-span-9">{profile.experience}</dd>
+              </div>
+              <div className="grid gap-1 border-b border-charcoal/15 py-5 md:grid-cols-12 md:gap-8">
+                <dt className="font-utility text-[11px] uppercase tracking-[0.15em] text-charcoal/45 md:col-span-3">
+                  {languagesLabel}
+                </dt>
+                <dd className="text-charcoal/80 md:col-span-9">
+                  {profile.languages.length > 0
+                    ? profile.languages.join(", ")
+                    : tCommon("contentRequired")}
+                </dd>
+              </div>
+              <div className="grid gap-1 border-b border-charcoal/15 py-5 md:grid-cols-12 md:gap-8">
+                <dt className="font-utility text-[11px] uppercase tracking-[0.15em] text-charcoal/45 md:col-span-3">
+                  {t("nandana.certificationLabel")}
+                </dt>
+                <dd className="text-charcoal/80 md:col-span-9">{profile.certification}</dd>
+              </div>
+            </dl>
+          </Rise>
+        </div>
+      </section>
 
-      <NandanaIntro profile={profile} title={t("nandana.introTitle")} />
+      <NandanaStory profile={profile} title={t("nandana.introTitle")} />
 
       <WhyNandana
         profile={profile}
@@ -111,7 +123,15 @@ export default async function AboutNandanaPage({
         points={whyPoints}
       />
 
-      <FinalCTA
+      <ConservationNote
+        labels={{
+          eyebrow: t("conservation.eyebrow"),
+          title: t("conservation.title"),
+          quote: t("conservation.quote"),
+        }}
+      />
+
+      <PlanCta
         whatsappNumber={navigation.contact.whatsappNumber}
         labels={{
           eyebrow: t("finalCta.eyebrow"),
@@ -121,6 +141,7 @@ export default async function AboutNandanaPage({
         }}
         secondary={{ href: "/custom-tour", label: t("customTour.start") }}
       />
+
     </>
   );
 }

@@ -243,5 +243,17 @@
     "contentRequired": "Inhoud nog te bevestigen met Nandana",
     "comingSoon": "Binnenkort beschikbaar"
   },
-  "_reviewStatus": "needs-native-review"
+  "_reviewStatus": "needs-native-review",
+  "destinations": {
+    "allRegions": "Alle regio's",
+    "count": "plaatsen",
+    "atAGlance": "In het kort",
+    "story": "De plek",
+    "wildlife": "Wat je kunt zien",
+    "goodToKnow": "Goed om te weten",
+    "gallery": "Foto's",
+    "journeys": "Reizen langs deze plek",
+    "activities": "Wat je hier doet",
+    "backToAll": "Alle bestemmingen"
+  }
 }

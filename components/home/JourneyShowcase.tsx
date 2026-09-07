@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import type { Tour } from "@/lib/content/schema";
 import { cn } from "@/lib/utils/cn";
-import { ArrowLink, Kicker, Rise, Words } from "./primitives";
+import { ArrowLink, Kicker, Rise, Words } from "@/components/ui/motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 

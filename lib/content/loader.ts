@@ -1,6 +1,7 @@
 import "server-only";
 import type { Locale } from "@/i18n/routing";
 import { contentSchemas } from "./schema";
+import { resolveImage, resolveGallery } from "./images";
 import type {
   Profile,
   Tour,
@@ -40,7 +41,26 @@ export async function getContent<K extends keyof ContentMap>(
 ): Promise<ContentMap[K]> {
   const raw = await loaders[file](locale);
   const schema = contentSchemas[file];
-  return schema.parse(raw) as ContentMap[K];
+  const parsed = schema.parse(raw);
+  if (file === "destinations") {
+    return withResolvedImages(parsed as Destination[]) as ContentMap[K];
+  }
+  return parsed as ContentMap[K];
+}
+
+/**
+ * Destination content names its photographs before they exist (see
+ * `public/images/destinations/README.md`): anything not yet supplied falls back
+ * to the shared placeholder, and unsupplied gallery frames are dropped, so a
+ * half-photographed destination still renders as a finished page.
+ */
+function withResolvedImages(destinations: Destination[]): Destination[] {
+  return destinations.map((destination) => ({
+    ...destination,
+    image: resolveImage(destination.image),
+    heroImage: resolveImage(destination.heroImage ?? destination.image),
+    gallery: resolveGallery(destination.gallery),
+  }));
 }
 
 export async function getTourBySlug(locale: Locale, slug: string): Promise<Tour | undefined> {

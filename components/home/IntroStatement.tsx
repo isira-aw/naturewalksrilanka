@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { Kicker, Ledger, Rise, Words } from "./primitives";
+import { Kicker, Ledger, Rise, Words } from "@/components/ui/motion";
 
 /**
  * The calm centred statement the reference site opens with once the

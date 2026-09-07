@@ -1,17 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BadgeIcon, BinocularsIcon, ChatIcon, LeafIcon } from "@/components/ui/icons";
-import { Kicker, Rise, Words, viewport } from "./primitives";
+import { Kicker, Rise, Words, viewport } from "@/components/ui/motion";
 
-const ICONS = [BadgeIcon, BinocularsIcon, ChatIcon];
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
  * The credibility block, built as the reference site builds its editorial
  * lists: numbered full-width rows separated by hairlines that draw themselves
- * in, each row lifting into forest on hover. Closed by the conservation note
- * that explains where the guiding came from.
+ * in, each row warming into forest on hover — no icons, the numbering and the
+ * rules do that work. Closed by the conservation note that explains where the
+ * guiding came from.
  */
 export function ReasonsList({
   labels,
@@ -33,56 +32,46 @@ export function ReasonsList({
         </div>
 
         <ul className="mt-14">
-          {points.map((point, index) => {
-            const Icon = ICONS[index % ICONS.length];
-            return (
-              <motion.li
-                key={point.title}
-                initial={{ opacity: 0, y: 26 }}
-                whileInView={{ opacity: 1, y: 0 }}
+          {points.map((point, index) => (
+            <motion.li
+              key={point.title}
+              initial={{ opacity: 0, y: 26 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.8, ease: EASE, delay: index * 0.1 }}
+              className="group relative"
+            >
+              <motion.span
+                aria-hidden="true"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
                 viewport={viewport}
-                transition={{ duration: 0.8, ease: EASE, delay: index * 0.1 }}
-                className="group relative"
-              >
-                <motion.span
+                transition={{ duration: 1, ease: EASE, delay: index * 0.1 }}
+                className="block h-px w-full origin-left bg-charcoal/15"
+              />
+
+              <div className="relative grid gap-4 py-8 md:grid-cols-12 md:items-baseline md:gap-8 md:py-10">
+                {/* A forest field that wipes in behind the row on hover, the
+                    way the reference site warms its list rows. */}
+                <span
                   aria-hidden="true"
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={viewport}
-                  transition={{ duration: 1, ease: EASE, delay: index * 0.1 }}
-                  className="block h-px w-full origin-left bg-charcoal/15"
+                  className="pointer-events-none absolute inset-x-[-1rem] inset-y-0 origin-left scale-x-0 bg-forest/[0.04] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 md:inset-x-[-2rem]"
                 />
 
-                <div className="relative grid gap-4 py-8 md:grid-cols-12 md:items-baseline md:gap-8 md:py-10">
-                  {/* A forest field that wipes in behind the row on hover,
-                      the way the reference site warms its list rows. */}
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-[-1rem] inset-y-0 origin-left scale-x-0 bg-forest/[0.04] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 md:inset-x-[-2rem]"
-                  />
+                <p className="relative font-utility text-xs uppercase tracking-[0.2em] text-charcoal/35 transition-colors duration-500 group-hover:text-forest md:col-span-1">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
 
-                  <div className="relative flex items-center gap-5 md:col-span-1">
-                    <span className="font-utility text-xs uppercase tracking-[0.2em] text-charcoal/35">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
+                <h3 className="relative font-display text-xl text-charcoal transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 md:col-span-5 md:text-2xl">
+                  {point.title}
+                </h3>
 
-                  <div className="relative md:col-span-5">
-                    <div className="flex items-center gap-4">
-                      <Icon className="h-7 w-7 shrink-0 text-forest transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5" />
-                      <h3 className="font-display text-xl text-charcoal md:text-2xl">
-                        {point.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <p className="relative leading-relaxed text-charcoal/65 md:col-span-6">
-                    {point.description}
-                  </p>
-                </div>
-              </motion.li>
-            );
-          })}
+                <p className="relative leading-relaxed text-charcoal/65 md:col-span-6">
+                  {point.description}
+                </p>
+              </div>
+            </motion.li>
+          ))}
           <motion.span
             aria-hidden="true"
             initial={{ scaleX: 0 }}
@@ -94,8 +83,7 @@ export function ReasonsList({
         </ul>
 
         <Rise delay={0.1}>
-          <div className="mt-14 flex max-w-2xl gap-5 bg-stone/70 p-7">
-            <LeafIcon className="h-6 w-6 shrink-0 text-clay" />
+          <div className="mt-14 max-w-2xl border-l-2 border-clay bg-stone/70 p-7">
             <p className="leading-relaxed text-charcoal/65">{labels.note}</p>
           </div>
         </Rise>

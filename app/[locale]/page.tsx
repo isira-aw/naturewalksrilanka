@@ -14,7 +14,7 @@ import { DestinationRail } from "@/components/home/DestinationRail";
 import { ReasonsList } from "@/components/home/ReasonsList";
 import { JourneyShowcase } from "@/components/home/JourneyShowcase";
 import { VoicesSlider } from "@/components/home/VoicesSlider";
-import { PlanCta } from "@/components/home/PlanCta";
+import { PlanCta } from "@/components/whatsapp/PlanCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/seo/jsonld";
 

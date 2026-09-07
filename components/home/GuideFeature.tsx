@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import type { Profile } from "@/lib/content/schema";
-import { ArrowLink, Kicker, Rise, Words } from "./primitives";
+import { ArrowLink, Kicker, Rise, Words } from "@/components/ui/motion";
 
 /**
  * Home-page version of "who is Nandana": the founder and lead guide behind the

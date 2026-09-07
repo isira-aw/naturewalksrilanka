@@ -30,6 +30,24 @@ content/
 - Any field with the literal value `"CONTENT_REQUIRED"`, or an object with `"contentRequired": true` / a `"_note"`, marks something that isn't a confirmed fact yet (e.g. Nandana's specific languages, the reconstructed 12-day itinerary) — resolve these with Nandana before treating that content as final.
 - Non-English files carry `"_reviewStatus": "needs-native-review"` — a native speaker should proofread these before launch.
 
+### Destination pages
+
+`destinations.json` carries a short `description` plus an optional long-form
+block used by the destination page: `intro`, `sections[]` (title + body),
+`wildlife[]`, `facts[]` (label + value), `goodToKnow[]` and `gallery[]`.
+Everything past `activities` is optional, so a locale holding only the short
+description still validates and still renders a complete, shorter page. The
+English file carries the full write-up, flagged
+`"_reviewStatus": "draft-written-for-review"` — it is drafted copy awaiting
+Nandana's review, not confirmed fact.
+
+Photographs are named before they exist. Each destination asks for
+`/images/destinations/<slug>/hero.jpg`, `cover.jpg` and `01.jpg`–`04.jpg`;
+anything not yet supplied falls back to the shared placeholder (hero, cover) or
+is simply dropped (gallery), resolved in `lib/content/images.ts`. Drop the real
+files in and redeploy — no content or code change needed. Sizes and framing are
+documented in `public/images/destinations/README.md`.
+
 ### Adding or removing a language
 
 `i18n/routing.ts` is the single source of truth: add the code to `locales`, add its endonym to `localeNames` (this is what the header/footer language selector shows), and add a matching `content/<locale>/` folder with the full file set. Nothing else enumerates languages.

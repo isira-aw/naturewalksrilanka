@@ -243,5 +243,17 @@
     "contentRequired": "Indhold skal bekræftes med Nandana",
     "comingSoon": "Kommer snart"
   },
-  "_reviewStatus": "needs-native-review"
+  "_reviewStatus": "needs-native-review",
+  "destinations": {
+    "allRegions": "Alle regioner",
+    "count": "steder",
+    "atAGlance": "Kort fortalt",
+    "story": "Stedet",
+    "wildlife": "Hvad du kan se",
+    "goodToKnow": "Godt at vide",
+    "gallery": "Billeder",
+    "journeys": "Rejser der inkluderer stedet",
+    "activities": "Hvad du kan lave her",
+    "backToAll": "Alle destinationer"
+  }
 }

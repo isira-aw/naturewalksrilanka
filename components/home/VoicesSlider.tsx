@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Testimonials } from "@/lib/content/schema";
-import { CarouselButton, Kicker, Words } from "./primitives";
+import { CarouselButton, Kicker, Words } from "@/components/ui/motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 

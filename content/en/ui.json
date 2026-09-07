@@ -242,5 +242,17 @@
     "addressLabel": "Address",
     "contentRequired": "Content required — to be confirmed with Nandana",
     "comingSoon": "Coming soon"
+  },
+  "destinations": {
+    "allRegions": "All regions",
+    "count": "places",
+    "atAGlance": "At a glance",
+    "story": "The place",
+    "wildlife": "What you might see",
+    "goodToKnow": "Good to know",
+    "gallery": "Photographs",
+    "journeys": "Journeys that include it",
+    "activities": "Things to do here",
+    "backToAll": "All destinations"
   }
 }

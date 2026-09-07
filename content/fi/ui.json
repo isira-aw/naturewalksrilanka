@@ -243,5 +243,17 @@
     "contentRequired": "Sisältö vahvistettava Nandanan kanssa",
     "comingSoon": "Tulossa pian"
   },
-  "_reviewStatus": "needs-native-review"
+  "_reviewStatus": "needs-native-review",
+  "destinations": {
+    "allRegions": "Kaikki alueet",
+    "count": "kohdetta",
+    "atAGlance": "Lyhyesti",
+    "story": "Paikka",
+    "wildlife": "Mitä voit nähdä",
+    "goodToKnow": "Hyvä tietää",
+    "gallery": "Kuvat",
+    "journeys": "Matkat, joihin kohde kuuluu",
+    "activities": "Tekemistä täällä",
+    "backToAll": "Kaikki kohteet"
+  }
 }

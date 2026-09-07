@@ -6,7 +6,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { Link } from "@/i18n/navigation";
 import { WhatsAppCTA } from "@/components/whatsapp/WhatsAppCTA";
 import { buildGeneralMessage } from "@/lib/whatsapp/buildMessage";
-import { Words } from "./primitives";
+import { Words } from "@/components/ui/motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 

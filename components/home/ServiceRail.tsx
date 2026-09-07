@@ -1,9 +1,8 @@
 "use client";
 
 import { motion, useTransform } from "framer-motion";
-import { BadgeIcon, LodgeIcon, RouteIcon, VehicleIcon } from "@/components/ui/icons";
-import { CarouselButton, Kicker, Words, viewport } from "./primitives";
-import { useRail } from "./useRail";
+import { CarouselButton, Kicker, Words, viewport } from "@/components/ui/motion";
+import { useRail } from "@/components/ui/useRail";
 
 export type Service = { title: string; short: string };
 
@@ -12,9 +11,10 @@ export type Service = { title: string; short: string };
  * the reference site's "row you push through" pattern. The heading sits on the
  * left with the slider chrome opposite it, and the rail runs to the edge of
  * the screen so the next card is always half-visible.
+ *
+ * No iconography anywhere: the numbering and the rules carry the structure,
+ * which is how the reference site handles a row like this.
  */
-const ICONS = [BadgeIcon, LodgeIcon, VehicleIcon, RouteIcon];
-
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function ServiceRail({
@@ -62,40 +62,32 @@ export function ServiceRail({
         ref={ref}
         className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] ps-[max(1rem,calc((100%-80rem)/2+1rem))] pe-4 scroll-ps-[max(1rem,calc((100%-80rem)/2+1rem))] sm:ps-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] sm:scroll-ps-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] md:ps-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] md:scroll-ps-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] [&::-webkit-scrollbar]:hidden"
       >
-        {services.map((service, index) => {
-          const Icon = ICONS[index % ICONS.length];
-          return (
-            <motion.article
+        {services.map((service, index) => (
+          <motion.article
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.8, ease: EASE, delay: index * 0.09 }}
-              className="group relative w-[78vw] shrink-0 snap-start sm:w-[52vw] md:w-[30vw] lg:w-[22.5rem]"
-            >
-              <div className="relative h-full overflow-hidden border-t border-charcoal/15 pt-8">
-                {/* The rule above the card redraws in forest on hover, left to
-                    right — the reference site's card "arming" gesture. */}
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-forest transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
-                />
+            className="group relative w-[78vw] shrink-0 snap-start sm:w-[52vw] md:w-[30vw] lg:w-[22.5rem]"
+          >
+            <div className="relative h-full overflow-hidden border-t border-charcoal/15 pt-8">
+              {/* The rule above the card redraws in forest on hover, left to
+                  right — the reference site's card "arming" gesture. */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-forest transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+              />
 
-                <div className="flex items-start justify-between">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-forest/10 text-forest transition-colors duration-500 group-hover:bg-forest group-hover:text-warm-white">
-                    <Icon className="h-6 w-6" />
-                  </span>
-                  <span className="font-utility text-xs uppercase tracking-[0.2em] text-charcoal/35">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
+              <p className="font-utility text-xs uppercase tracking-[0.25em] text-charcoal/35 transition-colors duration-500 group-hover:text-forest">
+                {String(index + 1).padStart(2, "0")}
+              </p>
 
-                <h3 className="mt-8 font-display text-xl text-charcoal">{service.title}</h3>
-                <p className="mt-3 leading-relaxed text-charcoal/65">{service.short}</p>
-              </div>
-            </motion.article>
-          );
-        })}
+              <h3 className="mt-8 font-display text-2xl text-charcoal">{service.title}</h3>
+              <p className="mt-3 leading-relaxed text-charcoal/65">{service.short}</p>
+            </div>
+          </motion.article>
+        ))}
       </div>
 
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">

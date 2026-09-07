@@ -5,7 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/cn";
 
 /**
- * Motion vocabulary shared by every home-page block, so the page reads as one
+ * The motion vocabulary every page is built from, so the site reads as one
  * choreography rather than a stack of separately animated sections:
  *
  *   Kicker   — the small uppercase label, arriving behind a rule that draws in
