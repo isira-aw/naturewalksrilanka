@@ -20,11 +20,9 @@ import { buildGeneralMessage } from "@/lib/whatsapp/buildMessage";
  * until real photography replaces them (see lib/content/imageMap.ts).
  */
 const SLIDES = [
-  { src: "/images/hero-1.jpg", alt: "Nandana Hewagamage with travellers at the Nine Arches Bridge, Ella" },
-  { src: "/images/hero-2.jpg", alt: "Birdwatching with spotting scopes beside a dry-zone lagoon" },
-  { src: "/images/story-1.jpg", alt: "Birding on a forest trail in Sri Lanka's highlands" },
-  { src: "/images/tours/tour-16-days.jpg", alt: "Travellers at the Lion Rock stairway, Sigiriya" },
-  { src: "/images/story-2.jpg", alt: "A photography group in the Sinharaja rainforest" },
+  { src: "/images/hero/hero (1).jpg", alt: "image 1" },
+  { src: "/images/hero/hero (2).jpg", alt: "image 2" },
+  { src: "/images/hero/hero (3).jpg", alt: "image 3" },
 ];
 
 const SLIDE_MS = 6000;
