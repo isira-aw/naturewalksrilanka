@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://naturewalksrilanka.com"),
   title: "Nature Walks Sri Lanka",
   description:
-    "Private nature and wildlife journeys through Sri Lanka, guided by Nandana Hewagamage.",
+    "Private nature and wildlife journeys through Sri Lanka, with certified guides, accommodation and transport arranged by Nature Walks Sri Lanka.",
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

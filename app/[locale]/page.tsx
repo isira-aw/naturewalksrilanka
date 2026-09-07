@@ -5,16 +5,16 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
-import { Link } from "@/i18n/navigation";
-import { HomeHero } from "@/components/hero/HomeHero";
-import { HomeIntro } from "@/components/home/HomeIntro";
-import { GuideIntro } from "@/components/home/GuideIntro";
-import { PlacesSection } from "@/components/home/PlacesSection";
-import { TrustSection } from "@/components/home/TrustSection";
-import { DurationSelector } from "@/components/tours/DurationSelector";
-import { TestimonialSection } from "@/components/testimonials/TestimonialSection";
-import { FinalCTA } from "@/components/whatsapp/FinalCTA";
-import { Section } from "@/components/ui/Section";
+import { HeroShowcase } from "@/components/home/HeroShowcase";
+import { IntroStatement } from "@/components/home/IntroStatement";
+import { GuideFeature } from "@/components/home/GuideFeature";
+import { ServiceRail, type Service } from "@/components/home/ServiceRail";
+import { StatsRibbon, type Stat } from "@/components/home/StatsRibbon";
+import { DestinationRail } from "@/components/home/DestinationRail";
+import { ReasonsList } from "@/components/home/ReasonsList";
+import { JourneyShowcase } from "@/components/home/JourneyShowcase";
+import { VoicesSlider } from "@/components/home/VoicesSlider";
+import { PlanCta } from "@/components/whatsapp/PlanCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/seo/jsonld";
 
@@ -63,6 +63,8 @@ export default async function HomePage({
   ]);
 
   const whyPoints = t.raw("nandana.whyPoints") as { title: string; description: string }[];
+  const services = t.raw("home.services") as Service[];
+  const stats = t.raw("home.stats") as Stat[];
   const featuredDestinations = destinations.slice(0, 8);
 
   return (
@@ -70,7 +72,7 @@ export default async function HomePage({
       <JsonLd data={buildOrganizationJsonLd({ navigation, seo, locale: l })} />
       <JsonLd data={buildWebsiteJsonLd({ seo, locale: l })} />
 
-      <HomeHero
+      <HeroShowcase
         labels={{
           eyebrow: t("hero.eyebrow"),
           titleLine1: t("hero.titleLine1"),
@@ -79,57 +81,51 @@ export default async function HomePage({
           ctaPrimary: t("hero.ctaPrimary"),
           ctaSecondary: t("hero.ctaSecondary"),
           meta: `${profile.experience} · ${profile.certification}`,
-          whatsapp: t("whatsapp.talkToNandana"),
+          whatsapp: t("whatsapp.talkToUs"),
         }}
         navigation={navigation}
       />
 
-      <HomeIntro
+      <IntroStatement
         eyebrow={t("home.introEyebrow")}
         title={t("home.introTitle")}
         body={t("home.introBody")}
       />
 
-      <GuideIntro
+      <StatsRibbon stats={stats} />
+
+      <ServiceRail
+        labels={{
+          eyebrow: t("home.servicesEyebrow"),
+          title: t("home.servicesTitle"),
+        }}
+        services={services}
+      />
+
+      <GuideFeature
         profile={profile}
         labels={{
           eyebrow: t("nandana.introEyebrow"),
+          role: t("home.guideRole"),
           body: t("home.guideBody"),
           cta: t("home.guideCta"),
         }}
       />
 
-      <Section tone="warm">
-        <div className="max-w-2xl">
-          <p className="font-utility text-xs uppercase tracking-[0.2em] text-forest">
-            {t("tours.sectionEyebrow")}
-          </p>
-          <h2 className="mt-4 font-display text-3xl leading-tight tracking-tight text-charcoal md:text-4xl">
-            {t("tours.sectionTitle")}
-          </h2>
-        </div>
+      <JourneyShowcase
+        tours={tours}
+        labels={{
+          eyebrow: t("tours.sectionEyebrow"),
+          title: t("tours.sectionTitle"),
+          cta: t("tours.cta"),
+          daysLabel: t("tours.daysLabel"),
+          highlightsTitle: t("tours.highlightsTitle"),
+          custom: t("tours.custom"),
+          allCta: t("home.journeysCta"),
+        }}
+      />
 
-        <div className="mt-12">
-          <DurationSelector
-            tours={tours}
-            labels={{
-              cta: t("tours.cta"),
-              daysLabel: t("tours.daysLabel"),
-              highlightsTitle: t("tours.highlightsTitle"),
-              custom: t("tours.custom"),
-            }}
-          />
-        </div>
-
-        <Link
-          href="/tours"
-          className="mt-12 inline-block font-medium text-forest underline underline-offset-8 transition-colors hover:text-forest-dark"
-        >
-          {t("home.journeysCta")}
-        </Link>
-      </Section>
-
-      <PlacesSection
+      <DestinationRail
         destinations={featuredDestinations}
         labels={{
           eyebrow: t("sriLanka.eyebrow"),
@@ -139,7 +135,7 @@ export default async function HomePage({
         }}
       />
 
-      <TrustSection
+      <ReasonsList
         labels={{
           eyebrow: t("nandana.whyEyebrow"),
           title: t("nandana.whyTitle"),
@@ -149,7 +145,7 @@ export default async function HomePage({
       />
 
       {testimonials.items.length > 0 && (
-        <TestimonialSection
+        <VoicesSlider
           testimonials={testimonials}
           labels={{
             eyebrow: t("testimonials.eyebrow"),
@@ -159,7 +155,7 @@ export default async function HomePage({
         />
       )}
 
-      <FinalCTA
+      <PlanCta
         whatsappNumber={navigation.contact.whatsappNumber}
         labels={{
           eyebrow: t("finalCta.eyebrow"),
@@ -169,6 +165,7 @@ export default async function HomePage({
         }}
         secondary={{ href: "/custom-tour", label: t("customTour.start") }}
       />
+
     </>
   );
 }

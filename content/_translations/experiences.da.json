@@ -1,0 +1,153 @@
+{
+  "sinharaja-endemic-mornings": {
+    "title": "Endemiske morgener i Sinharaja",
+    "location": "Sinharaja-regnskoven, Sabaragamuwa",
+    "bestTime": "December – april",
+    "duration": "2–3 dage",
+    "summary": "Vandringer ved daggry efter regnskovens endemiske fugle, med en guide der kender flokkenes ruter.",
+    "description": "Sinharaja er det eneste sted på øen, hvor størstedelen af Sri Lankas endemiske fugle kan findes i én og samme skov. Vi går forskningsstierne i det første lys, når de blandede fourageringsflokke trækker forbi — ofte tyve fugle eller flere over stien på én gang. Eftermiddagene er til de mere stilfærdige arter i underskoven og til regnskovens frøer, firben og sommerfugle. To nætter giver dig to daggry; tre gør turen behagelig i stedet for forjaget.",
+    "highlights": [
+      { "name": "Sri Lanka Blue Magpie", "note": "Endemisk — som regel med fourageringsflokken" },
+      { "name": "Red-faced Malkoha", "note": "Endemisk — højt i kronelaget, bedst i tidligt lys" },
+      { "name": "Serendib Scops Owl", "note": "Endemisk — en art for natvandringen" },
+      { "name": "Ashy-headed Laughingthrush", "note": "Endemisk — larmende flokke i underskoven" },
+      { "name": "Green-billed Coucal", "note": "Endemisk — høres oftere end den ses" }
+    ]
+  },
+  "highland-birding-horton-plains": {
+    "title": "Højlandsfugle på Horton Plains",
+    "location": "Horton Plains og Nuwara Eliya, Det centrale højland",
+    "bestTime": "Januar – marts",
+    "duration": "2 dage",
+    "summary": "Tågeskov og bjerggræsland, for de endemiske arter der kun lever i højden.",
+    "description": "Over 2.000 meter skifter skoven fuldstændig karakter, og det gør fuglene også. Vi begynder tidligt på stierne i Horton Plains, mens tågen stadig ligger, og arbejder om eftermiddagen Victoria Park i Nuwara Eliya, der er lille, men pålideligt god for overvintrende trækfugle. Kolde morgener — tag et ekstra lag med, hvilket overrasker de fleste i troperne.",
+    "highlights": [
+      { "name": "Sri Lanka Whistling Thrush", "note": "Endemisk — første lys, nær vandløb" },
+      { "name": "Sri Lanka Bush Warbler", "note": "Endemisk — græslandets kanter" },
+      { "name": "Yellow-eared Bulbul", "note": "Endemisk — almindelig, men fotogen" },
+      { "name": "Kashmir Flycatcher", "note": "Vintergæst — Victoria Park" },
+      { "name": "Pied Thrush", "note": "Vintergæst — skyggefulde vandløb i parken" }
+    ]
+  },
+  "yala-leopard-tracking": {
+    "title": "På sporet af leoparder i Yala",
+    "location": "Yala Nationalpark, Sydprovinsen",
+    "bestTime": "Februar – juli",
+    "duration": "2 dage",
+    "summary": "Heldagssafari i den park, der har verdens tætteste bestand af leoparder.",
+    "description": "Yalas blok ét har leoparder i en tæthed, man ikke finder andre steder, og en hel dag inde i parken — frem for den sædvanlige halvdagstur — er det, der gør et syn sandsynligt i stedet for heldigt. Krat, laguner og klippeknolde på samme køretur, så dagen giver dig langt mere end kattene: elefant, læbebjørn i den rette sæson og tørzonens fugle omkring hvert vandreservoir.",
+    "highlights": [
+      { "name": "Srilankansk leopard", "note": "Klipperne tidligt om morgenen" },
+      { "name": "Læbebjørn", "note": "Bedste chance når palu bærer frugt, juni–juli" },
+      { "name": "Asiatisk elefant", "note": "Ved reservoirerne sidst på eftermiddagen" },
+      { "name": "Sumpkrokodille", "note": "Lagunernes bredder, hele dagen" }
+    ]
+  },
+  "wilpattu-villus": {
+    "title": "Wilpattu og parkens villus",
+    "location": "Wilpattu Nationalpark, Nordvestprovinsen",
+    "bestTime": "Februar – oktober",
+    "duration": "2 dage",
+    "summary": "Øens største park, roligere end Yala, bygget op omkring naturlige søer.",
+    "description": "Wilpattu er langt større end Yala og har en brøkdel af køretøjerne, så oplevelsen er langsommere og mere ensom — man kan sætte sig ved en villu, en af parkens naturlige søer med sandbred, og lade parken komme til sig. Leoparder kræver mere tålmodighed her end i Yala, men landskabet er belønningen.",
+    "highlights": [
+      { "name": "Srilankansk leopard", "note": "Tålmodig venten ved parkens villus" },
+      { "name": "Læbebjørn", "note": "Åbent krat tidligt om morgenen" },
+      { "name": "Plettet hjort og sambar", "note": "Ved hver eneste sø" },
+      { "name": "Indisk stork", "note": "Villuens lavvandede kanter" }
+    ]
+  },
+  "ella-hill-trails": {
+    "title": "Vandrestier omkring Ella",
+    "location": "Ella, Uva-provinsen",
+    "bestTime": "Januar – marts, juli – september",
+    "duration": "2 dage",
+    "summary": "Little Adam's Peak ved solopgang, Ella Rock efter morgenmaden, teplantager derimellem.",
+    "description": "Ella ligger i en åbning mellem bjergene, og derfor ender alle vandringer her med en udsigt. Little Adam's Peak er en rolig time før morgenmaden; Ella Rock er en rigtig halv dag i mere ujævnt terræn. Derimellem ligger Nine Arch-broen, Ravana-vandfaldet og teplantager, man går tværs igennem. Godt for alle, der vil have højland uden en flerdagsvandring.",
+    "highlights": [
+      { "name": "Little Adam's Peak", "note": "Cirka en time op, bedst ved solopgang" },
+      { "name": "Ella Rock", "note": "En halv dag, stejlt visse steder" },
+      { "name": "Nine Arch-broen", "note": "Læg den, så toget passerer" },
+      { "name": "Ravana-vandfaldet", "note": "Mest vandrigt lige efter regntiden" }
+    ]
+  },
+  "knuckles-forest-walk": {
+    "title": "Tværs gennem Knuckles-skoven",
+    "location": "Knuckles Conservation Forest, Centralprovinsen",
+    "bestTime": "Januar – april",
+    "duration": "2–3 dage",
+    "summary": "Tågeskov, landsbystier og bjergryggen — til fods og væk fra vejen.",
+    "description": "Knuckles-bjergene er Sri Lankas mindst besøgte bjerglandskab: bjergskov, landsbyer med risterrasser og en bjergryg, der klarer op over skyerne midt på formiddagen. Ruten går fra landsbypensionat til landsbypensionat frem for fra hotel til hotel, og det er netop pointen — det er den del af landet, der stadig kører i gåtempo.",
+    "highlights": [
+      { "name": "Udsigtspunkter på ryggen", "note": "Klart tidligt, skyer omkring middag" },
+      { "name": "Bjergtågeskov", "note": "Mosgroet, kølig, rig på endemiske arter" },
+      { "name": "Landsbyernes terrasser", "note": "Risdyrkning stadig i hånden" }
+    ]
+  },
+  "ancient-cities-loop": {
+    "title": "De gamle byer",
+    "location": "Anuradhapura, Polonnaruwa og Sigiriya",
+    "bestTime": "Maj – september",
+    "duration": "3 dage",
+    "summary": "To gamle hovedstæder og klippefæstningen mellem dem, på de rigtige tidspunkter.",
+    "description": "Anuradhapura og Polonnaruwa var tilsammen øens hovedstæder i over tusind år, og Sigiriyas klippefæstning ligger på vejen, der forbinder dem. Kunsten er timingen: Sigiriya før heden, Polonnaruwa på cykel sidst på eftermiddagen og Anuradhapura omkring ritualerne ved det hellige bo-træ frem for omkring turistbusserne.",
+    "highlights": [
+      { "name": "Løveklippen i Sigiriya", "note": "Start ved åbningstid, før heden" },
+      { "name": "Polonnaruwa på cykel", "note": "Fladt, skyggefuldt, bedst sidst på dagen" },
+      { "name": "Sri Maha Bodhi", "note": "Anuradhapura — offergaver om aftenen" },
+      { "name": "Dambulla-huletemplerne", "note": "Malede lofter, på ruten" }
+    ]
+  },
+  "kandy-temple-and-tea": {
+    "title": "Kandy, tempel og te",
+    "location": "Kandy, Centralprovinsen",
+    "bestTime": "Hele året — festivalsæson juli/august",
+    "duration": "2 dage",
+    "summary": "Tandtemplet ved aftenens puja, derefter teplantagerne oven for byen.",
+    "description": "Kandy nydes bedst i roligt tempo: Tandtemplet ved aftenens puja, når trommerne sætter i; en formiddag i den botaniske have i Peradeniya; og en eftermiddag på en tefabrik i drift på bakkerne over byen, hvor hele processen foregår foran én. Rejser du i juli eller august, fylder Esala Perahera gaderne ti nætter i træk.",
+    "highlights": [
+      { "name": "Tandtemplet", "note": "Aftenens puja, trommer ved porten" },
+      { "name": "Peradeniyas botaniske have", "note": "Om formiddagen, før busselskaberne" },
+      { "name": "En tefabrik i drift", "note": "Fra blad til pakke på ét besøg" }
+    ]
+  },
+  "south-coast-and-galle": {
+    "title": "Sydkysten og Galle Fort",
+    "location": "Mirissa og Galle, Sydprovinsen",
+    "bestTime": "November – april",
+    "duration": "2–3 dage",
+    "summary": "Rolige dage ved sydkysten, med det hollandske fort i Galle en eftermiddag væk.",
+    "description": "Sydkysten er som regel dér, en rejse slutter: et par uforstyrrede dage i Mirissa og en enkelt eftermiddag på voldene i Galle Fort, som er bedst sidst på dagen, når murene holder på lyset og gaderne indenfor køler af. Blåhvaler passerer ud for kysten fra december til april, hvis du vil have endnu en tidlig morgen.",
+    "highlights": [
+      { "name": "Voldene i Galle Fort", "note": "Gåtur sidst på eftermiddagen" },
+      { "name": "Mirissa Strand", "note": "Roligt hav november – april" },
+      { "name": "Blåhvaler ud for kysten", "note": "December – april, tidlig afgang" }
+    ]
+  },
+  "rainforest-photography": {
+    "title": "Fotodage i regnskoven",
+    "location": "Sinharaja og Kithulgala",
+    "bestTime": "December – marts",
+    "duration": "3 dage",
+    "summary": "Bygget om lyset, ikke om en tjekliste — skjul, langsomme morgener, lange objektiver.",
+    "description": "En rejse i fototempo: vi bliver, hvor lyset er godt, i stedet for at dække afstand. Tidlige morgener i skovbrynet efter blandede flokke, midt på dagen makroarbejde med frøer, firben og løvfald, og sidst på eftermiddagen kronelaget set oppefra ved Kithulgala. Tempoet i bil og til fods sættes af det, du fotograferer, og Nandana har guidet naturfotografer siden 2002.",
+    "highlights": [
+      { "name": "Blandede fourageringsflokke", "note": "De første to timer efter daggry" },
+      { "name": "Endemiske frøer og firben", "note": "Makromotiver i middagsskyggen" },
+      { "name": "Kronelaget oppefra", "note": "Kithulgala-ryggen i sent lys" }
+    ]
+  },
+  "kithulgala-river-adventure": {
+    "title": "Floddage ved Kithulgala",
+    "location": "Kithulgala, Sabaragamuwa-provinsen",
+    "bestTime": "Maj – december",
+    "duration": "2 dage",
+    "summary": "River rafting, canyoning og zipline i kanten af regnskoven.",
+    "description": "Kelani-floden ved Kithulgala løber i grad 2–3 gennem regnskov, og det gør stedet til øens eventyrbase: rafting om morgenen, canyoning ved vandfaldene om eftermiddagen og en zipline over dalen til dem, der stadig står op. Det hele kører med de autoriserede lokale operatører, vi samarbejder med, og den samme skov er fuld af fugle, hvis du vil have en rolig dag to.",
+    "highlights": [
+      { "name": "River rafting", "note": "Grad 2–3, ingen erfaring nødvendig" },
+      { "name": "Canyoning", "note": "Nedstigning ved vandfald, en halv dag" },
+      { "name": "Zipline", "note": "Over floddalen" }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+[
+  { "slug": "birding", "name": "Lintujen tarkkailu", "description": "Sri Lankassa on yli 30 kotoperäistä lintulajia. Nandana, Field Ornithology Groupin jäsen, opastaa lintureissuja saaren sademetsissä, ylängöillä ja kuivan vyöhykkeen puistoissa.", "_reviewStatus": "needs-native-review" },
+  { "slug": "wildlife-safari", "name": "Eläinsafari", "description": "Leopardi, norsu, laiskakarhu ja paljon muuta jäljitettynä Wilpattun ja Yalan kansallispuistoissa.", "_reviewStatus": "needs-native-review" },
+  { "slug": "trekking", "name": "Vaellus", "description": "Luontokävelyjä ja ylänköpolkuja Ella Rockilta Horton Plainsille ja Sinharajan sademetsään.", "_reviewStatus": "needs-native-review" },
+  { "slug": "culture-history", "name": "Kulttuuri ja historia", "description": "Muinaiskaupunkeja, luolatemppeleitä, Hampaan temppeli ja Kandyn kulttuuriperinteet.", "_reviewStatus": "needs-native-review" },
+  { "slug": "adventure-sports", "name": "Seikkailulajit", "description": "Koskenlaskua, canyoningia ja vaijeriliukuja Kithulgalan sademetsäjoella.", "_reviewStatus": "needs-native-review" },
+  { "slug": "beach", "name": "Ranta", "description": "Rantapäiviä etelärannikolla yhdistettynä vierailuun Gallen hollantilaislinnoituksessa.", "_reviewStatus": "needs-native-review" }
+]

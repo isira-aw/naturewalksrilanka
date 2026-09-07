@@ -1,17 +1,1143 @@
 [
-  { "slug": "negombo", "name": "Negombo", "region": "West Coast", "description": "The gateway to Sri Lanka, close to the international airport. Home to a Dutch canal, a working fish market, and a calm first or last night on tour.", "image": "/images/placeholder-destination.jpg", "activities": ["culture-history"] },
-  { "slug": "wilpattu", "name": "Wilpattu National Park", "region": "North Western Province", "description": "Sri Lanka's largest national park, known for leopard, sloth bear, elephant, its natural lakes (villus), and dry-zone birdlife.", "image": "/images/placeholder-destination.jpg", "activities": ["wildlife-safari", "birding"] },
-  { "slug": "anuradhapura", "name": "Anuradhapura", "region": "North Central Province", "description": "One of Sri Lanka's ancient capitals, with a wide ancient-city complex visited alongside nearby Mihintale Temple.", "image": "/images/placeholder-destination.jpg", "activities": ["culture-history"] },
-  { "slug": "trincomalee", "name": "Trincomalee", "region": "Eastern Province", "description": "A harbour city on the east coast, the departure point for Pigeon Island and dolphin watching trips.", "image": "/images/placeholder-destination.jpg", "activities": ["beach", "wildlife-safari"] },
-  { "slug": "sigiriya", "name": "Sigiriya", "region": "Central Province", "description": "Home to the Lion Rock Fortress and Pidurangala Temple, with Polonnaruwa's ancient city and Minneriya National Park nearby.", "image": "/images/placeholder-destination.jpg", "activities": ["culture-history", "wildlife-safari"] },
-  { "slug": "polonnaruwa", "name": "Polonnaruwa", "region": "North Central Province", "description": "Sri Lanka's second ancient capital, explored on an ancient-city tour paired with a visit to Minneriya National Park.", "image": "/images/placeholder-destination.jpg", "activities": ["culture-history"] },
-  { "slug": "kandy", "name": "Kandy", "region": "Central Province", "description": "The hill-country cultural capital: the Temple of the Sacred Tooth Relic, a cultural show, tea factories, and the Dambulla Cave Temple en route.", "image": "/images/placeholder-destination.jpg", "activities": ["culture-history"] },
-  { "slug": "kithulgala", "name": "Kithulgala", "region": "Sabaragamuwa Province", "description": "A rainforest-edge village on the Kelani River, known for white-water rafting, canyoning, zip-lining, and rich birdlife.", "image": "/images/placeholder-destination.jpg", "activities": ["adventure-sports", "birding"] },
-  { "slug": "ella", "name": "Ella", "region": "Uva Province", "description": "A hill-country town reached by one of the world's most scenic train journeys, home to the Nine Arch Bridge, Little Adam's Peak, and Ravana Waterfall.", "image": "/images/placeholder-destination.jpg", "activities": ["trekking", "culture-history"] },
-  { "slug": "yala", "name": "Yala National Park", "region": "Southern Province", "description": "A dry-zone park of scrub jungle, water reservoirs, brackish lagoons and riverine habitats — the best park in the country to see leopard and sloth bear.", "image": "/images/placeholder-destination.jpg", "activities": ["wildlife-safari", "birding"] },
-  { "slug": "sinharaja", "name": "Sinharaja Rain Forest", "region": "Sabaragamuwa Province", "description": "A UNESCO World Heritage Site holding the richest biodiversity in Asia, and home to most of Sri Lanka's endemic flora and fauna.", "image": "/images/placeholder-destination.jpg", "activities": ["birding", "trekking"] },
-  { "slug": "nuwara-eliya", "name": "Nuwara Eliya", "region": "Central Highlands", "description": "A cool-climate hill station, home to Victoria Park and the gateway to Horton Plains National Park.", "image": "/images/placeholder-destination.jpg", "activities": ["birding"] },
-  { "slug": "horton-plains", "name": "Horton Plains National Park", "region": "Central Highlands", "description": "Montane grassland and cloud forest at altitude, home to several of Sri Lanka's highland endemic birds.", "image": "/images/placeholder-destination.jpg", "activities": ["birding", "trekking"] },
-  { "slug": "tissamaharama", "name": "Tissamaharama", "region": "Southern Province", "description": "A base town near Yala, with birding around its ancient water tanks and a nearby bird sanctuary.", "image": "/images/placeholder-destination.jpg", "activities": ["birding"] },
-  { "slug": "mirissa", "name": "Mirissa", "region": "Southern Province", "description": "A south-coast beach town, paired with a visit to Galle's Dutch Fort.", "image": "/images/placeholder-destination.jpg", "activities": ["beach", "culture-history"] }
+  {
+    "slug": "negombo",
+    "name": "Negombo",
+    "region": "West Coast",
+    "description": "The gateway to Sri Lanka, close to the international airport. Home to a Dutch canal, a working fish market, and a calm first or last night on tour.",
+    "image": "/images/destinations/negombo/cover.jpg",
+    "heroImage": "/images/destinations/negombo/hero.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "Negombo is the first or last night of almost every journey, and that is its job: a working fishing town twenty minutes from the international airport, where you can sleep off a flight beside the sea instead of driving into the night. It is also genuinely worth an unhurried morning.",
+    "sections": [
+      {
+        "title": "A fishing town, not a resort",
+        "body": "The lagoon has been fished by the same families for generations, and the beach still fills each morning with outrigger canoes coming in on the wind. The Lellama fish market at dawn is the town at full volume — auctioneers, ice, gulls, and the day's catch laid out on the sand."
+      },
+      {
+        "title": "Dutch canal and old churches",
+        "body": "The Hamilton Canal, cut under Dutch rule to carry cinnamon south to Colombo, runs straight through town and is best seen at first light. Negombo's large Catholic community has left it a skyline of church towers, which is why the coast here is often called Little Rome."
+      }
+    ],
+    "wildlife": [
+      "Lagoon and mangrove birds — herons, egrets, kingfishers",
+      "Wintering waders on the mudflats",
+      "Brahminy kites over the fishing beach"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "Year round; December to March is driest"
+      },
+      {
+        "label": "Time needed",
+        "value": "One night, either side of your flight"
+      },
+      {
+        "label": "Getting there",
+        "value": "20–30 minutes from Bandaranaike International Airport"
+      },
+      {
+        "label": "Pairs with",
+        "value": "An early start north to Wilpattu or Anuradhapura"
+      }
+    ],
+    "goodToKnow": [
+      "The fish market runs from around 6am and is finished by mid-morning.",
+      "Sea swimming is best at the northern end of the beach, away from the fishing boats.",
+      "A good place to change money and pick up anything forgotten before heading inland."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/negombo/01.jpg",
+        "alt": "Outrigger canoes on Negombo beach at sunrise",
+        "caption": "Outrigger canoes on Negombo beach at sunrise"
+      },
+      {
+        "src": "/images/destinations/negombo/02.jpg",
+        "alt": "The Lellama fish market in full swing",
+        "caption": "The Lellama fish market in full swing"
+      },
+      {
+        "src": "/images/destinations/negombo/03.jpg",
+        "alt": "The Dutch-built Hamilton Canal at first light",
+        "caption": "The Dutch-built Hamilton Canal at first light"
+      },
+      {
+        "src": "/images/destinations/negombo/04.jpg",
+        "alt": "Fishing nets drying on the lagoon shore",
+        "caption": "Fishing nets drying on the lagoon shore"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "wilpattu",
+    "name": "Wilpattu National Park",
+    "region": "North Western Province",
+    "description": "Sri Lanka's largest national park, known for leopard, sloth bear, elephant, its natural lakes (villus), and dry-zone birdlife.",
+    "image": "/images/destinations/wilpattu/cover.jpg",
+    "heroImage": "/images/destinations/wilpattu/hero.jpg",
+    "activities": [
+      "wildlife-safari",
+      "birding"
+    ],
+    "intro": "Wilpattu is the largest national park in Sri Lanka and, for our money, the better leopard park — not because there are more leopards than Yala, but because there are fewer jeeps. The park is named for its villus: natural, rain-fed lakes ringed with open grass, where animals come into the open.",
+    "sections": [
+      {
+        "title": "Villus, and why they matter",
+        "body": "A villu is a shallow basin that holds rainwater in a landscape that otherwise hides everything in thick dry-zone scrub. Sitting quietly at the edge of one for an hour is a completely different way of watching than driving the tracks, and it is how most of our best sightings happen."
+      },
+      {
+        "title": "How we work the park",
+        "body": "We go in at opening and stay through the middle of the day when most jeeps have gone back. Tracks, alarm calls from spotted deer and langur, and patience do more here than radio chatter — Nandana reads the park rather than chasing it."
+      }
+    ],
+    "wildlife": [
+      "Sri Lankan leopard",
+      "Sloth bear — best chances June to August, when palu fruit ripens",
+      "Asian elephant",
+      "Spotted deer, sambar, wild buffalo, mugger crocodile",
+      "Dry-zone birds: painted stork, black-necked stork, Sri Lanka junglefowl, changeable hawk-eagle"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "February to October; the park can close in heavy rain"
+      },
+      {
+        "label": "Time needed",
+        "value": "Two nights, for a full day and a half-day drive"
+      },
+      {
+        "label": "Getting there",
+        "value": "About 3 hours from Negombo, 1.5 hours from Anuradhapura"
+      },
+      {
+        "label": "Terrain",
+        "value": "Dry-zone forest, scrub and open villus"
+      }
+    ],
+    "goodToKnow": [
+      "Full-day drives with a packed lunch see far more than a short afternoon circuit.",
+      "Sightings are never guaranteed — anyone who promises you a leopard is selling you something.",
+      "Bring neutral clothing, a hat and more water than you think you need."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/wilpattu/01.jpg",
+        "alt": "A leopard resting on a track in Wilpattu",
+        "caption": "A leopard resting on a track in Wilpattu"
+      },
+      {
+        "src": "/images/destinations/wilpattu/02.jpg",
+        "alt": "Open water at one of Wilpattu's villus",
+        "caption": "Open water at one of Wilpattu's villus"
+      },
+      {
+        "src": "/images/destinations/wilpattu/03.jpg",
+        "alt": "Spotted deer at the forest edge",
+        "caption": "Spotted deer at the forest edge"
+      },
+      {
+        "src": "/images/destinations/wilpattu/04.jpg",
+        "alt": "A painted stork fishing in the shallows",
+        "caption": "A painted stork fishing in the shallows"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "anuradhapura",
+    "name": "Anuradhapura",
+    "region": "North Central Province",
+    "description": "One of Sri Lanka's ancient capitals, with a wide ancient-city complex visited alongside nearby Mihintale Temple.",
+    "image": "/images/destinations/anuradhapura/cover.jpg",
+    "heroImage": "/images/destinations/anuradhapura/hero.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "Anuradhapura was the island's capital for over a thousand years, and it is still a living pilgrimage city rather than a ruin field. White-robed pilgrims, oil lamps and lotus flowers move through monuments that were already ancient when Europe's cathedrals were built.",
+    "sections": [
+      {
+        "title": "The sacred city",
+        "body": "At its heart is the Sri Maha Bodhi, a sacred fig grown from a cutting of the tree under which the Buddha attained enlightenment, planted here in the third century BC and tended without a break ever since. Around it stand the great stupas — Ruwanwelisaya, Jetavanaramaya, Abhayagiri — each an enormous solid dome of brick."
+      },
+      {
+        "title": "Mihintale, where it began",
+        "body": "Twelve kilometres east, a stairway of 1,840 granite steps climbs Mihintale, where the monk Mahinda met King Devanampiya Tissa and Buddhism entered Sri Lanka. Go at first light: the climb is cool, the view over the dry-zone plain is long, and the site is quiet."
+      }
+    ],
+    "wildlife": [
+      "Grey langur and toque macaque around the ruins",
+      "Tank birds — pelicans, painted storks, open-billed storks",
+      "Indian peafowl at dawn on the bunds"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "Year round; May to September is hottest"
+      },
+      {
+        "label": "Time needed",
+        "value": "One full day, two if you add Mihintale properly"
+      },
+      {
+        "label": "Getting there",
+        "value": "About 4 hours from Colombo, 1.5 hours from Wilpattu"
+      },
+      {
+        "label": "Dress",
+        "value": "Shoulders and knees covered; shoes off at the sacred sites"
+      }
+    ],
+    "goodToKnow": [
+      "Poya (full moon) days are extraordinary to witness, and very busy.",
+      "The site is spread over kilometres — a vehicle between clusters saves the day.",
+      "White clothing is the pilgrim's custom, and always welcome."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/anuradhapura/01.jpg",
+        "alt": "The Ruwanwelisaya stupa in white",
+        "caption": "The Ruwanwelisaya stupa in white"
+      },
+      {
+        "src": "/images/destinations/anuradhapura/02.jpg",
+        "alt": "Pilgrims at the Sri Maha Bodhi",
+        "caption": "Pilgrims at the Sri Maha Bodhi"
+      },
+      {
+        "src": "/images/destinations/anuradhapura/03.jpg",
+        "alt": "The stairway climbing Mihintale",
+        "caption": "The stairway climbing Mihintale"
+      },
+      {
+        "src": "/images/destinations/anuradhapura/04.jpg",
+        "alt": "Moonstone carving at the ancient city",
+        "caption": "Moonstone carving at the ancient city"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "trincomalee",
+    "name": "Trincomalee",
+    "region": "Eastern Province",
+    "description": "A harbour city on the east coast, the departure point for Pigeon Island and dolphin watching trips.",
+    "image": "/images/destinations/trincomalee/cover.jpg",
+    "heroImage": "/images/destinations/trincomalee/hero.jpg",
+    "activities": [
+      "beach",
+      "wildlife-safari"
+    ],
+    "intro": "Trincomalee sits on one of the world's finest natural harbours, on a coast that runs on the opposite season to the rest of the island. When the south-west is under monsoon, Trinco is calm, clear and swimmable.",
+    "sections": [
+      {
+        "title": "Koneswaram and the harbour",
+        "body": "The Koneswaram temple stands on Swami Rock above a sheer drop to the sea — a Hindu site of long standing, rebuilt after the Portuguese destroyed the original. Below it the harbour opens out, deep enough to have been fought over by every navy that ever came this way."
+      },
+      {
+        "title": "Reef and open water",
+        "body": "Pigeon Island, a short boat ride off Nilaveli, is a marine national park with living coral, reef fish and blacktip reef sharks in the shallows. Further out, the deep water off Trincomalee is one of the island's whale grounds in the eastern season."
+      }
+    ],
+    "wildlife": [
+      "Blue whale and sperm whale offshore, in season",
+      "Spinner dolphin, often in large pods",
+      "Reef fish, blacktip reef sharks and hawksbill turtles at Pigeon Island",
+      "White-bellied sea eagle along the headlands"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "May to September — the east coast's dry season"
+      },
+      {
+        "label": "Time needed",
+        "value": "Two to three nights"
+      },
+      {
+        "label": "Getting there",
+        "value": "About 3 hours from Sigiriya or Polonnaruwa"
+      },
+      {
+        "label": "Beaches",
+        "value": "Uppuveli for quiet, Nilaveli for the Pigeon Island boats"
+      }
+    ],
+    "goodToKnow": [
+      "Snorkelling gear is available locally, but bring your own mask if you are particular.",
+      "Reef-safe sunscreen only at Pigeon Island — it is a national park.",
+      "Whale watching is weather-dependent and always starts early."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/trincomalee/01.jpg",
+        "alt": "Koneswaram temple above Swami Rock",
+        "caption": "Koneswaram temple above Swami Rock"
+      },
+      {
+        "src": "/images/destinations/trincomalee/02.jpg",
+        "alt": "Reef and clear water at Pigeon Island",
+        "caption": "Reef and clear water at Pigeon Island"
+      },
+      {
+        "src": "/images/destinations/trincomalee/03.jpg",
+        "alt": "The long beach at Nilaveli",
+        "caption": "The long beach at Nilaveli"
+      },
+      {
+        "src": "/images/destinations/trincomalee/04.jpg",
+        "alt": "A blue whale surfacing off Trincomalee",
+        "caption": "A blue whale surfacing off Trincomalee"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "sigiriya",
+    "name": "Sigiriya",
+    "region": "Central Province",
+    "description": "Home to the Lion Rock Fortress and Pidurangala Temple, with Polonnaruwa's ancient city and Minneriya National Park nearby.",
+    "image": "/images/destinations/sigiriya/cover.jpg",
+    "heroImage": "/images/destinations/sigiriya/hero.jpg",
+    "activities": [
+      "culture-history",
+      "wildlife-safari"
+    ],
+    "intro": "A granite plug of an extinct volcano rising two hundred metres out of flat forest, with a fifth-century royal citadel on top of it. Sigiriya is the single most photographed thing in Sri Lanka and still worth every step.",
+    "sections": [
+      {
+        "title": "The climb",
+        "body": "King Kasyapa built his palace on the summit, reached through a gateway shaped as a lion — only the enormous paws survive. On the way up, a sheltered gallery holds the frescoes of the Sigiriya maidens, painted more than fifteen hundred years ago, and the polished mirror wall carries graffiti left by visitors from the eighth century onward."
+      },
+      {
+        "title": "What most people miss",
+        "body": "The water gardens at the base are an engineering achievement in their own right, with fountains that still run in the rainy season. And Pidurangala, the rock opposite, is the better sunrise: a rougher scramble, half the crowd, and the view is of Sigiriya itself."
+      }
+    ],
+    "wildlife": [
+      "Toque macaque and grey langur on the lower terraces",
+      "Sri Lanka grey hornbill and Sri Lanka junglefowl in the surrounding forest",
+      "Painted-lip lizard on the rock faces",
+      "Elephants on the road to Minneriya at dusk"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "Year round; climb at 7am or after 3.30pm"
+      },
+      {
+        "label": "Time needed",
+        "value": "Half a day for the rock, two nights to include Polonnaruwa"
+      },
+      {
+        "label": "Getting there",
+        "value": "About 3.5 hours from Negombo, 1 hour from Polonnaruwa"
+      },
+      {
+        "label": "The climb",
+        "value": "Roughly 1,200 steps, steep metal stairways near the top"
+      }
+    ],
+    "goodToKnow": [
+      "Not one for severe vertigo — the final stairways are open on one side.",
+      "Water, hat and an early start; there is no shade on the summit.",
+      "Hornets occasionally close sections of the climb; the guards' word is final."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/sigiriya/01.jpg",
+        "alt": "Sigiriya rock rising out of the forest",
+        "caption": "Sigiriya rock rising out of the forest"
+      },
+      {
+        "src": "/images/destinations/sigiriya/02.jpg",
+        "alt": "The lion's paws at the foot of the final stairway",
+        "caption": "The lion's paws at the foot of the final stairway"
+      },
+      {
+        "src": "/images/destinations/sigiriya/03.jpg",
+        "alt": "The Sigiriya frescoes",
+        "caption": "The Sigiriya frescoes"
+      },
+      {
+        "src": "/images/destinations/sigiriya/04.jpg",
+        "alt": "The water gardens seen from the summit",
+        "caption": "The water gardens seen from the summit"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "polonnaruwa",
+    "name": "Polonnaruwa",
+    "region": "North Central Province",
+    "description": "Sri Lanka's second ancient capital, explored on an ancient-city tour paired with a visit to Minneriya National Park.",
+    "image": "/images/destinations/polonnaruwa/cover.jpg",
+    "heroImage": "/images/destinations/polonnaruwa/hero.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "The island's second capital, and the most legible ancient city in Sri Lanka: a compact, walkable, cyclable set of palaces, temples and a great reservoir, most of it built in a single burst of twelfth-century confidence.",
+    "sections": [
+      {
+        "title": "Best seen from a bicycle",
+        "body": "The ruins are spread across a few flat kilometres of parkland under big trees, which makes a bicycle the right way to see them. The Vatadage, the Lankatilaka image house and the Royal Palace all sit within an easy ride of one another."
+      },
+      {
+        "title": "Gal Vihara",
+        "body": "Four colossal Buddha figures cut from a single granite face — a seated figure, a small rock cavity image, a standing figure with a rare crossed-arm posture, and a reclining Buddha seven metres longer than a bus. The stone was chosen so the grain runs with the robes, and the carving has not been improved on in eight hundred years."
+      },
+      {
+        "title": "Parakrama Samudra",
+        "body": "The Sea of Parakrama, an irrigation reservoir large enough to have its own horizon, still waters the paddy around the town. At dusk it is the place to be, and the nearby Minneriya and Kaudulla tanks draw one of Asia's great elephant congregations in the dry months."
+      }
+    ],
+    "wildlife": [
+      "Asian elephant at Minneriya and Kaudulla, August to September for the Gathering",
+      "Tank birds — pelicans, cormorants, egrets, storks",
+      "Toque macaque among the ruins",
+      "Land monitors and mugger crocodiles on the bunds"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "Year round; the Gathering peaks August to September"
+      },
+      {
+        "label": "Time needed",
+        "value": "One full day, two nights if you add an evening safari"
+      },
+      {
+        "label": "Getting there",
+        "value": "1 hour from Sigiriya, 3 hours from Kandy"
+      },
+      {
+        "label": "Getting around",
+        "value": "Bicycle, with a vehicle for the outlying groups"
+      }
+    ],
+    "goodToKnow": [
+      "Start at 7am — the site has little shade by eleven.",
+      "Shoulders and knees covered; shoes and hats off at the image houses.",
+      "The museum by the entrance is worth twenty minutes before you ride out."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/polonnaruwa/01.jpg",
+        "alt": "The reclining Buddha at Gal Vihara",
+        "caption": "The reclining Buddha at Gal Vihara"
+      },
+      {
+        "src": "/images/destinations/polonnaruwa/02.jpg",
+        "alt": "The circular Vatadage",
+        "caption": "The circular Vatadage"
+      },
+      {
+        "src": "/images/destinations/polonnaruwa/03.jpg",
+        "alt": "Cycling between the ruins",
+        "caption": "Cycling between the ruins"
+      },
+      {
+        "src": "/images/destinations/polonnaruwa/04.jpg",
+        "alt": "Elephants at Minneriya tank",
+        "caption": "Elephants at Minneriya tank"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "kandy",
+    "name": "Kandy",
+    "region": "Central Province",
+    "description": "The hill-country cultural capital: the Temple of the Sacred Tooth Relic, a cultural show, tea factories, and the Dambulla Cave Temple en route.",
+    "image": "/images/destinations/kandy/cover.jpg",
+    "heroImage": "/images/destinations/kandy/hero.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "The last kingdom to fall to the British, held out for three centuries in a bowl of forested hills, and still the ceremonial heart of the island. Kandy is a working city with a lake in the middle and a rainforest reserve on the ridge above it.",
+    "sections": [
+      {
+        "title": "The Temple of the Sacred Tooth Relic",
+        "body": "Sri Dalada Maligawa holds a tooth of the Buddha, and with it a long tradition that whoever holds the relic holds the country. Come for one of the three daily pujas, when the drummers play and the inner chamber is opened; the building itself — dark timber, ivory inlay, painted ceilings — repays a slow walk."
+      },
+      {
+        "title": "Above the city",
+        "body": "Udawattakele, the old royal forest garden behind the temple, is birding within walking distance of the centre. Three kilometres out, the Royal Botanical Gardens at Peradeniya hold a giant Javan fig, an orchid house and an avenue of palms, with a fruit bat colony overhead that has to be seen at dusk."
+      }
+    ],
+    "wildlife": [
+      "Layard's parakeet, yellow-fronted barbet and other endemics in Udawattakele",
+      "Indian flying fox roosting at Peradeniya",
+      "Purple-faced langur in the forest reserve",
+      "Water monitors along the lake shore"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "Year round; the Esala Perahera falls in July or August"
+      },
+      {
+        "label": "Time needed",
+        "value": "Two nights"
+      },
+      {
+        "label": "Getting there",
+        "value": "3 hours from Colombo; the hill-country train leaves from here"
+      },
+      {
+        "label": "Altitude",
+        "value": "About 500 m — cooler and greener than the coast"
+      }
+    ],
+    "goodToKnow": [
+      "The evening puja is the atmospheric one; be there twenty minutes early.",
+      "White or modest clothing for the temple, and shoes are left at the entrance.",
+      "The Esala Perahera fills the city for ten nights — book far ahead or plan around it."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/kandy/01.jpg",
+        "alt": "The Temple of the Sacred Tooth Relic at dusk",
+        "caption": "The Temple of the Sacred Tooth Relic at dusk"
+      },
+      {
+        "src": "/images/destinations/kandy/02.jpg",
+        "alt": "Kandy lake and the old town",
+        "caption": "Kandy lake and the old town"
+      },
+      {
+        "src": "/images/destinations/kandy/03.jpg",
+        "alt": "Drummers at the evening puja",
+        "caption": "Drummers at the evening puja"
+      },
+      {
+        "src": "/images/destinations/kandy/04.jpg",
+        "alt": "The palm avenue at Peradeniya Botanical Gardens",
+        "caption": "The palm avenue at Peradeniya Botanical Gardens"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "kithulgala",
+    "name": "Kithulgala",
+    "region": "Sabaragamuwa Province",
+    "description": "A rainforest-edge village on the Kelani River, known for white-water rafting, canyoning, zip-lining, and rich birdlife.",
+    "image": "/images/destinations/kithulgala/cover.jpg",
+    "heroImage": "/images/destinations/kithulgala/hero.jpg",
+    "activities": [
+      "adventure-sports",
+      "birding"
+    ],
+    "intro": "A rainforest village on the Kelani River, best known for white water and for the bridge that was blown up in The Bridge on the River Kwai. It is also one of the most reliable places on the island for lowland endemic birds, and almost nobody comes here for that.",
+    "sections": [
+      {
+        "title": "The river",
+        "body": "The Kelani runs grade two to three through Kithulgala — big enough to be genuinely fun, forgiving enough for a first raft. The same gorge gives canyoning, jumps and natural slides, run by local crews who know exactly which pools are safe at which water level."
+      },
+      {
+        "title": "The forest across the water",
+        "body": "Makandawa forest reserve is reached by a small ferry across the river and then a climb into wet lowland rainforest. It holds much of the Sinharaja endemic list within a much shorter walk, which makes it a good first rainforest morning before the deeper trip south."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka spurfowl, green-billed coucal and chestnut-backed owlet",
+      "Sri Lanka blue magpie, layard's parakeet",
+      "Mixed-species feeding flocks in the early morning",
+      "Hump-nosed lizard and endemic frogs along the streams"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "December to April for rafting; birding is year round"
+      },
+      {
+        "label": "Time needed",
+        "value": "One or two nights"
+      },
+      {
+        "label": "Getting there",
+        "value": "About 2 hours from Colombo, 2.5 hours from Kandy"
+      },
+      {
+        "label": "Terrain",
+        "value": "Wet lowland rainforest, steep and slippery in places"
+      }
+    ],
+    "goodToKnow": [
+      "It rains here — properly — and that is the point of the forest.",
+      "Leech socks for the forest walks; the guides carry spares.",
+      "Rafting operators vary; we use the same crew every time."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/kithulgala/01.jpg",
+        "alt": "Rafting the Kelani River",
+        "caption": "Rafting the Kelani River"
+      },
+      {
+        "src": "/images/destinations/kithulgala/02.jpg",
+        "alt": "Rainforest canopy at Makandawa",
+        "caption": "Rainforest canopy at Makandawa"
+      },
+      {
+        "src": "/images/destinations/kithulgala/03.jpg",
+        "alt": "A Sri Lanka blue magpie",
+        "caption": "A Sri Lanka blue magpie"
+      },
+      {
+        "src": "/images/destinations/kithulgala/04.jpg",
+        "alt": "The river crossing to the forest reserve",
+        "caption": "The river crossing to the forest reserve"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "ella",
+    "name": "Ella",
+    "region": "Uva Province",
+    "description": "A hill-country town reached by one of the world's most scenic train journeys, home to the Nine Arch Bridge, Little Adam's Peak, and Ravana Waterfall.",
+    "image": "/images/destinations/ella/cover.jpg",
+    "heroImage": "/images/destinations/ella/hero.jpg",
+    "activities": [
+      "trekking",
+      "culture-history"
+    ],
+    "intro": "A gap in the hills where the mountains fall away to the southern plain, wrapped in tea and cloud forest. Ella is small, walkable and has the best short hikes in the hill country coming straight out of the village.",
+    "sections": [
+      {
+        "title": "Walks from the door",
+        "body": "Little Adam's Peak is a gentle hour through tea to a ridge with the whole gap laid out below it. Ella Rock is longer, steeper and quieter, and best done early with someone who knows the turning — the path is not signed and half the walkers on it are lost."
+      },
+      {
+        "title": "The bridge and the train",
+        "body": "The Nine Arches Bridge, built in stone and brick when steel ran short in the First World War, curves through the forest below the village; the train crossing it is one of the sights of the island. The line itself, from Nanu Oya or Haputale down to Ella, is the reason many people come to the hill country at all."
+      }
+    ],
+    "wildlife": [
+      "Yellow-eared bulbul and Sri Lanka white-eye in the tea and scrub",
+      "Crested serpent eagle over the gap",
+      "Purple-faced langur in the forest patches",
+      "Butterflies in extraordinary numbers after rain"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "January to March; the hills clear in the morning"
+      },
+      {
+        "label": "Time needed",
+        "value": "Two nights"
+      },
+      {
+        "label": "Getting there",
+        "value": "Train from Nanu Oya or Haputale; 3 hours by road from Nuwara Eliya"
+      },
+      {
+        "label": "Altitude",
+        "value": "About 1,040 m — warm days, cool nights"
+      }
+    ],
+    "goodToKnow": [
+      "Book train seats well in advance, or travel in the unreserved carriage and stand at the door.",
+      "Cloud closes in by late morning; do the viewpoints early.",
+      "Proper shoes for Ella Rock — it is a real hill walk, not a stroll."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/ella/01.jpg",
+        "alt": "A train crossing the Nine Arches Bridge",
+        "caption": "A train crossing the Nine Arches Bridge"
+      },
+      {
+        "src": "/images/destinations/ella/02.jpg",
+        "alt": "Tea pickers on the slopes above Ella",
+        "caption": "Tea pickers on the slopes above Ella"
+      },
+      {
+        "src": "/images/destinations/ella/03.jpg",
+        "alt": "The view from Little Adam's Peak",
+        "caption": "The view from Little Adam's Peak"
+      },
+      {
+        "src": "/images/destinations/ella/04.jpg",
+        "alt": "Ravana Falls after rain",
+        "caption": "Ravana Falls after rain"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "yala",
+    "name": "Yala National Park",
+    "region": "Southern Province",
+    "description": "A dry-zone park of scrub jungle, water reservoirs, brackish lagoons and riverine habitats — the best park in the country to see leopard and sloth bear.",
+    "image": "/images/destinations/yala/cover.jpg",
+    "heroImage": "/images/destinations/yala/hero.jpg",
+    "activities": [
+      "wildlife-safari",
+      "birding"
+    ],
+    "intro": "The park that made Sri Lanka a leopard destination: dry scrub, granite outcrops and lagoons meeting the sea, with one of the highest recorded leopard densities anywhere. It is also the busiest park in the country, and how you visit it matters.",
+    "sections": [
+      {
+        "title": "Leopard country",
+        "body": "Block 1 is where the density is, and where the jeeps are. We go in at the gate opening, work the quieter western tracks and the rock outcrops where leopards lie up in the morning sun, and avoid the queue that forms around any radio sighting."
+      },
+      {
+        "title": "More than the cats",
+        "body": "Yala's elephants are here year round; sloth bear appear in the fruiting months; and the coastal lagoons hold flamingo, spoonbill and pelican in the northern winter. The ancient monastery of Sithulpawwa, still in use inside the park boundary, is worth pairing with an afternoon drive."
+      }
+    ],
+    "wildlife": [
+      "Sri Lankan leopard",
+      "Asian elephant and sloth bear",
+      "Mugger crocodile, spotted deer, wild buffalo",
+      "Migrant waders and flamingo on the lagoons, November to March"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "February to July; the park usually closes in September"
+      },
+      {
+        "label": "Time needed",
+        "value": "Two nights, for a morning and an afternoon drive"
+      },
+      {
+        "label": "Getting there",
+        "value": "About 30 minutes from Tissamaharama"
+      },
+      {
+        "label": "Alternative",
+        "value": "Bundala, nearby, for wetland birds and no crowds"
+      }
+    ],
+    "goodToKnow": [
+      "First jeep through the gate sees a different park to the tenth.",
+      "Stay in the vehicle and keep the noise down — this is the whole etiquette.",
+      "Block 1 is busy; ask us about Block 5 and Bundala for quieter mornings."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/yala/01.jpg",
+        "alt": "A leopard on a granite outcrop in Yala",
+        "caption": "A leopard on a granite outcrop in Yala"
+      },
+      {
+        "src": "/images/destinations/yala/02.jpg",
+        "alt": "Elephants crossing a park track",
+        "caption": "Elephants crossing a park track"
+      },
+      {
+        "src": "/images/destinations/yala/03.jpg",
+        "alt": "A lagoon in the early morning",
+        "caption": "A lagoon in the early morning"
+      },
+      {
+        "src": "/images/destinations/yala/04.jpg",
+        "alt": "Sithulpawwa monastery inside the park",
+        "caption": "Sithulpawwa monastery inside the park"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "sinharaja",
+    "name": "Sinharaja Rain Forest",
+    "region": "Sabaragamuwa Province",
+    "description": "A UNESCO World Heritage Site holding the richest biodiversity in Asia, and home to most of Sri Lanka's endemic flora and fauna.",
+    "image": "/images/destinations/sinharaja/cover.jpg",
+    "heroImage": "/images/destinations/sinharaja/hero.jpg",
+    "activities": [
+      "birding",
+      "trekking"
+    ],
+    "intro": "The last substantial stand of primary lowland rainforest in Sri Lanka, a UNESCO World Heritage site, and the single best place in the country to see endemic birds. It rains, it drips, there are leeches, and it is unmissable.",
+    "sections": [
+      {
+        "title": "Walking in the forest",
+        "body": "There is no driving here: you walk, slowly, on forest tracks with a permit and a guide. Sinharaja's birds move in mixed-species feeding flocks — twenty or thirty birds of a dozen species travelling together — and half the skill is standing still in the right place when one arrives."
+      },
+      {
+        "title": "Endemics",
+        "body": "Of Sri Lanka's endemic birds, the great majority can be found in this forest, several of them almost nowhere else. Nandana has been walking these trails since his conservation days, and knows the flock routes, the roosts and the calls."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka blue magpie, red-faced malkoha, green-billed coucal",
+      "Sri Lanka spurfowl and Sri Lanka scaly thrush",
+      "Purple-faced langur, giant squirrel",
+      "Endemic frogs, agamid lizards and rainforest butterflies"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "January to April and August to September, between monsoons"
+      },
+      {
+        "label": "Time needed",
+        "value": "Two nights, for two full mornings in the forest"
+      },
+      {
+        "label": "Getting there",
+        "value": "Kudawa entrance, about 4 hours from Colombo"
+      },
+      {
+        "label": "Terrain",
+        "value": "Wet, steep, slippery — a real forest, not a park"
+      }
+    ],
+    "goodToKnow": [
+      "Leech socks, rain cover for the camera, and no umbrella in the flock.",
+      "Mornings are for birding; afternoons are usually rain.",
+      "Groups are kept small and permits are issued at the gate — we handle that."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/sinharaja/01.jpg",
+        "alt": "The rainforest canopy at Sinharaja",
+        "caption": "The rainforest canopy at Sinharaja"
+      },
+      {
+        "src": "/images/destinations/sinharaja/02.jpg",
+        "alt": "A Sri Lanka blue magpie in the understorey",
+        "caption": "A Sri Lanka blue magpie in the understorey"
+      },
+      {
+        "src": "/images/destinations/sinharaja/03.jpg",
+        "alt": "A mixed-species feeding flock passing through",
+        "caption": "A mixed-species feeding flock passing through"
+      },
+      {
+        "src": "/images/destinations/sinharaja/04.jpg",
+        "alt": "Streams and buttress roots on the forest trail",
+        "caption": "Streams and buttress roots on the forest trail"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "nuwara-eliya",
+    "name": "Nuwara Eliya",
+    "region": "Central Highlands",
+    "description": "A cool-climate hill station, home to Victoria Park and the gateway to Horton Plains National Park.",
+    "image": "/images/destinations/nuwara-eliya/cover.jpg",
+    "heroImage": "/images/destinations/nuwara-eliya/hero.jpg",
+    "activities": [
+      "birding"
+    ],
+    "intro": "Tea country at nineteen hundred metres, laid out by homesick British planters and still full of hedges, racecourses and gabled roofs. It is the coldest town in Sri Lanka and the greenest, and its small municipal park is one of the finest birding sites in the country.",
+    "sections": [
+      {
+        "title": "Tea, properly explained",
+        "body": "The hills around town are covered in it, and a factory visit here is worth doing once: the plucking, the withering lofts, the rolling and the grading, followed by a tasting that will spoil supermarket tea for you permanently."
+      },
+      {
+        "title": "Victoria Park",
+        "body": "A public garden in the middle of town that happens to be a magnet for rare wintering birds. Kashmir flycatcher, pied thrush and Indian pitta are all regular here between November and March, in a park with a bandstand and a children's playground."
+      }
+    ],
+    "wildlife": [
+      "Kashmir flycatcher, pied thrush and Indian pitta in winter",
+      "Sri Lanka bush warbler and yellow-eared bulbul",
+      "Sambar deer, which walk into town after dark",
+      "Hill-country endemics on the Pedro Estate tracks"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "January to March for birds; April for the season"
+      },
+      {
+        "label": "Time needed",
+        "value": "One or two nights"
+      },
+      {
+        "label": "Getting there",
+        "value": "2.5 hours from Kandy; the train stops at Nanu Oya"
+      },
+      {
+        "label": "Altitude",
+        "value": "1,868 m — bring something warm for the evening"
+      }
+    ],
+    "goodToKnow": [
+      "Nights are genuinely cold and most hotels have no heating.",
+      "April is Sri Lanka's holiday season here; the town fills and prices rise.",
+      "Victoria Park charges a small entry fee and opens early — go at first light."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/nuwara-eliya/01.jpg",
+        "alt": "Tea estates above Nuwara Eliya",
+        "caption": "Tea estates above Nuwara Eliya"
+      },
+      {
+        "src": "/images/destinations/nuwara-eliya/02.jpg",
+        "alt": "Plucking on the Pedro Estate",
+        "caption": "Plucking on the Pedro Estate"
+      },
+      {
+        "src": "/images/destinations/nuwara-eliya/03.jpg",
+        "alt": "Victoria Park in the early morning",
+        "caption": "Victoria Park in the early morning"
+      },
+      {
+        "src": "/images/destinations/nuwara-eliya/04.jpg",
+        "alt": "Mist over Gregory Lake",
+        "caption": "Mist over Gregory Lake"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "horton-plains",
+    "name": "Horton Plains National Park",
+    "region": "Central Highlands",
+    "description": "Montane grassland and cloud forest at altitude, home to several of Sri Lanka's highland endemic birds.",
+    "image": "/images/destinations/horton-plains/cover.jpg",
+    "heroImage": "/images/destinations/horton-plains/hero.jpg",
+    "activities": [
+      "birding",
+      "trekking"
+    ],
+    "intro": "A high plateau of montane grassland and cloud forest above two thousand metres, where the island simply stops: at World's End the ground falls away eight hundred and eighty metres in one step, with the southern plains laid out below.",
+    "sections": [
+      {
+        "title": "The loop walk",
+        "body": "A circuit of about nine kilometres takes in Little World's End, World's End itself and Baker's Falls, over grassland, through cloud forest and across streams. It is not difficult, but the altitude and the early start are real; most people are back at the car park by mid-morning."
+      },
+      {
+        "title": "Why you start at dawn",
+        "body": "The escarpment clouds over almost every day between nine and ten, and once it does, World's End is a white wall. Being at the gate when it opens is the whole trick — it also gives you the plateau at its best, frosted in places, with sambar grazing in the open."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka whistling thrush at first light near the streams",
+      "Sri Lanka bush warbler, dull-blue flycatcher, yellow-eared bulbul",
+      "Sambar deer in the grassland",
+      "Purple-faced langur (the montane bear monkey) in the cloud forest"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "January to March, driest and clearest"
+      },
+      {
+        "label": "Time needed",
+        "value": "A half day, from a base at Nuwara Eliya or Ella"
+      },
+      {
+        "label": "Getting there",
+        "value": "About 1.5 hours by road from Nuwara Eliya"
+      },
+      {
+        "label": "The walk",
+        "value": "9.5 km loop, 3 to 4 hours, at 2,100–2,300 m"
+      }
+    ],
+    "goodToKnow": [
+      "Leave at 5.30am — the view closes with the cloud by mid-morning.",
+      "It is near freezing at dawn and warm by nine; dress in layers.",
+      "No plastic is allowed past the gate and the rangers check bags."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/horton-plains/01.jpg",
+        "alt": "The escarpment at World's End",
+        "caption": "The escarpment at World's End"
+      },
+      {
+        "src": "/images/destinations/horton-plains/02.jpg",
+        "alt": "Montane grassland at dawn",
+        "caption": "Montane grassland at dawn"
+      },
+      {
+        "src": "/images/destinations/horton-plains/03.jpg",
+        "alt": "Baker's Falls",
+        "caption": "Baker's Falls"
+      },
+      {
+        "src": "/images/destinations/horton-plains/04.jpg",
+        "alt": "Sambar deer on the plateau",
+        "caption": "Sambar deer on the plateau"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "tissamaharama",
+    "name": "Tissamaharama",
+    "region": "Southern Province",
+    "description": "A base town near Yala, with birding around its ancient water tanks and a nearby bird sanctuary.",
+    "image": "/images/destinations/tissamaharama/cover.jpg",
+    "heroImage": "/images/destinations/tissamaharama/hero.jpg",
+    "activities": [
+      "birding"
+    ],
+    "intro": "A quiet town built around an ancient reservoir and a white stupa, and the natural base for Yala and Bundala. Most people sleep here and see nothing of it, which is a pity — the tank at dawn is as good as anything inside the parks.",
+    "sections": [
+      {
+        "title": "The tank and the stupa",
+        "body": "Tissa Wewa was built more than two thousand years ago and still irrigates the paddy around town. Its bund at first light, with the Tissamaharama stupa behind it and pelicans working the shallows, is one of the calmest half-hours in the south."
+      },
+      {
+        "title": "Bundala, the birder's park",
+        "body": "Half an hour away, Bundala is a Ramsar wetland of lagoons and dunes where greater flamingo winter in numbers, along with thousands of migrant waders. There are elephants and crocodiles too, and a fraction of Yala's traffic."
+      },
+      {
+        "title": "Kataragama",
+        "body": "Twenty kilometres north, Kataragama is one of the island's most important pilgrimage towns, sacred to Buddhists, Hindus and Muslims alike. The evening puja, with drums and fire, is an extraordinary thing to stand at the edge of."
+      }
+    ],
+    "wildlife": [
+      "Greater flamingo at Bundala, November to March",
+      "Painted stork, spoonbill and thousands of migrant waders",
+      "Asian elephant on the Bundala tracks",
+      "Mugger crocodile in the tanks"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "November to March for the migrants; February to July for Yala"
+      },
+      {
+        "label": "Time needed",
+        "value": "Two nights, as the base for the southern parks"
+      },
+      {
+        "label": "Getting there",
+        "value": "About 5 hours from Ella, 4 hours from Mirissa"
+      },
+      {
+        "label": "Nearby",
+        "value": "Yala 30 minutes, Bundala 30 minutes, Kataragama 30 minutes"
+      }
+    ],
+    "goodToKnow": [
+      "Safari jeeps leave around 5am — dinner early the night before.",
+      "The tank bund is a public road; walk it at dawn with binoculars.",
+      "Kataragama is a place of worship first and a sight second; dress and behave accordingly."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/tissamaharama/01.jpg",
+        "alt": "Tissa Wewa at first light",
+        "caption": "Tissa Wewa at first light"
+      },
+      {
+        "src": "/images/destinations/tissamaharama/02.jpg",
+        "alt": "The white stupa at Tissamaharama",
+        "caption": "The white stupa at Tissamaharama"
+      },
+      {
+        "src": "/images/destinations/tissamaharama/03.jpg",
+        "alt": "Flamingos at Bundala",
+        "caption": "Flamingos at Bundala"
+      },
+      {
+        "src": "/images/destinations/tissamaharama/04.jpg",
+        "alt": "Pilgrims at Kataragama in the evening",
+        "caption": "Pilgrims at Kataragama in the evening"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  },
+  {
+    "slug": "mirissa",
+    "name": "Mirissa",
+    "region": "Southern Province",
+    "description": "A south-coast beach town, paired with a visit to Galle's Dutch Fort.",
+    "image": "/images/destinations/mirissa/cover.jpg",
+    "heroImage": "/images/destinations/mirissa/hero.jpg",
+    "activities": [
+      "beach",
+      "culture-history"
+    ],
+    "intro": "The end of the journey for most of our itineraries: a curve of sand on the south coast with palms leaning over it, warm water, and the deepest whale-watching ground in Sri Lanka just offshore.",
+    "sections": [
+      {
+        "title": "Blue whales",
+        "body": "The continental shelf comes close to the coast here, which puts blue whales — the largest animal that has ever lived — within a couple of hours of the harbour. Sperm whales, Bryde's whales and big pods of spinner dolphins use the same water. Boats leave before dawn."
+      },
+      {
+        "title": "The coast either side",
+        "body": "Weligama, next door, is where everyone learns to surf, on a long forgiving beach break. Galle, an hour west, is a Dutch fort town of ramparts, warehouses and shuttered houses that is worth a full afternoon and an evening walk on the walls."
+      }
+    ],
+    "wildlife": [
+      "Blue whale and sperm whale, November to April",
+      "Spinner dolphin, often in hundreds",
+      "Green turtles in the shallows at Hikkaduwa and Habaraduwa",
+      "Sea eagles and terns along the headlands"
+    ],
+    "facts": [
+      {
+        "label": "Best time",
+        "value": "November to April — the south coast's dry season"
+      },
+      {
+        "label": "Time needed",
+        "value": "Two or three nights to finish a journey"
+      },
+      {
+        "label": "Getting there",
+        "value": "About 2.5 hours from Tissamaharama; 2 hours from Colombo by expressway"
+      },
+      {
+        "label": "Nearby",
+        "value": "Weligama for surf, Galle Fort for an afternoon"
+      }
+    ],
+    "goodToKnow": [
+      "Whale boats leave at 6am and the sea is calmest early.",
+      "Choose an operator that keeps the legal distance — we book responsibly or not at all.",
+      "The bay has a strong current at the eastern end; swim towards the middle."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/mirissa/01.jpg",
+        "alt": "The bay at Mirissa from the headland",
+        "caption": "The bay at Mirissa from the headland"
+      },
+      {
+        "src": "/images/destinations/mirissa/02.jpg",
+        "alt": "A blue whale off the south coast",
+        "caption": "A blue whale off the south coast"
+      },
+      {
+        "src": "/images/destinations/mirissa/03.jpg",
+        "alt": "Spinner dolphins beside the boat",
+        "caption": "Spinner dolphins beside the boat"
+      },
+      {
+        "src": "/images/destinations/mirissa/04.jpg",
+        "alt": "The ramparts of Galle Fort at sunset",
+        "caption": "The ramparts of Galle Fort at sunset"
+      }
+    ],
+    "_reviewStatus": "draft-written-for-review",
+    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+  }
 ]

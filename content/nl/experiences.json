@@ -1,0 +1,364 @@
+[
+  {
+    "slug": "sinharaja-endemic-mornings",
+    "category": "birding",
+    "title": "Endemische ochtenden in Sinharaja",
+    "location": "Regenwoud Sinharaja, Sabaragamuwa",
+    "bestTime": "December – april",
+    "duration": "2–3 dagen",
+    "summary": "Wandelingen bij dageraad naar de endemische regenwoudvogels, met een gids die de routes van de zwermen kent.",
+    "description": "Sinharaja is de enige plek op het eiland waar je de meeste endemische vogels van Sri Lanka in één bos kunt vinden. We lopen de onderzoekspaden bij het eerste licht, wanneer de gemengde foerageerzwermen voorbijtrekken — vaak steken twintig of meer vogels tegelijk het pad over. De middagen zijn voor de stillere soorten van de onderbegroeiing en voor de kikkers, hagedissen en vlinders van het regenwoud. Met twee nachten pak je twee ochtenden mee; met drie wordt de reis comfortabel in plaats van gehaast.",
+    "images": [
+      "/images/story-2.jpg",
+      "/images/story-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lanka Blue Magpie",
+        "note": "Endemisch — meestal bij de foerageerzwerm"
+      },
+      {
+        "name": "Red-faced Malkoha",
+        "note": "Endemisch — hoog in het kronendak, het best in vroeg licht"
+      },
+      {
+        "name": "Serendib Scops Owl",
+        "note": "Endemisch — een soort voor de nachtwandeling"
+      },
+      {
+        "name": "Ashy-headed Laughingthrush",
+        "note": "Endemisch — luidruchtige groepjes in de onderbegroeiing"
+      },
+      {
+        "name": "Green-billed Coucal",
+        "note": "Endemisch — vaker gehoord dan gezien"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "highland-birding-horton-plains",
+    "category": "birding",
+    "title": "Vogels kijken in het hoogland van Horton Plains",
+    "location": "Horton Plains en Nuwara Eliya, Centrale Hooglanden",
+    "bestTime": "Januari – maart",
+    "duration": "2 dagen",
+    "summary": "Nevelwoud en berggrasland, voor de endemen die alleen op hoogte leven.",
+    "description": "Boven de 2.000 meter verandert het bos volledig, en de vogels dus ook. We beginnen vroeg op de paden van Horton Plains terwijl de mist er nog hangt, en werken 's middags Victoria Park in Nuwara Eliya af: klein, maar betrouwbaar goed voor overwinterende trekvogels. Koude ochtenden — neem een extra laag mee, wat de meeste mensen verrast in de tropen.",
+    "images": [
+      "/images/story-1.jpg",
+      "/images/hero-2.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lanka Whistling Thrush",
+        "note": "Endemisch — eerste licht, bij beken"
+      },
+      {
+        "name": "Sri Lanka Bush Warbler",
+        "note": "Endemisch — randen van het grasland"
+      },
+      {
+        "name": "Yellow-eared Bulbul",
+        "note": "Endemisch — algemeen maar fotogeniek"
+      },
+      {
+        "name": "Kashmir Flycatcher",
+        "note": "Wintertrekker — Victoria Park"
+      },
+      {
+        "name": "Pied Thrush",
+        "note": "Wintertrekker — schaduwrijke beken in het park"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "yala-leopard-tracking",
+    "category": "wildlife",
+    "title": "Luipaarden zoeken in Yala",
+    "location": "Nationaal Park Yala, Zuidelijke Provincie",
+    "bestTime": "Februari – juli",
+    "duration": "2 dagen",
+    "summary": "Hele dagen safari in het park met de hoogste luipaarddichtheid ter wereld.",
+    "description": "Blok één van Yala herbergt luipaarden in een dichtheid die je nergens anders vindt, en een hele dag in het park — in plaats van de gebruikelijke halve dag — maakt een waarneming waarschijnlijk in plaats van gelukkig. Struikjungle, lagunes en rotspartijen tijdens dezelfde rit, dus de dag geeft je veel meer dan alleen de katten: olifanten, lippenberen in het juiste seizoen en vogels van de droge zone rond elk waterreservoir.",
+    "images": [
+      "/images/hero-2.jpg",
+      "/images/tours/tour-12-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lankaanse luipaard",
+        "note": "Rotspartijen in de vroege ochtend"
+      },
+      {
+        "name": "Lippenbeer",
+        "note": "De beste kans als de palu vrucht draagt, juni–juli"
+      },
+      {
+        "name": "Aziatische olifant",
+        "note": "Rond de waterreservoirs in de late middag"
+      },
+      {
+        "name": "Moeraskrokodil",
+        "note": "Lagune-oevers, de hele dag"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "wilpattu-villus",
+    "category": "wildlife",
+    "title": "Wilpattu en zijn villus",
+    "location": "Nationaal Park Wilpattu, Noordwestelijke Provincie",
+    "bestTime": "Februari – oktober",
+    "duration": "2 dagen",
+    "summary": "Het grootste park van het eiland, rustiger dan Yala, opgebouwd rond natuurlijke meren.",
+    "description": "Wilpattu is veel groter dan Yala en ziet een fractie van de voertuigen, dus de ervaring is trager en eenzamer — je kunt bij een villu gaan zitten, een van de natuurlijke meren met zandrand, en gewoon wachten tot het park naar jou toe komt. Luipaarden zien vraagt hier meer geduld dan in Yala, maar het landschap is de beloning.",
+    "images": [
+      "/images/tours/tour-18-days.jpg",
+      "/images/hero-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lankaanse luipaard",
+        "note": "Geduldig wachten bij de villus"
+      },
+      {
+        "name": "Lippenbeer",
+        "note": "Open struikgebied in de vroege ochtend"
+      },
+      {
+        "name": "Axishert en sambar",
+        "note": "Rond elk meer"
+      },
+      {
+        "name": "Indische nimmerzat",
+        "note": "Ondiepe delen van de villu"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "ella-hill-trails",
+    "category": "trekking",
+    "title": "Heuvelpaden rond Ella",
+    "location": "Ella, Provincie Uva",
+    "bestTime": "Januari – maart, juli – september",
+    "duration": "2 dagen",
+    "summary": "Little Adam's Peak bij zonsopgang, Ella Rock na het ontbijt, theevelden ertussenin.",
+    "description": "Ella ligt in een opening tussen de heuvels, en daarom eindigt elke wandeling hier met uitzicht. Little Adam's Peak is een rustig uurtje voor het ontbijt; Ella Rock is een echte halve dag over ruwer terrein. Daartussen liggen de Nine Arch Bridge, de Ravana-waterval en theeplantages waar je dwars doorheen loopt. Ideaal voor wie heuvelland wil zonder meerdaagse trektocht.",
+    "images": [
+      "/images/hero-1.jpg",
+      "/images/tours/tour-16-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Little Adam's Peak",
+        "note": "Ongeveer een uur omhoog, het mooist bij zonsopgang"
+      },
+      {
+        "name": "Ella Rock",
+        "note": "Een halve dag, plaatselijk steil"
+      },
+      {
+        "name": "Nine Arch Bridge",
+        "note": "Stem het af op een passerende trein"
+      },
+      {
+        "name": "Ravana-waterval",
+        "note": "Het volst net na de regens"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "knuckles-forest-walk",
+    "category": "trekking",
+    "title": "Dwars door het Knuckles-bos",
+    "location": "Knuckles Conservation Forest, Centrale Provincie",
+    "bestTime": "Januari – april",
+    "duration": "2–3 dagen",
+    "summary": "Nevelwoud, dorpspaden en de bergkam, te voet en weg van de weg.",
+    "description": "De Knuckles-keten is het minst bezochte berglandschap van Sri Lanka: bergbos, dorpen met rijstterrassen en een bergkam die tegen het midden van de ochtend boven de wolken uitkomt. De route loopt van dorpsguesthouse naar dorpsguesthouse in plaats van van hotel naar hotel, en dat is precies de bedoeling — dit is het deel van het land dat nog op wandeltempo draait.",
+    "images": [
+      "/images/story-1.jpg",
+      "/images/hero-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Uitzichtpunten op de bergkam",
+        "note": "Helder in de ochtend, bewolkt rond het middaguur"
+      },
+      {
+        "name": "Bergnevelwoud",
+        "note": "Bemost, koel, rijk aan endemen"
+      },
+      {
+        "name": "Dorpsterrassen",
+        "note": "Rijstbouw nog met de hand bewerkt"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "ancient-cities-loop",
+    "category": "culture",
+    "title": "De oude steden",
+    "location": "Anuradhapura, Polonnaruwa en Sigiriya",
+    "bestTime": "Mei – september",
+    "duration": "3 dagen",
+    "summary": "Twee oude hoofdsteden en de rotsvesting ertussen, op de juiste uren.",
+    "description": "Anuradhapura en Polonnaruwa waren samen ruim duizend jaar lang de hoofdsteden van het eiland, en de rotsvesting van Sigiriya ligt aan de weg die beide verbindt. Het draait om de timing: Sigiriya vóór de hitte, Polonnaruwa op de fiets in de late middag, en Anuradhapura rond de rituelen bij de heilige bodhiboom in plaats van rond de touringcars.",
+    "images": [
+      "/images/tours/tour-16-days.jpg",
+      "/images/tours/tour-18-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "De Leeuwenrots van Sigiriya",
+        "note": "Begin bij opening, vóór de hitte"
+      },
+      {
+        "name": "Polonnaruwa op de fiets",
+        "note": "Vlak, schaduwrijk, het best in de late middag"
+      },
+      {
+        "name": "Sri Maha Bodhi",
+        "note": "Anuradhapura — offergaven in de avond"
+      },
+      {
+        "name": "De grottempels van Dambulla",
+        "note": "Beschilderde plafonds, onderweg"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "kandy-temple-and-tea",
+    "category": "culture",
+    "title": "Kandy, tempel en thee",
+    "location": "Kandy, Centrale Provincie",
+    "bestTime": "Het hele jaar — festivalseizoen juli/augustus",
+    "duration": "2 dagen",
+    "summary": "De Tempel van de Tand bij de avondpuja, daarna de theeplantages boven de stad.",
+    "description": "Kandy kun je het best langzaam nemen: de Tempel van de Tand bij de avondpuja wanneer de trommelaars beginnen, een ochtend in de botanische tuin van Peradeniya en een middag in een werkende theefabriek op de heuvels boven de stad, waar het hele proces zich voor je ogen afspeelt. Reis je in juli of augustus, dan vult de Esala Perahera tien nachten lang de straten.",
+    "images": [
+      "/images/tours/tour-12-days.jpg",
+      "/images/story-2.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Tempel van de Tand",
+        "note": "Avondpuja, trommelaars bij de poort"
+      },
+      {
+        "name": "Botanische tuin van Peradeniya",
+        "note": "'s Ochtends, voordat de bussen komen"
+      },
+      {
+        "name": "Een werkende theefabriek",
+        "note": "Van blad tot pakje in één bezoek"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "south-coast-and-galle",
+    "category": "beach",
+    "title": "Zuidkust en het fort van Galle",
+    "location": "Mirissa en Galle, Zuidelijke Provincie",
+    "bestTime": "November – april",
+    "duration": "2–3 dagen",
+    "summary": "Rustige dagen aan de zuidkust, met het Nederlandse fort van Galle op een middag afstand.",
+    "description": "De zuidkust is meestal waar een reis eindigt: een paar ontspannen dagen in Mirissa en één middag over de wallen van Galle Fort, dat je het best laat op de dag binnengaat, wanneer de muren het licht vasthouden en de straten binnen afkoelen. Tussen december en april trekken blauwe vinvissen voor de kust langs, voor wie nog één keer vroeg op wil.",
+    "images": [
+      "/images/hero-1.jpg",
+      "/images/tours/tour-16-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "De wallen van Galle Fort",
+        "note": "Wandeling in de late middag"
+      },
+      {
+        "name": "Het strand van Mirissa",
+        "note": "Kalme zee van november tot april"
+      },
+      {
+        "name": "Blauwe vinvissen voor de kust",
+        "note": "December – april, vroeg vertrek"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "rainforest-photography",
+    "category": "photography",
+    "title": "Fotografiedagen in het regenwoud",
+    "location": "Sinharaja en Kithulgala",
+    "bestTime": "December – maart",
+    "duration": "3 dagen",
+    "summary": "Opgebouwd rond het licht, niet rond een lijstje — hutten, trage ochtenden, lange lenzen.",
+    "description": "Een reis op fotografietempo: we blijven waar het licht goed is in plaats van kilometers te maken. Vroege ochtenden aan de bosrand voor de gemengde zwermen, het midden van de dag voor macrowerk aan kikkers, hagedissen en bladstrooisel, en de late middag voor het kronendak van bovenaf bij Kithulgala. Het tempo van auto en wandeling wordt bepaald door wat je fotografeert, en Nandana begeleidt natuurfotografen sinds 2002.",
+    "images": [
+      "/images/story-2.jpg",
+      "/images/tours/tour-10-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Gemengde foerageerzwermen",
+        "note": "De eerste twee uur na zonsopgang"
+      },
+      {
+        "name": "Endemische kikkers en hagedissen",
+        "note": "Macro-onderwerpen, schaduw rond het middaguur"
+      },
+      {
+        "name": "Het kronendak van bovenaf",
+        "note": "De bergkam bij Kithulgala, in laat licht"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "kithulgala-river-adventure",
+    "category": "adventure",
+    "title": "Rivierdagen bij Kithulgala",
+    "location": "Kithulgala, Provincie Sabaragamuwa",
+    "bestTime": "Mei – december",
+    "duration": "2 dagen",
+    "summary": "Wildwaterraften, canyoning en een zipline, aan de rand van het regenwoud.",
+    "description": "De Kelani-rivier bij Kithulgala stroomt in klasse 2–3 door het regenwoud, en dat maakt het de avontuurbasis van het eiland: 's ochtends raften, 's middags canyoning bij de watervallen en een zipline over het dal voor wie dan nog staat. Alles verloopt via de gelicentieerde lokale aanbieders waarmee we werken, en hetzelfde bos zit vol vogels als je een rustige tweede dag wilt.",
+    "images": [
+      "/images/tours/tour-10-days.jpg",
+      "/images/story-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Wildwaterraften",
+        "note": "Klasse 2–3, geen ervaring nodig"
+      },
+      {
+        "name": "Canyoning",
+        "note": "Afdalingen langs watervallen, een halve dag"
+      },
+      {
+        "name": "Zipline",
+        "note": "Over het rivierdal"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  }
+]

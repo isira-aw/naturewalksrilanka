@@ -5,8 +5,7 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
-import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PageHero } from "@/components/ui/PageHero";
 import { WizardShell } from "@/components/custom-tour/WizardShell";
 import { isAiAssistantEnabled } from "@/lib/ai/config";
 
@@ -48,33 +47,39 @@ export default async function CustomTourPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, navigation] = await Promise.all([
+  const [t, navigation, experiences] = await Promise.all([
     getTranslations({ locale: l, namespace: "customTour" }),
     getContent(l, "navigation"),
+    getContent(l, "experiences"),
   ]);
 
   return (
-    <Section tone="warm">
-      <SectionHeading
+    <>
+      <PageHero
         eyebrow={t("eyebrow")}
-        title={
-          <>
-            {t("titleLine1")}
-            <br />
-            {t("titleLine2")}
-          </>
-        }
+        /* PageHero breaks the title on newlines, which keeps the authored
+           two-line break from the content file. */
+        title={`${t("titleLine1")}\n${t("titleLine2")}`}
+        lead={t("intro")}
+        image={{
+          src: "/images/story-1.jpg",
+          alt: "Birding on a forest trail in Sri Lanka's highlands",
+        }}
+        height="short"
       />
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/70">{t("intro")}</p>
 
-      {/* Full container width, not max-w-3xl: the AI assistant step renders a map. */}
-      <div className="mt-12">
-        <WizardShell
-          locale={l}
-          whatsappNumber={navigation.contact.whatsappNumber}
-          aiAssistantEnabled={isAiAssistantEnabled()}
-        />
-      </div>
-    </Section>
+      {/* Full container width, not max-w-3xl: the AI assistant step renders a
+          map, and the progress rail sits in its own column on desktop. */}
+      <section className="bg-warm-white py-16 md:py-24">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
+          <WizardShell
+            locale={l}
+            whatsappNumber={navigation.contact.whatsappNumber}
+            experiences={experiences}
+            aiAssistantEnabled={isAiAssistantEnabled()}
+          />
+        </div>
+      </section>
+    </>
   );
 }

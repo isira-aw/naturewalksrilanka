@@ -1,0 +1,429 @@
+[
+  {
+    "slug": "18-days",
+    "durationDays": 18,
+    "title": "18 dage",
+    "tagline": "Fugle, dyreliv, kultur og eventyr — med en sommerferie",
+    "summary": "Den komplette rejse gennem Sri Lankas vilde og kulturelle hjerte: nationalparker i tørzonen, gamle byer, teruter i højlandet, toget til Ella og Sinharaja-regnskoven, med afslutning ved kysten.",
+    "heroImage": "/images/tours/tour-18-days.jpg",
+    "highlights": [
+      "Wilpattu Nationalpark — leopard, læbebjørn og elefant",
+      "Rundtur i den gamle by Anuradhapura og Mihintale-templet",
+      "Trincomalee: Pigeon Island og delfinsafari",
+      "Løveklippen i Sigiriya, Pidurangala, Polonnaruwa og Minneriya",
+      "Kandys Tandtempel og teområdet",
+      "River rafting, canyoning og zipline i Kithulgala",
+      "Toget til Ella, Nine Arch-broen og Little Adam's Peak",
+      "Safari i Yala Nationalpark",
+      "Fuglekiggeri i Sinharaja-regnskoven, UNESCO-verdensarv"
+    ],
+    "destinations": [
+      "negombo",
+      "wilpattu",
+      "anuradhapura",
+      "trincomalee",
+      "sigiriya",
+      "polonnaruwa",
+      "kandy",
+      "kithulgala",
+      "ella",
+      "yala",
+      "sinharaja"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari",
+      "trekking",
+      "culture-history",
+      "adventure-sports"
+    ],
+    "itinerary": [
+      {
+        "day": "01",
+        "location": "Negombo",
+        "title": "Ankomst og bådtur på den hollandske kanal",
+        "description": "Ankomst til lufthavnen i Colombo og kørsel til Negombo (cirka en halv time)."
+      },
+      {
+        "day": "02–03",
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu og den gamle by",
+        "description": "Fiskemarkedet i Negombo, Wilpattu Nationalpark, en rundtur i den gamle by Anuradhapura og Mihintale-templet. Wilpattu er Sri Lankas største nationalpark, kendt for leopard, læbebjørn og elefant, sine naturlige søer (villus) og tørzonens fugleliv."
+      },
+      {
+        "day": "04–06",
+        "location": "Trincomalee",
+        "title": "Kyst, rev og delfiner",
+        "description": "Byrundtur i Trincomalee, Pigeon Island og delfinsafari."
+      },
+      {
+        "day": "07–08",
+        "location": "Sigiriya",
+        "title": "Løveklippen og det gamle Polonnaruwa",
+        "description": "Løveklippen, Pidurangala-templet, en rundtur i den gamle by Polonnaruwa, en valgfri landsbytur og Minneriya Nationalpark."
+      },
+      {
+        "day": "09–10",
+        "location": "Kandy",
+        "title": "Tempel, te og kultur",
+        "description": "Dambulla-huletemplet, en urte- og krydderihave, et kulturelt show i Kandy, Tandtemplet, besøg på en tefabrik og en byrundtur i Kandy."
+      },
+      {
+        "day": "11–12",
+        "location": "Kithulgala",
+        "title": "Med toget mod højlandet og eventyrsport",
+        "description": "Togtur mod Nuwara Eliya, fuglekiggeri og en naturvandring samt eventyrsport — river rafting, canyoning og zipline."
+      },
+      {
+        "day": "13–14",
+        "location": "Ella",
+        "title": "Toget til Ella og stierne i højlandet",
+        "description": "Togtur til Ella, Nine Arch-broen, Little Adam's Peak, Ravana-vandfaldet og Nildiya Pokuna, med Ella Rock og zipline som valgfri tilvalg."
+      },
+      {
+        "day": "15",
+        "location": "Yala Nationalpark / Tissamaharama",
+        "title": "Safari i Yala",
+        "description": "En hel dag på safari i Yala Nationalpark."
+      },
+      {
+        "day": "16–17",
+        "location": "Sinharaja-regnskoven",
+        "title": "Fuglekiggeri i regnskoven",
+        "description": "Fuglekiggeri og en naturvandring gennem Sinharaja-regnskoven, UNESCO-verdensarv og Sri Lankas rigeste lavlandsregnskov for endemiske arter."
+      },
+      {
+        "day": "18",
+        "location": "Afrejse",
+        "title": "Afrejse",
+        "description": "Transfer til lufthavnen til hjemrejsen.",
+        "contentRequired": true,
+        "note": "Exact departure-day logistics to be confirmed with Nandana."
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "Reconstructed verbatim from the source site's 18-day page; day 18 (departure) was implied but not stated on the original page.",
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "16-days",
+    "durationDays": 16,
+    "title": "16 dage",
+    "tagline": "Natur, kultur og eventyr — med en strandferie",
+    "summary": "En rejse med dyreliv og kultur gennem øens tørzone, højland og bjerge, med to afsluttende dage ved sydkysten i Mirissa.",
+    "heroImage": "/images/tours/tour-16-days.jpg",
+    "highlights": [
+      "Wilpattu Nationalpark og den gamle by Anuradhapura",
+      "Trincomalee: Pigeon Island og delfinsafari",
+      "Løveklippen i Sigiriya, Polonnaruwa og Minneriya Nationalpark",
+      "Kandys Tandtempel og teområdet",
+      "Horton Plains Nationalpark",
+      "Toget til Ella, Nine Arch-broen og Little Adam's Peak",
+      "Safari i Yala Nationalpark",
+      "Mirissa Strand og Galles hollandske fort"
+    ],
+    "destinations": [
+      "negombo",
+      "wilpattu",
+      "anuradhapura",
+      "trincomalee",
+      "sigiriya",
+      "polonnaruwa",
+      "kandy",
+      "nuwara-eliya",
+      "ella",
+      "yala",
+      "mirissa"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari",
+      "culture-history",
+      "beach"
+    ],
+    "itinerary": [
+      {
+        "day": "01",
+        "location": "Negombo",
+        "title": "Ankomst og bådtur på den hollandske kanal",
+        "description": "Ankomst til lufthavnen i Colombo og kørsel til Negombo (cirka en halv time)."
+      },
+      {
+        "day": "02–03",
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu og den gamle by",
+        "description": "Fiskemarkedet i Negombo, Wilpattu Nationalpark, en rundtur i den gamle by Anuradhapura og Mihintale-templet."
+      },
+      {
+        "day": "04–06",
+        "location": "Trincomalee",
+        "title": "Kyst, rev og delfiner",
+        "description": "Byrundtur i Trincomalee, Pigeon Island og delfinsafari."
+      },
+      {
+        "day": "07–08",
+        "location": "Sigiriya",
+        "title": "Løveklippen og det gamle Polonnaruwa",
+        "description": "Løveklippen, Pidurangala-templet, en rundtur i den gamle by Polonnaruwa, en valgfri landsbytur og Minneriya Nationalpark."
+      },
+      {
+        "day": "09",
+        "location": "Kandy",
+        "title": "Tempel, te og kultur",
+        "description": "Dambulla-huletemplet, en urte- og krydderihave, et kulturelt show i Kandy, Tandtemplet, besøg på en tefabrik og en byrundtur i Kandy."
+      },
+      {
+        "day": "10",
+        "location": "Nuwara Eliya",
+        "title": "Horton Plains Nationalpark",
+        "description": "En dag i Horton Plains Nationalparks bjerggræsland og tågeskov."
+      },
+      {
+        "day": "11–12",
+        "location": "Ella",
+        "title": "Toget til Ella og stierne i højlandet",
+        "description": "Togtur til Ella, Nine Arch-broen, Little Adam's Peak, Ravana-vandfaldet og Nildiya Pokuna, med Ella Rock og zipline som valgfri tilvalg."
+      },
+      {
+        "day": "13",
+        "location": "Yala Nationalpark / Tissamaharama",
+        "title": "Safari i Yala",
+        "description": "En hel dag på safari i Yala Nationalpark."
+      },
+      {
+        "day": "14–15",
+        "location": "Mirissa Strand",
+        "title": "Afslapning ved kysten og Galle Fort",
+        "description": "Tid på stranden og et besøg i Galles hollandske fort."
+      },
+      {
+        "day": "16",
+        "location": "Afrejse",
+        "title": "Afrejse",
+        "description": "Transfer til lufthavnen til hjemrejsen.",
+        "contentRequired": true,
+        "note": "Exact departure-day logistics to be confirmed with Nandana."
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "Reconstructed from the source site's 16-day page; two day-blocks were mislabeled 'TWO WEEKS TOUR' on the original and have been corrected to this tour's own name. Route and pacing otherwise match the source.",
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "12-days",
+    "durationDays": 12,
+    "title": "12 dage",
+    "tagline": "Fugle- og dyrelivsrejse",
+    "summary": "En koncentreret rundrejse med dyreliv og kultur — nationalparker i tørzonen, de gamle byer, teområdet ved Kandy, toget til Ella og en safari i Yala — i et format til et kortere ophold.",
+    "heroImage": "/images/tours/tour-12-days.jpg",
+    "highlights": [
+      "Wilpattu Nationalpark og den gamle by Anuradhapura",
+      "Løveklippen i Sigiriya, Polonnaruwa og Minneriya Nationalpark",
+      "Kandys Tandtempel og teområdet",
+      "Toget til Ella, Nine Arch-broen og Little Adam's Peak",
+      "Safari i Yala Nationalpark"
+    ],
+    "destinations": [
+      "negombo",
+      "wilpattu",
+      "anuradhapura",
+      "sigiriya",
+      "polonnaruwa",
+      "kandy",
+      "ella",
+      "yala"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari",
+      "culture-history"
+    ],
+    "itinerary": [
+      {
+        "day": "01",
+        "location": "Negombo",
+        "title": "Ankomst og bådtur på den hollandske kanal",
+        "description": "Ankomst til lufthavnen i Colombo og kørsel til Negombo (cirka en halv time).",
+        "contentRequired": true
+      },
+      {
+        "day": "02–03",
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu og den gamle by",
+        "description": "Fiskemarkedet i Negombo, Wilpattu Nationalpark, en rundtur i den gamle by Anuradhapura og Mihintale-templet.",
+        "contentRequired": true
+      },
+      {
+        "day": "04–05",
+        "location": "Sigiriya",
+        "title": "Løveklippen og det gamle Polonnaruwa",
+        "description": "Løveklippen, Pidurangala-templet, en rundtur i den gamle by Polonnaruwa og Minneriya Nationalpark.",
+        "contentRequired": true
+      },
+      {
+        "day": "06–07",
+        "location": "Kandy",
+        "title": "Tempel, te og kultur",
+        "description": "Dambulla-huletemplet, en urte- og krydderihave, et kulturelt show i Kandy, Tandtemplet, besøg på en tefabrik og en byrundtur i Kandy.",
+        "contentRequired": true
+      },
+      {
+        "day": "08–09",
+        "location": "Ella",
+        "title": "Toget til Ella og stierne i højlandet",
+        "description": "Togtur til Ella, Nine Arch-broen, Little Adam's Peak og Ravana-vandfaldet.",
+        "contentRequired": true
+      },
+      {
+        "day": "10",
+        "location": "Yala Nationalpark / Tissamaharama",
+        "title": "Safari i Yala",
+        "description": "En hel dag på safari i Yala Nationalpark.",
+        "contentRequired": true
+      },
+      {
+        "day": "11–12",
+        "location": "Sinharaja-regnskoven",
+        "title": "Fuglekiggeri i regnskoven og afrejse",
+        "description": "Fuglekiggeri og en naturvandring gennem Sinharaja-regnskoven inden transfer til lufthavnen til hjemrejsen.",
+        "contentRequired": true
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "IMPORTANT: The source site's '12 Days' page mistakenly duplicated the full 18-day itinerary (through 'Day 16 & 17'). This 12-day route has been reconstructed by trimming that itinerary to a coherent 12-day pace (dropping Trincomalee and the Kithulgala adventure-sports stop to fit the shorter duration) using only destinations and activities genuinely offered elsewhere on the source site. Every day is flagged contentRequired — please review and confirm exact pacing, nights-per-location, and inclusions with Nandana before publishing this page.",
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "10-days",
+    "durationDays": 10,
+    "title": "10 dage",
+    "tagline": "Fugle- og naturrejse",
+    "summary": "En rundrejse med fokus på endemiske fugle gennem Kithulgalas regnskov, højlandet ved Nuwara Eliya og Horton Plains, en safari i Yala og Sinharajas lavlandsregnskov.",
+    "heroImage": "/images/tours/tour-10-days.jpg",
+    "highlights": [
+      "Kithulgalas regnskov og Kelani-floden",
+      "Victoria Park, Nuwara Eliya",
+      "Horton Plains' tågeskov i bjergene",
+      "Safari efter leopard og læbebjørn i Yala Nationalpark",
+      "Sinharaja-regnskoven — UNESCO-verdensarv"
+    ],
+    "destinations": [
+      "kithulgala",
+      "nuwara-eliya",
+      "horton-plains",
+      "tissamaharama",
+      "yala",
+      "sinharaja"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari"
+    ],
+    "itinerary": [
+      {
+        "day": "01–02",
+        "location": "Kithulgala",
+        "title": "Regnskovskanten og Kelani-floden",
+        "description": "Ankomst til lufthavnen og kørsel til Kithulgala. På den anden side af Kelani-floden begynder tæt regnskov; landsbyen er omgivet af skov, der tiltrækker mange fuglearter, og floden selv er kendt for river rafting. Overnatning på Forest Edge Kithulgala.",
+        "highlights": [
+          "Sri Lanka Chestnut-backed Owlet (endemic)",
+          "Sri Lanka Layard's Parakeet (endemic)",
+          "Sri Lanka Hanging Parrot (endemic)",
+          "Serendib Scops Owl (endemic)",
+          "Sri Lanka Green-billed Coucal (endemic)",
+          "Sri Lanka Grey Hornbill (endemic)",
+          "Sri Lanka Spurfowl (endemic)",
+          "Brown-capped Babbler (endemic)",
+          "Spot-winged Thrush (endemic)",
+          "Indian Pitta (migrant)"
+        ]
+      },
+      {
+        "day": "03",
+        "location": "Nuwara Eliya",
+        "title": "Victoria Park",
+        "description": "En lille park midt i Nuwara Eliya. Overnatning i Nuwara Eliya.",
+        "highlights": [
+          "Kashmir Flycatcher",
+          "Pied Thrush",
+          "Indian Pitta",
+          "Indian Blue Robin",
+          "Yellow-eared Bulbul",
+          "Sri Lanka White-eye",
+          "Dull-blue Flycatcher"
+        ]
+      },
+      {
+        "day": "04",
+        "location": "Horton Plains",
+        "title": "Bjerge og tågeskov",
+        "description": "En dag i Horton Plains' bjerg- og tågeskovshabitat. Overnatning i Nuwara Eliya.",
+        "highlights": [
+          "Sri Lanka Whistling Thrush (endemic)",
+          "Sri Lanka Wood Pigeon (endemic)",
+          "Sri Lanka White-eye (endemic)",
+          "Dull-blue Flycatcher",
+          "Sri Lanka Yellow-eared Bulbul (endemic)",
+          "Sri Lanka Bush Warbler (endemic)",
+          "Hill Swallow",
+          "Velvet-fronted Nuthatch",
+          "Grey-headed Canary-flycatcher",
+          "Kashmir Flycatcher",
+          "Mountain Hawk-Eagle",
+          "Black Eagle",
+          "Common Kestrel"
+        ]
+      },
+      {
+        "day": "05",
+        "location": "Tissamaharama",
+        "title": "Fuglekiggeri undervejs",
+        "description": "Efter morgenmaden kører vi til Tissamaharama med et stop for fuglekiggeri i et fuglereservat undervejs. Om eftermiddagen fuglekiggeri omkring vandreservoirerne i Tissamaharama. Overnatning på hotel i Tissamaharama."
+      },
+      {
+        "day": "06",
+        "location": "Yala Nationalpark",
+        "title": "Heldagssafari",
+        "description": "Tidlig afgang til en heldagssafari efter fugle og pattedyr i Yala Nationalpark, en tørzonepark med krat, vandreservoirer, brakke laguner og flodnære habitater — landets bedste park til at se leopard og læbebjørn. Overnatning på hotel i Tissamaharama.",
+        "highlights": [
+          "Malabar Pied Hornbill",
+          "Blue-faced Malkoha",
+          "Brahminy Starling (migrant)",
+          "Rosy Starling (migrant)",
+          "Sirkeer Malkoha",
+          "Black-necked, Painted, Woolly-necked & Adjutant Storks",
+          "Elephant, leopard, sloth bear, spotted deer, sambar, wild boar, grey langur, marsh & mugger crocodile"
+        ]
+      },
+      {
+        "day": "07–09",
+        "location": "Sinharaja-regnskoven",
+        "title": "Fuglekiggeri i lavlandsregnskoven",
+        "description": "Kørsel til Sinharaja-regnskoven, UNESCO-verdensarv med Asiens rigeste biodiversitet og hjemsted for størstedelen af Sri Lankas endemiske planter og dyr. Fuglekiggeri om eftermiddagen og de følgende dage. Overnatning på hotel nær Sinharaja. Den sidste aften kører vi til lufthavnen til hjemrejsen.",
+        "highlights": [
+          "Green-billed Coucal (endemic)",
+          "Red-faced Malkoha (endemic)",
+          "Sri Lanka Blue Magpie (endemic)",
+          "White-faced Starling (endemic)",
+          "Orange-billed Babbler (endemic)",
+          "Ashy-headed Laughingthrush (endemic)",
+          "White-throated Flowerpecker (endemic)",
+          "Sri Lanka Myna (endemic)",
+          "Sri Lanka Spurfowl (endemic)",
+          "Serendib Scops Owl (endemic)",
+          "Brown-capped Babbler (endemic)",
+          "Scaly Thrush",
+          "Spot-winged Thrush (endemic)",
+          "Sri Lanka Crested Drongo (endemic)"
+        ]
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "Reconstructed verbatim from the source site's distinct 10-day birding itinerary.",
+    "_reviewStatus": "needs-native-review"
+  }
+]

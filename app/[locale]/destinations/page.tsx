@@ -5,9 +5,10 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
-import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { DestinationGrid } from "@/components/destinations/DestinationGrid";
+import { PageHero } from "@/components/ui/PageHero";
+import { Kicker, Rise } from "@/components/ui/motion";
+import { DestinationIndex } from "@/components/destinations/DestinationIndex";
+import { PlanCta } from "@/components/whatsapp/PlanCta";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -49,20 +50,57 @@ export default async function DestinationsPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, destinations] = await Promise.all([
+  const [t, destinations, navigation] = await Promise.all([
     getTranslations({ locale: l }),
     getContent(l, "destinations"),
+    getContent(l, "navigation"),
   ]);
 
   return (
-    <Section tone="warm">
-      <SectionHeading eyebrow={t("sriLanka.eyebrow")} title={t("tours.destinationsTitle")} />
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal/70">
-        {t("sriLanka.body")}
-      </p>
-      <div className="mt-12">
-        <DestinationGrid destinations={destinations} />
-      </div>
-    </Section>
+    <>
+      <PageHero
+        eyebrow={t("sriLanka.eyebrow")}
+        title={t("tours.destinationsTitle")}
+        lead={t("sriLanka.body")}
+        image={{
+          src: "/images/story-1.jpg",
+          alt: "Dry-zone landscape in Sri Lanka's north west",
+        }}
+      />
+
+      <section className="bg-warm-white py-20 md:py-28">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
+          <div className="max-w-2xl">
+            <Kicker>{t("home.placesCta")}</Kicker>
+            <Rise delay={0.1}>
+              <h2 className="mt-6 font-display text-3xl leading-tight tracking-tight text-charcoal md:text-4xl">
+                {t("sriLanka.title")}
+              </h2>
+            </Rise>
+          </div>
+
+          <div className="mt-14">
+            <DestinationIndex
+              destinations={destinations}
+              labels={{
+                all: t("destinations.allRegions"),
+                count: t("destinations.count"),
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      <PlanCta
+        whatsappNumber={navigation.contact.whatsappNumber}
+        labels={{
+          eyebrow: t("finalCta.eyebrow"),
+          title: t("finalCta.title"),
+          subtitle: t("finalCta.subtitle"),
+          cta: t("whatsapp.finalCta"),
+        }}
+        secondary={{ href: "/custom-tour", label: t("customTour.start") }}
+      />
+    </>
   );
 }

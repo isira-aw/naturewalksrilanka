@@ -1,0 +1,364 @@
+[
+  {
+    "slug": "sinharaja-endemic-mornings",
+    "category": "birding",
+    "title": "Kotoperäiset aamut Sinharajassa",
+    "location": "Sinharajan sademetsä, Sabaragamuwa",
+    "bestTime": "Joulukuu – huhtikuu",
+    "duration": "2–3 päivää",
+    "summary": "Aamunkoiton kävelyjä sademetsän kotoperäisten lintujen perässä, oppaana parvireitit tunteva ammattilainen.",
+    "description": "Sinharaja on saaren ainoa paikka, jossa suurin osa Sri Lankan kotoperäisistä linnuista löytyy samasta metsästä. Kuljemme tutkimuspolkuja ensivalossa, kun sekaparvet liikkuvat ohi — usein kaksikymmentä lintua tai enemmän ylittää polun kerralla. Iltapäivät ovat aluskasvillisuuden hiljaisemmille lajeille sekä sademetsän sammakoille, liskoille ja perhosille. Kaksi yötä antaa kaksi aamunkoittoa; kolmella matkasta tulee kiireetön.",
+    "images": [
+      "/images/story-2.jpg",
+      "/images/story-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lanka Blue Magpie",
+        "note": "Kotoperäinen — yleensä sekaparven mukana"
+      },
+      {
+        "name": "Red-faced Malkoha",
+        "note": "Kotoperäinen — korkealla latvustossa, parhaiten aamuvalossa"
+      },
+      {
+        "name": "Serendib Scops Owl",
+        "note": "Kotoperäinen — yökävelyn laji"
+      },
+      {
+        "name": "Ashy-headed Laughingthrush",
+        "note": "Kotoperäinen — meluisia ryhmiä aluskasvillisuudessa"
+      },
+      {
+        "name": "Green-billed Coucal",
+        "note": "Kotoperäinen — kuullaan useammin kuin nähdään"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "highland-birding-horton-plains",
+    "category": "birding",
+    "title": "Ylänköjen linnut Horton Plainsilla",
+    "location": "Horton Plains ja Nuwara Eliya, Keskiylängöt",
+    "bestTime": "Tammikuu – maaliskuu",
+    "duration": "2 päivää",
+    "summary": "Sumumetsää ja vuoristoniittyä, vain korkealla eläville kotoperäisille lajeille.",
+    "description": "Yli 2 000 metrissä metsä muuttuu täysin, ja niin muuttuvat linnutkin. Aloitamme aikaisin Horton Plainsin poluilla sumun ollessa vielä matalalla, ja iltapäivällä käymme läpi Nuwara Eliyan Victoria Parkin, joka on pieni mutta luotettavan hyvä talvehtiville muuttajille. Aamut ovat kylmiä — ota lämmin kerros mukaan, mikä yllättää useimmat tropiikissa.",
+    "images": [
+      "/images/story-1.jpg",
+      "/images/hero-2.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sri Lanka Whistling Thrush",
+        "note": "Kotoperäinen — ensivalo, purojen lähellä"
+      },
+      {
+        "name": "Sri Lanka Bush Warbler",
+        "note": "Kotoperäinen — niityn reunat"
+      },
+      {
+        "name": "Yellow-eared Bulbul",
+        "note": "Kotoperäinen — yleinen mutta valokuvauksellinen"
+      },
+      {
+        "name": "Kashmir Flycatcher",
+        "note": "Talvimuuttaja — Victoria Park"
+      },
+      {
+        "name": "Pied Thrush",
+        "note": "Talvimuuttaja — puiston varjoisat purot"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "yala-leopard-tracking",
+    "category": "wildlife",
+    "title": "Leopardien jäljillä Yalassa",
+    "location": "Yalan kansallispuisto, Eteläprovinssi",
+    "bestTime": "Helmikuu – heinäkuu",
+    "duration": "2 päivää",
+    "summary": "Kokonaisia safaripäiviä puistossa, jossa on maailman tihein leopardikanta.",
+    "description": "Yalan lohko yksi pitää sisällään leopardeja tiheydellä, jota ei tavata muualla, ja kokonainen päivä puiston sisällä — tavanomaisen puolikkaan päivän kierroksen sijaan — tekee havainnosta todennäköisen eikä onnenkauppaa. Pensaikkoviidakkoa, laguuneja ja kalliopaljastumia samalla ajolla, joten päivä antaa paljon muutakin kuin kissapedot: norsuja, laiskakarhun oikeaan aikaan vuodesta ja kuivan vyöhykkeen linnut jokaisen tekoaltaan ympärillä.",
+    "images": [
+      "/images/hero-2.jpg",
+      "/images/tours/tour-12-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Srilankanleopardi",
+        "note": "Kalliopaljastumat varhain aamulla"
+      },
+      {
+        "name": "Laiskakarhu",
+        "note": "Parhaat mahdollisuudet palun hedelmöidessä, kesä–heinäkuu"
+      },
+      {
+        "name": "Aasiannorsu",
+        "note": "Tekoaltaiden ympärillä myöhään iltapäivällä"
+      },
+      {
+        "name": "Suokrokotiili",
+        "note": "Laguunien reunoilla koko päivän"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "wilpattu-villus",
+    "category": "wildlife",
+    "title": "Wilpattu ja sen villut",
+    "location": "Wilpattun kansallispuisto, Luoteisprovinssi",
+    "bestTime": "Helmikuu – lokakuu",
+    "duration": "2 päivää",
+    "summary": "Saaren suurin puisto, Yalaa rauhallisempi, rakentuu luonnonjärvien ympärille.",
+    "description": "Wilpattu on paljon Yalaa suurempi ja siellä liikkuu murto-osa ajoneuvoista, joten kokemus on hitaampi ja yksinäisempi — voit istua villun, yhden puiston hiekkareunaisen luonnonjärven, äärelle ja antaa puiston tulla luoksesi. Leopardin näkeminen vaatii täällä enemmän kärsivällisyyttä kuin Yalassa, mutta maisema on palkinto.",
+    "images": [
+      "/images/tours/tour-18-days.jpg",
+      "/images/hero-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Srilankanleopardi",
+        "note": "Kärsivällistä odotusta villujen äärellä"
+      },
+      {
+        "name": "Laiskakarhu",
+        "note": "Avoin pensaikko varhain aamulla"
+      },
+      {
+        "name": "Aksishirvi ja sambar",
+        "note": "Jokaisen järven ympärillä"
+      },
+      {
+        "name": "Intiankattarahaikara",
+        "note": "Villun matalikot"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "ella-hill-trails",
+    "category": "trekking",
+    "title": "Ellan ylänköpolut",
+    "location": "Ella, Uvan provinssi",
+    "bestTime": "Tammi–maaliskuu, heinä–syyskuu",
+    "duration": "2 päivää",
+    "summary": "Little Adam's Peak auringonnousussa, Ella Rock aamiaisen jälkeen, teemaat siinä välissä.",
+    "description": "Ella sijaitsee vuorten välisessä aukossa, ja siksi jokainen kävely täällä päättyy näkymään. Little Adam's Peak on rauhallinen tunti ennen aamiaista; Ella Rock on kunnon puolikas päivä karummassa maastossa. Niiden välissä ovat Nine Arch -silta, Ravanan vesiputous ja teeviljelmät, joiden läpi kävellään. Sopii kaikille, jotka haluavat ylänköä ilman monen päivän vaellusta.",
+    "images": [
+      "/images/hero-1.jpg",
+      "/images/tours/tour-16-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Little Adam's Peak",
+        "note": "Noin tunti ylös, parhaimmillaan auringonnousussa"
+      },
+      {
+        "name": "Ella Rock",
+        "note": "Puoli päivää, paikoin jyrkkää"
+      },
+      {
+        "name": "Nine Arch -silta",
+        "note": "Ajoita ohi kulkevan junan mukaan"
+      },
+      {
+        "name": "Ravanan vesiputous",
+        "note": "Runsaimmillaan heti sateiden jälkeen"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "knuckles-forest-walk",
+    "category": "trekking",
+    "title": "Knucklesin metsän ylitys",
+    "location": "Knucklesin suojelumetsä, Keskiprovinssi",
+    "bestTime": "Tammikuu – huhtikuu",
+    "duration": "2–3 päivää",
+    "summary": "Sumumetsää, kyläpolkuja ja harjanne — jalan ja poissa maanteiltä.",
+    "description": "Knucklesin vuoristo on Sri Lankan vähiten vierailtu vuoristomaisema: vuorimetsää, riisiterasseja viljeleviä kyliä ja harjanne, joka kirkastuu pilvien yläpuolelle aamupäivällä. Reitti kuljetaan kylämajoituksesta toiseen hotellien sijaan, ja juuri siinä on koko idea — tämä on se osa maata, joka kulkee yhä kävelyvauhtia.",
+    "images": [
+      "/images/story-1.jpg",
+      "/images/hero-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Harjanteen näköalapaikat",
+        "note": "Kirkasta aamulla, pilvistä puoleenpäivään mennessä"
+      },
+      {
+        "name": "Vuoristosumumetsä",
+        "note": "Sammaleinen, viileä, runsaasti kotoperäisiä lajeja"
+      },
+      {
+        "name": "Kylien terassit",
+        "note": "Riisinviljelyä yhä käsityönä"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "ancient-cities-loop",
+    "category": "culture",
+    "title": "Muinaiskaupungit",
+    "location": "Anuradhapura, Polonnaruwa ja Sigiriya",
+    "bestTime": "Toukokuu – syyskuu",
+    "duration": "3 päivää",
+    "summary": "Kaksi muinaista pääkaupunkia ja niiden välissä kohoava kalliolinnoitus, oikeaan aikaan päivästä.",
+    "description": "Anuradhapura ja Polonnaruwa olivat yhdessä saaren pääkaupunkeja reilusti yli tuhat vuotta, ja Sigiriyan kalliolinnoitus sijaitsee niitä yhdistävän tien varrella. Kaikki on ajoituksesta kiinni: Sigiriya ennen helteitä, Polonnaruwa pyörällä myöhään iltapäivällä ja Anuradhapura pyhän bodhipuun rituaalien — ei turistibussien — tahtiin.",
+    "images": [
+      "/images/tours/tour-16-days.jpg",
+      "/images/tours/tour-18-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sigiriyan Leijonakallio",
+        "note": "Aloita heti avautumisesta, ennen helteitä"
+      },
+      {
+        "name": "Polonnaruwa pyörällä",
+        "note": "Tasaista, varjoisaa, parasta myöhään iltapäivällä"
+      },
+      {
+        "name": "Sri Maha Bodhi",
+        "note": "Anuradhapura — illan uhrilahjat"
+      },
+      {
+        "name": "Dambullan luolatemppelit",
+        "note": "Maalatut katot, reitin varrella"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "kandy-temple-and-tea",
+    "category": "culture",
+    "title": "Kandy, temppeli ja tee",
+    "location": "Kandy, Keskiprovinssi",
+    "bestTime": "Ympäri vuoden — festivaalikausi heinä/elokuussa",
+    "duration": "2 päivää",
+    "summary": "Hampaan temppeli illan pujassa, sen jälkeen teeviljelmät kaupungin yllä.",
+    "description": "Kandy kannattaa ottaa rauhallisesti: Hampaan temppeli illan pujassa, kun rummut alkavat; aamu Peradeniyan kasvitieteellisessä puutarhassa; ja iltapäivä toiminnassa olevalla teetehtaalla kaupungin yläpuolisilla kukkuloilla, missä koko prosessi tapahtuu silmiesi edessä. Heinä- tai elokuussa Esala Perahera täyttää kadut kymmenen yön ajan.",
+    "images": [
+      "/images/tours/tour-12-days.jpg",
+      "/images/story-2.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Hampaan temppeli",
+        "note": "Illan puja, rummut portilla"
+      },
+      {
+        "name": "Peradeniyan kasvitieteellinen puutarha",
+        "note": "Aamulla, ennen bussiryhmiä"
+      },
+      {
+        "name": "Toiminnassa oleva teetehdas",
+        "note": "Lehdestä pakkaukseen yhdellä käynnillä"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "south-coast-and-galle",
+    "category": "beach",
+    "title": "Etelärannikko ja Gallen linnoitus",
+    "location": "Mirissa ja Galle, Eteläprovinssi",
+    "bestTime": "Marraskuu – huhtikuu",
+    "duration": "2–3 päivää",
+    "summary": "Rauhallisia päiviä etelärannikolla, Gallen hollantilaislinnoitus iltapäivän päässä.",
+    "description": "Etelärannikko on tavallisesti se paikka, johon matka päättyy: muutama kiireetön päivä Mirissassa ja yksi iltapäivä Gallen linnoituksen valleilla, joille kannattaa mennä myöhään päivällä, kun muurit pitävät valon ja kadut sisäpuolella viilenevät. Sinivalaita kulkee rannikon edustalla joulukuusta huhtikuuhun, jos haluat vielä yhden aikaisen aamun.",
+    "images": [
+      "/images/hero-1.jpg",
+      "/images/tours/tour-16-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Gallen linnoituksen vallit",
+        "note": "Kävely myöhään iltapäivällä"
+      },
+      {
+        "name": "Mirissan ranta",
+        "note": "Tyyni meri marraskuusta huhtikuuhun"
+      },
+      {
+        "name": "Sinivalaat rannikon edustalla",
+        "note": "Joulukuu – huhtikuu, aikainen lähtö"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "rainforest-photography",
+    "category": "photography",
+    "title": "Valokuvauspäiviä sademetsässä",
+    "location": "Sinharaja ja Kithulgala",
+    "bestTime": "Joulukuu – maaliskuu",
+    "duration": "3 päivää",
+    "summary": "Rakennettu valon eikä listan ympärille — kojuja, hitaita aamuja, pitkiä objektiiveja.",
+    "description": "Valokuvaajan tahtiin kulkeva matka: pysymme siellä, missä valo on hyvää, sen sijaan että keräisimme kilometrejä. Varhaiset aamut metsän reunalla sekaparvien vuoksi, keskipäivä makrotyölle sammakoiden, liskojen ja karikkeen parissa, ja myöhäinen iltapäivä latvustolle ylhäältä päin Kithulgalassa. Auton ja kävelyn tahdin määrää se, mitä kuvaat, ja Nandana on opastanut luontokuvaajia vuodesta 2002.",
+    "images": [
+      "/images/story-2.jpg",
+      "/images/tours/tour-10-days.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Sekaparvet",
+        "note": "Kaksi ensimmäistä tuntia aamunkoiton jälkeen"
+      },
+      {
+        "name": "Kotoperäiset sammakot ja liskot",
+        "note": "Makrokohteita keskipäivän varjossa"
+      },
+      {
+        "name": "Latvusto ylhäältä",
+        "note": "Kithulgalan harjanne, myöhäisessä valossa"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "kithulgala-river-adventure",
+    "category": "adventure",
+    "title": "Jokipäiviä Kithulgalassa",
+    "location": "Kithulgala, Sabaragamuwan provinssi",
+    "bestTime": "Toukokuu – joulukuu",
+    "duration": "2 päivää",
+    "summary": "Koskenlaskua, canyoningia ja vaijeriliuku sademetsän reunalla.",
+    "description": "Kelani-joki virtaa Kithulgalassa luokan 2–3 koskina sademetsän halki, mikä tekee siitä saaren seikkailukeskuksen: aamulla koskenlaskua, iltapäivällä canyoningia vesiputouksilla ja vaijeriliuku laakson yli niille, jotka vielä jaksavat. Kaikki toteutetaan lisensoitujen paikallisten toimijoiden kanssa, joiden kanssa työskentelemme, ja sama metsä on täynnä lintuja, jos haluat rauhallisen toisen päivän.",
+    "images": [
+      "/images/tours/tour-10-days.jpg",
+      "/images/story-1.jpg"
+    ],
+    "highlights": [
+      {
+        "name": "Koskenlasku",
+        "note": "Luokka 2–3, kokemusta ei tarvita"
+      },
+      {
+        "name": "Canyoning",
+        "note": "Vesiputouslaskeutumisia, puoli päivää"
+      },
+      {
+        "name": "Vaijeriliuku",
+        "note": "Jokilaakson yli"
+      }
+    ],
+    "contentRequired": true,
+    "_reviewStatus": "needs-native-review"
+  }
+]

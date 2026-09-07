@@ -1,0 +1,429 @@
+[
+  {
+    "slug": "18-days",
+    "durationDays": 18,
+    "title": "18 päivää",
+    "tagline": "Lintuja, eläimiä, kulttuuria ja seikkailua — sekä lomapäiviä",
+    "summary": "Täydellinen matka Sri Lankan villin ja kulttuurisen sydämen halki: kuivan vyöhykkeen kansallispuistoja, muinaiskaupunkeja, ylänköjen teepolkuja, Ellan juna ja Sinharajan sademetsä, päätöksenä rentouttavat päivät rannikolla.",
+    "heroImage": "/images/tours/tour-18-days.jpg",
+    "highlights": [
+      "Wilpattun kansallispuisto — leopardi, laiskakarhu ja norsu",
+      "Kierros Anuradhapuran muinaiskaupungissa ja Mihintalen temppelissä",
+      "Trincomalee: Pigeon Island ja delfiiniretki",
+      "Sigiriyan Leijonakallio, Pidurangala, Polonnaruwa ja Minneriya",
+      "Kandyn Hampaan temppeli ja teeseutu",
+      "Koskenlaskua, canyoningia ja vaijeriliukuja Kithulgalassa",
+      "Ellan juna, Nine Arch -silta ja Little Adam's Peak",
+      "Safari Yalan kansallispuistossa",
+      "Lintujen tarkkailua Sinharajan sademetsässä, Unescon maailmanperintökohteessa"
+    ],
+    "destinations": [
+      "negombo",
+      "wilpattu",
+      "anuradhapura",
+      "trincomalee",
+      "sigiriya",
+      "polonnaruwa",
+      "kandy",
+      "kithulgala",
+      "ella",
+      "yala",
+      "sinharaja"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari",
+      "trekking",
+      "culture-history",
+      "adventure-sports"
+    ],
+    "itinerary": [
+      {
+        "day": "01",
+        "location": "Negombo",
+        "title": "Saapuminen ja veneretki hollantilaiskanavalla",
+        "description": "Saapuminen Colombon lentokentälle ja ajo Negomboon (noin puoli tuntia)."
+      },
+      {
+        "day": "02–03",
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu ja muinaiskaupunki",
+        "description": "Negombon kalatori, Wilpattun kansallispuisto, kierros Anuradhapuran muinaiskaupungissa ja Mihintalen temppeli. Wilpattu on Sri Lankan suurin kansallispuisto, joka tunnetaan leopardeista, laiskakarhuista ja norsuista, luonnonjärvistään (villus) sekä kuivan vyöhykkeen linnustosta."
+      },
+      {
+        "day": "04–06",
+        "location": "Trincomalee",
+        "title": "Rannikko, riutta ja delfiinit",
+        "description": "Kaupunkikierros Trincomaleessa, Pigeon Island ja delfiiniretki."
+      },
+      {
+        "day": "07–08",
+        "location": "Sigiriya",
+        "title": "Leijonakallio ja muinainen Polonnaruwa",
+        "description": "Leijonakallion linnoitus, Pidurangalan temppeli, kierros Polonnaruwan muinaiskaupungissa, valinnainen kyläretki ja Minneriyan kansallispuisto."
+      },
+      {
+        "day": "09–10",
+        "location": "Kandy",
+        "title": "Temppeli, tee ja kulttuuri",
+        "description": "Dambullan luolatemppeli, yrtti- ja maustepuutarha, kandylainen kulttuurinäytös, Hampaan temppeli, vierailu teetehtaalla ja kaupunkikierros Kandyssa."
+      },
+      {
+        "day": "11–12",
+        "location": "Kithulgala",
+        "title": "Junalla ylängöille ja seikkailulajien pariin",
+        "description": "Junamatka kohti Nuwara Eliyaa, lintujen tarkkailua ja luontokävely sekä seikkailulajeja — koskenlaskua, canyoningia ja vaijeriliukuja."
+      },
+      {
+        "day": "13–14",
+        "location": "Ella",
+        "title": "Ellan juna ja ylänköjen polut",
+        "description": "Junamatka Ellaan, Nine Arch -silta, Little Adam's Peak, Ravanan vesiputous ja Nildiya Pokuna. Ella Rock ja vaijeriliuku ovat saatavilla lisäohjelmana."
+      },
+      {
+        "day": "15",
+        "location": "Yalan kansallispuisto / Tissamaharama",
+        "title": "Safari Yalassa",
+        "description": "Kokonainen safaripäivä Yalan kansallispuistossa."
+      },
+      {
+        "day": "16–17",
+        "location": "Sinharajan sademetsä",
+        "title": "Lintujen tarkkailua sademetsässä",
+        "description": "Lintujen tarkkailua ja luontokävely Sinharajan sademetsässä, joka on Unescon maailmanperintökohde ja Sri Lankan kotoperäisimmille lajeille rikkain alamaan sademetsä."
+      },
+      {
+        "day": "18",
+        "location": "Lähtö",
+        "title": "Lähtö",
+        "description": "Kuljetus lentokentälle paluumatkaa varten.",
+        "contentRequired": true,
+        "note": "Exact departure-day logistics to be confirmed with Nandana."
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "Reconstructed verbatim from the source site's 18-day page; day 18 (departure) was implied but not stated on the original page.",
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "16-days",
+    "durationDays": 16,
+    "title": "16 päivää",
+    "tagline": "Luontoa, kulttuuria ja seikkailua — sekä rantaloma",
+    "summary": "Luonto- ja kulttuurimatka saaren kuivan vyöhykkeen, ylänköjen ja vuoriston halki, päätöksenä kaksi rentouttavaa päivää etelärannikolla Mirissassa.",
+    "heroImage": "/images/tours/tour-16-days.jpg",
+    "highlights": [
+      "Wilpattun kansallispuisto ja Anuradhapuran muinaiskaupunki",
+      "Trincomalee: Pigeon Island ja delfiiniretki",
+      "Sigiriyan Leijonakallio, Polonnaruwa ja Minneriyan kansallispuisto",
+      "Kandyn Hampaan temppeli ja teeseutu",
+      "Horton Plainsin kansallispuisto",
+      "Ellan juna, Nine Arch -silta ja Little Adam's Peak",
+      "Safari Yalan kansallispuistossa",
+      "Mirissan ranta ja Gallen hollantilaislinnoitus"
+    ],
+    "destinations": [
+      "negombo",
+      "wilpattu",
+      "anuradhapura",
+      "trincomalee",
+      "sigiriya",
+      "polonnaruwa",
+      "kandy",
+      "nuwara-eliya",
+      "ella",
+      "yala",
+      "mirissa"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari",
+      "culture-history",
+      "beach"
+    ],
+    "itinerary": [
+      {
+        "day": "01",
+        "location": "Negombo",
+        "title": "Saapuminen ja veneretki hollantilaiskanavalla",
+        "description": "Saapuminen Colombon lentokentälle ja ajo Negomboon (noin puoli tuntia)."
+      },
+      {
+        "day": "02–03",
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu ja muinaiskaupunki",
+        "description": "Negombon kalatori, Wilpattun kansallispuisto, kierros Anuradhapuran muinaiskaupungissa ja Mihintalen temppeli."
+      },
+      {
+        "day": "04–06",
+        "location": "Trincomalee",
+        "title": "Rannikko, riutta ja delfiinit",
+        "description": "Kaupunkikierros Trincomaleessa, Pigeon Island ja delfiiniretki."
+      },
+      {
+        "day": "07–08",
+        "location": "Sigiriya",
+        "title": "Leijonakallio ja muinainen Polonnaruwa",
+        "description": "Leijonakallion linnoitus, Pidurangalan temppeli, kierros Polonnaruwan muinaiskaupungissa, valinnainen kyläretki ja Minneriyan kansallispuisto."
+      },
+      {
+        "day": "09",
+        "location": "Kandy",
+        "title": "Temppeli, tee ja kulttuuri",
+        "description": "Dambullan luolatemppeli, yrtti- ja maustepuutarha, kandylainen kulttuurinäytös, Hampaan temppeli, vierailu teetehtaalla ja kaupunkikierros Kandyssa."
+      },
+      {
+        "day": "10",
+        "location": "Nuwara Eliya",
+        "title": "Horton Plainsin kansallispuisto",
+        "description": "Päivä Horton Plainsin kansallispuiston vuoristoniityillä ja sumumetsässä."
+      },
+      {
+        "day": "11–12",
+        "location": "Ella",
+        "title": "Ellan juna ja ylänköjen polut",
+        "description": "Junamatka Ellaan, Nine Arch -silta, Little Adam's Peak, Ravanan vesiputous ja Nildiya Pokuna. Ella Rock ja vaijeriliuku ovat saatavilla lisäohjelmana."
+      },
+      {
+        "day": "13",
+        "location": "Yalan kansallispuisto / Tissamaharama",
+        "title": "Safari Yalassa",
+        "description": "Kokonainen safaripäivä Yalan kansallispuistossa."
+      },
+      {
+        "day": "14–15",
+        "location": "Mirissan ranta",
+        "title": "Rantapäiviä ja Gallen linnoitus",
+        "description": "Vapaata aikaa rannalla ja vierailu Gallen hollantilaislinnoituksessa."
+      },
+      {
+        "day": "16",
+        "location": "Lähtö",
+        "title": "Lähtö",
+        "description": "Kuljetus lentokentälle paluumatkaa varten.",
+        "contentRequired": true,
+        "note": "Exact departure-day logistics to be confirmed with Nandana."
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "Reconstructed from the source site's 16-day page; two day-blocks were mislabeled 'TWO WEEKS TOUR' on the original and have been corrected to this tour's own name. Route and pacing otherwise match the source.",
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "12-days",
+    "durationDays": 12,
+    "title": "12 päivää",
+    "tagline": "Lintu- ja eläinmatka",
+    "summary": "Tiivis luonto- ja kulttuurikierros — kuivan vyöhykkeen kansallispuistoja, muinaiskaupungit, Kandyn teeseutu, Ellan juna ja safari Yalassa — mitoitettuna lyhyemmälle matkalle.",
+    "heroImage": "/images/tours/tour-12-days.jpg",
+    "highlights": [
+      "Wilpattun kansallispuisto ja Anuradhapuran muinaiskaupunki",
+      "Sigiriyan Leijonakallio, Polonnaruwa ja Minneriyan kansallispuisto",
+      "Kandyn Hampaan temppeli ja teeseutu",
+      "Ellan juna, Nine Arch -silta ja Little Adam's Peak",
+      "Safari Yalan kansallispuistossa"
+    ],
+    "destinations": [
+      "negombo",
+      "wilpattu",
+      "anuradhapura",
+      "sigiriya",
+      "polonnaruwa",
+      "kandy",
+      "ella",
+      "yala"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari",
+      "culture-history"
+    ],
+    "itinerary": [
+      {
+        "day": "01",
+        "location": "Negombo",
+        "title": "Saapuminen ja veneretki hollantilaiskanavalla",
+        "description": "Saapuminen Colombon lentokentälle ja ajo Negomboon (noin puoli tuntia).",
+        "contentRequired": true
+      },
+      {
+        "day": "02–03",
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu ja muinaiskaupunki",
+        "description": "Negombon kalatori, Wilpattun kansallispuisto, kierros Anuradhapuran muinaiskaupungissa ja Mihintalen temppeli.",
+        "contentRequired": true
+      },
+      {
+        "day": "04–05",
+        "location": "Sigiriya",
+        "title": "Leijonakallio ja muinainen Polonnaruwa",
+        "description": "Leijonakallion linnoitus, Pidurangalan temppeli, kierros Polonnaruwan muinaiskaupungissa ja Minneriyan kansallispuisto.",
+        "contentRequired": true
+      },
+      {
+        "day": "06–07",
+        "location": "Kandy",
+        "title": "Temppeli, tee ja kulttuuri",
+        "description": "Dambullan luolatemppeli, yrtti- ja maustepuutarha, kandylainen kulttuurinäytös, Hampaan temppeli, vierailu teetehtaalla ja kaupunkikierros Kandyssa.",
+        "contentRequired": true
+      },
+      {
+        "day": "08–09",
+        "location": "Ella",
+        "title": "Ellan juna ja ylänköjen polut",
+        "description": "Junamatka Ellaan, Nine Arch -silta, Little Adam's Peak ja Ravanan vesiputous.",
+        "contentRequired": true
+      },
+      {
+        "day": "10",
+        "location": "Yalan kansallispuisto / Tissamaharama",
+        "title": "Safari Yalassa",
+        "description": "Kokonainen safaripäivä Yalan kansallispuistossa.",
+        "contentRequired": true
+      },
+      {
+        "day": "11–12",
+        "location": "Sinharajan sademetsä",
+        "title": "Lintujen tarkkailua sademetsässä ja lähtö",
+        "description": "Lintujen tarkkailua ja luontokävely Sinharajan sademetsässä ennen kuljetusta lentokentälle paluumatkaa varten.",
+        "contentRequired": true
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "IMPORTANT: The source site's '12 Days' page mistakenly duplicated the full 18-day itinerary (through 'Day 16 & 17'). This 12-day route has been reconstructed by trimming that itinerary to a coherent 12-day pace (dropping Trincomalee and the Kithulgala adventure-sports stop to fit the shorter duration) using only destinations and activities genuinely offered elsewhere on the source site. Every day is flagged contentRequired — please review and confirm exact pacing, nights-per-location, and inclusions with Nandana before publishing this page.",
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "10-days",
+    "durationDays": 10,
+    "title": "10 päivää",
+    "tagline": "Lintu- ja luontomatka",
+    "summary": "Kotoperäisiin lintuihin keskittyvä kierros Kithulgalan sademetsän, Nuwara Eliyan ja Horton Plainsin ylänköjen, Yalan safarin ja Sinharajan alamaan sademetsän kautta.",
+    "heroImage": "/images/tours/tour-10-days.jpg",
+    "highlights": [
+      "Kithulgalan sademetsä ja Kelani-joki",
+      "Victoria Park, Nuwara Eliya",
+      "Horton Plainsin vuoristosumumetsä",
+      "Leopardi- ja laiskakarhusafari Yalan kansallispuistossa",
+      "Sinharajan sademetsä — Unescon maailmanperintökohde"
+    ],
+    "destinations": [
+      "kithulgala",
+      "nuwara-eliya",
+      "horton-plains",
+      "tissamaharama",
+      "yala",
+      "sinharaja"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari"
+    ],
+    "itinerary": [
+      {
+        "day": "01–02",
+        "location": "Kithulgala",
+        "title": "Sademetsän reuna ja Kelani-joki",
+        "description": "Saapuminen lentokentälle ja ajo Kithulgalaan. Kelani-joen ylitys johtaa tiheään sademetsään; kylää ympäröi metsä, joka houkuttelee runsaasti lintulajeja, ja joki itsessään tunnetaan koskenlaskusta. Yöpyminen Forest Edge Kithulgalassa.",
+        "highlights": [
+          "Sri Lanka Chestnut-backed Owlet (endemic)",
+          "Sri Lanka Layard's Parakeet (endemic)",
+          "Sri Lanka Hanging Parrot (endemic)",
+          "Serendib Scops Owl (endemic)",
+          "Sri Lanka Green-billed Coucal (endemic)",
+          "Sri Lanka Grey Hornbill (endemic)",
+          "Sri Lanka Spurfowl (endemic)",
+          "Brown-capped Babbler (endemic)",
+          "Spot-winged Thrush (endemic)",
+          "Indian Pitta (migrant)"
+        ]
+      },
+      {
+        "day": "03",
+        "location": "Nuwara Eliya",
+        "title": "Victoria Park",
+        "description": "Pieni puisto aivan Nuwara Eliyan keskustassa. Yöpyminen Nuwara Eliyassa.",
+        "highlights": [
+          "Kashmir Flycatcher",
+          "Pied Thrush",
+          "Indian Pitta",
+          "Indian Blue Robin",
+          "Yellow-eared Bulbul",
+          "Sri Lanka White-eye",
+          "Dull-blue Flycatcher"
+        ]
+      },
+      {
+        "day": "04",
+        "location": "Horton Plains",
+        "title": "Vuoristo ja sumumetsä",
+        "description": "Päivä Horton Plainsin vuoristo- ja sumumetsäympäristössä. Yöpyminen Nuwara Eliyassa.",
+        "highlights": [
+          "Sri Lanka Whistling Thrush (endemic)",
+          "Sri Lanka Wood Pigeon (endemic)",
+          "Sri Lanka White-eye (endemic)",
+          "Dull-blue Flycatcher",
+          "Sri Lanka Yellow-eared Bulbul (endemic)",
+          "Sri Lanka Bush Warbler (endemic)",
+          "Hill Swallow",
+          "Velvet-fronted Nuthatch",
+          "Grey-headed Canary-flycatcher",
+          "Kashmir Flycatcher",
+          "Mountain Hawk-Eagle",
+          "Black Eagle",
+          "Common Kestrel"
+        ]
+      },
+      {
+        "day": "05",
+        "location": "Tissamaharama",
+        "title": "Lintujen tarkkailua matkan varrella",
+        "description": "Aamiaisen jälkeen ajo Tissamaharamaan pysähtyen matkalla lintusuojelualueelle. Iltapäivällä lintujen tarkkailua Tissamaharaman tekoaltaiden ympärillä. Yöpyminen hotellissa Tissamaharamassa."
+      },
+      {
+        "day": "06",
+        "location": "Yalan kansallispuisto",
+        "title": "Koko päivän safari",
+        "description": "Aikainen lähtö koko päivän lintu- ja nisäkässafarille Yalan kansallispuistoon, joka on kuivan vyöhykkeen puisto pensaikkoviidakkoineen, tekojärvineen, murtovesilaguuneineen ja jokivarsineen — maan paras puisto leopardin ja laiskakarhun näkemiseen. Yöpyminen hotellissa Tissamaharamassa.",
+        "highlights": [
+          "Malabar Pied Hornbill",
+          "Blue-faced Malkoha",
+          "Brahminy Starling (migrant)",
+          "Rosy Starling (migrant)",
+          "Sirkeer Malkoha",
+          "Black-necked, Painted, Woolly-necked & Adjutant Storks",
+          "Elephant, leopard, sloth bear, spotted deer, sambar, wild boar, grey langur, marsh & mugger crocodile"
+        ]
+      },
+      {
+        "day": "07–09",
+        "location": "Sinharajan sademetsä",
+        "title": "Lintujen tarkkailua alamaan sademetsässä",
+        "description": "Ajo Sinharajan sademetsään, joka on Unescon maailmanperintökohde, Aasian monimuotoisin alue ja lähes koko Sri Lankan kotoperäisen kasviston ja eläimistön koti. Lintujen tarkkailua iltapäivällä ja seuraavina päivinä. Yöpyminen hotellissa lähellä Sinharajaa. Viimeisenä iltana ajo lentokentälle paluumatkaa varten.",
+        "highlights": [
+          "Green-billed Coucal (endemic)",
+          "Red-faced Malkoha (endemic)",
+          "Sri Lanka Blue Magpie (endemic)",
+          "White-faced Starling (endemic)",
+          "Orange-billed Babbler (endemic)",
+          "Ashy-headed Laughingthrush (endemic)",
+          "White-throated Flowerpecker (endemic)",
+          "Sri Lanka Myna (endemic)",
+          "Sri Lanka Spurfowl (endemic)",
+          "Serendib Scops Owl (endemic)",
+          "Brown-capped Babbler (endemic)",
+          "Scaly Thrush",
+          "Spot-winged Thrush (endemic)",
+          "Sri Lanka Crested Drongo (endemic)"
+        ]
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "Reconstructed verbatim from the source site's distinct 10-day birding itinerary.",
+    "_reviewStatus": "needs-native-review"
+  }
+]

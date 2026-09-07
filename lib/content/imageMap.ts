@@ -14,7 +14,7 @@ export const imageMap = {
     path: "/images/placeholder-destination.jpg",
     source: "naturewalksrilanka.com/img/mycarousel-2.jpg",
     replaceWithFinal: true,
-    note: "Generic atmospheric placeholder reused across every destination page — not a photo of the specific destination. Replace per-destination once real photography exists.",
+    note: "Fallback only. Destination pages ask for /images/destinations/<slug>/{hero,cover,01..04}.jpg and fall back to this file per image until those exist — see public/images/destinations/README.md.",
   },
   "tour-18-days": { path: "/images/tours/tour-18-days.jpg", source: "naturewalksrilanka.com/img/package-61.jpg", replaceWithFinal: true },
   "tour-16-days": { path: "/images/tours/tour-16-days.jpg", source: "naturewalksrilanka.com/img/package-51.jpg", replaceWithFinal: true },
