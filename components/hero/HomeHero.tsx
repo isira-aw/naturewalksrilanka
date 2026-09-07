@@ -54,21 +54,31 @@ export function HomeHero({
   return (
     <section className="relative flex min-h-[88vh] items-end overflow-hidden bg-charcoal">
       {SLIDES.map((slide, i) => (
-        <Image
+        <div
           key={slide.src}
-          src={slide.src}
-          /* One slide carries the description; the rest are decorative so a
-             screen reader isn't read a new photo caption every four seconds. */
-          alt={i === 0 ? slide.alt : ""}
-          aria-hidden={i !== 0}
-          fill
-          priority={i === 0}
-          sizes="100vw"
           className={cn(
-            "object-cover transition-opacity duration-1000 ease-in-out",
+            "absolute inset-0 transition-opacity duration-1000 ease-in-out",
             i === index ? "opacity-100" : "opacity-0"
           )}
-        />
+        >
+          <Image
+            src={slide.src}
+            /* One slide carries the description; the rest are decorative so a
+               screen reader isn't read a new photo caption every four seconds. */
+            alt={i === 0 ? slide.alt : ""}
+            aria-hidden={i !== 0}
+            fill
+            priority={i === 0}
+            sizes="100vw"
+            className={cn(
+              "object-cover",
+              /* A slow drift on the visible frame keeps the hero from reading
+                 as a stack of stills; held off entirely for reduced motion. */
+              !reduceMotion && "transition-transform duration-[6000ms] ease-out",
+              !reduceMotion && (i === index ? "scale-105" : "scale-100")
+            )}
+          />
+        </div>
       ))}
 
       {/* Layered rather than one heavy wash: the bottom-left stays dark enough
@@ -169,6 +179,22 @@ export function HomeHero({
           </div>
         </motion.div>
       </Container>
+
+      <motion.span
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1, duration: 0.8 }}
+        className="pointer-events-none absolute bottom-6 left-1/2 hidden -translate-x-1/2 md:block"
+      >
+        <motion.span
+          animate={reduceMotion ? undefined : { y: [0, 7, 0] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          className="block h-9 w-5 rounded-full border border-warm-white/40"
+        >
+          <span className="mx-auto mt-2 block h-1.5 w-0.5 rounded-full bg-warm-white/70" />
+        </motion.span>
+      </motion.span>
     </section>
   );
 }

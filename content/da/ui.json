@@ -1,0 +1,247 @@
+{
+  "nav": {
+    "home": "Forside",
+    "journeys": "Rejser",
+    "customTour": "Skræddersyet rejse",
+    "aboutNandana": "Om Nandana",
+    "sriLanka": "Sri Lanka",
+    "menu": "Menu",
+    "close": "Luk",
+    "language": "Sprog"
+  },
+  "hero": {
+    "eyebrow": "Nature Walks Sri Lanka",
+    "titleLine1": "Ud over",
+    "titleLine2": "det sædvanlige",
+    "subtitle": "Private rejser gennem øens vilde hjerte.",
+    "ctaPrimary": "Se rejserne",
+    "ctaSecondary": "Sammensæt din rejse"
+  },
+  "home": {
+    "introEyebrow": "Nature Walks Sri Lanka",
+    "introTitle": "Ét selskab til hele rejsen.",
+    "introBody": "Certificerede guider, overnatning og transport — arrangeret af os, fra din første besked til din sidste morgen på øen.",
+    "stats": [
+      {
+        "value": "20+",
+        "label": "År som guide"
+      },
+      {
+        "value": "30+",
+        "label": "Endemiske fuglearter"
+      },
+      {
+        "value": "15",
+        "label": "Destinationer"
+      },
+      {
+        "value": "100%",
+        "label": "Certificerede guider"
+      }
+    ],
+    "servicesEyebrow": "Det arrangerer vi",
+    "servicesTitle": "Alt, hvad en rejse kræver, fra ét sted.",
+    "services": [
+      {
+        "title": "Certificerede guider",
+        "short": "Vores eget team, certificeret af Sri Lanka Tourism Board."
+      },
+      {
+        "title": "Overnatning",
+        "short": "Hoteller, boutiquehoteller og økolodges, booket af os."
+      },
+      {
+        "title": "Transport",
+        "short": "Privat bil og erfaren chauffør, fra lufthavn til lufthavn."
+      },
+      {
+        "title": "Din rejseplan",
+        "short": "Bygget op om det, du vil se — og justeret undervejs."
+      }
+    ],
+    "guideRole": "Grundlægger og chefguide",
+    "guideBody": "Nandana startede i naturbevarelse i 1990, blev uddannet national guide i 2002 og grundlagde Nature Walks Sri Lanka i 2017. Han guider stadig selv.",
+    "guideCta": "Læs Nandanas historie",
+    "journeysCta": "Se alle rejser",
+    "placesCta": "Se alle destinationer"
+  },
+  "tours": {
+    "sectionEyebrow": "Rejser",
+    "sectionTitle": "Hvor lang tid vil du bruge på Sri Lanka?",
+    "custom": "Skræddersyet",
+    "cta": "Se rejsen",
+    "daysLabel": "Dage",
+    "included": "Det er inkluderet",
+    "excluded": "Ikke inkluderet",
+    "itineraryTitle": "Dag for dag",
+    "highlightsTitle": "Højdepunkter",
+    "destinationsTitle": "Destinationer",
+    "activitiesTitle": "Aktiviteter",
+    "customizeCta": "Tilpas denne rejse",
+    "whatsappCta": "Spørg om denne rejse"
+  },
+  "customTour": {
+    "eyebrow": "Skræddersyet rejse",
+    "titleLine1": "Dit Sri Lanka.",
+    "titleLine2": "På din måde.",
+    "intro": "Fortæl os, hvordan du gerne vil opleve Sri Lanka, så bygger vi en privat rejse op omkring det — med guide, overnatning og transport.",
+    "start": "Sammensæt min rejse",
+    "steps": {
+      "travelers": "Rejsende",
+      "dates": "Datoer",
+      "interests": "Interesser",
+      "accommodation": "Overnatning",
+      "aiAssistant": "AI-rejseassistent",
+      "contact": "Kontaktoplysninger",
+      "review": "Oversigt"
+    },
+    "stepOf": "Trin {current} af {total}",
+    "required": "påkrævet",
+    "optional": "valgfrit",
+    "back": "Tilbage",
+    "next": "Videre",
+    "travelersLabel": "Hvor mange rejsende?",
+    "travelersDecrease": "Én rejsende færre",
+    "travelersIncrease": "Én rejsende mere",
+    "travelersHint": "Mellem 1 og 12 rejsende på en privat rejse.",
+    "datesLabel": "Hvornår vil du rejse?",
+    "datesHelp": "Vælg din ankomstdato og derefter din afrejsedato. Vi guider året rundt, så alle datoer kan lade sig gøre.",
+    "datesHint": "Vælg først ankomst og derefter afrejse.",
+    "datesStart": "Ankomst",
+    "datesEnd": "Afrejse",
+    "datesPreviousMonth": "Forrige måned",
+    "datesNextMonth": "Næste måned",
+    "datesClear": "Ryd",
+    "datesSelected": "{count} dage i Sri Lanka",
+    "datesInvalid": "Vælg en ankomstdato og en afrejsedato, der ligger efter den.",
+    "interestsLabel": "Hvad interesserer dig mest?",
+    "interestsHint": "Vælg en eller flere. Matchende rejseidéer dukker op ved siden af.",
+    "interests": {
+      "wildlife": "Dyreliv",
+      "trekking": "Vandring",
+      "culture": "Kultur",
+      "birding": "Fuglekiggeri",
+      "beach": "Strand",
+      "photography": "Fotografi",
+      "adventure": "Eventyr"
+    },
+    "suggestionsTitle": "Rejseidéer",
+    "suggestionsEmpty": "Vælg en kategori for at se de færdige rejseidéer, der matcher den.",
+    "suggestionsCount": "{count} match",
+    "suggestionsReadMore": "Læs mere",
+    "suggestionsAdd": "Føj til forespørgsel",
+    "suggestionsAdded": "Tilføjet",
+    "suggestionsSelectedLabel": "Rejseidéer",
+    "suggestionsClose": "Luk",
+    "suggestionsLocation": "Sted",
+    "suggestionsBestTime": "Bedste årstid",
+    "suggestionsDuration": "Foreslået længde",
+    "suggestionsHighlights": "Det kan du se",
+    "accommodationLabel": "Foretrukken type overnatning",
+    "accommodationHint": "Vælg en eller flere typer, eller lad os anbefale noget for hvert stop.",
+    "accommodation": {
+      "budget": "Budget",
+      "comfortable": "Komfortabel",
+      "boutique": "Boutique",
+      "luxury": "Luksus",
+      "ecoLodge": "Økolodge",
+      "recommend": "Er i tvivl — anbefal noget"
+    },
+    "accommodationNotesLabel": "Andet om overnatningen?",
+    "aiAssistant": {
+      "title": "Lad AI skitsere en rute til dig",
+      "intro": "Ud fra alt det, du har fortalt os, kan vi foreslå en rute dag for dag rundt i Sri Lanka — du vælger selv din favorit hver dag.",
+      "generateCta": "Lav min rejseplan",
+      "loading": "Rejseplanen bliver sat sammen…",
+      "error": "Vi kunne ikke lave en rejseplan lige nu. Gå videre, og tal om rejsen med os direkte.",
+      "rateLimited": "Du har nået grænsen for rejseplaner på denne enhed i dag. Gå videre, og tal om rejsen med os direkte.",
+      "dayLabel": "Dag {day}",
+      "skip": "Spring dette trin over",
+      "regenerate": "Start forfra",
+      "backDay": "Tilbage til forrige dag",
+      "distanceLabel": "{km} km fra forrige stop · omkring {duration} på vejen",
+      "recommendedLabel": "Vores bud til dig",
+      "recommendedBadge": "Anbefalet",
+      "otherOptionsLabel": "Andre muligheder denne dag",
+      "selectedSummaryTitle": "Din foreslåede rute"
+    },
+    "contactName": "Navn",
+    "contactEmail": "E-mail",
+    "contactPhone": "WhatsApp / telefon",
+    "contactCountry": "Land",
+    "contactHint": "Så vi kan svare dig. Intet gemmes på siden — dine svar går direkte ind i en WhatsApp-besked, du selv sender.",
+    "requirementsLabel": "Fortæl os om din ideelle rejse…",
+    "reviewTitle": "Se din rejse igennem",
+    "reviewHint": "Tjek at det hele ser rigtigt ud, og send det så på WhatsApp.",
+    "submit": "Tal om min rejse på WhatsApp",
+    "errorTravelers": "Angiv mindst én rejsende.",
+    "errorInterests": "Vælg mindst én interesse.",
+    "errorContact": "Tilføj dit navn, en gyldig e-mailadresse og et telefonnummer."
+  },
+  "nandana": {
+    "introEyebrow": "Hvem er Nandana",
+    "experienceLabel": "Erfaring",
+    "certificationLabel": "Certificering",
+    "introTitle": "Et helt liv til fods gennem Sri Lanka.",
+    "whyEyebrow": "Derfor skal du rejse med os",
+    "whyTitle": "Et guideselskab, ikke en bookingskranke.",
+    "whyPoints": [
+      {
+        "title": "Alle guider er certificerede",
+        "description": "Alle vores guider er certificeret af Sri Lanka Tourism Board."
+      },
+      {
+        "title": "Trænet i felten",
+        "description": "Guidning, der er vokset ud af feltarbejde — oplært af Nandana selv."
+      },
+      {
+        "title": "Ét selskab, én rejse",
+        "description": "Guider, overnatning og transport fra os — ét nummer til det hele."
+      }
+    ]
+  },
+  "sriLanka": {
+    "eyebrow": "Sri Lanka",
+    "title": "Regnskov, højland og kyst — tættere på hinanden, end du tror.",
+    "body": "Fra leopardernes tørre landskab i Wilpattu til Sinharajas regnskovskroner fulde af endemiske arter, fra templerne i bjergene ved Kandy til revet ud for Trincomalee: Sri Lanka samler et helt kontinents natur på én ø.",
+    "cta": "Se destinationerne"
+  },
+  "conservation": {
+    "eyebrow": "Naturbevarelse",
+    "title": "Guidning med rod i feltarbejde, ikke kun i værtskab.",
+    "quote": "Nandana begyndte sin karriere i Sri Lankas Department of Wildlife Conservation og er stadig medlem af Field Ornithology Group ved Colombo Universitet — naturbevarelse er ikke en fodnote til vores rejser, det er dér, guidningen begyndte."
+  },
+  "testimonials": {
+    "eyebrow": "Anbefalinger",
+    "title": "Fra rejsende, der har gået ruten",
+    "emptyState": "Vi er ved at samle rejsendes fortællinger her — kig forbi igen snart, eller skriv til os på WhatsApp for referencer."
+  },
+  "finalCta": {
+    "eyebrow": "Kom i gang",
+    "title": "Dit Sri Lanka begynder med en samtale.",
+    "subtitle": "Ingen formularer, ingen ventetid — skriv direkte til Nature Walks Sri Lanka på WhatsApp."
+  },
+  "whatsapp": {
+    "talkToUs": "Skriv til os",
+    "askUs": "Stil et spørgsmål",
+    "discussJourney": "Spørg om denne rejse",
+    "buildJourney": "Sammensæt min rejse",
+    "finalCta": "Kom i gang på WhatsApp"
+  },
+  "footer": {
+    "tagline": "Private natur- og dyrelivsrejser i Sri Lanka med certificerede guider, overnatning og transport arrangeret hele vejen.",
+    "navigation": "Navigation",
+    "journeys": "Rejser",
+    "contact": "Kontakt",
+    "language": "Sprog",
+    "privacy": "Privatlivspolitik",
+    "terms": "Vilkår",
+    "rights": "Alle rettigheder forbeholdes."
+  },
+  "common": {
+    "addressLabel": "Adresse",
+    "contentRequired": "Indhold skal bekræftes med Nandana",
+    "comingSoon": "Kommer snart"
+  },
+  "_reviewStatus": "needs-native-review"
+}

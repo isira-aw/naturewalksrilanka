@@ -1,0 +1,26 @@
+{
+  "siteName": "Nature Walks Sri Lanka",
+  "titleTemplate": "%s | Nature Walks Sri Lanka",
+  "defaultTitle": "Nature Walks Sri Lanka — Private natur- og dyrelivsrejser med certificerede guider",
+  "defaultDescription": "Private rejser i Sri Lanka fra Nature Walks Sri Lanka, grundlagt af Nandana Hewagamage: certificerede guider, overnatning og transport arrangeret til safari, fugleture, vandring og kultur.",
+  "ogImage": "/images/og-default.jpg",
+  "keywords": [
+    "private rejser Sri Lanka",
+    "naturrejser Sri Lanka",
+    "safari Sri Lanka",
+    "skræddersyet rejse Sri Lanka",
+    "privat guide Sri Lanka",
+    "fuglerejse Sri Lanka",
+    "vandring Sri Lanka",
+    "certificeret guide Sri Lanka"
+  ],
+  "pages": {
+    "home": { "title": "Private natur- og dyrelivsrejser i Sri Lanka", "description": "Oplev Sri Lanka ud over det sædvanlige — private rejser med dyreliv, fugle og kultur fra Nature Walks Sri Lanka, med guider certificeret af Sri Lanka Tourism Board samt overnatning og transport arrangeret hele vejen." },
+    "tours": { "title": "Rundrejser i Sri Lanka — 10, 12, 16 og 18 dage", "description": "Fire private rejser i Sri Lanka med safari, fuglekiggeri, højland og kultur, guidet af det certificerede team hos Nature Walks Sri Lanka." },
+    "customTour": { "title": "Sammensæt en skræddersyet rejse i Sri Lanka", "description": "Design en privat og personlig rejse i Sri Lanka med Nature Walks Sri Lanka — vælg datoer, interesser og overnatning, og tal om det direkte på WhatsApp." },
+    "aboutNandana": { "title": "Om Nandana Hewagamage", "description": "Over 20 års guidning i Sri Lankas natur og kultur, fra Department of Wildlife Conservation til grundlæggelsen af Nature Walks Sri Lanka." },
+    "destinations": { "title": "Destinationer i Sri Lanka", "description": "Nationalparkerne, de gamle byer og bjergstierne, man besøger på en rejse med Nature Walks Sri Lanka." },
+    "contact": { "title": "Kontakt Nature Walks Sri Lanka", "description": "Kontakt Nandana Hewagamage og teamet hos Nature Walks Sri Lanka, og begynd at planlægge din private rejse i Sri Lanka." }
+  },
+  "_reviewStatus": "needs-native-review"
+}

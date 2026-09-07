@@ -1,0 +1,8 @@
+[
+  { "slug": "birding", "name": "Observación de aves", "description": "Sri Lanka cuenta con más de 30 especies de aves endémicas. Nandana, miembro del Field Ornithology Group, guía salidas ornitológicas por los bosques lluviosos, las montañas y los parques de la zona seca de la isla.", "_reviewStatus": "needs-native-review" },
+  { "slug": "wildlife-safari", "name": "Safari de fauna", "description": "Leopardo, elefante, oso bezudo y mucho más, rastreados en los parques nacionales de Wilpattu y Yala.", "_reviewStatus": "needs-native-review" },
+  { "slug": "trekking", "name": "Trekking", "description": "Caminatas por la naturaleza y senderos de montaña, de Ella Rock a Horton Plains y el bosque lluvioso de Sinharaja.", "_reviewStatus": "needs-native-review" },
+  { "slug": "culture-history", "name": "Cultura e historia", "description": "Ciudades antiguas, templos rupestres, el Templo del Diente Sagrado y las tradiciones culturales de Kandy.", "_reviewStatus": "needs-native-review" },
+  { "slug": "adventure-sports", "name": "Deportes de aventura", "description": "Rafting, barranquismo y tirolina en el río que atraviesa el bosque lluvioso de Kithulgala.", "_reviewStatus": "needs-native-review" },
+  { "slug": "beach", "name": "Playa", "description": "Días de descanso en la costa sur, combinados con una visita al fuerte holandés de Galle.", "_reviewStatus": "needs-native-review" }
+]

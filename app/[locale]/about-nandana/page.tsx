@@ -117,7 +117,7 @@ export default async function AboutNandanaPage({
           eyebrow: t("finalCta.eyebrow"),
           title: t("finalCta.title"),
           subtitle: t("finalCta.subtitle"),
-          cta: t("whatsapp.talkToNandana"),
+          cta: t("whatsapp.talkToUs"),
         }}
         secondary={{ href: "/custom-tour", label: t("customTour.start") }}
       />

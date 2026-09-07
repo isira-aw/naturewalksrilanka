@@ -92,8 +92,8 @@ export default async function PrivacyPage({
         </div>
 
         <p className="mt-12 border-t border-stone-dark pt-6 text-sm text-charcoal/50">
-          This page is currently published in English only. A localized version in German and
-          French, and a final legal review, are both pending.
+          This page is currently published in English only. Localized versions in Dutch, Spanish,
+          Danish and Finnish, and a final legal review, are both pending.
         </p>
       </Container>
     </section>

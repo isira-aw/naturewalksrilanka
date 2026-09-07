@@ -1,0 +1,23 @@
+{
+  "name": "Nandana Hewagamage",
+  "experience": "Más de 20 años",
+  "languages": [],
+  "certification": "Certificado por la Junta de Turismo de Sri Lanka",
+  "philosophy": "Un viaje por Sri Lanka debería guiarlo alguien que conozca la tierra como un naturalista conoce un sendero del bosque: de oído, por estaciones, tras años recorriéndolo.",
+  "story": "En 1990 Nandana empezó su carrera en el Departamento de Conservación de la Fauna de Sri Lanka como responsable de formación en naturaleza para escuelas y comunidades rurales, colaborando con programas universitarios de investigación sobre las aves, plantas e insectos de la isla. Es miembro del Field Ornithology Group de la Universidad de Colombo. En 1999 pasó al ecoturismo de aventura —dirigiendo trekkings y viajes de aventura con rafting, barranquismo y tirolina— antes de acreditarse en 2002 como guía turístico nacional y profesor, especializado en observación de aves, fauna salvaje, fotografía de naturaleza y trekking, además de viajes culturales e históricos. En 2017, tras años guiando para grandes turoperadores, fundó Nature Walks Sri Lanka para ofrecer a los viajeros una experiencia dedicada y personal de la naturaleza y la cultura de la isla.",
+  "specialties": [
+    "Observación de aves",
+    "Fauna salvaje",
+    "Fotografía de naturaleza",
+    "Trekking",
+    "Cultura e historia"
+  ],
+  "stats": [
+    { "value": "20+", "label": "Años guiando" },
+    { "value": "CONTENT_REQUIRED", "label": "Idiomas" },
+    { "value": "Sri Lanka", "label": "Su hogar" }
+  ],
+  "portraitImage": "/images/nandana-portrait.jpg",
+  "_note": "Languages list not yet confirmed — brief states 5 languages but does not name them. Leave as CONTENT_REQUIRED until Nandana confirms.",
+  "_reviewStatus": "needs-native-review"
+}

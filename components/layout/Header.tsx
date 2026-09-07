@@ -37,12 +37,12 @@ export async function Header({ locale }: { locale: Locale }) {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">
-          <LocaleSwitcher />
+          <LocaleSwitcher label={t("language")} className="w-36" />
           <Link
-            href={navigation.checkAvailability.href}
+            href={navigation.primaryCta.href}
             className="whitespace-nowrap rounded-full border border-forest px-4 py-2.5 font-utility text-xs uppercase tracking-wide text-forest transition-colors hover:bg-forest hover:text-warm-white xl:px-5"
           >
-            {navigation.checkAvailability.label}
+            {navigation.primaryCta.label}
           </Link>
         </div>
 
@@ -51,7 +51,7 @@ export async function Header({ locale }: { locale: Locale }) {
           labels={{
             menu: t("menu"),
             close: t("close"),
-            checkAvailability: navigation.checkAvailability.label,
+            primaryCta: navigation.primaryCta.label,
             language: t("language"),
           }}
         />

@@ -82,7 +82,7 @@ Return ONLY the structured itinerary JSON.`;
  * Generates a full day-by-day itinerary tree in a single request. Never
  * throws — returns null on any failure (missing key, API error, or a
  * response that fails schema validation) so the route can fall back to a
- * friendly error + WhatsApp CTA, mirroring lib/calendar/googleCalendar.ts.
+ * friendly error + WhatsApp CTA rather than a hard failure.
  */
 export async function generateItinerary(request: ItineraryRequest): Promise<ItineraryPlan | null> {
   const apiKey = process.env.GOOGLE_AI_API_KEY;

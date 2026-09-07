@@ -22,3 +22,15 @@ export const staggerChildren: Variants = {
 };
 
 export const viewportOnce = { once: true, margin: "-80px" };
+
+/** `fadeUp` with a stagger offset, for lists that reveal one item after another. */
+export function fadeUpDelayed(delay: number): Variants {
+  return {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay },
+    },
+  };
+}

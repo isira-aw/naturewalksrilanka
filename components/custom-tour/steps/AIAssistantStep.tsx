@@ -4,8 +4,9 @@ import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
-import type { DateRangeValue } from "@/components/calendar/AvailabilityCalendar";
+import type { DateRangeValue } from "@/lib/tour/dateRange";
 import type { ItineraryPlan } from "@/lib/ai/itinerarySchema";
+import { StepHeading } from "./StepHeading";
 
 const SriLankaMap = dynamic(
   () => import("./ai-assistant/SriLankaMap").then((m) => m.SriLankaMap),
@@ -113,23 +114,25 @@ export function AIAssistantStep({
 
   return (
     <div>
-      <h2 className="font-display text-2xl text-charcoal">{t("title")}</h2>
-      <p className="mt-3 max-w-2xl text-sm text-charcoal/70">{t("intro")}</p>
+      <StepHeading title={t("title")} hint={t("intro")} />
 
       {(status === "idle" || status === "error" || status === "rate_limited") && (
         <div className="mt-6">
-          {status === "error" && (
-            <p role="alert" className="mb-4 text-sm text-clay">
-              {t("error")}
-            </p>
-          )}
-          {status === "rate_limited" && (
-            <p role="alert" className="mb-4 text-sm text-clay">
-              {t("rateLimited")}
+          {(status === "error" || status === "rate_limited") && (
+            <p
+              role="alert"
+              className="mb-4 max-w-xl rounded-xl bg-clay/10 px-4 py-3 text-sm text-charcoal"
+            >
+              {status === "error" ? t("error") : t("rateLimited")}
             </p>
           )}
           {status !== "rate_limited" && (
-            <Button type="button" variant="primary" onClick={handleGenerate}>
+            <Button
+              type="button"
+              variant="primary"
+              onClick={handleGenerate}
+              className="w-full sm:w-auto"
+            >
               {t("generateCta")}
             </Button>
           )}
@@ -148,7 +151,7 @@ export function AIAssistantStep({
       )}
 
       {status === "ready" && itinerary && (
-        <div className="mt-6 lg:grid lg:grid-cols-[1fr_420px] lg:items-start lg:gap-10 xl:grid-cols-[1fr_480px]">
+        <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start lg:gap-10 xl:grid-cols-[minmax(0,1fr)_440px]">
           <div className="lg:order-1">
             {!isComplete && currentDay && (
               <div>
@@ -233,7 +236,7 @@ export function AIAssistantStep({
             )}
           </div>
 
-          <div className="mt-6 lg:order-2 lg:sticky lg:top-24 lg:mt-0">
+          <div className="mt-8 lg:order-2 lg:sticky lg:top-28 lg:mt-0">
             <SriLankaMap
               candidates={currentDay?.options ?? []}
               selectedRoute={selectedRoute}

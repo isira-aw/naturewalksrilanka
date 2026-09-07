@@ -16,4 +16,11 @@ export const legacyRedirects = [
   // those durations reinstated as their own pages.
   { source: "/single.html", destination: "/en/tours" },
   { source: "/single7.html", destination: "/en/tours" },
+  // German and French were dropped in favour of Dutch, Spanish, Danish and
+  // Finnish; anything still pointing at the old locale prefixes lands on the
+  // same page in English rather than a 404.
+  { source: "/de", destination: "/en" },
+  { source: "/fr", destination: "/en" },
+  { source: "/de/:path*", destination: "/en/:path*" },
+  { source: "/fr/:path*", destination: "/en/:path*" },
 ] as const;

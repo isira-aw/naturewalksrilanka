@@ -1,0 +1,247 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "journeys": "Viajes",
+    "customTour": "Viaje a medida",
+    "aboutNandana": "Sobre Nandana",
+    "sriLanka": "Sri Lanka",
+    "menu": "Menú",
+    "close": "Cerrar",
+    "language": "Idioma"
+  },
+  "hero": {
+    "eyebrow": "Nature Walks Sri Lanka",
+    "titleLine1": "Más allá de",
+    "titleLine2": "lo habitual",
+    "subtitle": "Viajes privados por el corazón salvaje de la isla.",
+    "ctaPrimary": "Ver los viajes",
+    "ctaSecondary": "Diseña tu viaje"
+  },
+  "home": {
+    "introEyebrow": "Nature Walks Sri Lanka",
+    "introTitle": "Una sola empresa para todo el viaje.",
+    "introBody": "Guías certificados, alojamiento y transporte, organizados por nosotros desde tu primer mensaje hasta tu última mañana en la isla.",
+    "stats": [
+      {
+        "value": "20+",
+        "label": "Años guiando"
+      },
+      {
+        "value": "30+",
+        "label": "Aves endémicas"
+      },
+      {
+        "value": "15",
+        "label": "Destinos"
+      },
+      {
+        "value": "100%",
+        "label": "Guías certificados"
+      }
+    ],
+    "servicesEyebrow": "Lo que organizamos",
+    "servicesTitle": "Todo lo que un viaje necesita, desde un mismo sitio.",
+    "services": [
+      {
+        "title": "Guías certificados",
+        "short": "Nuestro propio equipo, certificado por la Junta de Turismo de Sri Lanka."
+      },
+      {
+        "title": "Alojamiento",
+        "short": "Hoteles, alojamientos boutique y eco-lodges, reservados por nosotros."
+      },
+      {
+        "title": "Transporte",
+        "short": "Vehículo privado y conductor experimentado, de aeropuerto a aeropuerto."
+      },
+      {
+        "title": "Tu itinerario",
+        "short": "Construido en torno a lo que quieres ver, y ajustado sobre la marcha."
+      }
+    ],
+    "guideRole": "Fundador y guía principal",
+    "guideBody": "Nandana empezó en la conservación de la fauna en 1990, se acreditó como guía nacional en 2002 y fundó Nature Walks Sri Lanka en 2017. Sigue guiando viajes él mismo.",
+    "guideCta": "Lee la historia de Nandana",
+    "journeysCta": "Ver todos los viajes",
+    "placesCta": "Ver todos los destinos"
+  },
+  "tours": {
+    "sectionEyebrow": "Viajes",
+    "sectionTitle": "¿Cuánto tiempo quieres dedicar a Sri Lanka?",
+    "custom": "A medida",
+    "cta": "Ver este viaje",
+    "daysLabel": "Días",
+    "included": "Qué incluye",
+    "excluded": "No incluye",
+    "itineraryTitle": "Día a día",
+    "highlightsTitle": "Lo más destacado",
+    "destinationsTitle": "Destinos",
+    "activitiesTitle": "Actividades",
+    "customizeCta": "Personaliza este viaje",
+    "whatsappCta": "Consultar sobre este viaje"
+  },
+  "customTour": {
+    "eyebrow": "Viaje a medida",
+    "titleLine1": "Tu Sri Lanka.",
+    "titleLine2": "A tu manera.",
+    "intro": "Cuéntanos cómo quieres vivir Sri Lanka y diseñaremos un viaje privado a tu medida, con guía, alojamiento y transporte incluidos.",
+    "start": "Diseñar mi viaje",
+    "steps": {
+      "travelers": "Viajeros",
+      "dates": "Fechas",
+      "interests": "Intereses",
+      "accommodation": "Alojamiento",
+      "aiAssistant": "Asistente de viaje IA",
+      "contact": "Datos de contacto",
+      "review": "Resumen"
+    },
+    "stepOf": "Paso {current} de {total}",
+    "required": "obligatorio",
+    "optional": "opcional",
+    "back": "Atrás",
+    "next": "Continuar",
+    "travelersLabel": "¿Cuántos viajeros sois?",
+    "travelersDecrease": "Un viajero menos",
+    "travelersIncrease": "Un viajero más",
+    "travelersHint": "Entre 1 y 12 viajeros en un viaje privado.",
+    "datesLabel": "¿Cuándo quieres viajar?",
+    "datesHelp": "Elige tu fecha de llegada y después la de salida. Guiamos todo el año, así que cualquier fecha es posible.",
+    "datesHint": "Selecciona primero la llegada y después la salida.",
+    "datesStart": "Llegada",
+    "datesEnd": "Salida",
+    "datesPreviousMonth": "Mes anterior",
+    "datesNextMonth": "Mes siguiente",
+    "datesClear": "Borrar",
+    "datesSelected": "{count} días en Sri Lanka",
+    "datesInvalid": "Elige una fecha de llegada y una fecha de salida posterior.",
+    "interestsLabel": "¿Qué es lo que más te interesa?",
+    "interestsHint": "Elige una o varias. Al lado aparecen las ideas de viaje que encajan.",
+    "interests": {
+      "wildlife": "Fauna salvaje",
+      "trekking": "Trekking",
+      "culture": "Cultura",
+      "birding": "Observación de aves",
+      "beach": "Playa",
+      "photography": "Fotografía",
+      "adventure": "Aventura"
+    },
+    "suggestionsTitle": "Ideas de viaje",
+    "suggestionsEmpty": "Elige una categoría para ver las ideas de viaje ya preparadas que le corresponden.",
+    "suggestionsCount": "{count} coincidencias",
+    "suggestionsReadMore": "Leer más",
+    "suggestionsAdd": "Añadir a la consulta",
+    "suggestionsAdded": "Añadido",
+    "suggestionsSelectedLabel": "Ideas de viaje",
+    "suggestionsClose": "Cerrar",
+    "suggestionsLocation": "Ubicación",
+    "suggestionsBestTime": "Mejor época del año",
+    "suggestionsDuration": "Duración sugerida",
+    "suggestionsHighlights": "Lo que puedes ver",
+    "accommodationLabel": "Tipo de alojamiento preferido",
+    "accommodationHint": "Elige uno o varios estilos, o deja que te recomendemos algo en cada parada.",
+    "accommodation": {
+      "budget": "Económico",
+      "comfortable": "Confortable",
+      "boutique": "Boutique",
+      "luxury": "Lujo",
+      "ecoLodge": "Eco-lodge",
+      "recommend": "No lo tengo claro, recomendadme"
+    },
+    "accommodationNotesLabel": "¿Algo más sobre el alojamiento?",
+    "aiAssistant": {
+      "title": "Deja que la IA te esboce una ruta",
+      "intro": "A partir de todo lo que nos has contado, podemos proponerte una ruta día a día por Sri Lanka; tú eliges tu opción favorita cada jornada.",
+      "generateCta": "Generar mi itinerario",
+      "loading": "Preparando tu itinerario…",
+      "error": "Ahora mismo no hemos podido generar un itinerario. Continúa y coméntanos tu viaje directamente.",
+      "rateLimited": "Has alcanzado el límite de itinerarios para este dispositivo por hoy. Continúa y coméntanos tu viaje directamente.",
+      "dayLabel": "Día {day}",
+      "skip": "Saltar este paso",
+      "regenerate": "Empezar de nuevo",
+      "backDay": "Volver al día anterior",
+      "distanceLabel": "{km} km desde la parada anterior · unas {duration} por carretera",
+      "recommendedLabel": "Nuestra elección para ti",
+      "recommendedBadge": "Recomendado",
+      "otherOptionsLabel": "Otras opciones para este día",
+      "selectedSummaryTitle": "Tu ruta propuesta"
+    },
+    "contactName": "Nombre",
+    "contactEmail": "Correo electrónico",
+    "contactPhone": "WhatsApp / teléfono",
+    "contactCountry": "País",
+    "contactHint": "Para poder responderte. No se guarda nada en este sitio: tus respuestas van directas a un mensaje de WhatsApp que envías tú.",
+    "requirementsLabel": "Cuéntanos cómo sería tu viaje ideal…",
+    "reviewTitle": "Revisa tu viaje",
+    "reviewHint": "Comprueba que todo está bien y envíanoslo por WhatsApp.",
+    "submit": "Consultar mi viaje por WhatsApp",
+    "errorTravelers": "Indica al menos un viajero.",
+    "errorInterests": "Elige al menos un interés.",
+    "errorContact": "Añade tu nombre, un correo electrónico válido y un teléfono."
+  },
+  "nandana": {
+    "introEyebrow": "Quién es Nandana",
+    "experienceLabel": "Experiencia",
+    "certificationLabel": "Certificación",
+    "introTitle": "Toda una vida recorriendo Sri Lanka a pie.",
+    "whyEyebrow": "Por qué viajar con nosotros",
+    "whyTitle": "Una empresa de guías, no un mostrador de reservas.",
+    "whyPoints": [
+      {
+        "title": "Todos los guías certificados",
+        "description": "Todos nuestros guías están certificados por la Junta de Turismo de Sri Lanka."
+      },
+      {
+        "title": "Formados en el campo",
+        "description": "Un guiado nacido del trabajo de campo, enseñado por el propio Nandana."
+      },
+      {
+        "title": "Una empresa, un viaje",
+        "description": "Guías, alojamiento y transporte nuestros: un único número para todo."
+      }
+    ]
+  },
+  "sriLanka": {
+    "eyebrow": "Sri Lanka",
+    "title": "Selva, montaña y costa, mucho más cerca de lo que imaginas.",
+    "body": "Del territorio de leopardos en la zona seca de Wilpattu al dosel del bosque lluvioso de Sinharaja, lleno de especies endémicas; de los templos de las montañas de Kandy al arrecife frente a Trincomalee: Sri Lanka concentra los hábitats de un continente en una sola isla.",
+    "cta": "Ver los destinos"
+  },
+  "conservation": {
+    "eyebrow": "Conservación",
+    "title": "Un guiado que nace del trabajo de campo, no solo de la hostelería.",
+    "quote": "Nandana empezó su carrera en el Departamento de Conservación de la Fauna de Sri Lanka y sigue siendo miembro del Field Ornithology Group de la Universidad de Colombo: la conservación no es una nota al pie de nuestros viajes, es donde empezó el guiado."
+  },
+  "testimonials": {
+    "eyebrow": "Testimonios",
+    "title": "De viajeros que han recorrido esta ruta",
+    "emptyState": "Estamos reuniendo aquí las historias de nuestros viajeros. Vuelve pronto o escríbenos por WhatsApp si quieres referencias."
+  },
+  "finalCta": {
+    "eyebrow": "Empieza a planificar",
+    "title": "Tu Sri Lanka empieza con una conversación.",
+    "subtitle": "Sin formularios ni esperas: escribe directamente a Nature Walks Sri Lanka por WhatsApp."
+  },
+  "whatsapp": {
+    "talkToUs": "Habla con nosotros",
+    "askUs": "Haz una pregunta",
+    "discussJourney": "Consultar sobre este viaje",
+    "buildJourney": "Diseñar mi viaje",
+    "finalCta": "Empieza a planificar por WhatsApp"
+  },
+  "footer": {
+    "tagline": "Viajes privados de naturaleza y fauna por Sri Lanka, con guías certificados, alojamiento y transporte organizados de principio a fin.",
+    "navigation": "Navegación",
+    "journeys": "Viajes",
+    "contact": "Contacto",
+    "language": "Idioma",
+    "privacy": "Política de privacidad",
+    "terms": "Términos",
+    "rights": "Todos los derechos reservados."
+  },
+  "common": {
+    "addressLabel": "Dirección",
+    "contentRequired": "Contenido pendiente de confirmar con Nandana",
+    "comingSoon": "Próximamente"
+  },
+  "_reviewStatus": "needs-native-review"
+}

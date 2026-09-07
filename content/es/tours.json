@@ -1,0 +1,429 @@
+[
+  {
+    "slug": "18-days",
+    "durationDays": 18,
+    "title": "18 días",
+    "tagline": "Aves, fauna, cultura y aventura — con unos días de descanso",
+    "summary": "La travesía completa del corazón salvaje y cultural de Sri Lanka: parques nacionales de la zona seca, ciudades antiguas, senderos entre plantaciones de té, el tren de Ella y el bosque lluvioso de Sinharaja, con un final junto al mar.",
+    "heroImage": "/images/tours/tour-18-days.jpg",
+    "highlights": [
+      "Parque Nacional de Wilpattu: leopardo, oso bezudo y elefante",
+      "Visita a la ciudad antigua de Anuradhapura y al templo de Mihintale",
+      "Trincomalee: Pigeon Island y avistamiento de delfines",
+      "La Roca del León de Sigiriya, Pidurangala, Polonnaruwa y Minneriya",
+      "El Templo del Diente de Kandy y la región del té",
+      "Rafting, barranquismo y tirolina en Kithulgala",
+      "El tren de Ella, el Puente de los Nueve Arcos y Little Adam's Peak",
+      "Safari en el Parque Nacional de Yala",
+      "Observación de aves en el bosque lluvioso de Sinharaja, Patrimonio de la Humanidad"
+    ],
+    "destinations": [
+      "negombo",
+      "wilpattu",
+      "anuradhapura",
+      "trincomalee",
+      "sigiriya",
+      "polonnaruwa",
+      "kandy",
+      "kithulgala",
+      "ella",
+      "yala",
+      "sinharaja"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari",
+      "trekking",
+      "culture-history",
+      "adventure-sports"
+    ],
+    "itinerary": [
+      {
+        "day": "01",
+        "location": "Negombo",
+        "title": "Llegada y paseo en barca por el canal holandés",
+        "description": "Llegada al aeropuerto de Colombo y traslado a Negombo (alrededor de media hora)."
+      },
+      {
+        "day": "02–03",
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu y la ciudad antigua",
+        "description": "La lonja de Negombo, el Parque Nacional de Wilpattu, una visita a la ciudad antigua de Anuradhapura y el templo de Mihintale. Wilpattu es el parque nacional más grande de Sri Lanka, conocido por sus leopardos, osos bezudos y elefantes, sus lagos naturales (villus) y las aves de la zona seca."
+      },
+      {
+        "day": "04–06",
+        "location": "Trincomalee",
+        "title": "Costa, arrecife y delfines",
+        "description": "Visita a la ciudad de Trincomalee, Pigeon Island y avistamiento de delfines."
+      },
+      {
+        "day": "07–08",
+        "location": "Sigiriya",
+        "title": "La Roca del León y la antigua Polonnaruwa",
+        "description": "La Fortaleza de la Roca del León, el templo de Pidurangala, una visita a la ciudad antigua de Polonnaruwa, un recorrido opcional por una aldea y el Parque Nacional de Minneriya."
+      },
+      {
+        "day": "09–10",
+        "location": "Kandy",
+        "title": "Templo, té y cultura",
+        "description": "El templo rupestre de Dambulla, un jardín de hierbas y especias, un espectáculo cultural en Kandy, el Templo del Diente Sagrado, la visita a una fábrica de té y un recorrido por la ciudad de Kandy."
+      },
+      {
+        "day": "11–12",
+        "location": "Kithulgala",
+        "title": "En tren hacia las montañas y deportes de aventura",
+        "description": "Trayecto en tren hacia Nuwara Eliya, observación de aves y caminata por la naturaleza, además de deportes de aventura: rafting, barranquismo y tirolina."
+      },
+      {
+        "day": "13–14",
+        "location": "Ella",
+        "title": "El tren de Ella y los senderos de montaña",
+        "description": "Trayecto en tren hasta Ella, el Puente de los Nueve Arcos, Little Adam's Peak, la cascada de Ravana y Nildiya Pokuna, con Ella Rock y la tirolina como opcionales."
+      },
+      {
+        "day": "15",
+        "location": "Parque Nacional de Yala / Tissamaharama",
+        "title": "Safari en Yala",
+        "description": "Un día completo de safari en el Parque Nacional de Yala."
+      },
+      {
+        "day": "16–17",
+        "location": "Bosque lluvioso de Sinharaja",
+        "title": "Aves en el bosque lluvioso",
+        "description": "Observación de aves y caminata por el bosque lluvioso de Sinharaja, Patrimonio de la Humanidad de la UNESCO y el bosque de tierras bajas más rico en especies endémicas de Sri Lanka."
+      },
+      {
+        "day": "18",
+        "location": "Salida",
+        "title": "Salida",
+        "description": "Traslado al aeropuerto para el vuelo de regreso.",
+        "contentRequired": true,
+        "note": "Exact departure-day logistics to be confirmed with Nandana."
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "Reconstructed verbatim from the source site's 18-day page; day 18 (departure) was implied but not stated on the original page.",
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "16-days",
+    "durationDays": 16,
+    "title": "16 días",
+    "tagline": "Naturaleza, cultura y aventura — con unos días de playa",
+    "summary": "Una travesía de naturaleza y cultura por la zona seca, la montaña y las tierras altas de la isla, con dos días finales de descanso en la costa sur, en Mirissa.",
+    "heroImage": "/images/tours/tour-16-days.jpg",
+    "highlights": [
+      "El Parque Nacional de Wilpattu y la ciudad antigua de Anuradhapura",
+      "Trincomalee: Pigeon Island y avistamiento de delfines",
+      "La Roca del León de Sigiriya, Polonnaruwa y el Parque Nacional de Minneriya",
+      "El Templo del Diente de Kandy y la región del té",
+      "Parque Nacional de Horton Plains",
+      "El tren de Ella, el Puente de los Nueve Arcos y Little Adam's Peak",
+      "Safari en el Parque Nacional de Yala",
+      "La playa de Mirissa y el fuerte holandés de Galle"
+    ],
+    "destinations": [
+      "negombo",
+      "wilpattu",
+      "anuradhapura",
+      "trincomalee",
+      "sigiriya",
+      "polonnaruwa",
+      "kandy",
+      "nuwara-eliya",
+      "ella",
+      "yala",
+      "mirissa"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari",
+      "culture-history",
+      "beach"
+    ],
+    "itinerary": [
+      {
+        "day": "01",
+        "location": "Negombo",
+        "title": "Llegada y paseo en barca por el canal holandés",
+        "description": "Llegada al aeropuerto de Colombo y traslado a Negombo (alrededor de media hora)."
+      },
+      {
+        "day": "02–03",
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu y la ciudad antigua",
+        "description": "La lonja de Negombo, el Parque Nacional de Wilpattu, una visita a la ciudad antigua de Anuradhapura y el templo de Mihintale."
+      },
+      {
+        "day": "04–06",
+        "location": "Trincomalee",
+        "title": "Costa, arrecife y delfines",
+        "description": "Visita a la ciudad de Trincomalee, Pigeon Island y avistamiento de delfines."
+      },
+      {
+        "day": "07–08",
+        "location": "Sigiriya",
+        "title": "La Roca del León y la antigua Polonnaruwa",
+        "description": "La Fortaleza de la Roca del León, el templo de Pidurangala, una visita a la ciudad antigua de Polonnaruwa, un recorrido opcional por una aldea y el Parque Nacional de Minneriya."
+      },
+      {
+        "day": "09",
+        "location": "Kandy",
+        "title": "Templo, té y cultura",
+        "description": "El templo rupestre de Dambulla, un jardín de hierbas y especias, un espectáculo cultural en Kandy, el Templo del Diente Sagrado, la visita a una fábrica de té y un recorrido por la ciudad de Kandy."
+      },
+      {
+        "day": "10",
+        "location": "Nuwara Eliya",
+        "title": "Parque Nacional de Horton Plains",
+        "description": "Un día recorriendo las praderas de montaña y el bosque nuboso del Parque Nacional de Horton Plains."
+      },
+      {
+        "day": "11–12",
+        "location": "Ella",
+        "title": "El tren de Ella y los senderos de montaña",
+        "description": "Trayecto en tren hasta Ella, el Puente de los Nueve Arcos, Little Adam's Peak, la cascada de Ravana y Nildiya Pokuna, con Ella Rock y la tirolina como opcionales."
+      },
+      {
+        "day": "13",
+        "location": "Parque Nacional de Yala / Tissamaharama",
+        "title": "Safari en Yala",
+        "description": "Un día completo de safari en el Parque Nacional de Yala."
+      },
+      {
+        "day": "14–15",
+        "location": "Playa de Mirissa",
+        "title": "Descanso en la costa y el fuerte de Galle",
+        "description": "Tiempo libre en la playa y visita al fuerte holandés de Galle."
+      },
+      {
+        "day": "16",
+        "location": "Salida",
+        "title": "Salida",
+        "description": "Traslado al aeropuerto para el vuelo de regreso.",
+        "contentRequired": true,
+        "note": "Exact departure-day logistics to be confirmed with Nandana."
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "Reconstructed from the source site's 16-day page; two day-blocks were mislabeled 'TWO WEEKS TOUR' on the original and have been corrected to this tour's own name. Route and pacing otherwise match the source.",
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "12-days",
+    "durationDays": 12,
+    "title": "12 días",
+    "tagline": "Viaje de aves y fauna salvaje",
+    "summary": "Un circuito concentrado de naturaleza y cultura —parques nacionales de la zona seca, las ciudades antiguas, la región del té de Kandy, el tren de Ella y un safari en Yala— pensado para una estancia más corta.",
+    "heroImage": "/images/tours/tour-12-days.jpg",
+    "highlights": [
+      "El Parque Nacional de Wilpattu y la ciudad antigua de Anuradhapura",
+      "La Roca del León de Sigiriya, Polonnaruwa y el Parque Nacional de Minneriya",
+      "El Templo del Diente de Kandy y la región del té",
+      "El tren de Ella, el Puente de los Nueve Arcos y Little Adam's Peak",
+      "Safari en el Parque Nacional de Yala"
+    ],
+    "destinations": [
+      "negombo",
+      "wilpattu",
+      "anuradhapura",
+      "sigiriya",
+      "polonnaruwa",
+      "kandy",
+      "ella",
+      "yala"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari",
+      "culture-history"
+    ],
+    "itinerary": [
+      {
+        "day": "01",
+        "location": "Negombo",
+        "title": "Llegada y paseo en barca por el canal holandés",
+        "description": "Llegada al aeropuerto de Colombo y traslado a Negombo (alrededor de media hora).",
+        "contentRequired": true
+      },
+      {
+        "day": "02–03",
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu y la ciudad antigua",
+        "description": "La lonja de Negombo, el Parque Nacional de Wilpattu, una visita a la ciudad antigua de Anuradhapura y el templo de Mihintale.",
+        "contentRequired": true
+      },
+      {
+        "day": "04–05",
+        "location": "Sigiriya",
+        "title": "La Roca del León y la antigua Polonnaruwa",
+        "description": "La Fortaleza de la Roca del León, el templo de Pidurangala, una visita a la ciudad antigua de Polonnaruwa y el Parque Nacional de Minneriya.",
+        "contentRequired": true
+      },
+      {
+        "day": "06–07",
+        "location": "Kandy",
+        "title": "Templo, té y cultura",
+        "description": "El templo rupestre de Dambulla, un jardín de hierbas y especias, un espectáculo cultural en Kandy, el Templo del Diente Sagrado, la visita a una fábrica de té y un recorrido por la ciudad de Kandy.",
+        "contentRequired": true
+      },
+      {
+        "day": "08–09",
+        "location": "Ella",
+        "title": "El tren de Ella y los senderos de montaña",
+        "description": "Trayecto en tren hasta Ella, el Puente de los Nueve Arcos, Little Adam's Peak y la cascada de Ravana.",
+        "contentRequired": true
+      },
+      {
+        "day": "10",
+        "location": "Parque Nacional de Yala / Tissamaharama",
+        "title": "Safari en Yala",
+        "description": "Un día completo de safari en el Parque Nacional de Yala.",
+        "contentRequired": true
+      },
+      {
+        "day": "11–12",
+        "location": "Bosque lluvioso de Sinharaja",
+        "title": "Aves en el bosque lluvioso y salida",
+        "description": "Observación de aves y caminata por el bosque lluvioso de Sinharaja antes del traslado al aeropuerto para el vuelo de regreso.",
+        "contentRequired": true
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "IMPORTANT: The source site's '12 Days' page mistakenly duplicated the full 18-day itinerary (through 'Day 16 & 17'). This 12-day route has been reconstructed by trimming that itinerary to a coherent 12-day pace (dropping Trincomalee and the Kithulgala adventure-sports stop to fit the shorter duration) using only destinations and activities genuinely offered elsewhere on the source site. Every day is flagged contentRequired — please review and confirm exact pacing, nights-per-location, and inclusions with Nandana before publishing this page.",
+    "_reviewStatus": "needs-native-review"
+  },
+  {
+    "slug": "10-days",
+    "durationDays": 10,
+    "title": "10 días",
+    "tagline": "Viaje de observación de aves y naturaleza",
+    "summary": "Un circuito centrado en las aves endémicas, por el bosque lluvioso de Kithulgala, las tierras altas de Nuwara Eliya y Horton Plains, un safari en Yala y el bosque lluvioso de tierras bajas de Sinharaja.",
+    "heroImage": "/images/tours/tour-10-days.jpg",
+    "highlights": [
+      "El bosque lluvioso de Kithulgala y el río Kelani",
+      "Victoria Park, Nuwara Eliya",
+      "El bosque nuboso de montaña de Horton Plains",
+      "Safari de leopardo y oso bezudo en el Parque Nacional de Yala",
+      "Bosque lluvioso de Sinharaja, Patrimonio de la Humanidad de la UNESCO"
+    ],
+    "destinations": [
+      "kithulgala",
+      "nuwara-eliya",
+      "horton-plains",
+      "tissamaharama",
+      "yala",
+      "sinharaja"
+    ],
+    "activities": [
+      "birding",
+      "wildlife-safari"
+    ],
+    "itinerary": [
+      {
+        "day": "01–02",
+        "location": "Kithulgala",
+        "title": "El borde del bosque lluvioso y el río Kelani",
+        "description": "Llegada al aeropuerto y traslado a Kithulgala. Al cruzar el río Kelani se entra en un bosque lluvioso muy denso; el pueblo está rodeado de selva que atrae a numerosas especies de aves, y el propio río es conocido por el rafting. Noche en Forest Edge Kithulgala.",
+        "highlights": [
+          "Sri Lanka Chestnut-backed Owlet (endemic)",
+          "Sri Lanka Layard's Parakeet (endemic)",
+          "Sri Lanka Hanging Parrot (endemic)",
+          "Serendib Scops Owl (endemic)",
+          "Sri Lanka Green-billed Coucal (endemic)",
+          "Sri Lanka Grey Hornbill (endemic)",
+          "Sri Lanka Spurfowl (endemic)",
+          "Brown-capped Babbler (endemic)",
+          "Spot-winged Thrush (endemic)",
+          "Indian Pitta (migrant)"
+        ]
+      },
+      {
+        "day": "03",
+        "location": "Nuwara Eliya",
+        "title": "Victoria Park",
+        "description": "Un pequeño parque en pleno centro de Nuwara Eliya. Noche en Nuwara Eliya.",
+        "highlights": [
+          "Kashmir Flycatcher",
+          "Pied Thrush",
+          "Indian Pitta",
+          "Indian Blue Robin",
+          "Yellow-eared Bulbul",
+          "Sri Lanka White-eye",
+          "Dull-blue Flycatcher"
+        ]
+      },
+      {
+        "day": "04",
+        "location": "Horton Plains",
+        "title": "Montaña y bosque nuboso",
+        "description": "Un día en el hábitat de montaña y bosque nuboso de Horton Plains. Noche en Nuwara Eliya.",
+        "highlights": [
+          "Sri Lanka Whistling Thrush (endemic)",
+          "Sri Lanka Wood Pigeon (endemic)",
+          "Sri Lanka White-eye (endemic)",
+          "Dull-blue Flycatcher",
+          "Sri Lanka Yellow-eared Bulbul (endemic)",
+          "Sri Lanka Bush Warbler (endemic)",
+          "Hill Swallow",
+          "Velvet-fronted Nuthatch",
+          "Grey-headed Canary-flycatcher",
+          "Kashmir Flycatcher",
+          "Mountain Hawk-Eagle",
+          "Black Eagle",
+          "Common Kestrel"
+        ]
+      },
+      {
+        "day": "05",
+        "location": "Tissamaharama",
+        "title": "Aves en ruta",
+        "description": "Después del desayuno, viaje a Tissamaharama con una parada para observar aves en un santuario del camino. Por la tarde, observación de aves alrededor de los embalses de Tissamaharama. Noche en un hotel de Tissamaharama."
+      },
+      {
+        "day": "06",
+        "location": "Parque Nacional de Yala",
+        "title": "Safari de día completo",
+        "description": "Salida temprano para un día completo de observación de aves y mamíferos en el Parque Nacional de Yala, un parque de zona seca con matorral, embalses, lagunas salobres y riberas fluviales: el mejor del país para ver leopardo y oso bezudo. Noche en un hotel de Tissamaharama.",
+        "highlights": [
+          "Malabar Pied Hornbill",
+          "Blue-faced Malkoha",
+          "Brahminy Starling (migrant)",
+          "Rosy Starling (migrant)",
+          "Sirkeer Malkoha",
+          "Black-necked, Painted, Woolly-necked & Adjutant Storks",
+          "Elephant, leopard, sloth bear, spotted deer, sambar, wild boar, grey langur, marsh & mugger crocodile"
+        ]
+      },
+      {
+        "day": "07–09",
+        "location": "Bosque lluvioso de Sinharaja",
+        "title": "Aves del bosque lluvioso de tierras bajas",
+        "description": "Viaje al bosque lluvioso de Sinharaja, Patrimonio de la Humanidad de la UNESCO con la mayor biodiversidad de Asia y hogar de casi toda la flora y fauna endémica de Sri Lanka. Observación de aves por la tarde y los días siguientes. Noche en un hotel cerca de Sinharaja. La última tarde, traslado al aeropuerto para el vuelo de regreso.",
+        "highlights": [
+          "Green-billed Coucal (endemic)",
+          "Red-faced Malkoha (endemic)",
+          "Sri Lanka Blue Magpie (endemic)",
+          "White-faced Starling (endemic)",
+          "Orange-billed Babbler (endemic)",
+          "Ashy-headed Laughingthrush (endemic)",
+          "White-throated Flowerpecker (endemic)",
+          "Sri Lanka Myna (endemic)",
+          "Sri Lanka Spurfowl (endemic)",
+          "Serendib Scops Owl (endemic)",
+          "Brown-capped Babbler (endemic)",
+          "Scaly Thrush",
+          "Spot-winged Thrush (endemic)",
+          "Sri Lanka Crested Drongo (endemic)"
+        ]
+      }
+    ],
+    "included": [],
+    "excluded": [],
+    "_note": "Reconstructed verbatim from the source site's distinct 10-day birding itinerary.",
+    "_reviewStatus": "needs-native-review"
+  }
+]
