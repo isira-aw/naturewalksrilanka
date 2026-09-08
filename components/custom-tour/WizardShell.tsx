@@ -231,128 +231,149 @@ export function WizardShell({
     dispatch({ type: "GO_TO", step });
   }
 
+  const stepOfLabel = t("stepOf", { current: state.step, total: totalSteps });
+
   return (
-    <div ref={topRef} className="scroll-mt-24 lg:grid lg:grid-cols-[13.5rem_1fr] lg:gap-14">
-      <div className="lg:sticky lg:top-28 lg:self-start">
-        {/* Desktop: the whole path stays visible, so nobody wonders how much is left. */}
-        <div className="hidden lg:block">
-          <StepProgressRail steps={stepLabels} current={state.step} onGoTo={handleGoTo} />
-        </div>
-        {/* Mobile: one line and a bar — seven steps side by side never fit. */}
-        <div className="lg:hidden">
-          <StepProgressBar
-            steps={stepLabels}
-            current={state.step}
-            stepOfLabel={t("stepOf", { current: state.step, total: totalSteps })}
-          />
-        </div>
+    <div ref={topRef} className="scroll-mt-20 sm:scroll-mt-24">
+      {/* Mobile and tablet: one line and a bar — seven steps side by side never
+          fit — pinned under the site header so the position stays visible while
+          a long list of options scrolls past. */}
+      <div className="sticky top-16 z-20 -mx-4 mb-6 border-b border-stone-dark/70 bg-warm-white/95 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6 md:-mx-10 md:px-10 lg:hidden">
+        <StepProgressBar steps={stepLabels} current={state.step} stepOfLabel={stepOfLabel} />
       </div>
 
-      <div className="mt-8 pb-2 lg:mt-0 lg:pb-0">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={state.step}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className={cn(!["aiAssistant", "interests"].includes(currentStepKey) && "max-w-3xl")}
-          >
-            {currentStepKey === "travelers" && (
-              <TravelersStep
-                value={state.travelers}
-                onChange={(value) => dispatch({ type: "SET_TRAVELERS", value })}
-              />
-            )}
-            {currentStepKey === "dates" && (
-              <DatesStep
-                locale={locale}
-                value={state.dateRange}
-                onChange={(value) => dispatch({ type: "SET_DATE_RANGE", value })}
-              />
-            )}
-            {currentStepKey === "interests" && (
-              <InterestsStep
-                value={state.interests}
-                onToggle={(value) => dispatch({ type: "TOGGLE_INTEREST", value, experiences })}
-                experiences={experiences}
-                selectedExperiences={state.selectedExperiences}
-                onToggleExperience={(value) => dispatch({ type: "TOGGLE_EXPERIENCE", value })}
-              />
-            )}
-            {currentStepKey === "accommodation" && (
-              <AccommodationStep
-                value={state.accommodation}
-                onToggle={(value) => dispatch({ type: "TOGGLE_ACCOMMODATION", value })}
-                notes={state.accommodationNotes}
-                onNotesChange={(value) => dispatch({ type: "SET_ACCOMMODATION_NOTES", value })}
-              />
-            )}
-            {currentStepKey === "aiAssistant" && (
-              <AIAssistantStep
-                travelers={state.travelers}
-                dateRange={state.dateRange}
-                interests={state.interests}
-                accommodation={state.accommodation}
-                accommodationNotes={state.accommodationNotes}
-                itinerary={state.aiItinerary}
-                selections={state.aiSelections}
-                status={state.aiStatus}
-                onStatusChange={(value) => dispatch({ type: "SET_AI_STATUS", value })}
-                onItinerary={(value) => dispatch({ type: "SET_AI_ITINERARY", value })}
-                onSelectDay={(dayIndex, slug) => dispatch({ type: "SELECT_AI_DAY_OPTION", dayIndex, slug })}
-                onBackDay={() => dispatch({ type: "BACK_AI_DAY_OPTION" })}
-              />
-            )}
-            {currentStepKey === "contact" && (
-              <ContactStep
-                name={state.name}
-                email={state.email}
-                phone={state.phone}
-                country={state.country}
-                requirements={state.requirements}
-                onChange={(field, value) => dispatch({ type: "SET_FIELD", field, value })}
-              />
-            )}
-            {currentStepKey === "review" && (
-              <ReviewStep
-                state={state}
-                locale={locale}
-                whatsappNumber={whatsappNumber}
-                experiences={experiences}
-              />
-            )}
-          </motion.div>
-        </AnimatePresence>
+      <div className="lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:items-start lg:gap-10 xl:grid-cols-[17rem_minmax(0,1fr)] xl:gap-14">
+        {/* Desktop: the whole path stays visible, so nobody wonders how much is left. */}
+        <div className="hidden lg:sticky lg:top-28 lg:block lg:self-start">
+          <StepProgressRail
+            steps={stepLabels}
+            current={state.step}
+            onGoTo={handleGoTo}
+            stepOfLabel={stepOfLabel}
+          />
+        </div>
 
-        {error && (
-          <p
-            role="alert"
-            className="mt-6 flex max-w-3xl items-start gap-2 rounded-xl bg-clay/10 px-4 py-3 text-sm text-charcoal"
-          >
-            <span aria-hidden="true" className="mt-0.5 text-clay">
-              !
-            </span>
-            {error}
-          </p>
-        )}
+        {/* The step itself sits on a card, so the form reads as one surface
+            against the page and each step can spread across the full column. */}
+        <div className="min-w-0 rounded-2xl border border-stone-dark bg-warm-white p-5 shadow-[0_1px_2px_rgba(28,30,27,0.04)] sm:p-7 lg:p-9">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={state.step}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="min-w-0"
+            >
+              {currentStepKey === "travelers" && (
+                <TravelersStep
+                  value={state.travelers}
+                  onChange={(value) => dispatch({ type: "SET_TRAVELERS", value })}
+                />
+              )}
+              {currentStepKey === "dates" && (
+                <DatesStep
+                  locale={locale}
+                  value={state.dateRange}
+                  onChange={(value) => dispatch({ type: "SET_DATE_RANGE", value })}
+                />
+              )}
+              {currentStepKey === "interests" && (
+                <InterestsStep
+                  value={state.interests}
+                  onToggle={(value) => dispatch({ type: "TOGGLE_INTEREST", value, experiences })}
+                  experiences={experiences}
+                  selectedExperiences={state.selectedExperiences}
+                  onToggleExperience={(value) => dispatch({ type: "TOGGLE_EXPERIENCE", value })}
+                />
+              )}
+              {currentStepKey === "accommodation" && (
+                <AccommodationStep
+                  value={state.accommodation}
+                  onToggle={(value) => dispatch({ type: "TOGGLE_ACCOMMODATION", value })}
+                  notes={state.accommodationNotes}
+                  onNotesChange={(value) => dispatch({ type: "SET_ACCOMMODATION_NOTES", value })}
+                />
+              )}
+              {currentStepKey === "aiAssistant" && (
+                <AIAssistantStep
+                  travelers={state.travelers}
+                  dateRange={state.dateRange}
+                  interests={state.interests}
+                  accommodation={state.accommodation}
+                  accommodationNotes={state.accommodationNotes}
+                  itinerary={state.aiItinerary}
+                  selections={state.aiSelections}
+                  status={state.aiStatus}
+                  onStatusChange={(value) => dispatch({ type: "SET_AI_STATUS", value })}
+                  onItinerary={(value) => dispatch({ type: "SET_AI_ITINERARY", value })}
+                  onSelectDay={(dayIndex, slug) => dispatch({ type: "SELECT_AI_DAY_OPTION", dayIndex, slug })}
+                  onBackDay={() => dispatch({ type: "BACK_AI_DAY_OPTION" })}
+                />
+              )}
+              {currentStepKey === "contact" && (
+                <ContactStep
+                  name={state.name}
+                  email={state.email}
+                  phone={state.phone}
+                  country={state.country}
+                  requirements={state.requirements}
+                  onChange={(field, value) => dispatch({ type: "SET_FIELD", field, value })}
+                />
+              )}
+              {currentStepKey === "review" && (
+                <ReviewStep
+                  state={state}
+                  locale={locale}
+                  whatsappNumber={whatsappNumber}
+                  experiences={experiences}
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
 
-        {/* Desktop keeps the controls in the flow of the form... */}
-        <div className="mt-10 hidden max-w-3xl items-center justify-between border-t border-charcoal/10 pt-8 sm:flex">
-          <Button type="button" variant="secondary" onClick={handleBack} disabled={state.step === 1}>
-            {t("back")}
-          </Button>
-          {!isLastStep && (
-            <Button type="button" variant="primary" onClick={handleNext}>
-              {t("next")}
-            </Button>
+          {error && (
+            <p
+              role="alert"
+              className="mt-6 flex max-w-2xl items-start gap-2 rounded-xl bg-clay/10 px-4 py-3 text-sm text-charcoal"
+            >
+              <span aria-hidden="true" className="mt-0.5 text-clay">
+                !
+              </span>
+              {error}
+            </p>
           )}
+
+          {/* Tablet and desktop keep the controls in the flow of the form, on
+              the card's own footer line so they close off the step... */}
+          <div className="mt-8 hidden items-center justify-between gap-4 border-t border-stone-dark pt-6 sm:flex lg:mt-10 lg:pt-8">
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={handleBack}
+              disabled={state.step === 1}
+            >
+              {t("back")}
+            </Button>
+            {!isLastStep && (
+              <Button type="button" variant="primary" onClick={handleNext}>
+                {t("next")}
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 
       {/* ...while on a phone they dock to the bottom of the screen, so Continue
-          is reachable without scrolling past a long list of options. */}
-      <div className="sticky bottom-0 z-30 -mx-6 mt-8 flex items-center gap-3 border-t border-stone-dark bg-warm-white/95 px-6 py-3 backdrop-blur sm:hidden">
+          is reachable without scrolling past a long list of options. On the
+          last step nothing is docked: the send button is the only action that
+          should hold the bottom of the screen. */}
+      <div
+        className={cn(
+          "z-30 -mx-4 mt-6 flex items-center gap-3 border-t border-stone-dark bg-warm-white/95 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur sm:hidden",
+          !isLastStep && "sticky bottom-0"
+        )}
+      >
         <Button
           type="button"
           variant="secondary"

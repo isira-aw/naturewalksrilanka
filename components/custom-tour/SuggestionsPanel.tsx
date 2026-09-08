@@ -37,7 +37,9 @@ export function SuggestionsPanel({
       {experiences.length === 0 ? (
         <p className="mt-4 text-sm leading-relaxed text-charcoal/50">{labels.empty}</p>
       ) : (
-        <ul className="mt-4 max-h-[26rem] space-y-2 overflow-y-auto pr-1 lg:max-h-[32rem]">
+        /* A grid rather than a scrolling column: at most a handful of ideas
+           match, and a nested scroll area inside a scrolling page hid them. */
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           <AnimatePresence initial={false}>
             {experiences.map((experience) => {
               const isSelected = selected.includes(experience.slug);
@@ -49,10 +51,11 @@ export function SuggestionsPanel({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="h-full"
                 >
                   <div
                     className={cn(
-                      "rounded-xl border bg-warm-white p-4 transition-colors",
+                      "flex h-full flex-col rounded-xl border bg-warm-white p-4 transition-colors",
                       isSelected ? "border-forest bg-forest/[0.04]" : "border-stone-dark"
                     )}
                   >
@@ -66,7 +69,7 @@ export function SuggestionsPanel({
                       {experience.summary}
                     </p>
 
-                    <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 pt-3">
                       <SelectButton
                         selected={isSelected}
                         labels={labels}

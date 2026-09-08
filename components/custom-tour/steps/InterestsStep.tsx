@@ -38,7 +38,10 @@ export function InterestsStep({
   const matching = experiences.filter((experience) => value.includes(experience.category));
 
   return (
-    <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start lg:gap-8">
+    /* Categories across the full width, then the ideas they unlock underneath:
+       a narrow right-hand column forced the ideas into a nested scroll box and
+       left the category row with three quarters of the screen unused. */
+    <div>
       <fieldset className="min-w-0">
         <StepHeading title={t("interestsLabel")} hint={t("interestsHint")} />
 
@@ -77,7 +80,7 @@ export function InterestsStep({
         </div>
       </fieldset>
 
-      <div className="mt-8 lg:mt-0">
+      <div className="mt-8">
         <SuggestionsPanel
           experiences={matching}
           selected={selectedExperiences}

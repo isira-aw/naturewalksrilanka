@@ -151,7 +151,7 @@ export function AIAssistantStep({
       )}
 
       {status === "ready" && itinerary && (
-        <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start lg:gap-10 xl:grid-cols-[minmax(0,1fr)_440px]">
+        <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start lg:gap-8 xl:grid-cols-[minmax(0,1fr)_26rem] xl:gap-10">
           <div className="lg:order-1">
             {!isComplete && currentDay && (
               <div>
@@ -195,7 +195,9 @@ export function AIAssistantStep({
                     <span className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
                       {t("otherOptionsLabel")}
                     </span>
-                    <div className="mt-2 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                    {/* Two up at most: the map takes the other half of the row,
+                        so a third column left each option too narrow to read. */}
+                    <div className="mt-2 grid gap-3 sm:grid-cols-2">
                       {otherOptions.map((option, index) => (
                         <DayCard
                           key={`${index}-${option.slug}`}

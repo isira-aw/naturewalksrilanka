@@ -91,54 +91,60 @@ export function ReviewStep({
     <div>
       <StepHeading title={t("reviewTitle")} hint={t("reviewHint")} />
 
-      <dl className="mt-8 divide-y divide-stone-dark overflow-hidden rounded-2xl border border-stone-dark bg-warm-white">
-        <ReviewRow label={t("travelersLabel")} value={String(state.travelers)} />
-        <ReviewRow
-          label={t("datesLabel")}
-          value={
-            state.dateRange.start && state.dateRange.end
-              ? `${formatDate(state.dateRange.start, locale)} – ${formatDate(state.dateRange.end, locale)}`
-              : "-"
-          }
-        />
-        <ReviewRow
-          label={t("interestsLabel")}
-          value={interestLabels.length ? interestLabels.join(", ") : "-"}
-        />
-        <ReviewRow
-          label={t("accommodationLabel")}
-          value={accommodationLabels.length ? accommodationLabels.join(", ") : "-"}
-        />
-        {state.accommodationNotes.trim() && (
-          <ReviewRow label={t("accommodationNotesLabel")} value={state.accommodationNotes} />
-        )}
-        {chosenIdeas.length > 0 && (
-          <ReviewRow label={t("suggestionsSelectedLabel")} value={chosenIdeas.join("\n")} />
-        )}
-        {aiRouteNames.length > 0 && (
+      {/* Summary left, the send action in its own column on desktop: it used to
+          sit below a table long enough to push it off the screen. */}
+      <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:items-start lg:gap-8">
+        <dl className="divide-y divide-stone-dark overflow-hidden rounded-2xl border border-stone-dark bg-stone/20">
+          <ReviewRow label={t("travelersLabel")} value={String(state.travelers)} />
           <ReviewRow
-            label={t("aiAssistant.selectedSummaryTitle")}
-            value={aiRouteNames.map((name, index) => `${t("aiAssistant.dayLabel", { day: index + 1 })}: ${name}`).join("\n")}
+            label={t("datesLabel")}
+            value={
+              state.dateRange.start && state.dateRange.end
+                ? `${formatDate(state.dateRange.start, locale)} – ${formatDate(state.dateRange.end, locale)}`
+                : "-"
+            }
           />
-        )}
-        <ReviewRow label={t("contactName")} value={state.name || "-"} />
-        <ReviewRow label={t("contactEmail")} value={state.email || "-"} />
-        <ReviewRow label={t("contactPhone")} value={state.phone || "-"} />
-        {state.country.trim() && <ReviewRow label={t("contactCountry")} value={state.country} />}
-        {state.requirements.trim() && (
-          <ReviewRow label={t("requirementsLabel")} value={state.requirements} />
-        )}
-      </dl>
+          <ReviewRow
+            label={t("interestsLabel")}
+            value={interestLabels.length ? interestLabels.join(", ") : "-"}
+          />
+          <ReviewRow
+            label={t("accommodationLabel")}
+            value={accommodationLabels.length ? accommodationLabels.join(", ") : "-"}
+          />
+          {state.accommodationNotes.trim() && (
+            <ReviewRow label={t("accommodationNotesLabel")} value={state.accommodationNotes} />
+          )}
+          {chosenIdeas.length > 0 && (
+            <ReviewRow label={t("suggestionsSelectedLabel")} value={chosenIdeas.join("\n")} />
+          )}
+          {aiRouteNames.length > 0 && (
+            <ReviewRow
+              label={t("aiAssistant.selectedSummaryTitle")}
+              value={aiRouteNames.map((name, index) => `${t("aiAssistant.dayLabel", { day: index + 1 })}: ${name}`).join("\n")}
+            />
+          )}
+          <ReviewRow label={t("contactName")} value={state.name || "-"} />
+          <ReviewRow label={t("contactEmail")} value={state.email || "-"} />
+          <ReviewRow label={t("contactPhone")} value={state.phone || "-"} />
+          {state.country.trim() && <ReviewRow label={t("contactCountry")} value={state.country} />}
+          {state.requirements.trim() && (
+            <ReviewRow label={t("requirementsLabel")} value={state.requirements} />
+          )}
+        </dl>
 
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-8 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 text-base font-medium tracking-wide text-warm-white transition-colors duration-200 hover:bg-forest-dark sm:w-auto"
-      >
-        <WhatsAppIcon className="h-4 w-4" />
-        {t("submit")}
-      </a>
+        <div className="mt-8 lg:sticky lg:top-28 lg:mt-0">
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 text-base font-medium tracking-wide text-warm-white transition-colors duration-200 hover:bg-forest-dark sm:w-auto lg:w-full"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            {t("submit")}
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

@@ -21,43 +21,47 @@ export function TravelersStep({
     <fieldset>
       <StepHeading as="legend" title={t("travelersLabel")} hint={t("travelersHint")} />
 
-      <div className="mt-8 flex w-full max-w-xs items-center justify-between rounded-2xl border border-stone-dark bg-warm-white p-3">
-        <CounterButton
-          label={t("travelersDecrease")}
-          onClick={() => onChange(value - 1)}
-          disabled={value <= MIN_TRAVELERS}
-        >
-          −
-        </CounterButton>
-        <span className="font-display text-4xl text-charcoal tabular-nums" aria-live="polite">
-          {value}
-        </span>
-        <CounterButton
-          label={t("travelersIncrease")}
-          onClick={() => onChange(value + 1)}
-          disabled={value >= MAX_TRAVELERS}
-        >
-          +
-        </CounterButton>
-      </div>
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {QUICK_PICKS.map((count) => (
-          <button
-            key={count}
-            type="button"
-            onClick={() => onChange(count)}
-            aria-pressed={value === count}
-            className={cn(
-              "min-h-11 rounded-full border px-5 font-utility text-sm transition-colors",
-              value === count
-                ? "border-forest bg-forest text-warm-white"
-                : "border-stone-dark text-charcoal/70 hover:border-forest hover:text-forest"
-            )}
+      {/* Counter and quick picks sit side by side from tablet up: they are one
+          decision, and stacking them left a tall column of empty space. */}
+      <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8">
+        <div className="flex w-full max-w-xs shrink-0 items-center justify-between rounded-2xl border border-stone-dark bg-stone/30 p-3">
+          <CounterButton
+            label={t("travelersDecrease")}
+            onClick={() => onChange(value - 1)}
+            disabled={value <= MIN_TRAVELERS}
           >
-            {count}
-          </button>
-        ))}
+            −
+          </CounterButton>
+          <span className="font-display text-4xl text-charcoal tabular-nums" aria-live="polite">
+            {value}
+          </span>
+          <CounterButton
+            label={t("travelersIncrease")}
+            onClick={() => onChange(value + 1)}
+            disabled={value >= MAX_TRAVELERS}
+          >
+            +
+          </CounterButton>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          {QUICK_PICKS.map((count) => (
+            <button
+              key={count}
+              type="button"
+              onClick={() => onChange(count)}
+              aria-pressed={value === count}
+              className={cn(
+                "min-h-11 min-w-14 rounded-full border px-5 font-utility text-sm transition-colors",
+                value === count
+                  ? "border-forest bg-forest text-warm-white"
+                  : "border-stone-dark text-charcoal/70 hover:border-forest hover:text-forest"
+              )}
+            >
+              {count}
+            </button>
+          ))}
+        </div>
       </div>
     </fieldset>
   );

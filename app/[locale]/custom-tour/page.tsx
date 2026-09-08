@@ -68,10 +68,12 @@ export default async function CustomTourPage({
         height="short"
       />
 
-      {/* Full container width, not max-w-3xl: the AI assistant step renders a
-          map, and the progress rail sits in its own column on desktop. */}
-      <section className="bg-warm-white py-16 md:py-24">
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
+      {/* Wider than the site container and not max-w-3xl: every step lays itself
+          out across the full column — the calendar shows two months, the AI
+          assistant renders a map, the journey ideas sit in a grid — and the
+          progress rail takes its own column on desktop. */}
+      <section className="bg-stone/25 py-10 md:py-14 lg:py-16">
+        <div className="mx-auto w-full max-w-[92rem] px-4 sm:px-6 md:px-10 xl:px-12">
           <WizardShell
             locale={l}
             whatsappNumber={navigation.contact.whatsappNumber}
