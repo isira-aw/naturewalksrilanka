@@ -14,56 +14,73 @@ export function StepProgressRail({
   steps,
   current,
   onGoTo,
+  stepOfLabel,
 }: {
   steps: string[];
   current: number;
   onGoTo: (step: number) => void;
+  stepOfLabel?: string;
 }) {
   return (
-    <ol className="space-y-1">
-      {steps.map((label, index) => {
-        const step = index + 1;
-        const isCurrent = step === current;
-        const isComplete = step < current;
-        return (
-          <li key={label}>
-            <button
-              type="button"
-              disabled={!isComplete}
-              aria-current={isCurrent ? "step" : undefined}
-              onClick={() => onGoTo(step)}
-              className={cn(
-                "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors",
-                isComplete && "hover:bg-forest/8",
-                isCurrent && "bg-forest/10",
-                !isComplete && !isCurrent && "cursor-default"
-              )}
-            >
-              <span
+    <nav aria-label={stepOfLabel}>
+      {stepOfLabel && (
+        <p className="px-3 pb-3 font-utility text-[11px] uppercase tracking-[0.18em] text-charcoal/45">
+          {stepOfLabel}
+        </p>
+      )}
+      <ol className="relative">
+        {/* One continuous line behind the markers, so the seven steps read as a
+            single path rather than a stack of unrelated rows. */}
+        <span
+          aria-hidden="true"
+          className="absolute bottom-6 left-[1.625rem] top-6 w-px bg-stone-dark"
+        />
+        {steps.map((label, index) => {
+          const step = index + 1;
+          const isCurrent = step === current;
+          const isComplete = step < current;
+          return (
+            <li key={label} className="relative">
+              <button
+                type="button"
+                disabled={!isComplete}
+                aria-current={isCurrent ? "step" : undefined}
+                onClick={() => onGoTo(step)}
                 className={cn(
-                  "flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-utility text-[11px] transition-colors",
-                  isCurrent && "bg-forest text-warm-white",
-                  isComplete && "bg-forest/15 text-forest",
-                  !isCurrent && !isComplete && "border border-charcoal/20 text-charcoal/40"
+                  "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors",
+                  isComplete && "hover:bg-forest/8",
+                  isCurrent && "bg-forest/10",
+                  !isComplete && !isCurrent && "cursor-default"
                 )}
               >
-                {isComplete ? <CheckIcon className="h-3 w-3" /> : String(step).padStart(2, "0")}
-              </span>
-              <span
-                className={cn(
-                  "font-utility text-xs uppercase tracking-wide",
-                  isCurrent && "text-forest",
-                  isComplete && "text-charcoal/70",
-                  !isCurrent && !isComplete && "text-charcoal/40"
-                )}
-              >
-                {label}
-              </span>
-            </button>
-          </li>
-        );
-      })}
-    </ol>
+                <span
+                  className={cn(
+                    "relative z-10 flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-utility text-[11px] transition-colors",
+                    isCurrent && "bg-forest text-warm-white",
+                    isComplete && "bg-forest/15 text-forest",
+                    !isCurrent &&
+                      !isComplete &&
+                      "border border-stone-dark bg-warm-white text-charcoal/40"
+                  )}
+                >
+                  {isComplete ? <CheckIcon className="h-3 w-3" /> : String(step).padStart(2, "0")}
+                </span>
+                <span
+                  className={cn(
+                    "font-utility text-xs uppercase tracking-wide",
+                    isCurrent && "text-forest",
+                    isComplete && "text-charcoal/70",
+                    !isCurrent && !isComplete && "text-charcoal/40"
+                  )}
+                >
+                  {label}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
   );
 }
 

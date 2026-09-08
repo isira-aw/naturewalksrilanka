@@ -29,63 +29,67 @@ export function ContactStep({
     <fieldset>
       <StepHeading as="legend" title={t("steps.contact")} hint={t("contactHint")} />
 
-      <div className="mt-8 grid gap-5 sm:grid-cols-2">
-        <Field
-          id="contact-name"
-          label={t("contactName")}
-          value={name}
-          onChange={(v) => onChange("name", v)}
-          autoComplete="name"
-          required
-          requiredLabel={t("required")}
-        />
-        <Field
-          id="contact-email"
-          type="email"
-          inputMode="email"
-          label={t("contactEmail")}
-          value={email}
-          onChange={(v) => onChange("email", v)}
-          autoComplete="email"
-          required
-          requiredLabel={t("required")}
-        />
-        <Field
-          id="contact-phone"
-          type="tel"
-          inputMode="tel"
-          label={t("contactPhone")}
-          value={phone}
-          onChange={(v) => onChange("phone", v)}
-          autoComplete="tel"
-          required
-          requiredLabel={t("required")}
-        />
-        <Field
-          id="contact-country"
-          label={t("contactCountry")}
-          value={country}
-          onChange={(v) => onChange("country", v)}
-          autoComplete="country-name"
-          optionalLabel={t("optional")}
-        />
-      </div>
+      {/* The four short fields keep their two-up grid and the long free-text
+          box moves alongside them on desktop, so the step fits one screen. */}
+      <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-start lg:gap-8 xl:gap-10">
+        <div className="grid gap-5 sm:grid-cols-2">
+          <Field
+            id="contact-name"
+            label={t("contactName")}
+            value={name}
+            onChange={(v) => onChange("name", v)}
+            autoComplete="name"
+            required
+            requiredLabel={t("required")}
+          />
+          <Field
+            id="contact-email"
+            type="email"
+            inputMode="email"
+            label={t("contactEmail")}
+            value={email}
+            onChange={(v) => onChange("email", v)}
+            autoComplete="email"
+            required
+            requiredLabel={t("required")}
+          />
+          <Field
+            id="contact-phone"
+            type="tel"
+            inputMode="tel"
+            label={t("contactPhone")}
+            value={phone}
+            onChange={(v) => onChange("phone", v)}
+            autoComplete="tel"
+            required
+            requiredLabel={t("required")}
+          />
+          <Field
+            id="contact-country"
+            label={t("contactCountry")}
+            value={country}
+            onChange={(v) => onChange("country", v)}
+            autoComplete="country-name"
+            optionalLabel={t("optional")}
+          />
+        </div>
 
-      <div className="mt-6">
-        <label
-          htmlFor="contact-requirements"
-          className="block font-utility text-xs uppercase tracking-wide text-charcoal/55"
-        >
-          {t("requirementsLabel")}
-          <span className="ml-2 normal-case tracking-normal text-charcoal/40">{t("optional")}</span>
-        </label>
-        <textarea
-          id="contact-requirements"
-          value={requirements}
-          onChange={(e) => onChange("requirements", e.target.value)}
-          rows={5}
-          className="mt-2 w-full rounded-xl border border-stone-dark bg-warm-white p-4 text-sm text-charcoal transition-colors focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest"
-        />
+        <div className="mt-6 lg:mt-0">
+          <label
+            htmlFor="contact-requirements"
+            className="block font-utility text-xs uppercase tracking-wide text-charcoal/55"
+          >
+            {t("requirementsLabel")}
+            <span className="ml-2 normal-case tracking-normal text-charcoal/40">{t("optional")}</span>
+          </label>
+          <textarea
+            id="contact-requirements"
+            value={requirements}
+            onChange={(e) => onChange("requirements", e.target.value)}
+            rows={5}
+            className="mt-2 w-full rounded-xl border border-stone-dark bg-warm-white p-4 text-sm text-charcoal transition-colors focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest lg:min-h-[13.5rem]"
+          />
+        </div>
       </div>
     </fieldset>
   );
