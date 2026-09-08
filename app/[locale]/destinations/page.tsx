@@ -63,7 +63,7 @@ export default async function DestinationsPage({
         title={t("tours.destinationsTitle")}
         lead={t("sriLanka.body")}
         image={{
-          src: "/images/story-1.jpg",
+          src: "/images/destinations/destinations.png",
           alt: "Dry-zone landscape in Sri Lanka's north west",
         }}
       />
