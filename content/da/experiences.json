@@ -15,23 +15,28 @@
     "highlights": [
       {
         "name": "Sri Lanka Blue Magpie",
-        "note": "Endemisk — som regel med fourageringsflokken"
+        "note": "Endemisk — som regel med fourageringsflokken",
+        "image": "/images/highlights/sinharaja-endemic-mornings/sri-lanka-blue-magpie.jpg"
       },
       {
         "name": "Red-faced Malkoha",
-        "note": "Endemisk — højt i kronelaget, bedst i tidligt lys"
+        "note": "Endemisk — højt i kronelaget, bedst i tidligt lys",
+        "image": "/images/highlights/sinharaja-endemic-mornings/red-faced-malkoha.jpg"
       },
       {
         "name": "Serendib Scops Owl",
-        "note": "Endemisk — en art for natvandringen"
+        "note": "Endemisk — en art for natvandringen",
+        "image": "/images/highlights/sinharaja-endemic-mornings/serendib-scops-owl.jpg"
       },
       {
         "name": "Ashy-headed Laughingthrush",
-        "note": "Endemisk — larmende flokke i underskoven"
+        "note": "Endemisk — larmende flokke i underskoven",
+        "image": "/images/highlights/sinharaja-endemic-mornings/ashy-headed-laughingthrush.jpg"
       },
       {
         "name": "Green-billed Coucal",
-        "note": "Endemisk — høres oftere end den ses"
+        "note": "Endemisk — høres oftere end den ses",
+        "image": "/images/highlights/sinharaja-endemic-mornings/green-billed-coucal.jpg"
       }
     ],
     "contentRequired": true,
@@ -53,23 +58,28 @@
     "highlights": [
       {
         "name": "Sri Lanka Whistling Thrush",
-        "note": "Endemisk — første lys, nær vandløb"
+        "note": "Endemisk — første lys, nær vandløb",
+        "image": "/images/highlights/highland-birding-horton-plains/sri-lanka-whistling-thrush.jpg"
       },
       {
         "name": "Sri Lanka Bush Warbler",
-        "note": "Endemisk — græslandets kanter"
+        "note": "Endemisk — græslandets kanter",
+        "image": "/images/highlights/highland-birding-horton-plains/sri-lanka-bush-warbler.jpg"
       },
       {
         "name": "Yellow-eared Bulbul",
-        "note": "Endemisk — almindelig, men fotogen"
+        "note": "Endemisk — almindelig, men fotogen",
+        "image": "/images/highlights/highland-birding-horton-plains/yellow-eared-bulbul.jpg"
       },
       {
         "name": "Kashmir Flycatcher",
-        "note": "Vintergæst — Victoria Park"
+        "note": "Vintergæst — Victoria Park",
+        "image": "/images/highlights/highland-birding-horton-plains/kashmir-flycatcher.jpg"
       },
       {
         "name": "Pied Thrush",
-        "note": "Vintergæst — skyggefulde vandløb i parken"
+        "note": "Vintergæst — skyggefulde vandløb i parken",
+        "image": "/images/highlights/highland-birding-horton-plains/pied-thrush.jpg"
       }
     ],
     "contentRequired": true,
@@ -91,19 +101,23 @@
     "highlights": [
       {
         "name": "Srilankansk leopard",
-        "note": "Klipperne tidligt om morgenen"
+        "note": "Klipperne tidligt om morgenen",
+        "image": "/images/highlights/yala-leopard-tracking/sri-lankan-leopard.jpg"
       },
       {
         "name": "Læbebjørn",
-        "note": "Bedste chance når palu bærer frugt, juni–juli"
+        "note": "Bedste chance når palu bærer frugt, juni–juli",
+        "image": "/images/highlights/yala-leopard-tracking/sloth-bear.jpg"
       },
       {
         "name": "Asiatisk elefant",
-        "note": "Ved reservoirerne sidst på eftermiddagen"
+        "note": "Ved reservoirerne sidst på eftermiddagen",
+        "image": "/images/highlights/yala-leopard-tracking/asian-elephant.jpg"
       },
       {
         "name": "Sumpkrokodille",
-        "note": "Lagunernes bredder, hele dagen"
+        "note": "Lagunernes bredder, hele dagen",
+        "image": "/images/highlights/yala-leopard-tracking/mugger-crocodile.jpg"
       }
     ],
     "contentRequired": true,
@@ -125,19 +139,23 @@
     "highlights": [
       {
         "name": "Srilankansk leopard",
-        "note": "Tålmodig venten ved parkens villus"
+        "note": "Tålmodig venten ved parkens villus",
+        "image": "/images/highlights/wilpattu-villus/sri-lankan-leopard.jpg"
       },
       {
         "name": "Læbebjørn",
-        "note": "Åbent krat tidligt om morgenen"
+        "note": "Åbent krat tidligt om morgenen",
+        "image": "/images/highlights/wilpattu-villus/sloth-bear.jpg"
       },
       {
         "name": "Plettet hjort og sambar",
-        "note": "Ved hver eneste sø"
+        "note": "Ved hver eneste sø",
+        "image": "/images/highlights/wilpattu-villus/spotted-deer-and-sambar.jpg"
       },
       {
         "name": "Indisk stork",
-        "note": "Villuens lavvandede kanter"
+        "note": "Villuens lavvandede kanter",
+        "image": "/images/highlights/wilpattu-villus/painted-stork.jpg"
       }
     ],
     "contentRequired": true,
@@ -159,19 +177,23 @@
     "highlights": [
       {
         "name": "Little Adam's Peak",
-        "note": "Cirka en time op, bedst ved solopgang"
+        "note": "Cirka en time op, bedst ved solopgang",
+        "image": "/images/highlights/ella-hill-trails/little-adam-s-peak.jpg"
       },
       {
         "name": "Ella Rock",
-        "note": "En halv dag, stejlt visse steder"
+        "note": "En halv dag, stejlt visse steder",
+        "image": "/images/highlights/ella-hill-trails/ella-rock.jpg"
       },
       {
         "name": "Nine Arch-broen",
-        "note": "Læg den, så toget passerer"
+        "note": "Læg den, så toget passerer",
+        "image": "/images/highlights/ella-hill-trails/nine-arch-bridge.jpg"
       },
       {
         "name": "Ravana-vandfaldet",
-        "note": "Mest vandrigt lige efter regntiden"
+        "note": "Mest vandrigt lige efter regntiden",
+        "image": "/images/highlights/ella-hill-trails/ravana-waterfall.jpg"
       }
     ],
     "contentRequired": true,
@@ -193,15 +215,18 @@
     "highlights": [
       {
         "name": "Udsigtspunkter på ryggen",
-        "note": "Klart tidligt, skyer omkring middag"
+        "note": "Klart tidligt, skyer omkring middag",
+        "image": "/images/highlights/knuckles-forest-walk/ridgeline-viewpoints.jpg"
       },
       {
         "name": "Bjergtågeskov",
-        "note": "Mosgroet, kølig, rig på endemiske arter"
+        "note": "Mosgroet, kølig, rig på endemiske arter",
+        "image": "/images/highlights/knuckles-forest-walk/montane-cloud-forest.jpg"
       },
       {
         "name": "Landsbyernes terrasser",
-        "note": "Risdyrkning stadig i hånden"
+        "note": "Risdyrkning stadig i hånden",
+        "image": "/images/highlights/knuckles-forest-walk/village-terraces.jpg"
       }
     ],
     "contentRequired": true,
@@ -223,19 +248,23 @@
     "highlights": [
       {
         "name": "Løveklippen i Sigiriya",
-        "note": "Start ved åbningstid, før heden"
+        "note": "Start ved åbningstid, før heden",
+        "image": "/images/highlights/ancient-cities-loop/sigiriya-lion-rock.jpg"
       },
       {
         "name": "Polonnaruwa på cykel",
-        "note": "Fladt, skyggefuldt, bedst sidst på dagen"
+        "note": "Fladt, skyggefuldt, bedst sidst på dagen",
+        "image": "/images/highlights/ancient-cities-loop/polonnaruwa-by-bicycle.jpg"
       },
       {
         "name": "Sri Maha Bodhi",
-        "note": "Anuradhapura — offergaver om aftenen"
+        "note": "Anuradhapura — offergaver om aftenen",
+        "image": "/images/highlights/ancient-cities-loop/sri-maha-bodhi.jpg"
       },
       {
         "name": "Dambulla-huletemplerne",
-        "note": "Malede lofter, på ruten"
+        "note": "Malede lofter, på ruten",
+        "image": "/images/highlights/ancient-cities-loop/dambulla-cave-temples.jpg"
       }
     ],
     "contentRequired": true,
@@ -257,15 +286,18 @@
     "highlights": [
       {
         "name": "Tandtemplet",
-        "note": "Aftenens puja, trommer ved porten"
+        "note": "Aftenens puja, trommer ved porten",
+        "image": "/images/highlights/kandy-temple-and-tea/temple-of-the-sacred-tooth-relic.jpg"
       },
       {
         "name": "Peradeniyas botaniske have",
-        "note": "Om formiddagen, før busselskaberne"
+        "note": "Om formiddagen, før busselskaberne",
+        "image": "/images/highlights/kandy-temple-and-tea/peradeniya-botanical-gardens.jpg"
       },
       {
         "name": "En tefabrik i drift",
-        "note": "Fra blad til pakke på ét besøg"
+        "note": "Fra blad til pakke på ét besøg",
+        "image": "/images/highlights/kandy-temple-and-tea/a-working-tea-factory.jpg"
       }
     ],
     "contentRequired": true,
@@ -287,15 +319,18 @@
     "highlights": [
       {
         "name": "Voldene i Galle Fort",
-        "note": "Gåtur sidst på eftermiddagen"
+        "note": "Gåtur sidst på eftermiddagen",
+        "image": "/images/highlights/south-coast-and-galle/galle-fort-ramparts.jpg"
       },
       {
         "name": "Mirissa Strand",
-        "note": "Roligt hav november – april"
+        "note": "Roligt hav november – april",
+        "image": "/images/highlights/south-coast-and-galle/mirissa-beach.jpg"
       },
       {
         "name": "Blåhvaler ud for kysten",
-        "note": "December – april, tidlig afgang"
+        "note": "December – april, tidlig afgang",
+        "image": "/images/highlights/south-coast-and-galle/blue-whales-offshore.jpg"
       }
     ],
     "contentRequired": true,
@@ -317,15 +352,18 @@
     "highlights": [
       {
         "name": "Blandede fourageringsflokke",
-        "note": "De første to timer efter daggry"
+        "note": "De første to timer efter daggry",
+        "image": "/images/highlights/rainforest-photography/mixed-feeding-flocks.jpg"
       },
       {
         "name": "Endemiske frøer og firben",
-        "note": "Makromotiver i middagsskyggen"
+        "note": "Makromotiver i middagsskyggen",
+        "image": "/images/highlights/rainforest-photography/endemic-frogs-and-lizards.jpg"
       },
       {
         "name": "Kronelaget oppefra",
-        "note": "Kithulgala-ryggen i sent lys"
+        "note": "Kithulgala-ryggen i sent lys",
+        "image": "/images/highlights/rainforest-photography/canopy-from-above.jpg"
       }
     ],
     "contentRequired": true,
@@ -347,15 +385,18 @@
     "highlights": [
       {
         "name": "River rafting",
-        "note": "Grad 2–3, ingen erfaring nødvendig"
+        "note": "Grad 2–3, ingen erfaring nødvendig",
+        "image": "/images/highlights/kithulgala-river-adventure/white-water-rafting.jpg"
       },
       {
         "name": "Canyoning",
-        "note": "Nedstigning ved vandfald, en halv dag"
+        "note": "Nedstigning ved vandfald, en halv dag",
+        "image": "/images/highlights/kithulgala-river-adventure/canyoning.jpg"
       },
       {
         "name": "Zipline",
-        "note": "Over floddalen"
+        "note": "Over floddalen",
+        "image": "/images/highlights/kithulgala-river-adventure/zip-line.jpg"
       }
     ],
     "contentRequired": true,

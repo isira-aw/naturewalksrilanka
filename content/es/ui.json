@@ -115,7 +115,7 @@
     "datesSelected": "{count} días en Sri Lanka",
     "datesInvalid": "Elige una fecha de llegada y una fecha de salida posterior.",
     "interestsLabel": "¿Qué es lo que más te interesa?",
-    "interestsHint": "Elige una o varias. Al lado aparecen las ideas de viaje que encajan.",
+    "interestsHint": "Elige una o varias. Debajo aparecen los itinerarios que encajan.",
     "interests": {
       "wildlife": "Fauna salvaje",
       "trekking": "Trekking",
@@ -125,13 +125,13 @@
       "photography": "Fotografía",
       "adventure": "Aventura"
     },
-    "suggestionsTitle": "Ideas de viaje",
-    "suggestionsEmpty": "Elige una categoría para ver las ideas de viaje ya preparadas que le corresponden.",
+    "suggestionsTitle": "Itinerarios",
+    "suggestionsEmpty": "Elige una categoría para ver los itinerarios ya preparados que le corresponden.",
     "suggestionsCount": "{count} coincidencias",
     "suggestionsReadMore": "Leer más",
     "suggestionsAdd": "Añadir a la consulta",
     "suggestionsAdded": "Añadido",
-    "suggestionsSelectedLabel": "Ideas de viaje",
+    "suggestionsSelectedLabel": "Itinerarios",
     "suggestionsClose": "Cerrar",
     "suggestionsLocation": "Ubicación",
     "suggestionsBestTime": "Mejor época del año",
@@ -176,7 +176,23 @@
     "submit": "Consultar mi viaje por WhatsApp",
     "errorTravelers": "Indica al menos un viajero.",
     "errorInterests": "Elige al menos un interés.",
-    "errorContact": "Añade tu nombre, un correo electrónico válido y un teléfono."
+    "errorContact": "Añade tu nombre, un correo electrónico válido y un teléfono.",
+    "downloadPdf": "Descargar en PDF",
+    "downloadPreparing": "Preparando…",
+    "downloadError": "No hemos podido crear el documento. Inténtalo de nuevo.",
+    "submitHint": "Al enviarlo por WhatsApp también se guarda una copia en Word de tu viaje en tu dispositivo, para que puedas adjuntarla al chat.",
+    "document": {
+      "title": "Tu viaje por Sri Lanka",
+      "tagline": "Preparado por Nature Walk Sri Lanka",
+      "preparedFor": "Preparado para",
+      "preparedOn": "Preparado el",
+      "summaryTitle": "Tu viaje de un vistazo",
+      "itinerariesTitle": "Itinerarios seleccionados",
+      "aiRouteTitle": "Ruta sugerida día a día",
+      "contactTitle": "Tus datos",
+      "footer": "Nature Walk Sri Lanka · naturewalksrilanka.com",
+      "fileName": "viaje-sri-lanka"
+    }
   },
   "nandana": {
     "introEyebrow": "Quién es Nandana",

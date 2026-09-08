@@ -1,135 +1,126 @@
-# Handoff — custom-tour layout & responsive optimisation
+# Handoff — itineraries, take-away documents, bigger idea dialog
 
 ## Goal
 
-Improve the UI/UX of `/[locale]/custom-tour` without changing any functionality.
+Four changes to `/[locale]/custom-tour`, on top of the earlier layout work:
 
-The specific complaint: on desktop the wizard left large unused margins on the left and
-right. Every step except Interests and the AI assistant was clamped to `max-w-3xl` and
-left-aligned beside the progress rail, so on a 1440–1920px screen roughly half the width
-sat empty. The brief was to use the full screen intelligently on desktop and make sure
-nothing is cramped, clipped or hard to reach on tablet and mobile.
-
-Explicitly out of scope: the questions, steps, fields, customisation logic, validation,
-reducer state, API behaviour, navigation semantics and all copy. This is an optimisation
-of the existing journey, not a new custom-tour system. No other page was touched.
+1. "Journey ideas" is called **Itineraries** everywhere.
+2. The Review step offers a **Download as PDF**, and the WhatsApp hand-off also
+   saves a **Word (.doc) copy** of the same journey so it can be attached to the chat.
+3. Both documents carry every selected itinerary in full, with the itinerary's
+   own photographs used as page and section backgrounds.
+4. The itinerary dialog is much larger (a near-full-height sheet on a phone), and
+   "What you might see" renders photograph cards rather than a text list.
 
 ## Current state
 
-Done and verified. `tsc --noEmit` and `eslint` are clean on the changed paths.
+Done. `tsc --noEmit`, `eslint` and `next build` are clean.
 
-The full 7-step flow was walked against the dev server on `localhost:3000` at three
-viewports — 1280×720, 834×1112 and 375×812 — including one live AI itinerary generation
-with the Leaflet map. `document.documentElement.scrollWidth === window.innerWidth` at all
-three sizes (no horizontal overflow), no clipped content, and Back/Continue reachable
-without hunting on every step.
+Walked end to end against `next start` on :3000 with Playwright at 1440x900 and
+390x844: no horizontal overflow at either size, the dialog measures 1152x810 on
+the laptop and 390x793 on the phone, and both files download from the Review
+step. The generated PDF was re-parsed and rendered page by page — 5 pages, 4
+image XObjects (cover, page background, section band, gallery photo: no
+duplicates), page 1 mean brightness 49/255, so the dimmed cover really is dimmed.
+The Word file was opened as HTML in Chromium and lays out as intended.
+
+**Judging brightness from a screenshot in this harness is unreliable** — rendered
+PNGs of the dark cover page came back looking undimmed. Measure pixel means (see
+`Failed attempts`) rather than trusting the eye.
 
 ## Active files
 
 | File | Role |
 | --- | --- |
-| `app/[locale]/custom-tour/page.tsx` | Page shell: hero, section ground, container width |
-| `components/custom-tour/WizardShell.tsx` | Reducer, validation, step routing, layout shell, nav actions |
-| `components/custom-tour/StepProgress.tsx` | Desktop rail + mobile/tablet progress bar |
-| `components/custom-tour/SuggestionsPanel.tsx` | Journey-idea cards on the Interests step |
-| `components/custom-tour/steps/TravelersStep.tsx` | Step 1 |
-| `components/custom-tour/steps/DatesStep.tsx` | Step 2 (unchanged — the calendar simply fills the wider card) |
-| `components/custom-tour/steps/InterestsStep.tsx` | Step 3 |
-| `components/custom-tour/steps/AccommodationStep.tsx` | Step 4 |
-| `components/custom-tour/steps/AIAssistantStep.tsx` | Step 5 (feature-flagged by `isAiAssistantEnabled()`) |
-| `components/custom-tour/steps/ContactStep.tsx` | Step 6 |
-| `components/custom-tour/steps/ReviewStep.tsx` | Step 7 + WhatsApp hand-off |
-| `content/<locale>/ui.json` | Wizard copy — **not** modified, but see Next steps |
-
-`components/custom-tour/DateRangeCalendar.tsx`, `ExperienceDialog.tsx`,
-`steps/StepHeading.tsx`, `steps/ai-assistant/*` and `components/ui/*` were read but not
-modified.
+| `content/<locale>/ui.json` | Renamed strings + new `downloadPdf`, `downloadPreparing`, `downloadError`, `submitHint` and the `document.*` group |
+| `content/en/experiences.json` | Each highlight now names its photograph; the other locales are regenerated from it |
+| `components/custom-tour/steps/ReviewStep.tsx` | Builds the `JourneyDocument`, PDF button, WhatsApp + Word hand-off |
+| `components/custom-tour/ExperienceDialog.tsx` | The larger dialog and the highlight photo cards |
+| `lib/journey-document/model.ts` | The shape both documents render |
+| `lib/journey-document/assets.ts` | Image loading, cropping, dimming, download |
+| `lib/journey-document/pdf.ts` | The PDF (jsPDF, dynamically imported) |
+| `lib/journey-document/word.ts` | The Word file (Word-flavoured HTML) |
+| `lib/journey-document/index.ts` | `downloadJourneyDocument(doc, "pdf" \| "doc")` |
+| `lib/content/loader.ts`, `lib/content/images.ts` | Drops highlight photographs that have not been supplied yet |
+| `lib/whatsapp/buildMessage.ts` | `journeyIdeas` renamed to `itineraries` |
+| `public/images/highlights/README.md` | What to drop in, file by file |
 
 ## Changes made
 
-**Page shell** — container widened from `max-w-7xl` to `max-w-[92rem]` with `xl:px-12`;
-vertical rhythm tightened (`py-16 md:py-24` → `py-10 md:py-14 lg:py-16`) so the form sits
-closer to the fold; section ground moved to `bg-stone/25` so the wizard reads as a card on
-a page rather than as loose text on a flat field.
+**Copy.** `suggestionsTitle`, `suggestionsSelectedLabel`, `suggestionsEmpty` and
+`interestsHint` renamed in all five locales (en Itineraries, da Rejseplaner,
+es Itinerarios, fi Matkaohjelmat, nl Reisroutes) — the Danish, Spanish, Finnish
+and Dutch wordings are machine-chosen and want a native check. The WhatsApp
+message now says "Itineraries I'd like to include:".
 
-**Wizard shell** — the step panel is now a bordered card that fills the content column,
-and the per-step `max-w-3xl` clamp is gone: each step lays itself out across the full
-width. The rail column widened (`13.5rem` → `15rem`, `17rem` at xl) and carries the
-"Step n of 7" label using the existing `stepOf` translation. The mobile/tablet progress bar
-is pinned under the site header and bleeds to the viewport edge at every breakpoint.
-Desktop Back/Continue moved onto the card's own footer line, spanning its full width
-instead of stopping at 48rem.
+**Documents.** `ReviewStep` assembles one `JourneyDocument` — labels, summary
+rows, contact rows, the full text of each selected itinerary, the AI route and a
+cover photograph — and the PDF and the Word file are two renderings of it, so
+the download and the copy attached to the chat can never disagree. Photographs
+are re-encoded through a canvas at 1400px/q78, cropped centrally to the box they
+fill, and **dimmed in the canvas** rather than under a translucent overlay:
+Word cannot dim a cell background at all, and a PDF transparency group is the
+kind of thing a phone viewer flattens. The PDF gives each itinerary its own page
+with a full-bleed photo band carrying the title, and every content page sits on a
+90%-washed copy of the relevant photograph. The Word file is Word-flavoured HTML
+with base64 JPEGs, using single-cell tables (the one construction Word paints a
+background picture into) with a solid colour and a real `<img>` gallery as
+fallbacks.
 
-**Mobile action bar bug** — the docked bar used `-mx-6` inside a `px-4` container, which
-pushed it past the viewport and caused horizontal scroll on phones. Now `-mx-4`/`px-4`
-with `pb-[max(0.75rem,env(safe-area-inset-bottom))]`. On the Review step the bar is no
-longer docked, so the WhatsApp button owns the bottom of the screen.
+**Dialog.** `h-[94dvh]` sheet on a phone, `lg:max-w-5xl xl:max-w-6xl` on a
+laptop; photographs in the left column, facts, description and the "What you
+might see" cards in the right, so the highlights are visible without scrolling.
 
-**Progress rail** — markers connected by one continuous vertical line, wrapped in a
-labelled `<nav>`, larger hit areas. Click-back-to-a-completed-step behaviour unchanged.
+**Highlight photographs.** Every highlight in `content/en/experiences.json` now
+names `/images/highlights/<experience-slug>/<species>.jpg`, the loader drops the
+ones whose file does not exist yet (same arrangement as the destination photos),
+and `public/images/highlights/README.md` lists all 41 files to supply. Until they
+land, each card shows a lettered tile and the documents print the highlight
+without a thumbnail.
 
-**Per-step layouts** (all content preserved, only arrangement changed):
-
-- Travelers: counter and quick-pick chips side by side from `sm` up.
-- Interests: category chips run the full width; matching ideas sit below in a 1/2/3-column
-  grid. `SuggestionsPanel` lost its nested `max-h` scroll box (at most 8 ideas ever match,
-  and a scroll area inside a scrolling page hid them); cards are equal-height with
-  bottom-aligned actions.
-- Accommodation and Contact: the optional free-text box moves into a second column at
-  `lg`, so each step fits one screen instead of stacking into a tall ribbon.
-- Review: summary table beside a sticky send action, instead of the action sitting below a
-  table long enough to push it off-screen.
-- AI assistant: map column re-proportioned (`20rem`, `26rem` at xl) and the "other
-  options" grid capped at two columns — at three, cards beside the map rendered ~160px
-  wide and were unreadable.
-
-**Encoding repair** — the en/em dashes in `ReviewStep.tsx` were mangled to `â€"` while
-reformatting (see Failed attempts) and have been restored; the date range renders as
-`September 15, 2026 – September 26, 2026` again.
+**Dependency.** `jspdf` (^4.2.1), imported dynamically so only a traveller who
+asks for a PDF downloads it.
 
 ## Failed attempts
 
-- **Second dev server.** `preview_start` launched `next dev` on port 56374; it exited with
-  code 1 because a `next dev` was already running on :3000. All testing used the existing
-  server on :3000. Do not start a second one.
-- **PowerShell reindentation corrupted UTF-8.** Three step files were reindented with
-  `Get-Content` / `Set-Content`. In Windows PowerShell 5.1 `Get-Content` reads a BOM-less
-  UTF-8 file as ANSI, so the en dash and em dash in `ReviewStep.tsx` came back as
-  mojibake, and `-Encoding utf8` wrote BOMs into all three files. Both were repaired
-  (dashes fixed via the Edit tool, BOMs stripped with `UTF8Encoding($false)`). Use the
-  Edit tool, or `[System.IO.File]::ReadAllText`/`WriteAllText`, for any future bulk
-  reindentation here.
-- **Browser-pane screenshots after JS scrolling.** `window.scrollTo` followed by a
-  screenshot returned stale or blank frames that looked like broken layout — a pane
-  compositing artifact, not a page bug. Element geometry read through
-  `getBoundingClientRect` was always correct.
-- **JS-driven step transitions stall while the pane is hidden.** `AnimatePresence
-  mode="wait"` will not mount the next step until the previous one's exit animation
-  finishes, and framer-motion's frames stop when the pane is not painting. A programmatic
-  click then leaves the progress bar on step *n+1* while the panel still shows step *n*.
-  This is a harness artifact — a real visible browser is fine. Workaround: interleave
-  small `computer{action:"screenshot"}` calls between step clicks to force paints, and
-  temporarily `display:none` the hero section so the wizard sits at the top of the
-  viewport at `scrollY === 0`.
-- **Clicking the AI "Generate my itinerary" button by coordinate** silently did nothing;
-  clicking by `ref` from `find` worked.
-- **Two calendar day clicks in one JS tick** select only the second date — React batches
-  the updates, so the second `handleDayClick` still sees `value.start === null`. Click the
-  arrival, let a frame pass, then click the departure.
+- **Real species photographs could not be fetched.** `upload.wikimedia.org` is
+  refused by this session's egress proxy (403 on CONNECT), so no photograph of a
+  Blue Magpie or a leopard could be added. The drop-in convention above is the
+  substitute; a photograph of the wrong bird under an endemic's name would be
+  worse than none.
+- **Reading brightness off a screenshot.** Rendered pages of the dimmed cover
+  looked undimmed in this harness three times running. Extracting the embedded
+  JPEG and computing a pixel mean (49/255) settled it, and a pure-Python PNG mean
+  over the rendered page agreed. Trust numbers here, not the picture.
+- **jsPDF image aliasing.** With no `alias` argument jsPDF keys an image on the
+  head of its data, so the dark cover and the washed page background — two crops
+  of the same photograph — are one entry and the last one drawn wins for both.
+  Every `addImage` now passes a role-and-source alias (`cover:`, `page:`,
+  `band:`, `thumb:`, `gallery:<src>:<w>x<h>`), which keeps genuinely repeated
+  images de-duplicated.
+- **A gallery photo alone on its own page.** The gallery used to be drawn after
+  the highlights and kept spilling onto an otherwise empty page; it now sits
+  directly under the description.
+- **`pkill -f "next start"` kills the shell running it** in this environment, so
+  the rebuilt server never restarted and the browser kept loading chunk files the
+  new build had deleted (500s, a page that never hydrated, a Continue button that
+  did nothing). Kill `next-server`, in its own command, and check the page 200s
+  before testing.
+- **Driving the wizard headlessly.** As noted in the previous handoff,
+  framer-motion's exit animation never finishes while the page is not painting,
+  so the next step never mounts. Take a screenshot between clicks to force paints
+  and poll for an element of the next step. `pdfjs-dist` 5.x also needs a newer
+  Chromium than the bundled one — 4.10.38 renders fine.
 
 ## Next steps
 
-1. **Copy nuance (needs a decision).** `interestsHint` reads "Pick one or more. Matching
-   journey ideas appear alongside." The ideas now appear directly *below* the chips. The
-   string was left alone because it is translated content in `content/{en,da,es,fi,nl}/ui.json`;
-   reword all five if the mismatch matters.
-2. **AI step at wide and narrow widths.** The `ready` state was verified with a real
-   itinerary only at 1280px. Worth one pass at ≥1536px and one on a phone with a generated
-   itinerary, since that step is the widest thing in the wizard.
-3. **Long Interests list on mobile.** Removing the nested scroll box means selecting four
-   categories produces a long scroll (8 cards). Reachable and thumb-friendly, but consider
-   whether a "show more" affordance is wanted.
-4. **Leaflet HMR noise (pre-existing, dev-only).** Editing files while the AI step is
-   mounted logs `Map container is being reused by another instance` and can leave the tab
-   non-interactive until a hard reload. Not triggered by production navigation.
+1. **Native review of the four renamed strings** (see Copy above).
+2. **The 41 highlight photographs** — `public/images/highlights/README.md`.
+3. **Open the .doc in real Word.** It was verified as HTML in a browser; Word's
+   own handling of a data-URI cell background is the one thing that could not be
+   tested here. The fallbacks mean it degrades to a solid colour band, never to
+   unreadable text.
+4. **Non-Latin text in the PDF.** jsPDF's built-in fonts are WinAnsi, so anything
+   outside Latin-1 (a name pasted in Sinhala, say) is stripped by `safe()`. If
+   that matters, embed a Unicode font.
 5. Delete this file before merge if the team does not keep handoff notes in-tree.

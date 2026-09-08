@@ -115,7 +115,7 @@
     "datesSelected": "{count} dagen in Sri Lanka",
     "datesInvalid": "Kies een aankomstdatum en een vertrekdatum die daarna ligt.",
     "interestsLabel": "Waarin ben je het meest geïnteresseerd?",
-    "interestsHint": "Kies er een of meer. Passende reisideeën verschijnen ernaast.",
+    "interestsHint": "Kies er een of meer. Passende reisroutes verschijnen hieronder.",
     "interests": {
       "wildlife": "Wilde dieren",
       "trekking": "Trekking",
@@ -125,13 +125,13 @@
       "photography": "Fotografie",
       "adventure": "Avontuur"
     },
-    "suggestionsTitle": "Reisideeën",
-    "suggestionsEmpty": "Kies een categorie om de bijbehorende kant-en-klare reisideeën te zien.",
+    "suggestionsTitle": "Reisroutes",
+    "suggestionsEmpty": "Kies een categorie om de bijbehorende kant-en-klare reisroutes te zien.",
     "suggestionsCount": "{count} passend",
     "suggestionsReadMore": "Lees meer",
     "suggestionsAdd": "Aan aanvraag toevoegen",
     "suggestionsAdded": "Toegevoegd",
-    "suggestionsSelectedLabel": "Reisideeën",
+    "suggestionsSelectedLabel": "Reisroutes",
     "suggestionsClose": "Sluiten",
     "suggestionsLocation": "Locatie",
     "suggestionsBestTime": "Beste reistijd",
@@ -176,7 +176,23 @@
     "submit": "Bespreek mijn reis via WhatsApp",
     "errorTravelers": "Vul minstens één reiziger in.",
     "errorInterests": "Kies minstens één interesse.",
-    "errorContact": "Vul je naam, een geldig e-mailadres en een telefoonnummer in."
+    "errorContact": "Vul je naam, een geldig e-mailadres en een telefoonnummer in.",
+    "downloadPdf": "Downloaden als PDF",
+    "downloadPreparing": "Bezig met voorbereiden…",
+    "downloadError": "We konden het document niet maken. Probeer het opnieuw.",
+    "submitHint": "Als je het via WhatsApp verstuurt, wordt er ook een Word-kopie van je reis op je apparaat opgeslagen, zodat je die aan het gesprek kunt toevoegen.",
+    "document": {
+      "title": "Jouw reis door Sri Lanka",
+      "tagline": "Samengesteld door Nature Walk Sri Lanka",
+      "preparedFor": "Samengesteld voor",
+      "preparedOn": "Samengesteld op",
+      "summaryTitle": "Jouw reis in het kort",
+      "itinerariesTitle": "Gekozen reisroutes",
+      "aiRouteTitle": "Voorgestelde route per dag",
+      "contactTitle": "Jouw gegevens",
+      "footer": "Nature Walk Sri Lanka · naturewalksrilanka.com",
+      "fileName": "sri-lanka-reis"
+    }
   },
   "nandana": {
     "introEyebrow": "Wie is Nandana",

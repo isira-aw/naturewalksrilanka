@@ -1,7 +1,7 @@
 import "server-only";
 import type { Locale } from "@/i18n/routing";
 import { contentSchemas } from "./schema";
-import { resolveImage, resolveGallery } from "./images";
+import { resolveImage, resolveGallery, imageExists } from "./images";
 import type {
   Profile,
   Tour,
@@ -45,6 +45,9 @@ export async function getContent<K extends keyof ContentMap>(
   if (file === "destinations") {
     return withResolvedImages(parsed as Destination[]) as ContentMap[K];
   }
+  if (file === "experiences") {
+    return withResolvedExperienceImages(parsed as Experience[]) as ContentMap[K];
+  }
   return parsed as ContentMap[K];
 }
 
@@ -60,6 +63,23 @@ function withResolvedImages(destinations: Destination[]): Destination[] {
     image: resolveImage(destination.image),
     heroImage: resolveImage(destination.heroImage ?? destination.image),
     gallery: resolveGallery(destination.gallery),
+  }));
+}
+
+/**
+ * The same arrangement for the prebuilt itineraries: every "what you might
+ * see" highlight names its photograph up front (see
+ * `public/images/highlights/README.md`), and a highlight whose photograph has
+ * not been supplied yet simply renders without one.
+ */
+function withResolvedExperienceImages(experiences: Experience[]): Experience[] {
+  return experiences.map((experience) => ({
+    ...experience,
+    images: experience.images.map((src) => resolveImage(src)),
+    highlights: experience.highlights.map((highlight) => ({
+      ...highlight,
+      image: imageExists(highlight.image) ? highlight.image : undefined,
+    })),
   }));
 }
 

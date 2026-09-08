@@ -15,23 +15,28 @@
     "highlights": [
       {
         "name": "Sri Lanka Blue Magpie",
-        "note": "Kotoperäinen — yleensä sekaparven mukana"
+        "note": "Kotoperäinen — yleensä sekaparven mukana",
+        "image": "/images/highlights/sinharaja-endemic-mornings/sri-lanka-blue-magpie.jpg"
       },
       {
         "name": "Red-faced Malkoha",
-        "note": "Kotoperäinen — korkealla latvustossa, parhaiten aamuvalossa"
+        "note": "Kotoperäinen — korkealla latvustossa, parhaiten aamuvalossa",
+        "image": "/images/highlights/sinharaja-endemic-mornings/red-faced-malkoha.jpg"
       },
       {
         "name": "Serendib Scops Owl",
-        "note": "Kotoperäinen — yökävelyn laji"
+        "note": "Kotoperäinen — yökävelyn laji",
+        "image": "/images/highlights/sinharaja-endemic-mornings/serendib-scops-owl.jpg"
       },
       {
         "name": "Ashy-headed Laughingthrush",
-        "note": "Kotoperäinen — meluisia ryhmiä aluskasvillisuudessa"
+        "note": "Kotoperäinen — meluisia ryhmiä aluskasvillisuudessa",
+        "image": "/images/highlights/sinharaja-endemic-mornings/ashy-headed-laughingthrush.jpg"
       },
       {
         "name": "Green-billed Coucal",
-        "note": "Kotoperäinen — kuullaan useammin kuin nähdään"
+        "note": "Kotoperäinen — kuullaan useammin kuin nähdään",
+        "image": "/images/highlights/sinharaja-endemic-mornings/green-billed-coucal.jpg"
       }
     ],
     "contentRequired": true,
@@ -53,23 +58,28 @@
     "highlights": [
       {
         "name": "Sri Lanka Whistling Thrush",
-        "note": "Kotoperäinen — ensivalo, purojen lähellä"
+        "note": "Kotoperäinen — ensivalo, purojen lähellä",
+        "image": "/images/highlights/highland-birding-horton-plains/sri-lanka-whistling-thrush.jpg"
       },
       {
         "name": "Sri Lanka Bush Warbler",
-        "note": "Kotoperäinen — niityn reunat"
+        "note": "Kotoperäinen — niityn reunat",
+        "image": "/images/highlights/highland-birding-horton-plains/sri-lanka-bush-warbler.jpg"
       },
       {
         "name": "Yellow-eared Bulbul",
-        "note": "Kotoperäinen — yleinen mutta valokuvauksellinen"
+        "note": "Kotoperäinen — yleinen mutta valokuvauksellinen",
+        "image": "/images/highlights/highland-birding-horton-plains/yellow-eared-bulbul.jpg"
       },
       {
         "name": "Kashmir Flycatcher",
-        "note": "Talvimuuttaja — Victoria Park"
+        "note": "Talvimuuttaja — Victoria Park",
+        "image": "/images/highlights/highland-birding-horton-plains/kashmir-flycatcher.jpg"
       },
       {
         "name": "Pied Thrush",
-        "note": "Talvimuuttaja — puiston varjoisat purot"
+        "note": "Talvimuuttaja — puiston varjoisat purot",
+        "image": "/images/highlights/highland-birding-horton-plains/pied-thrush.jpg"
       }
     ],
     "contentRequired": true,
@@ -91,19 +101,23 @@
     "highlights": [
       {
         "name": "Srilankanleopardi",
-        "note": "Kalliopaljastumat varhain aamulla"
+        "note": "Kalliopaljastumat varhain aamulla",
+        "image": "/images/highlights/yala-leopard-tracking/sri-lankan-leopard.jpg"
       },
       {
         "name": "Laiskakarhu",
-        "note": "Parhaat mahdollisuudet palun hedelmöidessä, kesä–heinäkuu"
+        "note": "Parhaat mahdollisuudet palun hedelmöidessä, kesä–heinäkuu",
+        "image": "/images/highlights/yala-leopard-tracking/sloth-bear.jpg"
       },
       {
         "name": "Aasiannorsu",
-        "note": "Tekoaltaiden ympärillä myöhään iltapäivällä"
+        "note": "Tekoaltaiden ympärillä myöhään iltapäivällä",
+        "image": "/images/highlights/yala-leopard-tracking/asian-elephant.jpg"
       },
       {
         "name": "Suokrokotiili",
-        "note": "Laguunien reunoilla koko päivän"
+        "note": "Laguunien reunoilla koko päivän",
+        "image": "/images/highlights/yala-leopard-tracking/mugger-crocodile.jpg"
       }
     ],
     "contentRequired": true,
@@ -125,19 +139,23 @@
     "highlights": [
       {
         "name": "Srilankanleopardi",
-        "note": "Kärsivällistä odotusta villujen äärellä"
+        "note": "Kärsivällistä odotusta villujen äärellä",
+        "image": "/images/highlights/wilpattu-villus/sri-lankan-leopard.jpg"
       },
       {
         "name": "Laiskakarhu",
-        "note": "Avoin pensaikko varhain aamulla"
+        "note": "Avoin pensaikko varhain aamulla",
+        "image": "/images/highlights/wilpattu-villus/sloth-bear.jpg"
       },
       {
         "name": "Aksishirvi ja sambar",
-        "note": "Jokaisen järven ympärillä"
+        "note": "Jokaisen järven ympärillä",
+        "image": "/images/highlights/wilpattu-villus/spotted-deer-and-sambar.jpg"
       },
       {
         "name": "Intiankattarahaikara",
-        "note": "Villun matalikot"
+        "note": "Villun matalikot",
+        "image": "/images/highlights/wilpattu-villus/painted-stork.jpg"
       }
     ],
     "contentRequired": true,
@@ -159,19 +177,23 @@
     "highlights": [
       {
         "name": "Little Adam's Peak",
-        "note": "Noin tunti ylös, parhaimmillaan auringonnousussa"
+        "note": "Noin tunti ylös, parhaimmillaan auringonnousussa",
+        "image": "/images/highlights/ella-hill-trails/little-adam-s-peak.jpg"
       },
       {
         "name": "Ella Rock",
-        "note": "Puoli päivää, paikoin jyrkkää"
+        "note": "Puoli päivää, paikoin jyrkkää",
+        "image": "/images/highlights/ella-hill-trails/ella-rock.jpg"
       },
       {
         "name": "Nine Arch -silta",
-        "note": "Ajoita ohi kulkevan junan mukaan"
+        "note": "Ajoita ohi kulkevan junan mukaan",
+        "image": "/images/highlights/ella-hill-trails/nine-arch-bridge.jpg"
       },
       {
         "name": "Ravanan vesiputous",
-        "note": "Runsaimmillaan heti sateiden jälkeen"
+        "note": "Runsaimmillaan heti sateiden jälkeen",
+        "image": "/images/highlights/ella-hill-trails/ravana-waterfall.jpg"
       }
     ],
     "contentRequired": true,
@@ -193,15 +215,18 @@
     "highlights": [
       {
         "name": "Harjanteen näköalapaikat",
-        "note": "Kirkasta aamulla, pilvistä puoleenpäivään mennessä"
+        "note": "Kirkasta aamulla, pilvistä puoleenpäivään mennessä",
+        "image": "/images/highlights/knuckles-forest-walk/ridgeline-viewpoints.jpg"
       },
       {
         "name": "Vuoristosumumetsä",
-        "note": "Sammaleinen, viileä, runsaasti kotoperäisiä lajeja"
+        "note": "Sammaleinen, viileä, runsaasti kotoperäisiä lajeja",
+        "image": "/images/highlights/knuckles-forest-walk/montane-cloud-forest.jpg"
       },
       {
         "name": "Kylien terassit",
-        "note": "Riisinviljelyä yhä käsityönä"
+        "note": "Riisinviljelyä yhä käsityönä",
+        "image": "/images/highlights/knuckles-forest-walk/village-terraces.jpg"
       }
     ],
     "contentRequired": true,
@@ -223,19 +248,23 @@
     "highlights": [
       {
         "name": "Sigiriyan Leijonakallio",
-        "note": "Aloita heti avautumisesta, ennen helteitä"
+        "note": "Aloita heti avautumisesta, ennen helteitä",
+        "image": "/images/highlights/ancient-cities-loop/sigiriya-lion-rock.jpg"
       },
       {
         "name": "Polonnaruwa pyörällä",
-        "note": "Tasaista, varjoisaa, parasta myöhään iltapäivällä"
+        "note": "Tasaista, varjoisaa, parasta myöhään iltapäivällä",
+        "image": "/images/highlights/ancient-cities-loop/polonnaruwa-by-bicycle.jpg"
       },
       {
         "name": "Sri Maha Bodhi",
-        "note": "Anuradhapura — illan uhrilahjat"
+        "note": "Anuradhapura — illan uhrilahjat",
+        "image": "/images/highlights/ancient-cities-loop/sri-maha-bodhi.jpg"
       },
       {
         "name": "Dambullan luolatemppelit",
-        "note": "Maalatut katot, reitin varrella"
+        "note": "Maalatut katot, reitin varrella",
+        "image": "/images/highlights/ancient-cities-loop/dambulla-cave-temples.jpg"
       }
     ],
     "contentRequired": true,
@@ -257,15 +286,18 @@
     "highlights": [
       {
         "name": "Hampaan temppeli",
-        "note": "Illan puja, rummut portilla"
+        "note": "Illan puja, rummut portilla",
+        "image": "/images/highlights/kandy-temple-and-tea/temple-of-the-sacred-tooth-relic.jpg"
       },
       {
         "name": "Peradeniyan kasvitieteellinen puutarha",
-        "note": "Aamulla, ennen bussiryhmiä"
+        "note": "Aamulla, ennen bussiryhmiä",
+        "image": "/images/highlights/kandy-temple-and-tea/peradeniya-botanical-gardens.jpg"
       },
       {
         "name": "Toiminnassa oleva teetehdas",
-        "note": "Lehdestä pakkaukseen yhdellä käynnillä"
+        "note": "Lehdestä pakkaukseen yhdellä käynnillä",
+        "image": "/images/highlights/kandy-temple-and-tea/a-working-tea-factory.jpg"
       }
     ],
     "contentRequired": true,
@@ -287,15 +319,18 @@
     "highlights": [
       {
         "name": "Gallen linnoituksen vallit",
-        "note": "Kävely myöhään iltapäivällä"
+        "note": "Kävely myöhään iltapäivällä",
+        "image": "/images/highlights/south-coast-and-galle/galle-fort-ramparts.jpg"
       },
       {
         "name": "Mirissan ranta",
-        "note": "Tyyni meri marraskuusta huhtikuuhun"
+        "note": "Tyyni meri marraskuusta huhtikuuhun",
+        "image": "/images/highlights/south-coast-and-galle/mirissa-beach.jpg"
       },
       {
         "name": "Sinivalaat rannikon edustalla",
-        "note": "Joulukuu – huhtikuu, aikainen lähtö"
+        "note": "Joulukuu – huhtikuu, aikainen lähtö",
+        "image": "/images/highlights/south-coast-and-galle/blue-whales-offshore.jpg"
       }
     ],
     "contentRequired": true,
@@ -317,15 +352,18 @@
     "highlights": [
       {
         "name": "Sekaparvet",
-        "note": "Kaksi ensimmäistä tuntia aamunkoiton jälkeen"
+        "note": "Kaksi ensimmäistä tuntia aamunkoiton jälkeen",
+        "image": "/images/highlights/rainforest-photography/mixed-feeding-flocks.jpg"
       },
       {
         "name": "Kotoperäiset sammakot ja liskot",
-        "note": "Makrokohteita keskipäivän varjossa"
+        "note": "Makrokohteita keskipäivän varjossa",
+        "image": "/images/highlights/rainforest-photography/endemic-frogs-and-lizards.jpg"
       },
       {
         "name": "Latvusto ylhäältä",
-        "note": "Kithulgalan harjanne, myöhäisessä valossa"
+        "note": "Kithulgalan harjanne, myöhäisessä valossa",
+        "image": "/images/highlights/rainforest-photography/canopy-from-above.jpg"
       }
     ],
     "contentRequired": true,
@@ -347,15 +385,18 @@
     "highlights": [
       {
         "name": "Koskenlasku",
-        "note": "Luokka 2–3, kokemusta ei tarvita"
+        "note": "Luokka 2–3, kokemusta ei tarvita",
+        "image": "/images/highlights/kithulgala-river-adventure/white-water-rafting.jpg"
       },
       {
         "name": "Canyoning",
-        "note": "Vesiputouslaskeutumisia, puoli päivää"
+        "note": "Vesiputouslaskeutumisia, puoli päivää",
+        "image": "/images/highlights/kithulgala-river-adventure/canyoning.jpg"
       },
       {
         "name": "Vaijeriliuku",
-        "note": "Jokilaakson yli"
+        "note": "Jokilaakson yli",
+        "image": "/images/highlights/kithulgala-river-adventure/zip-line.jpg"
       }
     ],
     "contentRequired": true,

@@ -15,23 +15,28 @@
     "highlights": [
       {
         "name": "Sri Lanka Blue Magpie",
-        "note": "Endemisch — meestal bij de foerageerzwerm"
+        "note": "Endemisch — meestal bij de foerageerzwerm",
+        "image": "/images/highlights/sinharaja-endemic-mornings/sri-lanka-blue-magpie.jpg"
       },
       {
         "name": "Red-faced Malkoha",
-        "note": "Endemisch — hoog in het kronendak, het best in vroeg licht"
+        "note": "Endemisch — hoog in het kronendak, het best in vroeg licht",
+        "image": "/images/highlights/sinharaja-endemic-mornings/red-faced-malkoha.jpg"
       },
       {
         "name": "Serendib Scops Owl",
-        "note": "Endemisch — een soort voor de nachtwandeling"
+        "note": "Endemisch — een soort voor de nachtwandeling",
+        "image": "/images/highlights/sinharaja-endemic-mornings/serendib-scops-owl.jpg"
       },
       {
         "name": "Ashy-headed Laughingthrush",
-        "note": "Endemisch — luidruchtige groepjes in de onderbegroeiing"
+        "note": "Endemisch — luidruchtige groepjes in de onderbegroeiing",
+        "image": "/images/highlights/sinharaja-endemic-mornings/ashy-headed-laughingthrush.jpg"
       },
       {
         "name": "Green-billed Coucal",
-        "note": "Endemisch — vaker gehoord dan gezien"
+        "note": "Endemisch — vaker gehoord dan gezien",
+        "image": "/images/highlights/sinharaja-endemic-mornings/green-billed-coucal.jpg"
       }
     ],
     "contentRequired": true,
@@ -53,23 +58,28 @@
     "highlights": [
       {
         "name": "Sri Lanka Whistling Thrush",
-        "note": "Endemisch — eerste licht, bij beken"
+        "note": "Endemisch — eerste licht, bij beken",
+        "image": "/images/highlights/highland-birding-horton-plains/sri-lanka-whistling-thrush.jpg"
       },
       {
         "name": "Sri Lanka Bush Warbler",
-        "note": "Endemisch — randen van het grasland"
+        "note": "Endemisch — randen van het grasland",
+        "image": "/images/highlights/highland-birding-horton-plains/sri-lanka-bush-warbler.jpg"
       },
       {
         "name": "Yellow-eared Bulbul",
-        "note": "Endemisch — algemeen maar fotogeniek"
+        "note": "Endemisch — algemeen maar fotogeniek",
+        "image": "/images/highlights/highland-birding-horton-plains/yellow-eared-bulbul.jpg"
       },
       {
         "name": "Kashmir Flycatcher",
-        "note": "Wintertrekker — Victoria Park"
+        "note": "Wintertrekker — Victoria Park",
+        "image": "/images/highlights/highland-birding-horton-plains/kashmir-flycatcher.jpg"
       },
       {
         "name": "Pied Thrush",
-        "note": "Wintertrekker — schaduwrijke beken in het park"
+        "note": "Wintertrekker — schaduwrijke beken in het park",
+        "image": "/images/highlights/highland-birding-horton-plains/pied-thrush.jpg"
       }
     ],
     "contentRequired": true,
@@ -91,19 +101,23 @@
     "highlights": [
       {
         "name": "Sri Lankaanse luipaard",
-        "note": "Rotspartijen in de vroege ochtend"
+        "note": "Rotspartijen in de vroege ochtend",
+        "image": "/images/highlights/yala-leopard-tracking/sri-lankan-leopard.jpg"
       },
       {
         "name": "Lippenbeer",
-        "note": "De beste kans als de palu vrucht draagt, juni–juli"
+        "note": "De beste kans als de palu vrucht draagt, juni–juli",
+        "image": "/images/highlights/yala-leopard-tracking/sloth-bear.jpg"
       },
       {
         "name": "Aziatische olifant",
-        "note": "Rond de waterreservoirs in de late middag"
+        "note": "Rond de waterreservoirs in de late middag",
+        "image": "/images/highlights/yala-leopard-tracking/asian-elephant.jpg"
       },
       {
         "name": "Moeraskrokodil",
-        "note": "Lagune-oevers, de hele dag"
+        "note": "Lagune-oevers, de hele dag",
+        "image": "/images/highlights/yala-leopard-tracking/mugger-crocodile.jpg"
       }
     ],
     "contentRequired": true,
@@ -125,19 +139,23 @@
     "highlights": [
       {
         "name": "Sri Lankaanse luipaard",
-        "note": "Geduldig wachten bij de villus"
+        "note": "Geduldig wachten bij de villus",
+        "image": "/images/highlights/wilpattu-villus/sri-lankan-leopard.jpg"
       },
       {
         "name": "Lippenbeer",
-        "note": "Open struikgebied in de vroege ochtend"
+        "note": "Open struikgebied in de vroege ochtend",
+        "image": "/images/highlights/wilpattu-villus/sloth-bear.jpg"
       },
       {
         "name": "Axishert en sambar",
-        "note": "Rond elk meer"
+        "note": "Rond elk meer",
+        "image": "/images/highlights/wilpattu-villus/spotted-deer-and-sambar.jpg"
       },
       {
         "name": "Indische nimmerzat",
-        "note": "Ondiepe delen van de villu"
+        "note": "Ondiepe delen van de villu",
+        "image": "/images/highlights/wilpattu-villus/painted-stork.jpg"
       }
     ],
     "contentRequired": true,
@@ -159,19 +177,23 @@
     "highlights": [
       {
         "name": "Little Adam's Peak",
-        "note": "Ongeveer een uur omhoog, het mooist bij zonsopgang"
+        "note": "Ongeveer een uur omhoog, het mooist bij zonsopgang",
+        "image": "/images/highlights/ella-hill-trails/little-adam-s-peak.jpg"
       },
       {
         "name": "Ella Rock",
-        "note": "Een halve dag, plaatselijk steil"
+        "note": "Een halve dag, plaatselijk steil",
+        "image": "/images/highlights/ella-hill-trails/ella-rock.jpg"
       },
       {
         "name": "Nine Arch Bridge",
-        "note": "Stem het af op een passerende trein"
+        "note": "Stem het af op een passerende trein",
+        "image": "/images/highlights/ella-hill-trails/nine-arch-bridge.jpg"
       },
       {
         "name": "Ravana-waterval",
-        "note": "Het volst net na de regens"
+        "note": "Het volst net na de regens",
+        "image": "/images/highlights/ella-hill-trails/ravana-waterfall.jpg"
       }
     ],
     "contentRequired": true,
@@ -193,15 +215,18 @@
     "highlights": [
       {
         "name": "Uitzichtpunten op de bergkam",
-        "note": "Helder in de ochtend, bewolkt rond het middaguur"
+        "note": "Helder in de ochtend, bewolkt rond het middaguur",
+        "image": "/images/highlights/knuckles-forest-walk/ridgeline-viewpoints.jpg"
       },
       {
         "name": "Bergnevelwoud",
-        "note": "Bemost, koel, rijk aan endemen"
+        "note": "Bemost, koel, rijk aan endemen",
+        "image": "/images/highlights/knuckles-forest-walk/montane-cloud-forest.jpg"
       },
       {
         "name": "Dorpsterrassen",
-        "note": "Rijstbouw nog met de hand bewerkt"
+        "note": "Rijstbouw nog met de hand bewerkt",
+        "image": "/images/highlights/knuckles-forest-walk/village-terraces.jpg"
       }
     ],
     "contentRequired": true,
@@ -223,19 +248,23 @@
     "highlights": [
       {
         "name": "De Leeuwenrots van Sigiriya",
-        "note": "Begin bij opening, vóór de hitte"
+        "note": "Begin bij opening, vóór de hitte",
+        "image": "/images/highlights/ancient-cities-loop/sigiriya-lion-rock.jpg"
       },
       {
         "name": "Polonnaruwa op de fiets",
-        "note": "Vlak, schaduwrijk, het best in de late middag"
+        "note": "Vlak, schaduwrijk, het best in de late middag",
+        "image": "/images/highlights/ancient-cities-loop/polonnaruwa-by-bicycle.jpg"
       },
       {
         "name": "Sri Maha Bodhi",
-        "note": "Anuradhapura — offergaven in de avond"
+        "note": "Anuradhapura — offergaven in de avond",
+        "image": "/images/highlights/ancient-cities-loop/sri-maha-bodhi.jpg"
       },
       {
         "name": "De grottempels van Dambulla",
-        "note": "Beschilderde plafonds, onderweg"
+        "note": "Beschilderde plafonds, onderweg",
+        "image": "/images/highlights/ancient-cities-loop/dambulla-cave-temples.jpg"
       }
     ],
     "contentRequired": true,
@@ -257,15 +286,18 @@
     "highlights": [
       {
         "name": "Tempel van de Tand",
-        "note": "Avondpuja, trommelaars bij de poort"
+        "note": "Avondpuja, trommelaars bij de poort",
+        "image": "/images/highlights/kandy-temple-and-tea/temple-of-the-sacred-tooth-relic.jpg"
       },
       {
         "name": "Botanische tuin van Peradeniya",
-        "note": "'s Ochtends, voordat de bussen komen"
+        "note": "'s Ochtends, voordat de bussen komen",
+        "image": "/images/highlights/kandy-temple-and-tea/peradeniya-botanical-gardens.jpg"
       },
       {
         "name": "Een werkende theefabriek",
-        "note": "Van blad tot pakje in één bezoek"
+        "note": "Van blad tot pakje in één bezoek",
+        "image": "/images/highlights/kandy-temple-and-tea/a-working-tea-factory.jpg"
       }
     ],
     "contentRequired": true,
@@ -287,15 +319,18 @@
     "highlights": [
       {
         "name": "De wallen van Galle Fort",
-        "note": "Wandeling in de late middag"
+        "note": "Wandeling in de late middag",
+        "image": "/images/highlights/south-coast-and-galle/galle-fort-ramparts.jpg"
       },
       {
         "name": "Het strand van Mirissa",
-        "note": "Kalme zee van november tot april"
+        "note": "Kalme zee van november tot april",
+        "image": "/images/highlights/south-coast-and-galle/mirissa-beach.jpg"
       },
       {
         "name": "Blauwe vinvissen voor de kust",
-        "note": "December – april, vroeg vertrek"
+        "note": "December – april, vroeg vertrek",
+        "image": "/images/highlights/south-coast-and-galle/blue-whales-offshore.jpg"
       }
     ],
     "contentRequired": true,
@@ -317,15 +352,18 @@
     "highlights": [
       {
         "name": "Gemengde foerageerzwermen",
-        "note": "De eerste twee uur na zonsopgang"
+        "note": "De eerste twee uur na zonsopgang",
+        "image": "/images/highlights/rainforest-photography/mixed-feeding-flocks.jpg"
       },
       {
         "name": "Endemische kikkers en hagedissen",
-        "note": "Macro-onderwerpen, schaduw rond het middaguur"
+        "note": "Macro-onderwerpen, schaduw rond het middaguur",
+        "image": "/images/highlights/rainforest-photography/endemic-frogs-and-lizards.jpg"
       },
       {
         "name": "Het kronendak van bovenaf",
-        "note": "De bergkam bij Kithulgala, in laat licht"
+        "note": "De bergkam bij Kithulgala, in laat licht",
+        "image": "/images/highlights/rainforest-photography/canopy-from-above.jpg"
       }
     ],
     "contentRequired": true,
@@ -347,15 +385,18 @@
     "highlights": [
       {
         "name": "Wildwaterraften",
-        "note": "Klasse 2–3, geen ervaring nodig"
+        "note": "Klasse 2–3, geen ervaring nodig",
+        "image": "/images/highlights/kithulgala-river-adventure/white-water-rafting.jpg"
       },
       {
         "name": "Canyoning",
-        "note": "Afdalingen langs watervallen, een halve dag"
+        "note": "Afdalingen langs watervallen, een halve dag",
+        "image": "/images/highlights/kithulgala-river-adventure/canyoning.jpg"
       },
       {
         "name": "Zipline",
-        "note": "Over het rivierdal"
+        "note": "Over het rivierdal",
+        "image": "/images/highlights/kithulgala-river-adventure/zip-line.jpg"
       }
     ],
     "contentRequired": true,

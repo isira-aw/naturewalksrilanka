@@ -22,7 +22,7 @@ export type WizardState = {
   travelers: number;
   dateRange: DateRangeValue;
   interests: string[];
-  /** Slugs of the prebuilt journey ideas the traveller ticked. */
+  /** Slugs of the prebuilt itineraries the traveller ticked. */
   selectedExperiences: string[];
   accommodation: string[];
   accommodationNotes: string;

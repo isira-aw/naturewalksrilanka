@@ -7,7 +7,7 @@ import type { Experience } from "@/lib/content/schema";
 import { ExperienceDialog, type ExperienceLabels } from "./ExperienceDialog";
 
 /**
- * The prebuilt ideas that match whatever categories are ticked, as plain boxes.
+ * The prebuilt itineraries that match whatever categories are ticked, as plain boxes.
  * Each box is deliberately just a title, a place and one line — everything else
  * lives behind "read more", in the dialog. Ticking one adds it to the enquiry
  * that goes to WhatsApp at the end of the wizard.

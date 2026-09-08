@@ -70,7 +70,7 @@ export default async function CustomTourPage({
 
       {/* Wider than the site container and not max-w-3xl: every step lays itself
           out across the full column — the calendar shows two months, the AI
-          assistant renders a map, the journey ideas sit in a grid — and the
+          assistant renders a map, the itineraries sit in a grid — and the
           progress rail takes its own column on desktop. */}
       <section className="bg-stone/25 py-10 md:py-14 lg:py-16">
         <div className="mx-auto w-full max-w-[92rem] px-4 sm:px-6 md:px-10 xl:px-12">
