@@ -14,7 +14,9 @@ Four changes to `/[locale]/custom-tour`, on top of the earlier layout work:
 
 ## Current state
 
-Done. `tsc --noEmit`, `eslint` and `next build` are clean.
+Done, committed on `claude/journey-itineraries-pdf-whatsapp-0k2gck` and open for
+review as [PR #8](https://github.com/isira-aw/naturewalksrilanka/pull/8).
+`tsc --noEmit`, `eslint` and `next build` are clean.
 
 Walked end to end against `next start` on :3000 with Playwright at 1440x900 and
 390x844: no horizontal overflow at either size, the dialog measures 1152x810 on
