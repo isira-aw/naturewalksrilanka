@@ -32,6 +32,12 @@ export function resolveImage(src: string | undefined, fallback = DESTINATION_FAL
   return exists(src) ? src : fallback;
 }
 
+/** True when the content file names a photograph that is really in `public/`. */
+export function imageExists(src: string | undefined): src is string {
+  if (!src || !src.startsWith("/")) return false;
+  return exists(src);
+}
+
 /** Drops gallery entries whose file has not been supplied yet. */
 export function resolveGallery<T extends { src: string }>(images: T[] | undefined): T[] {
   return (images ?? []).filter((image) => exists(image.src));

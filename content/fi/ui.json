@@ -115,7 +115,7 @@
     "datesSelected": "{count} päivää Sri Lankassa",
     "datesInvalid": "Valitse saapumispäivä ja sitä myöhempi lähtöpäivä.",
     "interestsLabel": "Mikä kiinnostaa sinua eniten?",
-    "interestsHint": "Valitse yksi tai useampi. Sopivat matkaideat ilmestyvät viereen.",
+    "interestsHint": "Valitse yksi tai useampi. Sopivat matkaohjelmat näkyvät alla.",
     "interests": {
       "wildlife": "Eläimet",
       "trekking": "Vaellus",
@@ -125,13 +125,13 @@
       "photography": "Valokuvaus",
       "adventure": "Seikkailu"
     },
-    "suggestionsTitle": "Matkaideat",
-    "suggestionsEmpty": "Valitse kategoria nähdäksesi siihen sopivat valmiit matkaideat.",
+    "suggestionsTitle": "Matkaohjelmat",
+    "suggestionsEmpty": "Valitse kategoria nähdäksesi siihen sopivat valmiit matkaohjelmat.",
     "suggestionsCount": "{count} osumaa",
     "suggestionsReadMore": "Lue lisää",
     "suggestionsAdd": "Lisää kyselyyn",
     "suggestionsAdded": "Lisätty",
-    "suggestionsSelectedLabel": "Matkaideat",
+    "suggestionsSelectedLabel": "Matkaohjelmat",
     "suggestionsClose": "Sulje",
     "suggestionsLocation": "Sijainti",
     "suggestionsBestTime": "Paras ajankohta",
@@ -176,7 +176,23 @@
     "submit": "Keskustele matkastani WhatsAppissa",
     "errorTravelers": "Anna vähintään yksi matkustaja.",
     "errorInterests": "Valitse vähintään yksi kiinnostuksen kohde.",
-    "errorContact": "Lisää nimesi, kelvollinen sähköpostiosoite ja puhelinnumero."
+    "errorContact": "Lisää nimesi, kelvollinen sähköpostiosoite ja puhelinnumero.",
+    "downloadPdf": "Lataa PDF-tiedostona",
+    "downloadPreparing": "Valmistellaan…",
+    "downloadError": "Asiakirjan luonti ei onnistunut. Yritä uudelleen.",
+    "submitHint": "WhatsApp-viestin lähettäminen tallentaa laitteellesi myös Word-kopion matkasta, jonka voit liittää keskusteluun.",
+    "document": {
+      "title": "Sri Lankan matkasi",
+      "tagline": "Laatinut Nature Walk Sri Lanka",
+      "preparedFor": "Laadittu matkustajalle",
+      "preparedOn": "Laadittu",
+      "summaryTitle": "Matkasi yhdellä silmäyksellä",
+      "itinerariesTitle": "Valitut matkaohjelmat",
+      "aiRouteTitle": "Ehdotettu reitti päivä kerrallaan",
+      "contactTitle": "Tietosi",
+      "footer": "Nature Walk Sri Lanka · naturewalksrilanka.com",
+      "fileName": "sri-lanka-matka"
+    }
   },
   "nandana": {
     "introEyebrow": "Kuka on Nandana",

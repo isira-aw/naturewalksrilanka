@@ -115,7 +115,7 @@
     "datesSelected": "{count} dage i Sri Lanka",
     "datesInvalid": "Vælg en ankomstdato og en afrejsedato, der ligger efter den.",
     "interestsLabel": "Hvad interesserer dig mest?",
-    "interestsHint": "Vælg en eller flere. Matchende rejseidéer dukker op ved siden af.",
+    "interestsHint": "Vælg en eller flere. Matchende rejseplaner vises nedenfor.",
     "interests": {
       "wildlife": "Dyreliv",
       "trekking": "Vandring",
@@ -125,13 +125,13 @@
       "photography": "Fotografi",
       "adventure": "Eventyr"
     },
-    "suggestionsTitle": "Rejseidéer",
-    "suggestionsEmpty": "Vælg en kategori for at se de færdige rejseidéer, der matcher den.",
+    "suggestionsTitle": "Rejseplaner",
+    "suggestionsEmpty": "Vælg en kategori for at se de færdige rejseplaner, der matcher den.",
     "suggestionsCount": "{count} match",
     "suggestionsReadMore": "Læs mere",
     "suggestionsAdd": "Føj til forespørgsel",
     "suggestionsAdded": "Tilføjet",
-    "suggestionsSelectedLabel": "Rejseidéer",
+    "suggestionsSelectedLabel": "Rejseplaner",
     "suggestionsClose": "Luk",
     "suggestionsLocation": "Sted",
     "suggestionsBestTime": "Bedste årstid",
@@ -176,7 +176,23 @@
     "submit": "Tal om min rejse på WhatsApp",
     "errorTravelers": "Angiv mindst én rejsende.",
     "errorInterests": "Vælg mindst én interesse.",
-    "errorContact": "Tilføj dit navn, en gyldig e-mailadresse og et telefonnummer."
+    "errorContact": "Tilføj dit navn, en gyldig e-mailadresse og et telefonnummer.",
+    "downloadPdf": "Hent som PDF",
+    "downloadPreparing": "Forbereder…",
+    "downloadError": "Vi kunne ikke lave dokumentet. Prøv igen.",
+    "submitHint": "Når du sender på WhatsApp, gemmes der også en Word-kopi af rejsen på din enhed, så du kan vedhæfte den i chatten.",
+    "document": {
+      "title": "Din rejse i Sri Lanka",
+      "tagline": "Udarbejdet af Nature Walk Sri Lanka",
+      "preparedFor": "Udarbejdet til",
+      "preparedOn": "Udarbejdet den",
+      "summaryTitle": "Din rejse kort fortalt",
+      "itinerariesTitle": "Valgte rejseplaner",
+      "aiRouteTitle": "Foreslået rute dag for dag",
+      "contactTitle": "Dine oplysninger",
+      "footer": "Nature Walk Sri Lanka · naturewalksrilanka.com",
+      "fileName": "sri-lanka-rejse"
+    }
   },
   "nandana": {
     "introEyebrow": "Hvem er Nandana",

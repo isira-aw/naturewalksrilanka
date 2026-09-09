@@ -1,7 +1,9 @@
 "use client";
 
+import { useCallback, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { buildCustomTourMessage, buildWhatsAppUrl } from "@/lib/whatsapp/buildMessage";
+import { downloadJourneyDocument, type JourneyDocument } from "@/lib/journey-document";
 import type { Experience } from "@/lib/content/schema";
 import type { WizardState } from "../WizardShell";
 import { StepHeading } from "./StepHeading";
@@ -25,6 +27,9 @@ const ACCOMMODATION_KEYS = [
   "recommend",
 ] as const;
 
+/** Used on the document cover when nothing has been picked yet. */
+const FALLBACK_COVER = "/images/hero-1.jpg";
+
 function formatDate(iso: string, locale: string) {
   return new Intl.DateTimeFormat(locale, {
     day: "numeric",
@@ -45,12 +50,17 @@ export function ReviewStep({
   experiences: Experience[];
 }) {
   const t = useTranslations("customTour");
+  const [pending, setPending] = useState<"pdf" | "doc" | null>(null);
+  const [failed, setFailed] = useState(false);
 
   /* Ordered by the content file rather than by click order, so the enquiry
      reads the same way the wizard showed them. */
-  const chosenIdeas = experiences
-    .filter((experience) => state.selectedExperiences.includes(experience.slug))
-    .map((experience) => `${experience.title} — ${experience.location}`);
+  const chosenItineraries = experiences.filter((experience) =>
+    state.selectedExperiences.includes(experience.slug)
+  );
+  const chosenIdeas = chosenItineraries.map(
+    (experience) => `${experience.title} — ${experience.location}`
+  );
 
   const interestLabels = state.interests
     .filter((key): key is (typeof INTEREST_KEYS)[number] => (INTEREST_KEYS as readonly string[]).includes(key))
@@ -66,6 +76,11 @@ export function ReviewStep({
     .map((slug, index) => state.aiItinerary?.days[index]?.options.find((opt) => opt.slug === slug)?.name)
     .filter((name): name is string => Boolean(name));
 
+  const datesValue =
+    state.dateRange.start && state.dateRange.end
+      ? `${formatDate(state.dateRange.start, locale)} – ${formatDate(state.dateRange.end, locale)}`
+      : "-";
+
   const message = buildCustomTourMessage(
     {
       travelers: state.travelers,
@@ -74,7 +89,7 @@ export function ReviewStep({
       interests: interestLabels,
       accommodation: accommodationLabels,
       accommodationNotes: state.accommodationNotes,
-      journeyIdeas: chosenIdeas,
+      itineraries: chosenIdeas,
       aiRoute: aiRouteNames,
       name: state.name,
       email: state.email,
@@ -87,6 +102,83 @@ export function ReviewStep({
 
   const href = buildWhatsAppUrl(whatsappNumber, message);
 
+  /* One description of the journey, rendered twice: as the PDF the traveller
+     downloads and as the Word copy that goes with the WhatsApp hand-off. */
+  const journeyDocument: JourneyDocument = useMemo(
+    () => ({
+      labels: {
+        title: t("document.title"),
+        tagline: t("document.tagline"),
+        preparedFor: t("document.preparedFor"),
+        preparedOn: t("document.preparedOn"),
+        summaryTitle: t("document.summaryTitle"),
+        itinerariesTitle: t("document.itinerariesTitle"),
+        aiRouteTitle: t("document.aiRouteTitle"),
+        contactTitle: t("document.contactTitle"),
+        highlightsTitle: t("suggestionsHighlights"),
+        bestTimeLabel: t("suggestionsBestTime"),
+        durationLabel: t("suggestionsDuration"),
+        footer: t("document.footer"),
+        fileName: t("document.fileName"),
+      },
+      preparedFor: state.name.trim(),
+      preparedOn: formatDate(new Date().toISOString(), locale),
+      summaryRows: [
+        { label: t("travelersLabel"), value: String(state.travelers) },
+        { label: t("datesLabel"), value: datesValue },
+        { label: t("interestsLabel"), value: interestLabels.join(", ") },
+        { label: t("accommodationLabel"), value: accommodationLabels.join(", ") },
+        ...(state.accommodationNotes.trim()
+          ? [{ label: t("accommodationNotesLabel"), value: state.accommodationNotes.trim() }]
+          : []),
+        ...(chosenIdeas.length
+          ? [{ label: t("suggestionsSelectedLabel"), value: chosenIdeas.join("\n") }]
+          : []),
+      ],
+      contactRows: [
+        { label: t("contactName"), value: state.name },
+        { label: t("contactEmail"), value: state.email },
+        { label: t("contactPhone"), value: state.phone },
+        ...(state.country.trim() ? [{ label: t("contactCountry"), value: state.country }] : []),
+        ...(state.requirements.trim()
+          ? [{ label: t("requirementsLabel"), value: state.requirements }]
+          : []),
+      ],
+      itineraries: chosenItineraries.map((experience) => ({
+        slug: experience.slug,
+        title: experience.title,
+        location: experience.location,
+        bestTime: experience.bestTime,
+        duration: experience.duration,
+        summary: experience.summary,
+        description: experience.description,
+        images: experience.images,
+        highlights: experience.highlights,
+      })),
+      aiRoute: aiRouteNames.map(
+        (name, index) => `${t("aiAssistant.dayLabel", { day: index + 1 })}: ${name}`
+      ),
+      coverImage: chosenItineraries[0]?.images[0] ?? FALLBACK_COVER,
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [state, locale, experiences, t]
+  );
+
+  const download = useCallback(
+    async (kind: "pdf" | "doc") => {
+      setPending(kind);
+      setFailed(false);
+      try {
+        await downloadJourneyDocument(journeyDocument, kind);
+      } catch {
+        setFailed(true);
+      } finally {
+        setPending(null);
+      }
+    },
+    [journeyDocument]
+  );
+
   return (
     <div>
       <StepHeading title={t("reviewTitle")} hint={t("reviewHint")} />
@@ -96,14 +188,7 @@ export function ReviewStep({
       <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:items-start lg:gap-8">
         <dl className="divide-y divide-stone-dark overflow-hidden rounded-2xl border border-stone-dark bg-stone/20">
           <ReviewRow label={t("travelersLabel")} value={String(state.travelers)} />
-          <ReviewRow
-            label={t("datesLabel")}
-            value={
-              state.dateRange.start && state.dateRange.end
-                ? `${formatDate(state.dateRange.start, locale)} – ${formatDate(state.dateRange.end, locale)}`
-                : "-"
-            }
-          />
+          <ReviewRow label={t("datesLabel")} value={datesValue} />
           <ReviewRow
             label={t("interestsLabel")}
             value={interestLabels.length ? interestLabels.join(", ") : "-"}
@@ -134,15 +219,38 @@ export function ReviewStep({
         </dl>
 
         <div className="mt-8 lg:sticky lg:top-28 lg:mt-0">
+          {/* WhatsApp opens in its own tab while the Word copy saves in the
+              background, so the traveller can attach it to the chat. */}
           <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              void download("doc");
+            }}
             className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 text-base font-medium tracking-wide text-warm-white transition-colors duration-200 hover:bg-forest-dark sm:w-auto lg:w-full"
           >
             <WhatsAppIcon className="h-4 w-4" />
             {t("submit")}
           </a>
+
+          <button
+            type="button"
+            onClick={() => void download("pdf")}
+            disabled={pending !== null}
+            className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-forest px-8 py-3 text-sm font-medium tracking-wide text-forest transition-colors duration-200 hover:bg-forest hover:text-warm-white disabled:cursor-wait disabled:opacity-60 sm:w-auto lg:w-full"
+          >
+            <DownloadIcon className="h-4 w-4" />
+            {pending === "pdf" ? t("downloadPreparing") : t("downloadPdf")}
+          </button>
+
+          <p className="mt-3 text-xs leading-relaxed text-charcoal/50">{t("submitHint")}</p>
+
+          {failed && (
+            <p role="alert" className="mt-2 text-xs leading-relaxed text-red-700">
+              {t("downloadError")}
+            </p>
+          )}
         </div>
       </div>
     </div>
@@ -155,6 +263,23 @@ function ReviewRow({ label, value }: { label: string; value: string }) {
       <dt className="font-utility text-xs uppercase tracking-wide text-charcoal/50">{label}</dt>
       <dd className="whitespace-pre-line text-sm text-charcoal sm:col-span-2">{value}</dd>
     </div>
+  );
+}
+
+function DownloadIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M8 1.5v8.5M4.5 7 8 10.5 11.5 7M2 13.5h12" />
+    </svg>
   );
 }
 

@@ -5,8 +5,8 @@ export type CustomTourWhatsAppInput = {
   interests: string[];
   accommodation: string[];
   accommodationNotes: string;
-  /** Prebuilt journey ideas the traveller ticked, as "Title — Location". */
-  journeyIdeas: string[];
+  /** Prebuilt itineraries the traveller ticked, as "Title — Location". */
+  itineraries: string[];
   aiRoute: string[];
   name: string;
   email: string;
@@ -58,9 +58,9 @@ export function buildCustomTourMessage(input: CustomTourWhatsAppInput, locale: s
     lines.push("");
   }
 
-  if (input.journeyIdeas.length) {
-    lines.push("Journey ideas I'd like to include:");
-    input.journeyIdeas.forEach((idea) => lines.push(`- ${idea}`));
+  if (input.itineraries.length) {
+    lines.push("Itineraries I'd like to include:");
+    input.itineraries.forEach((itinerary) => lines.push(`- ${itinerary}`));
     lines.push("");
   }
 

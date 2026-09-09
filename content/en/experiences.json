@@ -15,23 +15,28 @@
     "highlights": [
       {
         "name": "Sri Lanka Blue Magpie",
-        "note": "Endemic — usually with the feeding flock"
+        "note": "Endemic — usually with the feeding flock",
+        "image": "/images/highlights/sinharaja-endemic-mornings/sri-lanka-blue-magpie.jpg"
       },
       {
         "name": "Red-faced Malkoha",
-        "note": "Endemic — high canopy, best in early light"
+        "note": "Endemic — high canopy, best in early light",
+        "image": "/images/highlights/sinharaja-endemic-mornings/red-faced-malkoha.jpg"
       },
       {
         "name": "Serendib Scops Owl",
-        "note": "Endemic — a night walk species"
+        "note": "Endemic — a night walk species",
+        "image": "/images/highlights/sinharaja-endemic-mornings/serendib-scops-owl.jpg"
       },
       {
         "name": "Ashy-headed Laughingthrush",
-        "note": "Endemic — noisy understorey groups"
+        "note": "Endemic — noisy understorey groups",
+        "image": "/images/highlights/sinharaja-endemic-mornings/ashy-headed-laughingthrush.jpg"
       },
       {
         "name": "Green-billed Coucal",
-        "note": "Endemic — heard more often than seen"
+        "note": "Endemic — heard more often than seen",
+        "image": "/images/highlights/sinharaja-endemic-mornings/green-billed-coucal.jpg"
       }
     ],
     "contentRequired": true
@@ -52,23 +57,28 @@
     "highlights": [
       {
         "name": "Sri Lanka Whistling Thrush",
-        "note": "Endemic — first light, near streams"
+        "note": "Endemic — first light, near streams",
+        "image": "/images/highlights/highland-birding-horton-plains/sri-lanka-whistling-thrush.jpg"
       },
       {
         "name": "Sri Lanka Bush Warbler",
-        "note": "Endemic — grassland edges"
+        "note": "Endemic — grassland edges",
+        "image": "/images/highlights/highland-birding-horton-plains/sri-lanka-bush-warbler.jpg"
       },
       {
         "name": "Yellow-eared Bulbul",
-        "note": "Endemic — common but photogenic"
+        "note": "Endemic — common but photogenic",
+        "image": "/images/highlights/highland-birding-horton-plains/yellow-eared-bulbul.jpg"
       },
       {
         "name": "Kashmir Flycatcher",
-        "note": "Winter migrant — Victoria Park"
+        "note": "Winter migrant — Victoria Park",
+        "image": "/images/highlights/highland-birding-horton-plains/kashmir-flycatcher.jpg"
       },
       {
         "name": "Pied Thrush",
-        "note": "Winter migrant — shaded park streams"
+        "note": "Winter migrant — shaded park streams",
+        "image": "/images/highlights/highland-birding-horton-plains/pied-thrush.jpg"
       }
     ],
     "contentRequired": true
@@ -89,19 +99,23 @@
     "highlights": [
       {
         "name": "Sri Lankan leopard",
-        "note": "Rock outcrops in the early morning"
+        "note": "Rock outcrops in the early morning",
+        "image": "/images/highlights/yala-leopard-tracking/sri-lankan-leopard.jpg"
       },
       {
         "name": "Sloth bear",
-        "note": "Best odds when the palu fruits, June–July"
+        "note": "Best odds when the palu fruits, June–July",
+        "image": "/images/highlights/yala-leopard-tracking/sloth-bear.jpg"
       },
       {
         "name": "Asian elephant",
-        "note": "Around the tanks late afternoon"
+        "note": "Around the tanks late afternoon",
+        "image": "/images/highlights/yala-leopard-tracking/asian-elephant.jpg"
       },
       {
         "name": "Mugger crocodile",
-        "note": "Lagoon edges, all day"
+        "note": "Lagoon edges, all day",
+        "image": "/images/highlights/yala-leopard-tracking/mugger-crocodile.jpg"
       }
     ],
     "contentRequired": true
@@ -122,19 +136,23 @@
     "highlights": [
       {
         "name": "Sri Lankan leopard",
-        "note": "Patient waiting at the villus"
+        "note": "Patient waiting at the villus",
+        "image": "/images/highlights/wilpattu-villus/sri-lankan-leopard.jpg"
       },
       {
         "name": "Sloth bear",
-        "note": "Open scrub in the early morning"
+        "note": "Open scrub in the early morning",
+        "image": "/images/highlights/wilpattu-villus/sloth-bear.jpg"
       },
       {
         "name": "Spotted deer and sambar",
-        "note": "Around every lake"
+        "note": "Around every lake",
+        "image": "/images/highlights/wilpattu-villus/spotted-deer-and-sambar.jpg"
       },
       {
         "name": "Painted stork",
-        "note": "Villu shallows"
+        "note": "Villu shallows",
+        "image": "/images/highlights/wilpattu-villus/painted-stork.jpg"
       }
     ],
     "contentRequired": true
@@ -155,19 +173,23 @@
     "highlights": [
       {
         "name": "Little Adam's Peak",
-        "note": "About an hour up, best at sunrise"
+        "note": "About an hour up, best at sunrise",
+        "image": "/images/highlights/ella-hill-trails/little-adam-s-peak.jpg"
       },
       {
         "name": "Ella Rock",
-        "note": "Half a day, steep in places"
+        "note": "Half a day, steep in places",
+        "image": "/images/highlights/ella-hill-trails/ella-rock.jpg"
       },
       {
         "name": "Nine Arch Bridge",
-        "note": "Time it with a passing train"
+        "note": "Time it with a passing train",
+        "image": "/images/highlights/ella-hill-trails/nine-arch-bridge.jpg"
       },
       {
         "name": "Ravana waterfall",
-        "note": "Fullest just after the rains"
+        "note": "Fullest just after the rains",
+        "image": "/images/highlights/ella-hill-trails/ravana-waterfall.jpg"
       }
     ],
     "contentRequired": true
@@ -188,15 +210,18 @@
     "highlights": [
       {
         "name": "Ridgeline viewpoints",
-        "note": "Clear early, cloud in by noon"
+        "note": "Clear early, cloud in by noon",
+        "image": "/images/highlights/knuckles-forest-walk/ridgeline-viewpoints.jpg"
       },
       {
         "name": "Montane cloud forest",
-        "note": "Mossy, endemic-rich, cool"
+        "note": "Mossy, endemic-rich, cool",
+        "image": "/images/highlights/knuckles-forest-walk/montane-cloud-forest.jpg"
       },
       {
         "name": "Village terraces",
-        "note": "Rice cultivation still worked by hand"
+        "note": "Rice cultivation still worked by hand",
+        "image": "/images/highlights/knuckles-forest-walk/village-terraces.jpg"
       }
     ],
     "contentRequired": true
@@ -217,19 +242,23 @@
     "highlights": [
       {
         "name": "Sigiriya Lion Rock",
-        "note": "Start at opening, before the heat"
+        "note": "Start at opening, before the heat",
+        "image": "/images/highlights/ancient-cities-loop/sigiriya-lion-rock.jpg"
       },
       {
         "name": "Polonnaruwa by bicycle",
-        "note": "Flat, shaded, best late afternoon"
+        "note": "Flat, shaded, best late afternoon",
+        "image": "/images/highlights/ancient-cities-loop/polonnaruwa-by-bicycle.jpg"
       },
       {
         "name": "Sri Maha Bodhi",
-        "note": "Anuradhapura — evening offerings"
+        "note": "Anuradhapura — evening offerings",
+        "image": "/images/highlights/ancient-cities-loop/sri-maha-bodhi.jpg"
       },
       {
         "name": "Dambulla cave temples",
-        "note": "Painted ceilings, on the route"
+        "note": "Painted ceilings, on the route",
+        "image": "/images/highlights/ancient-cities-loop/dambulla-cave-temples.jpg"
       }
     ],
     "contentRequired": true
@@ -250,15 +279,18 @@
     "highlights": [
       {
         "name": "Temple of the Sacred Tooth Relic",
-        "note": "Evening puja, drummers at the gate"
+        "note": "Evening puja, drummers at the gate",
+        "image": "/images/highlights/kandy-temple-and-tea/temple-of-the-sacred-tooth-relic.jpg"
       },
       {
         "name": "Peradeniya botanical gardens",
-        "note": "Morning, before the coach parties"
+        "note": "Morning, before the coach parties",
+        "image": "/images/highlights/kandy-temple-and-tea/peradeniya-botanical-gardens.jpg"
       },
       {
         "name": "A working tea factory",
-        "note": "Leaf to packet in one visit"
+        "note": "Leaf to packet in one visit",
+        "image": "/images/highlights/kandy-temple-and-tea/a-working-tea-factory.jpg"
       }
     ],
     "contentRequired": true
@@ -279,15 +311,18 @@
     "highlights": [
       {
         "name": "Galle Fort ramparts",
-        "note": "Late afternoon walk"
+        "note": "Late afternoon walk",
+        "image": "/images/highlights/south-coast-and-galle/galle-fort-ramparts.jpg"
       },
       {
         "name": "Mirissa beach",
-        "note": "Calm seas November – April"
+        "note": "Calm seas November – April",
+        "image": "/images/highlights/south-coast-and-galle/mirissa-beach.jpg"
       },
       {
         "name": "Blue whales offshore",
-        "note": "December – April, early departure"
+        "note": "December – April, early departure",
+        "image": "/images/highlights/south-coast-and-galle/blue-whales-offshore.jpg"
       }
     ],
     "contentRequired": true
@@ -308,15 +343,18 @@
     "highlights": [
       {
         "name": "Mixed feeding flocks",
-        "note": "First two hours after dawn"
+        "note": "First two hours after dawn",
+        "image": "/images/highlights/rainforest-photography/mixed-feeding-flocks.jpg"
       },
       {
         "name": "Endemic frogs and lizards",
-        "note": "Macro subjects, midday shade"
+        "note": "Macro subjects, midday shade",
+        "image": "/images/highlights/rainforest-photography/endemic-frogs-and-lizards.jpg"
       },
       {
         "name": "Canopy from above",
-        "note": "Kithulgala ridge, late light"
+        "note": "Kithulgala ridge, late light",
+        "image": "/images/highlights/rainforest-photography/canopy-from-above.jpg"
       }
     ],
     "contentRequired": true
@@ -337,15 +375,18 @@
     "highlights": [
       {
         "name": "White-water rafting",
-        "note": "Grade 2–3, no experience needed"
+        "note": "Grade 2–3, no experience needed",
+        "image": "/images/highlights/kithulgala-river-adventure/white-water-rafting.jpg"
       },
       {
         "name": "Canyoning",
-        "note": "Waterfall descents, half a day"
+        "note": "Waterfall descents, half a day",
+        "image": "/images/highlights/kithulgala-river-adventure/canyoning.jpg"
       },
       {
         "name": "Zip line",
-        "note": "Across the river valley"
+        "note": "Across the river valley",
+        "image": "/images/highlights/kithulgala-river-adventure/zip-line.jpg"
       }
     ],
     "contentRequired": true
