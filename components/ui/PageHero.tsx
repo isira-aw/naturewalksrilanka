@@ -66,8 +66,8 @@ export function PageHero({
         />
       </div>
 
-      <div className="absolute inset-0 bg-charcoal/45" />
-      <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-charcoal/20" />
+      <div className="absolute inset-0 bg-charcoal/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/20 to-charcoal/10" />
 
       <motion.div
         style={reduceMotion ? undefined : { y: contentY, opacity: contentOpacity }}

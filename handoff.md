@@ -1,126 +1,145 @@
-# Handoff — itineraries, take-away documents, bigger idea dialog
+# Handoff — country-flag language switcher & destination image wiring
 
 ## Goal
 
-Four changes to `/[locale]/custom-tour`, on top of the earlier layout work:
+Two related pieces of work:
 
-1. "Journey ideas" is called **Itineraries** everywhere.
-2. The Review step offers a **Download as PDF**, and the WhatsApp hand-off also
-   saves a **Word (.doc) copy** of the same journey so it can be attached to the chat.
-3. Both documents carry every selected itinerary in full, with the itinerary's
-   own photographs used as page and section backgrounds.
-4. The itinerary dialog is much larger (a near-full-height sheet on a phone), and
-   "What you might see" renders photograph cards rather than a text list.
+1. Rebuild the language switcher (`LocaleSwitcher`) so it reads as a country
+   picker with real flags, matching a reference screenshot of a full-screen
+   "choose your country" modal — but scoped to this site's actual 5 markets
+   (English, Nederlands, Español, Dansk, Suomi), not the ~20-country grid in
+   the screenshot. The label shown must be the **country**, not the language
+   (e.g. "United Kingdom", not "English").
+2. Wire the 3 photographs that now exist in each of the 15
+   `public/images/destinations/<slug>/` folders into the site, distributed
+   across different spots on the page (not all stacked in one place), with
+   the folder-name-matching file always used as the top hero image.
 
 ## Current state
 
-Done. `tsc --noEmit`, `eslint` and `next build` are clean.
+Both pieces are done. `tsc --noEmit` is clean. A Node script confirmed every
+image path referenced in all 5 locale content files resolves to a real file
+in `public/`, and a second check confirmed no UTF-8 mojibake was introduced
+in any of the 5 destinations.json files.
 
-Walked end to end against `next start` on :3000 with Playwright at 1440x900 and
-390x844: no horizontal overflow at either size, the dialog measures 1152x810 on
-the laptop and 390x793 on the phone, and both files download from the Review
-step. The generated PDF was re-parsed and rendered page by page — 5 pages, 4
-image XObjects (cover, page background, section band, gallery photo: no
-duplicates), page 1 mean brightness 49/255, so the dimmed cover really is dimmed.
-The Word file was opened as HTML in Chromium and lays out as intended.
-
-**Judging brightness from a screenshot in this harness is unreliable** — rendered
-PNGs of the dark cover page came back looking undimmed. Measure pixel means (see
-`Failed attempts`) rather than trusting the eye.
+Not yet done: no visual/browser check of the new modal or the destination
+pages with real photos (see Next steps).
 
 ## Active files
 
 | File | Role |
 | --- | --- |
-| `content/<locale>/ui.json` | Renamed strings + new `downloadPdf`, `downloadPreparing`, `downloadError`, `submitHint` and the `document.*` group |
-| `content/en/experiences.json` | Each highlight now names its photograph; the other locales are regenerated from it |
-| `components/custom-tour/steps/ReviewStep.tsx` | Builds the `JourneyDocument`, PDF button, WhatsApp + Word hand-off |
-| `components/custom-tour/ExperienceDialog.tsx` | The larger dialog and the highlight photo cards |
-| `lib/journey-document/model.ts` | The shape both documents render |
-| `lib/journey-document/assets.ts` | Image loading, cropping, dimming, download |
-| `lib/journey-document/pdf.ts` | The PDF (jsPDF, dynamically imported) |
-| `lib/journey-document/word.ts` | The Word file (Word-flavoured HTML) |
-| `lib/journey-document/index.ts` | `downloadJourneyDocument(doc, "pdf" \| "doc")` |
-| `lib/content/loader.ts`, `lib/content/images.ts` | Drops highlight photographs that have not been supplied yet |
-| `lib/whatsapp/buildMessage.ts` | `journeyIdeas` renamed to `itineraries` |
-| `public/images/highlights/README.md` | What to drop in, file by file |
+| `components/layout/LocaleSwitcher.tsx` | Trigger button + full-screen modal (was a small dropdown) |
+| `components/layout/Header.tsx`, `Footer.tsx`, `MobileNav.tsx` | Unchanged — all three just render `<LocaleSwitcher />`, still work as-is |
+| `i18n/routing.ts` | Source of the 5 locales; not modified, just read |
+| `content/en/destinations.json` | Full destination copy; `image`/`heroImage`/`gallery` fields rewired to real files |
+| `content/da/destinations.json` | Minimal copy (needs-native-review); same three fields rewired, pretty-printed like `en` |
+| `content/nl/destinations.json`, `content/es/destinations.json`, `content/fi/destinations.json` | Minimal copy; same three fields rewired, kept in their existing one-object-per-line compact style |
+| `lib/content/schema.ts` | Defines `image`, `heroImage`, `gallery` on `destinationSchema` — not modified, already supported all three fields |
+| `lib/content/images.ts` | Falls back to placeholder if a referenced path doesn't exist on disk — not modified, this is what silently masked the previously-broken image paths |
+| `app/[locale]/destinations/[slug]/page.tsx` | Consumes `heroImage ?? image` for `PageHero`, `gallery` for `DestinationGallery` — not modified |
+| `components/destinations/DestinationGallery.tsx` | Renders the gallery rail — not modified |
+| `public/images/destinations/<slug>/` (×15) | Each now holds 3 real images (`<slug>.<ext>`, `<slug>2.<ext>`, `<slug>3.<ext>`) plus a `.gitkeep` |
 
 ## Changes made
 
-**Copy.** `suggestionsTitle`, `suggestionsSelectedLabel`, `suggestionsEmpty` and
-`interestsHint` renamed in all five locales (en Itineraries, da Rejseplaner,
-es Itinerarios, fi Matkaohjelmat, nl Reisroutes) — the Danish, Spanish, Finnish
-and Dutch wordings are machine-chosen and want a native check. The WhatsApp
-message now says "Itineraries I'd like to include:".
+**LocaleSwitcher** — was a small listbox dropdown (`<ul role="listbox">`
+absolutely positioned under the trigger). Rewritten to a full-screen modal
+via `createPortal`, following the same dialog pattern already used by
+`ExperienceDialog.tsx` (focus-trap-lite via ref, `Escape` to close, body
+scroll lock while open). The modal has a centered heading, an X close
+button top-right, and a responsive grid (1 col mobile, 2 cols `sm:`) of
+country rows — each a round flag badge + country name + a checkmark on the
+active one. Flags are rendered as real `<img>` SVGs from `flagcdn.com`
+(`https://flagcdn.com/{iso}.svg`), not emoji: Windows browsers generally
+don't have flag-emoji glyphs and fall back to the two-letter code, so emoji
+were a dead end here (see Failed attempts). Labels were changed from the
+language endonym (`localeNames`, e.g. "Dansk") to a country name
+(`localeCountries`, e.g. "Denmark") per explicit instruction — a locale is a
+market, and the flag needs a country to point at, not a language.
 
-**Documents.** `ReviewStep` assembles one `JourneyDocument` — labels, summary
-rows, contact rows, the full text of each selected itinerary, the AI route and a
-cover photograph — and the PDF and the Word file are two renderings of it, so
-the download and the copy attached to the chat can never disagree. Photographs
-are re-encoded through a canvas at 1400px/q78, cropped centrally to the box they
-fill, and **dimmed in the canvas** rather than under a translucent overlay:
-Word cannot dim a cell background at all, and a PDF transparency group is the
-kind of thing a phone viewer flattens. The PDF gives each itinerary its own page
-with a full-bleed photo band carrying the title, and every content page sits on a
-90%-washed copy of the relevant photograph. The Word file is Word-flavoured HTML
-with base64 JPEGs, using single-cell tables (the one construction Word paints a
-background picture into) with a solid colour and a real `<img>` gallery as
-fallbacks.
+Locale → country/flag mapping added in the component:
+`en → United Kingdom (gb)`, `nl → Netherlands (nl)`, `es → Spain (es)`,
+`da → Denmark (dk)`, `fi → Finland (fi)`.
 
-**Dialog.** `h-[94dvh]` sheet on a phone, `lg:max-w-5xl xl:max-w-6xl` on a
-laptop; photographs in the left column, facts, description and the "What you
-might see" cards in the right, so the highlights are visible without scrolling.
+**Destination images** — `lib/content/images.ts` silently falls back to a
+placeholder for any path that doesn't exist on disk, which is exactly what
+was happening: the `en` destinations.json referenced `hero.jpg`, `cover.jpg`
+and `01.jpg`–`04.jpg` per destination, none of which exist; the other 4
+locales only had a stub `image: "/images/placeholder-destination.jpg"`. A
+one-off Node script (not committed) rewrote all 5 locale files so that, per
+destination:
+- `heroImage` → the file matching the folder name exactly (e.g.
+  `negombo/negombo.jpg`) — this is what `PageHero` on the detail page shows,
+  and it's guaranteed to always be that same-name file.
+- `image` → the second file (e.g. `negombo2.jpg`) — this is what the
+  `/destinations` listing page card uses, a different page entirely.
+- `gallery` → a single entry with the third file (e.g. `negombo3.jpg`) —
+  this is what `DestinationGallery` renders lower down the *same* detail
+  page, in the gallery rail section, a different spot from the hero.
 
-**Highlight photographs.** Every highlight in `content/en/experiences.json` now
-names `/images/highlights/<experience-slug>/<species>.jpg`, the loader drops the
-ones whose file does not exist yet (same arrangement as the destination photos),
-and `public/images/highlights/README.md` lists all 41 files to supply. Until they
-land, each card shows a lettered tile and the documents print the highlight
-without a thumbnail.
+For `en`, the existing gallery entries' `alt`/`caption` text was preserved
+(only the `src` was swapped to a real file) since those captions are
+already good hand-written English. For the minimal locales, `gallery[0].alt`
+falls back to the destination's `name` field since there was no caption text
+to carry over. The stale `_note: "...; photographs not yet supplied."` on
+all 15 `en` entries was also updated to drop the now-false clause, since
+photographs are supplied now.
 
-**Dependency.** `jspdf` (^4.2.1), imported dynamically so only a traveller who
-asks for a PDF downloads it.
+`nl`/`es`/`fi` were kept in their original one-object-per-line compact JSON
+style (not reformatted to pretty multi-line) to keep the diff to just the
+three touched fields per destination.
 
 ## Failed attempts
 
-- **Real species photographs could not be fetched.** `upload.wikimedia.org` is
-  refused by this session's egress proxy (403 on CONNECT), so no photograph of a
-  Blue Magpie or a leopard could be added. The drop-in convention above is the
-  substitute; a photograph of the wrong bird under an endemic's name would be
-  worse than none.
-- **Reading brightness off a screenshot.** Rendered pages of the dimmed cover
-  looked undimmed in this harness three times running. Extracting the embedded
-  JPEG and computing a pixel mean (49/255) settled it, and a pure-Python PNG mean
-  over the rendered page agreed. Trust numbers here, not the picture.
-- **jsPDF image aliasing.** With no `alias` argument jsPDF keys an image on the
-  head of its data, so the dark cover and the washed page background — two crops
-  of the same photograph — are one entry and the last one drawn wins for both.
-  Every `addImage` now passes a role-and-source alias (`cover:`, `page:`,
-  `band:`, `thumb:`, `gallery:<src>:<w>x<h>`), which keeps genuinely repeated
-  images de-duplicated.
-- **A gallery photo alone on its own page.** The gallery used to be drawn after
-  the highlights and kept spilling onto an otherwise empty page; it now sits
-  directly under the description.
-- **`pkill -f "next start"` kills the shell running it** in this environment, so
-  the rebuilt server never restarted and the browser kept loading chunk files the
-  new build had deleted (500s, a page that never hydrated, a Continue button that
-  did nothing). Kill `next-server`, in its own command, and check the page 200s
-  before testing.
-- **Driving the wizard headlessly.** As noted in the previous handoff,
-  framer-motion's exit animation never finishes while the page is not painting,
-  so the next step never mounts. Take a screenshot between clicks to force paints
-  and poll for an element of the next step. `pdfjs-dist` 5.x also needs a newer
-  Chromium than the bundled one — 4.10.38 renders fine.
+- **Emoji flags** (🇬🇧, 🇳🇱, etc.) as the first pass at the modal. Looked
+  correct in the editor but Windows — this is a Windows 11 dev machine —
+  generally has no flag-emoji glyphs in its fonts, and most browsers there
+  render the two-letter ISO code as text instead of a picture. Replaced
+  with real SVG images from `flagcdn.com` via plain `<img>` (a lint warning
+  suggests `next/image` instead; left as `<img>` since these are tiny
+  external icons, not local optimizable assets).
+- **PowerShell `Get-Content`/`Set-Content` to patch a string in
+  `content/en/destinations.json`.** Corrupted the file's em dashes into
+  mojibake — the exact same failure mode already documented in an earlier
+  handoff for this repo (custom-tour layout work): Windows PowerShell
+  5.1's `Get-Content` reads a BOM-less UTF-8 file as the system ANSI
+  codepage. Caught immediately by diffing for the mojibake sequence,
+  reverted with `git checkout --`, and redone with a small Node
+  `fs.readFileSync(..., 'utf8')` / `writeFileSync(..., 'utf8')` script
+  instead. **Do not use PowerShell `Get-Content`/`Set-Content` on any file
+  in this repo containing non-ASCII characters — use Node or the Edit tool.**
+- **First draft of the image-wiring script used `JSON.stringify(data, null, 2)`
+  for every locale.** Would have reformatted `nl`/`es`/`fi` from their
+  existing one-object-per-line compact style into fully pretty multi-line
+  JSON, a huge unrelated diff. Split the script into two code paths: pretty
+  (`en`, `da`, which were already in that style) vs. a hand-rolled compact
+  single-line serializer preserving key order (`nl`, `es`, `fi`).
 
 ## Next steps
 
-1. **Native review of the four renamed strings** (see Copy above).
-2. **The 41 highlight photographs** — `public/images/highlights/README.md`.
-3. **Open the .doc in real Word.** It was verified as HTML in a browser; Word's
-   own handling of a data-URI cell background is the one thing that could not be
-   tested here. The fallbacks mean it degrades to a solid colour band, never to
-   unreadable text.
-4. **Non-Latin text in the PDF.** jsPDF's built-in fonts are WinAnsi, so anything
-   outside Latin-1 (a name pasted in Sinhala, say) is stripped by `safe()`. If
-   that matters, embed a Unicode font.
-5. Delete this file before merge if the team does not keep handoff notes in-tree.
+1. **Visual check of the new locale modal**, ideally against `next dev`,
+   at a phone width and a desktop width — it has not been opened in a
+   browser yet, only typechecked. Confirm the flag SVGs actually load (they
+   are a live network fetch to `flagcdn.com`; there's no local fallback if
+   that's unreachable at build/runtime) and that the modal's `Escape`/click-
+   outside/focus behavior feels right.
+2. **Visual check of destination pages with real photos** — `/en/destinations`
+   listing (card thumbnails) and a few `/en/destinations/<slug>` detail pages
+   (hero + gallery rail), across `en` and at least one minimal locale (e.g.
+   `da`) to confirm the gallery rail renders correctly with just one image
+   in it.
+3. **`next.config.ts` doesn't currently allowlist `flagcdn.com`** — this
+   doesn't matter for a plain `<img>` tag (no Next Image optimization
+   involved), but if this ever gets swapped to `next/image` per the lint
+   warning, `images.remotePatterns` will need `flagcdn.com` added.
+4. **Only one gallery image per destination.** The gallery rail component
+   supports multiple images and reads fine with just one, but if more
+   photographs get supplied later per destination, `gallery` should become
+   an array of all of them rather than staying capped at one — the "3 images,
+   3 different spots" split was a decision forced by only having 3 source
+   photos per folder, not a hard rule to preserve going forward.
+5. Delete this file before merge if the team does not keep handoff notes
+   in-tree. (Note: a different, unrelated handoff — for an itineraries/PDF
+   feature — was found occupying this same path when this file was written;
+   that work is not described here.)
