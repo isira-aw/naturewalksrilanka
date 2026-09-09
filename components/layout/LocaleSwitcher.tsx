@@ -1,16 +1,43 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useParams } from "next/navigation";
-import { locales, localeNames, type Locale } from "@/i18n/routing";
+import { locales, type Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils/cn";
 
 /**
- * A custom listbox rather than a native <select>: the OS dropdown paints its
- * own highlight (system blue on a white sheet) which has nothing to do with the
- * rest of the site. This one is forest-on-stone like every other control here.
+ * A country, not a language — "English" tells a visitor nothing about which
+ * flag they're looking at, so each locale maps to the market it represents.
+ * `iso` is the flagcdn.com country code: flag emoji don't render as pictures
+ * on Windows (most browsers there fall back to the two-letter code), so the
+ * flag is a real SVG image instead.
+ */
+const localeCountries: Record<Locale, { name: string; iso: string }> = {
+  en: { name: "United Kingdom", iso: "gb" },
+  nl: { name: "Netherlands", iso: "nl" },
+  es: { name: "Spain", iso: "es" },
+  da: { name: "Denmark", iso: "dk" },
+  fi: { name: "Finland", iso: "fi" },
+};
+
+function FlagIcon({ iso, className }: { iso: string; className?: string }) {
+  return (
+    <img
+      src={`https://flagcdn.com/${iso}.svg`}
+      alt=""
+      aria-hidden="true"
+      className={cn("shrink-0 rounded-full object-cover", className)}
+    />
+  );
+}
+
+/**
+ * The trigger is a small pill button; opening it launches a full-screen
+ * modal grid of markets (flag + country) rather than a dropdown, so it reads
+ * the same on a phone as on a 1920px desktop.
  */
 export function LocaleSwitcher({
   className,
@@ -27,23 +54,21 @@ export function LocaleSwitcher({
   const params = useParams();
   const [, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
   const active = params.locale as Locale;
 
   useEffect(() => {
     if (!open) return;
-    function onPointerDown(event: MouseEvent | TouchEvent) {
-      if (!containerRef.current?.contains(event.target as Node)) setOpen(false);
-    }
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") setOpen(false);
     }
-    document.addEventListener("mousedown", onPointerDown);
-    document.addEventListener("touchstart", onPointerDown);
     document.addEventListener("keydown", onKeyDown);
     return () => {
-      document.removeEventListener("mousedown", onPointerDown);
-      document.removeEventListener("touchstart", onPointerDown);
+      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [open]);
@@ -59,90 +84,130 @@ export function LocaleSwitcher({
   const inverted = tone === "inverted";
 
   return (
-    <div ref={containerRef} className={cn("relative", className)}>
+    <>
       <button
         type="button"
-        aria-haspopup="listbox"
+        aria-haspopup="dialog"
         aria-expanded={open}
         aria-label={label ?? "Language"}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => setOpen(true)}
         className={cn(
           "flex w-full items-center justify-between gap-3 rounded-full border py-2 pl-4 pr-3 font-utility text-xs uppercase tracking-wide transition-colors",
           inverted
             ? "border-warm-white/25 text-warm-white hover:border-warm-white/60"
             : "border-stone-dark text-charcoal/80 hover:border-forest hover:text-forest",
-          open && !inverted && "border-forest text-forest",
-          open && inverted && "border-warm-white/60"
+          className
         )}
       >
         <span className="flex items-center gap-2 truncate">
-          <GlobeIcon className="h-3.5 w-3.5 shrink-0 opacity-70" />
-          {localeNames[active] ?? localeNames.en}
+          <FlagIcon iso={(localeCountries[active] ?? localeCountries.en).iso} className="h-3.5 w-3.5" />
+          {(localeCountries[active] ?? localeCountries.en).name}
         </span>
-        <motion.span
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className={cn("shrink-0", inverted ? "text-warm-white/70" : "text-charcoal/45")}
+        <svg
+          viewBox="0 0 12 8"
+          className={cn("h-2 w-3 shrink-0", inverted ? "text-warm-white/70" : "text-charcoal/45")}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          aria-hidden="true"
         >
-          <svg viewBox="0 0 12 8" className="h-2 w-3" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
-            <path d="M1 1.5 6 6.5l5-5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </motion.span>
+          <path d="M1 1.5 6 6.5l5-5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </button>
 
-      <AnimatePresence>
-        {open && (
-          <motion.ul
-            role="listbox"
-            aria-label={label ?? "Language"}
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute left-0 right-0 z-50 mt-2 overflow-hidden rounded-xl border border-stone-dark bg-warm-white p-1 shadow-[0_12px_32px_rgba(28,30,27,0.14)]"
-          >
-            {locales.map((locale) => {
-              const isActive = locale === active;
-              return (
-                <li key={locale}>
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18 }}
+                className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/60 p-4 backdrop-blur-sm sm:p-6"
+                onClick={() => setOpen(false)}
+              >
+                <motion.div
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="locale-dialog-title"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 12 }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  onClick={(event) => event.stopPropagation()}
+                  className="relative w-full max-w-3xl rounded-2xl bg-warm-white p-6 shadow-[0_24px_64px_rgba(28,30,27,0.25)] sm:p-10"
+                >
                   <button
+                    ref={closeRef}
                     type="button"
-                    role="option"
-                    aria-selected={isActive}
-                    onClick={() => select(locale)}
-                    className={cn(
-                      "flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-left font-utility text-xs uppercase tracking-wide transition-colors",
-                      isActive
-                        ? "bg-forest text-warm-white"
-                        : "text-charcoal/80 hover:bg-forest/10 hover:text-forest"
-                    )}
+                    onClick={() => setOpen(false)}
+                    aria-label="Close"
+                    className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full text-charcoal/60 transition-colors hover:bg-stone hover:text-charcoal sm:right-6 sm:top-6"
                   >
-                    {localeNames[locale]}
-                    {isActive && <CheckIcon className="h-3 w-3 shrink-0" />}
+                    <svg viewBox="0 0 14 14" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                      <path d="M1 1l12 12M13 1L1 13" strokeLinecap="round" />
+                    </svg>
                   </button>
-                </li>
-              );
-            })}
-          </motion.ul>
+
+                  <h2
+                    id="locale-dialog-title"
+                    className="pr-10 text-center font-display text-lg text-charcoal sm:text-xl"
+                  >
+                    {label ?? "Choose your language"}
+                  </h2>
+
+                  <div className="mx-auto mt-3 h-px w-full max-w-xs bg-stone-dark" />
+
+                  <ul
+                    role="listbox"
+                    aria-label={label ?? "Language"}
+                    className="mx-auto mt-6 grid max-w-lg grid-cols-1 gap-2 sm:grid-cols-2"
+                  >
+                    {locales.map((locale) => {
+                      const isActive = locale === active;
+                      const country = localeCountries[locale];
+                      return (
+                        <li key={locale}>
+                          <button
+                            type="button"
+                            role="option"
+                            aria-selected={isActive}
+                            onClick={() => select(locale)}
+                            className={cn(
+                              "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition-colors",
+                              isActive
+                                ? "bg-forest text-warm-white"
+                                : "text-charcoal/80 hover:bg-forest/10 hover:text-forest"
+                            )}
+                          >
+                            <span
+                              className={cn(
+                                "flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full",
+                                isActive ? "bg-warm-white/15" : "bg-stone"
+                              )}
+                            >
+                              <FlagIcon iso={country.iso} className="h-8 w-8" />
+                            </span>
+                            <span className="min-w-0 flex-1 truncate font-medium">
+                              {country.name}
+                            </span>
+                            {isActive && (
+                              <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" strokeWidth="2.2" className="h-3 w-3 shrink-0" aria-hidden="true">
+                                <path d="M1 5.2 4.3 8.5 11 1.5" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                            )}
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
-function GlobeIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" className={className} aria-hidden="true">
-      <circle cx="8" cy="8" r="6.25" />
-      <path d="M8 1.75c1.6 1.7 2.4 3.79 2.4 6.25S9.6 12.55 8 14.25C6.4 12.55 5.6 10.46 5.6 8s.8-4.55 2.4-6.25ZM2 8h12" />
-    </svg>
-  );
-}
-
-function CheckIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
-      <path d="M1 5.2 4.3 8.5 11 1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    </>
   );
 }

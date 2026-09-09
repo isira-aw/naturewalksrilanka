@@ -4,8 +4,8 @@
     "name": "Negombo",
     "region": "West Coast",
     "description": "The gateway to Sri Lanka, close to the international airport. Home to a Dutch canal, a working fish market, and a calm first or last night on tour.",
-    "image": "/images/destinations/negombo/cover.jpg",
-    "heroImage": "/images/destinations/negombo/hero.jpg",
+    "image": "/images/destinations/negombo/negombo2.jpg",
+    "heroImage": "/images/destinations/negombo/negombo.jpg",
     "activities": [
       "culture-history"
     ],
@@ -50,36 +50,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/negombo/01.jpg",
+        "src": "/images/destinations/negombo/negombo3.jpg",
         "alt": "Outrigger canoes on Negombo beach at sunrise",
         "caption": "Outrigger canoes on Negombo beach at sunrise"
-      },
-      {
-        "src": "/images/destinations/negombo/02.jpg",
-        "alt": "The Lellama fish market in full swing",
-        "caption": "The Lellama fish market in full swing"
-      },
-      {
-        "src": "/images/destinations/negombo/03.jpg",
-        "alt": "The Dutch-built Hamilton Canal at first light",
-        "caption": "The Dutch-built Hamilton Canal at first light"
-      },
-      {
-        "src": "/images/destinations/negombo/04.jpg",
-        "alt": "Fishing nets drying on the lagoon shore",
-        "caption": "Fishing nets drying on the lagoon shore"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "wilpattu",
     "name": "Wilpattu National Park",
     "region": "North Western Province",
     "description": "Sri Lanka's largest national park, known for leopard, sloth bear, elephant, its natural lakes (villus), and dry-zone birdlife.",
-    "image": "/images/destinations/wilpattu/cover.jpg",
-    "heroImage": "/images/destinations/wilpattu/hero.jpg",
+    "image": "/images/destinations/wilpattu/wilpattu2.jpg",
+    "heroImage": "/images/destinations/wilpattu/wilpattu.jpg",
     "activities": [
       "wildlife-safari",
       "birding"
@@ -127,36 +112,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/wilpattu/01.jpg",
+        "src": "/images/destinations/wilpattu/wilpattu3.avif",
         "alt": "A leopard resting on a track in Wilpattu",
         "caption": "A leopard resting on a track in Wilpattu"
-      },
-      {
-        "src": "/images/destinations/wilpattu/02.jpg",
-        "alt": "Open water at one of Wilpattu's villus",
-        "caption": "Open water at one of Wilpattu's villus"
-      },
-      {
-        "src": "/images/destinations/wilpattu/03.jpg",
-        "alt": "Spotted deer at the forest edge",
-        "caption": "Spotted deer at the forest edge"
-      },
-      {
-        "src": "/images/destinations/wilpattu/04.jpg",
-        "alt": "A painted stork fishing in the shallows",
-        "caption": "A painted stork fishing in the shallows"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "anuradhapura",
     "name": "Anuradhapura",
     "region": "North Central Province",
     "description": "One of Sri Lanka's ancient capitals, with a wide ancient-city complex visited alongside nearby Mihintale Temple.",
-    "image": "/images/destinations/anuradhapura/cover.jpg",
-    "heroImage": "/images/destinations/anuradhapura/hero.jpg",
+    "image": "/images/destinations/anuradhapura/anuradhapura2.webp",
+    "heroImage": "/images/destinations/anuradhapura/anuradhapura.jpg",
     "activities": [
       "culture-history"
     ],
@@ -201,36 +171,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/anuradhapura/01.jpg",
+        "src": "/images/destinations/anuradhapura/anuradhapura3.jpg",
         "alt": "The Ruwanwelisaya stupa in white",
         "caption": "The Ruwanwelisaya stupa in white"
-      },
-      {
-        "src": "/images/destinations/anuradhapura/02.jpg",
-        "alt": "Pilgrims at the Sri Maha Bodhi",
-        "caption": "Pilgrims at the Sri Maha Bodhi"
-      },
-      {
-        "src": "/images/destinations/anuradhapura/03.jpg",
-        "alt": "The stairway climbing Mihintale",
-        "caption": "The stairway climbing Mihintale"
-      },
-      {
-        "src": "/images/destinations/anuradhapura/04.jpg",
-        "alt": "Moonstone carving at the ancient city",
-        "caption": "Moonstone carving at the ancient city"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "trincomalee",
     "name": "Trincomalee",
     "region": "Eastern Province",
     "description": "A harbour city on the east coast, the departure point for Pigeon Island and dolphin watching trips.",
-    "image": "/images/destinations/trincomalee/cover.jpg",
-    "heroImage": "/images/destinations/trincomalee/hero.jpg",
+    "image": "/images/destinations/trincomalee/trincomalee2.jpg",
+    "heroImage": "/images/destinations/trincomalee/trincomalee.jpg",
     "activities": [
       "beach",
       "wildlife-safari"
@@ -277,36 +232,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/trincomalee/01.jpg",
+        "src": "/images/destinations/trincomalee/trincomalee3.jpg",
         "alt": "Koneswaram temple above Swami Rock",
         "caption": "Koneswaram temple above Swami Rock"
-      },
-      {
-        "src": "/images/destinations/trincomalee/02.jpg",
-        "alt": "Reef and clear water at Pigeon Island",
-        "caption": "Reef and clear water at Pigeon Island"
-      },
-      {
-        "src": "/images/destinations/trincomalee/03.jpg",
-        "alt": "The long beach at Nilaveli",
-        "caption": "The long beach at Nilaveli"
-      },
-      {
-        "src": "/images/destinations/trincomalee/04.jpg",
-        "alt": "A blue whale surfacing off Trincomalee",
-        "caption": "A blue whale surfacing off Trincomalee"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "sigiriya",
     "name": "Sigiriya",
     "region": "Central Province",
     "description": "Home to the Lion Rock Fortress and Pidurangala Temple, with Polonnaruwa's ancient city and Minneriya National Park nearby.",
-    "image": "/images/destinations/sigiriya/cover.jpg",
-    "heroImage": "/images/destinations/sigiriya/hero.jpg",
+    "image": "/images/destinations/sigiriya/sigiriya2.jpg",
+    "heroImage": "/images/destinations/sigiriya/sigiriya.jpg",
     "activities": [
       "culture-history",
       "wildlife-safari"
@@ -353,36 +293,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/sigiriya/01.jpg",
+        "src": "/images/destinations/sigiriya/sigiriya3.jpg",
         "alt": "Sigiriya rock rising out of the forest",
         "caption": "Sigiriya rock rising out of the forest"
-      },
-      {
-        "src": "/images/destinations/sigiriya/02.jpg",
-        "alt": "The lion's paws at the foot of the final stairway",
-        "caption": "The lion's paws at the foot of the final stairway"
-      },
-      {
-        "src": "/images/destinations/sigiriya/03.jpg",
-        "alt": "The Sigiriya frescoes",
-        "caption": "The Sigiriya frescoes"
-      },
-      {
-        "src": "/images/destinations/sigiriya/04.jpg",
-        "alt": "The water gardens seen from the summit",
-        "caption": "The water gardens seen from the summit"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "polonnaruwa",
     "name": "Polonnaruwa",
     "region": "North Central Province",
     "description": "Sri Lanka's second ancient capital, explored on an ancient-city tour paired with a visit to Minneriya National Park.",
-    "image": "/images/destinations/polonnaruwa/cover.jpg",
-    "heroImage": "/images/destinations/polonnaruwa/hero.jpg",
+    "image": "/images/destinations/polonnaruwa/polonnaruwa2.jpg",
+    "heroImage": "/images/destinations/polonnaruwa/polonnaruwa.jpg",
     "activities": [
       "culture-history"
     ],
@@ -432,36 +357,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/polonnaruwa/01.jpg",
+        "src": "/images/destinations/polonnaruwa/polonnaruwa3.jpg",
         "alt": "The reclining Buddha at Gal Vihara",
         "caption": "The reclining Buddha at Gal Vihara"
-      },
-      {
-        "src": "/images/destinations/polonnaruwa/02.jpg",
-        "alt": "The circular Vatadage",
-        "caption": "The circular Vatadage"
-      },
-      {
-        "src": "/images/destinations/polonnaruwa/03.jpg",
-        "alt": "Cycling between the ruins",
-        "caption": "Cycling between the ruins"
-      },
-      {
-        "src": "/images/destinations/polonnaruwa/04.jpg",
-        "alt": "Elephants at Minneriya tank",
-        "caption": "Elephants at Minneriya tank"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "kandy",
     "name": "Kandy",
     "region": "Central Province",
     "description": "The hill-country cultural capital: the Temple of the Sacred Tooth Relic, a cultural show, tea factories, and the Dambulla Cave Temple en route.",
-    "image": "/images/destinations/kandy/cover.jpg",
-    "heroImage": "/images/destinations/kandy/hero.jpg",
+    "image": "/images/destinations/kandy/kandy2.jpg",
+    "heroImage": "/images/destinations/kandy/kandy.jpg",
     "activities": [
       "culture-history"
     ],
@@ -507,36 +417,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/kandy/01.jpg",
+        "src": "/images/destinations/kandy/kandy3.jpg",
         "alt": "The Temple of the Sacred Tooth Relic at dusk",
         "caption": "The Temple of the Sacred Tooth Relic at dusk"
-      },
-      {
-        "src": "/images/destinations/kandy/02.jpg",
-        "alt": "Kandy lake and the old town",
-        "caption": "Kandy lake and the old town"
-      },
-      {
-        "src": "/images/destinations/kandy/03.jpg",
-        "alt": "Drummers at the evening puja",
-        "caption": "Drummers at the evening puja"
-      },
-      {
-        "src": "/images/destinations/kandy/04.jpg",
-        "alt": "The palm avenue at Peradeniya Botanical Gardens",
-        "caption": "The palm avenue at Peradeniya Botanical Gardens"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "kithulgala",
     "name": "Kithulgala",
     "region": "Sabaragamuwa Province",
     "description": "A rainforest-edge village on the Kelani River, known for white-water rafting, canyoning, zip-lining, and rich birdlife.",
-    "image": "/images/destinations/kithulgala/cover.jpg",
-    "heroImage": "/images/destinations/kithulgala/hero.jpg",
+    "image": "/images/destinations/kithulgala/kithulgala2.jpg",
+    "heroImage": "/images/destinations/kithulgala/kithulgala.jpg",
     "activities": [
       "adventure-sports",
       "birding"
@@ -583,36 +478,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/kithulgala/01.jpg",
+        "src": "/images/destinations/kithulgala/kithulgala3.webp",
         "alt": "Rafting the Kelani River",
         "caption": "Rafting the Kelani River"
-      },
-      {
-        "src": "/images/destinations/kithulgala/02.jpg",
-        "alt": "Rainforest canopy at Makandawa",
-        "caption": "Rainforest canopy at Makandawa"
-      },
-      {
-        "src": "/images/destinations/kithulgala/03.jpg",
-        "alt": "A Sri Lanka blue magpie",
-        "caption": "A Sri Lanka blue magpie"
-      },
-      {
-        "src": "/images/destinations/kithulgala/04.jpg",
-        "alt": "The river crossing to the forest reserve",
-        "caption": "The river crossing to the forest reserve"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "ella",
     "name": "Ella",
     "region": "Uva Province",
     "description": "A hill-country town reached by one of the world's most scenic train journeys, home to the Nine Arch Bridge, Little Adam's Peak, and Ravana Waterfall.",
-    "image": "/images/destinations/ella/cover.jpg",
-    "heroImage": "/images/destinations/ella/hero.jpg",
+    "image": "/images/destinations/ella/ella2.jpg",
+    "heroImage": "/images/destinations/ella/ella.jpg",
     "activities": [
       "trekking",
       "culture-history"
@@ -659,36 +539,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/ella/01.jpg",
+        "src": "/images/destinations/ella/ella3.jpg",
         "alt": "A train crossing the Nine Arches Bridge",
         "caption": "A train crossing the Nine Arches Bridge"
-      },
-      {
-        "src": "/images/destinations/ella/02.jpg",
-        "alt": "Tea pickers on the slopes above Ella",
-        "caption": "Tea pickers on the slopes above Ella"
-      },
-      {
-        "src": "/images/destinations/ella/03.jpg",
-        "alt": "The view from Little Adam's Peak",
-        "caption": "The view from Little Adam's Peak"
-      },
-      {
-        "src": "/images/destinations/ella/04.jpg",
-        "alt": "Ravana Falls after rain",
-        "caption": "Ravana Falls after rain"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "yala",
     "name": "Yala National Park",
     "region": "Southern Province",
     "description": "A dry-zone park of scrub jungle, water reservoirs, brackish lagoons and riverine habitats — the best park in the country to see leopard and sloth bear.",
-    "image": "/images/destinations/yala/cover.jpg",
-    "heroImage": "/images/destinations/yala/hero.jpg",
+    "image": "/images/destinations/yala/yala2.jpg",
+    "heroImage": "/images/destinations/yala/yala.webp",
     "activities": [
       "wildlife-safari",
       "birding"
@@ -735,36 +600,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/yala/01.jpg",
+        "src": "/images/destinations/yala/yala3.jpg",
         "alt": "A leopard on a granite outcrop in Yala",
         "caption": "A leopard on a granite outcrop in Yala"
-      },
-      {
-        "src": "/images/destinations/yala/02.jpg",
-        "alt": "Elephants crossing a park track",
-        "caption": "Elephants crossing a park track"
-      },
-      {
-        "src": "/images/destinations/yala/03.jpg",
-        "alt": "A lagoon in the early morning",
-        "caption": "A lagoon in the early morning"
-      },
-      {
-        "src": "/images/destinations/yala/04.jpg",
-        "alt": "Sithulpawwa monastery inside the park",
-        "caption": "Sithulpawwa monastery inside the park"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "sinharaja",
     "name": "Sinharaja Rain Forest",
     "region": "Sabaragamuwa Province",
     "description": "A UNESCO World Heritage Site holding the richest biodiversity in Asia, and home to most of Sri Lanka's endemic flora and fauna.",
-    "image": "/images/destinations/sinharaja/cover.jpg",
-    "heroImage": "/images/destinations/sinharaja/hero.jpg",
+    "image": "/images/destinations/sinharaja/sinharaja2.jpg",
+    "heroImage": "/images/destinations/sinharaja/sinharaja.jpg",
     "activities": [
       "birding",
       "trekking"
@@ -811,36 +661,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/sinharaja/01.jpg",
+        "src": "/images/destinations/sinharaja/sinharaja3.jpg",
         "alt": "The rainforest canopy at Sinharaja",
         "caption": "The rainforest canopy at Sinharaja"
-      },
-      {
-        "src": "/images/destinations/sinharaja/02.jpg",
-        "alt": "A Sri Lanka blue magpie in the understorey",
-        "caption": "A Sri Lanka blue magpie in the understorey"
-      },
-      {
-        "src": "/images/destinations/sinharaja/03.jpg",
-        "alt": "A mixed-species feeding flock passing through",
-        "caption": "A mixed-species feeding flock passing through"
-      },
-      {
-        "src": "/images/destinations/sinharaja/04.jpg",
-        "alt": "Streams and buttress roots on the forest trail",
-        "caption": "Streams and buttress roots on the forest trail"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "nuwara-eliya",
     "name": "Nuwara Eliya",
     "region": "Central Highlands",
     "description": "A cool-climate hill station, home to Victoria Park and the gateway to Horton Plains National Park.",
-    "image": "/images/destinations/nuwara-eliya/cover.jpg",
-    "heroImage": "/images/destinations/nuwara-eliya/hero.jpg",
+    "image": "/images/destinations/nuwara-eliya/nuwara-eliya2.jpg",
+    "heroImage": "/images/destinations/nuwara-eliya/nuwara-eliya.jpg",
     "activities": [
       "birding"
     ],
@@ -886,36 +721,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/nuwara-eliya/01.jpg",
+        "src": "/images/destinations/nuwara-eliya/nuwara-eliya3.jpg",
         "alt": "Tea estates above Nuwara Eliya",
         "caption": "Tea estates above Nuwara Eliya"
-      },
-      {
-        "src": "/images/destinations/nuwara-eliya/02.jpg",
-        "alt": "Plucking on the Pedro Estate",
-        "caption": "Plucking on the Pedro Estate"
-      },
-      {
-        "src": "/images/destinations/nuwara-eliya/03.jpg",
-        "alt": "Victoria Park in the early morning",
-        "caption": "Victoria Park in the early morning"
-      },
-      {
-        "src": "/images/destinations/nuwara-eliya/04.jpg",
-        "alt": "Mist over Gregory Lake",
-        "caption": "Mist over Gregory Lake"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "horton-plains",
     "name": "Horton Plains National Park",
     "region": "Central Highlands",
     "description": "Montane grassland and cloud forest at altitude, home to several of Sri Lanka's highland endemic birds.",
-    "image": "/images/destinations/horton-plains/cover.jpg",
-    "heroImage": "/images/destinations/horton-plains/hero.jpg",
+    "image": "/images/destinations/horton-plains/horton-plains2.jpg",
+    "heroImage": "/images/destinations/horton-plains/horton-plains.jpg",
     "activities": [
       "birding",
       "trekking"
@@ -962,36 +782,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/horton-plains/01.jpg",
+        "src": "/images/destinations/horton-plains/horton-plains3.webp",
         "alt": "The escarpment at World's End",
         "caption": "The escarpment at World's End"
-      },
-      {
-        "src": "/images/destinations/horton-plains/02.jpg",
-        "alt": "Montane grassland at dawn",
-        "caption": "Montane grassland at dawn"
-      },
-      {
-        "src": "/images/destinations/horton-plains/03.jpg",
-        "alt": "Baker's Falls",
-        "caption": "Baker's Falls"
-      },
-      {
-        "src": "/images/destinations/horton-plains/04.jpg",
-        "alt": "Sambar deer on the plateau",
-        "caption": "Sambar deer on the plateau"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "tissamaharama",
     "name": "Tissamaharama",
     "region": "Southern Province",
     "description": "A base town near Yala, with birding around its ancient water tanks and a nearby bird sanctuary.",
-    "image": "/images/destinations/tissamaharama/cover.jpg",
-    "heroImage": "/images/destinations/tissamaharama/hero.jpg",
+    "image": "/images/destinations/tissamaharama/tissamaharama2.jpg",
+    "heroImage": "/images/destinations/tissamaharama/tissamaharama.jpg",
     "activities": [
       "birding"
     ],
@@ -1041,36 +846,21 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/tissamaharama/01.jpg",
+        "src": "/images/destinations/tissamaharama/tissamaharama3.jpg",
         "alt": "Tissa Wewa at first light",
         "caption": "Tissa Wewa at first light"
-      },
-      {
-        "src": "/images/destinations/tissamaharama/02.jpg",
-        "alt": "The white stupa at Tissamaharama",
-        "caption": "The white stupa at Tissamaharama"
-      },
-      {
-        "src": "/images/destinations/tissamaharama/03.jpg",
-        "alt": "Flamingos at Bundala",
-        "caption": "Flamingos at Bundala"
-      },
-      {
-        "src": "/images/destinations/tissamaharama/04.jpg",
-        "alt": "Pilgrims at Kataragama in the evening",
-        "caption": "Pilgrims at Kataragama in the evening"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   },
   {
     "slug": "mirissa",
     "name": "Mirissa",
     "region": "Southern Province",
     "description": "A south-coast beach town, paired with a visit to Galle's Dutch Fort.",
-    "image": "/images/destinations/mirissa/cover.jpg",
-    "heroImage": "/images/destinations/mirissa/hero.jpg",
+    "image": "/images/destinations/mirissa/mirissa2.jpg",
+    "heroImage": "/images/destinations/mirissa/mirissa.webp",
     "activities": [
       "beach",
       "culture-history"
@@ -1117,27 +907,12 @@
     ],
     "gallery": [
       {
-        "src": "/images/destinations/mirissa/01.jpg",
+        "src": "/images/destinations/mirissa/mirissa3.jpg",
         "alt": "The bay at Mirissa from the headland",
         "caption": "The bay at Mirissa from the headland"
-      },
-      {
-        "src": "/images/destinations/mirissa/02.jpg",
-        "alt": "A blue whale off the south coast",
-        "caption": "A blue whale off the south coast"
-      },
-      {
-        "src": "/images/destinations/mirissa/03.jpg",
-        "alt": "Spinner dolphins beside the boat",
-        "caption": "Spinner dolphins beside the boat"
-      },
-      {
-        "src": "/images/destinations/mirissa/04.jpg",
-        "alt": "The ramparts of Galle Fort at sunset",
-        "caption": "The ramparts of Galle Fort at sunset"
       }
     ],
     "_reviewStatus": "draft-written-for-review",
-    "_note": "Long-form text drafted for Nandana's review; photographs not yet supplied."
+    "_note": "Long-form text drafted for Nandana's review."
   }
 ]
