@@ -7,7 +7,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/api/",
+      // The admin tool is reached by typing its address, never by crawling to it.
+      disallow: ["/api/", "/admin", "/*/admin"],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };

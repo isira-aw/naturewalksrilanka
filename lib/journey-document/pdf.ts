@@ -1,6 +1,8 @@
 "use client";
 
 import { cropToAspect, tinted, type LoadedImage } from "./assets";
+import { drawRouteMap } from "./mapCanvas";
+import { ARRIVAL_POINT } from "@/lib/geo/sriLanka";
 import type { JourneyDocument, JourneyItinerary } from "./model";
 
 /* A4, in millimetres. */
@@ -155,7 +157,11 @@ export async function buildJourneyPdf(
   }
 
   function renderItinerary(itinerary: JourneyItinerary) {
-    newPage(itinerary.images[0] ?? doc.coverImage);
+    /* The page sits on one of this itinerary's "what you might see"
+       photographs where there is one — that is what the section is about. The
+       header band keeps the itinerary's own picture, so the two are not the
+       same image twice. */
+    newPage(itinerary.backgroundImage ?? itinerary.images[0] ?? doc.coverImage);
 
     /* A full-bleed band: the photograph carries the title rather than sitting
        under it, which is what makes the printed page read as a brochure. */
@@ -171,7 +177,13 @@ export async function buildJourneyPdf(
     pdf.setTextColor(255, 255, 255);
     pdf.setFont("helvetica", "normal");
     pdf.setFontSize(9);
-    pdf.text(safe(itinerary.location.toUpperCase()), MARGIN, bandH - 26);
+    pdf.text(
+      `${itinerary.order}. ${safe(itinerary.dayLabel.toUpperCase())}  |  ${safe(
+        itinerary.location.toUpperCase()
+      )}`,
+      MARGIN,
+      bandH - 26
+    );
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(20);
     const heading: string[] = pdf.splitTextToSize(safe(itinerary.title), CONTENT_W);
@@ -280,10 +292,43 @@ export async function buildJourneyPdf(
   sectionTitle(doc.labels.summaryTitle);
   rows(doc.summaryRows);
 
-  if (doc.aiRoute.length) {
-    sectionTitle(doc.labels.aiRouteTitle);
-    doc.aiRoute.forEach((line) => paragraph(line, { gap: 0, lineHeight: 5.5 }));
-    cursor += 4;
+  /* ---------- the route, and the map of it ---------- */
+
+  if (doc.route.length) {
+    sectionTitle(doc.labels.routeTitle);
+    for (const stop of doc.route) {
+      /* Number, days and place on one line, then the drive in underneath —
+         the same shape the wizard showed, so the printed page is recognisable
+         as the plan the traveller already agreed to. */
+      ensure(13);
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(10.5);
+      setColor(CHARCOAL);
+      pdf.text(`${stop.order}. ${safe(stop.title)}`, MARGIN, cursor);
+      cursor += 5;
+
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(9.5);
+      setColor(MUTED);
+      pdf.text(`${safe(stop.dayLabel)} - ${safe(stop.location)}`, MARGIN, cursor);
+      cursor += stop.driveLabel ? 4.8 : 7;
+
+      if (stop.driveLabel) {
+        pdf.text(safe(stop.driveLabel), MARGIN, cursor);
+        cursor += 7;
+      }
+    }
+    cursor += 2;
+
+    if (doc.mapStops.length) {
+      const map = drawRouteMap(doc.mapStops, ARRIVAL_POINT, { width: 800, height: 1100 });
+      const mapH = BOTTOM - MARGIN - 14;
+      const mapW = (mapH * map.width) / map.height;
+      newPage();
+      sectionTitle(doc.labels.mapTitle);
+      place(map, "route-map", MARGIN + (CONTENT_W - mapW) / 2, cursor, mapW, mapH - 10);
+      cursor += mapH - 4;
+    }
   }
 
   /* ---------- one section per selected itinerary ---------- */
@@ -295,6 +340,18 @@ export async function buildJourneyPdf(
   newPage(doc.coverImage);
   sectionTitle(doc.labels.contactTitle);
   rows(doc.contactRows);
+
+  /* ---------- how this document came to be ---------- */
+
+  ensure(60);
+  cursor += 4;
+  sectionTitle(doc.labels.noticeTitle);
+  paragraph(doc.labels.notice, { lineHeight: 5.2 });
+  if (doc.whatsappNumber.trim()) {
+    paragraph(`${doc.labels.whatsappLabel}: +${doc.whatsappNumber.replace(/\D/g, "")}`, {
+      style: "bold",
+    });
+  }
 
   /* ---------- footers ---------- */
 

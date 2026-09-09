@@ -91,7 +91,7 @@
       "dates": "Data",
       "interests": "Interesses",
       "accommodation": "Accommodatie",
-      "aiAssistant": "AI-reisassistent",
+      "journeyPlan": "Reisplan",
       "contact": "Contactgegevens",
       "review": "Overzicht"
     },
@@ -117,13 +117,11 @@
     "interestsLabel": "Waarin ben je het meest geïnteresseerd?",
     "interestsHint": "Kies er een of meer. Passende reisroutes verschijnen hieronder.",
     "interests": {
-      "wildlife": "Wilde dieren",
-      "trekking": "Trekking",
-      "culture": "Cultuur",
-      "birding": "Vogels kijken",
-      "beach": "Strand",
-      "photography": "Fotografie",
-      "adventure": "Avontuur"
+      "birding-wildlife": "Vogels en wilde dieren",
+      "wildlife-photography": "Wilde dieren en fotografie",
+      "culture": "Cultuurreizen",
+      "adventure": "Avontuurlijke reizen",
+      "others": "Overig"
     },
     "suggestionsTitle": "Reisroutes",
     "suggestionsEmpty": "Kies een categorie om de bijbehorende kant-en-klare reisroutes te zien.",
@@ -148,22 +146,20 @@
       "recommend": "Weet ik niet — adviseer mij"
     },
     "accommodationNotesLabel": "Nog iets over de accommodatie?",
-    "aiAssistant": {
-      "title": "Laat AI een route voor je schetsen",
-      "intro": "Op basis van alles wat je ons hebt verteld, stellen we een route per dag door Sri Lanka voor — jij kiest elke dag je favoriete optie.",
-      "generateCta": "Maak mijn routevoorstel",
-      "loading": "Je route wordt samengesteld…",
-      "error": "We konden nu geen route genereren. Ga verder en bespreek je reis rechtstreeks met ons.",
-      "rateLimited": "Je hebt het maximum aantal routevoorstellen voor dit apparaat vandaag bereikt. Ga verder en bespreek je reis rechtstreeks met ons.",
+    "journeyPlan": {
+      "title": "Uw reis, stop voor stop",
+      "intro": "We hebben de gekozen itineraries in een logische rijvolgorde gezet, vanaf de luchthaven, en op uw data afgestemd.",
+      "empty": "Ga terug naar Interesses en voeg minstens één itinerary toe — uw reisplan wordt daaruit opgebouwd.",
+      "routeTitle": "Uw route",
+      "mapTitle": "Uw route op de kaart",
+      "startLabel": "Aankomst — Bandaranaike International Airport",
       "dayLabel": "Dag {day}",
-      "skip": "Sla deze stap over",
-      "regenerate": "Opnieuw beginnen",
-      "backDay": "Terug naar de vorige dag",
-      "distanceLabel": "{km} km vanaf de vorige stop · ongeveer {duration} over de weg",
-      "recommendedLabel": "Onze keuze voor jou",
-      "recommendedBadge": "Aanbevolen",
-      "otherOptionsLabel": "Andere opties voor deze dag",
-      "selectedSummaryTitle": "Jouw voorgestelde route"
+      "dayRangeLabel": "Dag {from}–{to}",
+      "driveLabel": "{km} km vanaf de vorige stop · ongeveer {duration} over de weg",
+      "totalLabel": "{count} stops · in totaal ongeveer {km} km rijden",
+      "overflowNote": "Uw data zijn korter dan de gekozen itineraries nodig hebben. Het plan hieronder loopt door na uw vertrekdatum — verwijder een itinerary of overleg met ons over een langere reis.",
+      "downloadTitle": "Neem het mee",
+      "downloadHint": "Hetzelfde plan als pdf om te lezen, of als Word-bestand dat u kunt aanpassen en terugsturen."
     },
     "contactName": "Naam",
     "contactEmail": "E-mail",
@@ -188,11 +184,16 @@
       "preparedOn": "Samengesteld op",
       "summaryTitle": "Jouw reis in het kort",
       "itinerariesTitle": "Gekozen reisroutes",
-      "aiRouteTitle": "Voorgestelde route per dag",
       "contactTitle": "Jouw gegevens",
       "footer": "Nature Walk Sri Lanka · naturewalksrilanka.com",
-      "fileName": "sri-lanka-reis"
-    }
+      "fileName": "sri-lanka-reis",
+      "routeTitle": "Uw route, stop voor stop",
+      "mapTitle": "Uw route op de kaart",
+      "noticeTitle": "Over dit document",
+      "notice": "Dit document is automatisch samengesteld uit de itineraries waarin u aangaf geïnteresseerd te zijn. Het is een startpunt, geen vaste boeking. Moet er iets veranderen — de volgorde van de stops, de duur, of de itineraries zelf — neem dan contact op met ons team via WhatsApp. Geen zorgen: ze helpen u graag.",
+      "whatsappLabel": "WhatsApp"
+    },
+    "downloadDoc": "Downloaden als Word"
   },
   "nandana": {
     "introEyebrow": "Wie is Nandana",

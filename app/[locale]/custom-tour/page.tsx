@@ -7,7 +7,6 @@ import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
 import { PageHero } from "@/components/ui/PageHero";
 import { WizardShell } from "@/components/custom-tour/WizardShell";
-import { isAiAssistantEnabled } from "@/lib/ai/config";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -78,7 +77,6 @@ export default async function CustomTourPage({
             locale={l}
             whatsappNumber={navigation.contact.whatsappNumber}
             experiences={experiences}
-            aiAssistantEnabled={isAiAssistantEnabled()}
           />
         </div>
       </section>

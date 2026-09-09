@@ -91,7 +91,7 @@
       "dates": "Fechas",
       "interests": "Intereses",
       "accommodation": "Alojamiento",
-      "aiAssistant": "Asistente de viaje IA",
+      "journeyPlan": "Plan del viaje",
       "contact": "Datos de contacto",
       "review": "Resumen"
     },
@@ -117,13 +117,11 @@
     "interestsLabel": "¿Qué es lo que más te interesa?",
     "interestsHint": "Elige una o varias. Debajo aparecen los itinerarios que encajan.",
     "interests": {
-      "wildlife": "Fauna salvaje",
-      "trekking": "Trekking",
-      "culture": "Cultura",
-      "birding": "Observación de aves",
-      "beach": "Playa",
-      "photography": "Fotografía",
-      "adventure": "Aventura"
+      "birding-wildlife": "Aves y fauna salvaje",
+      "wildlife-photography": "Fauna y fotografía",
+      "culture": "Rutas culturales",
+      "adventure": "Rutas de aventura",
+      "others": "Otros"
     },
     "suggestionsTitle": "Itinerarios",
     "suggestionsEmpty": "Elige una categoría para ver los itinerarios ya preparados que le corresponden.",
@@ -148,22 +146,20 @@
       "recommend": "No lo tengo claro, recomendadme"
     },
     "accommodationNotesLabel": "¿Algo más sobre el alojamiento?",
-    "aiAssistant": {
-      "title": "Deja que la IA te esboce una ruta",
-      "intro": "A partir de todo lo que nos has contado, podemos proponerte una ruta día a día por Sri Lanka; tú eliges tu opción favorita cada jornada.",
-      "generateCta": "Generar mi itinerario",
-      "loading": "Preparando tu itinerario…",
-      "error": "Ahora mismo no hemos podido generar un itinerario. Continúa y coméntanos tu viaje directamente.",
-      "rateLimited": "Has alcanzado el límite de itinerarios para este dispositivo por hoy. Continúa y coméntanos tu viaje directamente.",
+    "journeyPlan": {
+      "title": "Su viaje, parada a parada",
+      "intro": "Hemos ordenado los itinerarios que eligió en una ruta lógica en coche, desde el aeropuerto, y los hemos ajustado a sus fechas.",
+      "empty": "Vuelva al paso Intereses y añada al menos un itinerario: su plan de viaje se construye a partir de ellos.",
+      "routeTitle": "Su ruta",
+      "mapTitle": "Su ruta en el mapa",
+      "startLabel": "Llegada — Aeropuerto Internacional Bandaranaike",
       "dayLabel": "Día {day}",
-      "skip": "Saltar este paso",
-      "regenerate": "Empezar de nuevo",
-      "backDay": "Volver al día anterior",
-      "distanceLabel": "{km} km desde la parada anterior · unas {duration} por carretera",
-      "recommendedLabel": "Nuestra elección para ti",
-      "recommendedBadge": "Recomendado",
-      "otherOptionsLabel": "Otras opciones para este día",
-      "selectedSummaryTitle": "Tu ruta propuesta"
+      "dayRangeLabel": "Días {from}–{to}",
+      "driveLabel": "{km} km desde la parada anterior · unas {duration} por carretera",
+      "totalLabel": "{count} paradas · unos {km} km de conducción en total",
+      "overflowNote": "Sus fechas son más cortas de lo que necesitan los itinerarios elegidos. El plan siguiente se extiende más allá de su fecha de salida: quite un itinerario o hable con nosotros para alargar el viaje.",
+      "downloadTitle": "Llévelo consigo",
+      "downloadHint": "El mismo plan en PDF para leer, o en Word para editarlo y devolvérnoslo."
     },
     "contactName": "Nombre",
     "contactEmail": "Correo electrónico",
@@ -188,11 +184,16 @@
       "preparedOn": "Preparado el",
       "summaryTitle": "Tu viaje de un vistazo",
       "itinerariesTitle": "Itinerarios seleccionados",
-      "aiRouteTitle": "Ruta sugerida día a día",
       "contactTitle": "Tus datos",
       "footer": "Nature Walk Sri Lanka · naturewalksrilanka.com",
-      "fileName": "viaje-sri-lanka"
-    }
+      "fileName": "viaje-sri-lanka",
+      "routeTitle": "Su ruta, parada a parada",
+      "mapTitle": "Su ruta en el mapa",
+      "noticeTitle": "Sobre este documento",
+      "notice": "Este documento se ha generado automáticamente a partir de los itinerarios que nos indicó. Es un punto de partida, no una reserva cerrada. Si hay que cambiar algo — el orden de las paradas, la duración o los propios itinerarios — hable con nuestro equipo por WhatsApp. No se preocupe: siempre estarán encantados de ayudarle.",
+      "whatsappLabel": "WhatsApp"
+    },
+    "downloadDoc": "Descargar en Word"
   },
   "nandana": {
     "introEyebrow": "Quién es Nandana",

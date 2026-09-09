@@ -20,10 +20,32 @@ export type JourneyItinerary = {
   duration: string;
   summary: string;
   description: string;
-  /** Public paths, e.g. `/images/story-1.jpg`. Resolved to data URLs at build time. */
+  /** Public paths, e.g. `/images/story-1.jpg`, or base64 data URLs from the admin page. */
   images: string[];
   highlights: JourneyHighlight[];
+  /**
+   * The photograph this itinerary's pages sit on. A "what you might see"
+   * picture wherever one exists — that is what the section is about — and the
+   * itinerary's own first photograph only when none does.
+   */
+  backgroundImage: string;
+  /** Where this stop falls in the journey, once it has been planned. */
+  order: number;
+  dayLabel: string;
+  driveLabel?: string;
 };
+
+/** One line of the written route: a stop, its days, and the drive in. */
+export type JourneyRouteStop = {
+  order: number;
+  title: string;
+  location: string;
+  dayLabel: string;
+  driveLabel?: string;
+};
+
+/** A point to draw on the printed map. */
+export type JourneyMapStop = { lat: number; lng: number; label: string };
 
 export type JourneyRow = { label: string; value: string };
 
@@ -35,8 +57,12 @@ export type JourneyDocumentLabels = {
   preparedOn: string;
   summaryTitle: string;
   itinerariesTitle: string;
-  aiRouteTitle: string;
+  routeTitle: string;
+  mapTitle: string;
   contactTitle: string;
+  noticeTitle: string;
+  notice: string;
+  whatsappLabel: string;
   highlightsTitle: string;
   bestTimeLabel: string;
   durationLabel: string;
@@ -51,7 +77,12 @@ export type JourneyDocument = {
   summaryRows: JourneyRow[];
   contactRows: JourneyRow[];
   itineraries: JourneyItinerary[];
-  aiRoute: string[];
+  /** The planned route, in driving order. */
+  route: JourneyRouteStop[];
+  /** The same route as coordinates, for the drawn map. */
+  mapStops: JourneyMapStop[];
+  /** Printed under the closing notice, so changes are one message away. */
+  whatsappNumber: string;
   /** Cover photograph — the first selected itinerary's, or the site fallback. */
   coverImage: string;
 };
@@ -60,7 +91,7 @@ export type JourneyDocument = {
 export function collectImageSources(doc: JourneyDocument): string[] {
   const sources = [doc.coverImage];
   for (const itinerary of doc.itineraries) {
-    sources.push(...itinerary.images);
+    sources.push(itinerary.backgroundImage, ...itinerary.images);
     for (const highlight of itinerary.highlights) {
       if (highlight.image) sources.push(highlight.image);
     }
