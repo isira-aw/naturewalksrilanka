@@ -91,7 +91,7 @@
       "dates": "Datoer",
       "interests": "Interesser",
       "accommodation": "Overnatning",
-      "aiAssistant": "AI-rejseassistent",
+      "journeyPlan": "Rejseplan",
       "contact": "Kontaktoplysninger",
       "review": "Oversigt"
     },
@@ -117,13 +117,11 @@
     "interestsLabel": "Hvad interesserer dig mest?",
     "interestsHint": "Vælg en eller flere. Matchende rejseplaner vises nedenfor.",
     "interests": {
-      "wildlife": "Dyreliv",
-      "trekking": "Vandring",
-      "culture": "Kultur",
-      "birding": "Fuglekiggeri",
-      "beach": "Strand",
-      "photography": "Fotografi",
-      "adventure": "Eventyr"
+      "birding-wildlife": "Fugle og dyreliv",
+      "wildlife-photography": "Dyreliv og fotografi",
+      "culture": "Kulturture",
+      "adventure": "Eventyrture",
+      "others": "Andet"
     },
     "suggestionsTitle": "Rejseplaner",
     "suggestionsEmpty": "Vælg en kategori for at se de færdige rejseplaner, der matcher den.",
@@ -148,22 +146,20 @@
       "recommend": "Er i tvivl — anbefal noget"
     },
     "accommodationNotesLabel": "Andet om overnatningen?",
-    "aiAssistant": {
-      "title": "Lad AI skitsere en rute til dig",
-      "intro": "Ud fra alt det, du har fortalt os, kan vi foreslå en rute dag for dag rundt i Sri Lanka — du vælger selv din favorit hver dag.",
-      "generateCta": "Lav min rejseplan",
-      "loading": "Rejseplanen bliver sat sammen…",
-      "error": "Vi kunne ikke lave en rejseplan lige nu. Gå videre, og tal om rejsen med os direkte.",
-      "rateLimited": "Du har nået grænsen for rejseplaner på denne enhed i dag. Gå videre, og tal om rejsen med os direkte.",
+    "journeyPlan": {
+      "title": "Din rejse, stop for stop",
+      "intro": "Vi har sat de valgte itineraries i en fornuftig køreruta fra lufthavnen og tilpasset dem dine datoer.",
+      "empty": "Gå tilbage til Interesser og tilføj mindst én itinerary — din rejseplan bygges ud fra dem.",
+      "routeTitle": "Din rute",
+      "mapTitle": "Din rute på kortet",
+      "startLabel": "Ankomst — Bandaranaike International Airport",
       "dayLabel": "Dag {day}",
-      "skip": "Spring dette trin over",
-      "regenerate": "Start forfra",
-      "backDay": "Tilbage til forrige dag",
-      "distanceLabel": "{km} km fra forrige stop · omkring {duration} på vejen",
-      "recommendedLabel": "Vores bud til dig",
-      "recommendedBadge": "Anbefalet",
-      "otherOptionsLabel": "Andre muligheder denne dag",
-      "selectedSummaryTitle": "Din foreslåede rute"
+      "dayRangeLabel": "Dag {from}–{to}",
+      "driveLabel": "{km} km fra forrige stop · cirka {duration} på vejen",
+      "totalLabel": "{count} stop · cirka {km} km kørsel i alt",
+      "overflowNote": "Dine datoer er kortere, end de valgte itineraries kræver. Planen herunder løber ud over din afrejsedato — fjern en itinerary, eller tal med os om en længere rejse.",
+      "downloadTitle": "Tag den med",
+      "downloadHint": "Samme plan som PDF til at læse, eller som Word-fil du kan rette og sende tilbage."
     },
     "contactName": "Navn",
     "contactEmail": "E-mail",
@@ -188,11 +184,16 @@
       "preparedOn": "Udarbejdet den",
       "summaryTitle": "Din rejse kort fortalt",
       "itinerariesTitle": "Valgte rejseplaner",
-      "aiRouteTitle": "Foreslået rute dag for dag",
       "contactTitle": "Dine oplysninger",
       "footer": "Nature Walk Sri Lanka · naturewalksrilanka.com",
-      "fileName": "sri-lanka-rejse"
-    }
+      "fileName": "sri-lanka-rejse",
+      "routeTitle": "Din rute, stop for stop",
+      "mapTitle": "Din rute på kortet",
+      "noticeTitle": "Om dette dokument",
+      "notice": "Dette dokument er genereret automatisk ud fra de itineraries, du fortalte os, du var interesseret i. Det er et udgangspunkt, ikke en fast booking. Skal noget ændres — rækkefølgen af stop, hvor længe du bliver, eller selve itineraries — så skriv til vores team på WhatsApp. Bare rolig: de hjælper altid gerne.",
+      "whatsappLabel": "WhatsApp"
+    },
+    "downloadDoc": "Hent som Word"
   },
   "nandana": {
     "introEyebrow": "Hvem er Nandana",

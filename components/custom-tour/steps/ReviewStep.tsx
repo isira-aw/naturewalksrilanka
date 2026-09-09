@@ -1,85 +1,56 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { buildCustomTourMessage, buildWhatsAppUrl } from "@/lib/whatsapp/buildMessage";
-import { downloadJourneyDocument, type JourneyDocument } from "@/lib/journey-document";
-import type { Experience } from "@/lib/content/schema";
+import type { JourneyPlan } from "@/lib/journey/plan";
 import type { WizardState } from "../WizardShell";
 import { StepHeading } from "./StepHeading";
 
-const INTEREST_KEYS = [
-  "wildlife",
-  "trekking",
-  "culture",
-  "birding",
-  "beach",
-  "photography",
-  "adventure",
-] as const;
-
-const ACCOMMODATION_KEYS = [
-  "budget",
-  "comfortable",
-  "boutique",
-  "luxury",
-  "ecoLodge",
-  "recommend",
-] as const;
-
-/** Used on the document cover when nothing has been picked yet. */
-const FALLBACK_COVER = "/images/hero-1.jpg";
-
-function formatDate(iso: string, locale: string) {
-  return new Intl.DateTimeFormat(locale, {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(iso));
-}
-
+/**
+ * The last look before the enquiry goes to WhatsApp.
+ *
+ * Everything shown here was worked out upstream — the plan step built the
+ * route and the shared document hook built the file — so this step only reads
+ * and presents. That is deliberate: the summary a traveller signs off on and
+ * the document they take away must be the same journey, and the surest way to
+ * guarantee that is to have only one of them do the working out.
+ */
 export function ReviewStep({
   state,
   locale,
   whatsappNumber,
-  experiences,
+  plan,
+  interestLabels,
+  accommodationLabels,
+  datesValue,
+  chosenIdeas,
+  onDownload,
+  pending,
+  failed,
 }: {
   state: WizardState;
   locale: string;
   whatsappNumber: string;
-  experiences: Experience[];
+  plan: JourneyPlan;
+  interestLabels: string[];
+  accommodationLabels: string[];
+  datesValue: string;
+  chosenIdeas: string[];
+  onDownload: (kind: "pdf" | "doc") => void;
+  pending: "pdf" | "doc" | null;
+  failed: boolean;
 }) {
   const t = useTranslations("customTour");
-  const [pending, setPending] = useState<"pdf" | "doc" | null>(null);
-  const [failed, setFailed] = useState(false);
 
-  /* Ordered by the content file rather than by click order, so the enquiry
-     reads the same way the wizard showed them. */
-  const chosenItineraries = experiences.filter((experience) =>
-    state.selectedExperiences.includes(experience.slug)
-  );
-  const chosenIdeas = chosenItineraries.map(
-    (experience) => `${experience.title} — ${experience.location}`
-  );
-
-  const interestLabels = state.interests
-    .filter((key): key is (typeof INTEREST_KEYS)[number] => (INTEREST_KEYS as readonly string[]).includes(key))
-    .map((key) => t(`interests.${key}`));
-
-  const accommodationLabels = state.accommodation
-    .filter((key): key is (typeof ACCOMMODATION_KEYS)[number] =>
-      (ACCOMMODATION_KEYS as readonly string[]).includes(key)
-    )
-    .map((key) => t(`accommodation.${key}`));
-
-  const aiRouteNames = state.aiSelections
-    .map((slug, index) => state.aiItinerary?.days[index]?.options.find((opt) => opt.slug === slug)?.name)
-    .filter((name): name is string => Boolean(name));
-
-  const datesValue =
-    state.dateRange.start && state.dateRange.end
-      ? `${formatDate(state.dateRange.start, locale)} – ${formatDate(state.dateRange.end, locale)}`
-      : "-";
+  /* The route in words, so the WhatsApp message and the on-screen summary say
+     the same thing the PDF does. */
+  const routeLines = plan.stops.map((stop) => {
+    const days =
+      stop.startDay === stop.endDay
+        ? t("journeyPlan.dayLabel", { day: stop.startDay })
+        : t("journeyPlan.dayRangeLabel", { from: stop.startDay, to: stop.endDay });
+    return `${days}: ${stop.experience.title}`;
+  });
 
   const message = buildCustomTourMessage(
     {
@@ -90,7 +61,7 @@ export function ReviewStep({
       accommodation: accommodationLabels,
       accommodationNotes: state.accommodationNotes,
       itineraries: chosenIdeas,
-      aiRoute: aiRouteNames,
+      aiRoute: routeLines,
       name: state.name,
       email: state.email,
       phone: state.phone,
@@ -101,83 +72,6 @@ export function ReviewStep({
   );
 
   const href = buildWhatsAppUrl(whatsappNumber, message);
-
-  /* One description of the journey, rendered twice: as the PDF the traveller
-     downloads and as the Word copy that goes with the WhatsApp hand-off. */
-  const journeyDocument: JourneyDocument = useMemo(
-    () => ({
-      labels: {
-        title: t("document.title"),
-        tagline: t("document.tagline"),
-        preparedFor: t("document.preparedFor"),
-        preparedOn: t("document.preparedOn"),
-        summaryTitle: t("document.summaryTitle"),
-        itinerariesTitle: t("document.itinerariesTitle"),
-        aiRouteTitle: t("document.aiRouteTitle"),
-        contactTitle: t("document.contactTitle"),
-        highlightsTitle: t("suggestionsHighlights"),
-        bestTimeLabel: t("suggestionsBestTime"),
-        durationLabel: t("suggestionsDuration"),
-        footer: t("document.footer"),
-        fileName: t("document.fileName"),
-      },
-      preparedFor: state.name.trim(),
-      preparedOn: formatDate(new Date().toISOString(), locale),
-      summaryRows: [
-        { label: t("travelersLabel"), value: String(state.travelers) },
-        { label: t("datesLabel"), value: datesValue },
-        { label: t("interestsLabel"), value: interestLabels.join(", ") },
-        { label: t("accommodationLabel"), value: accommodationLabels.join(", ") },
-        ...(state.accommodationNotes.trim()
-          ? [{ label: t("accommodationNotesLabel"), value: state.accommodationNotes.trim() }]
-          : []),
-        ...(chosenIdeas.length
-          ? [{ label: t("suggestionsSelectedLabel"), value: chosenIdeas.join("\n") }]
-          : []),
-      ],
-      contactRows: [
-        { label: t("contactName"), value: state.name },
-        { label: t("contactEmail"), value: state.email },
-        { label: t("contactPhone"), value: state.phone },
-        ...(state.country.trim() ? [{ label: t("contactCountry"), value: state.country }] : []),
-        ...(state.requirements.trim()
-          ? [{ label: t("requirementsLabel"), value: state.requirements }]
-          : []),
-      ],
-      itineraries: chosenItineraries.map((experience) => ({
-        slug: experience.slug,
-        title: experience.title,
-        location: experience.location,
-        bestTime: experience.bestTime,
-        duration: experience.duration,
-        summary: experience.summary,
-        description: experience.description,
-        images: experience.images,
-        highlights: experience.highlights,
-      })),
-      aiRoute: aiRouteNames.map(
-        (name, index) => `${t("aiAssistant.dayLabel", { day: index + 1 })}: ${name}`
-      ),
-      coverImage: chosenItineraries[0]?.images[0] ?? FALLBACK_COVER,
-    }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [state, locale, experiences, t]
-  );
-
-  const download = useCallback(
-    async (kind: "pdf" | "doc") => {
-      setPending(kind);
-      setFailed(false);
-      try {
-        await downloadJourneyDocument(journeyDocument, kind);
-      } catch {
-        setFailed(true);
-      } finally {
-        setPending(null);
-      }
-    },
-    [journeyDocument]
-  );
 
   return (
     <div>
@@ -203,11 +97,8 @@ export function ReviewStep({
           {chosenIdeas.length > 0 && (
             <ReviewRow label={t("suggestionsSelectedLabel")} value={chosenIdeas.join("\n")} />
           )}
-          {aiRouteNames.length > 0 && (
-            <ReviewRow
-              label={t("aiAssistant.selectedSummaryTitle")}
-              value={aiRouteNames.map((name, index) => `${t("aiAssistant.dayLabel", { day: index + 1 })}: ${name}`).join("\n")}
-            />
+          {routeLines.length > 0 && (
+            <ReviewRow label={t("journeyPlan.routeTitle")} value={routeLines.join("\n")} />
           )}
           <ReviewRow label={t("contactName")} value={state.name || "-"} />
           <ReviewRow label={t("contactEmail")} value={state.email || "-"} />
@@ -225,9 +116,7 @@ export function ReviewStep({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => {
-              void download("doc");
-            }}
+            onClick={() => onDownload("doc")}
             className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 text-base font-medium tracking-wide text-warm-white transition-colors duration-200 hover:bg-forest-dark sm:w-auto lg:w-full"
           >
             <WhatsAppIcon className="h-4 w-4" />
@@ -236,7 +125,7 @@ export function ReviewStep({
 
           <button
             type="button"
-            onClick={() => void download("pdf")}
+            onClick={() => onDownload("pdf")}
             disabled={pending !== null}
             className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-forest px-8 py-3 text-sm font-medium tracking-wide text-forest transition-colors duration-200 hover:bg-forest hover:text-warm-white disabled:cursor-wait disabled:opacity-60 sm:w-auto lg:w-full"
           >

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
@@ -8,14 +8,17 @@ import { cn } from "@/lib/utils/cn";
 import type { Experience } from "@/lib/content/schema";
 import { StepProgressBar, StepProgressRail } from "./StepProgress";
 import { isValidRange, type DateRangeValue } from "@/lib/tour/dateRange";
-import type { ItineraryPlan } from "@/lib/ai/itinerarySchema";
+import { useItineraries } from "@/lib/itineraries/useItineraries";
+import { visibleExperiences } from "@/lib/itineraries/toExperience";
+import { buildJourneyPlan } from "@/lib/journey/plan";
 import { TravelersStep } from "./steps/TravelersStep";
 import { DatesStep } from "./steps/DatesStep";
 import { InterestsStep } from "./steps/InterestsStep";
 import { AccommodationStep } from "./steps/AccommodationStep";
-import { AIAssistantStep, type AiAssistantStatus } from "./steps/AIAssistantStep";
+import { JourneyPlanStep } from "./steps/JourneyPlanStep";
 import { ContactStep } from "./steps/ContactStep";
 import { ReviewStep } from "./steps/ReviewStep";
+import { useJourneyDocument } from "./useJourneyDocument";
 
 export type WizardState = {
   step: number;
@@ -26,9 +29,6 @@ export type WizardState = {
   selectedExperiences: string[];
   accommodation: string[];
   accommodationNotes: string;
-  aiItinerary: ItineraryPlan | null;
-  aiSelections: string[];
-  aiStatus: AiAssistantStatus;
   name: string;
   email: string;
   phone: string;
@@ -43,26 +43,23 @@ type WizardAction =
   | { type: "TOGGLE_EXPERIENCE"; value: string }
   | { type: "TOGGLE_ACCOMMODATION"; value: string }
   | { type: "SET_ACCOMMODATION_NOTES"; value: string }
-  | { type: "SET_AI_STATUS"; value: AiAssistantStatus }
-  | { type: "SET_AI_ITINERARY"; value: ItineraryPlan | null }
-  | { type: "SELECT_AI_DAY_OPTION"; dayIndex: number; slug: string }
-  | { type: "BACK_AI_DAY_OPTION" }
   | { type: "SET_FIELD"; field: "name" | "email" | "phone" | "country" | "requirements"; value: string }
   | { type: "GO_NEXT"; totalSteps: number }
   | { type: "GO_BACK" }
   | { type: "GO_TO"; step: number };
 
-const BASE_STEP_KEYS = ["travelers", "dates", "interests", "accommodation", "contact", "review"] as const;
-
-function buildStepKeys(aiAssistantEnabled: boolean) {
-  if (!aiAssistantEnabled) return [...BASE_STEP_KEYS];
-  const accommodationIndex = BASE_STEP_KEYS.indexOf("accommodation");
-  return [
-    ...BASE_STEP_KEYS.slice(0, accommodationIndex + 1),
-    "aiAssistant",
-    ...BASE_STEP_KEYS.slice(accommodationIndex + 1),
-  ];
-}
+/* The journey plan sits after accommodation and before contact: it is the last
+   thing built out of the traveller's answers, and the first thing they can
+   take away. */
+const STEP_KEYS = [
+  "travelers",
+  "dates",
+  "interests",
+  "accommodation",
+  "journeyPlan",
+  "contact",
+  "review",
+] as const;
 
 /** The party sizes the company takes: a solo traveller up to a group of twelve. */
 export const MIN_TRAVELERS = 1;
@@ -76,9 +73,6 @@ const initialState: WizardState = {
   selectedExperiences: [],
   accommodation: [],
   accommodationNotes: "",
-  aiItinerary: null,
-  aiSelections: [],
-  aiStatus: "idle",
   name: "",
   email: "",
   phone: "",
@@ -123,17 +117,6 @@ function reducer(state: WizardState, action: WizardAction): WizardState {
       return { ...state, accommodation: toggleValue(state.accommodation, action.value) };
     case "SET_ACCOMMODATION_NOTES":
       return { ...state, accommodationNotes: action.value };
-    case "SET_AI_STATUS":
-      return { ...state, aiStatus: action.value };
-    case "SET_AI_ITINERARY":
-      return { ...state, aiItinerary: action.value, aiSelections: [] };
-    case "SELECT_AI_DAY_OPTION": {
-      const next = state.aiSelections.slice(0, action.dayIndex);
-      next[action.dayIndex] = action.slug;
-      return { ...state, aiSelections: next };
-    }
-    case "BACK_AI_DAY_OPTION":
-      return { ...state, aiSelections: state.aiSelections.slice(0, -1) };
     case "SET_FIELD":
       return { ...state, [action.field]: action.value };
     case "GO_NEXT":
@@ -154,19 +137,42 @@ function isValidEmail(value: string) {
 export function WizardShell({
   locale,
   whatsappNumber,
-  experiences,
-  aiAssistantEnabled = false,
+  experiences: published,
 }: {
   locale: string;
   whatsappNumber: string;
+  /** Itineraries committed to `content/`; the admin page adds the rest. */
   experiences: Experience[];
-  aiAssistantEnabled?: boolean;
 }) {
   const t = useTranslations("customTour");
   const [state, dispatch] = useReducer(reducer, initialState);
   const [error, setError] = useState<string | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
   const isFirstRender = useRef(true);
+  const { records } = useItineraries();
+
+  /* Two sources, one list: whatever is committed to the content files, plus
+     whatever the admin page holds. A record's slug wins over a published one
+     of the same slug, so editing an itinerary in the admin page overrides the
+     committed copy rather than showing both. */
+  const experiences = useMemo(() => {
+    const fromAdmin = visibleExperiences(records, locale);
+    const overridden = new Set(fromAdmin.map((experience) => experience.slug));
+    return [...published.filter((e) => !overridden.has(e.slug)), ...fromAdmin];
+  }, [published, records, locale]);
+
+  const selected = useMemo(
+    () => experiences.filter((experience) => state.selectedExperiences.includes(experience.slug)),
+    [experiences, state.selectedExperiences]
+  );
+
+  const plan = useMemo(
+    () => buildJourneyPlan(selected, state.dateRange),
+    [selected, state.dateRange]
+  );
+
+  const { download, pending, failed, interestLabels, accommodationLabels, datesValue, chosenIdeas } =
+    useJourneyDocument({ state, locale, plan, whatsappNumber });
 
   useEffect(() => {
     /* A step change swaps the whole panel; on a phone the new step would
@@ -178,10 +184,9 @@ export function WizardShell({
     topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [state.step]);
 
-  const stepKeys = buildStepKeys(aiAssistantEnabled);
-  const stepLabels = stepKeys.map((key) => t(`steps.${key}`));
-  const totalSteps = stepKeys.length;
-  const currentStepKey = stepKeys[state.step - 1];
+  const stepLabels = STEP_KEYS.map((key) => t(`steps.${key}`));
+  const totalSteps = STEP_KEYS.length;
+  const currentStepKey = STEP_KEYS[state.step - 1];
   const isLastStep = state.step === totalSteps;
 
   function validateCurrentStep(): string | null {
@@ -198,7 +203,7 @@ export function WizardShell({
         if (state.interests.length === 0) return t("errorInterests");
         return null;
       case "accommodation":
-      case "aiAssistant":
+      case "journeyPlan":
         return null;
       case "contact":
         if (!state.name.trim() || !isValidEmail(state.email) || !state.phone.trim()) {
@@ -295,20 +300,12 @@ export function WizardShell({
                   onNotesChange={(value) => dispatch({ type: "SET_ACCOMMODATION_NOTES", value })}
                 />
               )}
-              {currentStepKey === "aiAssistant" && (
-                <AIAssistantStep
-                  travelers={state.travelers}
-                  dateRange={state.dateRange}
-                  interests={state.interests}
-                  accommodation={state.accommodation}
-                  accommodationNotes={state.accommodationNotes}
-                  itinerary={state.aiItinerary}
-                  selections={state.aiSelections}
-                  status={state.aiStatus}
-                  onStatusChange={(value) => dispatch({ type: "SET_AI_STATUS", value })}
-                  onItinerary={(value) => dispatch({ type: "SET_AI_ITINERARY", value })}
-                  onSelectDay={(dayIndex, slug) => dispatch({ type: "SELECT_AI_DAY_OPTION", dayIndex, slug })}
-                  onBackDay={() => dispatch({ type: "BACK_AI_DAY_OPTION" })}
+              {currentStepKey === "journeyPlan" && (
+                <JourneyPlanStep
+                  plan={plan}
+                  onDownload={(kind) => void download(kind)}
+                  pending={pending}
+                  failed={failed}
                 />
               )}
               {currentStepKey === "contact" && (
@@ -326,7 +323,14 @@ export function WizardShell({
                   state={state}
                   locale={locale}
                   whatsappNumber={whatsappNumber}
-                  experiences={experiences}
+                  plan={plan}
+                  interestLabels={interestLabels}
+                  accommodationLabels={accommodationLabels}
+                  datesValue={datesValue}
+                  chosenIdeas={chosenIdeas}
+                  onDownload={(kind) => void download(kind)}
+                  pending={pending}
+                  failed={failed}
                 />
               )}
             </motion.div>

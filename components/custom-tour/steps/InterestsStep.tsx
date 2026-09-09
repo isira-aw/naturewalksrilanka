@@ -4,17 +4,8 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils/cn";
 import { SuggestionsPanel } from "@/components/custom-tour/SuggestionsPanel";
 import type { Experience } from "@/lib/content/schema";
+import { ITINERARY_CATEGORIES } from "@/lib/itineraries/categories";
 import { StepHeading } from "./StepHeading";
-
-const INTEREST_KEYS = [
-  "wildlife",
-  "trekking",
-  "culture",
-  "birding",
-  "beach",
-  "photography",
-  "adventure",
-] as const;
 
 /**
  * Categories on the left, the prebuilt ideas that match them on the right.
@@ -46,7 +37,7 @@ export function InterestsStep({
         <StepHeading title={t("interestsLabel")} hint={t("interestsHint")} />
 
         <div className="mt-6 flex flex-wrap gap-2.5">
-          {INTEREST_KEYS.map((key) => {
+          {ITINERARY_CATEGORIES.map(({ id: key }) => {
             const checked = value.includes(key);
             const inputId = `interest-${key}`;
             return (

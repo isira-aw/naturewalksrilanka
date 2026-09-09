@@ -91,7 +91,7 @@
       "dates": "Päivämäärät",
       "interests": "Kiinnostukset",
       "accommodation": "Majoitus",
-      "aiAssistant": "Tekoälyavustaja",
+      "journeyPlan": "Matkasuunnitelma",
       "contact": "Yhteystiedot",
       "review": "Yhteenveto"
     },
@@ -117,13 +117,11 @@
     "interestsLabel": "Mikä kiinnostaa sinua eniten?",
     "interestsHint": "Valitse yksi tai useampi. Sopivat matkaohjelmat näkyvät alla.",
     "interests": {
-      "wildlife": "Eläimet",
-      "trekking": "Vaellus",
-      "culture": "Kulttuuri",
-      "birding": "Lintujen tarkkailu",
-      "beach": "Ranta",
-      "photography": "Valokuvaus",
-      "adventure": "Seikkailu"
+      "birding-wildlife": "Linnut ja luonto",
+      "wildlife-photography": "Luonto ja valokuvaus",
+      "culture": "Kulttuurikierrokset",
+      "adventure": "Seikkailuretket",
+      "others": "Muut"
     },
     "suggestionsTitle": "Matkaohjelmat",
     "suggestionsEmpty": "Valitse kategoria nähdäksesi siihen sopivat valmiit matkaohjelmat.",
@@ -148,22 +146,20 @@
       "recommend": "En osaa sanoa — suositelkaa minulle"
     },
     "accommodationNotesLabel": "Muuta majoitukseen liittyvää?",
-    "aiAssistant": {
-      "title": "Anna tekoälyn hahmotella reitti",
-      "intro": "Kaiken kertomasi perusteella voimme ehdottaa päiväkohtaisen reitin ympäri Sri Lankaa — valitset joka päivälle mieluisimman vaihtoehdon.",
-      "generateCta": "Luo matkasuunnitelmani",
-      "loading": "Matkasuunnitelmaa kootaan…",
-      "error": "Emme voineet luoda matkasuunnitelmaa juuri nyt. Jatka eteenpäin ja keskustele matkastasi suoraan kanssamme.",
-      "rateLimited": "Olet saavuttanut tämän laitteen päivittäisen matkasuunnitelmarajan. Jatka eteenpäin ja keskustele matkastasi suoraan kanssamme.",
+    "journeyPlan": {
+      "title": "Matkasi pysähdys pysähdykseltä",
+      "intro": "Olemme järjestäneet valitsemasi itineraryt järkeväksi ajoreitiksi lentokentältä alkaen ja sovittaneet ne päivämäärillesi.",
+      "empty": "Palaa Kiinnostukset-vaiheeseen ja lisää ainakin yksi itinerary — matkasuunnitelma rakennetaan niistä.",
+      "routeTitle": "Reittisi",
+      "mapTitle": "Reittisi kartalla",
+      "startLabel": "Saapuminen — Bandaranaiken kansainvälinen lentoasema",
       "dayLabel": "Päivä {day}",
-      "skip": "Ohita tämä vaihe",
-      "regenerate": "Aloita alusta",
-      "backDay": "Takaisin edelliseen päivään",
-      "distanceLabel": "{km} km edellisestä pysähdyksestä · noin {duration} maanteitse",
-      "recommendedLabel": "Meidän valintamme sinulle",
-      "recommendedBadge": "Suositeltu",
-      "otherOptionsLabel": "Muut vaihtoehdot tälle päivälle",
-      "selectedSummaryTitle": "Ehdotettu reittisi"
+      "dayRangeLabel": "Päivät {from}–{to}",
+      "driveLabel": "{km} km edellisestä pysähdyksestä · noin {duration} maanteitse",
+      "totalLabel": "{count} pysähdystä · yhteensä noin {km} km ajoa",
+      "overflowNote": "Päivämääräsi ovat lyhyemmät kuin valitsemasi itineraryt vaativat. Alla oleva suunnitelma jatkuu lähtöpäivän yli — poista jokin itinerary tai keskustele kanssamme matkan pidentämisestä.",
+      "downloadTitle": "Ota mukaasi",
+      "downloadHint": "Sama suunnitelma PDF:nä luettavaksi tai Word-tiedostona, jota voit muokata ja lähettää takaisin."
     },
     "contactName": "Nimi",
     "contactEmail": "Sähköposti",
@@ -188,11 +184,16 @@
       "preparedOn": "Laadittu",
       "summaryTitle": "Matkasi yhdellä silmäyksellä",
       "itinerariesTitle": "Valitut matkaohjelmat",
-      "aiRouteTitle": "Ehdotettu reitti päivä kerrallaan",
       "contactTitle": "Tietosi",
       "footer": "Nature Walk Sri Lanka · naturewalksrilanka.com",
-      "fileName": "sri-lanka-matka"
-    }
+      "fileName": "sri-lanka-matka",
+      "routeTitle": "Reittisi pysähdys pysähdykseltä",
+      "mapTitle": "Reittisi kartalla",
+      "noticeTitle": "Tietoa tästä asiakirjasta",
+      "notice": "Tämä asiakirja on luotu automaattisesti niistä itineraryistä, joista kerroit olevasi kiinnostunut. Se on lähtökohta, ei sitova varaus. Jos jotain pitää muuttaa — pysähdysten järjestystä, kestoa tai itsessään itineraryjä — ota yhteyttä tiimiimme WhatsAppissa. Ei huolta: he auttavat aina mielellään.",
+      "whatsappLabel": "WhatsApp"
+    },
+    "downloadDoc": "Lataa Word-tiedostona"
   },
   "nandana": {
     "introEyebrow": "Kuka on Nandana",

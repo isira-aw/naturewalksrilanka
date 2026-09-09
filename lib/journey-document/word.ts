@@ -1,6 +1,8 @@
 "use client";
 
 import { cropToAspect, tinted, toDataUrl, type LoadedImage } from "./assets";
+import { drawRouteMap } from "./mapCanvas";
+import { ARRIVAL_POINT } from "@/lib/geo/sriLanka";
 import type { JourneyDocument, JourneyItinerary, JourneyRow } from "./model";
 
 /**
@@ -118,12 +120,16 @@ export function buildJourneyDoc(doc: JourneyDocument, images: Map<string, Loaded
 
   function itinerarySection(itinerary: JourneyItinerary) {
     const heroSrc = itinerary.images[0] ?? doc.coverImage;
+    /* The body sits on one of this itinerary's "what you might see"
+       photographs where there is one, so the picture behind the text is about
+       the section rather than a second copy of the header image. */
+    const backdropSrc = itinerary.backgroundImage ?? heroSrc;
     const heading = band(
       backdrop(heroSrc, 210 / 62, "#000000", 0.45),
       FOREST,
       120,
       `<p style="margin:0;color:#FFFFFF;font-size:9pt;letter-spacing:1pt;">${escapeHtml(
-        itinerary.location.toUpperCase()
+        `${itinerary.order}. ${itinerary.dayLabel.toUpperCase()} | ${itinerary.location.toUpperCase()}`
       )}</p>
        <p style="margin:6pt 0 0 0;color:#FFFFFF;font-size:20pt;font-weight:bold;">${escapeHtml(
          itinerary.title
@@ -133,7 +139,7 @@ export function buildJourneyDoc(doc: JourneyDocument, images: Map<string, Loaded
     /* The body of the section sits on a washed-out copy of the same
        photograph — the picture is the page's background, not a sticker. */
     const body = band(
-      backdrop(heroSrc, 210 / 200, "#FFFFFF", 0.88),
+      backdrop(backdropSrc, 210 / 200, "#FFFFFF", 0.88),
       "#FDFCF9",
       0,
       `<p style="margin:0 0 10pt 0;color:${MUTED};font-size:9pt;">${escapeHtml(
@@ -176,12 +182,51 @@ export function buildJourneyDoc(doc: JourneyDocument, images: Map<string, Loaded
      )}: ${escapeHtml(doc.preparedOn)}</p>`
   );
 
-  const aiRoute = doc.aiRoute.length
-    ? sectionTitle(doc.labels.aiRouteTitle) +
-      `<p style="margin:0 0 16pt 0;font-size:10.5pt;line-height:160%;color:${CHARCOAL};">${doc.aiRoute
-        .map((line) => escapeHtml(line))
-        .join("<br />")}</p>`
+  const routeSection = doc.route.length
+    ? sectionTitle(doc.labels.routeTitle) +
+      `<table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin-bottom:16pt;">${doc.route
+        .map(
+          (stop) => `<tr>
+            <td width="34" valign="top" style="padding:6pt 8pt 6pt 0;border-bottom:1px solid ${RULE};font-size:11pt;font-weight:bold;color:${FOREST};">${stop.order}.</td>
+            <td style="padding:6pt 0;border-bottom:1px solid ${RULE};">
+              <span style="font-size:10.5pt;font-weight:bold;color:${CHARCOAL};">${escapeHtml(
+                stop.title
+              )}</span>
+              <br /><span style="font-size:9pt;color:${MUTED};">${escapeHtml(
+                `${stop.dayLabel} — ${stop.location}`
+              )}</span>${
+                stop.driveLabel
+                  ? `<br /><span style="font-size:9pt;color:${MUTED};">${escapeHtml(
+                      stop.driveLabel
+                    )}</span>`
+                  : ""
+              }
+            </td>
+          </tr>`
+        )
+        .join("")}</table>`
     : "";
+
+  /* Drawn rather than screenshotted: the wizard's map is built from tiles a
+     third party serves, and a document should not need that server to be up
+     at the moment somebody opens it. */
+  const mapSection = doc.mapStops.length
+    ? sectionTitle(doc.labels.mapTitle) +
+      `<p style="margin:0 0 16pt 0;"><img src="${toDataUrl(
+        drawRouteMap(doc.mapStops, ARRIVAL_POINT, { width: 800, height: 1100 })
+      )}" width="440" alt="" style="display:block;" /></p>`
+    : "";
+
+  const notice =
+    sectionTitle(doc.labels.noticeTitle) +
+    `<p style="margin:0 0 8pt 0;font-size:10.5pt;line-height:160%;color:${CHARCOAL};">${escapeHtml(
+      doc.labels.notice
+    )}</p>` +
+    (doc.whatsappNumber.trim()
+      ? `<p style="margin:0 0 16pt 0;font-size:10.5pt;font-weight:bold;color:${FOREST};">${escapeHtml(
+          `${doc.labels.whatsappLabel}: +${doc.whatsappNumber.replace(/\D/g, "")}`
+        )}</p>`
+      : "");
 
   const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
 <head>
@@ -200,12 +245,14 @@ p { margin: 0 0 8pt 0; }
 ${cover}
 ${sectionTitle(doc.labels.summaryTitle)}
 ${rowsTable(doc.summaryRows)}
-${aiRoute}
+${routeSection}
+${mapSection}
 ${doc.itineraries.length ? sectionTitle(doc.labels.itinerariesTitle) : ""}
 ${doc.itineraries.map(itinerarySection).join("")}
 ${PAGE_BREAK}
 ${sectionTitle(doc.labels.contactTitle)}
 ${rowsTable(doc.contactRows)}
+${notice}
 <p style="margin-top:18pt;font-size:9pt;color:${MUTED};">${escapeHtml(doc.labels.footer)}</p>
 </div>
 </body>

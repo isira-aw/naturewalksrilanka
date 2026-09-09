@@ -91,7 +91,7 @@
       "dates": "Dates",
       "interests": "Interests",
       "accommodation": "Accommodation",
-      "aiAssistant": "AI Travel Assistant",
+      "journeyPlan": "Journey Plan",
       "contact": "Contact Information",
       "review": "Review"
     },
@@ -117,13 +117,11 @@
     "interestsLabel": "What are you most interested in?",
     "interestsHint": "Pick one or more. Matching itineraries appear below.",
     "interests": {
-      "wildlife": "Wildlife",
-      "trekking": "Trekking",
-      "culture": "Culture",
-      "birding": "Birding",
-      "beach": "Beach",
-      "photography": "Photography",
-      "adventure": "Adventure"
+      "birding-wildlife": "Birding and Wildlife",
+      "wildlife-photography": "Wildlife and Photography",
+      "culture": "Culture Tours",
+      "adventure": "Adventure Tours",
+      "others": "Others"
     },
     "suggestionsTitle": "Itineraries",
     "suggestionsEmpty": "Choose a category to see the prebuilt itineraries that match it.",
@@ -148,22 +146,20 @@
       "recommend": "Not sure — recommend for me"
     },
     "accommodationNotesLabel": "Anything else about accommodation?",
-    "aiAssistant": {
-      "title": "Let AI sketch a route for you",
-      "intro": "Based on everything you've told us, we can suggest a day-by-day route around Sri Lanka — you pick your favorite option each day.",
-      "generateCta": "Generate my itinerary",
-      "loading": "Building your itinerary…",
-      "error": "We couldn't generate an itinerary right now. Please continue and discuss your trip with us directly.",
-      "rateLimited": "You've reached the itinerary limit for this device today. Please continue and discuss your trip with us directly.",
+    "journeyPlan": {
+      "title": "Your journey, stop by stop",
+      "intro": "We have put the itineraries you chose into a sensible driving order, starting from the airport, and fitted them to your dates.",
+      "empty": "Go back to the Interests step and add at least one itinerary — your journey plan is built from the ones you choose.",
+      "routeTitle": "Your route",
+      "mapTitle": "Your route on the map",
+      "startLabel": "Arrival — Bandaranaike International Airport",
       "dayLabel": "Day {day}",
-      "skip": "Skip this step",
-      "regenerate": "Start over",
-      "backDay": "Back to previous day",
-      "distanceLabel": "{km} km from the previous stop · about {duration} by road",
-      "recommendedLabel": "Our pick for you",
-      "recommendedBadge": "Recommended",
-      "otherOptionsLabel": "Other options for this day",
-      "selectedSummaryTitle": "Your suggested route"
+      "dayRangeLabel": "Days {from}–{to}",
+      "driveLabel": "{km} km from the previous stop · about {duration} by road",
+      "totalLabel": "{count} stops · about {km} km of driving in total",
+      "overflowNote": "Your dates are shorter than the itineraries you chose need. The plan below runs past your departure date — remove an itinerary, or talk to us about extending the trip.",
+      "downloadTitle": "Take it with you",
+      "downloadHint": "The same plan as a PDF to read, or a Word file you can edit and send back to us."
     },
     "contactName": "Name",
     "contactEmail": "Email",
@@ -188,11 +184,16 @@
       "preparedOn": "Prepared on",
       "summaryTitle": "Your journey at a glance",
       "itinerariesTitle": "Selected itineraries",
-      "aiRouteTitle": "Suggested day-by-day route",
       "contactTitle": "Your details",
       "footer": "Nature Walk Sri Lanka · naturewalksrilanka.com",
-      "fileName": "sri-lanka-journey"
-    }
+      "fileName": "sri-lanka-journey",
+      "routeTitle": "Your route, stop by stop",
+      "mapTitle": "Your route on the map",
+      "noticeTitle": "About this document",
+      "notice": "This document was generated automatically from the itineraries you told us you were interested in. It is a starting point, not a fixed booking. If anything needs changing — the order of the stops, how long you stay, or the itineraries themselves — talk to our team on WhatsApp. Don't worry: they are always happy to help.",
+      "whatsappLabel": "WhatsApp"
+    },
+    "downloadDoc": "Download as Word"
   },
   "nandana": {
     "introEyebrow": "Who is Nandana",

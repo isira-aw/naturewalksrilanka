@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { ITINERARY_CATEGORY_IDS } from "@/lib/itineraries/categories";
+import { PROVINCE_IDS } from "@/lib/geo/sriLanka";
 
 export const profileSchema = z.object({
   name: z.string(),
@@ -119,17 +121,17 @@ export type ExperienceHighlight = z.infer<typeof experienceHighlightSchema>;
 
 export const experienceSchema = z.object({
   slug: z.string(),
-  category: z.enum([
-    "wildlife",
-    "trekking",
-    "culture",
-    "birding",
-    "beach",
-    "photography",
-    "adventure",
-  ]),
+  /* The five categories live in lib/itineraries/categories.ts, so the admin
+     form, the wizard step and this schema can never disagree about the list. */
+  category: z.enum(ITINERARY_CATEGORY_IDS),
   title: z.string(),
   location: z.string(),
+  /**
+   * Which of Sri Lanka's nine provinces this happens in. The journey plan
+   * needs somewhere to put the itinerary on the map, and the province centre
+   * is the answer whenever `location` names nowhere it recognises.
+   */
+  province: z.enum(PROVINCE_IDS).optional(),
   /** Season the idea is written for, e.g. "December – April". */
   bestTime: z.string(),
   /** How long the idea runs, e.g. "2 days". */

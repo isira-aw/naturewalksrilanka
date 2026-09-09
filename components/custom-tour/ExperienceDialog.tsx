@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import Image from "next/image";
+import { Photo } from "@/components/ui/Photo";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils/cn";
 import type { Experience } from "@/lib/content/schema";
@@ -41,6 +41,12 @@ export function ExperienceDialog({
   onClose: () => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+
+  /* Narrowed here rather than inline, so the grid below has `image` as a
+     string instead of `string | undefined`. */
+  const photographed = (experience?.highlights ?? []).filter(
+    (highlight): highlight is (typeof highlight) & { image: string } => Boolean(highlight.image)
+  );
 
   useEffect(() => {
     if (!experience) return;
@@ -123,12 +129,10 @@ export function ExperienceDialog({
                         index === 0 ? "aspect-[16/10]" : "aspect-[4/3]"
                       )}
                     >
-                      <Image
+                      <Photo
                         src={src}
                         alt=""
-                        fill
                         sizes="(min-width: 1024px) 32rem, (min-width: 640px) 20rem, 100vw"
-                        className="object-cover"
                       />
                     </div>
                   ))}
@@ -147,47 +151,62 @@ export function ExperienceDialog({
                       <h3 className="font-utility text-xs uppercase tracking-wide text-charcoal/55">
                         {labels.highlights}
                       </h3>
-                      {/* Photograph cards rather than a list: what you might see
-                          is the reason to pick one itinerary over another. A
-                          highlight whose photograph has not been supplied yet
-                          keeps its place in the grid — see
-                          public/images/highlights/README.md. */}
-                      <ul className="mt-4 grid grid-cols-2 gap-4 xl:grid-cols-3">
+
+                      {/* The names first, one to a line, each with whatever note
+                          was written for it — this is the list a traveller reads
+                          to decide between two itineraries, so it comes before
+                          the pictures rather than being scattered through them. */}
+                      <ul className="mt-4 space-y-2">
                         {experience.highlights.map((highlight) => (
                           <li
                             key={highlight.name}
-                            className="overflow-hidden rounded-xl border border-stone-dark bg-warm-white"
+                            className="flex gap-2.5 text-sm leading-relaxed text-charcoal"
                           >
-                            <div className="relative aspect-[4/3] bg-stone">
-                              {highlight.image ? (
-                                <Image
-                                  src={highlight.image}
-                                  alt={highlight.name}
-                                  fill
-                                  sizes="(min-width: 1024px) 14rem, 45vw"
-                                  className="object-cover"
-                                />
-                              ) : (
-                                <div className="flex h-full items-center justify-center bg-stone/70">
-                                  <span className="font-display text-3xl text-charcoal/25">
-                                    {highlight.name.slice(0, 1)}
-                                  </span>
-                                </div>
-                              )}
-                            </div>
-                            <div className="px-3 py-3">
-                              <p className="text-sm font-medium leading-snug text-charcoal">
-                                {highlight.name}
-                              </p>
+                            <span aria-hidden="true" className="mt-px shrink-0 text-forest">
+                              ★
+                            </span>
+                            <span className="min-w-0">
+                              {highlight.name}
                               {highlight.note && (
-                                <p className="mt-1 text-xs leading-relaxed text-charcoal/55">
-                                  {highlight.note}
-                                </p>
+                                <span className="text-charcoal/55"> [{highlight.note}]</span>
                               )}
-                            </div>
+                            </span>
                           </li>
                         ))}
                       </ul>
+
+                      {/* Then the photographs of the ones that have been
+                          supplied. A highlight without a photograph is already
+                          named in the list above, so nothing is missing here —
+                          see public/images/highlights/README.md. */}
+                      {photographed.length > 0 && (
+                        <ul className="mt-6 grid grid-cols-2 gap-4 xl:grid-cols-3">
+                          {photographed.map((highlight) => (
+                            <li
+                              key={highlight.name}
+                              className="overflow-hidden rounded-xl border border-stone-dark bg-warm-white"
+                            >
+                              <div className="relative aspect-[4/3] bg-stone">
+                                <Photo
+                                  src={highlight.image}
+                                  alt={highlight.name}
+                                  sizes="(min-width: 1024px) 14rem, 45vw"
+                                />
+                              </div>
+                              <div className="px-3 py-3">
+                                <p className="text-sm font-medium leading-snug text-charcoal">
+                                  {highlight.name}
+                                </p>
+                                {highlight.note && (
+                                  <p className="mt-1 text-xs leading-relaxed text-charcoal/55">
+                                    {highlight.note}
+                                  </p>
+                                )}
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   )}
                 </div>
