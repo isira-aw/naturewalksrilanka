@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils/cn";
 import { blobItineraryStore } from "@/lib/itineraries/store";
 import { useItineraries } from "@/lib/itineraries/useItineraries";
@@ -25,27 +25,19 @@ const SECTIONS = [
 
 type SectionId = (typeof SECTIONS)[number]["id"];
 
-export function AdminApp() {
-  const [signedIn, setSignedIn] = useState<boolean | null>(null);
+export function AdminApp({ initiallySignedIn = false }: { initiallySignedIn?: boolean }) {
+  /* Seeded from the server's own verification of the session cookie, so there
+     is no "Loading…" step and no flash of the sign-in form for someone who is
+     already signed in. */
+  const [signedIn, setSignedIn] = useState<boolean>(initiallySignedIn);
   const [section, setSection] = useState<SectionId>("itineraries");
   const [editing, setEditing] = useState<ItineraryRecord | null>(null);
   const [adding, setAdding] = useState(false);
   const { records, loaded, refresh } = useItineraries();
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/admin/session", { credentials: "same-origin" })
-      .then((response) => response.json())
-      .then((data) => {
-        if (!cancelled) setSignedIn(Boolean(data.signedIn));
-      })
-      .catch(() => {
-        if (!cancelled) setSignedIn(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  /* No session fetch on mount any more: the server verified the cookie before
+     rendering this. If a session expires while the tab sits open, the next
+     save fails with "Signed out — sign in again to save." from the store. */
 
   const save = useCallback(
     async (record: ItineraryRecord) => {
@@ -60,10 +52,6 @@ export function AdminApp() {
   async function signOut() {
     await fetch("/api/admin/session", { method: "DELETE", credentials: "same-origin" });
     setSignedIn(false);
-  }
-
-  if (signedIn === null) {
-    return <p className="px-6 py-24 text-center text-sm text-charcoal/45">Loading…</p>;
   }
 
   if (!signedIn) {

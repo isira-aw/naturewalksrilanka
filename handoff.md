@@ -73,20 +73,38 @@ yields `null` and callers report the feature unavailable.
 
 Collections: `itineraries`, `tourRequests`, `reviewInvites`, `reviews`, `staff`.
 
-### Phase 2 — Admin auth on Firebase Auth (TODO)
+### Phase 2 — Admin auth on Firebase Auth (DONE, Firebase half unproven)
 
-Replaces `lib/admin/session.ts` entirely. `AdminSignIn.tsx` gets an ID token
-from the client SDK and POSTs it; the route verifies with `verifyIdToken`,
-checks the `staff` allowlist **and** an `admin: true` custom claim, then mints
-a Firebase session cookie (httpOnly, secure, `sameSite: "strict"`). Replace
-`requireAdmin(request)` with a `verifySessionCookie` helper of the same call
-shape, so each `/api/admin/*` route changes in one line.
+`lib/admin/auth.ts` is now the single authorisation point. `AdminSignIn.tsx`
+signs in with Google, gets an ID token and POSTs it; the session route
+verifies it, requires **both** the `staff` allowlist entry and an
+`admin: true` custom claim, and mints a Firebase session cookie (httpOnly,
+secure, `sameSite: "strict"`).
 
-**Add real middleware.** `proxy.ts` currently runs only next-intl and its
-matcher excludes `/api`, so `/[locale]/admin` is served to everyone and gating
-happens in the client. The admin check must *compose with* the existing
-next-intl middleware, not replace it. Set the `admin` claim from a one-off
-script, never an HTTP endpoint.
+**The legacy shared password still exists, but only while Firebase is
+unconfigured.** This phase replaces the only working way into the panel, and
+if the Firebase credentials turn out to be wrong there would otherwise be no
+way in to fix them. Once a real staff account can sign in, delete the
+fallback: the legacy branch in the session route, `PasswordSignIn` in
+`AdminSignIn.tsx`, `lib/admin/session.ts`, `lib/admin/rateLimit.ts`, and the
+three `ADMIN_*` variables. Leaving a shared password alive indefinitely
+defeats the purpose. Note the ordering in `requireAdmin`: when Firebase *is*
+configured the legacy cookie is no longer accepted, so this is a fallback for
+a broken deployment, not a permanent second door.
+
+**`requireAdmin` is now async.** Every call site must `await` it. A forgotten
+`await` returns a Promise, which is truthy, which admits everyone — this is
+the one genuinely dangerous mistake available in this code. The verification
+below includes the test that catches it.
+
+**No middleware was added, contrary to the plan.** `proxy.ts` runs on the
+edge runtime, where `firebase-admin` cannot run, so a middleware check could
+only test whether a cookie *exists* — which proves nothing. Instead the admin
+page is a `force-dynamic` server component calling `isAdminSession()`, which
+does full verification in the Node runtime and never sends the panel's markup
+to a stranger. That is strictly stronger than the planned middleware.
+
+The `admin` claim is set by `scripts/grant-admin.mjs`, never over HTTP.
 
 ### Phase 3 — Itineraries to Firestore + Storage (TODO)
 
@@ -180,8 +198,16 @@ merging them.
 ## Current state
 
 Phases 0, 1 and 4a are **merged to `main`** — PR #10 (security hotfix and
-draft autosave) and PR #11 (Firebase foundation). `tsc --noEmit`, `eslint`
-and `next build` are clean.
+draft autosave) and PR #11 (Firebase foundation). Phase 2 is on
+`claude/firebase-phase-2-admin-auth`. `tsc --noEmit`, `eslint` and
+`next build` are clean throughout.
+
+**The Firebase half of phases 1 and 2 remains unproven.** No Firebase project
+existed while either was written, so no line of that code has reached a real
+project. What *is* verified is the fallback behaviour and the authorisation
+wiring — see "Verification performed". Until
+`/api/admin/firebase-status` returns `{"configured": true, "reachable":
+true}` and a real staff account signs in, treat Google sign-in as untested.
 
 **Phase 1 is written but unproven.** No Firebase project existed while it was
 built, so no line of it has ever reached Firebase. What is verified is only
@@ -232,9 +258,27 @@ archive reads as empty in local development.
 - `.env.example` — ten Firebase variables added
 - `package.json` — `firebase ^12.19.0`, `firebase-admin ^14.3.0`
 
-Untouched, and worth reading before phases 2–3: `lib/itineraries/`
-(`blobArchive.ts`, `store.ts`, `types.ts`, `toExperience.ts`), `proxy.ts`,
-`components/admin/`, `next.config.ts`.
+### Phase 2
+
+- `lib/admin/auth.ts` — new; the single authorisation point. `requireAdmin`
+  (async, for route handlers), `isAdminSession` (for server components),
+  `createAdminSession`, `revokeAdminSession`
+- `lib/admin/session.ts` — legacy `requireAdmin` and `sessionFromRequest`
+  deleted so the sync version cannot be imported by mistake
+- `app/api/admin/session/route.ts` — Firebase and legacy sign-in paths,
+  `sameSite: "strict"`, sign-out revokes server-side
+- `app/api/{itineraries,admin/itineraries,admin/translate,admin/firebase-status}/route.ts`
+  — every `requireAdmin` call now awaited
+- `components/admin/AdminSignIn.tsx` — Google sign-in, password form as
+  fallback
+- `components/admin/AdminApp.tsx` — takes `initiallySignedIn`; the mount-time
+  session fetch is gone
+- `app/[locale]/admin/page.tsx` — `force-dynamic`, verifies server-side
+- `scripts/grant-admin.mjs` — new; grant and revoke staff access
+
+Untouched, and worth reading before phase 3: `lib/itineraries/`
+(`blobArchive.ts`, `store.ts`, `types.ts`, `toExperience.ts`),
+`next.config.ts`.
 
 ## Changes made
 
@@ -298,6 +342,27 @@ feels like finishing and usually is not. It performs one real Firestore read,
 so a wrong project id or a mangled key surfaces there rather than deep inside
 a later feature.
 
+**Phase 2.** Authorisation moved to `lib/admin/auth.ts` and became async,
+because verifying a Firebase session cookie is a real operation.
+`verifySessionCookie` is called with `checkRevoked: true`, which is what
+makes removing someone take effect on their next request rather than up to
+eight hours later. Sign-in requires the `staff` allowlist entry *and* the
+`admin` custom claim: the claim alone could outlive someone's employment, and
+a list entry alone is trivially added by anyone who reaches Firestore. The
+refusal reason is logged server-side but not returned — whether an address is
+on the staff list is not something an unauthenticated stranger should learn.
+
+Sign-out revokes refresh tokens before clearing the cookie, since clearing it
+only stops *this* browser presenting it and a copy taken elsewhere would keep
+working. The cookie moved from `sameSite: "lax"` to `"strict"`: nothing
+outside this site should ever navigate someone into an authenticated admin
+action, and strict costs nothing for a panel reached by typing its address.
+
+`scripts/grant-admin.mjs` grants and revokes. It is a script rather than an
+endpoint because a route that grants administrative access is a route that
+can be reached, guessed at, or left exposed by a later refactor — and there
+is no bootstrap problem, since whoever deploys can run it once.
+
 ### Deviation from the approved plan
 
 The plan said to strip hidden records from `GET /api/itineraries` outright.
@@ -337,12 +402,21 @@ records are now filtered for anonymous callers and returned in full when
   worked. Environment quirk, nothing to do with this repo.
 - **Running `next build` while `next dev` is up killed the dev server.** They
   contend over `.next`. Stop the dev server first, or expect to restart it.
-- **Phase 2 was deliberately not started.** It replaces `lib/admin/session.ts`
-  — currently the only working way into the admin panel — and none of the
-  Firebase code beneath it has been proven against a real project. Shipping
-  an unverifiable rewrite of the authentication path would risk locking
-  everyone out with no way to tell whether the credentials or the code were
-  at fault. Phase 1 was kept purely additive and inert for the same reason.
+- **Phase 2 was paused, then built with a fallback.** The concern was real:
+  it replaces the only working way into the admin panel, on top of Firebase
+  code never proven against a real project. Rather than ship an
+  all-or-nothing rewrite, the legacy password path was kept alive for
+  exactly the case where Firebase is unconfigured. That is why the fallback
+  exists, and why removing it is an explicit next step rather than an
+  oversight.
+- **Middleware for the admin route does not work.** `firebase-admin` cannot
+  run in the edge runtime, so `proxy.ts` could only check whether a cookie
+  is present, not whether it is valid. Verifying in the page's server
+  component instead is both simpler and stronger. Do not "restore" the
+  planned middleware.
+- **A missing `await` on `requireAdmin` would silently disable every admin
+  check** — `if (!promise)` is always false. The signed-out 401 test in the
+  verification section exists specifically to catch it.
 
 ## Verification performed
 
@@ -368,11 +442,31 @@ Phase 1:
 - `tsc --noEmit`, `eslint` and `next build` clean — 140 static pages, no
   warnings.
 
+Phase 2, with Firebase deliberately left unconfigured so the fallback path
+was under test (temporary `ADMIN_*` values in a throwaway `.env.local`,
+since deleted):
+
+- Unauthenticated `/en/admin` returns the sign-in form and its HTML contains
+  **no** panel markup — checked for both "Custom tour optimisation" and
+  "Data and migration".
+- Wrong password 401, correct password 200; `GET /api/admin/session` then
+  reports `{"signedIn": true, "method": "password"}`.
+- Signed in, `/en/admin` renders the panel server-side with no sign-in flash.
+- **The awaited-`requireAdmin` test:** signed in, `DELETE
+  /api/admin/itineraries` with no id returns 400 `missing_id` — it reaches
+  the handler's own validation. After sign-out the same call returns 401, as
+  do `/api/admin/translate` and `/api/admin/firebase-status`. Had any `await`
+  been forgotten, the signed-out calls would have returned 400 too. Re-run
+  this after touching auth.
+- After sign-out, `/en/admin` again returns only the sign-in form.
+
 **Not verified:**
 
-- **Every part of phase 1 that touches Firebase.** No project existed while
-  it was written. Credentials, private-key newline handling and service
-  account permissions are all unproven.
+- **Every part of phases 1 and 2 that touches Firebase.** No project existed
+  while they were written. Credentials, private-key newline handling,
+  service account permissions, Google sign-in, the `staff` allowlist check,
+  session-cookie minting and revocation are all unproven. Only the
+  unconfigured fallback path has actually run.
 - The hidden-record filter ran against an empty archive, because
   `BLOB_READ_WRITE_TOKEN` is absent locally, so it has never been exercised
   against real data. The signed-in branch of that endpoint could not be
@@ -385,16 +479,32 @@ Phase 1:
 2. Create the Firebase project: Firestore in native mode, Authentication with
    email-link and Google providers, and Storage. Generate a service account
    key and fill the ten Firebase variables in `.env`.
-3. Sign in to the admin panel and open `/api/admin/firebase-status`. It must
-   return `{"configured": true, "reachable": true}`. **Do not start phase 2
-   until it does** — phase 2 replaces the working admin sign-in, and building
-   that on an unproven connection means debugging two things at once while
-   locked out of the panel.
+3. Sign in with the shared password (still the active path while Firebase is
+   unconfigured) and open `/api/admin/firebase-status`. It must return
+   `{"configured": true, "reachable": true}` before anything else is worth
+   trying.
 4. Deploy the rules: `firebase deploy --only firestore:rules,storage:rules`.
-5. With `BLOB_READ_WRITE_TOKEN` present, confirm the admin list and JSON
+5. Have each staff member open `/en/admin` and click **Continue with
+   Google** once. It will be refused — that is expected, and it creates the
+   Firebase account. Then grant them access:
+
+   ```bash
+   node --env-file=.env scripts/grant-admin.mjs someone@example.com
+   ```
+
+   They must sign out and back in, because the claim only reaches a fresh
+   token. Revoke with the same command plus `--revoke`.
+6. **Once at least one staff account signs in successfully, delete the
+   legacy password path** — the legacy branch in
+   `app/api/admin/session/route.ts`, `PasswordSignIn` in `AdminSignIn.tsx`,
+   `lib/admin/session.ts`, `lib/admin/rateLimit.ts`, and the three `ADMIN_*`
+   variables. Until this is done the shared password still works whenever
+   Firebase is unconfigured, which includes any deployment that loses its
+   Firebase variables.
+7. With `BLOB_READ_WRITE_TOKEN` present, confirm the admin list and JSON
    export still contain hidden itineraries while an anonymous
    `GET /api/itineraries` omits them.
-6. Phases 2 → 3 as one block, then 4b, 5, 6.
+8. Then phase 3, then 4b, 5, 6.
 
 Per `AGENTS.md`, read the relevant guides in `node_modules/next/dist/docs/`
 (route handlers, proxy/middleware, caching and `revalidateTag`, image config)
