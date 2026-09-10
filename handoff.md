@@ -17,6 +17,17 @@ none exists yet.
 the Firebase project and proving what is already on `main` actually works.
 See "The important caveat" and "Next steps".
 
+**The instructions for doing that now live in
+[`docs/FIREBASE_INTEGRATION.md`](docs/FIREBASE_INTEGRATION.md)**, with the
+steps as a tick-list in
+[`docs/FIREBASE_SETUP_CHECKLIST.md`](docs/FIREBASE_SETUP_CHECKLIST.md). Those
+two are the practical guide — every variable name, every console setting, the
+verification order and the troubleshooting. This file stays the record of
+*why* each decision was made and what is still unproven. **Nothing in them has
+been executed yet:** creating a Firebase project needs a Google account and
+console access, which no automated session has. Everything below about the
+Firebase code being unproven is still true.
+
 ### Decisions taken with the operator
 
 - **Firebase, not Supabase.** Supabase was recommended first (relational fit,
@@ -315,7 +326,7 @@ observable.
 
 Treat all of it as unvalidated until `/api/admin/firebase-status` returns
 `{"configured": true, "reachable": true}` and a real staff account signs in
-with Google.
+with Google. `docs/FIREBASE_SETUP_CHECKLIST.md` is the order to do that in.
 
 **Action required before the admin panel works at all:** `ADMIN_EMAIL`,
 `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` must be set in `.env` locally and
@@ -834,6 +845,10 @@ verified end to end:
   tested either, since sign-in requires env vars that are not set.
 
 ## Next steps
+
+These are also in `docs/FIREBASE_SETUP_CHECKLIST.md` as a tick-list, with the
+reasoning and troubleshooting in `docs/FIREBASE_INTEGRATION.md`. None of them
+has been done.
 
 1. Set `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET` locally and in
    Vercel. **Nobody can reach the admin panel until this is done.**
