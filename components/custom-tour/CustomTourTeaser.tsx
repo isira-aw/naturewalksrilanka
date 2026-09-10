@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Photo } from "@/components/ui/Photo";
 import { Link } from "@/i18n/navigation";
 
 export function CustomTourTeaser({
@@ -8,10 +8,9 @@ export function CustomTourTeaser({
 }) {
   return (
     <section className="relative overflow-hidden bg-forest py-24 text-warm-white md:py-32">
-      <Image
+      <Photo
         src="/images/hero-2.jpg"
         alt="A quiet trail through Sri Lankan forest"
-        fill
         sizes="100vw"
         className="object-cover opacity-20"
       />

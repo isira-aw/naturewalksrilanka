@@ -133,6 +133,7 @@ export function ExperienceDialog({
                         src={src}
                         alt=""
                         sizes="(min-width: 1024px) 32rem, (min-width: 640px) 20rem, 100vw"
+                        blurDataURL={experience.imageBlur?.[src]}
                       />
                     </div>
                   ))}
@@ -191,6 +192,7 @@ export function ExperienceDialog({
                                   src={highlight.image}
                                   alt={highlight.name}
                                   sizes="(min-width: 1024px) 14rem, 45vw"
+                                  blurDataURL={experience.imageBlur?.[highlight.image]}
                                 />
                               </div>
                               <div className="px-3 py-3">

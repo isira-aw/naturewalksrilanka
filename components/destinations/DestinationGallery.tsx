@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Photo } from "@/components/ui/Photo";
 import { motion, useTransform } from "framer-motion";
 import type { DestinationImage } from "@/lib/content/schema";
 import { CarouselButton, Kicker, viewport } from "@/components/ui/motion";
@@ -61,10 +61,9 @@ export function DestinationGallery({
             className="group w-[82vw] shrink-0 snap-start sm:w-[56vw] lg:w-[38rem]"
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden">
-              <Image
+              <Photo
                 src={image.src}
                 alt={image.alt}
-                fill
                 sizes="(min-width: 1024px) 38rem, (min-width: 640px) 56vw, 82vw"
                 className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
               />

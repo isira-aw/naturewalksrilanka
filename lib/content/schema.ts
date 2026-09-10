@@ -141,6 +141,16 @@ export const experienceSchema = z.object({
   /** Full text, shown only inside the dialog. */
   description: z.string(),
   images: z.array(z.string()).min(1),
+  /**
+   * Blur placeholders for `images` and highlight photographs, keyed by URL.
+   *
+   * Only itineraries written in the admin page have these: their photographs
+   * live in Firebase Storage, so nothing can generate a placeholder for them
+   * ahead of time the way `scripts/optimize-images.mjs` does for the files
+   * under `public/`. The hand-written experiences in `content/` use paths the
+   * manifest already covers and leave this out.
+   */
+  imageBlur: z.record(z.string(), z.string()).optional(),
   highlights: z.array(experienceHighlightSchema),
   contentRequired: z.boolean().optional(),
   _note: z.string().optional(),

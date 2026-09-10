@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Photo } from "@/components/ui/Photo";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import type { Tour } from "@/lib/content/schema";
@@ -41,10 +41,9 @@ export function TourRow({
             flipped && "md:order-2"
           )}
         >
-          <Image
+          <Photo
             src={tour.heroImage}
             alt={tour.title}
-            fill
             sizes="(min-width: 768px) 55vw, 100vw"
             className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
           />

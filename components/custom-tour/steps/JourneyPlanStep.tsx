@@ -112,7 +112,12 @@ export function JourneyPlanStep({
 
                   {stop.experience.images[0] && (
                     <div className="relative hidden h-20 w-28 shrink-0 overflow-hidden rounded-xl bg-stone sm:block">
-                      <Photo src={stop.experience.images[0]} alt="" sizes="7rem" />
+                      <Photo
+                        src={stop.experience.images[0]}
+                        alt=""
+                        sizes="7rem"
+                        blurDataURL={stop.experience.imageBlur?.[stop.experience.images[0]]}
+                      />
                     </div>
                   )}
                 </div>
