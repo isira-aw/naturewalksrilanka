@@ -169,7 +169,7 @@
     "contactEmail": "Email",
     "contactPhone": "WhatsApp / Phone",
     "contactCountry": "Country",
-    "contactHint": "So we can reply to you. Nothing is stored on this site — your answers go straight into a WhatsApp message you send yourself.",
+    "contactHint": "So we can reply to you. We keep your enquiry so you can look it up again later, and your answers also go into a WhatsApp message you send yourself.",
     "requirementsLabel": "Tell us about your ideal journey…",
     "reviewTitle": "Review your journey",
     "reviewHint": "Check everything reads right, then send it over on WhatsApp.",
@@ -197,7 +197,9 @@
       "notice": "This document was generated automatically from the itineraries you told us you were interested in. It is a starting point, not a fixed booking. If anything needs changing — the order of the stops, how long you stay, or the itineraries themselves — talk to our team on WhatsApp. Don't worry: they are always happy to help.",
       "whatsappLabel": "WhatsApp"
     },
-    "downloadDoc": "Download as Word"
+    "downloadDoc": "Download as Word",
+    "amending": "You are changing trip {reference}. Send it again when you are done and we will see the update.",
+    "amendFailed": "We could not open that trip. Open it from your trip page first, then choose Change this trip."
   },
   "nandana": {
     "introEyebrow": "Who is Nandana",
@@ -275,5 +277,45 @@
     "journeys": "Journeys that include it",
     "activities": "Things to do here",
     "backToAll": "All destinations"
+  },
+  "myTrip": {
+    "title": "Your trip",
+    "referenceLabel": "Reference",
+    "accessTitle": "See your trip",
+    "accessBody": "Enter the email address you used for trip {reference} and we will send you a link to open it. No password needed.",
+    "emailLabel": "Email",
+    "sendLink": "Email me a link",
+    "sending": "Sending…",
+    "linkSent": "We have sent a link to {email}.",
+    "linkSentHint": "Open it on this device. The link works once and expires after a while.",
+    "signingIn": "Opening your trip…",
+    "linkExpired": "That link has expired or has already been used. Ask for a new one.",
+    "reenterEmail": "Enter your email address again to finish opening your trip.",
+    "sendFailed": "We could not send that link. Check the address and try again.",
+    "unavailable": "Saved trips are not available yet. Your enquiry still reaches us on WhatsApp.",
+    "notYours": "We could not find that trip for your email address.",
+    "notYoursHint": "You are signed in as {email}. If you used a different address, ask for a new link with that one.",
+    "travellers": "Travellers",
+    "dates": "Dates",
+    "datesUnset": "Not set",
+    "interests": "Interests",
+    "itineraries": "Itineraries",
+    "accommodation": "Accommodation",
+    "accommodationNotes": "Accommodation notes",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "country": "Country",
+    "requirements": "Requirements",
+    "amend": "Change this trip",
+    "changesHint": "Changing your trip sends us the new version. We keep the previous one, so nothing is lost.",
+    "revisionNote": "Changed {count, plural, one {once} other {# times}}.",
+    "status": {
+      "received": "Received",
+      "in-progress": "We are working on it",
+      "quoted": "Quote sent",
+      "confirmed": "Confirmed",
+      "closed": "Closed"
+    }
   }
 }

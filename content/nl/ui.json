@@ -169,7 +169,7 @@
     "contactEmail": "E-mail",
     "contactPhone": "WhatsApp / telefoon",
     "contactCountry": "Land",
-    "contactHint": "Zodat we je kunnen antwoorden. Er wordt niets op deze site opgeslagen — je antwoorden gaan rechtstreeks in een WhatsApp-bericht dat je zelf verstuurt.",
+    "contactHint": "Zodat we je kunnen antwoorden. We bewaren je aanvraag zodat je hem later kunt terugvinden, en je antwoorden gaan ook in een WhatsApp-bericht dat je zelf verstuurt.",
     "requirementsLabel": "Vertel ons over je ideale reis…",
     "reviewTitle": "Bekijk je reis",
     "reviewHint": "Controleer of alles klopt en stuur het daarna via WhatsApp.",
@@ -197,7 +197,9 @@
       "notice": "Dit document is automatisch samengesteld uit de itineraries waarin u aangaf geïnteresseerd te zijn. Het is een startpunt, geen vaste boeking. Moet er iets veranderen — de volgorde van de stops, de duur, of de itineraries zelf — neem dan contact op met ons team via WhatsApp. Geen zorgen: ze helpen u graag.",
       "whatsappLabel": "WhatsApp"
     },
-    "downloadDoc": "Downloaden als Word"
+    "downloadDoc": "Downloaden als Word",
+    "amending": "Je wijzigt reis {reference}. Verstuur hem opnieuw als je klaar bent, dan zien wij de wijziging.",
+    "amendFailed": "We konden die reis niet openen. Open hem eerst via je reispagina en kies dan Deze reis wijzigen."
   },
   "nandana": {
     "introEyebrow": "Wie is Nandana",
@@ -276,5 +278,45 @@
     "journeys": "Reizen langs deze plek",
     "activities": "Wat je hier doet",
     "backToAll": "Alle bestemmingen"
+  },
+  "myTrip": {
+    "title": "Jouw reis",
+    "referenceLabel": "Referentie",
+    "accessTitle": "Bekijk je reis",
+    "accessBody": "Vul het e-mailadres in dat je gebruikte voor reis {reference}, dan sturen we je een link om hem te openen. Geen wachtwoord nodig.",
+    "emailLabel": "E-mail",
+    "sendLink": "Stuur mij een link",
+    "sending": "Versturen…",
+    "linkSent": "We hebben een link naar {email} gestuurd.",
+    "linkSentHint": "Open hem op dit apparaat. De link werkt eenmalig en verloopt na een tijdje.",
+    "signingIn": "Je reis wordt geopend…",
+    "linkExpired": "Die link is verlopen of al gebruikt. Vraag een nieuwe aan.",
+    "reenterEmail": "Vul je e-mailadres opnieuw in om je reis te openen.",
+    "sendFailed": "We konden die link niet versturen. Controleer het adres en probeer het opnieuw.",
+    "unavailable": "Opgeslagen reizen zijn nog niet beschikbaar. Je aanvraag bereikt ons nog steeds via WhatsApp.",
+    "notYours": "We konden die reis niet vinden bij jouw e-mailadres.",
+    "notYoursHint": "Je bent aangemeld als {email}. Gebruikte je een ander adres, vraag dan daarmee een nieuwe link aan.",
+    "travellers": "Reizigers",
+    "dates": "Data",
+    "datesUnset": "Niet ingevuld",
+    "interests": "Interesses",
+    "itineraries": "Routes",
+    "accommodation": "Accommodatie",
+    "accommodationNotes": "Opmerkingen accommodatie",
+    "name": "Naam",
+    "email": "E-mail",
+    "phone": "Telefoon",
+    "country": "Land",
+    "requirements": "Wensen",
+    "amend": "Deze reis wijzigen",
+    "changesHint": "Als je je reis wijzigt, sturen we ons de nieuwe versie. We bewaren de vorige, dus er gaat niets verloren.",
+    "revisionNote": "{count, plural, one {Eén keer} other {# keer}} gewijzigd.",
+    "status": {
+      "received": "Ontvangen",
+      "in-progress": "We zijn ermee bezig",
+      "quoted": "Offerte verstuurd",
+      "confirmed": "Bevestigd",
+      "closed": "Afgesloten"
+    }
   }
 }

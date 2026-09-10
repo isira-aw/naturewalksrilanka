@@ -173,6 +173,9 @@ export function WizardShell({
   const [draft, setDraft] = useState<DraftState | null>(null);
   const [restoreSettled, setRestoreSettled] = useState(false);
   const [sent, setSent] = useState(false);
+  /** Set when this visit is editing an already-sent enquiry. */
+  const [amending, setAmending] = useState<string | null>(null);
+  const [amendFailed, setAmendFailed] = useState(false);
 
   /* Reading storage in an effect, not during render: this page is prerendered
      per locale, localStorage does not exist on the server, and a lazy
@@ -182,6 +185,39 @@ export function WizardShell({
      cascading render. */
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
+    /* `?amend=NW-XXXXX` means the traveller came from their saved trip to
+       change it. Their sent answers win over any half-finished draft on this
+       device, so the draft question is skipped entirely.
+
+       The reference is read from `window.location` rather than
+       `useSearchParams`, which would force this prerendered page into a
+       Suspense boundary for a query string only a minority of visitors have. */
+    const amend = new URLSearchParams(window.location.search).get("amend");
+    if (amend) {
+      setAmending(amend);
+      void (async () => {
+        try {
+          const response = await fetch(
+            `/api/custom-tour/requests?reference=${encodeURIComponent(amend)}`,
+            { credentials: "same-origin", cache: "no-store" },
+          );
+          if (response.ok) {
+            const { payload } = await response.json();
+            dispatch({ type: "RESTORE", value: { ...payload, step: 1 } });
+          } else {
+            /* Not signed in, or not theirs. Send them to prove it rather
+               than silently starting a blank trip they think is an edit. */
+            setAmendFailed(true);
+          }
+        } catch {
+          setAmendFailed(true);
+        } finally {
+          setRestoreSettled(true);
+        }
+      })();
+      return;
+    }
+
     const saved = loadDraft();
     if (saved && isResumable(saved)) {
       setDraft(saved);
@@ -193,12 +229,15 @@ export function WizardShell({
   /* eslint-enable react-hooks/set-state-in-effect */
 
   useEffect(() => {
-    if (!restoreSettled || sent) return;
+    /* Amendments are not drafted locally: the authoritative copy is the
+       saved enquiry, and leaving a local draft behind would later offer an
+       edit of an old trip as if it were a new one. */
+    if (!restoreSettled || sent || amending) return;
     /* Debounced, because every keystroke in the contact step is a state
        change and none of them is worth a separate write. */
     const timer = window.setTimeout(() => saveDraft(state), 500);
     return () => window.clearTimeout(timer);
-  }, [state, restoreSettled, sent]);
+  }, [state, restoreSettled, sent, amending]);
 
   function handleResumeDraft() {
     if (draft) dispatch({ type: "RESTORE", value: draft });
@@ -213,10 +252,29 @@ export function WizardShell({
   }
 
   /* Sent to WhatsApp: the draft has served its purpose, and leaving it behind
-     would offer the finished enquiry back as unfinished work. */
+     would offer the finished enquiry back as unfinished work.
+
+     The enquiry is also recorded server-side here, deliberately without
+     awaiting it. WhatsApp is how this business receives enquiries and has
+     been for years; blocking that on a Firestore write — or failing it —
+     would trade a working process for a new one. If the write fails the
+     traveller still reaches the team, and only the saved copy is lost. */
   function handleSent() {
     setSent(true);
     clearDraft();
+
+    /* The step counter is UI state, not part of the enquiry. */
+    const { step, ...payload } = state;
+    void step;
+    void fetch("/api/custom-tour/requests", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "same-origin",
+      keepalive: true,
+      body: JSON.stringify({ payload, locale, reference: amending ?? undefined }),
+    }).catch(() => {
+      /* Nothing to show: the traveller is already on their way to WhatsApp. */
+    });
   }
 
   /* Two sources, one list: whatever is committed to the content files, plus
@@ -308,7 +366,22 @@ export function WizardShell({
 
   return (
     <div ref={topRef} className="scroll-mt-20 sm:scroll-mt-24">
-      {draft && (
+      {amending && !amendFailed && (
+        <p className="mb-6 rounded-2xl border border-stone-dark bg-stone/20 px-5 py-4 text-sm leading-relaxed text-charcoal">
+          {t("amending", { reference: amending })}
+        </p>
+      )}
+
+      {amendFailed && (
+        <p
+          role="alert"
+          className="mb-6 rounded-2xl bg-clay/10 px-5 py-4 text-sm leading-relaxed text-charcoal"
+        >
+          {t("amendFailed")}
+        </p>
+      )}
+
+      {draft && !amending && (
         <ResumeDraftBanner onResume={handleResumeDraft} onDiscard={handleDiscardDraft} />
       )}
 

@@ -34,7 +34,7 @@ See "The important caveat" and "Next steps".
 
 ## Full plan
 
-Phases 0, 1, 2, 3 and 4a are **written**. Phases 4b, 5 and 6 are designed but
+Phases 0 through 4 are **written**. Phases 5 and 6 are designed but
 unstarted. Everything touching Firebase is written but unproven — see
 "Current state".
 
@@ -141,20 +141,43 @@ Deliberately **not** done from the original plan: caching the public read with
 cookie, and a caching mistake there would serve one visitor's view to
 another. Worth doing, but as its own change with its own testing.
 
-### Phase 4 — Traveller flow (4a DONE, 4b TODO)
+### Phase 4 — Traveller flow (both DONE)
 
 **4a — draft autosave.** No backend. Done; see below.
 
-**4b — persisted submissions.** `POST /api/custom-tour/requests` writes a
-`tourRequests` document: a short human `reference` (e.g. `NW-7K3QD`), email,
-locale, status, the whole wizard state as a `payload` map (so wizard changes
-don't force a migration), timestamps, and a `revisions` subcollection.
-`ReviewStep.tsx` POSTs *before* opening WhatsApp — the WhatsApp link and both
-document downloads stay exactly as they are; this is purely additive.
-Travellers reach `/[locale]/my-trip/[reference]` through a Firebase Auth email
-link, with an "Amend this trip" button that seeds the wizard from the stored
-payload and writes a revision. Side benefit: the admin panel finally gets an
-enquiry queue instead of a WhatsApp inbox.
+**4b — persisted submissions (DONE, Firestore half unproven).**
+`POST /api/custom-tour/requests` writes a `tourRequests` document keyed by a
+short human `reference` (`NW-7K3QD`). The wizard's answers are stored as one
+opaque `payload` map rather than columns: the wizard changes often — a step
+was added and an AI step removed recently — and each change would otherwise
+mean a schema migration over live enquiry data.
+
+**Sending is never blocked by this.** The POST is fired without awaiting it,
+and returns 200 with `saved: false` when Firebase is unconfigured or the
+write fails. WhatsApp has been how this business receives enquiries for
+years; trading that for a new dependency would be a bad bargain. The
+WhatsApp link and both document downloads are untouched.
+
+Travellers reach `/[locale]/my-trip/[reference]` and prove who they are with
+a Firebase email-link sign-in. **The reference is not a credential** — five
+characters from a 28-letter alphabet, printed on the WhatsApp message and
+readable over the phone, so neighbouring codes are guessable. It says which
+trip; the sign-in says who. A reference that does not exist and one
+belonging to somebody else give the same answer, so the page cannot be used
+to discover which references are real.
+
+Amending re-opens the wizard via `?amend=NW-XXXXX`, seeded from the stored
+payload; the previous version is copied into a `revisions` subcollection
+inside a transaction before the new one lands, because the team may already
+have quoted against it. The email on a request is deliberately **not**
+updatable by a revision — it is the key ownership is checked against.
+
+The traveller session is a separate cookie from the admin one, with no
+custom claim: proving you hold an email address must never be a step
+towards the admin panel.
+
+Still to do: the admin-side enquiry queue. The data and `listRequests()`
+exist; nothing renders them yet.
 
 ### Phase 5 — Reviews by invite (TODO)
 
@@ -204,8 +227,8 @@ the shared chokepoint for nearly every content image.
 
 ### Sequencing
 
-Phases 0, 1, 2, 3 and 4a are all merged. **Nothing further should be built
-until a real Firebase project exists**, `/api/admin/firebase-status` reports
+Phases 0 through 4 are all written. **Nothing further should be built until
+a real Firebase project exists**, `/api/admin/firebase-status` reports
 the connection healthy, and the itinerary migration has actually run. Three
 phases of Firebase code are now on `main` without a single line of it having
 reached Firebase; adding 4b or 5 on top would deepen a stack of unverified
@@ -221,6 +244,7 @@ Everything written so far is **merged to `main`**:
 | 1 | #11 | Firebase foundation |
 | 2 | #12 | Admin sign-in on Firebase Auth |
 | 3 | #14 | Itineraries to Firestore, images to Storage |
+| 4b | #15 | Saved trips: enquiries recorded, `/my-trip`, amendments |
 
 (#13 was the same work as #14; it was auto-closed when its base branch was
 deleted on merging #12, and reopened as #14 against `main`.)
@@ -320,6 +344,26 @@ All merged to `main`; grouped by the phase that introduced them.
 Untouched: `lib/itineraries/blobArchive.ts` (still the fallback),
 `lib/itineraries/types.ts`, `toExperience.ts`.
 
+### Phase 4b — saved trips
+
+- `lib/tourRequests/types.ts` — new; payload schema, statuses, reference
+  generator
+- `lib/tourRequests/store.ts` — new; create, get, revise (transactional),
+  list
+- `lib/tourRequests/travellerSession.ts` — new; traveller cookie, kept
+  separate from the admin one
+- `app/api/custom-tour/requests/route.ts` — new; POST to record or revise,
+  GET for the amend flow
+- `app/api/traveller/session/route.ts` — new; email-link sign-in exchange
+- `app/[locale]/my-trip/[reference]/page.tsx` — new
+- `components/my-trip/{TravellerAccess,TripSummary}.tsx` — new
+- `components/custom-tour/WizardShell.tsx` — records on send, seeds from
+  `?amend=`
+- `content/*/ui.json` — new `myTrip` namespace; `customTour.amending` and
+  `amendFailed`; **`contactHint` reworded**, because it promised "Nothing is
+  stored on this site" and that is no longer true
+- `app/robots.ts` — `/my-trip` disallowed
+
 ## Changes made
 
 **Phase 0.** `lib/admin/session.ts` no longer falls back to a default email,
@@ -416,6 +460,31 @@ already https URLs are left alone, so an interrupted run can just be
 repeated. Uploaded images get a permanent download-token URL rather than a
 signed one: a signed URL would expire and quietly break the page weeks
 later.
+
+**Phase 4b.** The guiding constraint was that recording an enquiry must not
+be able to break sending one. Hence the un-awaited POST, the `saved: false`
+response instead of an error, and validation running *before* the Firebase
+check so a client bug still surfaces as a 400 even when nothing is
+configured.
+
+References are generated from an alphabet with no vowels (so a code cannot
+spell a word) and no `0/O` or `1/I/L` (the characters people mistype when
+copying from a screen). `create()` rather than `set()` means a collision
+fails and retries instead of silently overwriting another traveller's trip.
+
+The traveller cookie is `sameSite: "lax"`, unlike the admin cookie's
+`strict`: travellers arrive by clicking a link in their email, and a strict
+cookie would not be sent on that first cross-site navigation — they would
+land signed out having just signed in.
+
+Revisions are written in a transaction so the old payload is always
+preserved before the new one replaces it. A half-applied amendment would
+lose the version the team quoted against.
+
+Note the copy change: `contactHint` told travellers "Nothing is stored on
+this site". That was true and is no longer, so it was reworded in all five
+locales. Leaving a stale privacy claim in place would be worse than the
+feature is good.
 
 ### Deviation from the approved plan
 
@@ -527,6 +596,20 @@ Phase 3, again on the fallback path:
   polling was replaced.
 - `tsc --noEmit`, `eslint` and `next build` clean.
 
+Phase 4b, on the unconfigured path:
+
+- `POST /api/custom-tour/requests` returns **200** with
+  `{"saved": false, "reason": "not_configured"}` — sending is not blocked.
+- An invalid payload returns 400 even when unconfigured, so a client bug is
+  still caught.
+- `GET /api/custom-tour/requests` returns 503; `/api/traveller/session`
+  reports `available: false`.
+- `/en/my-trip/NW-ABCDE` renders the "not available yet" notice.
+- `/en/custom-tour?amend=NW-ABCDE` shows the amend-failed message rather
+  than silently starting a blank trip, and suppresses the resume banner.
+- `tsc --noEmit`, `eslint` and `next build` clean; the two new routes and
+  the new page appear in the route table.
+
 **Not verified:**
 
 - **Every part of phases 1, 2 and 3 that touches Firebase.** No project
@@ -538,6 +621,11 @@ Phase 3, again on the fallback path:
 - **No itinerary write has succeeded locally at all**, on either path:
   Firestore is unconfigured and the blob path has no token. The write code
   is therefore exercised only as far as its storage call.
+- **No tour request has ever been stored, read back, or amended**, and the
+  email-link sign-in has never sent an email. The whole of phase 4b is
+  exercised only along its "Firebase is absent" branch. In particular the
+  reference-collision retry, the revision transaction, and the traveller
+  session cookie are untested.
 - The hidden-record filter ran against an empty archive, because
   `BLOB_READ_WRITE_TOKEN` is absent locally, so it has never been exercised
   against real data. The signed-in branch of that endpoint could not be
@@ -588,7 +676,15 @@ Phase 3, again on the fallback path:
    **Only once all that is right**, delete the `itineraries/archive.json`
    blob by hand, remove `lib/itineraries/blobArchive.ts` and its branch in
    `repository.ts`, and drop `@vercel/blob`.
-9. Then 4b, 5, 6.
+9. **Enable email-link sign-in** in Firebase Authentication (it is a
+   separate provider from Google) and add the production domain to the
+   authorised domains list, or the emailed links will be rejected.
+10. Send one test enquiry, confirm the `tourRequests` document appears, open
+    `/my-trip/<reference>`, sign in with the emailed link, and amend it —
+    then confirm a `revisions` subcollection document was written and the
+    original payload survived.
+11. Then 5, 6, and the admin enquiry queue (`listRequests()` exists;
+    nothing renders it yet).
 
 Per `AGENTS.md`, read the relevant guides in `node_modules/next/dist/docs/`
 (route handlers, proxy/middleware, caching and `revalidateTag`, image config)

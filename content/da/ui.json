@@ -169,7 +169,7 @@
     "contactEmail": "E-mail",
     "contactPhone": "WhatsApp / telefon",
     "contactCountry": "Land",
-    "contactHint": "Så vi kan svare dig. Intet gemmes på siden — dine svar går direkte ind i en WhatsApp-besked, du selv sender.",
+    "contactHint": "Så vi kan svare dig. Vi gemmer din henvendelse, så du kan finde den frem igen senere, og dine svar går også ind i en WhatsApp-besked, du selv sender.",
     "requirementsLabel": "Fortæl os om din ideelle rejse…",
     "reviewTitle": "Se din rejse igennem",
     "reviewHint": "Tjek at det hele ser rigtigt ud, og send det så på WhatsApp.",
@@ -197,7 +197,9 @@
       "notice": "Dette dokument er genereret automatisk ud fra de itineraries, du fortalte os, du var interesseret i. Det er et udgangspunkt, ikke en fast booking. Skal noget ændres — rækkefølgen af stop, hvor længe du bliver, eller selve itineraries — så skriv til vores team på WhatsApp. Bare rolig: de hjælper altid gerne.",
       "whatsappLabel": "WhatsApp"
     },
-    "downloadDoc": "Hent som Word"
+    "downloadDoc": "Hent som Word",
+    "amending": "Du ændrer rejse {reference}. Send den igen, når du er færdig, så ser vi opdateringen.",
+    "amendFailed": "Vi kunne ikke åbne den rejse. Åbn den først fra din rejseside, og vælg så Ret denne rejse."
   },
   "nandana": {
     "introEyebrow": "Hvem er Nandana",
@@ -276,5 +278,45 @@
     "journeys": "Rejser der inkluderer stedet",
     "activities": "Hvad du kan lave her",
     "backToAll": "Alle destinationer"
+  },
+  "myTrip": {
+    "title": "Din rejse",
+    "referenceLabel": "Reference",
+    "accessTitle": "Se din rejse",
+    "accessBody": "Skriv den e-mailadresse, du brugte til rejse {reference}, så sender vi dig et link til at åbne den. Ingen adgangskode.",
+    "emailLabel": "E-mail",
+    "sendLink": "Send mig et link",
+    "sending": "Sender…",
+    "linkSent": "Vi har sendt et link til {email}.",
+    "linkSentHint": "Åbn det på denne enhed. Linket virker én gang og udløber efter et stykke tid.",
+    "signingIn": "Åbner din rejse…",
+    "linkExpired": "Linket er udløbet eller allerede brugt. Bed om et nyt.",
+    "reenterEmail": "Skriv din e-mailadresse igen for at åbne din rejse.",
+    "sendFailed": "Vi kunne ikke sende linket. Tjek adressen, og prøv igen.",
+    "unavailable": "Gemte rejser er der ikke endnu. Din henvendelse når os stadig på WhatsApp.",
+    "notYours": "Vi kunne ikke finde den rejse på din e-mailadresse.",
+    "notYoursHint": "Du er logget ind som {email}. Brugte du en anden adresse, så bed om et nyt link med den.",
+    "travellers": "Rejsende",
+    "dates": "Datoer",
+    "datesUnset": "Ikke valgt",
+    "interests": "Interesser",
+    "itineraries": "Ruter",
+    "accommodation": "Overnatning",
+    "accommodationNotes": "Noter om overnatning",
+    "name": "Navn",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "country": "Land",
+    "requirements": "Ønsker",
+    "amend": "Ret denne rejse",
+    "changesHint": "Når du retter din rejse, sender du os den nye version. Vi gemmer den gamle, så intet går tabt.",
+    "revisionNote": "Rettet {count, plural, one {én gang} other {# gange}}.",
+    "status": {
+      "received": "Modtaget",
+      "in-progress": "Vi arbejder på den",
+      "quoted": "Tilbud sendt",
+      "confirmed": "Bekræftet",
+      "closed": "Afsluttet"
+    }
   }
 }

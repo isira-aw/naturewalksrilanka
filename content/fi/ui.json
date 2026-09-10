@@ -169,7 +169,7 @@
     "contactEmail": "Sähköposti",
     "contactPhone": "WhatsApp / puhelin",
     "contactCountry": "Maa",
-    "contactHint": "Jotta voimme vastata sinulle. Mitään ei tallenneta tälle sivustolle — vastauksesi menevät suoraan WhatsApp-viestiin, jonka lähetät itse.",
+    "contactHint": "Jotta voimme vastata sinulle. Säilytämme pyyntösi, jotta löydät sen myöhemmin uudelleen, ja vastauksesi menevät myös WhatsApp-viestiin, jonka lähetät itse.",
     "requirementsLabel": "Kerro meille ihannematkastasi…",
     "reviewTitle": "Tarkista matkasi",
     "reviewHint": "Tarkista, että kaikki on oikein, ja lähetä se WhatsAppissa.",
@@ -197,7 +197,9 @@
       "notice": "Tämä asiakirja on luotu automaattisesti niistä itineraryistä, joista kerroit olevasi kiinnostunut. Se on lähtökohta, ei sitova varaus. Jos jotain pitää muuttaa — pysähdysten järjestystä, kestoa tai itsessään itineraryjä — ota yhteyttä tiimiimme WhatsAppissa. Ei huolta: he auttavat aina mielellään.",
       "whatsappLabel": "WhatsApp"
     },
-    "downloadDoc": "Lataa Word-tiedostona"
+    "downloadDoc": "Lataa Word-tiedostona",
+    "amending": "Muutat matkaa {reference}. Lähetä se uudelleen, kun olet valmis, niin näemme muutoksen.",
+    "amendFailed": "Emme voineet avata matkaa. Avaa se ensin matkasivultasi ja valitse Muuta tätä matkaa."
   },
   "nandana": {
     "introEyebrow": "Kuka on Nandana",
@@ -276,5 +278,45 @@
     "journeys": "Matkat, joihin kohde kuuluu",
     "activities": "Tekemistä täällä",
     "backToAll": "Kaikki kohteet"
+  },
+  "myTrip": {
+    "title": "Matkasi",
+    "referenceLabel": "Viite",
+    "accessTitle": "Katso matkasi",
+    "accessBody": "Anna sähköpostiosoite, jota käytit matkaan {reference}, niin lähetämme sinulle linkin sen avaamiseen. Salasanaa ei tarvita.",
+    "emailLabel": "Sähköposti",
+    "sendLink": "Lähetä minulle linkki",
+    "sending": "Lähetetään…",
+    "linkSent": "Lähetimme linkin osoitteeseen {email}.",
+    "linkSentHint": "Avaa se tällä laitteella. Linkki toimii kerran ja vanhenee aikanaan.",
+    "signingIn": "Avataan matkaasi…",
+    "linkExpired": "Linkki on vanhentunut tai jo käytetty. Pyydä uusi.",
+    "reenterEmail": "Anna sähköpostiosoitteesi uudelleen, niin saamme matkasi auki.",
+    "sendFailed": "Linkin lähetys ei onnistunut. Tarkista osoite ja yritä uudelleen.",
+    "unavailable": "Tallennetut matkat eivät ole vielä käytössä. Pyyntösi tavoittaa meidät silti WhatsAppissa.",
+    "notYours": "Emme löytäneet kyseistä matkaa sähköpostiosoitteellasi.",
+    "notYoursHint": "Olet kirjautunut osoitteella {email}. Jos käytit toista osoitetta, pyydä uusi linkki sillä.",
+    "travellers": "Matkustajat",
+    "dates": "Päivämäärät",
+    "datesUnset": "Ei valittu",
+    "interests": "Kiinnostukset",
+    "itineraries": "Reitit",
+    "accommodation": "Majoitus",
+    "accommodationNotes": "Majoitustoiveet",
+    "name": "Nimi",
+    "email": "Sähköposti",
+    "phone": "Puhelin",
+    "country": "Maa",
+    "requirements": "Toiveet",
+    "amend": "Muuta tätä matkaa",
+    "changesHint": "Kun muutat matkaasi, lähetät meille uuden version. Säilytämme edellisen, joten mitään ei katoa.",
+    "revisionNote": "Muutettu {count, plural, one {kerran} other {# kertaa}}.",
+    "status": {
+      "received": "Vastaanotettu",
+      "in-progress": "Työstämme sitä",
+      "quoted": "Tarjous lähetetty",
+      "confirmed": "Vahvistettu",
+      "closed": "Suljettu"
+    }
   }
 }

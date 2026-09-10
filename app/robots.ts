@@ -7,8 +7,11 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // The admin tool is reached by typing its address, never by crawling to it.
-      disallow: ["/api/", "/admin", "/*/admin"],
+      /* The admin tool is reached by typing its address, never by crawling to
+         it. Saved trips are private to one traveller and carry a reference in
+         the URL — nothing should be indexing those, quite apart from the
+         sign-in that guards them. */
+      disallow: ["/api/", "/admin", "/*/admin", "/my-trip", "/*/my-trip"],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
