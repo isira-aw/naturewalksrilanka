@@ -19,6 +19,14 @@ import { JourneyPlanStep } from "./steps/JourneyPlanStep";
 import { ContactStep } from "./steps/ContactStep";
 import { ReviewStep } from "./steps/ReviewStep";
 import { useJourneyDocument } from "./useJourneyDocument";
+import { ResumeDraftBanner } from "./ResumeDraftBanner";
+import {
+  clearDraft,
+  isResumable,
+  loadDraft,
+  saveDraft,
+  type DraftState,
+} from "@/lib/custom-tour/draftStorage";
 
 export type WizardState = {
   step: number;
@@ -46,7 +54,8 @@ type WizardAction =
   | { type: "SET_FIELD"; field: "name" | "email" | "phone" | "country" | "requirements"; value: string }
   | { type: "GO_NEXT"; totalSteps: number }
   | { type: "GO_BACK" }
-  | { type: "GO_TO"; step: number };
+  | { type: "GO_TO"; step: number }
+  | { type: "RESTORE"; value: WizardState };
 
 /* The journey plan sits after accommodation and before contact: it is the last
    thing built out of the traveller's answers, and the first thing they can
@@ -125,6 +134,13 @@ function reducer(state: WizardState, action: WizardAction): WizardState {
       return { ...state, step: Math.max(1, state.step - 1) };
     case "GO_TO":
       return { ...state, step: action.step };
+    case "RESTORE":
+      /* The saved step could outlive a change to the wizard, so it is clamped
+         rather than trusted. */
+      return {
+        ...action.value,
+        step: Math.min(Math.max(1, action.value.step), STEP_KEYS.length),
+      };
     default:
       return state;
   }
@@ -150,6 +166,58 @@ export function WizardShell({
   const topRef = useRef<HTMLDivElement>(null);
   const isFirstRender = useRef(true);
   const { records } = useItineraries();
+
+  /* A draft found on this device, waiting for the traveller to say whether it
+     is theirs to continue. Nothing is written back until that is settled, so
+     the first render cannot overwrite the very draft it is offering. */
+  const [draft, setDraft] = useState<DraftState | null>(null);
+  const [restoreSettled, setRestoreSettled] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  /* Reading storage in an effect, not during render: this page is prerendered
+     per locale, localStorage does not exist on the server, and a lazy
+     `useState` initialiser would therefore see null on the server and a draft
+     on the client — a hydration mismatch. Setting state once on mount from a
+     browser-only source is the case the rule cannot tell apart from a
+     cascading render. */
+  /* eslint-disable react-hooks/set-state-in-effect */
+  useEffect(() => {
+    const saved = loadDraft();
+    if (saved && isResumable(saved)) {
+      setDraft(saved);
+      return;
+    }
+    if (saved) clearDraft();
+    setRestoreSettled(true);
+  }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
+
+  useEffect(() => {
+    if (!restoreSettled || sent) return;
+    /* Debounced, because every keystroke in the contact step is a state
+       change and none of them is worth a separate write. */
+    const timer = window.setTimeout(() => saveDraft(state), 500);
+    return () => window.clearTimeout(timer);
+  }, [state, restoreSettled, sent]);
+
+  function handleResumeDraft() {
+    if (draft) dispatch({ type: "RESTORE", value: draft });
+    setDraft(null);
+    setRestoreSettled(true);
+  }
+
+  function handleDiscardDraft() {
+    clearDraft();
+    setDraft(null);
+    setRestoreSettled(true);
+  }
+
+  /* Sent to WhatsApp: the draft has served its purpose, and leaving it behind
+     would offer the finished enquiry back as unfinished work. */
+  function handleSent() {
+    setSent(true);
+    clearDraft();
+  }
 
   /* Two sources, one list: whatever is committed to the content files, plus
      whatever the admin page holds. A record's slug wins over a published one
@@ -240,6 +308,10 @@ export function WizardShell({
 
   return (
     <div ref={topRef} className="scroll-mt-20 sm:scroll-mt-24">
+      {draft && (
+        <ResumeDraftBanner onResume={handleResumeDraft} onDiscard={handleDiscardDraft} />
+      )}
+
       {/* Mobile and tablet: one line and a bar — seven steps side by side never
           fit — pinned under the site header so the position stays visible while
           a long list of options scrolls past. */}
@@ -329,6 +401,7 @@ export function WizardShell({
                   datesValue={datesValue}
                   chosenIdeas={chosenIdeas}
                   onDownload={(kind) => void download(kind)}
+                  onSent={handleSent}
                   pending={pending}
                   failed={failed}
                 />

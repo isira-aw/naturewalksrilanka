@@ -6,6 +6,12 @@ import {
   issueSession,
   requireAdmin,
 } from "@/lib/admin/session";
+import {
+  allowAttempt,
+  clientKey,
+  resetAttempts,
+  retryAfterSeconds,
+} from "@/lib/admin/rateLimit";
 
 /* Sign-in must never be answered from a cache. */
 export const dynamic = "force-dynamic";
@@ -16,6 +22,14 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  const key = clientKey(request);
+  if (!allowAttempt(key)) {
+    return NextResponse.json(
+      { error: "too_many_attempts" },
+      { status: 429, headers: { "Retry-After": String(retryAfterSeconds(key)) } },
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -32,6 +46,8 @@ export async function POST(request: Request) {
     // Deliberately vague: which half was wrong is not the caller's business.
     return NextResponse.json({ error: "invalid_credentials" }, { status: 401 });
   }
+
+  resetAttempts(key);
 
   const response = NextResponse.json({ signedIn: true });
   response.cookies.set(ADMIN_COOKIE_NAME, issueSession(), {
