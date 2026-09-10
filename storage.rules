@@ -19,19 +19,20 @@ service firebase.storage {
                    && isImageUnder(8 * 1024 * 1024);
     }
 
-    // Review photos land here before moderation. Anyone can read an approved
-    // review's photos, and the application only ever renders URLs it has
-    // stored against an approved review — an unapproved photo is unreachable
-    // in practice because nothing links to it.
+    // Review photos. Readable, because an approved review shows them; the
+    // application only ever renders URLs stored against an approved review,
+    // so an unapproved photo is unreachable in practice.
     //
-    // Writes are NOT open to the public: uploads are authorised by the
-    // one-time review invite, which the route handler exchanges for a
-    // short-lived custom token. Enforce the real limits server-side too;
-    // treat the size check here as a floor, not the guarantee.
+    // Writes are closed entirely. Review photographs are uploaded by the
+    // server (see `lib/reviews/store.ts`) after it has checked the invite
+    // token, the file count, the decoded size and the content type. Rules
+    // cannot see the decoded size of a data URL and there is no signed-in
+    // account to attribute a traveller's upload to, so doing it server-side
+    // is both the only way to enforce the limits and the simpler one. The
+    // Admin SDK bypasses this rule by design.
     match /reviews/{reviewId}/{fileName} {
       allow read: if true;
-      allow write: if request.auth != null
-                   && isImageUnder(6 * 1024 * 1024);
+      allow write: if false;
     }
 
     // Anything not named above is closed.

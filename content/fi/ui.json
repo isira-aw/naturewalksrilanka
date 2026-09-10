@@ -318,5 +318,38 @@
       "confirmed": "Vahvistettu",
       "closed": "Suljettu"
     }
+  },
+  "review": {
+    "title": "Millainen matkasi oli?",
+    "intro": "Kiitos, että matkustit kanssamme. Muutama rehellinen sana auttaa muita matkalaisia enemmän kuin mikään, mitä itse voisimme kirjoittaa.",
+    "ratingLabel": "Arviosi",
+    "ratingOf": "{value} / 5",
+    "nameLabel": "Nimesi",
+    "countryLabel": "Maa (valinnainen)",
+    "quoteLabel": "Arvostelusi",
+    "photosLabel": "Valokuvat (valinnainen)",
+    "photosHint": "Enintään {max}. Ne pienennetään ennen lähetystä.",
+    "addPhotos": "Lisää valokuvia",
+    "removePhoto": "Poista tämä valokuva",
+    "submit": "Lähetä arvosteluni",
+    "sending": "Lähetetään…",
+    "moderationNote": "Luemme jokaisen arvostelun ennen julkaisua. Emme muokkaa sanojasi.",
+    "thanksTitle": "Kiitos",
+    "thanksBody": "Saimme arvostelusi. Se ilmestyy sivustolle, kun olemme lukeneet sen.",
+    "linkUnknown": "Emme tunnista tuota linkkiä. Pyydä meiltä uusi.",
+    "linkUsed": "Tämä linkki on jo käytetty — jätit arvostelusi. Kiitos.",
+    "linkExpired": "Tämä linkki on vanhentunut. Pyydä meiltä uusi, niin lähetämme sen.",
+    "unavailable": "Arvostelut eivät ole vielä auki. Kerro meille WhatsAppissa.",
+    "tooManyPhotos": "Voit lisätä enintään {max} valokuvaa.",
+    "photoUnreadable": "Emme voineet lukea tiedostoa kuvana.",
+    "errorRating": "Valitse arvio yhdestä viiteen tähteen.",
+    "errorName": "Kirjoita nimi, jonka haluat näkyviin.",
+    "errorQuote": "Kirjoita muutama sana matkastasi.",
+    "errorSpent": "Tämä linkki on jo käytetty.",
+    "errorInvalid": "Emme tunnista tuota linkkiä.",
+    "errorPhotoLarge": "Yksi valokuvista on liian suuri. Kokeile pienempää.",
+    "errorPhotoType": "Valokuvien on oltava JPEG, PNG tai WebP.",
+    "errorNetwork": "Palvelimeen ei saatu yhteyttä. Tarkista yhteytesi ja yritä uudelleen.",
+    "errorGeneric": "Lähetys ei onnistunut. Yritä uudelleen."
   }
 }

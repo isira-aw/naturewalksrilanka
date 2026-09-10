@@ -318,5 +318,38 @@
       "confirmed": "Confirmado",
       "closed": "Cerrado"
     }
+  },
+  "review": {
+    "title": "¿Qué tal tu viaje?",
+    "intro": "Gracias por viajar con nosotros. Unas palabras sinceras ayudan a otros viajeros más que cualquier cosa que podamos escribir nosotros.",
+    "ratingLabel": "Tu valoración",
+    "ratingOf": "{value} de 5",
+    "nameLabel": "Tu nombre",
+    "countryLabel": "País (opcional)",
+    "quoteLabel": "Tu reseña",
+    "photosLabel": "Fotografías (opcional)",
+    "photosHint": "Hasta {max}. Se redimensionan antes de enviarlas.",
+    "addPhotos": "Añadir fotografías",
+    "removePhoto": "Quitar esta fotografía",
+    "submit": "Enviar mi reseña",
+    "sending": "Enviando…",
+    "moderationNote": "Leemos todas las reseñas antes de publicarlas. No editaremos tus palabras.",
+    "thanksTitle": "Gracias",
+    "thanksBody": "Ya tenemos tu reseña. Aparecerá en la web en cuanto la hayamos leído.",
+    "linkUnknown": "No reconocemos ese enlace. Pídenos uno nuevo.",
+    "linkUsed": "Este enlace ya se ha usado: ya dejaste tu reseña. Gracias.",
+    "linkExpired": "Este enlace ha caducado. Pídenos uno nuevo y te lo enviamos.",
+    "unavailable": "Las reseñas aún no están abiertas. Cuéntanoslo por WhatsApp.",
+    "tooManyPhotos": "Puedes añadir hasta {max} fotografías.",
+    "photoUnreadable": "No pudimos leer ese archivo como imagen.",
+    "errorRating": "Elige una valoración de una a cinco estrellas.",
+    "errorName": "Escribe el nombre que quieres que se muestre.",
+    "errorQuote": "Escribe unas palabras sobre tu viaje.",
+    "errorSpent": "Este enlace ya se ha usado.",
+    "errorInvalid": "No reconocemos ese enlace.",
+    "errorPhotoLarge": "Una de esas fotografías es demasiado grande. Prueba con una más pequeña.",
+    "errorPhotoType": "Las fotografías deben ser JPEG, PNG o WebP.",
+    "errorNetwork": "No pudimos conectar con el servidor. Revisa tu conexión e inténtalo de nuevo.",
+    "errorGeneric": "No pudimos enviarlo. Inténtalo de nuevo."
   }
 }
