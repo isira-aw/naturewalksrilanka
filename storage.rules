@@ -1,0 +1,47 @@
+rules_version = '2';
+
+// Storage, unlike Firestore, does need direct client access: admins upload
+// itinerary photographs from the browser, and travellers attach photos to a
+// review. Sending those through a route handler would mean pushing whole
+// image payloads through a serverless function for no benefit.
+//
+// So these rules matter. They are the real control, not a formality.
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Itinerary photographs are shown to every visitor, so they are public to
+    // read. Writing needs a signed-in admin — the `admin` custom claim is set
+    // by a one-off script, never by anything reachable over HTTP.
+    match /itineraries/{itineraryId}/{fileName} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.token.admin == true
+                   && isImageUnder(8 * 1024 * 1024);
+    }
+
+    // Review photos land here before moderation. Anyone can read an approved
+    // review's photos, and the application only ever renders URLs it has
+    // stored against an approved review — an unapproved photo is unreachable
+    // in practice because nothing links to it.
+    //
+    // Writes are NOT open to the public: uploads are authorised by the
+    // one-time review invite, which the route handler exchanges for a
+    // short-lived custom token. Enforce the real limits server-side too;
+    // treat the size check here as a floor, not the guarantee.
+    match /reviews/{reviewId}/{fileName} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && isImageUnder(6 * 1024 * 1024);
+    }
+
+    // Anything not named above is closed.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+
+  function isImageUnder(maxBytes) {
+    return request.resource.size < maxBytes
+        && request.resource.contentType.matches('image/.*');
+  }
+}

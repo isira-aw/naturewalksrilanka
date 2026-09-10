@@ -37,7 +37,7 @@ Two things were asked for, and they are at very different stages.
 
 ## Full plan
 
-Phase 0 and phase 4a are **done**. Everything else is designed but unstarted.
+Phases 0, 1 and 4a are **done**. Everything else is designed but unstarted.
 
 ### Phase 0 — Security hotfix (DONE)
 
@@ -47,19 +47,29 @@ and neither was set in `.env`. The session token's only payload is a
 timestamp, so anyone holding that public fallback secret could mint a valid
 `nwsl_admin` cookie **without ever knowing the password**. Fixed here.
 
-### Phase 1 — Firebase foundation (TODO)
+### Phase 1 — Firebase foundation (DONE, but unproven)
 
-Create the project; enable Firestore (native mode), Authentication (email link
-+ Google) and Storage. Add `firebase` (browser) and `firebase-admin` (server).
-`lib/firebase/client.ts` for sign-in and direct-to-Storage uploads only;
-`lib/firebase/admin.ts` as a `server-only` singleton behind a
-`getApps().length` guard, because hot reload re-initialises modules.
+The code is written; **nothing has ever talked to a real Firebase project.**
+See "Current state" for what that means.
+
+`firebase` and `firebase-admin` installed. `lib/firebase/admin.ts` is a
+`server-only` singleton guarded on `getApps()`, because Next.js re-evaluates
+modules on hot reload and initialising twice under one name throws.
+`lib/firebase/client.ts` covers sign-in and direct-to-Storage uploads only.
+`lib/firebase/collections.ts` names every collection once, so a typo is a
+compile error rather than a silently-created second collection.
 
 **Architectural rule: every Firestore read and write goes through a server
 route handler using the Admin SDK; the client SDK never touches Firestore.**
-Security Rules therefore deny all client access outright (`allow read, write:
-if false`), which is far easier to get right than per-collection rules. Storage
-rules allow admin writes and public reads of the images path only.
+`firestore.rules` therefore denies all client access outright. That is a
+deliberate trade — per-collection rules are easy to write and easy to get
+subtly wrong, and one over-broad `allow read` on `tourRequests` would expose
+every traveller's name, email and phone number. `storage.rules` does carry
+real logic, because uploads genuinely do go direct from the browser.
+
+Neither module throws at import time. The site has to keep building and
+serving while the migration is part-done, so an unconfigured environment
+yields `null` and callers report the feature unavailable.
 
 Collections: `itineraries`, `tourRequests`, `reviewInvites`, `reviews`, `staff`.
 
@@ -167,15 +177,23 @@ several weeks. Every phase is deployable on its own; resist merging them.
 
 ## Current state
 
-Phase 0 and phase 4a are implemented on
-`claude/firebase-plan-security-draft-autosave`. `tsc --noEmit` and `eslint`
-are clean. Behaviour was verified against a running dev server (see below).
-`next build` was **not** run.
+Phases 0 and 4a are **merged to `main`** (PR #10). Phase 1 is on
+`claude/firebase-phase-1-foundation`. `tsc --noEmit`, `eslint` and
+`next build` are clean on both.
 
-**Action required before the admin panel works again:** `ADMIN_EMAIL`,
+**Phase 1 is written but unproven.** No Firebase project existed while it was
+built, so no line of it has ever reached Firebase. What is verified is only
+that it does no harm: the site builds, the home and custom-tour pages render
+with no console errors, and `/api/admin/firebase-status` is admin-gated.
+Whether the credentials, the private-key newline handling, and the service
+account permissions actually work is unknown until someone sets the variables
+and calls that endpoint. **Treat phase 1 as unvalidated until it returns
+`{"configured": true, "reachable": true}`.**
+
+**Action required before the admin panel works at all:** `ADMIN_EMAIL`,
 `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` must be set in `.env` locally and
-in the Vercel environment. There are deliberately no fallbacks now, so until
-they are set, sign-in fails for everyone. Generate the secret with:
+in the Vercel environment. There are deliberately no fallbacks, so until they
+are set, sign-in fails for everyone. Generate the secret with:
 
 ```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
@@ -186,23 +204,33 @@ archive reads as empty in local development.
 
 ## Active files
 
-Changed:
+### Phases 0 and 4a (merged)
 
 - `lib/admin/session.ts` — fallback credentials removed
+- `lib/admin/rateLimit.ts` — new
 - `app/api/admin/session/route.ts` — rate limiting wired in
 - `app/api/itineraries/route.ts` — hidden records withheld from the public
+- `lib/custom-tour/draftStorage.ts` — new
+- `components/custom-tour/ResumeDraftBanner.tsx` — new
 - `components/custom-tour/WizardShell.tsx` — draft load/save, `RESTORE` action
 - `components/custom-tour/steps/ReviewStep.tsx` — new `onSent` prop
 - `content/{en,nl,es,da,fi}/ui.json` — four `resume*` strings under `customTour`
+- `.env.example` — new; `.gitignore` gained a `!.env.example` negation
 
-Added:
+### Phase 1
 
-- `lib/admin/rateLimit.ts`
-- `lib/custom-tour/draftStorage.ts`
-- `components/custom-tour/ResumeDraftBanner.tsx`
-- `.env.example`
+- `lib/firebase/admin.ts` — Admin SDK singleton, the only door to Firestore
+- `lib/firebase/client.ts` — browser SDK, sign-in and Storage uploads only
+- `lib/firebase/collections.ts` — collection and Storage path names
+- `firestore.rules` — deny all client access
+- `storage.rules` — public reads, admin-only itinerary writes, size and
+  content-type floors on review photos
+- `firebase.json`, `firestore.indexes.json` — deploy config, no indexes yet
+- `app/api/admin/firebase-status/route.ts` — admin-gated connectivity probe
+- `.env.example` — ten Firebase variables added
+- `package.json` — `firebase ^12.19.0`, `firebase-admin ^14.3.0`
 
-Worth reading before phases 1–3, untouched so far: `lib/itineraries/`
+Untouched, and worth reading before phases 2–3: `lib/itineraries/`
 (`blobArchive.ts`, `store.ts`, `types.ts`, `toExperience.ts`), `proxy.ts`,
 `components/admin/`, `next.config.ts`.
 
@@ -238,6 +266,35 @@ restoring silently, because someone returning a fortnight later to plan a
 different holiday would otherwise find the form mysteriously pre-filled.
 `ReviewStep` gained an `onSent` callback that clears the draft when the enquiry
 goes to WhatsApp.
+
+**Phase 1.** `lib/firebase/admin.ts` initialises the Admin SDK under a named
+app, checking `getApps()` rather than a module-level flag, because Next.js
+re-evaluates modules on hot reload and a second `initializeApp` under the same
+name throws. It handles the private key surviving an environment variable as
+one line with literal `\n`, and strips surrounding quotes, because Vercel and
+`.env` files disagree about whether those are kept — this is the single most
+common way a Firebase setup fails, and it fails with an opaque error.
+
+Crucially, **nothing throws at import time.** `isFirebaseConfigured()` and the
+`null`-returning accessors let the site build and serve while the migration is
+half-done; `requireFirebase()` is there for code that genuinely cannot carry
+on, and names the missing variables instead of failing later on a null
+dereference. `lib/firebase/client.ts` mirrors this for the browser and is
+deliberately limited to Auth and Storage.
+
+`firestore.rules` denies everything. The reasoning is in the file: with every
+document access going through a route handler on the Admin SDK — which
+bypasses rules anyway — there is no legitimate client access to allow, and
+writing none is safer than writing several nearly-right ones.
+`storage.rules` is where the real logic lives, since uploads do go direct from
+the browser: public reads, itinerary writes gated on an `admin` custom claim,
+and size plus content-type floors on review photos. Those floors are a floor,
+not the guarantee — the server must enforce the real limits again at phase 5.
+
+`app/api/admin/firebase-status/route.ts` exists because setting the variables
+feels like finishing and usually is not. It performs one real Firestore read,
+so a wrong project id or a mangled key surfaces there rather than deep inside
+a later feature.
 
 ### Deviation from the approved plan
 
@@ -276,6 +333,14 @@ records are now filtered for anonymous callers and returned in full when
 - **Plan file and memory writes were blocked** (`EPERM` on
   `C:\Users\Isira Weerasinghe`); the 8.3 short path `C:\Users\ISIRAW~1\…`
   worked. Environment quirk, nothing to do with this repo.
+- **Running `next build` while `next dev` is up killed the dev server.** They
+  contend over `.next`. Stop the dev server first, or expect to restart it.
+- **Phase 2 was deliberately not started.** It replaces `lib/admin/session.ts`
+  — currently the only working way into the admin panel — and none of the
+  Firebase code beneath it has been proven against a real project. Shipping
+  an unverifiable rewrite of the authentication path would risk locking
+  everyone out with no way to tell whether the credentials or the code were
+  at fault. Phase 1 was kept purely additive and inert for the same reason.
 
 ## Verification performed
 
@@ -291,23 +356,43 @@ Against the running dev server on port 3000:
   (`naturewalksrilanka@gmail.com` / `000000`) returns **401**.
 - Twelve sign-in attempts returned seven 401s then 429s — the limiter engages
   on the 9th attempt overall.
-- `tsc --noEmit` and `eslint` clean.
 
-**Not verified:** the hidden-record filter ran against an empty archive,
-because `BLOB_READ_WRITE_TOKEN` is absent locally, so it has never been
-exercised against real data. The signed-in branch of that endpoint could not
-be tested either, since sign-in now requires env vars that are not set.
+Phase 1:
+
+- `/api/admin/firebase-status` returns 401 without an admin cookie.
+- Home and custom-tour pages load in a clean tab with **no console errors**
+  after `firebase` and `firebase-admin` entered the dependency tree, and the
+  wizard still renders and still saves drafts.
+- `tsc --noEmit`, `eslint` and `next build` clean — 140 static pages, no
+  warnings.
+
+**Not verified:**
+
+- **Every part of phase 1 that touches Firebase.** No project existed while
+  it was written. Credentials, private-key newline handling and service
+  account permissions are all unproven.
+- The hidden-record filter ran against an empty archive, because
+  `BLOB_READ_WRITE_TOKEN` is absent locally, so it has never been exercised
+  against real data. The signed-in branch of that endpoint could not be
+  tested either, since sign-in requires env vars that are not set.
 
 ## Next steps
 
 1. Set `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET` locally and in
    Vercel. **Nobody can reach the admin panel until this is done.**
-2. With `BLOB_READ_WRITE_TOKEN` present, confirm the admin list and JSON
+2. Create the Firebase project: Firestore in native mode, Authentication with
+   email-link and Google providers, and Storage. Generate a service account
+   key and fill the ten Firebase variables in `.env`.
+3. Sign in to the admin panel and open `/api/admin/firebase-status`. It must
+   return `{"configured": true, "reachable": true}`. **Do not start phase 2
+   until it does** — phase 2 replaces the working admin sign-in, and building
+   that on an unproven connection means debugging two things at once while
+   locked out of the panel.
+4. Deploy the rules: `firebase deploy --only firestore:rules,storage:rules`.
+5. With `BLOB_READ_WRITE_TOKEN` present, confirm the admin list and JSON
    export still contain hidden itineraries while an anonymous
    `GET /api/itineraries` omits them.
-3. Run `next build` before merging.
-4. Create the Firebase project and supply credentials, then start phase 1.
-5. Phases 2 → 3 as one block, then 4b, 5, 6.
+6. Phases 2 → 3 as one block, then 4b, 5, 6.
 
 Per `AGENTS.md`, read the relevant guides in `node_modules/next/dist/docs/`
 (route handlers, proxy/middleware, caching and `revalidateTag`, image config)

@@ -1,0 +1,25 @@
+rules_version = '2';
+
+// Firestore is closed to clients, on purpose.
+//
+// Every read and write in this application goes through a Next.js route
+// handler using the Admin SDK, which bypasses these rules by design. Nothing
+// in the browser talks to Firestore directly, so there is no legitimate
+// client access to allow.
+//
+// That is a deliberate trade. Per-collection rules are easy to write and
+// notoriously easy to get subtly wrong — one over-broad `allow read` on
+// `tourRequests` would expose every traveller's name, email and phone number
+// to anyone who opened a console. Denying everything means the only way in is
+// through code we control and can review in one place.
+//
+// If you ever need a client read, resist changing this file first: add a
+// route handler instead. If a rule genuinely becomes necessary, scope it to
+// one collection and write the test before the rule.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
