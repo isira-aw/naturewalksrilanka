@@ -92,16 +92,12 @@ export function isValidSession(value: string | undefined): boolean {
   return Date.now() - issued < ADMIN_SESSION_MAX_AGE * 1000;
 }
 
-/** Reads the session cookie straight off a request. */
-export function sessionFromRequest(request: Request) {
-  const cookie = request.headers.get("cookie") ?? "";
-  return cookie
-    .split(";")
-    .map((part) => part.trim())
-    .find((part) => part.startsWith(`${ADMIN_COOKIE_NAME}=`))
-    ?.slice(ADMIN_COOKIE_NAME.length + 1);
-}
-
-export function requireAdmin(request: Request) {
-  return isValidSession(sessionFromRequest(request));
-}
+/*
+ * There is deliberately no `requireAdmin` here any more.
+ *
+ * Authorisation now lives in `lib/admin/auth.ts`, where it is asynchronous
+ * because verifying a Firebase session cookie is a real operation. A sync
+ * `requireAdmin` sitting in this file would be an easy wrong import, and the
+ * failure mode is silent: `if (!requireAdmin(req))` against an async function
+ * tests a Promise, which is always truthy, and waves everyone through.
+ */

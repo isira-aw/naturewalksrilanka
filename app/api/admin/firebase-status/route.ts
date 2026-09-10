@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { requireAdmin } from "@/lib/admin/session";
+import { requireAdmin } from "@/lib/admin/auth";
 import { adminDb, isFirebaseConfigured, missingAdminEnv } from "@/lib/firebase/admin";
 import { COLLECTIONS } from "@/lib/firebase/collections";
 
@@ -19,7 +19,7 @@ export const dynamic = "force-dynamic";
  * anyone probing the deployment.
  */
 export async function GET(request: Request) {
-  if (!requireAdmin(request)) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 

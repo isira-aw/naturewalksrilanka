@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { hasLocale } from "next-intl";
 import { routing, type Locale } from "@/i18n/routing";
-import { requireAdmin } from "@/lib/admin/session";
+import { requireAdmin } from "@/lib/admin/auth";
 import { translatableSchema } from "@/lib/itineraries/types";
 import { translateItinerary } from "@/lib/ai/translateItinerary";
 
@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
  * ones that actually failed to retry.
  */
 export async function POST(request: Request) {
-  if (!requireAdmin(request)) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 

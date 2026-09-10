@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { requireAdmin } from "@/lib/admin/session";
+import { requireAdmin } from "@/lib/admin/auth";
 import { readArchive, writeArchive } from "@/lib/itineraries/blobArchive";
 import { itineraryArchiveSchema, itineraryRecordSchema } from "@/lib/itineraries/types";
 
@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 /** Saves (creates or updates, by id) one record. */
 export async function POST(request: Request) {
-  if (!requireAdmin(request)) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
 
 /** Replaces or merges the whole archive — the *Data and migration* import. */
 export async function PUT(request: Request) {
-  if (!requireAdmin(request)) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
@@ -65,7 +65,7 @@ export async function PUT(request: Request) {
 }
 
 export async function DELETE(request: Request) {
-  if (!requireAdmin(request)) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 

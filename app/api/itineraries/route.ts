@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { readArchive } from "@/lib/itineraries/blobArchive";
-import { requireAdmin } from "@/lib/admin/session";
+import { requireAdmin } from "@/lib/admin/auth";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +15,7 @@ export const dynamic = "force-dynamic";
  */
 export async function GET(request: Request) {
   const archive = await readArchive();
-  if (requireAdmin(request)) return NextResponse.json(archive);
+  if (await requireAdmin(request)) return NextResponse.json(archive);
 
   return NextResponse.json({
     ...archive,
