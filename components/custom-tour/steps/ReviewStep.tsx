@@ -25,6 +25,7 @@ export function ReviewStep({
   datesValue,
   chosenIdeas,
   onDownload,
+  onSent,
   pending,
   failed,
 }: {
@@ -37,6 +38,8 @@ export function ReviewStep({
   datesValue: string;
   chosenIdeas: string[];
   onDownload: (kind: "pdf" | "doc") => void;
+  /** The enquiry has gone to WhatsApp; the saved draft is spent. */
+  onSent: () => void;
   pending: "pdf" | "doc" | null;
   failed: boolean;
 }) {
@@ -116,7 +119,10 @@ export function ReviewStep({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => onDownload("doc")}
+            onClick={() => {
+              onDownload("doc");
+              onSent();
+            }}
             className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 text-base font-medium tracking-wide text-warm-white transition-colors duration-200 hover:bg-forest-dark sm:w-auto lg:w-full"
           >
             <WhatsAppIcon className="h-4 w-4" />
