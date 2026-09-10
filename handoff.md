@@ -1,22 +1,19 @@
-# Handoff — Firebase migration plan, admin security hotfix, wizard draft autosave
+# Handoff — Firebase migration: foundation, admin auth, itineraries
 
 > Replaces an earlier handoff at this path describing the admin-authored
 > itineraries work (merged as PR #9). That work is done and is not described
-> here. Delete this file before merge if the team does not keep handoff notes
-> in-tree.
+> here. Delete this file if the team stops keeping handoff notes in-tree.
 
 ## Goal
 
-Two things were asked for, and they are at very different stages.
+Move everything dynamic onto Firebase — traveller flow, itinerary
+management, a customer review section — while securing the admin panel and
+making images load faster. Six phases; five are written and merged, three of
+those have never run against a real Firebase project.
 
-1. **Analyse the codebase and plan a move to Firebase**, covering user flow
-   management, itinerary management, a customer review section, smoother image
-   loading, and admin panel security. The full plan is below; most of it is
-   not built yet.
-2. **Fix what could be fixed without Firebase credentials.** That turned out
-   to be the two most urgent items — a live admin authentication hole and the
-   wizard losing a traveller's work on refresh. Both are implemented and
-   verified in this branch.
+**If you read nothing else:** the next step is not more code. It is creating
+the Firebase project and proving what is already on `main` actually works.
+See "The important caveat" and "Next steps".
 
 ### Decisions taken with the operator
 
@@ -207,36 +204,46 @@ the shared chokepoint for nearly every content image.
 
 ### Sequencing
 
-Phases 0, 1 and 4a are shipped; 2 and 3 are written and awaiting a real
-Firebase project. Nothing further should be built until
-`/api/admin/firebase-status` reports the connection healthy and the
-itinerary migration has actually run — three phases of unverified Firebase
-code is already more unproven work in flight than is comfortable. Then 4b,
-5, 6. Every phase is deployable on its own; resist merging them.
+Phases 0, 1, 2, 3 and 4a are all merged. **Nothing further should be built
+until a real Firebase project exists**, `/api/admin/firebase-status` reports
+the connection healthy, and the itinerary migration has actually run. Three
+phases of Firebase code are now on `main` without a single line of it having
+reached Firebase; adding 4b or 5 on top would deepen a stack of unverified
+work rather than reduce it. Then 4b, 5, 6.
 
 ## Current state
 
-Phases 0, 1 and 4a are **merged to `main`** — PR #10 (security hotfix and
-draft autosave) and PR #11 (Firebase foundation). Phases 2 and 3 are on
-`claude/firebase-phase-2-admin-auth` (PR #12) and
-`claude/firebase-phase-3-itineraries`. `tsc --noEmit`, `eslint` and
-`next build` are clean throughout.
+Everything written so far is **merged to `main`**:
 
-**The Firebase half of phases 1 and 2 remains unproven.** No Firebase project
-existed while either was written, so no line of that code has reached a real
-project. What *is* verified is the fallback behaviour and the authorisation
-wiring — see "Verification performed". Until
-`/api/admin/firebase-status` returns `{"configured": true, "reachable":
-true}` and a real staff account signs in, treat Google sign-in as untested.
+| Phase | PR | What |
+|---|---|---|
+| 0, 4a | #10 | Admin security hotfix; wizard draft autosave |
+| 1 | #11 | Firebase foundation |
+| 2 | #12 | Admin sign-in on Firebase Auth |
+| 3 | #14 | Itineraries to Firestore, images to Storage |
 
-**Phase 1 is written but unproven.** No Firebase project existed while it was
-built, so no line of it has ever reached Firebase. What is verified is only
-that it does no harm: the site builds, the home and custom-tour pages render
-with no console errors, and `/api/admin/firebase-status` is admin-gated.
-Whether the credentials, the private-key newline handling, and the service
-account permissions actually work is unknown until someone sets the variables
-and calls that endpoint. **Treat phase 1 as unvalidated until it returns
-`{"configured": true, "reachable": true}`.**
+(#13 was the same work as #14; it was auto-closed when its base branch was
+deleted on merging #12, and reopened as #14 against `main`.)
+
+`tsc --noEmit`, `eslint` and `next build` are clean on `main`.
+
+### The important caveat
+
+**No line of the Firebase code has ever reached a Firebase project.** None
+existed while phases 1, 2 and 3 were written. Unproven, therefore:
+credentials and private-key handling, service account permissions, Google
+sign-in, the `staff` allowlist, session cookies and revocation, every
+Firestore read and write, Storage uploads, and the whole migration script.
+
+What *is* verified is that none of it does harm while unconfigured, and that
+the fallback paths and the authorisation wiring work — see "Verification
+performed". Everything is written so an unconfigured environment behaves
+exactly as it did before, which is why merging it changed nothing
+observable.
+
+Treat all of it as unvalidated until `/api/admin/firebase-status` returns
+`{"configured": true, "reachable": true}` and a real staff account signs in
+with Google.
 
 **Action required before the admin panel works at all:** `ADMIN_EMAIL`,
 `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` must be set in `.env` locally and
@@ -252,6 +259,8 @@ archive reads as empty in local development.
 
 ## Active files
 
+All merged to `main`; grouped by the phase that introduced them.
+
 ### Phases 0 and 4a (PR #10)
 
 - `lib/admin/session.ts` — fallback credentials removed
@@ -265,7 +274,7 @@ archive reads as empty in local development.
 - `content/{en,nl,es,da,fi}/ui.json` — four `resume*` strings under `customTour`
 - `.env.example` — new; `.gitignore` gained a `!.env.example` negation
 
-### Phase 1 (PR #11)
+### Phase 1 — Firebase foundation (PR #11)
 
 - `lib/firebase/admin.ts` — Admin SDK singleton, the only door to Firestore
 - `lib/firebase/client.ts` — browser SDK, sign-in and Storage uploads only
@@ -278,7 +287,7 @@ archive reads as empty in local development.
 - `.env.example` — ten Firebase variables added
 - `package.json` — `firebase ^12.19.0`, `firebase-admin ^14.3.0`
 
-### Phase 2
+### Phase 2 — admin auth (PR #12)
 
 - `lib/admin/auth.ts` — new; the single authorisation point. `requireAdmin`
   (async, for route handlers), `isAdminSession` (for server components),
@@ -296,7 +305,7 @@ archive reads as empty in local development.
 - `app/[locale]/admin/page.tsx` — `force-dynamic`, verifies server-side
 - `scripts/grant-admin.mjs` — new; grant and revoke staff access
 
-### Phase 3
+### Phase 3 — itineraries (PR #14)
 
 - `lib/itineraries/repository.ts` — new; the Firestore-or-blob facade
 - `lib/itineraries/firestoreStore.ts` — new; one document per itinerary
