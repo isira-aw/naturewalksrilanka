@@ -168,9 +168,10 @@ several weeks. Every phase is deployable on its own; resist merging them.
 ## Current state
 
 Phase 0 and phase 4a are implemented on
-`claude/firebase-plan-security-draft-autosave`. `tsc --noEmit` and `eslint`
-are clean. Behaviour was verified against a running dev server (see below).
-`next build` was **not** run.
+`claude/firebase-plan-security-draft-autosave`. `tsc --noEmit`, `eslint` and
+`next build` are all clean — the build compiles and generates all 140 static
+pages without warnings. Behaviour was verified against a running dev server
+(see below).
 
 **Action required before the admin panel works again:** `ADMIN_EMAIL`,
 `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` must be set in `.env` locally and
@@ -291,7 +292,7 @@ Against the running dev server on port 3000:
   (`naturewalksrilanka@gmail.com` / `000000`) returns **401**.
 - Twelve sign-in attempts returned seven 401s then 429s — the limiter engages
   on the 9th attempt overall.
-- `tsc --noEmit` and `eslint` clean.
+- `tsc --noEmit`, `eslint` and `next build` clean.
 
 **Not verified:** the hidden-record filter ran against an empty archive,
 because `BLOB_READ_WRITE_TOKEN` is absent locally, so it has never been
@@ -305,9 +306,8 @@ be tested either, since sign-in now requires env vars that are not set.
 2. With `BLOB_READ_WRITE_TOKEN` present, confirm the admin list and JSON
    export still contain hidden itineraries while an anonymous
    `GET /api/itineraries` omits them.
-3. Run `next build` before merging.
-4. Create the Firebase project and supply credentials, then start phase 1.
-5. Phases 2 → 3 as one block, then 4b, 5, 6.
+3. Create the Firebase project and supply credentials, then start phase 1.
+4. Phases 2 → 3 as one block, then 4b, 5, 6.
 
 Per `AGENTS.md`, read the relevant guides in `node_modules/next/dist/docs/`
 (route handlers, proxy/middleware, caching and `revalidateTag`, image config)
