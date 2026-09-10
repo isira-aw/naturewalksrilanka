@@ -171,15 +171,17 @@ the shared chokepoint for nearly every content image.
 
 ### Sequencing
 
-Phase 0 first (done). Then 1 → 2 → 3 as one block — that is the real
-migration. 4a is independent and already shipped. Then 4b, 5, 6. Realistically
-several weeks. Every phase is deployable on its own; resist merging them.
+Phases 0, 1 and 4a are shipped. Phases 2 → 3 come next as one block — that is
+the real migration, and it is blocked until a Firebase project exists and
+`/api/admin/firebase-status` reports the connection healthy. Then 4b, 5, 6.
+Realistically several weeks. Every phase is deployable on its own; resist
+merging them.
 
 ## Current state
 
-Phases 0 and 4a are **merged to `main`** (PR #10). Phase 1 is on
-`claude/firebase-phase-1-foundation`. `tsc --noEmit`, `eslint` and
-`next build` are clean on both.
+Phases 0, 1 and 4a are **merged to `main`** — PR #10 (security hotfix and
+draft autosave) and PR #11 (Firebase foundation). `tsc --noEmit`, `eslint`
+and `next build` are clean.
 
 **Phase 1 is written but unproven.** No Firebase project existed while it was
 built, so no line of it has ever reached Firebase. What is verified is only
@@ -204,7 +206,7 @@ archive reads as empty in local development.
 
 ## Active files
 
-### Phases 0 and 4a (merged)
+### Phases 0 and 4a (PR #10)
 
 - `lib/admin/session.ts` — fallback credentials removed
 - `lib/admin/rateLimit.ts` — new
@@ -217,7 +219,7 @@ archive reads as empty in local development.
 - `content/{en,nl,es,da,fi}/ui.json` — four `resume*` strings under `customTour`
 - `.env.example` — new; `.gitignore` gained a `!.env.example` negation
 
-### Phase 1
+### Phase 1 (PR #11)
 
 - `lib/firebase/admin.ts` — Admin SDK singleton, the only door to Firestore
 - `lib/firebase/client.ts` — browser SDK, sign-in and Storage uploads only
