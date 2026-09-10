@@ -318,5 +318,38 @@
       "confirmed": "Bekræftet",
       "closed": "Afsluttet"
     }
+  },
+  "review": {
+    "title": "Hvordan var din rejse?",
+    "intro": "Tak fordi du rejste med os. Et par ærlige ord hjælper andre rejsende mere end noget, vi selv kan skrive.",
+    "ratingLabel": "Din bedømmelse",
+    "ratingOf": "{value} ud af 5",
+    "nameLabel": "Dit navn",
+    "countryLabel": "Land (valgfrit)",
+    "quoteLabel": "Din anmeldelse",
+    "photosLabel": "Billeder (valgfrit)",
+    "photosHint": "Op til {max}. De bliver formindsket, før de sendes.",
+    "addPhotos": "Tilføj billeder",
+    "removePhoto": "Fjern dette billede",
+    "submit": "Send min anmeldelse",
+    "sending": "Sender…",
+    "moderationNote": "Vi læser alle anmeldelser, før de kommer på siden. Vi retter ikke i dine ord.",
+    "thanksTitle": "Tak",
+    "thanksBody": "Vi har din anmeldelse. Den kommer på siden, når vi har læst den.",
+    "linkUnknown": "Vi kan ikke genkende det link. Bed os om et nyt.",
+    "linkUsed": "Linket er allerede brugt — du har lagt din anmeldelse. Tak.",
+    "linkExpired": "Linket er udløbet. Bed os om et nyt, så sender vi det.",
+    "unavailable": "Anmeldelser er ikke åbne endnu. Skriv til os på WhatsApp i stedet.",
+    "tooManyPhotos": "Du kan tilføje op til {max} billeder.",
+    "photoUnreadable": "Vi kunne ikke læse den fil som et billede.",
+    "errorRating": "Vælg en bedømmelse fra én til fem stjerner.",
+    "errorName": "Skriv det navn, du gerne vil have vist.",
+    "errorQuote": "Skriv et par ord om din rejse.",
+    "errorSpent": "Dette link er allerede brugt.",
+    "errorInvalid": "Vi kan ikke genkende det link.",
+    "errorPhotoLarge": "Et af billederne er for stort. Prøv et mindre.",
+    "errorPhotoType": "Billeder skal være JPEG, PNG eller WebP.",
+    "errorNetwork": "Vi kunne ikke nå serveren. Tjek din forbindelse, og prøv igen.",
+    "errorGeneric": "Vi kunne ikke sende det. Prøv igen."
   }
 }

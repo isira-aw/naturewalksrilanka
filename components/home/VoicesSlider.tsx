@@ -72,6 +72,20 @@ export function VoicesSlider({
                   transition={{ duration: 0.6, ease: EASE }}
                   className="max-w-4xl"
                 >
+                  {/* Only reviews left through the review form carry a
+                      rating; the hand-written entries in `content/` have
+                      none, and inventing one would be a lie. */}
+                  {typeof active.rating === "number" && (
+                    <p
+                      className="mb-5 text-lg tracking-[0.2em] text-forest"
+                      aria-label={`${active.rating} out of 5`}
+                    >
+                      <span aria-hidden="true">
+                        {"★".repeat(active.rating)}
+                        {"☆".repeat(5 - active.rating)}
+                      </span>
+                    </p>
+                  )}
                   <blockquote className="font-display text-2xl leading-relaxed text-charcoal md:text-[2rem] md:leading-[1.4]">
                     &ldquo;{active.quote}&rdquo;
                   </blockquote>

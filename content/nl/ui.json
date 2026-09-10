@@ -318,5 +318,38 @@
       "confirmed": "Bevestigd",
       "closed": "Afgesloten"
     }
+  },
+  "review": {
+    "title": "Hoe was je reis?",
+    "intro": "Bedankt dat je met ons reisde. Een paar eerlijke woorden helpen andere reizigers meer dan wat wij zelf kunnen schrijven.",
+    "ratingLabel": "Jouw beoordeling",
+    "ratingOf": "{value} van de 5",
+    "nameLabel": "Je naam",
+    "countryLabel": "Land (optioneel)",
+    "quoteLabel": "Je review",
+    "photosLabel": "Foto's (optioneel)",
+    "photosHint": "Maximaal {max}. Ze worden verkleind voor het versturen.",
+    "addPhotos": "Foto's toevoegen",
+    "removePhoto": "Deze foto verwijderen",
+    "submit": "Mijn review versturen",
+    "sending": "Versturen…",
+    "moderationNote": "We lezen elke review voordat hij op de site komt. We passen je woorden niet aan.",
+    "thanksTitle": "Bedankt",
+    "thanksBody": "We hebben je review ontvangen. Hij verschijnt op de site zodra we hem gelezen hebben.",
+    "linkUnknown": "We herkennen die link niet. Vraag ons om een nieuwe.",
+    "linkUsed": "Deze link is al gebruikt — je hebt je review achtergelaten. Bedankt.",
+    "linkExpired": "Deze link is verlopen. Vraag ons om een nieuwe, dan sturen we hem toe.",
+    "unavailable": "Reviews zijn nog niet open. Laat het ons weten via WhatsApp.",
+    "tooManyPhotos": "Je kunt maximaal {max} foto's toevoegen.",
+    "photoUnreadable": "We konden dat bestand niet als afbeelding lezen.",
+    "errorRating": "Kies een beoordeling van één tot vijf sterren.",
+    "errorName": "Vul de naam in die je getoond wilt zien.",
+    "errorQuote": "Schrijf een paar woorden over je reis.",
+    "errorSpent": "Deze link is al gebruikt.",
+    "errorInvalid": "We herkennen die link niet.",
+    "errorPhotoLarge": "Een van die foto's is te groot. Probeer een kleinere.",
+    "errorPhotoType": "Foto's moeten JPEG, PNG of WebP zijn.",
+    "errorNetwork": "We konden de server niet bereiken. Controleer je verbinding en probeer het opnieuw.",
+    "errorGeneric": "We konden dat niet versturen. Probeer het opnieuw."
   }
 }

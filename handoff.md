@@ -34,9 +34,8 @@ See "The important caveat" and "Next steps".
 
 ## Full plan
 
-Phases 0 through 4 are **written**. Phases 5 and 6 are designed but
-unstarted. Everything touching Firebase is written but unproven — see
-"Current state".
+Phases 0 through 5 are **written**. Only phase 6 remains. Everything
+touching Firebase is written but unproven — see "Current state".
 
 ### Phase 0 — Security hotfix (DONE)
 
@@ -176,32 +175,47 @@ The traveller session is a separate cookie from the admin one, with no
 custom claim: proving you hold an email address must never be a step
 towards the admin panel.
 
-Still to do: the admin-side enquiry queue. The data and `listRequests()`
-exist; nothing renders them yet.
+The admin enquiry queue that this needed arrived with phase 5, in the
+"Enquiries and reviews" panel.
 
-### Phase 5 — Reviews by invite (TODO)
+### Phase 5 — Reviews by invite (DONE, Firestore half unproven)
 
-1. Admin opens a completed request, clicks "Request a review" — creates a
-   `reviewInvites` document with a cryptographically random token, the request
-   id, a ~60 day expiry, and `usedAt: null`.
-2. The panel shows a copyable `/[locale]/review/[token]` link for staff to
-   paste into WhatsApp or email. **The link is the credential**, so it must be
-   unguessable, single-use and expiring.
-3. The page takes a star rating, text, and photos uploaded to Storage under a
-   token-scoped path. File count, size and content-type limits are enforced
-   **server-side**; client-side limits are advisory only.
-4. Submission writes a `reviews` document with `status: "pending"` and marks
-   the invite used.
-5. Admin approves or rejects in a new panel section. **Photos need moderating
-   too, not just text.**
-6. Approved reviews render publicly: add a `rating` field to
-   `testimonialSchema` in `lib/content/schema.ts` and have `VoicesSlider.tsx`
-   merge approved Firestore reviews with the existing static JSON, so today's
-   empty-state behaviour still works.
-7. Add `AggregateRating` / `Review` JSON-LD via `lib/seo/jsonld.ts`.
+The flow: an admin opens the enquiry queue, clicks **Request a review**, and
+copies the resulting `/[locale]/review/[token]` link into the WhatsApp
+conversation they are already having. The traveller leaves a star rating,
+text and up to four photographs. It lands as `pending`, and nothing is
+public until a staff member approves it.
 
-Because every review traces back to an invite tied to a real request, spam is
-structurally impossible and moderation is a quality gate rather than a filter.
+**Because every review traces back to an invite tied to a real enquiry, spam
+is structurally impossible.** Moderation is a quality gate — is this worth
+publishing — not a defence. That is the whole reason for the invite model.
+
+**The link is the credential**, so it is 64 hex characters from
+`crypto.randomUUID`, single-use, and expires after 60 days. It carries no
+information about the enquiry. Redemption marks the invite used *inside a
+transaction*, so two people opening the same link cannot both submit.
+
+**Photographs are uploaded through the server, not from the browser.** The
+plan said Storage rules would enforce the limits; they cannot. Rules cannot
+see the decoded size of a base64 payload, and there is no signed-in account
+to attribute a traveller's upload to. So `storage.rules` now denies client
+writes to `reviews/` outright and `lib/reviews/store.ts` checks the count,
+the decoded byte length and the content type against an allowlist before
+saving. The client-side resize is a courtesy, not a control.
+
+Rejecting a review **deletes its photographs**. A review is usually rejected
+because of what it contains, and files stay publicly readable at their URLs
+for as long as they exist.
+
+Approved reviews are merged into the existing testimonials on the home page,
+in the language they were written in — translating somebody's own words
+about their holiday is not ours to do. `AggregateRating` JSON-LD is emitted
+only from three reviews upward: a single five-star review rendered as "5.0
+out of 5" is technically true, reads as puffery, and search engines are
+entitled to treat it that way.
+
+Phase 4b's missing admin enquiry queue arrived here too, since inviting
+someone to review requires a list of enquiries to invite them from.
 
 ### Phase 6 — Image loading (TODO)
 
@@ -227,7 +241,7 @@ the shared chokepoint for nearly every content image.
 
 ### Sequencing
 
-Phases 0 through 4 are all written. **Nothing further should be built until
+Phases 0 through 5 are all written. **Nothing further should be built until
 a real Firebase project exists**, `/api/admin/firebase-status` reports
 the connection healthy, and the itinerary migration has actually run. Three
 phases of Firebase code are now on `main` without a single line of it having
@@ -245,6 +259,7 @@ Everything written so far is **merged to `main`**:
 | 2 | #12 | Admin sign-in on Firebase Auth |
 | 3 | #14 | Itineraries to Firestore, images to Storage |
 | 4b | #15 | Saved trips: enquiries recorded, `/my-trip`, amendments |
+| 5 | #16 | Reviews by invite, moderation, enquiry queue |
 
 (#13 was the same work as #14; it was auto-closed when its base branch was
 deleted on merging #12, and reopened as #14 against `main`.)
@@ -363,6 +378,32 @@ Untouched: `lib/itineraries/blobArchive.ts` (still the fallback),
   `amendFailed`; **`contactHint` reworded**, because it promised "Nothing is
   stored on this site" and that is no longer true
 - `app/robots.ts` — `/my-trip` disallowed
+
+### Phase 5 — reviews
+
+- `lib/reviews/types.ts` — new; invite, review, submission schemas, token
+  generation, expiry
+- `lib/reviews/store.ts` — new; invites, server-side photo storage,
+  transactional redemption, moderation
+- `lib/reviews/published.ts` — new; merges approved reviews into the static
+  testimonials and computes the aggregate
+- `app/api/reviews/route.ts` — new; public submission, token-authorised
+- `app/api/admin/reviews/route.ts` — new; list and moderate
+- `app/api/admin/reviews/invites/route.ts` — new; create invites
+- `app/api/admin/requests/route.ts` — new; the enquiry queue
+- `app/[locale]/review/[token]/page.tsx`, `components/review/ReviewForm.tsx`
+  — new
+- `components/admin/ReviewsPanel.tsx` — new; enquiries, invites, moderation
+- `components/admin/AdminApp.tsx` — new "Enquiries and reviews" section
+- `components/home/VoicesSlider.tsx` — renders stars when a quote has a
+  rating
+- `app/[locale]/page.tsx`, `lib/seo/jsonld.ts` — approved reviews and
+  `AggregateRating`
+- `lib/content/schema.ts` — optional `rating` on a testimonial
+- `storage.rules` — client writes to `reviews/` now denied
+- `firestore.indexes.json` — composite index for status + createdAt
+- `content/*/ui.json` — new `review` namespace
+- `app/robots.ts` — `/review` disallowed
 
 ## Changes made
 
@@ -485,6 +526,21 @@ Note the copy change: `contactHint` told travellers "Nothing is stored on
 this site". That was true and is no longer, so it was reworded in all five
 locales. Leaving a stale privacy claim in place would be worse than the
 feature is good.
+
+**Phase 5.** The one substantive departure from the plan is where photo
+limits are enforced — see the phase description. Everything else follows
+from treating the invite token as a credential: transactional redemption so
+a link cannot be spent twice, deletion of photographs on rejection, and a
+review form that tells the traveller *which* rule they broke rather than
+failing opaquely, because they are a customer doing the business a favour.
+
+Invites are created from the enquiry's own stored name and email rather than
+from anything the caller supplies. Otherwise the endpoint would be a way for
+a compromised admin session to send review links to arbitrary addresses.
+
+The moderator's email is recorded on each decision, so "who published this"
+is answerable later without reading logs. It falls back to a label rather
+than failing while the legacy shared password is still in use.
 
 ### Deviation from the approved plan
 
@@ -610,6 +666,20 @@ Phase 4b, on the unconfigured path:
 - `tsc --noEmit`, `eslint` and `next build` clean; the two new routes and
   the new page appear in the route table.
 
+Phase 5, on the unconfigured path:
+
+- All four admin review endpoints return **401** to an anonymous caller and
+  **503** to a signed-in admin — authorisation is checked before
+  configuration, so an unconfigured deployment never leaks whether a route
+  exists to someone who may not use it.
+- `POST /api/reviews` with a well-formed but bogus token returns 503
+  `not_configured` rather than accepting anything.
+- `/en/review/<token>` renders the "not open yet" notice.
+- The admin panel's new section renders its "needs Firebase" message rather
+  than a broken state.
+- The home page still renders with the reviews merge in place.
+- `tsc --noEmit`, `eslint` and `next build` clean.
+
 **Not verified:**
 
 - **Every part of phases 1, 2 and 3 that touches Firebase.** No project
@@ -626,6 +696,10 @@ Phase 4b, on the unconfigured path:
   exercised only along its "Firebase is absent" branch. In particular the
   reference-collision retry, the revision transaction, and the traveller
   session cookie are untested.
+- **No review invite has been created, redeemed or moderated**, and no
+  photograph has been uploaded or deleted. The transactional redemption, the
+  server-side photo limits, the composite index, and the aggregate-rating
+  threshold are all untested.
 - The hidden-record filter ran against an empty archive, because
   `BLOB_READ_WRITE_TOKEN` is absent locally, so it has never been exercised
   against real data. The signed-in branch of that endpoint could not be
@@ -683,8 +757,14 @@ Phase 4b, on the unconfigured path:
     `/my-trip/<reference>`, sign in with the emailed link, and amend it —
     then confirm a `revisions` subcollection document was written and the
     original payload survived.
-11. Then 5, 6, and the admin enquiry queue (`listRequests()` exists;
-    nothing renders it yet).
+11. **Deploy the Firestore indexes** alongside the rules
+    (`firebase deploy --only firestore`), or listing reviews by status will
+    fail with a link to create the index by hand.
+12. Send yourself a review invite from the admin panel, submit a review with
+    photographs, and confirm: the invite cannot be reused, an expired one is
+    refused, a rejected review's photographs are actually gone from Storage,
+    and an approved one appears on the home page in the right language.
+13. Then phase 6.
 
 Per `AGENTS.md`, read the relevant guides in `node_modules/next/dist/docs/`
 (route handlers, proxy/middleware, caching and `revalidateTag`, image config)

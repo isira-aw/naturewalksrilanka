@@ -317,5 +317,38 @@
       "confirmed": "Confirmed",
       "closed": "Closed"
     }
+  },
+  "review": {
+    "title": "How was your trip?",
+    "intro": "Thank you for travelling with us. A few honest words help other travellers more than anything we could write ourselves.",
+    "ratingLabel": "Your rating",
+    "ratingOf": "{value} out of 5",
+    "nameLabel": "Your name",
+    "countryLabel": "Country (optional)",
+    "quoteLabel": "Your review",
+    "photosLabel": "Photographs (optional)",
+    "photosHint": "Up to {max}. They are resized before sending.",
+    "addPhotos": "Add photographs",
+    "removePhoto": "Remove this photograph",
+    "submit": "Send my review",
+    "sending": "Sending…",
+    "moderationNote": "We read every review before it appears on the site. We will not edit your words.",
+    "thanksTitle": "Thank you",
+    "thanksBody": "We have your review. It will appear on the site once we have read it.",
+    "linkUnknown": "We do not recognise that link. Ask us for a new one.",
+    "linkUsed": "This link has already been used — you have left your review. Thank you.",
+    "linkExpired": "This link has expired. Ask us for a new one and we will send it over.",
+    "unavailable": "Reviews are not open yet. Please tell us on WhatsApp instead.",
+    "tooManyPhotos": "You can add up to {max} photographs.",
+    "photoUnreadable": "We could not read that file as an image.",
+    "errorRating": "Choose a rating from one to five stars.",
+    "errorName": "Add the name you would like shown.",
+    "errorQuote": "Write a few words about your trip.",
+    "errorSpent": "This link has already been used.",
+    "errorInvalid": "We do not recognise that link.",
+    "errorPhotoLarge": "One of those photographs is too large. Try a smaller one.",
+    "errorPhotoType": "Photographs must be JPEG, PNG or WebP.",
+    "errorNetwork": "We could not reach the server. Check your connection and try again.",
+    "errorGeneric": "We could not send that. Please try again."
   }
 }

@@ -9,6 +9,7 @@ import { AdminSignIn } from "./AdminSignIn";
 import { ItineraryList } from "./ItineraryList";
 import { ItineraryForm } from "./ItineraryForm";
 import { TranslationsPanel } from "./TranslationsPanel";
+import { ReviewsPanel } from "./ReviewsPanel";
 import { DataPanel } from "./DataPanel";
 
 /**
@@ -19,6 +20,7 @@ import { DataPanel } from "./DataPanel";
  */
 const SECTIONS = [
   { id: "itineraries", label: "Custom tour optimisation" },
+  { id: "reviews", label: "Enquiries and reviews" },
   { id: "translations", label: "Translations" },
   { id: "data", label: "Data and migration" },
 ] as const;
@@ -128,6 +130,8 @@ export function AdminApp({ initiallySignedIn = false }: { initiallySignedIn?: bo
                 }}
               />
             ))}
+
+          {section === "reviews" && <ReviewsPanel />}
 
           {section === "translations" && (
             <TranslationsPanel records={records} onSave={save} />

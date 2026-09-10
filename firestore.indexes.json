@@ -1,4 +1,18 @@
 {
-  "indexes": [],
+  "indexes": [
+    {
+      "collectionGroup": "reviews",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "reviewInvites",
+      "queryScope": "COLLECTION",
+      "fields": [{ "fieldPath": "reference", "order": "ASCENDING" }]
+    }
+  ],
   "fieldOverrides": []
 }

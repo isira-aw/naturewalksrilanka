@@ -154,6 +154,10 @@ export const testimonialSchema = z.object({
   country: z.string().optional(),
   quote: z.string(),
   tourSlug: z.string().optional(),
+  /* Optional because the hand-written entries in `content/` predate reviews
+     and have no star rating; only ones submitted through the review form
+     carry it. */
+  rating: z.number().int().min(1).max(5).optional(),
 });
 export const testimonialsSchema = z.object({
   _reviewStatus: z.string().optional(),

@@ -17,6 +17,7 @@ import { VoicesSlider } from "@/components/home/VoicesSlider";
 import { PlanCta } from "@/components/whatsapp/PlanCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/seo/jsonld";
+import { aggregateRating, publishedTestimonials } from "@/lib/reviews/published";
 
 export async function generateMetadata({
   params,
@@ -62,6 +63,11 @@ export default async function HomePage({
     getContent(l, "seo"),
   ]);
 
+  /* Approved reviews merged in alongside anything hand-written in
+     `content/`; a Firestore failure degrades to the static list. */
+  const voices = await publishedTestimonials(testimonials, l);
+  const rating = aggregateRating(voices);
+
   const whyPoints = t.raw("nandana.whyPoints") as { title: string; description: string }[];
   const services = t.raw("home.services") as Service[];
   const stats = t.raw("home.stats") as Stat[];
@@ -69,7 +75,7 @@ export default async function HomePage({
 
   return (
     <>
-      <JsonLd data={buildOrganizationJsonLd({ navigation, seo, locale: l })} />
+      <JsonLd data={buildOrganizationJsonLd({ navigation, seo, locale: l, rating })} />
       <JsonLd data={buildWebsiteJsonLd({ seo, locale: l })} />
 
       <HeroShowcase
@@ -144,9 +150,9 @@ export default async function HomePage({
         points={whyPoints}
       />
 
-      {testimonials.items.length > 0 && (
+      {voices.items.length > 0 && (
         <VoicesSlider
-          testimonials={testimonials}
+          testimonials={voices}
           labels={{
             eyebrow: t("testimonials.eyebrow"),
             title: t("testimonials.title"),

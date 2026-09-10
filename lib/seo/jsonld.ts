@@ -6,10 +6,15 @@ export function buildOrganizationJsonLd({
   navigation,
   seo,
   locale,
+  rating,
 }: {
   navigation: Navigation;
   seo: Seo;
   locale: string;
+  /* Only ever real, approved reviews — see `lib/reviews/published.ts`, which
+     withholds an aggregate below three of them. Marking up ratings that are
+     not genuine is a manual-action offence, not merely bad manners. */
+  rating?: { ratingValue: number; reviewCount: number } | null;
 }) {
   return {
     "@context": "https://schema.org",
@@ -24,6 +29,17 @@ export function buildOrganizationJsonLd({
       addressCountry: "LK",
     },
     sameAs: Object.values(navigation.social).filter(Boolean),
+    ...(rating
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: rating.ratingValue,
+            reviewCount: rating.reviewCount,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }
+      : {}),
   };
 }
 
