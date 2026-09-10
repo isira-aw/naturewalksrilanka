@@ -169,7 +169,7 @@
     "contactEmail": "Correo electrónico",
     "contactPhone": "WhatsApp / teléfono",
     "contactCountry": "País",
-    "contactHint": "Para poder responderte. No se guarda nada en este sitio: tus respuestas van directas a un mensaje de WhatsApp que envías tú.",
+    "contactHint": "Para poder responderte. Guardamos tu consulta para que puedas volver a consultarla más adelante, y tus respuestas también van en un mensaje de WhatsApp que envías tú.",
     "requirementsLabel": "Cuéntanos cómo sería tu viaje ideal…",
     "reviewTitle": "Revisa tu viaje",
     "reviewHint": "Comprueba que todo está bien y envíanoslo por WhatsApp.",
@@ -197,7 +197,9 @@
       "notice": "Este documento se ha generado automáticamente a partir de los itinerarios que nos indicó. Es un punto de partida, no una reserva cerrada. Si hay que cambiar algo — el orden de las paradas, la duración o los propios itinerarios — hable con nuestro equipo por WhatsApp. No se preocupe: siempre estarán encantados de ayudarle.",
       "whatsappLabel": "WhatsApp"
     },
-    "downloadDoc": "Descargar en Word"
+    "downloadDoc": "Descargar en Word",
+    "amending": "Estás cambiando el viaje {reference}. Vuelve a enviarlo cuando termines y veremos la actualización.",
+    "amendFailed": "No pudimos abrir ese viaje. Ábrelo primero desde la página de tu viaje y elige Cambiar este viaje."
   },
   "nandana": {
     "introEyebrow": "Quién es Nandana",
@@ -276,5 +278,45 @@
     "journeys": "Viajes que lo incluyen",
     "activities": "Qué hacer aquí",
     "backToAll": "Todos los destinos"
+  },
+  "myTrip": {
+    "title": "Tu viaje",
+    "referenceLabel": "Referencia",
+    "accessTitle": "Ver tu viaje",
+    "accessBody": "Introduce el correo que usaste para el viaje {reference} y te enviaremos un enlace para abrirlo. Sin contraseña.",
+    "emailLabel": "Correo electrónico",
+    "sendLink": "Enviarme un enlace",
+    "sending": "Enviando…",
+    "linkSent": "Hemos enviado un enlace a {email}.",
+    "linkSentHint": "Ábrelo en este dispositivo. El enlace funciona una vez y caduca al cabo de un tiempo.",
+    "signingIn": "Abriendo tu viaje…",
+    "linkExpired": "Ese enlace ha caducado o ya se ha usado. Pide uno nuevo.",
+    "reenterEmail": "Introduce tu correo de nuevo para terminar de abrir tu viaje.",
+    "sendFailed": "No pudimos enviar el enlace. Revisa la dirección e inténtalo de nuevo.",
+    "unavailable": "Los viajes guardados aún no están disponibles. Tu consulta nos llega igualmente por WhatsApp.",
+    "notYours": "No encontramos ese viaje con tu correo electrónico.",
+    "notYoursHint": "Has entrado como {email}. Si usaste otra dirección, pide un enlace nuevo con esa.",
+    "travellers": "Viajeros",
+    "dates": "Fechas",
+    "datesUnset": "Sin definir",
+    "interests": "Intereses",
+    "itineraries": "Itinerarios",
+    "accommodation": "Alojamiento",
+    "accommodationNotes": "Notas sobre el alojamiento",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "country": "País",
+    "requirements": "Peticiones",
+    "amend": "Cambiar este viaje",
+    "changesHint": "Al cambiar tu viaje nos envías la nueva versión. Guardamos la anterior, así que no se pierde nada.",
+    "revisionNote": "Modificado {count, plural, one {una vez} other {# veces}}.",
+    "status": {
+      "received": "Recibido",
+      "in-progress": "Estamos trabajando en ello",
+      "quoted": "Presupuesto enviado",
+      "confirmed": "Confirmado",
+      "closed": "Cerrado"
+    }
   }
 }
