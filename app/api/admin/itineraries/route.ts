@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin/auth";
-import { readArchive, writeArchive } from "@/lib/itineraries/blobArchive";
+import { deleteRecord, saveRecord, writeAll } from "@/lib/itineraries/repository";
 import { itineraryArchiveSchema, itineraryRecordSchema } from "@/lib/itineraries/types";
 
 export const dynamic = "force-dynamic";
@@ -23,14 +23,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   }
 
-  const next = { ...parsed.data, updatedAt: new Date().toISOString() };
-  const { records } = await readArchive();
-  const index = records.findIndex((existing) => existing.id === next.id);
-  if (index >= 0) records[index] = next;
-  else records.push(next);
-
-  await writeArchive(records);
-  return NextResponse.json(next);
+  return NextResponse.json(await saveRecord(parsed.data));
 }
 
 /** Replaces or merges the whole archive — the *Data and migration* import. */
@@ -52,16 +45,17 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "invalid_archive" }, { status: 400 });
   }
 
-  if (mode === "merge") {
-    const { records: current } = await readArchive();
-    const byId = new Map(current.map((record) => [record.id, record]));
-    for (const record of parsed.data.records) byId.set(record.id, record);
-    const written = await writeArchive([...byId.values()]);
-    return NextResponse.json(written);
+  try {
+    const records = await writeAll(parsed.data.records, mode === "merge" ? "merge" : "replace");
+    return NextResponse.json({ schemaVersion: parsed.data.schemaVersion, records });
+  } catch (error) {
+    /* An oversized import is refused rather than half-applied; say so, since
+       the admin panel shows this message to whoever pressed the button. */
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "import_failed" },
+      { status: 400 },
+    );
   }
-
-  const written = await writeArchive(parsed.data.records);
-  return NextResponse.json(written);
 }
 
 export async function DELETE(request: Request) {
@@ -72,7 +66,6 @@ export async function DELETE(request: Request) {
   const id = new URL(request.url).searchParams.get("id");
   if (!id) return NextResponse.json({ error: "missing_id" }, { status: 400 });
 
-  const { records } = await readArchive();
-  await writeArchive(records.filter((record) => record.id !== id));
+  await deleteRecord(id);
   return NextResponse.json({ ok: true });
 }

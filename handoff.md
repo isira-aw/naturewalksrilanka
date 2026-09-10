@@ -37,7 +37,9 @@ Two things were asked for, and they are at very different stages.
 
 ## Full plan
 
-Phases 0, 1 and 4a are **done**. Everything else is designed but unstarted.
+Phases 0, 1, 2, 3 and 4a are **written**. Phases 4b, 5 and 6 are designed but
+unstarted. Everything touching Firebase is written but unproven — see
+"Current state".
 
 ### Phase 0 — Security hotfix (DONE)
 
@@ -106,25 +108,41 @@ to a stranger. That is strictly stronger than the planned middleware.
 
 The `admin` claim is set by `scripts/grant-admin.mjs`, never over HTTP.
 
-### Phase 3 — Itineraries to Firestore + Storage (TODO)
+### Phase 3 — Itineraries to Firestore + Storage (DONE, Firestore half unproven)
 
-One document per itinerary instead of the single `itineraries/archive.json`
-blob. This also removes a real bug: `lib/itineraries/blobArchive.ts` does a
-whole-file read-modify-write with no locking, so two admins saving at once
-silently overwrite each other.
+`lib/itineraries/repository.ts` is the new server-side facade: Firestore when
+configured, the old blob archive when not — the same fallback shape as the
+sign-in, for the same reason. Route handlers call the facade and no longer
+touch storage directly.
 
-Keep the `ItineraryRecord` shape from `lib/itineraries/types.ts` (including the
-per-locale `translations` map) so `toExperience.ts`, `ItineraryForm.tsx` and
-the wizard barely change; reuse the existing zod schemas for write validation.
-**Images move from base64 data URLs to real files in Storage** — keep the
-client canvas resize in `lib/itineraries/imageFile.ts`, upload the blob, store
-the URL. Drop the 30-second poll in `store.ts#subscribe`; refetch on window
-focus and after mutations. Cache the public read with `revalidateTag` on write
-instead of `force-dynamic` on every request.
+On Firestore each itinerary is **one document**, which removes a real bug:
+`blobArchive.ts` does a whole-file read-modify-write with no locking, so two
+admins saving at once silently overwrite each other. On the blob path that
+race still exists, because a single JSON file cannot do better.
 
-Migration: a one-off script reads the existing blob, uploads each embedded
-base64 image, and writes one document per record. Run against a copy first;
-keep the blob until verified, then remove `@vercel/blob`.
+The `ItineraryRecord` shape is unchanged, so `toExperience.ts`, the wizard and
+most of the admin form did not have to change. A malformed document is logged
+and skipped rather than failing the whole list — returning fewer itineraries
+is bad, returning none is worse. A `replace` import runs as one atomic batch,
+and refuses outright above 500 operations rather than applying in halves.
+
+**Images now upload to Storage** (`lib/itineraries/imageUpload.ts`), falling
+back to inline base64 when there is no signed-in Firebase user, because
+`storage.rules` requires the `admin` claim and the legacy password path does
+not produce one. `next.config.ts` gained the `remotePatterns` entries this
+needs — without them `next/image` silently refuses the new URLs.
+
+The 30-second poll in `store.ts#subscribe` is gone, replaced by a refetch on
+tab focus. It was re-downloading the whole archive on a timer for every open
+tab, including every visitor sitting on the custom-tour page.
+
+`scripts/migrate-itineraries.mjs` moves the existing data. It is a **dry run
+by default** and never deletes the blob archive.
+
+Deliberately **not** done from the original plan: caching the public read with
+`revalidateTag` instead of `force-dynamic`. The response now varies by admin
+cookie, and a caching mistake there would serve one visitor's view to
+another. Worth doing, but as its own change with its own testing.
 
 ### Phase 4 — Traveller flow (4a DONE, 4b TODO)
 
@@ -189,17 +207,19 @@ the shared chokepoint for nearly every content image.
 
 ### Sequencing
 
-Phases 0, 1 and 4a are shipped. Phases 2 → 3 come next as one block — that is
-the real migration, and it is blocked until a Firebase project exists and
-`/api/admin/firebase-status` reports the connection healthy. Then 4b, 5, 6.
-Realistically several weeks. Every phase is deployable on its own; resist
-merging them.
+Phases 0, 1 and 4a are shipped; 2 and 3 are written and awaiting a real
+Firebase project. Nothing further should be built until
+`/api/admin/firebase-status` reports the connection healthy and the
+itinerary migration has actually run — three phases of unverified Firebase
+code is already more unproven work in flight than is comfortable. Then 4b,
+5, 6. Every phase is deployable on its own; resist merging them.
 
 ## Current state
 
 Phases 0, 1 and 4a are **merged to `main`** — PR #10 (security hotfix and
-draft autosave) and PR #11 (Firebase foundation). Phase 2 is on
-`claude/firebase-phase-2-admin-auth`. `tsc --noEmit`, `eslint` and
+draft autosave) and PR #11 (Firebase foundation). Phases 2 and 3 are on
+`claude/firebase-phase-2-admin-auth` (PR #12) and
+`claude/firebase-phase-3-itineraries`. `tsc --noEmit`, `eslint` and
 `next build` are clean throughout.
 
 **The Firebase half of phases 1 and 2 remains unproven.** No Firebase project
@@ -276,9 +296,20 @@ archive reads as empty in local development.
 - `app/[locale]/admin/page.tsx` — `force-dynamic`, verifies server-side
 - `scripts/grant-admin.mjs` — new; grant and revoke staff access
 
-Untouched, and worth reading before phase 3: `lib/itineraries/`
-(`blobArchive.ts`, `store.ts`, `types.ts`, `toExperience.ts`),
-`next.config.ts`.
+### Phase 3
+
+- `lib/itineraries/repository.ts` — new; the Firestore-or-blob facade
+- `lib/itineraries/firestoreStore.ts` — new; one document per itinerary
+- `lib/itineraries/imageUpload.ts` — new; Storage upload with inline fallback
+- `lib/itineraries/store.ts` — polling replaced by refetch on tab focus
+- `app/api/{itineraries,admin/itineraries}/route.ts` — call the repository
+- `components/admin/ItineraryForm.tsx` — uploads instead of inlining; the
+  size warning now counts only images still held inline
+- `next.config.ts` — `remotePatterns` for Firebase Storage, `minimumCacheTTL`
+- `scripts/migrate-itineraries.mjs` — new; dry run by default
+
+Untouched: `lib/itineraries/blobArchive.ts` (still the fallback),
+`lib/itineraries/types.ts`, `toExperience.ts`.
 
 ## Changes made
 
@@ -362,6 +393,20 @@ action, and strict costs nothing for a panel reached by typing its address.
 endpoint because a route that grants administrative access is a route that
 can be reached, guessed at, or left exposed by a later refactor — and there
 is no bootstrap problem, since whoever deploys can run it once.
+
+**Phase 3.** The facade in `repository.ts` exists so the migration does not
+have to be atomic across a deploy. Everything reads and writes through it,
+and switching storage is one `isFirebaseConfigured()` check rather than a
+change at every call site.
+
+The migration script defaults to a dry run because this is the one step that
+feels irreversible, and seeing the counts — records, images, megabytes of
+base64 — before anything is written is worth an extra command. It never
+deletes the blob archive, and re-running is safe because images that are
+already https URLs are left alone, so an interrupted run can just be
+repeated. Uploaded images get a permanent download-token URL rather than a
+signed one: a signed URL would expire and quietly break the page weeks
+later.
 
 ### Deviation from the approved plan
 
@@ -460,13 +505,30 @@ since deleted):
   this after touching auth.
 - After sign-out, `/en/admin` again returns only the sign-in form.
 
+Phase 3, again on the fallback path:
+
+- `GET /api/itineraries` returns a correctly shaped archive envelope through
+  the new repository.
+- A valid record POSTed to `/api/admin/itineraries` passes validation and
+  reaches the storage layer, failing only at the Vercel Blob call with "No
+  blob credentials found". That is **pre-existing** — the blob path always
+  needed `BLOB_READ_WRITE_TOKEN`, which is absent locally — and it confirms
+  the route → repository → blobArchive wiring.
+- The custom-tour page loads with no console errors after the store's
+  polling was replaced.
+- `tsc --noEmit`, `eslint` and `next build` clean.
+
 **Not verified:**
 
-- **Every part of phases 1 and 2 that touches Firebase.** No project existed
-  while they were written. Credentials, private-key newline handling,
+- **Every part of phases 1, 2 and 3 that touches Firebase.** No project
+  existed while they were written. Credentials, private-key handling,
   service account permissions, Google sign-in, the `staff` allowlist check,
-  session-cookie minting and revocation are all unproven. Only the
-  unconfigured fallback path has actually run.
+  session cookies, every Firestore read and write, Storage uploads and the
+  whole migration script are unproven. Only the unconfigured fallback path
+  has actually run.
+- **No itinerary write has succeeded locally at all**, on either path:
+  Firestore is unconfigured and the blob path has no token. The write code
+  is therefore exercised only as far as its storage call.
 - The hidden-record filter ran against an empty archive, because
   `BLOB_READ_WRITE_TOKEN` is absent locally, so it has never been exercised
   against real data. The signed-in branch of that endpoint could not be
@@ -504,7 +566,20 @@ since deleted):
 7. With `BLOB_READ_WRITE_TOKEN` present, confirm the admin list and JSON
    export still contain hidden itineraries while an anonymous
    `GET /api/itineraries` omits them.
-8. Then phase 3, then 4b, 5, 6.
+8. **Migrate the itineraries.** Take a JSON export from the admin panel
+   first — that is the backup. Then:
+
+   ```bash
+   node --env-file=.env scripts/migrate-itineraries.mjs
+   ```
+
+   Read the counts, and only then re-run with `--commit`. Afterwards check
+   the admin list and the custom-tour page, confirm photographs load from
+   `firebasestorage.googleapis.com`, and confirm translations survived.
+   **Only once all that is right**, delete the `itineraries/archive.json`
+   blob by hand, remove `lib/itineraries/blobArchive.ts` and its branch in
+   `repository.ts`, and drop `@vercel/blob`.
+9. Then 4b, 5, 6.
 
 Per `AGENTS.md`, read the relevant guides in `node_modules/next/dist/docs/`
 (route handlers, proxy/middleware, caching and `revalidateTag`, image config)

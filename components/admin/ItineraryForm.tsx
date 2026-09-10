@@ -12,9 +12,9 @@ import {
 import {
   ACCEPTED_IMAGE_TYPES,
   approximateBytes,
-  fileToDataUrl,
   formatBytes,
 } from "@/lib/itineraries/imageFile";
+import { isInlineImage, prepareItineraryImage } from "@/lib/itineraries/imageUpload";
 import { Field, Label, TextArea, TextInput } from "./controls";
 
 const MAX_IMAGES = 3;
@@ -67,7 +67,11 @@ export function ItineraryForm({
     }
     try {
       const added = await Promise.all(
-        Array.from(files).slice(0, room).map((file) => fileToDataUrl(file))
+        Array.from(files)
+          .slice(0, room)
+          .map((file, offset) =>
+            prepareItineraryImage(file, draft.id, `image-${draft.images.length + offset}`)
+          )
       );
       setDraft((current) => ({ ...current, images: [...current.images, ...added] }));
     } catch (cause) {
@@ -80,7 +84,9 @@ export function ItineraryForm({
     if (!file) return;
     setError(null);
     try {
-      patchHighlight(index, { image: await fileToDataUrl(file) });
+      patchHighlight(index, {
+        image: await prepareItineraryImage(file, draft.id, `highlight-${index}`),
+      });
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "That photograph could not be read.");
     }
@@ -135,10 +141,14 @@ export function ItineraryForm({
     }
   }
 
+  /* Only images still held inline cost anything here — one uploaded to
+     Storage is a short URL, so counting it would report a size the record
+     does not actually carry. */
   const totalBytes =
-    draft.images.reduce((sum, src) => sum + approximateBytes(src), 0) +
+    draft.images.reduce((sum, src) => sum + (isInlineImage(src) ? approximateBytes(src) : 0), 0) +
     draft.highlights.reduce(
-      (sum, highlight) => sum + (highlight.image ? approximateBytes(highlight.image) : 0),
+      (sum, highlight) =>
+        sum + (isInlineImage(highlight.image) ? approximateBytes(highlight.image!) : 0),
       0
     );
 

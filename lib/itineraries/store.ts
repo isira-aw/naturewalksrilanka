@@ -99,12 +99,23 @@ export const blobItineraryStore: ItineraryStore = {
 
   subscribe(listener) {
     listeners.add(listener);
-    // Other tabs and devices don't get a push notification — a moderate poll
-    // is enough for an admin tool and a wizard, and far simpler than sockets.
-    const interval = window.setInterval(listener, 30_000);
+
+    /* Refetch when the tab comes back, not on a timer.
+       The old 30-second poll re-downloaded the whole archive for every open
+       tab forever, including tabs nobody was looking at and every visitor
+       sitting on the custom-tour page. Itineraries change a few times a week
+       at most; the only moment a stale list actually matters is when someone
+       returns to a tab they left open, which is exactly what this catches. */
+    const onFocus = () => {
+      if (document.visibilityState === "visible") listener();
+    };
+    window.addEventListener("visibilitychange", onFocus);
+    window.addEventListener("focus", onFocus);
+
     return () => {
       listeners.delete(listener);
-      window.clearInterval(interval);
+      window.removeEventListener("visibilitychange", onFocus);
+      window.removeEventListener("focus", onFocus);
     };
   },
 };
