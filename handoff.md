@@ -8,8 +8,9 @@
 
 Move everything dynamic onto Firebase — traveller flow, itinerary
 management, a customer review section — while securing the admin panel and
-making images load faster. Six phases; five are written and merged, three of
-those have never run against a real Firebase project.
+making images load faster. Six phases; five are written and merged, and
+**every part of them that touches Firebase has never run against a real
+Firebase project**, because none exists yet.
 
 **If you read nothing else:** the next step is not more code. It is creating
 the Firebase project and proving what is already on `main` actually works.
@@ -34,8 +35,9 @@ See "The important caveat" and "Next steps".
 
 ## Full plan
 
-Phases 0 through 5 are **written**. Only phase 6 remains. Everything
-touching Firebase is written but unproven — see "Current state".
+Phases 0 through 5 are **written and merged**. Only phase 6 remains, and it
+needs no Firebase. Everything touching Firebase is written but unproven —
+see "Current state".
 
 ### Phase 0 — Security hotfix (DONE)
 
@@ -217,36 +219,42 @@ entitled to treat it that way.
 Phase 4b's missing admin enquiry queue arrived here too, since inviting
 someone to review requires a list of enquiries to invite them from.
 
-### Phase 6 — Image loading (TODO)
+### Phase 6 — Image loading (the only phase left)
 
-The reported slowness has three distinct causes, in order of impact:
+The reported slowness had three distinct causes. **Two are already fixed**,
+both in phase 3:
 
-1. **Admin itinerary images are base64 inside a JSON archive that every
-   custom-tour visitor downloads whole.** Base64 is ~33% larger than binary,
-   is never optimised by `next/image`, and cannot be cached separately. Phase
-   3 fixes this by design — it is the main win.
-2. **Oversized source files.** 83 files, ~35 MB under `public/images/`, with a
-   3.9 MB `destinations/tissamaharama/tissamaharama.jpg` and 2.5–2.7 MB heroes.
-   Re-encode before they reach the optimiser. Also rename
-   `public/images/hero/hero (1).jpg` and friends — spaces and parentheses in
-   URLs cause subtle bugs.
-3. **`next.config.ts`.** Needs `remotePatterns` for the Firebase Storage host
-   (without it `next/image` will refuse the new URLs) and `minimumCacheTTL`.
-   `formats: ["image/avif", "image/webp"]` is already correct.
+1. ~~Admin itinerary images were base64 inside a JSON archive that every
+   custom-tour visitor downloaded whole~~ — they now upload to Storage. This
+   was the main win.
+2. ~~`next.config.ts` needed `remotePatterns` and `minimumCacheTTL`~~ —
+   added.
 
-Then blur placeholders — there are none anywhere today. Static imports get
-`blurDataURL` free; for Storage URLs generate a tiny base64 blur at upload
-time and store it on the document. Thread it through `components/ui/Photo.tsx`,
-the shared chokepoint for nearly every content image.
+What remains needs no Firebase, which makes phase 6 the one piece of work
+that can be finished and verified today:
+
+- **Oversized source files.** 83 files, ~35 MB under `public/images/`, with
+  a 3.9 MB `destinations/tissamaharama/tissamaharama.jpg` and 2.5–2.7 MB
+  heroes. Re-encode before they reach the optimiser.
+- **Rename `public/images/hero/hero (1).jpg`** and friends — spaces and
+  parentheses in URLs cause subtle bugs.
+- **Blur placeholders.** There are none anywhere. Static imports get
+  `blurDataURL` free; for Storage URLs generate a tiny base64 blur at upload
+  time and store it on the document. Thread it through
+  `components/ui/Photo.tsx`, the shared chokepoint for nearly every content
+  image.
 
 ### Sequencing
 
-Phases 0 through 5 are all written. **Nothing further should be built until
-a real Firebase project exists**, `/api/admin/firebase-status` reports
-the connection healthy, and the itinerary migration has actually run. Three
-phases of Firebase code are now on `main` without a single line of it having
-reached Firebase; adding 4b or 5 on top would deepen a stack of unverified
-work rather than reduce it. Then 4b, 5, 6.
+Phases 0 through 5 are written and merged. **Nothing more should be built
+until a real Firebase project exists**, `/api/admin/firebase-status` reports
+the connection healthy, and the itinerary migration has run.
+
+Five phases of Firebase code sit on `main` without a single line having
+reached Firebase. That is a lot of surface to debug at once, and it only
+gets worse with each phase added on top. Phase 6 is the exception worth
+making — it depends on nothing and can be verified immediately — but the
+Firebase setup should come first regardless.
 
 ## Current state
 
@@ -260,6 +268,8 @@ Everything written so far is **merged to `main`**:
 | 3 | #14 | Itineraries to Firestore, images to Storage |
 | 4b | #15 | Saved trips: enquiries recorded, `/my-trip`, amendments |
 | 5 | #16 | Reviews by invite, moderation, enquiry queue |
+
+Only phase 6 (images) is unwritten, and it needs no Firebase.
 
 (#13 was the same work as #14; it was auto-closed when its base branch was
 deleted on merging #12, and reopened as #14 against `main`.)
