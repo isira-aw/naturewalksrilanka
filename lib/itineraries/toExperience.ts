@@ -37,6 +37,7 @@ export function recordToExperience(record: ItineraryRecord, locale: string): Exp
     summary: firstSentence(content1),
     description,
     images: record.images.length > 0 ? record.images : [ITINERARY_FALLBACK_IMAGE],
+    imageBlur: record.imageBlur,
     highlights: record.highlights.map((highlight, index) => ({
       name: fields?.highlights[index]?.name ?? highlight.name,
       note: fields?.highlights[index]?.description ?? highlight.description,

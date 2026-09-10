@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+import { Photo } from "@/components/ui/Photo";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import { WhatsAppCTA } from "@/components/whatsapp/WhatsAppCTA";
@@ -41,10 +41,9 @@ export function PlanCta({
         style={reduceMotion ? undefined : { y }}
         className="absolute -inset-y-[10%] inset-x-0"
       >
-        <Image
+        <Photo
           src="/images/hero-2.jpg"
           alt=""
-          fill
           sizes="100vw"
           className="object-cover opacity-30"
         />

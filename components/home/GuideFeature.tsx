@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+import { Photo } from "@/components/ui/Photo";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import type { Profile } from "@/lib/content/schema";
 import { ArrowLink, Kicker, Rise, Words } from "@/components/ui/motion";
@@ -46,10 +46,9 @@ export function GuideFeature({
               style={reduceMotion ? undefined : { y: imageY }}
               className="absolute -inset-y-[9%] inset-x-0"
             >
-              <Image
+              <Photo
                 src={profile.portraitImage}
                 alt={`Portrait of ${profile.name} in the field`}
-                fill
                 sizes="(min-width: 768px) 40vw, 100vw"
                 className="object-cover"
               />

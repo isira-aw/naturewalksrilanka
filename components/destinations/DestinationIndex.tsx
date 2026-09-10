@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
+import { Photo } from "@/components/ui/Photo";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import type { Destination } from "@/lib/content/schema";
@@ -61,10 +61,9 @@ export function DestinationIndex({
             >
               <Link href={`/destinations/${destination.slug}`} className="group block">
                 <div className="relative aspect-[3/4] w-full overflow-hidden">
-                  <Image
+                  <Photo
                     src={destination.image}
                     alt={destination.name}
-                    fill
                     sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
                     className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.07]"
                   />

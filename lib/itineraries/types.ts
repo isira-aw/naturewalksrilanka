@@ -55,8 +55,20 @@ export const itineraryRecordSchema = z.object({
   province: z.enum(PROVINCE_IDS),
   /** The itinerary's title. */
   head: z.string().min(1),
-  /** Two or three photographs, stored as base64 data URLs. */
+  /** Two or three photographs: Storage URLs, or base64 data URLs on the
+      fallback path. */
   images: z.array(z.string()).max(3).default([]),
+  /**
+   * Blur placeholders, keyed by the image's own URL.
+   *
+   * A map rather than a parallel array because the same map covers the
+   * highlight photographs too, and because reordering or removing an image
+   * then cannot silently pair a photograph with somebody else's placeholder.
+   * Entries for images that are no longer on the record are harmless; a
+   * missing entry just means no placeholder, which is how every record
+   * written before this field looked.
+   */
+  imageBlur: z.record(z.string(), z.string()).default({}),
   bestTime: z.string().optional(),
   suggestedLength: z.string().optional(),
   content1: z.string().default(""),
@@ -92,6 +104,7 @@ export function emptyRecord(): ItineraryRecord {
     province: PROVINCE_IDS[0],
     head: "",
     images: [],
+    imageBlur: {},
     content1: "",
     highlights: [],
     hidden: false,

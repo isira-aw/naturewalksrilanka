@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+import { Photo } from "@/components/ui/Photo";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils/cn";
 
@@ -49,10 +49,9 @@ export function ParallaxImage({
         }}
         className="absolute inset-x-0"
       >
-        <Image
+        <Photo
           src={src}
           alt={alt}
-          fill
           priority={priority}
           sizes={sizes}
           className={cn("object-cover", imageClassName)}

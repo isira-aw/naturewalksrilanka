@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { Photo } from "@/components/ui/Photo";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/cn";
@@ -15,14 +15,18 @@ import { buildGeneralMessage } from "@/lib/whatsapp/buildMessage";
  * it and parallaxes away as the page scrolls, so the first section arrives
  * underneath the photograph rather than after it.
  *
- * Edit this one list to change what rotates behind the hero. Only hero-1 and
- * hero-2 are 1920x1080; the rest are 600x400 and will look soft full-bleed
- * until real photography replaces them (see lib/content/imageMap.ts).
+ * Edit this one list to change what rotates behind the hero. The files are the
+ * ones under `public/images/hero/`, not the `hero-1.jpg` and `hero-2.jpg` at
+ * the top of `public/images/` that `lib/content/imageMap.ts` describes — these
+ * are the real photography, and are wide enough for a full-bleed frame.
+ *
+ * Anything added here should go through `scripts/optimize-images.mjs`, which
+ * caps the source size and writes the blur placeholder `Photo` looks up.
  */
 const SLIDES = [
-  { src: "/images/hero/hero (1).jpg", alt: "image 1" },
-  { src: "/images/hero/hero (2).jpg", alt: "image 2" },
-  { src: "/images/hero/hero (3).jpg", alt: "image 3" },
+  { src: "/images/hero/hero-1.jpg", alt: "image 1" },
+  { src: "/images/hero/hero-2.jpg", alt: "image 2" },
+  { src: "/images/hero/hero-3.jpg", alt: "image 3" },
 ];
 
 const SLIDE_MS = 6000;
@@ -87,14 +91,13 @@ export function HeroShowcase({
               transition={{ duration: SLIDE_MS / 1000 + 2, ease: "linear" }}
               className="absolute inset-0"
             >
-              <Image
+              <Photo
                 src={SLIDES[index].src}
                 /* The first frame carries the description; later frames are
                    decorative so a screen reader isn't read a new photo caption
                    every few seconds. */
                 alt={index === 0 ? SLIDES[0].alt : ""}
                 aria-hidden={index !== 0}
-                fill
                 priority={index === 0}
                 sizes="100vw"
                 className="object-cover"

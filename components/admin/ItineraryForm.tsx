@@ -14,10 +14,30 @@ import {
   approximateBytes,
   formatBytes,
 } from "@/lib/itineraries/imageFile";
-import { isInlineImage, prepareItineraryImage } from "@/lib/itineraries/imageUpload";
+import {
+  isInlineImage,
+  prepareItineraryImage,
+  type PreparedImage,
+} from "@/lib/itineraries/imageUpload";
 import { Field, Label, TextArea, TextInput } from "./controls";
 
 const MAX_IMAGES = 3;
+
+/**
+ * Adds the placeholders for newly prepared photographs to the record's map.
+ *
+ * Nothing is ever removed. The map is keyed by URL, so a stale entry costs a
+ * hundred bytes and matches nothing; pruning it would mean knowing that no
+ * highlight still points at that image, which is more bookkeeping than the
+ * saving is worth.
+ */
+function withBlur(current: Record<string, string>, prepared: PreparedImage[]) {
+  const next = { ...current };
+  for (const image of prepared) {
+    if (image.blur) next[image.src] = image.blur;
+  }
+  return next;
+}
 
 /**
  * Add or edit one itinerary.
@@ -73,7 +93,11 @@ export function ItineraryForm({
             prepareItineraryImage(file, draft.id, `image-${draft.images.length + offset}`)
           )
       );
-      setDraft((current) => ({ ...current, images: [...current.images, ...added] }));
+      setDraft((current) => ({
+        ...current,
+        images: [...current.images, ...added.map((image) => image.src)],
+        imageBlur: withBlur(current.imageBlur, added),
+      }));
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "That photograph could not be read.");
     }
@@ -84,9 +108,17 @@ export function ItineraryForm({
     if (!file) return;
     setError(null);
     try {
-      patchHighlight(index, {
-        image: await prepareItineraryImage(file, draft.id, `highlight-${index}`),
-      });
+      const prepared = await prepareItineraryImage(file, draft.id, `highlight-${index}`);
+      /* One update, from the current state rather than the captured draft:
+         two highlight photographs chosen in quick succession would otherwise
+         each write the map as it was before the other. */
+      setDraft((current) => ({
+        ...current,
+        highlights: current.highlights.map((highlight, i) =>
+          i === index ? { ...highlight, image: prepared.src } : highlight
+        ),
+        imageBlur: withBlur(current.imageBlur, [prepared]),
+      }));
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "That photograph could not be read.");
     }

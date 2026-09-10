@@ -23,6 +23,7 @@ import { cert, getApps, initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
 import { randomUUID } from "node:crypto";
+import sharp from "sharp";
 
 const commit = process.argv.includes("--commit");
 const BLOB_PATH = "itineraries/archive.json";
@@ -120,15 +121,49 @@ async function uploadImage(dataUrl, storagePath) {
   return `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(storagePath)}?alt=media&token=${token}`;
 }
 
-/** Leaves anything that is already a URL or a `public/` path untouched. */
+/**
+ * A blur placeholder for an image that is about to be uploaded.
+ *
+ * New photographs get theirs in the browser at upload time, and the files
+ * under `public/` get theirs from `scripts/optimize-images.mjs`. Records that
+ * predate both are only ever seen here, so this is the one chance to give
+ * them one. Twelve pixels wide, to match those two.
+ *
+ * Never throws. A record whose placeholder could not be made should still
+ * migrate — losing a decoration is not worth failing the move over.
+ */
+async function blurFor(dataUrl) {
+  const match = DATA_URL.exec(dataUrl);
+  if (!match) return undefined;
+  try {
+    const blur = await sharp(Buffer.from(match[2], "base64"))
+      .resize({ width: 12, withoutEnlargement: true })
+      .webp({ quality: 40 })
+      .toBuffer();
+    return `data:image/webp;base64,${blur.toString("base64")}`;
+  } catch (error) {
+    console.warn(`  could not make a blur placeholder: ${error.message}`);
+    return undefined;
+  }
+}
+
+/**
+ * Leaves anything that is already a URL or a `public/` path untouched.
+ *
+ * Returns the new source and, for an image that was uploaded, its blur
+ * placeholder. An image that was already a URL gets none: the bytes are in
+ * Storage and downloading each one back to shrink it is not worth it — those
+ * records keep behaving exactly as they do today.
+ */
 async function convert(image, storagePath) {
-  if (typeof image !== "string" || image === "") return image;
+  if (typeof image !== "string" || image === "") return { src: image };
   if (!image.startsWith("data:")) {
     stats.alreadyUrls += 1;
-    return image;
+    return { src: image };
   }
+  const blur = await blurFor(image);
   const url = await uploadImage(image, storagePath);
-  return url ?? image;
+  return url ? { src: url, blur } : { src: image };
 }
 
 const extensionFor = (dataUrl) => {
@@ -147,19 +182,27 @@ for (const record of records) {
     continue;
   }
 
+  /* Keyed by URL, so it covers the highlight photographs from the same map —
+     see `imageBlur` in lib/itineraries/types.ts. */
+  const imageBlur = { ...(record.imageBlur ?? {}) };
+  const remember = ({ src, blur }) => {
+    if (blur) imageBlur[src] = blur;
+    return src;
+  };
+
   const images = [];
   for (const [index, image] of (record.images ?? []).entries()) {
     const path = `itineraries/${record.id}/image-${index}.${extensionFor(image)}`;
-    images.push(await convert(image, path));
+    images.push(remember(await convert(image, path)));
   }
 
   const highlights = [];
   for (const [index, highlight] of (record.highlights ?? []).entries()) {
     const path = `itineraries/${record.id}/highlight-${index}.${extensionFor(highlight?.image)}`;
-    highlights.push({ ...highlight, image: await convert(highlight?.image, path) });
+    highlights.push({ ...highlight, image: remember(await convert(highlight?.image, path)) });
   }
 
-  const next = { ...record, images, highlights };
+  const next = { ...record, images, highlights, imageBlur };
 
   if (commit) {
     await db.collection("itineraries").doc(record.id).set(next);
