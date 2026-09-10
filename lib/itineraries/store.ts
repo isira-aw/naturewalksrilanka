@@ -1,9 +1,7 @@
 "use client";
 
 import {
-  SCHEMA_VERSION,
   itineraryArchiveSchema,
-  itineraryRecordSchema,
   type ItineraryArchive,
   type ItineraryRecord,
 } from "./types";
@@ -11,16 +9,12 @@ import {
 /**
  * Where itineraries live.
  *
- * There is no backend and no database yet, so today the only implementation
- * keeps records in the browser's `localStorage`. Everything above this file
- * talks to the `ItineraryStore` interface instead of to `localStorage`, and
- * every record carries a stable id and a schema version, so standing a real
- * backend up later is one new implementation of this interface plus a single
- * `importArchive` of whatever `exportArchive` produced. No field is
- * browser-specific and nothing has to be re-keyed, so no data is lost in the
- * move.
- *
- * See `docs/itinerary-storage.md` for the migration steps.
+ * Backed by a single JSON blob on Vercel Blob storage (see
+ * `lib/itineraries/blobArchive.ts` and `app/api/itineraries/route.ts` /
+ * `app/api/admin/itineraries/route.ts`) rather than the browser: an itinerary
+ * added on one device now shows up on every other device and browser,
+ * because the record lives on the server instead of in that one browser's
+ * `localStorage`. See `docs/itinerary-storage.md`.
  */
 export interface ItineraryStore {
   list(): Promise<ItineraryRecord[]>;
@@ -33,127 +27,84 @@ export interface ItineraryStore {
   subscribe(listener: () => void): () => void;
 }
 
-const STORAGE_KEY = "nwsl.itineraries.v1";
-
-/** Broadcast within this tab; `storage` events already cover the other tabs. */
+/** Broadcast within this tab; other tabs/devices pick up changes on their next poll or refresh. */
 const listeners = new Set<() => void>();
 
 function notify() {
   for (const listener of listeners) listener();
 }
 
-function readRaw(): ItineraryRecord[] {
-  if (typeof window === "undefined") return [];
-  let text: string | null = null;
-  try {
-    text = window.localStorage.getItem(STORAGE_KEY);
-  } catch {
-    // Private browsing, or storage disabled entirely.
-    return [];
-  }
-  if (!text) return [];
-
-  try {
-    const parsed = itineraryArchiveSchema.safeParse(JSON.parse(text));
-    if (!parsed.success) return [];
-    return migrate(parsed.data);
-  } catch {
-    return [];
-  }
+async function fetchArchive(): Promise<ItineraryArchive> {
+  const response = await fetch("/api/itineraries", { credentials: "same-origin", cache: "no-store" });
+  if (!response.ok) return { schemaVersion: 1, records: [] };
+  const parsed = itineraryArchiveSchema.safeParse(await response.json());
+  return parsed.success ? parsed.data : { schemaVersion: 1, records: [] };
 }
 
-function writeRaw(records: ItineraryRecord[]) {
-  if (typeof window === "undefined") return;
-  const archive: ItineraryArchive = {
-    schemaVersion: SCHEMA_VERSION,
-    exportedAt: new Date().toISOString(),
-    records,
-  };
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(archive));
-  } catch (error) {
-    // Base64 photographs are large and the quota is a few megabytes: tell the
-    // caller rather than silently dropping the itinerary that was just saved.
-    throw new Error(
-      "Could not save. Browser storage is full — remove some itineraries or use smaller photographs.",
-      { cause: error }
-    );
-  }
-  notify();
-}
-
-/**
- * Brings an archive written by an older build up to the current shape. There
- * is only one version so far, so this is a pass-through — it exists so the
- * first real migration has an obvious home and old exports keep importing.
- */
-function migrate(archive: ItineraryArchive): ItineraryRecord[] {
-  if (archive.schemaVersion > SCHEMA_VERSION) return archive.records;
-  return archive.records;
-}
-
-export const localItineraryStore: ItineraryStore = {
+export const blobItineraryStore: ItineraryStore = {
   async list() {
-    return readRaw().sort((a, b) => a.head.localeCompare(b.head));
+    const { records } = await fetchArchive();
+    return records.sort((a, b) => a.head.localeCompare(b.head));
   },
 
   async get(id) {
-    return readRaw().find((record) => record.id === id) ?? null;
+    const { records } = await fetchArchive();
+    return records.find((record) => record.id === id) ?? null;
   },
 
   async save(record) {
-    const records = readRaw();
-    const next: ItineraryRecord = { ...record, updatedAt: new Date().toISOString() };
-    const index = records.findIndex((existing) => existing.id === next.id);
-    if (index >= 0) records[index] = next;
-    else records.push(next);
-    writeRaw(records);
-    return next;
+    const response = await fetch("/api/admin/itineraries", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(record),
+    });
+    if (!response.ok) {
+      const body = await response.json().catch(() => ({}));
+      throw new Error(body.error === "unauthorized" ? "Signed out — sign in again to save." : "Could not save.");
+    }
+    const saved = (await response.json()) as ItineraryRecord;
+    notify();
+    return saved;
   },
 
   async remove(id) {
-    writeRaw(readRaw().filter((record) => record.id !== id));
+    const response = await fetch(`/api/admin/itineraries?id=${encodeURIComponent(id)}`, {
+      method: "DELETE",
+      credentials: "same-origin",
+    });
+    if (!response.ok) throw new Error("Could not delete.");
+    notify();
   },
 
   async exportArchive() {
-    return {
-      schemaVersion: SCHEMA_VERSION,
-      exportedAt: new Date().toISOString(),
-      records: readRaw(),
-    };
+    return fetchArchive();
   },
 
   async importArchive(archive, mode = "replace") {
     const parsed = itineraryArchiveSchema.safeParse(archive);
     if (!parsed.success) throw new Error("That file is not an itinerary export.");
-    const incoming = migrate(parsed.data);
 
-    if (mode === "replace") {
-      writeRaw(incoming);
-      return incoming;
-    }
-
-    const byId = new Map(readRaw().map((record) => [record.id, record]));
-    for (const record of incoming) byId.set(record.id, record);
-    const merged = [...byId.values()];
-    writeRaw(merged);
-    return merged;
+    const response = await fetch("/api/admin/itineraries", {
+      method: "PUT",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ archive: parsed.data, mode }),
+    });
+    if (!response.ok) throw new Error("Could not import.");
+    const written = (await response.json()) as ItineraryArchive;
+    notify();
+    return written.records;
   },
 
   subscribe(listener) {
     listeners.add(listener);
-    const onStorage = (event: StorageEvent) => {
-      if (event.key === STORAGE_KEY) listener();
-    };
-    window.addEventListener("storage", onStorage);
+    // Other tabs and devices don't get a push notification — a moderate poll
+    // is enough for an admin tool and a wizard, and far simpler than sockets.
+    const interval = window.setInterval(listener, 30_000);
     return () => {
       listeners.delete(listener);
-      window.removeEventListener("storage", onStorage);
+      window.clearInterval(interval);
     };
   },
 };
-
-/** Validates one record coming from outside — an import, or a form submission. */
-export function parseRecord(value: unknown) {
-  return itineraryRecordSchema.safeParse(value);
-}

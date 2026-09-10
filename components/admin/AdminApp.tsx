@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { cn } from "@/lib/utils/cn";
-import { localItineraryStore } from "@/lib/itineraries/store";
+import { blobItineraryStore } from "@/lib/itineraries/store";
 import { useItineraries } from "@/lib/itineraries/useItineraries";
 import type { ItineraryRecord } from "@/lib/itineraries/types";
 import { AdminSignIn } from "./AdminSignIn";
@@ -49,7 +49,7 @@ export function AdminApp() {
 
   const save = useCallback(
     async (record: ItineraryRecord) => {
-      await localItineraryStore.save(record);
+      await blobItineraryStore.save(record);
       refresh();
       setEditing(null);
       setAdding(false);
@@ -136,7 +136,7 @@ export function AdminApp() {
                 onToggleHidden={(record) => void save({ ...record, hidden: !record.hidden })}
                 onDelete={(record) => {
                   if (!window.confirm(`Delete “${record.head}”? This cannot be undone.`)) return;
-                  void localItineraryStore.remove(record.id).then(refresh);
+                  void blobItineraryStore.remove(record.id).then(refresh);
                 }}
               />
             ))}

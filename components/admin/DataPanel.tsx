@@ -1,21 +1,18 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { localItineraryStore } from "@/lib/itineraries/store";
+import { blobItineraryStore } from "@/lib/itineraries/store";
 import { SCHEMA_VERSION, type ItineraryRecord } from "@/lib/itineraries/types";
 import { approximateBytes, formatBytes } from "@/lib/itineraries/imageFile";
 
 /**
  * The migration hatch.
  *
- * Itineraries currently live in this browser, because the site has no backend
- * and no database yet. That is fine for authoring and fatal for everything
- * else, so the one thing this panel guarantees is that the data is never
- * trapped: an export is the complete archive — every record, every photograph,
- * every translation, with the stable ids intact — and importing it into a
- * backend later is reading the same file. Nothing here is browser-shaped.
- *
- * Export regularly. Clearing the browser's site data clears the itineraries.
+ * Itineraries live on the server (a Vercel Blob archive, see
+ * `lib/itineraries/blobArchive.ts`) rather than in one browser, so this panel
+ * is a backup hatch rather than the only way the data survives: an export is
+ * the complete archive — every record, every photograph, every translation,
+ * with the stable ids intact.
  */
 export function DataPanel({
   records,
@@ -38,7 +35,7 @@ export function DataPanel({
 
   async function handleExport() {
     setError(null);
-    const archive = await localItineraryStore.exportArchive();
+    const archive = await blobItineraryStore.exportArchive();
     const blob = new Blob([JSON.stringify(archive, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
@@ -56,7 +53,7 @@ export function DataPanel({
     setMessage(null);
     try {
       const parsed = JSON.parse(await file.text());
-      const imported = await localItineraryStore.importArchive(parsed, mode);
+      const imported = await blobItineraryStore.importArchive(parsed, mode);
       onImported();
       setMessage(`Imported — ${imported.length} itineraries now stored.`);
     } catch (cause) {
@@ -68,8 +65,8 @@ export function DataPanel({
     <div className="max-w-2xl">
       <h2 className="font-display text-2xl text-charcoal">Data and migration</h2>
       <p className="mt-1.5 text-sm leading-relaxed text-charcoal/55">
-        Itineraries are stored in this browser until a backend is connected. Export a copy
-        regularly — clearing this browser&apos;s site data would clear them.
+        Itineraries are stored on the server and shared across every browser and device. Export a
+        copy now and then as a backup.
       </p>
 
       <dl className="mt-6 grid gap-3 sm:grid-cols-3">
@@ -121,14 +118,15 @@ export function DataPanel({
 
       <div className="mt-10 rounded-2xl border border-stone-dark bg-stone/25 p-5">
         <h3 className="font-utility text-xs uppercase tracking-wide text-forest">
-          Connecting a backend later
+          Moving to a different backend later
         </h3>
         <p className="mt-2.5 text-sm leading-relaxed text-charcoal/65">
           Every itinerary carries a stable id, timestamps and a schema version, and all of the
           admin screens talk to the <code className="font-utility text-[13px]">ItineraryStore</code>{" "}
-          interface rather than to browser storage. Standing a real database up means writing one
-          more implementation of that interface and importing this export into it — the records
-          go across unchanged, so nothing is lost and nothing has to be re-keyed.
+          interface rather than directly to Vercel Blob. Moving to a different store (Postgres, for
+          example) means writing one more implementation of that interface and importing this
+          export into it — the records go across unchanged, so nothing is lost and nothing has to
+          be re-keyed.
         </p>
       </div>
     </div>

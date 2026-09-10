@@ -124,7 +124,7 @@ export function LocaleSwitcher({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.18 }}
-                className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/60 p-4 backdrop-blur-sm sm:p-6"
+                className="fixed inset-0 z-50 flex items-center justify-center bg-charcoal/70 p-4 sm:p-6"
                 onClick={() => setOpen(false)}
               >
                 <motion.div
