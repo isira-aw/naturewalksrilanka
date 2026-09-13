@@ -11,6 +11,33 @@ and keep it running.
 **Never commit real secrets.** `.env` is gitignored; `.env.example` is the only
 env file in the repository and holds names and comments, never values.
 
+> **This project requires Node 22.** `firebase-admin@14` declares
+> `engines: { "node": ">=22" }`, and running below it takes the **whole site**
+> down, not just the Firebase features — see section 0.
+
+---
+
+## 0. Node 22 is not optional
+
+`package.json` declares `engines: { "node": "22.x" }`. Setting the Node version
+in the hosting project's settings is a separate step, and **that field alone
+does not rebuild what is already deployed.**
+
+This is not housekeeping. On Node 20 every page of the deployed site returned
+500, because `lib/firebase/admin.ts` statically imports `firebase-admin/auth`,
+`lib/reviews/store.ts` imports that, and the home page renders approved
+reviews — so the crash happened while building the module graph for *every*
+request. The cause was `jwks-rsa` (a `firebase-admin` dependency) doing
+`require('jose')` against an ESM-only jose, which only works from Node 22.12.
+
+`overrides.jwks-rsa.jose: ^5.10.0` in `package.json` removes the need for that
+`require(ESM)` at all. Both fixes are kept, and **neither should be removed
+without the other.**
+
+The trap: the build passes on Node 20, and it cannot be reproduced on a
+developer machine already running 22 or newer. It fails only at request time,
+in production.
+
 ---
 
 ## 1. How Firebase is used here
@@ -569,6 +596,12 @@ deployed. `firebase deploy --only firestore`.
 **Itinerary images still inline** — expected while the legacy password path is
 in use; there is no signed-in Firebase account to attribute the upload to. Sign
 in with Google.
+
+**Every page returns 500 in production, with `ERR_REQUIRE_ESM` naming
+`jwks-rsa` and `jose` in the runtime log** — the deployment is running below
+Node 22. Set the Node version in the hosting project's settings and redeploy;
+`engines` in `package.json` does not rebuild what is already out there. Check
+that `overrides.jwks-rsa.jose` is still present too. See section 0.
 
 **`next build` kills the dev server** — they contend over `.next`. Stop the dev
 server first.

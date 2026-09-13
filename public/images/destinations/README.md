@@ -49,6 +49,25 @@ no gallery at all.
 
 - JPEG, quality ~80. Next.js re-encodes and resizes on demand, so there is no
   need to ship several sizes — but do not upload a 12 MB camera original.
+
+## After you drop the files in
+
+Run the optimiser from the repository root:
+
+```bash
+npm run optimize-images                        # dry run — reports what it would do
+node scripts/optimize-images.mjs --commit      # actually rewrites the files
+```
+
+It caps the longest edge at 2400, re-encodes at quality 78, and generates the
+blur placeholder that holds each photograph's place while it loads. A file that
+skips this step still renders — it just loads as a hole in the page first. It is
+idempotent, so running it again after adding one photograph rewrites only that
+one.
+
+Two things it reports rather than fixes, because both mean renaming the file and
+every reference to it: an opaque PNG that should be a JPEG, and a name with
+characters that need escaping in a URL (spaces and brackets, for instance).
 - Landscape frames should have their subject slightly off-centre; the hero is
   cropped hard on small screens.
 - Photograph the place, not the group: portraits of travellers belong in the

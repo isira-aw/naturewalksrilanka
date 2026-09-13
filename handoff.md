@@ -8,10 +8,10 @@
 
 Move everything dynamic onto Firebase — traveller flow, itinerary
 management, a customer review section — while securing the admin panel and
-making images load faster. Six phases; five are written and merged, phase 6
-(images) is written and needs no Firebase, and **every part of the other five
-that touches Firebase has never run against a real Firebase project**, because
-none exists yet.
+making images load faster. Six phases, **all six written and merged**; phase 6
+(images) needed no Firebase and is fully verified, and **every part of the
+other five that touches Firebase has never run against a real Firebase
+project**, because none exists yet.
 
 **If you read nothing else:** the next step is not more code. It is creating
 the Firebase project and proving what is already on `main` actually works.
@@ -47,8 +47,8 @@ Firebase code being unproven is still true.
 
 ## Full plan
 
-Phases 0 through 5 are **written and merged**; phase 6 is written and
-verified. Everything touching Firebase is written but unproven — see
+All six phases are **written and merged**; phase 6 is additionally verified
+end to end. Everything touching Firebase is written but unproven — see
 "Current state".
 
 ### Phase 0 — Security hotfix (DONE)
@@ -279,14 +279,14 @@ It touches no Firebase, so unlike phases 1 to 5 all of it has actually run.
 
 ### Sequencing
 
-Phases 0 through 5 are written and merged. **Nothing more should be built
+All six phases are written and merged. **Nothing more should be built
 until a real Firebase project exists**, `/api/admin/firebase-status` reports
 the connection healthy, and the itinerary migration has run.
 
 Five phases of Firebase code sit on `main` without a single line having
 reached Firebase. That is a lot of surface to debug at once, and it only
-gets worse with each phase added on top. Phase 6 is the exception worth
-making — it depends on nothing and can be verified immediately — but the
+gets worse with each phase added on top. Phase 6 was the exception worth
+making — it depends on nothing and could be verified immediately — but the
 Firebase setup should come first regardless.
 
 ## Current state
@@ -301,14 +301,54 @@ Everything written so far is **merged to `main`**:
 | 3 | #14 | Itineraries to Firestore, images to Storage |
 | 4b | #15 | Saved trips: enquiries recorded, `/my-trip`, amendments |
 | 5 | #16 | Reviews by invite, moderation, enquiry queue |
-
-Phase 6 (images) is written on `claude/phase-6-continuation-ijj28h` and,
-unlike everything above it, has actually run — it needs no Firebase.
+| 6 | #17 | Image re-encode, blur placeholders, `Photo` as the chokepoint |
 
 (#13 was the same work as #14; it was auto-closed when its base branch was
 deleted on merging #12, and reopened as #14 against `main`.)
 
+Four changes landed after the phases, none of them feature work:
+
+| PR | What |
+|---|---|
+| #18 | `docs/FIREBASE_INTEGRATION.md` and `docs/FIREBASE_SETUP_CHECKLIST.md` |
+| #19 | `sharp` range aligned to `^0.35.3`, the one Next already asks for |
+| #20, #21 | `engines.node: "22.x"`, and the lockfile synced to match |
+| #22 | `jose` pinned to `^5.10.0` under `jwks-rsa` |
+
 `tsc --noEmit`, `eslint` and `next build` are clean on `main`.
+
+### The Node 22 outage (PRs #20 and #22)
+
+Worth knowing about before touching dependencies, because it has bitten this
+repository twice and the build passes either way.
+
+`jwks-rsa` 4.x is CommonJS and does `require('jose')`, but declares
+`jose: ^6.1.3`, and jose 6 is ESM-only. `require()` of an ES module works only
+from Node 22.12 onward. `firebase-admin@14.3.0` already declares
+`engines: { "node": ">=22" }`, but `package.json` said nothing, so the platform
+picked its own default of Node 20 — and **every page on the deployed site
+returned 500**, not just the Firebase-backed ones: the home page renders
+approved reviews, which reaches `lib/reviews/store.ts` and
+`lib/firebase/admin.ts`, which statically imports `firebase-admin/auth`. The
+crash happened while building the module graph for the request.
+
+It could not be reproduced locally, where Node is already 22 or newer, and the
+build had always passed because the failure is at request time. That is what
+made it look like a deployment fault rather than a dependency one. Rolling back
+did not help, because every deployment since the reviews work carried it.
+
+Two fixes, both kept:
+
+- `engines.node: "22.x"` writes down the constraint `firebase-admin` already
+  implies. **This field alone does not rebuild what is already deployed** — the
+  Node version must also be set in the hosting project's settings.
+- `overrides.jwks-rsa.jose: ^5.10.0` removes the need for `require(ESM)` at
+  all. jose 5 ships a real dual build, still exports the two functions
+  `jwks-rsa` uses, and dedupes onto the copy `@vercel/oidc` already pulls in.
+
+**Do not remove either without the other.** And do not regenerate
+`package-lock.json` wholesale to "clean up" the override — the edit was kept
+narrow deliberately; a full regeneration bumped 83 unrelated packages.
 
 ### The important caveat
 
@@ -914,10 +954,12 @@ has been done.
     it uploads.
 
 When photographs are added to `public/images/` from now on, run
-`npm run optimize-images` and then `node scripts/optimize-images.mjs --commit`.
-It caps the source size and regenerates `lib/images/blurData.generated.ts`; a
-file that never goes through it simply has no placeholder, which is not an
-error but is a missed opportunity.
+`npm run optimize-images` to see what it would do, then
+`node scripts/optimize-images.mjs --commit` to actually do it — the npm script
+is the dry run, `--commit` is the write. It caps the source size and
+regenerates `lib/images/blurData.generated.ts`; a file that never goes through
+it simply has no placeholder, which is not an error but is a missed
+opportunity.
 
 Per `AGENTS.md`, read the relevant guides in `node_modules/next/dist/docs/`
 (route handlers, proxy/middleware, caching and `revalidateTag`, image config)

@@ -22,6 +22,14 @@ real images land — drop them in with these names and redeploy.
   of the wrong bird under an endemic's name is the one mistake a birding
   client will never forgive.
 
+## After you drop the files in
+
+Run `npm run optimize-images` from the repository root to see what it would do,
+then `node scripts/optimize-images.mjs --commit` to do it. It re-encodes the
+file and generates the blur placeholder that holds its place while it loads.
+It is idempotent, so running it again after adding one photograph rewrites only
+that one.
+
 ## Files
 
 ### `sinharaja-endemic-mornings/` — Sinharaja endemic mornings

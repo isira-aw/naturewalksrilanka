@@ -6,6 +6,15 @@ secrets.**
 
 Do these in order. Each one depends on the ones above it.
 
+## 0. Node 22
+
+- [ ] `node -v` reports 22 or newer locally
+- [ ] The hosting project's Node version setting says 22 (the `engines` field
+      in `package.json` does not rebuild an existing deployment)
+
+`firebase-admin@14` requires it, and running below it returns 500 on **every**
+page, not just the Firebase-backed ones.
+
 ## 1. Admin panel — do this first
 
 Nobody can reach the admin panel until this is done, and you need the panel to
