@@ -24,6 +24,34 @@ const nextConfig: NextConfig = {
   async redirects() {
     return legacyRedirects.map((r) => ({ ...r, permanent: true }));
   },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          /* The host redirects http to https, but a redirect is still one
+             plaintext round trip an attacker on the network can meet first.
+             HSTS removes it: the browser rewrites to https on its own for the
+             next two years, and never asks over http again. Only sent over
+             https, so it cannot strand a local http dev server.
+
+             `preload` is deliberately omitted. It is a one-way door — getting
+             a domain off the preload list takes months — and it commits every
+             present and future subdomain to https along with it. Add it once
+             the certificate setup has been stable for a while. */
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains",
+          },
+          /* Sending the full URL of an admin or one-time review page to a
+             third-party host is a leak; the origin alone is all any of them
+             need, and it keeps referral analytics working. */
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+        ],
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

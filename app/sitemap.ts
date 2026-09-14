@@ -18,9 +18,15 @@ function withAlternates(path: string) {
   return {
     url: `${SITE_URL}/${routing.defaultLocale}${path}`,
     alternates: {
-      languages: Object.fromEntries(
-        routing.locales.map((locale) => [locale, `${SITE_URL}/${locale}${path}`])
-      ),
+      languages: {
+        ...Object.fromEntries(
+          routing.locales.map((locale) => [locale, `${SITE_URL}/${locale}${path}`])
+        ),
+        /* Without an x-default, a visitor whose language matches none of the
+           five has no declared page to be sent to, and Google picks one for
+           itself. The English URL is the same one `url` above submits. */
+        "x-default": `${SITE_URL}/${routing.defaultLocale}${path}`,
+      },
     },
   };
 }
