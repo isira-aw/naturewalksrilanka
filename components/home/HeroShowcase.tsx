@@ -24,9 +24,18 @@ import { buildGeneralMessage } from "@/lib/whatsapp/buildMessage";
  * caps the source size and writes the blur placeholder `Photo` looks up.
  */
 const SLIDES = [
-  { src: "/images/hero/hero-1.jpg", alt: "image 1" },
-  { src: "/images/hero/hero-2.jpg", alt: "image 2" },
-  { src: "/images/hero/hero-3.jpg", alt: "image 3" },
+  {
+    src: "/images/hero/hero-1.jpg",
+    alt: "The Sigiriya rock fortress rising out of the forested plain, with the hills beyond it in haze",
+  },
+  {
+    src: "/images/hero/hero-2.jpg",
+    alt: "Carved stone steps and standing columns among the ruins at Polonnaruwa at dusk",
+  },
+  {
+    src: "/images/hero/hero-3.jpg",
+    alt: "Mist settling between the hill-country ridges at sunrise",
+  },
 ];
 
 const SLIDE_MS = 6000;

@@ -6,7 +6,7 @@ import { formatDrive } from "@/lib/journey/plan";
 import type { JourneyDocument, JourneyDocumentLabels, JourneyRow } from "./model";
 
 /** Used on the cover when the traveller has picked nothing with a photograph. */
-export const FALLBACK_COVER = "/images/hero-1.jpg";
+export const FALLBACK_COVER = "/images/hero/hero-1.jpg";
 
 export type JourneyDocumentInput = {
   labels: JourneyDocumentLabels;
