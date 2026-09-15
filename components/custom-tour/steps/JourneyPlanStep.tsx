@@ -19,19 +19,12 @@ const RouteMap = dynamic(() => import("./journey-plan/RouteMap").then((m) => m.R
  * itineraries they want, so this takes exactly those, puts them in the order a
  * guide would drive them, fits them to the dates, and shows the result as a
  * written route beside a map. Everything it shows is what the documents print.
+ *
+ * There is nothing to download here: the take-away PDF is offered once, at the
+ * end, on the review step, where the traveller has already given their name and
+ * the document is worth keeping.
  */
-export function JourneyPlanStep({
-  plan,
-  onDownload,
-  pending,
-  failed,
-}: {
-  plan: JourneyPlan;
-  onDownload: (kind: "pdf" | "doc") => void;
-  pending: "pdf" | "doc" | null;
-  failed: boolean;
-}) {
-  const t = useTranslations("customTour");
+export function JourneyPlanStep({ plan }: { plan: JourneyPlan }) {
   const p = useTranslations("customTour.journeyPlan");
 
   if (plan.stops.length === 0) {
@@ -138,38 +131,6 @@ export function JourneyPlanStep({
           </div>
         </div>
       </div>
-
-      <section className="mt-10 border-t border-stone-dark pt-8">
-        <h3 className="font-display text-lg text-charcoal">{p("downloadTitle")}</h3>
-        <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-charcoal/55">
-          {p("downloadHint")}
-        </p>
-
-        <div className="mt-5 flex flex-wrap gap-3">
-          <button
-            type="button"
-            onClick={() => onDownload("pdf")}
-            disabled={pending !== null}
-            className="inline-flex min-h-11 items-center justify-center rounded-full bg-forest px-7 text-sm font-medium text-warm-white transition-colors hover:bg-forest-dark disabled:cursor-wait disabled:opacity-60"
-          >
-            {pending === "pdf" ? t("downloadPreparing") : t("downloadPdf")}
-          </button>
-          <button
-            type="button"
-            onClick={() => onDownload("doc")}
-            disabled={pending !== null}
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-forest px-7 text-sm font-medium text-forest transition-colors hover:bg-forest hover:text-warm-white disabled:cursor-wait disabled:opacity-60"
-          >
-            {pending === "doc" ? t("downloadPreparing") : t("downloadDoc")}
-          </button>
-        </div>
-
-        {failed && (
-          <p role="alert" className="mt-3 text-sm text-clay">
-            {t("downloadError")}
-          </p>
-        )}
-      </section>
     </div>
   );
 }

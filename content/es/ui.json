@@ -154,6 +154,9 @@
     "suggestionsBestTime": "Mejor época del año",
     "suggestionsDuration": "Duración sugerida",
     "suggestionsHighlights": "Lo que puedes ver",
+    "galleryLabel": "Fotografías",
+    "galleryPrevious": "Foto anterior",
+    "galleryNext": "Foto siguiente",
     "accommodationLabel": "Tipo de alojamiento preferido",
     "accommodationHint": "Elige uno o varios estilos, o deja que te recomendemos algo en cada parada.",
     "accommodation": {
@@ -176,9 +179,7 @@
       "dayRangeLabel": "Días {from}–{to}",
       "driveLabel": "{km} km desde la parada anterior · unas {duration} por carretera",
       "totalLabel": "{count} paradas · unos {km} km de conducción en total",
-      "overflowNote": "Sus fechas son más cortas de lo que necesitan los itinerarios elegidos. El plan siguiente se extiende más allá de su fecha de salida: quite un itinerario o hable con nosotros para alargar el viaje.",
-      "downloadTitle": "Llévelo consigo",
-      "downloadHint": "El mismo plan en PDF para leer, o en Word para editarlo y devolvérnoslo."
+      "overflowNote": "Sus fechas son más cortas de lo que necesitan los itinerarios elegidos. El plan siguiente se extiende más allá de su fecha de salida: quite un itinerario o hable con nosotros para alargar el viaje."
     },
     "contactName": "Nombre",
     "contactEmail": "Correo electrónico",
@@ -212,7 +213,6 @@
       "notice": "Este documento se ha generado automáticamente a partir de los itinerarios que nos indicó. Es un punto de partida, no una reserva cerrada. Si hay que cambiar algo — el orden de las paradas, la duración o los propios itinerarios — hable con nuestro equipo por WhatsApp. No se preocupe: siempre estarán encantados de ayudarle.",
       "whatsappLabel": "WhatsApp"
     },
-    "downloadDoc": "Descargar en Word",
     "amending": "Estás cambiando el viaje {reference}. Vuelve a enviarlo cuando termines y veremos la actualización.",
     "amendFailed": "No pudimos abrir ese viaje. Ábrelo primero desde la página de tu viaje y elige Cambiar este viaje."
   },

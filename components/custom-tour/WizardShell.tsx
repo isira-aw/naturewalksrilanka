@@ -446,12 +446,7 @@ export function WizardShell({
                 />
               )}
               {currentStepKey === "journeyPlan" && (
-                <JourneyPlanStep
-                  plan={plan}
-                  onDownload={(kind) => void download(kind)}
-                  pending={pending}
-                  failed={failed}
-                />
+                <JourneyPlanStep plan={plan} />
               )}
               {currentStepKey === "contact" && (
                 <ContactStep

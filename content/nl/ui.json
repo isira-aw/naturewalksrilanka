@@ -154,6 +154,9 @@
     "suggestionsBestTime": "Beste reistijd",
     "suggestionsDuration": "Voorgestelde duur",
     "suggestionsHighlights": "Wat je kunt zien",
+    "galleryLabel": "Foto's",
+    "galleryPrevious": "Vorige foto",
+    "galleryNext": "Volgende foto",
     "accommodationLabel": "Voorkeur voor accommodatie",
     "accommodationHint": "Kies een of meer stijlen, of laat ons per stop iets aanraden.",
     "accommodation": {
@@ -176,9 +179,7 @@
       "dayRangeLabel": "Dag {from}–{to}",
       "driveLabel": "{km} km vanaf de vorige stop · ongeveer {duration} over de weg",
       "totalLabel": "{count} stops · in totaal ongeveer {km} km rijden",
-      "overflowNote": "Uw data zijn korter dan de gekozen itineraries nodig hebben. Het plan hieronder loopt door na uw vertrekdatum — verwijder een itinerary of overleg met ons over een langere reis.",
-      "downloadTitle": "Neem het mee",
-      "downloadHint": "Hetzelfde plan als pdf om te lezen, of als Word-bestand dat u kunt aanpassen en terugsturen."
+      "overflowNote": "Uw data zijn korter dan de gekozen itineraries nodig hebben. Het plan hieronder loopt door na uw vertrekdatum — verwijder een itinerary of overleg met ons over een langere reis."
     },
     "contactName": "Naam",
     "contactEmail": "E-mail",
@@ -212,7 +213,6 @@
       "notice": "Dit document is automatisch samengesteld uit de itineraries waarin u aangaf geïnteresseerd te zijn. Het is een startpunt, geen vaste boeking. Moet er iets veranderen — de volgorde van de stops, de duur, of de itineraries zelf — neem dan contact op met ons team via WhatsApp. Geen zorgen: ze helpen u graag.",
       "whatsappLabel": "WhatsApp"
     },
-    "downloadDoc": "Downloaden als Word",
     "amending": "Je wijzigt reis {reference}. Verstuur hem opnieuw als je klaar bent, dan zien wij de wijziging.",
     "amendFailed": "We konden die reis niet openen. Open hem eerst via je reispagina en kies dan Deze reis wijzigen."
   },

@@ -1,8 +1,6 @@
 "use client";
 
 import { cropToAspect, tinted, type LoadedImage } from "./assets";
-import { drawRouteMap } from "./mapCanvas";
-import { ARRIVAL_POINT } from "@/lib/geo/sriLanka";
 import type { JourneyDocument, JourneyItinerary } from "./model";
 
 /* A4, in millimetres. */
@@ -34,7 +32,9 @@ function safe(text: string) {
 
 export async function buildJourneyPdf(
   doc: JourneyDocument,
-  images: Map<string, LoadedImage>
+  images: Map<string, LoadedImage>,
+  /** The route map, already rendered — see `mapImage.ts`. */
+  map: HTMLCanvasElement | null
 ): Promise<Blob> {
   const { jsPDF } = await import("jspdf");
   const pdf = new jsPDF({ unit: "mm", format: "a4", compress: true });
@@ -320,14 +320,26 @@ export async function buildJourneyPdf(
     }
     cursor += 2;
 
-    if (doc.mapStops.length) {
-      const map = drawRouteMap(doc.mapStops, ARRIVAL_POINT, { width: 800, height: 1100 });
-      const mapH = BOTTOM - MARGIN - 14;
-      const mapW = (mapH * map.width) / map.height;
+    if (map) {
+      /* Its own page, scaled to whichever of the two edges runs out first so
+         the map keeps the proportions it was rendered at. */
       newPage();
       sectionTitle(doc.labels.mapTitle);
-      place(map, "route-map", MARGIN + (CONTENT_W - mapW) / 2, cursor, mapW, mapH - 10);
-      cursor += mapH - 4;
+      const availableH = BOTTOM - cursor - 4;
+      const scale = Math.min(CONTENT_W / map.width, availableH / map.height);
+      const mapW = map.width * scale;
+      const mapH = map.height * scale;
+      /* Centred both ways in what is left of the page: a wide route leaves a
+         band of empty paper, and it should not all fall below the map. */
+      place(
+        map,
+        "route-map",
+        MARGIN + (CONTENT_W - mapW) / 2,
+        cursor + (availableH - mapH) / 2,
+        mapW,
+        mapH
+      );
+      cursor = BOTTOM;
     }
   }
 
