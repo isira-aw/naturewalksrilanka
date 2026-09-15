@@ -9,6 +9,21 @@
     "close": "Luk",
     "language": "Sprog"
   },
+  "search": {
+    "open": "Søg",
+    "title": "Søg på siden",
+    "placeholder": "Søg rejser, steder, dyreliv…",
+    "empty": "Ingen resultater. Prøv et sted eller en art.",
+    "error": "Søgning er ikke tilgængelig lige nu. Brug menuen til at browse.",
+    "loading": "Indlæser…",
+    "close": "Luk",
+    "groups": {
+      "tour": "Rejse",
+      "destination": "Sted",
+      "activity": "Aktivitet",
+      "page": "Side"
+    }
+  },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Ud over",

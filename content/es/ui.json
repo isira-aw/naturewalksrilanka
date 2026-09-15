@@ -9,6 +9,21 @@
     "close": "Cerrar",
     "language": "Idioma"
   },
+  "search": {
+    "open": "Buscar",
+    "title": "Buscar en el sitio",
+    "placeholder": "Busca viajes, lugares, fauna…",
+    "empty": "No hay resultados. Prueba con un lugar o una especie.",
+    "error": "La búsqueda no está disponible ahora. Usa el menú para navegar.",
+    "loading": "Cargando…",
+    "close": "Cerrar",
+    "groups": {
+      "tour": "Viaje",
+      "destination": "Lugar",
+      "activity": "Actividad",
+      "page": "Página"
+    }
+  },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Más allá de",

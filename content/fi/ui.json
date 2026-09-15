@@ -9,6 +9,21 @@
     "close": "Sulje",
     "language": "Kieli"
   },
+  "search": {
+    "open": "Haku",
+    "title": "Hae sivustolta",
+    "placeholder": "Hae matkoja, paikkoja, eläimiä…",
+    "empty": "Ei osumia. Kokeile paikkaa tai lajia.",
+    "error": "Haku ei ole juuri nyt käytettävissä. Selaa valikon avulla.",
+    "loading": "Ladataan…",
+    "close": "Sulje",
+    "groups": {
+      "tour": "Matka",
+      "destination": "Paikka",
+      "activity": "Aktiviteetti",
+      "page": "Sivu"
+    }
+  },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Tavanomaisen",

@@ -9,6 +9,21 @@
     "close": "Sluiten",
     "language": "Taal"
   },
+  "search": {
+    "open": "Zoeken",
+    "title": "Zoek op de site",
+    "placeholder": "Zoek reizen, plaatsen, dieren…",
+    "empty": "Niets gevonden. Probeer een plaats of een diersoort.",
+    "error": "Zoeken is nu niet beschikbaar. Gebruik het menu om te bladeren.",
+    "loading": "Laden…",
+    "close": "Sluiten",
+    "groups": {
+      "tour": "Reis",
+      "destination": "Plaats",
+      "activity": "Activiteit",
+      "page": "Pagina"
+    }
+  },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Voorbij het",

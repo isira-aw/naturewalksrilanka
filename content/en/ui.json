@@ -9,6 +9,21 @@
     "close": "Close",
     "language": "Language"
   },
+  "search": {
+    "open": "Search",
+    "title": "Search the site",
+    "placeholder": "Search journeys, places, wildlife…",
+    "empty": "Nothing matched that. Try a place or a species.",
+    "error": "Search is unavailable right now. Use the menu to browse.",
+    "loading": "Loading…",
+    "close": "Close",
+    "groups": {
+      "tour": "Journey",
+      "destination": "Place",
+      "activity": "Activity",
+      "page": "Page"
+    }
+  },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Beyond the",

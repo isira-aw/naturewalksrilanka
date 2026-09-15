@@ -7,12 +7,32 @@ import { Container } from "@/components/ui/Container";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { NavLinks } from "./NavLinks";
 import { MobileNav } from "./MobileNav";
+import { SiteSearch } from "@/components/search/SiteSearch";
 
 export async function Header({ locale }: { locale: Locale }) {
-  const [navigation, t] = await Promise.all([
+  const [navigation, t, tSearch] = await Promise.all([
     getContent(locale, "navigation"),
     getTranslations({ locale, namespace: "nav" }),
+    getTranslations({ locale, namespace: "search" }),
   ]);
+
+  /* Read on the server so the dialog ships with its copy already translated —
+     it is a client component and has no access to the message catalogue. */
+  const searchLabels = {
+    open: tSearch("open"),
+    title: tSearch("title"),
+    placeholder: tSearch("placeholder"),
+    empty: tSearch("empty"),
+    error: tSearch("error"),
+    loading: tSearch("loading"),
+    close: tSearch("close"),
+    groups: {
+      tour: tSearch("groups.tour"),
+      destination: tSearch("groups.destination"),
+      activity: tSearch("groups.activity"),
+      page: tSearch("groups.page"),
+    },
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b border-stone-dark/60 bg-warm-white/90 backdrop-blur">
@@ -36,6 +56,15 @@ export async function Header({ locale }: { locale: Locale }) {
           <NavLinks items={navigation.main} />
         </nav>
 
+        {/* Mounted once, not once per breakpoint: each instance registers a
+            global Cmd/Ctrl-K listener and renders its own portal, so two of
+            them opened two stacked dialogs. It sits in the flex row and lands
+            beside the language switcher on desktop and beside Menu on
+            mobile, which is where it is wanted in both cases. */}
+        <div className="ml-auto flex items-center lg:ml-0">
+          <SiteSearch locale={locale} labels={searchLabels} />
+        </div>
+
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           <LocaleSwitcher label={t("language")} className="w-36" />
           <Link
@@ -46,15 +75,17 @@ export async function Header({ locale }: { locale: Locale }) {
           </Link>
         </div>
 
-        <MobileNav
-          navigation={navigation}
-          labels={{
-            menu: t("menu"),
-            close: t("close"),
-            primaryCta: navigation.primaryCta.label,
-            language: t("language"),
-          }}
-        />
+        <div className="flex items-center lg:hidden">
+          <MobileNav
+            navigation={navigation}
+            labels={{
+              menu: t("menu"),
+              close: t("close"),
+              primaryCta: navigation.primaryCta.label,
+              language: t("language"),
+            }}
+          />
+        </div>
       </Container>
     </header>
   );
