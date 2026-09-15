@@ -121,16 +121,3 @@ export async function reviseRequest(
     return next;
   });
 }
-
-/** The admin queue: newest first. */
-export async function listRequests(limit = 100): Promise<TourRequest[]> {
-  const snapshot = await collection().orderBy("createdAt", "desc").limit(limit).get();
-
-  const requests: TourRequest[] = [];
-  for (const doc of snapshot.docs) {
-    const parsed = tourRequestSchema.safeParse(doc.data());
-    if (parsed.success) requests.push(parsed.data);
-    else console.error(`Skipping malformed tour request ${doc.id}`);
-  }
-  return requests;
-}

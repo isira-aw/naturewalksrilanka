@@ -309,16 +309,19 @@ says *who*.
 ### `reviewInvites`
 
 One-time, expiring links. Fields: `token` (64 hex characters from
-`crypto.randomUUID`), `reference`, `email`, `name`, `locale`, `createdAt`,
-`expiresAt`, `usedAt`, `invitedBy`. Lifetime **60 days**.
+`crypto.randomUUID`), `label`, `locale`, `createdAt`, `expiresAt`, `usedAt`,
+`invitedBy`. Lifetime **60 days**.
 
-**The link is the credential.** It carries no information about the enquiry.
-Redemption marks the invite used *inside a transaction*, so two people opening
-the same link cannot both submit.
+**The link is the credential.** It is tied to nobody: a staff member makes one
+from the admin panel, with a label for their own reference, and pastes it into
+whatever conversation they are already having. Nothing is emailed and no
+address is matched, because plenty of travellers never filled the enquiry form
+in and their reviews are worth as much. Redemption marks the invite used
+*inside a transaction*, so two people opening the same link cannot both submit.
 
-Invites are created from the enquiry's own stored name and email, never from
-anything the caller supplies — otherwise the endpoint would be a way for a
-compromised admin session to send review links to arbitrary addresses.
+`reference`, `email` and `name` are nullable and only ever set on links made
+before invitations stopped coming from the enquiry queue; the panel still shows
+them so an old link can be placed.
 
 ### `reviews`
 
@@ -327,8 +330,12 @@ Fields: `id`, `reference`, `author`, `country`, `rating` (whole stars, 1–5),
 `moderatedAt`, `moderatedBy`.
 
 Everything lands as `pending`; nothing is public until a staff member approves
-it. Because every review traces back to an invite tied to a real enquiry, spam
-is structurally impossible — moderation is a quality gate, not a defence.
+it. Because every review traces back to a link a staff member made by hand,
+spam is structurally impossible — moderation is a quality gate, not a defence.
+
+Approving, unpublishing and deleting are all in the panel: unpublishing returns
+a review to the queue with its photographs, deleting removes it and them for
+good.
 
 `path` is stored alongside `url` so a rejected review's photographs can
 actually be deleted. **Rejecting deletes them**: files stay publicly readable
@@ -346,10 +353,9 @@ The admin allowlist, keyed by lowercased email. Written only by
 
 ### Indexes
 
-`firestore.indexes.json` declares two composite indexes:
+`firestore.indexes.json` declares one composite index:
 
 - `reviews` on `status ASC, createdAt DESC` — the moderation queue
-- `reviewInvites` on `reference ASC`
 
 ---
 
@@ -481,7 +487,7 @@ Run through this after connecting, and again after touching auth.
 - [ ] Amending writes a `revisions` document and preserves the original payload
 
 **Reviews**
-- [ ] Invite created from the enquiry queue
+- [ ] Link created from the panel's Review links section
 - [ ] The link opens the form; **a used link is refused**
 - [ ] An expired invite is refused
 - [ ] More than 4 photos, or one over 3 MB, is refused with a reason
@@ -601,7 +607,7 @@ view to another.
 | `lib/firebase/collections.ts` | Collection and Storage path names |
 | `lib/admin/auth.ts` | The single authorisation point |
 | `lib/itineraries/store.ts` | Itineraries in Firestore — the only store |
-| `lib/tourRequests/store.ts` | Enquiries: create, get, revise, list |
+| `lib/tourRequests/store.ts` | Enquiries: create, get, revise |
 | `lib/reviews/store.ts` | Invites, photo limits, redemption, moderation |
 | `firestore.rules` | Security rules |
 | `lib/cloudinary/` | Photograph upload and deletion |
