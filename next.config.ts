@@ -50,6 +50,33 @@ const nextConfig: NextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
         ],
       },
+      {
+        /* Photographs served straight out of `public/`, rather than through
+           the optimiser at `/_next/image`. Next gives everything in `public/`
+           `max-age=0` because it cannot know when a file changes, so each of
+           these costs a revalidation round trip per visit. They are not
+           content-hashed either, so `immutable` would be wrong — a replaced
+           photograph would go on being served from cache for a year.
+
+           This is the middle ground: an hour in the browser, a day at the CDN,
+           and a week in which a stale copy is served instantly while a fresh
+           one is fetched behind it. A photograph swapped by hand is live
+           everywhere within a day with no cache purge, and no visitor ever
+           waits for one.
+
+           The paths that reach this rule are the Open Graph card fetched by
+           crawlers, the logo, and the images embedded in the PDF and Word
+           documents the wizard builds. Everything rendered by `Photo` goes
+           through the optimiser instead, which sets its own long-lived headers
+           from `images.minimumCacheTTL` above. */
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
     ];
   },
 };

@@ -15,6 +15,7 @@ import { ItineraryTimeline } from "@/components/itinerary/ItineraryTimeline";
 import { PlanCta } from "@/components/whatsapp/PlanCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildTouristTripJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/jsonld";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export async function generateStaticParams() {
   const tours = await getContent("en" as Locale, "tours");
@@ -34,24 +35,18 @@ export async function generateMetadata({
   const [seo, tour] = await Promise.all([getContent(l, "seo"), getTourBySlug(l, slug)]);
   if (!tour) return {};
 
-  const title = seo.titleTemplate.replace("%s", tour.title);
-  const description = tour.summary || tour.tagline;
-
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/${locale}/tours/${slug}`,
-      languages: Object.fromEntries(
-        routing.locales.map((loc) => [loc, `/${loc}/tours/${slug}`])
-      ),
-    },
-    openGraph: {
-      title,
-      description,
-      images: [tour.heroImage],
-    },
-  };
+  return buildPageMetadata({
+    locale: l,
+    path: `/tours/${slug}`,
+    title: seo.titleTemplate.replace("%s", tour.title),
+    description: tour.summary || tour.tagline,
+    seo,
+    image: tour.heroImage,
+    imageAlt: tour.title,
+    /* One journey, written up once — an `article` rather than another copy of
+       the site's front door. */
+    type: "article",
+  });
 }
 
 export default async function TourDetailPage({

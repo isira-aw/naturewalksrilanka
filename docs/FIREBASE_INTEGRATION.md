@@ -6,7 +6,7 @@ and keep it running.
 > **Status: not yet connected.** All of the code described here is written and
 > merged, but no Firebase project exists yet, so none of it has ever run
 > against one. This document is the instructions for doing that, not a record
-> of it having been done. See "Current state" in `handoff.md`.
+> of it having been done.
 
 **Never commit real secrets.** `.env` is gitignored; `.env.example` is the only
 env file in the repository and holds names and comments, never values.
@@ -37,6 +37,10 @@ without the other.**
 The trap: the build passes on Node 20, and it cannot be reproduced on a
 developer machine already running 22 or newer. It fails only at request time,
 in production.
+
+**Do not regenerate `package-lock.json` wholesale to tidy the override away.**
+The edit was kept narrow deliberately; a full regeneration bumped 83 unrelated
+packages the last time it was tried.
 
 ---
 
@@ -669,4 +673,3 @@ view to another.
 | `scripts/migrate-itineraries.mjs` | Blob → Firestore migration |
 | `app/api/admin/firebase-status/route.ts` | The connectivity probe |
 | `docs/FIREBASE_SETUP_CHECKLIST.md` | The same steps, as a checklist |
-| `handoff.md` | Why each decision was made, and what is unproven |

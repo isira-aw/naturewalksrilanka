@@ -23,7 +23,7 @@ procedure.
 
 > **The Firestore path has never run.** No Firebase project exists yet, so
 > everything above is written but unproven — only the blob branch has actually
-> executed. See "The important caveat" in `handoff.md`.
+> executed. See the status note at the top of `FIREBASE_INTEGRATION.md`.
 
 ### Why one document per itinerary matters
 

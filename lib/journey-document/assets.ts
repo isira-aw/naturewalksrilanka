@@ -60,7 +60,7 @@ async function encode(src: string): Promise<LoadedImage | null> {
 
 /**
  * Loads every source, keeping going past the ones that fail: content can name
- * a photograph before the file exists (see `public/images/highlights/README.md`),
+ * a photograph before the file exists (see `docs/photography.md`),
  * and a document with one picture missing is still worth having.
  */
 export async function loadImages(sources: string[]): Promise<Map<string, LoadedImage>> {

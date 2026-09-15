@@ -14,7 +14,20 @@ export const dynamic = "force-dynamic";
  * withheld from the public and returned in full to a signed-in admin.
  */
 export async function GET(request: Request) {
-  const archive = await readArchiveEnvelope();
+  let archive;
+  try {
+    archive = await readArchiveEnvelope();
+  } catch (error) {
+    /* Firestore unreachable, out of quota, or refusing the credentials. This
+       is the one Firebase read on a public page, so an unhandled throw here
+       is a 500 on the custom-tour wizard for every visitor. The client store
+       already renders an empty suggestions list when this call fails
+       (`lib/itineraries/store.ts`), so answering deliberately — and logging
+       it — degrades the page instead of breaking it. */
+    console.error("Could not read the itinerary archive:", error);
+    return NextResponse.json({ error: "unavailable" }, { status: 503 });
+  }
+
   if (await requireAdmin(request)) return NextResponse.json(archive);
 
   return NextResponse.json({

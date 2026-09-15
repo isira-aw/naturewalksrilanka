@@ -16,9 +16,9 @@ import { buildGeneralMessage } from "@/lib/whatsapp/buildMessage";
  * underneath the photograph rather than after it.
  *
  * Edit this one list to change what rotates behind the hero. The files are the
- * ones under `public/images/hero/`, not the `hero-1.jpg` and `hero-2.jpg` at
- * the top of `public/images/` that `lib/content/imageMap.ts` describes — these
- * are the real photography, and are wide enough for a full-bleed frame.
+ * ones under `public/images/hero/`, not the `hero-2.jpg` at the top of
+ * `public/images/` that the section pages reuse — these are the real
+ * photography, and are wide enough for a full-bleed frame.
  *
  * Anything added here should go through `scripts/optimize-images.mjs`, which
  * caps the source size and writes the blur placeholder `Photo` looks up.

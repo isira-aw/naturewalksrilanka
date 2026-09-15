@@ -31,7 +31,6 @@ Firestore, Firebase Auth and Firebase Storage back the admin panel, the itinerar
 - **[`docs/FIREBASE_INTEGRATION.md`](docs/FIREBASE_INTEGRATION.md)** — how it all works, every variable, and troubleshooting.
 - **[`docs/FIREBASE_SETUP_CHECKLIST.md`](docs/FIREBASE_SETUP_CHECKLIST.md)** — the same steps as a tick-list.
 - **[`docs/itinerary-storage.md`](docs/itinerary-storage.md)** — where itinerary records live and how to move them.
-- **[`handoff.md`](handoff.md)** — why each decision was made, and what is still unproven.
 
 > **No Firebase project exists yet.** The code is written and merged but has never run against one, so treat all of it as unvalidated until `/api/admin/firebase-status` returns `{"configured": true, "reachable": true}`. The checklist is the order to do that in.
 
@@ -65,12 +64,12 @@ English file carries the full write-up, flagged
 `"_reviewStatus": "draft-written-for-review"` — it is drafted copy awaiting
 Nandana's review, not confirmed fact.
 
-Photographs are named before they exist. Each destination asks for
-`/images/destinations/<slug>/hero.jpg`, `cover.jpg` and `01.jpg`–`04.jpg`;
-anything not yet supplied falls back to the shared placeholder (hero, cover) or
-is simply dropped (gallery), resolved in `lib/content/images.ts`. Drop the real
-files in and redeploy — no content or code change needed. Sizes and framing are
-documented in `public/images/destinations/README.md`.
+Photographs are named before they exist: each destination names its own files
+in `destinations.json`, and anything not yet supplied falls back to the shared
+placeholder (hero, cover) or is simply dropped (gallery), resolved in
+`lib/content/images.ts`. Drop the real files in and redeploy — no content or
+code change needed. Names, sizes and framing are in
+[`docs/photography.md`](docs/photography.md).
 
 ### Adding or removing a language
 
@@ -78,24 +77,21 @@ documented in `public/images/destinations/README.md`.
 
 ### Prebuilt journey ideas (`experiences.json`)
 
-Each entry is one prebuilt itinerary idea belonging to **exactly one** interest category (`birding`, `wildlife`, `trekking`, `culture`, `beach`, `photography`, `adventure`). The custom-tour wizard shows the entries matching whatever categories a visitor ticks, as small boxes with a "read more" dialog holding the photos, season, suggested length, description and the species or sights you might see.
+One prebuilt itinerary idea belongs to **exactly one** interest category (`birding`, `wildlife`, `trekking`, `culture`, `beach`, `photography`, `adventure`). The custom-tour wizard shows the ideas matching whatever categories a visitor ticks, as small boxes with a "read more" dialog holding the photos, season, suggested length, description and the species or sights you might see.
 
-Author a separate entry per category rather than tagging one entry as "wildlife + photography" — one entry, one category is what keeps the matching honest.
+**These are now authored in the admin panel, not in the content files.** Each one is a Firestore record, translated from the panel through Gemini, and rendered as an `Experience` by `lib/itineraries/toExperience.ts`. `content/<locale>/experiences.json` still exists, is still validated and is still merged in — but it is empty in every locale, and the wizard is fed from the admin panel instead. Add an entry there only if you want a journey idea that cannot be edited without a deploy.
 
-Two things to know when replacing the current set:
-
-- **Every entry is placeholder.** They were written from the destinations and activities already on the site so the wizard has something real-shaped to show, and each carries `"contentRequired": true`. Swap in the client's own prebuilt itineraries.
-- **Per-highlight photos are supported but not supplied.** Add an `image` to a highlight (`{ "name": "Sri Lanka Blue Magpie", "image": "/images/birds/blue-magpie.jpg" }`) and the dialog renders it beside the name — that is where the bird photographs belong. Without one the highlight is text only, which is how it renders today.
+Per-highlight photographs are supported either way: a highlight with an `image` renders it beside the name in the dialog, and one without renders as a lettered tile. Photographs attached in the admin panel go to Firebase Storage; a highlight authored in a content file names a path under `public/` — see [`docs/photography.md`](docs/photography.md).
 
 ### Generated translations
 
-`content/<locale>/tours.json` and `content/<locale>/experiences.json` are generated, not hand-edited. The English files own the structure — slugs, categories, day labels, `contentRequired` flags, image paths, destination and activity references — and `content/_translations/<file>.<locale>.json` holds only that locale's prose. Rebuild after editing an overlay:
+`content/<locale>/tours.json` is generated, not hand-edited. The English file owns the structure — slugs, day labels, `contentRequired` flags, image paths, destination and activity references — and `content/_translations/tours.<locale>.json` holds only that locale's prose. Rebuild after editing an overlay:
 
 ```bash
 node scripts/build-translations.mjs
 ```
 
-The script fails loudly if an overlay has the wrong number of highlights or itinerary days, so the locales cannot drift apart. Bird and mammal names stay in their international English names in every language.
+The script fails loudly if an overlay has the wrong number of highlights or itinerary days, so the locales cannot drift apart. Bird and mammal names stay in their international English names in every language — that is what field guides and checklists use, and guessing at endemic species names in five languages would introduce errors.
 
 ## Booking flow
 
@@ -114,11 +110,27 @@ npm run optimize-images                        # dry run — reports what it wou
 node scripts/optimize-images.mjs --commit      # actually rewrites the files
 ```
 
-**Run it whenever photographs are added.** It is idempotent — a file already within the cap is left alone, and it refuses to write when the saving would be under ten per cent — so a second run rewrites nothing. A file that never goes through it simply has no blur placeholder, which is not an error but is a missed opportunity.
+**Run it whenever photographs are added.** It is idempotent — a file already within the cap is left alone, and it refuses to write when the saving would be under ten per cent — so a second run rewrites nothing.
 
 `lib/images/blurData.generated.ts` is generated. Do not edit it by hand.
 
-Two things the script reports rather than fixes, because both mean changing a file name and therefore every reference to it: opaque PNGs that should be JPEGs, and names with characters that need escaping in a URL.
+**[`docs/photography.md`](docs/photography.md)** is the full reference: where each kind of photograph lives, what the code does when a file is missing, sizes and framing, and which images are still placeholders from the old site.
+
+## SEO
+
+Built in and generated from the content files, so a tour or destination added to `content/` is covered without a second place to remember:
+
+| | Served at |
+|---|---|
+| Sitemap, all five locales, with hreflang alternates | `/sitemap.xml` |
+| robots.txt, pointing at the sitemap | `/robots.txt` |
+| llms.txt, so AI crawlers can summarise the site | `/llms.txt` |
+| Per-page canonical, hreflang, Open Graph and Twitter card | every page |
+| JSON-LD (`TravelAgency`, `TouristTrip`, `TouristAttraction`, `Person`, breadcrumbs) | home, tours, destinations, about |
+
+The origin they all use is `SITE_URL` in `lib/seo/site.ts` — one constant, read from `NEXT_PUBLIC_SITE_URL`. Set that per environment (including previews, to the preview's own origin) and everything follows.
+
+**[`docs/seo.md`](docs/seo.md)** has the detail, and the list of things only you can do after deployment: pasting the Google Search Console and Bing Webmaster Tools verification codes, and submitting the sitemap to both.
 
 ## Deployment
 
@@ -129,9 +141,9 @@ Deploy to Vercel as a standard Next.js app. Redirects from the old static site's
 ## What's out of scope for this build
 
 - Connecting a real Firebase project and proving the code against it — **this is the next step**, and nothing else should be built until it is done. See the checklist.
-- Final photography — images currently reused from the old site or generic placeholders; see `lib/content/imageMap.ts` for what to swap.
+- Final photography — several images are still reused from the old site or are generic placeholders; [`docs/photography.md`](docs/photography.md) lists which, and where each came from.
 - Native-speaker review of the Dutch, Spanish, Danish and Finnish copy.
-- The client's own prebuilt journey ideas and their photography, replacing the placeholder set in `experiences.json` (see above).
+- The client's own prebuilt journey ideas and their photography, authored in the admin panel (see above).
 - A localized privacy policy (currently English only) and its legal review.
-- Domain/DNS cutover from the live `naturewalksrilanka.com`.
+- Domain/DNS cutover from the live `naturewalksrilanka.com`, and the search engine verification codes that depend on it — see [`docs/seo.md`](docs/seo.md).
 - Analytics wiring.

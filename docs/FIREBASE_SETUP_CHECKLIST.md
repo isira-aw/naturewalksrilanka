@@ -139,4 +139,4 @@ Once at least one staff account signs in with Google:
 - [ ] `npx tsc --noEmit`
 - [ ] `npx eslint .`
 - [ ] `npm run build`
-- [ ] Update the status notes in `handoff.md`
+- [ ] Update the status note at the top of `FIREBASE_INTEGRATION.md`

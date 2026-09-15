@@ -53,7 +53,7 @@ export async function getContent<K extends keyof ContentMap>(
 
 /**
  * Destination content names its photographs before they exist (see
- * `public/images/destinations/README.md`): anything not yet supplied falls back
+ * `docs/photography.md`): anything not yet supplied falls back
  * to the shared placeholder, and unsupplied gallery frames are dropped, so a
  * half-photographed destination still renders as a finished page.
  */
@@ -69,7 +69,7 @@ function withResolvedImages(destinations: Destination[]): Destination[] {
 /**
  * The same arrangement for the prebuilt itineraries: every "what you might
  * see" highlight names its photograph up front (see
- * `public/images/highlights/README.md`), and a highlight whose photograph has
+ * `docs/photography.md`), and a highlight whose photograph has
  * not been supplied yet simply renders without one.
  */
 function withResolvedExperienceImages(experiences: Experience[]): Experience[] {

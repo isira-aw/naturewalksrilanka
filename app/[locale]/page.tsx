@@ -17,6 +17,7 @@ import { VoicesSlider } from "@/components/home/VoicesSlider";
 import { PlanCta } from "@/components/whatsapp/PlanCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/seo/jsonld";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { aggregateRating, publishedTestimonials } from "@/lib/reviews/published";
 
 export async function generateMetadata({
@@ -28,19 +29,13 @@ export async function generateMetadata({
   if (!hasLocale(routing.locales, locale)) return {};
   const seo = await getContent(locale as Locale, "seo");
   const page = seo.pages.home;
-  return {
+  return buildPageMetadata({
+    locale: locale as Locale,
+    path: "",
     title: page.title,
     description: page.description,
-    alternates: {
-      canonical: `/${locale}`,
-      languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),
-    },
-    openGraph: {
-      title: page.title,
-      description: page.description,
-      images: [seo.ogImage],
-    },
-  };
+    seo,
+  });
 }
 
 export default async function HomePage({

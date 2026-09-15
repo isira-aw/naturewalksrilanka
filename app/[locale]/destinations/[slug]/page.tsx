@@ -14,7 +14,8 @@ import { DestinationStory } from "@/components/destinations/DestinationStory";
 import { DestinationGallery } from "@/components/destinations/DestinationGallery";
 import { PlanCta } from "@/components/whatsapp/PlanCta";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { buildBreadcrumbJsonLd } from "@/lib/seo/jsonld";
+import { buildBreadcrumbJsonLd, buildTouristAttractionJsonLd } from "@/lib/seo/jsonld";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export async function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
@@ -41,22 +42,16 @@ export async function generateMetadata({
   ]);
   if (!destination) return {};
 
-  const title = `${destination.name} | ${seo.siteName}`;
-  return {
-    title,
+  return buildPageMetadata({
+    locale: l,
+    path: `/destinations/${slug}`,
+    title: `${destination.name} | ${seo.siteName}`,
     description: destination.intro ?? destination.description,
-    alternates: {
-      canonical: `/${locale}/destinations/${slug}`,
-      languages: Object.fromEntries(
-        routing.locales.map((loc) => [loc, `/${loc}/destinations/${slug}`])
-      ),
-    },
-    openGraph: {
-      title,
-      description: destination.intro ?? destination.description,
-      images: [destination.heroImage ?? destination.image],
-    },
-  };
+    seo,
+    image: destination.heroImage ?? destination.image,
+    imageAlt: destination.name,
+    type: "article",
+  });
 }
 
 export default async function DestinationDetailPage({
@@ -69,12 +64,13 @@ export default async function DestinationDetailPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, destination, activities, tours, navigation] = await Promise.all([
+  const [t, destination, activities, tours, navigation, seo] = await Promise.all([
     getTranslations({ locale: l }),
     getDestinationBySlug(l, slug),
     getContent(l, "activities"),
     getContent(l, "tours"),
     getContent(l, "navigation"),
+    getContent(l, "seo"),
   ]);
 
   if (!destination) notFound();
@@ -90,6 +86,7 @@ export default async function DestinationDetailPage({
 
   return (
     <>
+      <JsonLd data={buildTouristAttractionJsonLd({ destination, seo, locale: l })} />
       <JsonLd
         data={buildBreadcrumbJsonLd([
           { name: t("nav.home"), url: `/${l}` },

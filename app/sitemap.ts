@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://naturewalksrilanka.com";
+import { SITE_URL } from "@/lib/seo/site";
 
 const staticPaths = [
   "",

@@ -179,7 +179,7 @@ export function ExperienceDialog({
                       {/* Then the photographs of the ones that have been
                           supplied. A highlight without a photograph is already
                           named in the list above, so nothing is missing here —
-                          see public/images/highlights/README.md. */}
+                          see docs/photography.md. */}
                       {photographed.length > 0 && (
                         <ul className="mt-6 grid grid-cols-2 gap-4 xl:grid-cols-3">
                           {photographed.map((highlight) => (
