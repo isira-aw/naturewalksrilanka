@@ -1,18 +1,17 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { blobItineraryStore } from "@/lib/itineraries/store";
+import { itineraryStore } from "@/lib/itineraries/store";
 import { SCHEMA_VERSION, type ItineraryRecord } from "@/lib/itineraries/types";
 import { approximateBytes, formatBytes } from "@/lib/itineraries/imageFile";
 
 /**
- * The migration hatch.
+ * Export and import.
  *
- * Itineraries live on the server (a Vercel Blob archive, see
- * `lib/itineraries/blobArchive.ts`) rather than in one browser, so this panel
- * is a backup hatch rather than the only way the data survives: an export is
- * the complete archive — every record, every photograph, every translation,
- * with the stable ids intact.
+ * Itineraries live in Firestore, so this panel is a backup hatch rather than
+ * the only way the data survives: an export is the complete set — every
+ * record, every photograph, every translation, with the stable ids intact.
+ * Import writes straight back to Firestore in one atomic batch.
  */
 export function DataPanel({
   records,
@@ -35,7 +34,7 @@ export function DataPanel({
 
   async function handleExport() {
     setError(null);
-    const archive = await blobItineraryStore.exportArchive();
+    const archive = await itineraryStore.exportArchive();
     const blob = new Blob([JSON.stringify(archive, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
@@ -53,7 +52,7 @@ export function DataPanel({
     setMessage(null);
     try {
       const parsed = JSON.parse(await file.text());
-      const imported = await blobItineraryStore.importArchive(parsed, mode);
+      const imported = await itineraryStore.importArchive(parsed, mode);
       onImported();
       setMessage(`Imported — ${imported.length} itineraries now stored.`);
     } catch (cause) {
@@ -118,15 +117,13 @@ export function DataPanel({
 
       <div className="mt-10 rounded-2xl border border-stone-dark bg-stone/25 p-5">
         <h3 className="font-utility text-xs uppercase tracking-wide text-forest">
-          Moving to a different backend later
+          What an export is for
         </h3>
         <p className="mt-2.5 text-sm leading-relaxed text-charcoal/65">
-          Every itinerary carries a stable id, timestamps and a schema version, and all of the
-          admin screens talk to the <code className="font-utility text-[13px]">ItineraryStore</code>{" "}
-          interface rather than directly to Vercel Blob. Moving to a different store (Postgres, for
-          example) means writing one more implementation of that interface and importing this
-          export into it — the records go across unchanged, so nothing is lost and nothing has to
-          be re-keyed.
+          Itineraries live in Firestore. An export is a point-in-time copy you hold yourself:
+          every record with its stable id, timestamps and schema version, so importing it back
+          restores exactly what was there rather than a re-keyed approximation. Take one before
+          anything destructive — a bulk import here replaces everything.
         </p>
       </div>
     </div>

@@ -2,7 +2,17 @@
 
 Next.js (App Router, TypeScript) rebuild of naturewalksrilanka.com — the private nature and wildlife tour company founded by Nandana Hewagamage, which supplies its own Sri Lanka Tourism Board certified guides and arranges accommodation and transport for every journey. English / Dutch / Spanish / Danish / Finnish, deployed to Vercel.
 
-All the public content is file-based — per-locale JSON in `content/`, versioned in git. Firebase backs the dynamic parts only: the admin panel, itineraries, tour enquiries and customer reviews. See [Dynamic features](#dynamic-features-firebase).
+## Architecture
+
+```
+Next.js (this repo)
+  └── Firebase          Authentication · Firestore · Storage
+        └── deployed on Vercel
+```
+
+One authentication method, one database, one file store, one deployment target. There are no offline, mock or password fallbacks anywhere in the application: if Firebase is unavailable, the feature that needs it says so.
+
+All the public content is file-based — per-locale JSON in `content/`, versioned in git, so the marketing pages build and serve with no backend at all. Firebase backs the dynamic parts: admin sign-in, itineraries, tour enquiries and customer reviews. See [Dynamic features](#dynamic-features-firebase).
 
 ## Getting started
 
@@ -13,20 +23,28 @@ npm install
 npm run dev
 ```
 
-The public site runs with no environment variables at all: every Firebase-backed feature reports itself unavailable rather than throwing, so the site builds and serves regardless. Optional variables:
+The public site runs with no environment variables at all: every Firebase-backed feature reports itself unavailable rather than throwing, so the site builds and serves regardless. Variables:
 
 | Variable | Effect when absent |
 |---|---|
 | The Firebase variables | The admin panel, saved trips and reviews are unavailable; the public site is unaffected |
-| `ADMIN_*` (three of them) | Admin sign-in fails closed — **nobody can reach the panel** |
-| `BLOB_READ_WRITE_TOKEN` | The itinerary archive reads as empty in local development |
+| `NEXT_PUBLIC_SITE_URL` | Absolute URLs fall back to the production domain — set it per environment |
 | `GOOGLE_AI_API_KEY` | The admin translation panel returns 503; nothing else is affected |
+
+There is no separate admin credential. Admin access is a Firebase account carrying the `admin` custom claim plus an entry in the `staff` collection, granted with `scripts/grant-admin.mjs` — so **the Firebase variables are what make the panel reachable at all**.
 
 `.env.example` is the authoritative list, with a comment per variable. Never commit real secrets — `.env` is gitignored.
 
 ## Dynamic features (Firebase)
 
 Firestore, Firebase Auth and Firebase Storage back the admin panel, the itineraries it authors, custom-tour enquiries and the invited-and-moderated customer reviews.
+
+| Concern | Implementation |
+|---|---|
+| Staff sign-in | Firebase Auth, Google provider, `admin` claim + `staff` allowlist |
+| Traveller sign-in | Firebase Auth, email link |
+| All data | Firestore, via route handlers only — `firestore.rules` denies client access |
+| Photographs | Firebase Storage, uploaded direct from the browser under `storage.rules` |
 
 - **[`docs/FIREBASE_INTEGRATION.md`](docs/FIREBASE_INTEGRATION.md)** — how it all works, every variable, and troubleshooting.
 - **[`docs/FIREBASE_SETUP_CHECKLIST.md`](docs/FIREBASE_SETUP_CHECKLIST.md)** — the same steps as a tick-list.
@@ -140,7 +158,7 @@ Deploy to Vercel as a standard Next.js app. Redirects from the old static site's
 
 ## What's out of scope for this build
 
-- Connecting a real Firebase project and proving the code against it — **this is the next step**, and nothing else should be built until it is done. See the checklist.
+- Connecting a real Firebase project and proving the code against it — **this is the next step, and now a blocker**: since admin sign-in is Firebase-only, the panel cannot be opened until it is done. See the checklist.
 - Final photography — several images are still reused from the old site or are generic placeholders; [`docs/photography.md`](docs/photography.md) lists which, and where each came from.
 - Native-speaker review of the Dutch, Spanish, Danish and Finnish copy.
 - The client's own prebuilt journey ideas and their photography, authored in the admin panel (see above).

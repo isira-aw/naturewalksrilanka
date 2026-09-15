@@ -55,8 +55,8 @@ export const itineraryRecordSchema = z.object({
   province: z.enum(PROVINCE_IDS),
   /** The itinerary's title. */
   head: z.string().min(1),
-  /** Two or three photographs: Storage URLs, or base64 data URLs on the
-      fallback path. */
+  /** Two or three photographs, as Firebase Storage URLs. Records written
+      before uploads were mandatory may hold a base64 data URL instead. */
   images: z.array(z.string()).max(3).default([]),
   /**
    * Blur placeholders, keyed by the image's own URL.

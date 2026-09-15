@@ -15,16 +15,16 @@ Do these in order. Each one depends on the ones above it.
 `firebase-admin@14` requires it, and running below it returns 500 on **every**
 page, not just the Firebase-backed ones.
 
-## 1. Admin panel — do this first
+## 1. Admin panel — nothing to do here
 
-Nobody can reach the admin panel until this is done, and you need the panel to
-check the Firebase connection.
+There is no separate admin credential any more. The panel is reachable only
+once Firebase is configured and your own account has been granted access, which
+is steps 2, 3 and 6 below. **Do them in order — you cannot sign in before
+step 6.**
 
-- [ ] Generate a session secret:
-      `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
-- [ ] Set `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET` in `.env`
-- [ ] Set the same three in Vercel
-- [ ] Sign in at `/en/admin` with the shared password
+- [ ] Delete `ADMIN_EMAIL`, `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` from
+      Vercel and from any local `.env` if they are still set. Nothing reads
+      them.
 
 ## 2. Create the Firebase project
 
@@ -63,39 +63,47 @@ check the Firebase connection.
       (`firestore` covers rules **and** indexes — deploy both or the review
       queue fails)
 
-## 5. Verify the connection — do not skip
+## 5. Grant yourself access — this is also the credential test
+
+There is no shared password to sign in with, so the first admin is created from
+the command line. `grant-admin.mjs` uses the same service-account credentials
+the site does and touches both Auth and Firestore, so if it succeeds, they work.
+
+- [ ] Open `/en/admin` and click **Continue with Google** once —
+      *it will be refused, that is expected*; it creates the Firebase account
+- [ ] `node --env-file=.env scripts/grant-admin.mjs you@example.com`
+- [ ] Sign out and back in (a claim only reaches a fresh token)
+- [ ] You can reach the panel
+
+**Stop here if this fails.** The script prints what went wrong; everything
+below assumes it passes. Repeat the three steps for each other staff member.
+
+## 6. Verify the connection — do not skip
+
+Now that you can sign in, confirm the running deployment agrees:
 
 - [ ] `/api/admin/firebase-status` returns
       `{ "configured": true, "reachable": true, "missing": [] }`
 - [ ] It returns 401 when signed out
 
-**Stop here if this fails.** Everything below assumes it passes.
-
-## 6. Grant staff access
-
-For each staff member:
-
-- [ ] They open `/en/admin` and click **Continue with Google** once —
-      *it will be refused, that is expected*; it creates the account
-- [ ] `node --env-file=.env scripts/grant-admin.mjs someone@example.com`
-- [ ] They sign out and back in (a claim only reaches a fresh token)
-- [ ] They can reach the panel
-
 ## 7. Migrate the itineraries
 
 - [ ] Take a JSON export from the admin panel — **this is the backup**
-- [ ] Confirm `BLOB_READ_WRITE_TOKEN` is set, and that hidden itineraries
-      appear in the admin list and export but not in anonymous
-      `GET /api/itineraries`
+      (the app no longer reads Vercel Blob, so export from the *old*
+      deployment if it is still running)
+- [ ] Confirm hidden itineraries appear in the admin list and export but not
+      in anonymous `GET /api/itineraries`
+- [ ] Set `BLOB_READ_WRITE_TOKEN` locally — the migration script needs it. It
+      is never needed by a deployment
 - [ ] Dry run: `node --env-file=.env scripts/migrate-itineraries.mjs`
 - [ ] Read the counts
 - [ ] Commit: `node --env-file=.env scripts/migrate-itineraries.mjs --commit`
 - [ ] Verify: admin list complete, custom-tour page correct, photographs load
       from `firebasestorage.googleapis.com`, translations survived, no
       duplicates
-- [ ] *Only then*: delete the `itineraries/archive.json` blob by hand, remove
-      `lib/itineraries/blobArchive.ts` and its branch in `repository.ts`, drop
-      `@vercel/blob`
+- [ ] *Only then*: delete the `itineraries/archive.json` blob by hand, delete
+      `scripts/migrate-itineraries.mjs`, and drop the `@vercel/blob`
+      devDependency
 
 ## 8. Verify the features
 
@@ -124,15 +132,16 @@ For each staff member:
 - [ ] `/api/admin/firebase-status` green **in production**
 - [ ] Repeat step 8 against production
 
-## 10. Remove the legacy password path
+## 10. Confirm there is only one way in
 
-Once at least one staff account signs in with Google:
+The shared-password path has been removed from the code. Check nothing is left
+behind it:
 
-- [ ] Legacy branch in `app/api/admin/session/route.ts`
-- [ ] `PasswordSignIn` in `components/admin/AdminSignIn.tsx`
-- [ ] `lib/admin/session.ts`
-- [ ] `lib/admin/rateLimit.ts`
-- [ ] The three `ADMIN_*` variables, locally and in Vercel
+- [ ] `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET` deleted from
+      Vercel
+- [ ] Signing out and reloading `/en/admin` offers **only** "Continue with
+      Google"
+- [ ] An account that is not on the staff list is refused
 
 ## 11. Final checks
 

@@ -1,68 +1,64 @@
-# Where itineraries live, and how to move them
+# Where itineraries live
 
 The custom-tour wizard offers a list of prebuilt itineraries. They used to be
 checked into `content/<locale>/experiences.json` by hand. They are now authored
-in the admin page (`/<locale>/admin`) instead.
+in the admin page (`/<locale>/admin`) and stored in Firestore.
 
-## Today: Firestore, with the blob archive as a fallback
+## One store
 
-`lib/itineraries/repository.ts` is the server-side facade, and it chooses at
-runtime:
+Firestore, one document per itinerary in the `itineraries` collection. That is
+the whole answer — there is no second backend, no fallback and no runtime
+choice to make.
 
-- **Firestore when `isFirebaseConfigured()`** — one document per itinerary in
-  the `itineraries` collection (`lib/itineraries/firestoreStore.ts`).
-- **The old Vercel Blob archive when it is not** — a single JSON blob at
-  `itineraries/archive.json` (`lib/itineraries/blobArchive.ts`).
+```
+admin screens / custom-tour wizard
+  → lib/itineraries/store.ts        (browser; wraps the two routes below)
+  → /api/itineraries                (public read)
+    /api/admin/itineraries          (admin-only writes)
+  → lib/itineraries/firestoreStore.ts
+  → Firestore
+```
 
-The fallback exists because the migration cannot be atomic across a deploy: a
-half-configured environment must still serve the custom-tour page rather than
-showing visitors an error. **It is temporary.** Once the Firestore data is
-verified, delete `blobArchive.ts`, drop `@vercel/blob`, and let the repository
-call Firestore directly. `docs/FIREBASE_INTEGRATION.md` §9 is the migration
-procedure.
+An older design kept every record in a single JSON file on Vercel Blob, with a
+`repository.ts` choosing between the two at runtime. Both are gone. One
+document per itinerary is what removes the write race the single file had: a
+whole-file read-modify-write with no locking meant **two admins saving at once
+silently overwrote each other**.
 
-> **The Firestore path has never run.** No Firebase project exists yet, so
-> everything above is written but unproven — only the blob branch has actually
-> executed. See the status note at the top of `FIREBASE_INTEGRATION.md`.
+A malformed document is logged and skipped rather than failing the whole list —
+returning fewer itineraries is bad, returning none is worse. An import with
+`replace` runs as one atomic batch and refuses outright above 500 operations
+rather than applying in halves.
 
-### Why one document per itinerary matters
+> **Migrating from the old archive?** `scripts/migrate-itineraries.mjs` is the
+> one-off CLI that moves records out of Vercel Blob into Firestore. It is the
+> only remaining reference to Vercel Blob anywhere in the repository. Run it,
+> check the admin panel, then delete the script and the `@vercel/blob`
+> devDependency. `docs/FIREBASE_INTEGRATION.md` §9 is the procedure.
 
-The blob path does a whole-file read-modify-write with no locking, so **two
-admins saving at once silently overwrite each other**. On Firestore a save
-touches one document, so they do not. That race is the single best reason to
-finish the migration rather than leaving the fallback in place indefinitely.
-
-On Firestore a malformed document is logged and skipped rather than failing the
-whole list — returning fewer itineraries is bad, returning none is worse. An
-import with `replace` runs as one atomic batch and refuses outright above 500
-operations rather than applying in halves.
-
-### The routes, and the client
+## The routes
 
 - `GET /api/itineraries` — public read, used by both the wizard and the admin
   page. Anyone visiting the site needs this to work, not just signed-in admins.
   Hidden records are filtered out for anonymous callers and returned in full
   when `requireAdmin(request)` passes — the admin list *and* its JSON export
   both read from here, so stripping them unconditionally would drop them from
-  every export.
+  every export. A Firestore failure answers 503, which the client renders as an
+  empty suggestions list.
 - `POST` / `PUT` / `DELETE /api/admin/itineraries` — admin-only writes.
 
-The browser never talks to either backend directly. `lib/itineraries/store.ts`
-is a client-side `ItineraryStore` over those two routes; its `blobItineraryStore`
-export is named after the backend it was written against and now goes wherever
-the repository points. It refetches on tab focus — an earlier 30-second poll
+The browser never talks to Firestore directly; `firestore.rules` denies it.
+`lib/itineraries/store.ts` is a thin client over those two routes and holds no
+data of its own. It refetches on tab focus — an earlier 30-second poll
 re-downloaded the whole archive on a timer for every open tab, including every
 visitor sitting on the custom-tour page.
 
-### Environment
+## Environment
 
-| Variable | When |
-|---|---|
-| The Firebase server variables | The Firestore path. See `docs/FIREBASE_INTEGRATION.md` §2 |
-| `BLOB_READ_WRITE_TOKEN` | The blob fallback. Needed until the migration is done and the blob path is removed |
-
-Neither is set in local development by default, so the archive reads as empty
-and no write can succeed locally on either path.
+The Firebase server variables, and nothing else. See
+`docs/FIREBASE_INTEGRATION.md` §2. They are not set in local development by
+default, so route handlers that need Firestore report themselves unavailable
+and the public pages carry on.
 
 ## The shape of the data
 
@@ -75,24 +71,17 @@ real relational database were behind it:
 | `slug` | The public identifier. Re-derived from the head on save, kept unique across records. |
 | `createdAt` / `updatedAt` | Ordinary row timestamps. |
 | `translations` | Per-locale sub-records with their own status, not parallel files. A locale that is not `ready` falls back to English. |
-| `images`, `highlights[].image` | Firebase Storage URLs once uploaded; base64 data URLs on the fallback path, when there is no signed-in Firebase user to attribute the upload to. Both are just strings, which is why the field did not change shape. |
+| `images`, `highlights[].image` | Firebase Storage URLs. Records written before uploads became mandatory may hold a base64 data URL instead; both are just strings, which is why the field never changed shape. |
 | `imageBlur` | Blur placeholders, **keyed by the image's own URL** rather than parallel to `images` — so reordering or removing an image cannot pair a photograph with somebody else's placeholder. Optional; a record without it renders as it did before the field existed. |
 
-The exported archive (*Data and migration* → *Export everything*) wraps
-those records in `{ schemaVersion, exportedAt, records }`. `SCHEMA_VERSION` is
-bumped whenever the record shape changes; old exports keep importing.
+Photographs are uploaded to Firebase Storage from the admin form
+(`lib/itineraries/imageUpload.ts`). There is no inline-base64 fallback: an
+upload that cannot happen is an error the form shows, not a silently larger
+record.
 
-## Moving to a different backend
+## Backups
 
-Everything above the repository — the admin screens and the wizard — talks to
-the `ItineraryStore` interface in `lib/itineraries/store.ts` and the two API
-routes, never to Firestore or `@vercel/blob` directly. So the move is:
-
-1. Write a third branch in `lib/itineraries/repository.ts` against your new
-   backend. Nothing above it changes.
-2. Export from *Data and migration* and import that JSON into the new
-   backend — ids come across intact, so nothing has to be re-keyed and no
-   record is lost.
-3. Point image uploads at the new object store in
-   `lib/itineraries/imageUpload.ts`. Nothing reads `images` as anything more
-   specific than a string.
+*Data and migration* → *Export everything* wraps the records in
+`{ schemaVersion, exportedAt, records }`. `SCHEMA_VERSION` is bumped whenever
+the record shape changes, and old exports keep importing. Take one before any
+bulk import — `replace` deletes anything absent from the file.

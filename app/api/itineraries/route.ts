@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin/auth";
-import { readArchiveEnvelope } from "@/lib/itineraries/repository";
+import { readArchiveEnvelope } from "@/lib/itineraries/firestoreStore";
 
 export const dynamic = "force-dynamic";
 

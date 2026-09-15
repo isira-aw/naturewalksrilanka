@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { blobItineraryStore } from "./store";
+import { itineraryStore } from "./store";
 import type { ItineraryRecord } from "./types";
 
 /**
@@ -18,7 +18,7 @@ export function useItineraries() {
   const [loaded, setLoaded] = useState(false);
 
   const refresh = useCallback(() => {
-    void blobItineraryStore.list().then((next) => {
+    void itineraryStore.list().then((next) => {
       setRecords(next);
       setLoaded(true);
     });
@@ -26,7 +26,7 @@ export function useItineraries() {
 
   useEffect(() => {
     refresh();
-    return blobItineraryStore.subscribe(refresh);
+    return itineraryStore.subscribe(refresh);
   }, [refresh]);
 
   return { records, loaded, refresh };

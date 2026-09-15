@@ -46,9 +46,9 @@ export async function PATCH(request: Request) {
   }
 
   /* Recorded against the decision, so "who published this" is answerable
-     later without digging through logs. Falls back to a label rather than
-     failing when the legacy shared password is still in use. */
-  const moderator = (await adminIdentity(request)) ?? "shared-admin";
+     later without digging through logs. `requireAdmin` above already proved
+     there is a signed-in staff member, so this is their address. */
+  const moderator = (await adminIdentity(request)) ?? "unknown";
 
   const review = await moderateReview(id, status, moderator);
   if (!review) return NextResponse.json({ error: "not_found" }, { status: 404 });

@@ -7,7 +7,7 @@
  * makes that a compile error instead.
  */
 export const COLLECTIONS = {
-  /** One document per itinerary; replaces the single Vercel Blob archive. */
+  /** One document per itinerary. */
   itineraries: "itineraries",
   /** Custom tour enquiries, with a `revisions` subcollection per document. */
   tourRequests: "tourRequests",
