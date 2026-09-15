@@ -50,7 +50,9 @@ Firestore, Firebase Auth and Firebase Storage back the admin panel, the itinerar
 - **[`docs/FIREBASE_SETUP_CHECKLIST.md`](docs/FIREBASE_SETUP_CHECKLIST.md)** — the same steps as a tick-list.
 - **[`docs/itinerary-storage.md`](docs/itinerary-storage.md)** — where itinerary records live and how to move them.
 
-> **No Firebase project exists yet.** The code is written and merged but has never run against one, so treat all of it as unvalidated until `/api/admin/firebase-status` returns `{"configured": true, "reachable": true}`. The checklist is the order to do that in.
+> **No Firebase project exists yet.** The code is written and merged but has never run against one, so treat all of it as unvalidated until `/api/admin/firebase-status` returns `{"configured": true, "reachable": true}`. The checklist is the order to do that in. Since admin sign-in is Firebase-only, the panel cannot be opened until this is done.
+
+**Before deploying, read [`handoff.md`](handoff.md).** It carries the two open blockers — the unverified itinerary migration and the unconnected Firebase project — plus the traps worth knowing about before touching the lockfile or adding a `loading.tsx`. It is temporary; delete it once those are closed.
 
 ## Editing content
 
