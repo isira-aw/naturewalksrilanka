@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import { ARRIVAL_POINT } from "@/lib/geo/sriLanka";
 import { formatDrive, type JourneyPlan } from "@/lib/journey/plan";
 import { Photo } from "@/components/ui/Photo";
 import { StepHeading } from "./StepHeading";
@@ -174,6 +173,3 @@ export function JourneyPlanStep({
     </div>
   );
 }
-
-/** Where every journey starts, exported so the map and the copy agree. */
-export const JOURNEY_START = ARRIVAL_POINT;

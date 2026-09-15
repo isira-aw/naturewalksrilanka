@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin/auth";
-import { deleteRecord, saveRecord, writeAll } from "@/lib/itineraries/firestoreStore";
+import { deleteRecord, saveRecord, writeAll } from "@/lib/itineraries/store";
 import { itineraryArchiveSchema, itineraryRecordSchema } from "@/lib/itineraries/types";
 
 export const dynamic = "force-dynamic";

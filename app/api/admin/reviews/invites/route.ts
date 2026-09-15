@@ -59,7 +59,7 @@ export async function POST(request: Request) {
       name: enquiry.payload.name,
       locale: enquiry.locale,
     },
-    (await adminIdentity(request)) ?? "shared-admin",
+    (await adminIdentity(request)) ?? "unknown",
   );
 
   return NextResponse.json({ invite });

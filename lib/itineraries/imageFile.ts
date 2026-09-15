@@ -1,13 +1,15 @@
 "use client";
 
 /**
- * Turns a chosen file into a base64 data URL small enough to keep.
+ * Re-encodes a chosen file in the browser, before it is uploaded.
  *
- * Everything an admin adds is stored inline with the record rather than
- * uploaded, so a 6 MB camera original would eat the whole browser storage
- * quota on its own — and would still have to be re-encoded before it could go
- * into a PDF. Re-encoding here, once, at a sensible size, is what keeps both
- * workable.
+ * Photographs go to Firebase Storage and the record keeps only the resulting
+ * URL — nothing is stored inline any more. Re-encoding still happens here, and
+ * still happens first: a 6 MB camera original would be slow to upload over a
+ * hotel connection, and would have to be resized anyway before it could go
+ * into a PDF. Doing it once, at a sensible size, serves both.
+ *
+ * `prepareItineraryImage` in `imageUpload.ts` is the only caller.
  */
 
 const MAX_EDGE = 1600;

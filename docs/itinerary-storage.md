@@ -12,10 +12,10 @@ choice to make.
 
 ```
 admin screens / custom-tour wizard
-  → lib/itineraries/store.ts        (browser; wraps the two routes below)
+  → lib/itineraries/browserStore.ts (browser; wraps the two routes below)
   → /api/itineraries                (public read)
     /api/admin/itineraries          (admin-only writes)
-  → lib/itineraries/firestoreStore.ts
+  → lib/itineraries/store.ts        (server; the only code touching Firestore)
   → Firestore
 ```
 
@@ -48,8 +48,8 @@ rather than applying in halves.
 - `POST` / `PUT` / `DELETE /api/admin/itineraries` — admin-only writes.
 
 The browser never talks to Firestore directly; `firestore.rules` denies it.
-`lib/itineraries/store.ts` is a thin client over those two routes and holds no
-data of its own. It refetches on tab focus — an earlier 30-second poll
+`lib/itineraries/browserStore.ts` is a thin client over those two routes and
+holds no data of its own. It refetches on tab focus — an earlier 30-second poll
 re-downloaded the whole archive on a timer for every open tab, including every
 visitor sitting on the custom-tour page.
 

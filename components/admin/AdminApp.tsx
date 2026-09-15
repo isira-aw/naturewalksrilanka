@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils/cn";
-import { itineraryStore } from "@/lib/itineraries/store";
+import { itineraryStore } from "@/lib/itineraries/browserStore";
 import { useItineraries } from "@/lib/itineraries/useItineraries";
 import type { ItineraryRecord } from "@/lib/itineraries/types";
 import { AdminSignIn } from "./AdminSignIn";

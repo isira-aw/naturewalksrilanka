@@ -29,10 +29,6 @@ export type ProvinceId = (typeof PROVINCES)[number]["id"];
 
 export const PROVINCE_IDS = PROVINCES.map((p) => p.id) as [ProvinceId, ...ProvinceId[]];
 
-export function isProvince(value: string): value is ProvinceId {
-  return (PROVINCE_IDS as readonly string[]).includes(value);
-}
-
 export function provinceLabel(id: ProvinceId) {
   return PROVINCES.find((p) => p.id === id)?.label ?? id;
 }

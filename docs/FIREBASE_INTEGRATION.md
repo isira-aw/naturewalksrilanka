@@ -661,7 +661,7 @@ view to another.
 | `lib/firebase/client.ts` | Browser SDK — sign-in and Storage uploads only |
 | `lib/firebase/collections.ts` | Collection and Storage path names |
 | `lib/admin/auth.ts` | The single authorisation point |
-| `lib/itineraries/firestoreStore.ts` | Itineraries in Firestore — the only store |
+| `lib/itineraries/store.ts` | Itineraries in Firestore — the only store |
 | `lib/tourRequests/store.ts` | Enquiries: create, get, revise, list |
 | `lib/reviews/store.ts` | Invites, photo limits, redemption, moderation |
 | `firestore.rules` / `storage.rules` | Security rules |

@@ -89,7 +89,7 @@ Load-bearing files to understand before changing anything:
 |---|---|
 | `lib/admin/auth.ts` | The **only** authorisation point. `requireAdmin` is async — a forgotten `await` returns a truthy Promise and admits everyone |
 | `lib/firebase/admin.ts` | The only door to Firestore. Returns `null` rather than throwing when unconfigured |
-| `lib/itineraries/firestoreStore.ts` | The only itinerary store. Route handlers call it directly |
+| `lib/itineraries/store.ts` | The only itinerary store (Firestore). Route handlers call it directly. The browser's fetch wrapper is `browserStore.ts` |
 | `firestore.rules` | Denies all client access on purpose — everything goes through route handlers |
 | `storage.rules` | Real logic, not a formality: uploads genuinely go direct from the browser |
 | `scripts/migrate-itineraries.mjs` | The only way to get data out of the old Blob archive. **Do not delete until the migration is confirmed** |
