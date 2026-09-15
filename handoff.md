@@ -1,10 +1,11 @@
 # Handoff — production cleanup, Firebase consolidation, launch polish
 
-Branch: `claude/optimistic-johnson-9dsryd` · four commits ahead of `main`
-(`c3150ea`) · 35 files, +924 / −987.
+Branch: `claude/clever-volta-i7bo35` · one commit ahead of `main`
+(`a9df9c1`) · 9 files, +263 / −308.
 
-The previous round of this work merged as **#25**. What follows describes the
-whole effort; the *This round* section below is what is new since that merge.
+Rounds **#25 to #29** have merged. What follows describes the whole effort;
+*This round* is what is new since #29, and *Earlier rounds* keeps what is
+still worth knowing from the ones before it.
 
 > **This file is temporary.** A previous `handoff.md` was deleted in `2e25aa2`
 > because it had grown into a 967-line log of a migration that had already
@@ -48,9 +49,9 @@ anywhere on the site.
 | Admin auth | Firebase Google sign-in only. `admin` custom claim **and** a `staff` Firestore document, both required |
 | Traveller auth | Firebase email-link only |
 | Data | Firestore only |
-| Files | Firebase Storage only |
+| Files | **Cloudinary** only, since #27. Firebase Storage is gone; `storage.rules` with it |
 | Deployment | Vercel only |
-| Third-party hosts | None on any page. Fonts are self-hosted by `next/font`, flags are local. The journey-plan map is the one exception — see *Known issues* |
+| Third-party hosts | Fonts are self-hosted by `next/font` and flags are local. Three services are reached at runtime: Cloudinary for every photograph, and OpenStreetMap tiles plus OSRM routing for the journey map — see *Known issues* §3 |
 
 **One thing blocks calling this production-ready:**
 
@@ -95,7 +96,8 @@ Load-bearing files to understand before changing anything:
 | `lib/firebase/admin.ts` | The only door to Firestore. Returns `null` rather than throwing when unconfigured |
 | `lib/itineraries/store.ts` | The only itinerary store (Firestore). Route handlers call it directly. The browser's fetch wrapper is `browserStore.ts` |
 | `firestore.rules` | Denies all client access on purpose — everything goes through route handlers |
-| `storage.rules` | Real logic, not a formality: uploads genuinely go direct from the browser |
+| `lib/cloudinary/media.ts` | Every photograph in and out. Admin uploads go direct from the browser under a signature; review photographs go through the server so the size and type limits are enforced somewhere the submitter does not control |
+| `lib/reviews/store.ts` | Review links, redemption inside a transaction, moderation, and the deletes that take photographs with them |
 | `package.json` → `overrides` | Pins `jwks-rsa`'s `jose` to 5.x. Removing it takes the whole site down on Node 20 |
 
 ---
@@ -153,7 +155,94 @@ Load-bearing files to understand before changing anything:
 
 ---
 
-## This round (branch `claude/optimistic-johnson-9dsryd`)
+## This round (branch `claude/clever-volta-i7bo35`)
+
+One commit on top of #29, and the two rounds before it (#28, #29) are
+described here too because they landed in the same sitting and the pieces
+refer to each other.
+
+### The take-away documents carry a real map (#28)
+
+The PDF and the Word file used to embed a hand-drawn outline of the island
+with numbered dots on it. It looked nothing like the map the traveller had
+just been reading in the wizard, and a coastline with six dots tells nobody
+where they are going.
+
+- `lib/journey-document/mapImage.ts` — fetches the OpenStreetMap tiles for the
+  route's own bounding box, draws the route and stops over them, and hands one
+  canvas to both renderers. Tiles come through `fetch` rather than an `<img>`
+  so the canvas is never tainted and can be read back out.
+- `lib/journey/roadRoute.ts` — asks OSRM for the real driving geometry, cached
+  by waypoint signature so the on-screen map and both documents share one
+  request. The line is dashed until the router answers and solid after.
+- `lib/journey-document/mapCanvas.ts` is now the **fallback**, not the
+  default: no tiles, no network, still a map. Both services degrade to it
+  silently, which is the whole reason they are allowed in the request path at
+  all.
+- The map is rendered once in `lib/journey-document/index.ts` and passed to
+  `pdf.ts` and `word.ts`, so the two files can never show different routes.
+
+`components/ui/Lightbox.tsx` arrived in the same commit: any grid of
+photographs can hand its pictures to it and get a full-screen viewer with
+arrow keys, swipe and a caption. The itinerary dialog uses it; so do the
+testimonials. Its strings live in the shared `gallery` namespace in
+`content/<locale>/ui.json`.
+
+The download buttons left the journey-plan step. The PDF is offered once, at
+the end, on the review step.
+
+### Reviews stopped depending on enquiries (#29, and this commit)
+
+A review link no longer comes from a custom-tour enquiry. The team meets
+travellers who never filled the form in — an agent's group, a repeat guest —
+and their reviews are worth as much as anyone's.
+
+- The admin panel's **Review links** section makes a link from nothing: a
+  label for the team's own reference and the language the form should open
+  in. Nothing is emailed and no address is matched. The token is the
+  credential, as it always was; single-use, 60 days.
+- **Published** lists what is live, with *Unpublish* (back to the queue,
+  photographs intact) and *Delete* (gone for good, photographs destroyed,
+  asks first). *Delete* is on the pending list too.
+- Approved reviews now carry the traveller's own photographs onto the public
+  page. They always existed and moderation always showed them;
+  `publishedTestimonials` was dropping them on the way out.
+
+**This commit removed the enquiry queue from the admin side entirely** — the
+`Enquiries` section, `/api/admin/requests`, `listRequests`,
+`invitesForReference` and its Firestore index, and the branch of the invite
+endpoint that built a link out of an enquiry.
+
+Enquiries themselves are untouched: the wizard still writes a `tourRequests`
+document, `/my-trip/<reference>` still reads and amends it, and the WhatsApp
+hand-off still works. Only the admin list of them is gone. Links made while
+invitations came from enquiries still carry a reference, and the panel still
+shows it, so an old one can be placed. Note what this means for *Known
+issues* §2: that endpoint is still unauthenticated and unbounded, and nothing
+in the admin panel looks at what it writes any more.
+
+### The testimonials are a rotating rail
+
+`components/home/VoicesSlider.tsx` was one full-width quote at a time and took
+most of a screen. It is now a rail of cards — one on a phone, two from tablet
+up — advancing by itself every three seconds and wrapping from the last back
+to the first. The same section now also sits on the About Nandana page.
+
+The rail is the list rendered **twice**. Moving past the last card lands on
+the copy of the first, and the moment that transition finishes the position
+jumps back to the real one with the animation switched off. That is what makes
+the wrap invisible instead of a rewind across the screen; it is also why the
+track must be exactly as wide as the viewport (a negative margin on it shows
+the neighbouring cards through at the edges — that bug was built and fixed
+here).
+
+It pauses on hover, on focus and while a photograph is open, and never
+auto-starts for a visitor who has asked for reduced motion. Cards off screen
+are `inert`, so the duplicates are not in the tab order.
+
+---
+
+## Earlier round — merged as #26
 
 Four commits on top of #25. Every architectural decision was re-checked
 against the code before anything was changed, and each row held: admin auth
@@ -196,26 +285,22 @@ which inverted the convention. Now:
 
 ---
 
-## Waiting on the demo
+## Photographs moved to Cloudinary — merged as #27
 
-`claude/cloudinary-image-storage` moves photographs from Firebase Storage to
-Cloudinary — **built, not merged, by request**. Firebase Auth and Firestore
-are untouched; Cloudinary has no users and no database, so Storage is the
-only third of Firebase it can take over.
+`docs/cloudinary.md` carries the reasoning and the acceptance checklist.
+Cloudinary replaced **Firebase Storage and only Firebase Storage**: accounts
+are still Firebase Auth and every document is still Firestore. `storage.rules`
+is gone, and `firebase.json` now declares Firestore alone.
 
-It branches from this branch rather than from `main`, because both touch the
-same files; merge #26 first and it fast-forwards cleanly. The demo runs on
-today's single Firebase path, and the switch lands afterwards.
-
-`docs/cloudinary.md` carries the reasoning and the acceptance checklist. Note
-that no Cloudinary account has been connected either, so it is unproven
+No Cloudinary account has been connected either, so those paths are unproven
 against a real one in the same way every Firebase path is.
 
 ---
 
 ## Known issues
 
-Found by review this round, **not yet fixed**, roughly in priority order.
+Found by review, **still not fixed**, roughly in priority order. None of them
+is new this round; all of them outlive it.
 
 ### 1. The privacy policy contradicts the code
 
@@ -233,13 +318,17 @@ needs business facts nobody here can invent — retention, legal basis,
 controller, data-subject rights — so it needs Nandana and, ideally, a
 lawyer. The factual half (what the code stores) is written down above.
 
-### 2. The enquiry endpoint is unauthenticated and unbounded
+### 2. The enquiry endpoint is unauthenticated and unbounded — and now unwatched
 
 `POST /api/custom-tour/requests` has no auth, no rate limit and no honeypot,
 and `requestPayloadSchema` puts no `.max()` on `name`, `requirements` or
 `accommodationNotes`. One request can push roughly a megabyte into
 Firestore, and nothing stops a loop. The newsletter route already has the
 honeypot pattern to copy. This is the cheapest real fix on the list.
+
+Since the admin enquiry queue was removed, nothing in the panel reads what
+this endpoint writes either — junk would accumulate in `tourRequests`
+unnoticed, and only `/my-trip/<reference>` would ever look at it.
 
 ### 3. Smaller items
 
@@ -249,10 +338,16 @@ honeypot pattern to copy. This is the cheapest real fix on the list.
   every request, so the signal is always "just changed" and search engines
   discount it. The content files carry no timestamps, so the honest fix is
   to omit the field.
-- **The journey-plan map** (`components/custom-tour/steps/journey-plan/RouteMap.tsx`)
-  fetches tiles from `tile.openstreetmap.org`. It is now the only
-  third-party runtime service left, and it is easy to miss because the map
-  is dynamically imported and only renders deep inside the wizard.
+- **Three third-party runtime services, all of them easy to miss.**
+  Cloudinary serves every photograph on the site. `tile.openstreetmap.org`
+  serves the wizard's map (`components/custom-tour/steps/journey-plan/RouteMap.tsx`)
+  *and*, since #28, the map embedded in the PDF and the Word file
+  (`lib/journey-document/mapImage.ts`). `router.project-osrm.org` supplies the
+  driving geometry for both. The two map services are free, best-effort and
+  rate-limited by policy rather than by contract; both degrade to a straight
+  line on a drawn island rather than failing, but a busy site should move to a
+  keyed tile provider. None of the three is exercised by `next build`, and the
+  map ones only render deep inside the wizard.
 - **`lib/ai/translateItinerary.ts` pins `gemini-3.6-flash`.** Worth
   confirming that id is current; it has never run against a real key.
 
@@ -368,9 +463,10 @@ it uses the same service account and touches both Auth and Firestore.
 
 ### 3. Fixes identified but not made
 
-The four items under *Known issues* above. §2 (bounding and rate-limiting the
-enquiry endpoint) is small, self-contained and the obvious next commit; §1
-needs business facts from Nandana before a line of it can be written.
+The items under *Known issues* above. §2 (bounding and rate-limiting the
+enquiry endpoint) is small, self-contained and the obvious next commit, and
+it matters more now that nothing in the admin panel watches that collection;
+§1 needs business facts from Nandana before a line of it can be written.
 
 ### 4. Content still required before launch
 
@@ -384,4 +480,5 @@ needs business facts from Nandana before a line of it can be written.
 - **Search Console and Bing verification codes** — `docs/seo.md` has the
   step-by-step.
 - **Native-speaker review** of the Dutch, Spanish, Danish and Finnish copy,
-  including the new `search`, `faq` and `newsletter` strings.
+  including the `search`, `faq`, `newsletter` and `gallery` strings. The
+  `gallery` ones are the newest and the least reviewed.
