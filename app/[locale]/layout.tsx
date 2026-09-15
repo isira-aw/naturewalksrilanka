@@ -5,6 +5,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/layout/MotionProvider";
+import { ReadingAids } from "@/components/layout/ReadingAids";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -33,6 +34,9 @@ export default async function LocaleLayout({
           Skip to content
         </a>
         <Header locale={locale as Locale} />
+        {/* After the header so the progress bar paints over it at the same
+            z-index; both stay under the z-50 nav and language overlays. */}
+        <ReadingAids />
         <main id="main-content" className="flex-1">
           {children}
         </main>
