@@ -365,5 +365,20 @@
     "errorPhotoType": "Photographs must be JPEG, PNG or WebP.",
     "errorNetwork": "We could not reach the server. Check your connection and try again.",
     "errorGeneric": "We could not send that. Please try again."
+  },
+  "faq": {
+    "eyebrow": "Good to know",
+    "title": "Frequently asked questions"
+  },
+  "newsletter": {
+    "title": "Field notes",
+    "body": "Occasional notes on what is being seen in the parks and forests, and when to come for it. No more than a few times a year.",
+    "placeholder": "Your email address",
+    "submit": "Sign up",
+    "sending": "Sending…",
+    "success": "You are on the list. Look out for the first note.",
+    "invalid": "That does not look like an email address. Check it and try again.",
+    "failed": "Sign-up is unavailable right now. Please try again later.",
+    "honeypot": "Company (leave this empty)"
   }
 }

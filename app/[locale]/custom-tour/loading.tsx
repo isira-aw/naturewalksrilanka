@@ -1,5 +1,20 @@
 /**
- * The skeleton shown while a page's server work is in flight.
+ * The skeleton shown while the custom-tour planner's server work is in
+ * flight. This is the heaviest route on the site — the wizard pulls in the
+ * step components and a Leaflet map — so it is the one where a placeholder
+ * genuinely earns its place.
+ *
+ * Scoped to this segment on purpose, and NOT placed at `app/[locale]/`.
+ * A `loading.tsx` wraps everything below it in a Suspense boundary, and once
+ * a boundary starts streaming the HTTP status is already sent — so a
+ * `notFound()` thrown by a page underneath can no longer set 404. A blanket
+ * one here turned every mistyped tour and destination slug into a soft 404:
+ * status 200, generic title, with the not-found UI streamed in afterwards.
+ * Search engines treat that as a duplicate of the home page.
+ *
+ * This route has no slug to get wrong, so there is nothing below it that
+ * calls `notFound()` in practice — a bad locale is redirected by the
+ * middleware in `proxy.ts` long before it reaches here.
  *
  * Every page below the home page opens with `PageHero` — a full-bleed
  * photograph with a title over it — and continues with a centred column of

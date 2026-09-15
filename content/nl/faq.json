@@ -1,0 +1,36 @@
+{
+  "_reviewStatus": "needs-native-review",
+  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Nothing here states a price, an inclusion, a language spoken, a cancellation policy or an insurance requirement, because none of those is recorded anywhere in this repository yet. Items marked contentRequired are the questions travellers ask most that only Nandana can answer — fill those in before launch.",
+  "items": [
+    {
+      "question": "Hoe boek ik een reis?",
+      "answer": "Er is geen online boekingsformulier en geen betaalpagina. U stuurt een aanvraag — via de reisplanner of rechtstreeks via een WhatsApp-knop op de site — en Nandana antwoordt persoonlijk om de details af te spreken. WhatsApp is al jaren de manier waarop dit bedrijf boekingen ontvangt."
+    },
+    {
+      "question": "Moet ik controleren of mijn data beschikbaar zijn?",
+      "answer": "Nee. Elke reis wordt begeleid door de eigen gecertificeerde gidsen van het bedrijf en niet ingekocht bij derden, dus er is geen beschikbaarheidskalender — elke datum kan geregeld worden."
+    },
+    {
+      "question": "Zijn dit privéreizen of reis ik in een groep?",
+      "answer": "Privé. U reist met uw eigen gids en uw eigen voertuig; u wordt nooit bij onbekenden in een bus gezet. De reisplanner werkt voor gezelschappen van één tot twaalf reizigers."
+    },
+    {
+      "question": "Wie is mijn gids?",
+      "answer": "Nandana Hewagamage, of een van de eigen gidsen van het bedrijf. Nandana gidst al meer dan 20 jaar in Sri Lanka, is gecertificeerd door de Sri Lanka Tourism Board en is gespecialiseerd in vogels, wildlife, natuurfotografie, trekking en cultuur en geschiedenis."
+    },
+    {
+      "question": "Kan ik mijn plannen nog wijzigen na mijn aanvraag?",
+      "answer": "Ja. Elke aanvraag krijgt een korte referentie zoals NW-7K3QD. Open die opnieuw via de “mijn reis”-link, meld u aan met het e-mailadres dat u gebruikte en pas de aanvraag aan — de vorige versie blijft bewaard, dus er gaat niets verloren."
+    },
+    {
+      "question": "Wat is inbegrepen in de prijs en wat niet?",
+      "answer": "CONTENT_REQUIRED",
+      "contentRequired": true
+    },
+    {
+      "question": "Hoe en wanneer betaal ik?",
+      "answer": "CONTENT_REQUIRED",
+      "contentRequired": true
+    }
+  ]
+}

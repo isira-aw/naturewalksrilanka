@@ -1,0 +1,36 @@
+{
+  "_reviewStatus": "needs-native-review",
+  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Nothing here states a price, an inclusion, a language spoken, a cancellation policy or an insurance requirement, because none of those is recorded anywhere in this repository yet. Items marked contentRequired are the questions travellers ask most that only Nandana can answer — fill those in before launch.",
+  "items": [
+    {
+      "question": "Hvordan booker jeg en rejse?",
+      "answer": "Der er ingen online booking og ingen betalingsside. Du sender en forespørgsel — enten via rejseplanlæggeren eller direkte fra en WhatsApp-knap på sitet — og Nandana svarer personligt for at aftale detaljerne. WhatsApp er, hvordan denne virksomhed har taget imod bookinger i årevis."
+    },
+    {
+      "question": "Skal jeg tjekke, om mine datoer er ledige?",
+      "answer": "Nej. Hver rejse bemandes af virksomhedens egne certificerede guider frem for at blive købt hos tredjepart, så der er ingen ledighedskalender — enhver dato kan arrangeres."
+    },
+    {
+      "question": "Er det private rejser, eller kommer jeg i en gruppe?",
+      "answer": "Private. Du rejser med din egen guide og dit eget køretøj; du bliver aldrig sat i en bus med fremmede. Rejseplanlæggeren tager selskaber på én til tolv rejsende."
+    },
+    {
+      "question": "Hvem guider mig?",
+      "answer": "Nandana Hewagamage eller en af virksomhedens egne guider. Nandana har guidet i Sri Lanka i over 20 år, er certificeret af Sri Lanka Tourism Board og er specialiseret i fugle, dyreliv, naturfotografi, trekking samt kultur og historie."
+    },
+    {
+      "question": "Kan jeg ændre mine planer, efter jeg har sendt en forespørgsel?",
+      "answer": "Ja. Hver forespørgsel får en kort reference som NW-7K3QD. Åbn den igen via “min rejse”-linket, log ind med den e-mail du brugte, og ret den — den tidligere version gemmes, så intet går tabt."
+    },
+    {
+      "question": "Hvad er inkluderet i prisen, og hvad er ikke?",
+      "answer": "CONTENT_REQUIRED",
+      "contentRequired": true
+    },
+    {
+      "question": "Hvordan og hvornår betaler jeg?",
+      "answer": "CONTENT_REQUIRED",
+      "contentRequired": true
+    }
+  ]
+}

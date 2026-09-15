@@ -10,6 +10,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { ArrowLink, Kicker, Rise } from "@/components/ui/motion";
 import { WhatsAppCTA } from "@/components/whatsapp/WhatsAppCTA";
 import { buildGeneralMessage } from "@/lib/whatsapp/buildMessage";
+import { FaqAccordion } from "@/components/faq/FaqAccordion";
 
 export async function generateMetadata({
   params,
@@ -39,10 +40,11 @@ export default async function ContactPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, navigation, seo] = await Promise.all([
+  const [t, navigation, seo, faq] = await Promise.all([
     getTranslations({ locale: l }),
     getContent(l, "navigation"),
     getContent(l, "seo"),
+    getContent(l, "faq"),
   ]);
 
   const page = seo.pages.contact;
@@ -126,6 +128,8 @@ export default async function ContactPage({
           </div>
         </div>
       </section>
+
+      <FaqAccordion faq={faq} eyebrow={t("faq.eyebrow")} title={t("faq.title")} />
     </>
   );
 }

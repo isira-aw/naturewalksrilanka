@@ -11,6 +11,7 @@ import type {
   Testimonials,
   Navigation,
   Seo,
+  Faq,
 } from "./schema";
 
 type ContentMap = {
@@ -22,6 +23,7 @@ type ContentMap = {
   testimonials: Testimonials;
   navigation: Navigation;
   seo: Seo;
+  faq: Faq;
 };
 
 const loaders: { [K in keyof ContentMap]: (locale: Locale) => Promise<unknown> } = {
@@ -33,6 +35,7 @@ const loaders: { [K in keyof ContentMap]: (locale: Locale) => Promise<unknown> }
   testimonials: (locale) => import(`@/content/${locale}/testimonials.json`).then((m) => m.default),
   navigation: (locale) => import(`@/content/${locale}/navigation.json`).then((m) => m.default),
   seo: (locale) => import(`@/content/${locale}/seo.json`).then((m) => m.default),
+  faq: (locale) => import(`@/content/${locale}/faq.json`).then((m) => m.default),
 };
 
 export async function getContent<K extends keyof ContentMap>(

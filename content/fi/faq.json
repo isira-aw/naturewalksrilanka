@@ -1,0 +1,36 @@
+{
+  "_reviewStatus": "needs-native-review",
+  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Nothing here states a price, an inclusion, a language spoken, a cancellation policy or an insurance requirement, because none of those is recorded anywhere in this repository yet. Items marked contentRequired are the questions travellers ask most that only Nandana can answer — fill those in before launch.",
+  "items": [
+    {
+      "question": "Miten varaan matkan?",
+      "answer": "Sivustolla ei ole verkkovarauslomaketta eikä maksusivua. Lähetät tiedustelun — joko matkasuunnittelijan kautta tai suoraan mistä tahansa sivuston WhatsApp-painikkeesta — ja Nandana vastaa henkilökohtaisesti ja sopii yksityiskohdat. WhatsApp on ollut tämän yrityksen varauskanava jo vuosia."
+    },
+    {
+      "question": "Pitääkö minun tarkistaa, ovatko päivämääräni vapaita?",
+      "answer": "Ei. Jokaisella matkalla on yrityksen omat sertifioidut oppaat, eikä matkoja osteta kolmansilta osapuolilta, joten saatavuuskalenteria ei ole — mikä tahansa päivämäärä voidaan järjestää."
+    },
+    {
+      "question": "Ovatko nämä yksityismatkoja vai liitynkö ryhmään?",
+      "answer": "Yksityisiä. Matkustat oman oppaasi ja oman ajoneuvosi kanssa; sinua ei koskaan liitetä bussiin tuntemattomien kanssa. Matkasuunnittelija palvelee yhden ja kahdentoista matkustajan seurueita."
+    },
+    {
+      "question": "Kuka toimii oppaanani?",
+      "answer": "Nandana Hewagamage tai joku yrityksen omista oppaista. Nandana on opastanut Sri Lankassa yli 20 vuotta, on Sri Lanka Tourism Boardin sertifioima ja erikoistunut lintuihin, eläimistöön, luontokuvaukseen, vaellukseen sekä kulttuuriin ja historiaan."
+    },
+    {
+      "question": "Voinko muuttaa suunnitelmiani tiedustelun lähettämisen jälkeen?",
+      "answer": "Kyllä. Jokainen tiedustelu saa lyhyen viitteen, kuten NW-7K3QD. Avaa se uudelleen ”oma matkani” -linkistä, kirjaudu käyttämälläsi sähköpostilla ja muokkaa sitä — edellinen versio säilytetään, joten mitään ei katoa."
+    },
+    {
+      "question": "Mitä hintaan sisältyy ja mitä ei?",
+      "answer": "CONTENT_REQUIRED",
+      "contentRequired": true
+    },
+    {
+      "question": "Miten ja milloin maksan?",
+      "answer": "CONTENT_REQUIRED",
+      "contentRequired": true
+    }
+  ]
+}

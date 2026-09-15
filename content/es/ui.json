@@ -366,5 +366,20 @@
     "errorPhotoType": "Las fotografías deben ser JPEG, PNG o WebP.",
     "errorNetwork": "No pudimos conectar con el servidor. Revisa tu conexión e inténtalo de nuevo.",
     "errorGeneric": "No pudimos enviarlo. Inténtalo de nuevo."
+  },
+  "faq": {
+    "eyebrow": "Conviene saber",
+    "title": "Preguntas frecuentes"
+  },
+  "newsletter": {
+    "title": "Notas de campo",
+    "body": "Notas ocasionales sobre lo que se está viendo en los parques y bosques, y cuándo venir a verlo. No más de unas pocas veces al año.",
+    "placeholder": "Tu correo electrónico",
+    "submit": "Suscribirme",
+    "sending": "Enviando…",
+    "success": "Ya estás en la lista. Atento a la primera nota.",
+    "invalid": "Eso no parece un correo electrónico. Revísalo e inténtalo de nuevo.",
+    "failed": "La suscripción no está disponible ahora. Inténtalo más tarde.",
+    "honeypot": "Empresa (deja esto vacío)"
   }
 }

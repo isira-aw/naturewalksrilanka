@@ -209,6 +209,20 @@ export const seoSchema = z.object({
 });
 export type Seo = z.infer<typeof seoSchema>;
 
+export const faqSchema = z.object({
+  items: z.array(
+    z.object({
+      question: z.string(),
+      answer: z.string(),
+      /** Set where only the operator can supply the answer — price, payment. */
+      contentRequired: z.boolean().optional(),
+    }),
+  ),
+  _reviewStatus: z.string().optional(),
+  _note: z.string().optional(),
+});
+export type Faq = z.infer<typeof faqSchema>;
+
 export const contentSchemas = {
   profile: profileSchema,
   tours: toursSchema,
@@ -218,4 +232,5 @@ export const contentSchemas = {
   testimonials: testimonialsSchema,
   navigation: navigationSchema,
   seo: seoSchema,
+  faq: faqSchema,
 } as const;

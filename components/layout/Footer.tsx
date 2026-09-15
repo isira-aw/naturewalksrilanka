@@ -5,12 +5,28 @@ import type { Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
 import { Container } from "@/components/ui/Container";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { NewsletterSignUp } from "@/components/newsletter/NewsletterSignUp";
 
 export async function Footer({ locale }: { locale: Locale }) {
-  const [navigation, t] = await Promise.all([
+  const [navigation, t, tNews] = await Promise.all([
     getContent(locale, "navigation"),
     getTranslations({ locale, namespace: "footer" }),
+    getTranslations({ locale, namespace: "newsletter" }),
   ]);
+
+  /* Resolved on the server: the sign-up is a client component and cannot
+     reach the message catalogue itself. */
+  const newsletterLabels = {
+    title: tNews("title"),
+    body: tNews("body"),
+    placeholder: tNews("placeholder"),
+    submit: tNews("submit"),
+    sending: tNews("sending"),
+    success: tNews("success"),
+    invalid: tNews("invalid"),
+    failed: tNews("failed"),
+    honeypot: tNews("honeypot"),
+  };
   const year = new Date().getFullYear();
 
   return (
@@ -43,6 +59,10 @@ export async function Footer({ locale }: { locale: Locale }) {
                 YouTube
               </a>
             )}
+          </div>
+
+          <div className="mt-8 border-t border-warm-white/15 pt-8">
+            <NewsletterSignUp locale={locale} labels={newsletterLabels} />
           </div>
         </div>
 

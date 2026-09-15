@@ -17,6 +17,8 @@ export const COLLECTIONS = {
   reviews: "reviews",
   /** The admin allowlist: which email addresses may sign in to the panel. */
   staff: "staff",
+  /** Newsletter sign-ups, keyed by the subscriber's own email address. */
+  newsletterSubscribers: "newsletterSubscribers",
 } as const;
 
 export type CollectionName = (typeof COLLECTIONS)[keyof typeof COLLECTIONS];

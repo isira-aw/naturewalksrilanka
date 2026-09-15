@@ -1,0 +1,36 @@
+{
+  "_reviewStatus": "draft-written-for-review",
+  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Nothing here states a price, an inclusion, a language spoken, a cancellation policy or an insurance requirement, because none of those is recorded anywhere in this repository yet. Items marked contentRequired are the questions travellers ask most that only Nandana can answer — fill those in before launch.",
+  "items": [
+    {
+      "question": "How do I book a tour?",
+      "answer": "There is no online booking form and no payment page. You send an enquiry — either through the custom-tour planner or straight from any WhatsApp button on the site — and Nandana replies personally to agree the details. WhatsApp is how this business has taken bookings for years."
+    },
+    {
+      "question": "Do I need to check whether my dates are available?",
+      "answer": "No. Every journey is staffed by the company's own certified guides rather than bought from a third party, so there is no availability calendar to check — any date can be arranged."
+    },
+    {
+      "question": "Are these private tours, or will I join a group?",
+      "answer": "Private. You travel with your own guide and your own vehicle; you are never added to a coach with strangers. The custom-tour planner takes parties of one to twelve travellers."
+    },
+    {
+      "question": "Who will guide me?",
+      "answer": "Nandana Hewagamage, or one of the company's own guides. Nandana has guided in Sri Lanka for over 20 years, is certified by the Sri Lanka Tourism Board, and specialises in birding, wildlife, wildlife photography, trekking, and culture and history."
+    },
+    {
+      "question": "Can I change my plans after I have sent an enquiry?",
+      "answer": "Yes. Every enquiry gets a short reference like NW-7K3QD. Open it again at the “my trip” link, sign in with the email address you used, and amend it — the previous version is kept, so nothing is lost."
+    },
+    {
+      "question": "What is included in the price, and what is not?",
+      "answer": "CONTENT_REQUIRED",
+      "contentRequired": true
+    },
+    {
+      "question": "How and when do I pay?",
+      "answer": "CONTENT_REQUIRED",
+      "contentRequired": true
+    }
+  ]
+}
