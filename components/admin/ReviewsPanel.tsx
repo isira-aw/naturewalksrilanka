@@ -3,26 +3,22 @@
 import { useCallback, useEffect, useState } from "react";
 import { localeNames, locales, routing, type Locale } from "@/i18n/routing";
 import type { Review, ReviewInvite } from "@/lib/reviews/types";
-import type { TourRequest } from "@/lib/tourRequests/types";
 
 /**
- * Review links, moderation, what is live, and the enquiry list — the four
- * things that only make sense next to each other.
+ * Review links, moderation, and what is live — the three things that only
+ * make sense next to each other.
  *
  * Links are made here and copied into WhatsApp or an email by hand rather
  * than sent automatically: the team already talks to these people, and an
  * unexpected automated mail would be worse than a line in a conversation
- * that is already happening. A link can be made from an enquiry, which
- * carries that traveller's details, or from nothing at all — plenty of
- * travellers never filled the form in, and they have reviews worth having
- * too.
+ * that is already happening. A link is tied to nobody, because plenty of
+ * travellers never filled the enquiry form in and their reviews are worth
+ * just as much.
  */
 export function ReviewsPanel() {
-  const [requests, setRequests] = useState<TourRequest[]>([]);
   const [pending, setPending] = useState<Review[]>([]);
   const [published, setPublished] = useState<Review[]>([]);
   const [invites, setInvites] = useState<ReviewInvite[]>([]);
-  const [links, setLinks] = useState<Record<string, string>>({});
   const [label, setLabel] = useState("");
   const [locale, setLocale] = useState<Locale>(routing.defaultLocale);
   const [creating, setCreating] = useState(false);
@@ -31,8 +27,7 @@ export function ReviewsPanel() {
 
   const load = useCallback(async () => {
     try {
-      const [queue, waiting, live, sent] = await Promise.all([
-        fetch("/api/admin/requests", { credentials: "same-origin", cache: "no-store" }),
+      const [waiting, live, sent] = await Promise.all([
         fetch("/api/admin/reviews?status=pending", {
           credentials: "same-origin",
           cache: "no-store",
@@ -44,19 +39,18 @@ export function ReviewsPanel() {
         fetch("/api/admin/reviews/invites", { credentials: "same-origin", cache: "no-store" }),
       ]);
 
-      if ([queue, waiting, live, sent].some((response) => response.status === 503)) {
+      if ([waiting, live, sent].some((response) => response.status === 503)) {
         setStatus("unavailable");
         return;
       }
-      if (![queue, waiting, live, sent].every((response) => response.ok)) throw new Error("load");
+      if (![waiting, live, sent].every((response) => response.ok)) throw new Error("load");
 
-      setRequests((await queue.json()).requests ?? []);
       setPending((await waiting.json()).reviews ?? []);
       setPublished((await live.json()).reviews ?? []);
       setInvites((await sent.json()).invites ?? []);
       setStatus("ready");
     } catch {
-      setError("Could not load enquiries and reviews.");
+      setError("Could not load the reviews.");
       setStatus("ready");
     }
   }, []);
@@ -64,7 +58,7 @@ export function ReviewsPanel() {
   /* Fetching on mount. The rule cannot distinguish this from a cascading
      render, but the data lives on the server and there is nowhere earlier
      to ask for it — the admin page is a client island inside a server
-     component that deliberately holds no enquiry data. */
+     component that deliberately holds no review data. */
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     void load();
@@ -82,19 +76,7 @@ export function ReviewsPanel() {
     return (await response.json()).invite as ReviewInvite;
   }
 
-  /** A link for one enquiry, shown under that enquiry. */
-  async function inviteFor(reference: string) {
-    setError(null);
-    try {
-      const created = await createInvite({ reference });
-      setLinks((current) => ({ ...current, [reference]: linkFor(created) }));
-      setInvites((current) => [created, ...current]);
-    } catch {
-      setError("Could not create that invitation.");
-    }
-  }
-
-  /** A link for somebody the system has never heard of. */
+  /** A link for whoever the team wants a review from. */
   async function createLink() {
     setError(null);
     setCreating(true);
@@ -158,7 +140,7 @@ export function ReviewsPanel() {
   if (status === "unavailable") {
     return (
       <p className="rounded-2xl border border-stone-dark bg-stone/20 p-5 text-sm leading-relaxed text-charcoal">
-        Enquiries and reviews need Firebase. Set the Firebase variables and check
+        Reviews need Firebase. Set the Firebase variables and check
         <code className="mx-1 rounded bg-warm-white px-1.5 py-0.5">/api/admin/firebase-status</code>
         first.
       </p>
@@ -304,53 +286,6 @@ export function ReviewsPanel() {
         )}
       </section>
 
-      <section>
-        <h2 className="font-display text-2xl text-charcoal">Enquiries</h2>
-        <p className="mt-1.5 text-sm leading-relaxed text-charcoal/55">
-          Every custom tour sent from the site. Ask for a review once the trip has
-          happened.
-        </p>
-
-        {requests.length === 0 ? (
-          <p className="mt-5 text-sm text-charcoal/45">No enquiries yet.</p>
-        ) : (
-          <ul className="mt-5 space-y-3">
-            {requests.map((request) => (
-              <li
-                key={request.reference}
-                className="rounded-2xl border border-stone-dark bg-warm-white p-5"
-              >
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <p className="text-sm font-medium text-charcoal">
-                    {request.payload.name} · {request.reference}
-                  </p>
-                  <p className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-                    {new Date(request.createdAt).toLocaleDateString("en-GB")} ·{" "}
-                    {request.status}
-                  </p>
-                </div>
-                <p className="mt-1 text-sm text-charcoal/60">
-                  {request.payload.travelers} travelling ·{" "}
-                  {request.payload.dateRange.start ?? "dates unset"} → {request.payload.dateRange.end ?? "-"}
-                </p>
-                <p className="mt-1 text-sm text-charcoal/60">{request.email}</p>
-
-                {links[request.reference] ? (
-                  <CopyField value={links[request.reference]} />
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => void inviteFor(request.reference)}
-                    className="mt-4 min-h-10 rounded-full border border-forest px-5 text-sm font-medium text-forest hover:bg-forest hover:text-warm-white"
-                  >
-                    Request a review
-                  </button>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
     </div>
   );
 }

@@ -20,7 +20,7 @@ import { DataPanel } from "./DataPanel";
  */
 const SECTIONS = [
   { id: "itineraries", label: "Custom tour optimisation" },
-  { id: "reviews", label: "Enquiries and reviews" },
+  { id: "reviews", label: "Reviews" },
   { id: "translations", label: "Translations" },
   { id: "data", label: "Data and migration" },
 ] as const;

@@ -34,28 +34,23 @@ function reviews() {
 /**
  * Makes a review link.
  *
- * Everything except the language is optional, because a link made by hand is
- * for somebody the team knows and the system does not: there is no enquiry to
- * point at and no address to copy. What is passed is only ever a convenience —
- * the traveller's name so the form opens with it filled in, a label so the
- * panel can say who a link was for. The token is the credential.
+ * A link is for somebody the team knows and the system does not, so all it
+ * carries is the language the form should open in and a label the team typed
+ * to remember who it was for. The token is the credential; there is nothing
+ * here to check anybody against.
  */
 export async function createInvite(
-  input: {
-    reference?: string | null;
-    email?: string | null;
-    name?: string;
-    label?: string;
-    locale: string;
-  },
+  input: { label?: string; locale: string },
   invitedBy: string,
 ): Promise<ReviewInvite> {
   const invite: ReviewInvite = {
     token: newInviteToken(),
-    /* Written as nulls rather than left out: Firestore rejects `undefined`. */
-    reference: input.reference ?? null,
-    email: input.email ?? null,
-    name: input.name ?? "",
+    /* Written as nulls rather than left out: Firestore rejects `undefined`.
+       Links made while invitations came from enquiries still carry a
+       reference, an address and a name, and the panel still shows them. */
+    reference: null,
+    email: null,
+    name: "",
     label: input.label ?? "",
     locale: input.locale,
     createdAt: new Date().toISOString(),
@@ -77,18 +72,12 @@ export async function getInvite(token: string): Promise<ReviewInvite | null> {
   return parsed.success ? parsed.data : null;
 }
 
-/** Invites already sent for a reference, so the panel does not offer twice. */
-export async function invitesForReference(reference: string): Promise<ReviewInvite[]> {
-  const snapshot = await invites().where("reference", "==", reference).get();
-  return parseInvites(snapshot.docs);
-}
-
 /**
  * The most recent links, newest first.
  *
- * A link made by hand belongs to no enquiry, so without this the panel would
- * lose it the moment the page reloaded — and a link that cannot be found
- * again is a link that gets made twice.
+ * A link belongs to no enquiry, so without this the panel would lose it the
+ * moment the page reloaded — and a link that cannot be found again is a link
+ * that gets made twice.
  */
 export async function listInvites(limit = 40): Promise<ReviewInvite[]> {
   const snapshot = await invites().orderBy("createdAt", "desc").limit(limit).get();
