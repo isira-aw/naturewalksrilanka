@@ -31,6 +31,7 @@ drop the file in and redeploy.
 | Nandana's portrait | `public/images/nandana-portrait.jpg` | `content/<locale>/profile.json` |
 | The social sharing card | `public/images/og-default.jpg` | `content/<locale>/seo.json` → `ogImage` |
 | Itinerary photographs | Firebase Storage | Uploaded in the admin panel; see [`FIREBASE_INTEGRATION.md`](FIREBASE_INTEGRATION.md) §8 |
+| Language switcher flags | `public/images/flags/<iso>.svg` | `localeCountries` in `components/layout/LocaleSwitcher.tsx`. Not photographs — vendored SVGs, see `LICENSE.txt` beside them |
 
 ### Destinations
 
