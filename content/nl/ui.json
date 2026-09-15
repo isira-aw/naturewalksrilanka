@@ -9,6 +9,21 @@
     "close": "Sluiten",
     "language": "Taal"
   },
+  "search": {
+    "open": "Zoeken",
+    "title": "Zoek op de site",
+    "placeholder": "Zoek reizen, plaatsen, dieren…",
+    "empty": "Niets gevonden. Probeer een plaats of een diersoort.",
+    "error": "Zoeken is nu niet beschikbaar. Gebruik het menu om te bladeren.",
+    "loading": "Laden…",
+    "close": "Sluiten",
+    "groups": {
+      "tour": "Reis",
+      "destination": "Plaats",
+      "activity": "Activiteit",
+      "page": "Pagina"
+    }
+  },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Voorbij het",
@@ -351,5 +366,20 @@
     "errorPhotoType": "Foto's moeten JPEG, PNG of WebP zijn.",
     "errorNetwork": "We konden de server niet bereiken. Controleer je verbinding en probeer het opnieuw.",
     "errorGeneric": "We konden dat niet versturen. Probeer het opnieuw."
+  },
+  "faq": {
+    "eyebrow": "Goed om te weten",
+    "title": "Veelgestelde vragen"
+  },
+  "newsletter": {
+    "title": "Veldnotities",
+    "body": "Af en toe een bericht over wat er in de parken en bossen te zien is, en wanneer u daarvoor moet komen. Hooguit een paar keer per jaar.",
+    "placeholder": "Uw e-mailadres",
+    "submit": "Aanmelden",
+    "sending": "Versturen…",
+    "success": "U staat op de lijst. Houd de eerste notitie in de gaten.",
+    "invalid": "Dat lijkt geen e-mailadres. Controleer het en probeer opnieuw.",
+    "failed": "Aanmelden is nu niet mogelijk. Probeer het later opnieuw.",
+    "honeypot": "Bedrijf (laat dit leeg)"
   }
 }

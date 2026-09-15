@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { getLocale } from "next-intl/server";
+import { SITE_URL } from "@/lib/seo/site";
 import "./globals.css";
 
 const displaySerif = Fraunces({
@@ -19,20 +20,48 @@ const utilityMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-/* Search Console's HTML-tag method. Set once the property is claimed; left
-   unset the meta tag is simply omitted, which is what every environment other
-   than production wants — a staging deployment should not be claiming the
-   production property. The token identifies the property, it authorises
-   nothing, so it is safe as a NEXT_PUBLIC_ value. */
+/* ---------------------------------------------------------------------------
+   SEARCH ENGINE VERIFICATION — paste your codes into `.env`, not into this file.
+
+   Both are the HTML-tag method, and both work the same way: set the variable
+   and the meta tag appears in <head>; leave it unset and no tag is rendered at
+   all. That default is deliberate — a staging or preview deployment must not
+   claim the production property.
+
+   Neither token authorises anything; each merely identifies a property, which
+   is why both are safe as NEXT_PUBLIC_ values.
+
+     NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+       Google Search Console > Add property > HTML tag. Copy only the value
+       inside content="...", not the whole <meta> element.
+       Renders: <meta name="google-site-verification" content="...">
+
+     NEXT_PUBLIC_BING_SITE_VERIFICATION
+       Bing Webmaster Tools > Add site > HTML Meta Tag. Again, the content
+       value only.
+       Renders: <meta name="msvalidate.01" content="...">
+
+   See docs/seo.md for the full post-deployment walkthrough.
+--------------------------------------------------------------------------- */
 const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+const bingSiteVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://naturewalksrilanka.com"),
+  metadataBase: new URL(SITE_URL),
   title: "Nature Walks Sri Lanka",
   description:
     "Private nature and wildlife journeys through Sri Lanka, with certified guides, accommodation and transport arranged by Nature Walks Sri Lanka.",
-  ...(googleSiteVerification
-    ? { verification: { google: googleSiteVerification } }
+  /* One `verification` object or none: Next merges nothing here, so the two
+     tokens have to be assembled together rather than in two spreads. */
+  ...(googleSiteVerification || bingSiteVerification
+    ? {
+        verification: {
+          ...(googleSiteVerification ? { google: googleSiteVerification } : {}),
+          ...(bingSiteVerification
+            ? { other: { "msvalidate.01": bingSiteVerification } }
+            : {}),
+        },
+      }
     : {}),
 };
 

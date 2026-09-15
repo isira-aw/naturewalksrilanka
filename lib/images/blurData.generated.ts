@@ -56,7 +56,7 @@ export const publicImageBlur: Record<string, string> = {
   "/images/hero/hero-2.jpg": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoMAAoAA4BaJaACdADZvGq5x/gA/ZuwlSrTPqSAMalmhZhgP60Eiu2qqcfd191GwnlMIjJou5zZWNuTdWhJt2AA",
   "/images/hero/hero-3.jpg": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoMAAgAA4BaJZQCdADcUsgHQAD+4ZV+V5viPsQPIIZ9u150yzZHdLZlhfh4qIAA",
   "/images/nandana-portrait.jpg": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoMAAwAA4BaJZACdADhAmYQTwAA304TRSrpdFwmbsoFqf4m2KidRm3DG5LkcpXi/km/lGUWwmXZ0ijqKzr15D4lBAqjMyD4F6cz4DjfMCWf9fAA",
-  "/images/og-default.jpg": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAQCdASoMAAcAA4BaJQBWABcLMnxwAM4arxc/qem8AzT3kCSDI5co2CoB0T5SphMjM0RfJxKtgETQbL4q0HdFPDMKANwFQ7gAAA==",
+  "/images/og-default.jpg": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoMAAYAA4BaJQBdgBuxwgG2AADOH3nnAF9tx+vVS2LsqCPL/SOMMieHa1uOpy5PyQ83sSQgdIBwAA==",
   "/images/placeholder-destination.jpg": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACQAQCdASoMAAcAA4BaJZwAAuUv/jQA/uhuP1wuV7AFBF9hA7QOSP1fxNqt9nhPQYV593hZweMS7BN1EpSa2HYEr0eoxwAA",
   "/images/story-1.jpg": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAAAQAgCdASoMAAgAA4BaJYwCsAECv53w2sAAAP54Zh1DJVVTCH3NRs24gjvHhzTN57E3A2ByzkPZUAOdojjfP1AA",
   "/images/story-2.jpg": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADwAQCdASoMAAgAA4BaJZAC7ADbbYYcEwAA/tDtn8qsuVWwAVLQYtVza9n4lNCXlwidilNISznYkzIKguS216JsAAA=",

@@ -1,4 +1,12 @@
 /**
+ * ONE-OFF MIGRATION. Delete this file, and the `@vercel/blob` devDependency,
+ * once it has been run and the Firestore data checked.
+ *
+ * The application no longer reads Vercel Blob at all — Firestore is the only
+ * itinerary store. This script is the only remaining way to get records out
+ * of the old archive, which is why it still exists. If the archive was never
+ * used, or has already been migrated, there is nothing here to keep.
+ *
  * Moves itineraries from the Vercel Blob archive into Firestore, and their
  * embedded base64 images into Firebase Storage.
  *

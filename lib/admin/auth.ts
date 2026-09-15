@@ -1,35 +1,27 @@
 import "server-only";
-import { adminAuth, isFirebaseConfigured } from "@/lib/firebase/admin";
+import { adminAuth, adminDb, isFirebaseConfigured } from "@/lib/firebase/admin";
 import { COLLECTIONS } from "@/lib/firebase/collections";
-import { adminDb } from "@/lib/firebase/admin";
-import { ADMIN_COOKIE_NAME, isValidSession } from "./session";
 
 /**
  * Who is allowed into the admin panel.
  *
- * Two mechanisms live here at once, on purpose.
+ * One mechanism, and only one: Firebase Authentication. A staff member signs
+ * in with their own Google account, the server checks them against the
+ * `staff` allowlist and an `admin: true` custom claim, and mints a Firebase
+ * session cookie. That gives per-person accountability, instant revocation,
+ * and no shared password to leak.
  *
- * **Firebase Auth** is the real one: a staff member signs in with Google or
- * an email link, the server checks them against the `staff` allowlist and an
- * `admin: true` custom claim, and mints a Firebase session cookie. That gives
- * per-person accountability, instant revocation, and no shared password.
- *
- * **The legacy shared password** from `session.ts` still works, but only
- * while Firebase is unconfigured. It is the escape hatch: this migration
- * replaces the only working way into the panel, and if the Firebase
- * credentials turn out to be wrong there would otherwise be no way in to fix
- * them. Once `/api/admin/firebase-status` is healthy and at least one staff
- * account can sign in, delete the legacy path and `lib/admin/session.ts`
- * with it — leaving a shared password alive indefinitely defeats the point.
- *
- * Note the ordering below: when Firebase *is* configured, the legacy cookie
- * is no longer accepted. The fallback is about a broken deployment, not a
- * permanent second door.
+ * There is deliberately no second door. A shared-password escape hatch used
+ * to live here for the duration of the Firebase migration; it is gone. If
+ * Firebase is unreachable or unconfigured, sign-in fails and says so — it
+ * does not quietly fall back to something weaker, because a fallback that
+ * activates exactly when the strong path is broken is the one an attacker
+ * arranges to meet.
  */
 
 export const FIREBASE_SESSION_COOKIE = "nwsl_admin_session";
 
-/** Eight hours, matching the legacy session and a working day of editing. */
+/** Eight hours — a working day of editing. */
 export const FIREBASE_SESSION_MAX_AGE = 60 * 60 * 8;
 
 function cookieFromRequest(request: Request, name: string) {
@@ -43,7 +35,6 @@ function cookieFromRequest(request: Request, name: string) {
 
 /** The signed-in staff member's email, or `null`. Used for audit lines. */
 export async function adminIdentity(request: Request): Promise<string | null> {
-  if (!isFirebaseConfigured()) return null;
   const auth = adminAuth();
   const cookie = cookieFromRequest(request, FIREBASE_SESSION_COOKIE);
   if (!auth || !cookie) return null;
@@ -69,10 +60,7 @@ export async function adminIdentity(request: Request): Promise<string | null> {
  * change and confirm each use is awaited.
  */
 export async function requireAdmin(request: Request): Promise<boolean> {
-  if (isFirebaseConfigured()) {
-    return (await adminIdentity(request)) !== null;
-  }
-  return isValidSession(cookieFromRequest(request, ADMIN_COOKIE_NAME));
+  return (await adminIdentity(request)) !== null;
 }
 
 /**
@@ -91,22 +79,20 @@ export async function requireAdmin(request: Request): Promise<boolean> {
  * is valid.
  */
 export async function isAdminSession(): Promise<boolean> {
+  const auth = adminAuth();
+  if (!auth) return false;
+
   const { cookies } = await import("next/headers");
   const store = await cookies();
+  const cookie = store.get(FIREBASE_SESSION_COOKIE)?.value;
+  if (!cookie) return false;
 
-  if (isFirebaseConfigured()) {
-    const auth = adminAuth();
-    const cookie = store.get(FIREBASE_SESSION_COOKIE)?.value;
-    if (!auth || !cookie) return false;
-    try {
-      const decoded = await auth.verifySessionCookie(cookie, true);
-      return decoded.admin === true;
-    } catch {
-      return false;
-    }
+  try {
+    const decoded = await auth.verifySessionCookie(cookie, true);
+    return decoded.admin === true;
+  } catch {
+    return false;
   }
-
-  return isValidSession(store.get(ADMIN_COOKIE_NAME)?.value);
 }
 
 /**
@@ -122,6 +108,8 @@ export async function isAdminSession(): Promise<boolean> {
 export async function createAdminSession(
   idToken: string,
 ): Promise<{ cookie: string; email: string } | { error: string }> {
+  if (!isFirebaseConfigured()) return { error: "firebase_unconfigured" };
+
   const auth = adminAuth();
   const db = adminDb();
   if (!auth || !db) return { error: "firebase_unconfigured" };

@@ -1,0 +1,36 @@
+{
+  "_reviewStatus": "needs-native-review",
+  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Nothing here states a price, an inclusion, a language spoken, a cancellation policy or an insurance requirement, because none of those is recorded anywhere in this repository yet. Items marked contentRequired are the questions travellers ask most that only Nandana can answer — fill those in before launch.",
+  "items": [
+    {
+      "question": "¿Cómo reservo un viaje?",
+      "answer": "No hay formulario de reserva en línea ni página de pago. Envías una consulta — desde el planificador de viajes a medida o directamente desde cualquier botón de WhatsApp del sitio — y Nandana responde personalmente para acordar los detalles. WhatsApp es como este negocio recibe reservas desde hace años."
+    },
+    {
+      "question": "¿Tengo que comprobar si mis fechas están disponibles?",
+      "answer": "No. Cada viaje lo guían los propios guías certificados de la empresa, no se compra a terceros, así que no hay calendario de disponibilidad: cualquier fecha puede organizarse."
+    },
+    {
+      "question": "¿Son viajes privados o iré en grupo?",
+      "answer": "Privados. Viajas con tu propio guía y tu propio vehículo; nunca te añadimos a un autocar con desconocidos. El planificador admite grupos de una a doce personas."
+    },
+    {
+      "question": "¿Quién será mi guía?",
+      "answer": "Nandana Hewagamage, o uno de los guías de la empresa. Nandana lleva más de 20 años guiando en Sri Lanka, está certificado por la Sri Lanka Tourism Board y se especializa en aves, fauna, fotografía de naturaleza, senderismo, y cultura e historia."
+    },
+    {
+      "question": "¿Puedo cambiar mis planes después de enviar la consulta?",
+      "answer": "Sí. Cada consulta recibe una referencia corta como NW-7K3QD. Ábrela de nuevo en el enlace “mi viaje”, inicia sesión con el correo que usaste y modíficala — la versión anterior se conserva, así que no se pierde nada."
+    },
+    {
+      "question": "¿Qué incluye el precio y qué no?",
+      "answer": "CONTENT_REQUIRED",
+      "contentRequired": true
+    },
+    {
+      "question": "¿Cómo y cuándo se paga?",
+      "answer": "CONTENT_REQUIRED",
+      "contentRequired": true
+    }
+  ]
+}

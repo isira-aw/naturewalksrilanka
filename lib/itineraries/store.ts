@@ -7,25 +7,19 @@ import {
 } from "./types";
 
 /**
- * Where itineraries live.
+ * The browser's view of the itineraries.
  *
- * Backed by a single JSON blob on Vercel Blob storage (see
- * `lib/itineraries/blobArchive.ts` and `app/api/itineraries/route.ts` /
- * `app/api/admin/itineraries/route.ts`) rather than the browser: an itinerary
- * added on one device now shows up on every other device and browser,
- * because the record lives on the server instead of in that one browser's
- * `localStorage`. See `docs/itinerary-storage.md`.
+ * This holds no data of its own. Every method is one call to a route handler
+ * (`app/api/itineraries/route.ts` for reads, `app/api/admin/itineraries/route.ts`
+ * for writes), which is the only code that touches Firestore. So there is one
+ * store, one database, and an itinerary added on one device shows up on every
+ * other one.
+ *
+ * A failed read renders as an empty list rather than throwing, because the
+ * custom-tour wizard shows suggestions as an enhancement and has an empty
+ * state already. A failed *write* throws, so the admin sees that their save
+ * did not happen.
  */
-export interface ItineraryStore {
-  list(): Promise<ItineraryRecord[]>;
-  get(id: string): Promise<ItineraryRecord | null>;
-  save(record: ItineraryRecord): Promise<ItineraryRecord>;
-  remove(id: string): Promise<void>;
-  exportArchive(): Promise<ItineraryArchive>;
-  /** Replaces everything, or merges by id when `mode` is `"merge"`. */
-  importArchive(archive: unknown, mode?: "replace" | "merge"): Promise<ItineraryRecord[]>;
-  subscribe(listener: () => void): () => void;
-}
 
 /** Broadcast within this tab; other tabs/devices pick up changes on their next poll or refresh. */
 const listeners = new Set<() => void>();
@@ -41,18 +35,18 @@ async function fetchArchive(): Promise<ItineraryArchive> {
   return parsed.success ? parsed.data : { schemaVersion: 1, records: [] };
 }
 
-export const blobItineraryStore: ItineraryStore = {
+export const itineraryStore = {
   async list() {
     const { records } = await fetchArchive();
     return records.sort((a, b) => a.head.localeCompare(b.head));
   },
 
-  async get(id) {
+  async get(id: string): Promise<ItineraryRecord | null> {
     const { records } = await fetchArchive();
     return records.find((record) => record.id === id) ?? null;
   },
 
-  async save(record) {
+  async save(record: ItineraryRecord): Promise<ItineraryRecord> {
     const response = await fetch("/api/admin/itineraries", {
       method: "POST",
       credentials: "same-origin",
@@ -68,7 +62,7 @@ export const blobItineraryStore: ItineraryStore = {
     return saved;
   },
 
-  async remove(id) {
+  async remove(id: string): Promise<void> {
     const response = await fetch(`/api/admin/itineraries?id=${encodeURIComponent(id)}`, {
       method: "DELETE",
       credentials: "same-origin",
@@ -81,7 +75,11 @@ export const blobItineraryStore: ItineraryStore = {
     return fetchArchive();
   },
 
-  async importArchive(archive, mode = "replace") {
+  async importArchive(
+    archive: unknown,
+    /** `replace` deletes anything absent from the file. */
+    mode: "replace" | "merge" = "replace",
+  ): Promise<ItineraryRecord[]> {
     const parsed = itineraryArchiveSchema.safeParse(archive);
     if (!parsed.success) throw new Error("That file is not an itinerary export.");
 
@@ -97,7 +95,7 @@ export const blobItineraryStore: ItineraryStore = {
     return written.records;
   },
 
-  subscribe(listener) {
+  subscribe(listener: () => void) {
     listeners.add(listener);
 
     /* Refetch when the tab comes back, not on a timer.

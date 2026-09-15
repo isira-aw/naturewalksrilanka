@@ -4,6 +4,7 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { PageHero } from "@/components/ui/PageHero";
 import { Rise } from "@/components/ui/motion";
 
@@ -15,19 +16,14 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
   const seo = await getContent(locale as Locale, "seo");
-  const title = `Privacy Policy | ${seo.siteName}`;
-  const description =
-    "How Nature Walks Sri Lanka handles the information you share when planning a tour.";
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/${locale}/privacy`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, `/${l}/privacy`])
-      ),
-    },
-  };
+  return buildPageMetadata({
+    locale: locale as Locale,
+    path: "/privacy",
+    title: `Privacy Policy | ${seo.siteName}`,
+    description:
+      "How Nature Walks Sri Lanka handles the information you share when planning a tour.",
+    seo,
+  });
 }
 
 export default async function PrivacyPage({

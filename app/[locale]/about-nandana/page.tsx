@@ -5,6 +5,7 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { PageHero } from "@/components/ui/PageHero";
 import { Kicker, Rise } from "@/components/ui/motion";
 import { NandanaStory } from "@/components/nandana/NandanaStory";
@@ -23,21 +24,13 @@ export async function generateMetadata({
   if (!hasLocale(routing.locales, locale)) return {};
   const seo = await getContent(locale as Locale, "seo");
   const page = seo.pages.aboutNandana;
-  return {
+  return buildPageMetadata({
+    locale: locale as Locale,
+    path: "/about-nandana",
     title: page.title,
     description: page.description,
-    alternates: {
-      canonical: `/${locale}/about-nandana`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, `/${l}/about-nandana`])
-      ),
-    },
-    openGraph: {
-      title: page.title,
-      description: page.description,
-      images: [seo.ogImage],
-    },
-  };
+    seo,
+  });
 }
 
 export default async function AboutNandanaPage({

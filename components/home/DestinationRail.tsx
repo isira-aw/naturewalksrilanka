@@ -11,9 +11,9 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
  * Sri Lanka as a rail of tall portrait cards — the reference site's island
- * row. Every destination currently shares one placeholder photograph (see
- * lib/content/imageMap.ts); each card already reads its own `image`, so the
- * row differentiates itself the moment real per-destination photography lands.
+ * row. Each card reads its own `image` from the content file; a destination
+ * whose photograph has not been supplied falls back to the shared placeholder
+ * in `lib/content/images.ts` and still renders as a finished card.
  */
 export function DestinationRail({
   destinations,

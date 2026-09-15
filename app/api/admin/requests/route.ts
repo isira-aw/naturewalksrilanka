@@ -20,5 +20,12 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "not_configured" }, { status: 503 });
   }
 
-  return NextResponse.json({ requests: await listRequests() });
+  try {
+    return NextResponse.json({ requests: await listRequests() });
+  } catch (error) {
+    /* The panel shows an empty queue either way, so the point of catching is
+       that the reason ends up in the logs rather than as a stack trace. */
+    console.error("Could not read the enquiry queue:", error);
+    return NextResponse.json({ error: "unavailable" }, { status: 503 });
+  }
 }

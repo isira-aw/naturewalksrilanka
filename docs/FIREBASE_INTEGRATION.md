@@ -6,7 +6,7 @@ and keep it running.
 > **Status: not yet connected.** All of the code described here is written and
 > merged, but no Firebase project exists yet, so none of it has ever run
 > against one. This document is the instructions for doing that, not a record
-> of it having been done. See "Current state" in `handoff.md`.
+> of it having been done.
 
 **Never commit real secrets.** `.env` is gitignored; `.env.example` is the only
 env file in the repository and holds names and comments, never values.
@@ -37,6 +37,10 @@ without the other.**
 The trap: the build passes on Node 20, and it cannot be reproduced on a
 developer machine already running 22 or newer. It fails only at request time,
 in production.
+
+**Do not regenerate `package-lock.json` wholesale to tidy the override away.**
+The edit was kept narrow deliberately; a full regeneration bumped 83 unrelated
+packages the last time it was tried.
 
 ---
 
@@ -81,27 +85,20 @@ its Firebase variables degrades instead of going down.
 Names only. Fill the values in `.env` locally and in the Vercel dashboard.
 `.env.example` is the authoritative list and carries per-variable comments.
 
-### Admin panel — all three required
+### Admin panel — nothing to set
 
-| Variable | Notes |
-|---|---|
-| `ADMIN_EMAIL` | The legacy shared-password account |
-| `ADMIN_PASSWORD` | Long and random. Do not reuse one from anywhere else |
-| `ADMIN_SESSION_SECRET` | Signs the admin session cookie |
+Admin sign-in is Firebase Authentication only. There is no shared password and
+no `ADMIN_*` variable: access is the `admin` custom claim plus an entry in the
+`staff` collection, both handled by `scripts/grant-admin.mjs` (§5).
 
-**There are no fallback values.** If any of the three is missing, admin sign-in
-fails closed and the panel cannot be entered at all — this is the first thing
-to set, before any Firebase work, because you need the panel to check the
-Firebase connection.
+This means **the Firebase variables below are what make the panel reachable at
+all.** A deployment without them shows the sign-in screen with an explanation
+and no way in, which is the intended behaviour — there is deliberately no
+weaker path that activates when the strong one is unavailable.
 
-Generate the secret:
-
-```bash
-node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-```
-
-Anyone who learns `ADMIN_SESSION_SECRET` can forge a valid session **without
-the password**. Use a fresh random value per environment.
+If `ADMIN_EMAIL`, `ADMIN_PASSWORD` or `ADMIN_SESSION_SECRET` are still set in
+Vercel from before, delete them. Nothing reads them, and a live secret nobody
+uses is a secret nobody rotates.
 
 ### Firebase, server side (Admin SDK) — from the service account key
 
@@ -135,7 +132,7 @@ authorise anything. Security comes from Auth and the rules files.
 | Variable | Notes |
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Absolute origin, for canonical URLs, sitemap, robots, JSON-LD |
-| `BLOB_READ_WRITE_TOKEN` | Vercel Blob. Read implicitly by `@vercel/blob`, not via `process.env` in our code. Needed until the itinerary migration is done and the blob path is removed |
+| `BLOB_READ_WRITE_TOKEN` | **Not used by the application.** Read only by `scripts/migrate-itineraries.mjs`, the one-off CLI that moves records out of the old Vercel Blob archive. Never needed by a deployment; delete it once the migration is done |
 | `GOOGLE_AI_API_KEY` | Gemini, for the admin translation panel. Optional — without it translation returns 503 and nothing else is affected |
 
 ### The private key is the thing that goes wrong
@@ -208,8 +205,13 @@ deep inside a later feature.
 It is admin-gated: naming which variables are missing is a small gift to
 anyone probing the deployment.
 
-1. Sign in at `/en/admin`. While Firebase is unconfigured this is the shared
-   password path, which is exactly why that path still exists.
+It is therefore not the *first* thing you can check, because signing in
+requires a working Firebase project in the first place. Granting yourself
+access (§5) comes first and is itself a credential test:
+`scripts/grant-admin.mjs` uses the same service account and touches both Auth
+and Firestore, so if it succeeds they are correct. Then:
+
+1. Sign in at `/en/admin` with Google.
 2. Open `/api/admin/firebase-status`.
 
 Expected:
@@ -261,20 +263,18 @@ refresh tokens and deletes the `staff` entry. Because sessions are verified
 with `checkRevoked: true`, removal takes effect on their **next request**
 rather than up to eight hours later.
 
-### Removing the legacy password path
+### There is no second way in
 
-Once at least one staff account signs in with Google successfully, delete it:
+The shared-password path that used to sit behind this one has been removed:
+`lib/admin/session.ts`, `lib/admin/rateLimit.ts`, the password branch in
+`app/api/admin/session/route.ts` and the `PasswordSignIn` form are all gone.
 
-- the legacy branch in `app/api/admin/session/route.ts`
-- `PasswordSignIn` in `components/admin/AdminSignIn.tsx`
-- `lib/admin/session.ts` and `lib/admin/rateLimit.ts`
-- the three `ADMIN_*` variables, locally and in Vercel
-
-Until then the shared password still works **whenever Firebase is
-unconfigured**, which includes any deployment that loses its Firebase
-variables. Note the ordering in `requireAdmin`: when Firebase *is* configured
-the legacy cookie is no longer accepted, so this is a fallback for a broken
-deployment, not a permanent second door.
+So if Google sign-in cannot work — wrong service-account key, staff entry
+missing, Firebase unreachable — the fix is to repair that, not to reach for
+another door. `/api/admin/firebase-status` (§4) is the first thing to check,
+and it is admin-gated, so a completely broken deployment is diagnosed from the
+Vercel logs: the refusal reason is written there by
+`app/api/admin/session/route.ts`.
 
 ---
 
@@ -416,10 +416,10 @@ Requires the email-link provider enabled and the domain on the authorised list.
 | anything else | denied | denied |
 
 **Itinerary images** upload direct from the browser
-(`lib/itineraries/imageUpload.ts`), falling back to inline base64 when there is
-no signed-in Firebase user — because `storage.rules` requires the `admin` claim
-and the legacy password path does not produce one. That fallback disappears
-once every admin signs in with Google.
+(`lib/itineraries/imageUpload.ts`). `storage.rules` requires the `admin` claim,
+so the admin must be signed in with Google — which, since that is now the only
+way into the panel, they always are. An upload that cannot happen is an error
+shown on the form; there is no inline-base64 fallback.
 
 Uploads get a permanent **download-token** URL, not a signed one: a signed URL
 would expire and quietly break the page weeks later.
@@ -439,9 +439,9 @@ the URLs — silently, from the page's point of view.
 
 ## 9. Migrating the itineraries
 
-`lib/itineraries/repository.ts` is a facade: Firestore when configured, the old
-blob archive when not. So the migration does not have to be atomic across a
-deploy.
+The application reads Firestore only. This script is the one remaining way to
+get records out of the old Vercel Blob archive, and the only thing in the
+repository that still imports `@vercel/blob`.
 
 **Back up first.** Take a JSON export from the admin panel — that is the
 backup.
@@ -471,8 +471,8 @@ Afterwards verify:
 - translations survived.
 
 **Only once all of that is right**, delete the `itineraries/archive.json` blob
-by hand, remove `lib/itineraries/blobArchive.ts` and its branch in
-`repository.ts`, and drop `@vercel/blob`.
+by hand, delete `scripts/migrate-itineraries.mjs`, and drop the `@vercel/blob`
+devDependency. Vercel Blob is then gone from the project entirely.
 
 If migration has already run, verify rather than repeat — check the document
 count in the Firestore console against the record count in your export.
@@ -593,9 +593,10 @@ reaches a fresh token.
 **Listing reviews fails with a console link** — the composite indexes were not
 deployed. `firebase deploy --only firestore`.
 
-**Itinerary images still inline** — expected while the legacy password path is
-in use; there is no signed-in Firebase account to attribute the upload to. Sign
-in with Google.
+**Photograph upload refused** — `storage.rules` wants the `admin` custom claim
+on a signed-in Firebase account. Confirm the staff member has been granted
+access (§5) and has signed out and back in since, so their token carries the
+claim.
 
 **Every page returns 500 in production, with `ERR_REQUIRE_ESM` naming
 `jwks-rsa` and `jose` in the runtime log** — the deployment is running below
@@ -660,13 +661,12 @@ view to another.
 | `lib/firebase/client.ts` | Browser SDK — sign-in and Storage uploads only |
 | `lib/firebase/collections.ts` | Collection and Storage path names |
 | `lib/admin/auth.ts` | The single authorisation point |
-| `lib/itineraries/repository.ts` | Firestore-or-blob facade |
+| `lib/itineraries/firestoreStore.ts` | Itineraries in Firestore — the only store |
 | `lib/tourRequests/store.ts` | Enquiries: create, get, revise, list |
 | `lib/reviews/store.ts` | Invites, photo limits, redemption, moderation |
 | `firestore.rules` / `storage.rules` | Security rules |
 | `firestore.indexes.json` | Composite indexes |
 | `scripts/grant-admin.mjs` | Grant and revoke staff access |
-| `scripts/migrate-itineraries.mjs` | Blob → Firestore migration |
+| `scripts/migrate-itineraries.mjs` | One-off Blob → Firestore migration; delete once run |
 | `app/api/admin/firebase-status/route.ts` | The connectivity probe |
 | `docs/FIREBASE_SETUP_CHECKLIST.md` | The same steps, as a checklist |
-| `handoff.md` | Why each decision was made, and what is unproven |

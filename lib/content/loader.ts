@@ -11,6 +11,7 @@ import type {
   Testimonials,
   Navigation,
   Seo,
+  Faq,
 } from "./schema";
 
 type ContentMap = {
@@ -22,6 +23,7 @@ type ContentMap = {
   testimonials: Testimonials;
   navigation: Navigation;
   seo: Seo;
+  faq: Faq;
 };
 
 const loaders: { [K in keyof ContentMap]: (locale: Locale) => Promise<unknown> } = {
@@ -33,6 +35,7 @@ const loaders: { [K in keyof ContentMap]: (locale: Locale) => Promise<unknown> }
   testimonials: (locale) => import(`@/content/${locale}/testimonials.json`).then((m) => m.default),
   navigation: (locale) => import(`@/content/${locale}/navigation.json`).then((m) => m.default),
   seo: (locale) => import(`@/content/${locale}/seo.json`).then((m) => m.default),
+  faq: (locale) => import(`@/content/${locale}/faq.json`).then((m) => m.default),
 };
 
 export async function getContent<K extends keyof ContentMap>(
@@ -53,7 +56,7 @@ export async function getContent<K extends keyof ContentMap>(
 
 /**
  * Destination content names its photographs before they exist (see
- * `public/images/destinations/README.md`): anything not yet supplied falls back
+ * `docs/photography.md`): anything not yet supplied falls back
  * to the shared placeholder, and unsupplied gallery frames are dropped, so a
  * half-photographed destination still renders as a finished page.
  */
@@ -69,7 +72,7 @@ function withResolvedImages(destinations: Destination[]): Destination[] {
 /**
  * The same arrangement for the prebuilt itineraries: every "what you might
  * see" highlight names its photograph up front (see
- * `public/images/highlights/README.md`), and a highlight whose photograph has
+ * `docs/photography.md`), and a highlight whose photograph has
  * not been supplied yet simply renders without one.
  */
 function withResolvedExperienceImages(experiences: Experience[]): Experience[] {

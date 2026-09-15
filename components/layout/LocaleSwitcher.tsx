@@ -25,6 +25,13 @@ const localeCountries: Record<Locale, { name: string; iso: string }> = {
 
 function FlagIcon({ iso, className }: { iso: string; className?: string }) {
   return (
+    /* Deliberately a plain `img`. This is a decorative 14–32px SVG from a
+       third-party CDN: `next/image` cannot resize an SVG, would need
+       flagcdn.com added to `remotePatterns`, and would put an optimiser
+       round-trip in front of a file smaller than the request for it. It is
+       `aria-hidden` and never the LCP element, which is what the rule is
+       guarding against. */
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={`https://flagcdn.com/${iso}.svg`}
       alt=""

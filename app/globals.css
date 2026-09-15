@@ -74,3 +74,84 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   PRINT
+
+   Someone printing a page here is almost always printing one itinerary to
+   take with them or to hand to a travelling companion. So the goal is the
+   words and the route, on as few sheets as possible — not a facsimile of the
+   screen.
+
+   `next/image` renders into a positioned wrapper with `fill`, which collapses
+   to nothing in print unless the height is released; that is what the block
+   below the colour reset is for. Photographs are kept rather than dropped,
+   because on a destination page they are a lot of why the page is worth
+   printing at all — but they are capped so one does not take a whole sheet.
+--------------------------------------------------------------------------- */
+@media print {
+  /* Ink, not screen colour. Backgrounds print as white by default anyway;
+     forcing text to black makes the mid-greys legible on a cheap printer. */
+  :root {
+    --color-warm-white: #ffffff;
+    --color-charcoal: #000000;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+  }
+
+  /* Navigation, calls to action and the scroll affordances are all noise on
+     paper: nothing here can be clicked. Individual components opt in with
+     `print:hidden`; these cover the shared furniture. */
+  header,
+  footer,
+  nav,
+  [role="dialog"] {
+    display: none !important;
+  }
+
+  /* Reveal anything framer-motion left mid-animation. Sections animate in on
+     scroll, so a page printed before they entered the viewport would
+     otherwise print blank — this is the one rule that has to be universal.
+
+     `transform` is deliberately NOT reset with it: framer-motion's offset is
+     a few pixels and harmless on paper, whereas clearing every transform
+     would also undo the translate-based centring used throughout the layout
+     and push that content off its axis. */
+  * {
+    opacity: 1 !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* `next/image` with `fill` needs a real height once position is static. */
+  img {
+    max-height: 9cm;
+    object-fit: contain !important;
+    page-break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  li,
+  figure,
+  blockquote {
+    page-break-inside: avoid;
+  }
+
+  /* A printed page has no address bar, so an external link's destination is
+     otherwise lost. Internal and anchor links are left alone — their hrefs
+     are relative and would print as noise. */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    word-break: break-all;
+  }
+}

@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils/cn";
-import { blobItineraryStore } from "@/lib/itineraries/store";
+import { itineraryStore } from "@/lib/itineraries/store";
 import { useItineraries } from "@/lib/itineraries/useItineraries";
 import type { ItineraryRecord } from "@/lib/itineraries/types";
 import { AdminSignIn } from "./AdminSignIn";
@@ -43,7 +43,7 @@ export function AdminApp({ initiallySignedIn = false }: { initiallySignedIn?: bo
 
   const save = useCallback(
     async (record: ItineraryRecord) => {
-      await blobItineraryStore.save(record);
+      await itineraryStore.save(record);
       refresh();
       setEditing(null);
       setAdding(false);
@@ -126,7 +126,7 @@ export function AdminApp({ initiallySignedIn = false }: { initiallySignedIn?: bo
                 onToggleHidden={(record) => void save({ ...record, hidden: !record.hidden })}
                 onDelete={(record) => {
                   if (!window.confirm(`Delete “${record.head}”? This cannot be undone.`)) return;
-                  void blobItineraryStore.remove(record.id).then(refresh);
+                  void itineraryStore.remove(record.id).then(refresh);
                 }}
               />
             ))}

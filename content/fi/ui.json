@@ -9,6 +9,21 @@
     "close": "Sulje",
     "language": "Kieli"
   },
+  "search": {
+    "open": "Haku",
+    "title": "Hae sivustolta",
+    "placeholder": "Hae matkoja, paikkoja, eläimiä…",
+    "empty": "Ei osumia. Kokeile paikkaa tai lajia.",
+    "error": "Haku ei ole juuri nyt käytettävissä. Selaa valikon avulla.",
+    "loading": "Ladataan…",
+    "close": "Sulje",
+    "groups": {
+      "tour": "Matka",
+      "destination": "Paikka",
+      "activity": "Aktiviteetti",
+      "page": "Sivu"
+    }
+  },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Tavanomaisen",
@@ -351,5 +366,20 @@
     "errorPhotoType": "Valokuvien on oltava JPEG, PNG tai WebP.",
     "errorNetwork": "Palvelimeen ei saatu yhteyttä. Tarkista yhteytesi ja yritä uudelleen.",
     "errorGeneric": "Lähetys ei onnistunut. Yritä uudelleen."
+  },
+  "faq": {
+    "eyebrow": "Hyvä tietää",
+    "title": "Usein kysytyt kysymykset"
+  },
+  "newsletter": {
+    "title": "Kenttämuistiinpanoja",
+    "body": "Satunnaisia viestejä siitä, mitä puistoissa ja metsissä on nähty ja milloin kannattaa tulla. Korkeintaan muutaman kerran vuodessa.",
+    "placeholder": "Sähköpostiosoitteesi",
+    "submit": "Tilaa",
+    "sending": "Lähetetään…",
+    "success": "Olet listalla. Odota ensimmäistä viestiä.",
+    "invalid": "Tuo ei näytä sähköpostiosoitteelta. Tarkista se ja yritä uudelleen.",
+    "failed": "Tilaus ei ole juuri nyt mahdollista. Yritä myöhemmin uudelleen.",
+    "honeypot": "Yritys (jätä tämä tyhjäksi)"
   }
 }

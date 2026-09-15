@@ -1,21 +1,25 @@
 import "server-only";
 import { requireFirebase } from "@/lib/firebase/admin";
 import { COLLECTIONS } from "@/lib/firebase/collections";
-import { SCHEMA_VERSION, itineraryRecordSchema, type ItineraryRecord } from "./types";
+import {
+  SCHEMA_VERSION,
+  itineraryRecordSchema,
+  type ItineraryArchive,
+  type ItineraryRecord,
+} from "./types";
 
 /**
- * Itineraries as one Firestore document each.
+ * Itineraries as one Firestore document each. The only store there is.
  *
- * The blob archive this replaces kept every record in a single JSON file, so
- * saving one itinerary meant reading the whole file, changing one entry and
- * writing it all back. With two admins editing at once, the second write
- * silently discarded the first — a real bug, not a theoretical one. Writing
- * one document at a time removes the race entirely: two people editing
- * different itineraries no longer touch the same bytes.
+ * This file used to sit behind a `repository.ts` that chose between Firestore
+ * and an older single-JSON-file archive on Vercel Blob. The choice is gone:
+ * Firestore is the one source of truth, so the indirection was a layer that
+ * only ever forwarded. Route handlers call these functions directly.
  *
- * The record shape is unchanged (`./types.ts`), including the per-locale
- * `translations` map, so `toExperience.ts`, the admin form and the wizard did
- * not have to change.
+ * One document per record, rather than one file holding all of them, is what
+ * removes the write race: with a single JSON file, two admins editing
+ * different itineraries at the same time meant the second write silently
+ * discarded the first.
  */
 
 function collection() {
@@ -113,6 +117,19 @@ export async function writeAll(
 
   await batch.commit();
   return written;
+}
+
+/**
+ * Every record wrapped in the envelope the admin export and the client store
+ * expect. `exportedAt` is stamped now because the export *is* now — the
+ * records carry their own `updatedAt`.
+ */
+export async function readArchiveEnvelope(): Promise<ItineraryArchive> {
+  return {
+    schemaVersion: SCHEMA_VERSION,
+    exportedAt: new Date().toISOString(),
+    records: await listRecords(),
+  };
 }
 
 export { SCHEMA_VERSION };

@@ -7,7 +7,7 @@
  * makes that a compile error instead.
  */
 export const COLLECTIONS = {
-  /** One document per itinerary; replaces the single Vercel Blob archive. */
+  /** One document per itinerary. */
   itineraries: "itineraries",
   /** Custom tour enquiries, with a `revisions` subcollection per document. */
   tourRequests: "tourRequests",
@@ -17,6 +17,8 @@ export const COLLECTIONS = {
   reviews: "reviews",
   /** The admin allowlist: which email addresses may sign in to the panel. */
   staff: "staff",
+  /** Newsletter sign-ups, keyed by the subscriber's own email address. */
+  newsletterSubscribers: "newsletterSubscribers",
 } as const;
 
 export type CollectionName = (typeof COLLECTIONS)[keyof typeof COLLECTIONS];
