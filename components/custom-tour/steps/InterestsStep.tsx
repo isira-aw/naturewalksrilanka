@@ -26,6 +26,9 @@ export function InterestsStep({
   onToggleExperience: (slug: string) => void;
 }) {
   const t = useTranslations("customTour");
+  /* The lightbox strings are shared with the testimonials, so they live in
+     their own namespace rather than in this step's. */
+  const g = useTranslations("gallery");
   const matching = experiences.filter((experience) => value.includes(experience.category));
 
   return (
@@ -88,9 +91,9 @@ export function InterestsStep({
             bestTime: t("suggestionsBestTime"),
             duration: t("suggestionsDuration"),
             highlights: t("suggestionsHighlights"),
-            gallery: t("galleryLabel"),
-            galleryPrevious: t("galleryPrevious"),
-            galleryNext: t("galleryNext"),
+            gallery: g("label"),
+            galleryPrevious: g("previous"),
+            galleryNext: g("next"),
           }}
         />
       </div>

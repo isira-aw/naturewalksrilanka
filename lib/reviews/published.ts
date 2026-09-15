@@ -34,6 +34,10 @@ export async function publishedTestimonials(
         country: review.country,
         quote: review.quote,
         rating: review.rating,
+        /* The photographs the traveller sent with their words. They are the
+           reason the review is worth reading twice, and the slider shows
+           them — so they have to survive the trip out of Firestore. */
+        photos: review.photos.map((photo) => photo.url),
       }));
 
     return { ...fromContent, items: [...items, ...fromContent.items] };

@@ -5,10 +5,11 @@ import { z } from "zod";
  * one.
  *
  * The shape of this feature is set by a single decision: a review can only
- * be written by somebody the team invited, and the team only invites people
- * whose trip actually happened. That makes spam structurally impossible
- * rather than something to filter, and it means moderation is a quality
- * gate — is this useful to publish — rather than a defence.
+ * be written by somebody the team invited. Every link is made by hand — from
+ * an enquiry, or from nothing at all for a traveller the team met some other
+ * way — so spam is structurally impossible rather than something to filter,
+ * and moderation is a quality gate — is this useful to publish — rather than
+ * a defence.
  */
 
 export const REVIEW_STATUSES = ["pending", "approved", "rejected"] as const;
@@ -29,10 +30,22 @@ export const ACCEPTED_PHOTO_TYPES = ["image/jpeg", "image/png", "image/webp"] as
  */
 export const reviewInviteSchema = z.object({
   token: z.string().min(32),
-  /** The enquiry this review is about. */
-  reference: z.string().min(1),
-  email: z.string().email(),
-  name: z.string(),
+  /**
+   * The enquiry this review is about, when the link was made from one, and
+   * the traveller's own details copied from it.
+   *
+   * All three are empty on a link made by hand. The team meets travellers who
+   * never filled the form in — an agent's group, a repeat guest, somebody met
+   * on the trail — and asking them to produce an enquiry first, or handing
+   * over an email address to be matched against, would cost the review. The
+   * token is the whole credential either way; nothing here is checked against
+   * what the person leaving the review types.
+   */
+  reference: z.string().min(1).nullable().default(null),
+  email: z.string().email().nullable().default(null),
+  name: z.string().default(""),
+  /** What the team typed to remember who a hand-made link was for. */
+  label: z.string().default(""),
   locale: z.string(),
   createdAt: z.string(),
   expiresAt: z.string(),
@@ -61,7 +74,8 @@ export type ReviewPhoto = z.infer<typeof reviewPhotoSchema>;
 
 export const reviewSchema = z.object({
   id: z.string().min(1),
-  reference: z.string().min(1),
+  /** The enquiry, when the invitation came from one. */
+  reference: z.string().min(1).nullable().default(null),
   author: z.string().min(1),
   country: z.string().optional(),
   /** Whole stars only: half stars invite deliberation nobody wants to give. */

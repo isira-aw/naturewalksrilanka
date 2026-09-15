@@ -5,12 +5,14 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
+import { publishedTestimonials } from "@/lib/reviews/published";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { PageHero } from "@/components/ui/PageHero";
 import { Kicker, Rise } from "@/components/ui/motion";
 import { NandanaStory } from "@/components/nandana/NandanaStory";
 import { WhyNandana } from "@/components/nandana/WhyNandana";
 import { ConservationNote } from "@/components/nandana/ConservationNote";
+import { VoicesSlider } from "@/components/home/VoicesSlider";
 import { PlanCta } from "@/components/whatsapp/PlanCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildPersonJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/jsonld";
@@ -43,12 +45,18 @@ export default async function AboutNandanaPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, tCommon, profile, navigation] = await Promise.all([
+  const [t, tCommon, profile, navigation, testimonials] = await Promise.all([
     getTranslations({ locale: l }),
     getTranslations({ locale: l, namespace: "common" }),
     getContent(l, "profile"),
     getContent(l, "navigation"),
+    getContent(l, "testimonials"),
   ]);
+
+  /* The same voices the home page shows. A traveller who has read this far is
+     deciding whether to trust one particular guide, which is exactly when
+     somebody else's account of travelling with him is worth reading. */
+  const voices = await publishedTestimonials(testimonials, l);
 
   const whyPoints = t.raw("nandana.whyPoints") as { title: string; description: string }[];
   // profile.stats is authored as [Years Guiding, Languages, His Home] in every locale.
@@ -123,6 +131,23 @@ export default async function AboutNandanaPage({
           quote: t("conservation.quote"),
         }}
       />
+
+      {voices.items.length > 0 && (
+        <VoicesSlider
+          testimonials={voices}
+          labels={{
+            eyebrow: t("testimonials.eyebrow"),
+            title: t("testimonials.title"),
+            emptyState: t("testimonials.emptyState"),
+            gallery: {
+              label: t("gallery.label"),
+              close: t("gallery.close"),
+              previous: t("gallery.previous"),
+              next: t("gallery.next"),
+            },
+          }}
+        />
+      )}
 
       <PlanCta
         whatsappNumber={navigation.contact.whatsappNumber}

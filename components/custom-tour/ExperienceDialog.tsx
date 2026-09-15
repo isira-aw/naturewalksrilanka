@@ -294,7 +294,7 @@ export function ExperienceDialog({
         images={gallery}
         index={viewing}
         labels={{
-          gallery: labels.gallery,
+          label: labels.gallery,
           close: labels.close,
           previous: labels.galleryPrevious,
           next: labels.galleryNext,

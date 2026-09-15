@@ -15,7 +15,7 @@ export type LightboxImage = {
 
 export type LightboxLabels = {
   /** Names the dialog for a screen reader, e.g. "Photographs". */
-  gallery: string;
+  label: string;
   close: string;
   previous: string;
   next: string;
@@ -87,7 +87,7 @@ export function Lightbox({
         <motion.div
           role="dialog"
           aria-modal="true"
-          aria-label={labels.gallery}
+          aria-label={labels.label}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

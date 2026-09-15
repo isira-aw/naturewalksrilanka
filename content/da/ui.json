@@ -154,9 +154,6 @@
     "suggestionsBestTime": "Bedste årstid",
     "suggestionsDuration": "Foreslået længde",
     "suggestionsHighlights": "Det kan du se",
-    "galleryLabel": "Billeder",
-    "galleryPrevious": "Forrige billede",
-    "galleryNext": "Næste billede",
     "accommodationLabel": "Foretrukken type overnatning",
     "accommodationHint": "Vælg en eller flere typer, eller lad os anbefale noget for hvert stop.",
     "accommodation": {
@@ -275,6 +272,12 @@
     "privacy": "Privatlivspolitik",
     "terms": "Vilkår",
     "rights": "Alle rettigheder forbeholdes."
+  },
+  "gallery": {
+    "label": "Billeder",
+    "close": "Luk",
+    "previous": "Forrige billede",
+    "next": "Næste billede"
   },
   "common": {
     "addressLabel": "Adresse",
