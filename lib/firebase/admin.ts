@@ -2,18 +2,21 @@ import "server-only";
 import { cert, getApp, getApps, initializeApp, type App } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
-import { getStorage } from "firebase-admin/storage";
 
 /**
  * Firebase on the server, via the Admin SDK.
  *
  * This is the only door to Firestore. The browser SDK is used for signing in
- * and for uploading files, and never for reading or writing documents — every
- * document access goes through a route handler that runs this code. That is
- * why `firestore.rules` denies client access outright: with no client reads
- * or writes to allow, there are no per-collection rules to get subtly wrong,
- * and the Admin SDK bypasses rules by design. Authorisation lives in the
- * route handlers instead, where it can be read in one place.
+ * and nothing else — every document access goes through a route handler that
+ * runs this code. That is why `firestore.rules` denies client access
+ * outright: with no client reads or writes to allow, there are no
+ * per-collection rules to get subtly wrong, and the Admin SDK bypasses rules
+ * by design. Authorisation lives in the route handlers instead, where it can
+ * be read in one place.
+ *
+ * Firebase holds no files. Photographs live on Cloudinary — see
+ * `lib/cloudinary/` — so there is no Storage accessor here and no bucket to
+ * configure.
  *
  * Nothing here throws at import time. The site has to keep building and
  * serving while the migration is only part-done, so an unconfigured
@@ -64,7 +67,6 @@ function app(): App | null {
         clientEmail: process.env[CLIENT_EMAIL],
         privateKey: privateKey(),
       }),
-      storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
     },
     APP_NAME,
   );
@@ -80,22 +82,16 @@ export function adminDb() {
   return instance ? getFirestore(instance) : null;
 }
 
-export function adminStorage() {
-  const instance = app();
-  return instance ? getStorage(instance) : null;
-}
-
 /**
- * The same three accessors for code that cannot carry on without Firebase —
- * a route handler that exists only to read Firestore, say. Throws with a
+ * The same two accessors for code that cannot carry on without Firebase — a
+ * route handler that exists only to read Firestore, say. Throws with a
  * message naming the missing variables rather than failing later on a null.
  */
 export function requireFirebase() {
   const auth = adminAuth();
   const db = adminDb();
-  const storage = adminStorage();
-  if (!auth || !db || !storage) {
+  if (!auth || !db) {
     throw new Error(`Firebase is not configured: ${missingAdminEnv().join(", ")} not set.`);
   }
-  return { auth, db, storage };
+  return { auth, db };
 }

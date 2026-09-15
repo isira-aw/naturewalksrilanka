@@ -152,7 +152,7 @@ export function ReviewsPanel() {
                          just the words. */
                       /* eslint-disable-next-line @next/next/no-img-element */
                       <img
-                        key={photo.path}
+                        key={photo.url}
                         src={photo.url}
                         alt=""
                         className="h-28 w-36 rounded-xl border border-stone-dark object-cover"

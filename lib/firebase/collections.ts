@@ -26,9 +26,5 @@ export type CollectionName = (typeof COLLECTIONS)[keyof typeof COLLECTIONS];
 /** Revisions hang off a request, so the history cannot outlive its parent. */
 export const REVISIONS_SUBCOLLECTION = "revisions";
 
-/** Where uploads live in the Storage bucket. Mirrors `storage.rules`. */
-export const STORAGE_PATHS = {
-  itineraryImage: (itineraryId: string, fileName: string) =>
-    `itineraries/${itineraryId}/${fileName}`,
-  reviewPhoto: (reviewId: string, fileName: string) => `reviews/${reviewId}/${fileName}`,
-} as const;
+/* Files are not Firebase's job. Photographs live on Cloudinary; the folders
+   they are filed under are `CLOUDINARY_FOLDERS` in `lib/cloudinary/config.ts`. */
