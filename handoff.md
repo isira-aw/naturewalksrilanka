@@ -1,13 +1,17 @@
 # Handoff — production cleanup, Firebase consolidation, launch polish
 
-Branch: `claude/loving-dijkstra-r1ywj1` · six commits ahead of `main` (`c8ef996`)
-· 87 files, +2798 / −2217.
+Branch: `claude/optimistic-johnson-9dsryd` · four commits ahead of `main`
+(`c3150ea`) · 35 files, +924 / −987.
+
+The previous round of this work merged as **#25**. What follows describes the
+whole effort; the *This round* section below is what is new since that merge.
 
 > **This file is temporary.** A previous `handoff.md` was deleted in `2e25aa2`
 > because it had grown into a 967-line log of a migration that had already
 > merged, and every live fact in it was duplicated in `docs/`. Do not let this
-> one go the same way. When the two open items under **Next steps** are closed,
-> fold anything still true into `README.md` or `docs/` and delete this file.
+> one go the same way. When Firebase is connected and the items under **Known
+> issues** are closed, fold anything still true into `README.md` or `docs/`
+> and delete this file.
 
 ---
 
@@ -19,7 +23,8 @@ Take a finished UI to a launchable production site, in four passes:
    dependencies, no duplicated logic.
 2. **One architecture** — Next.js → Firebase (Auth, Firestore, Storage) →
    Vercel. Exactly one authentication method, one database, one file store.
-   No offline, mock or password fallbacks anywhere in the application.
+   No offline, mock or password fallbacks anywhere in the application, and
+   no third-party host in the request path for anything a page needs.
 3. **Launch readiness** — SEO for `https://naturewalksrilanka.com/`, the
    critical Next.js security patch, and the UI polish a visitor notices.
 4. **Never guess** — no invented prices, policies, verification codes or
@@ -45,6 +50,7 @@ anywhere on the site.
 | Data | Firestore only |
 | Files | Firebase Storage only |
 | Deployment | Vercel only |
+| Third-party hosts | None on any page. Fonts are self-hosted by `next/font`, flags are local. The journey-plan map is the one exception — see *Known issues* |
 
 **One thing blocks calling this production-ready:**
 
@@ -147,6 +153,94 @@ Load-bearing files to understand before changing anything:
 
 ---
 
+## This round (branch `claude/optimistic-johnson-9dsryd`)
+
+Four commits on top of #25. Every architectural decision was re-checked
+against the code before anything was changed, and each row held: admin auth
+(Google sign-in, `admin` claim **and** `staff` document), traveller auth
+(email link only), Firestore-per-itinerary, Storage URLs, deny-all client
+rules, one `SITE_URL`, one `buildPageMetadata`, client-side search over a
+fetched index, native `<details>` FAQ, email-as-document-id newsletter, and
+the two 404s. No competing implementation survived anywhere.
+
+### Removed
+
+- `lib/motion.ts` — a second set of framer-motion variants nothing imported.
+  `components/ui/motion.tsx` is the vocabulary the site actually uses. This
+  was the last genuine duplicate implementation in the repository.
+- `components/custom-tour/CustomTourTeaser.tsx` — unreferenced component.
+- `getRecord`, `isItineraryCategory`, `isProvince`, `JOURNEY_START` and
+  `itineraryStore.get` — exported, never called.
+- **Vercel Blob, entirely.** The owner confirmed the archive held no data, so
+  the migration CLI, the npm dependency and its access token are gone. This
+  closes what was previously the branch's headline blocker.
+- **flagcdn.com**, the only third-party host in any page's request path.
+
+### Renamed
+
+`lib/reviews/` and `lib/tourRequests/` both use `store.ts` for the
+server-side Firestore access; `lib/itineraries/` had that in
+`firestoreStore.ts` and used `store.ts` for the browser's fetch wrapper,
+which inverted the convention. Now:
+
+    firestoreStore.ts -> store.ts        (server, Firestore)
+    store.ts          -> browserStore.ts (browser, wraps the routes)
+
+### Added
+
+- `public/images/flags/` — the five language-switcher flags, vendored from
+  the MIT-licensed flag-icons package and served from this origin. No npm
+  dependency was added; `LICENSE.txt` sits beside them as MIT requires.
+- `app/icon.svg` and a regenerated `app/favicon.ico`. The favicon was still
+  the create-next-app default.
+
+---
+
+## Known issues
+
+Found by review this round, **not yet fixed**, roughly in priority order.
+
+### 1. The privacy policy contradicts the code
+
+`app/[locale]/privacy/page.tsx` says the site "does not run a server-side
+database of visitor or customer information" and that enquiry details are
+"not stored on, or transmitted through, a server or database operated by
+this website". Both are false: `WizardShell.handleSent()` POSTs to
+`/api/custom-tour/requests`, which writes name, email, phone, country and
+requirements to Firestore. Newsletter sign-ups and reviews store personal
+data too.
+
+The "placeholder pending legal review" banner does not cure an affirmative
+false statement, and the site is sold into four EU markets. Correcting it
+needs business facts nobody here can invent — retention, legal basis,
+controller, data-subject rights — so it needs Nandana and, ideally, a
+lawyer. The factual half (what the code stores) is written down above.
+
+### 2. The enquiry endpoint is unauthenticated and unbounded
+
+`POST /api/custom-tour/requests` has no auth, no rate limit and no honeypot,
+and `requestPayloadSchema` puts no `.max()` on `name`, `requirements` or
+`accommodationNotes`. One request can push roughly a megabyte into
+Firestore, and nothing stops a loop. The newsletter route already has the
+honeypot pattern to copy. This is the cheapest real fix on the list.
+
+### 3. Smaller items
+
+- **No Content-Security-Policy.** HSTS, `nosniff` and `Referrer-Policy` are
+  set in `next.config.ts`; CSP is not.
+- **`app/sitemap.ts` sends `lastModified: new Date()`** for every URL on
+  every request, so the signal is always "just changed" and search engines
+  discount it. The content files carry no timestamps, so the honest fix is
+  to omit the field.
+- **The journey-plan map** (`components/custom-tour/steps/journey-plan/RouteMap.tsx`)
+  fetches tiles from `tile.openstreetmap.org`. It is now the only
+  third-party runtime service left, and it is easy to miss because the map
+  is dynamically imported and only renders deep inside the wizard.
+- **`lib/ai/translateItinerary.ts` pins `gemini-3.6-flash`.** Worth
+  confirming that id is current; it has never run against a real key.
+
+---
+
 ## Failed attempts
 
 Four things that went wrong. Three were caught; all four are worth knowing.
@@ -200,6 +294,36 @@ the hidden mobile sticky bar, so clicks did nothing and the wizard looked
 stuck. It was the selector, not the wizard. Worth remembering when this site's
 duplicated responsive controls are under test: **filter by visibility first.**
 
+### 5. An XML comment may not contain two consecutive hyphens
+
+Documenting `app/icon.svg` with a reference to a CSS custom property put a
+literal double hyphen inside an SVG `<!-- -->` block, which is illegal XML.
+An SVG served as `image/svg+xml` is parsed strictly, so the browser would
+have refused to render the icon at all. `tsc`, `eslint` and `next build` were
+all perfectly happy; it was caught by parsing the file.
+
+**Rule:** after editing any `.svg`, parse it. One line does it:
+`python3 -c "import xml.dom.minidom;xml.dom.minidom.parse('app/icon.svg')"`.
+
+### 6. `pkill -f "next start"` does not stop the server
+
+The process is called `next-server`, so that pattern matches the npm wrapper
+and leaves the server running. A stale one then keeps answering on port 3000
+from an **old build** — which looked exactly like a new route 404ing. Worse,
+`pgrep -f next-server` matches the shell command that contains that string,
+so it reports a phantom process and `pkill -9 -f` kills the shell.
+
+**Rule:** find it by what is listening, or read `/proc/*/cmdline` and skip
+your own PID. Confirm with a request before trusting a verification run.
+
+### 7. `grep -- "$pattern" . --exclude-dir=…` silently searches everything
+
+`--` ends option parsing, so every `--exclude-dir` after it became a filename
+instead of an exclusion. The result was a confident report of Vercel Blob
+references that were really matches inside `node_modules` and `.next`.
+
+**Rule:** for "is it gone", use `git grep`, which only sees tracked files.
+
 ---
 
 ## Next steps
@@ -222,17 +346,24 @@ it uses the same service account and touches both Auth and Firestore.
   recommendation is to leave them: `firebase-admin` is what pins Node 22 and
   the `jose` override, both of which have taken the site down before. The fix
   currently carries more risk than the bugs.
-- **Pull request.** None opened. The branch is pushed.
+- **Analytics still governs the cookie-banner question**, and the privacy
+  policy has to be corrected either way — see *Known issues* §1.
 
-### 3. Content still required before launch
+### 3. Fixes identified but not made
+
+The four items under *Known issues* above. §2 (bounding and rate-limiting the
+enquiry endpoint) is small, self-contained and the obvious next commit; §1
+needs business facts from Nandana before a line of it can be written.
+
+### 4. Content still required before launch
 
 - **FAQ** — "what is included in the price" and "how and when do I pay" carry
   `contentRequired: true` in `content/<locale>/faq.json` and do not render.
   Only Nandana can answer them.
-- **Privacy policy** — now materially wrong. It says the site runs no
-  server-side database of visitor information; that was already untrue for
-  enquiries and reviews, and is now also untrue for newsletter sign-ups. It is
-  marked as pending legal review — update it before launch.
+- **Privacy policy** — materially wrong, and the most serious thing on this
+  list. See *Known issues* §1 for exactly which sentences are false and what
+  the code actually stores. Only Nandana, with legal advice, can supply the
+  rest.
 - **Search Console and Bing verification codes** — `docs/seo.md` has the
   step-by-step.
 - **Native-speaker review** of the Dutch, Spanish, Danish and Finnish copy,
