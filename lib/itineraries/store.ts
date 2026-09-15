@@ -11,10 +11,9 @@ import {
 /**
  * Itineraries as one Firestore document each. The only store there is.
  *
- * This file used to sit behind a `repository.ts` that chose between Firestore
- * and an older single-JSON-file archive on Vercel Blob. The choice is gone:
- * Firestore is the one source of truth, so the indirection was a layer that
- * only ever forwarded. Route handlers call these functions directly.
+ * Firestore is the one source of truth. There is no second backend and no
+ * runtime choice to make, so there is no indirection here either — route
+ * handlers call these functions directly.
  *
  * Named `store.ts` to match `lib/reviews/store.ts` and
  * `lib/tourRequests/store.ts` — in this repository a `store.ts` is always the

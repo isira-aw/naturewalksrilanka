@@ -14,9 +14,8 @@
  * full every time. Shrinking the source is the fix; the optimiser then has
  * far less to do and its output is the same to the eye.
  *
- * Dry run by default, like `migrate-itineraries.mjs`, because re-encoding is
- * lossy and overwrites the only copy in the repository. Read the numbers,
- * then pass `--commit`.
+ * Dry run by default, because re-encoding is lossy and overwrites the only
+ * copy in the repository. Read the numbers, then pass `--commit`.
  *
  *   node scripts/optimize-images.mjs            # report only
  *   node scripts/optimize-images.mjs --commit   # rewrite files and manifest

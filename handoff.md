@@ -19,7 +19,7 @@ Take a finished UI to a launchable production site, in four passes:
    dependencies, no duplicated logic.
 2. **One architecture** — Next.js → Firebase (Auth, Firestore, Storage) →
    Vercel. Exactly one authentication method, one database, one file store.
-   No offline, mock, password or Blob fallbacks anywhere in the application.
+   No offline, mock or password fallbacks anywhere in the application.
 3. **Launch readiness** — SEO for `https://naturewalksrilanka.com/`, the
    critical Next.js security patch, and the UI polish a visitor notices.
 4. **Never guess** — no invented prices, policies, verification codes or
@@ -46,11 +46,9 @@ anywhere on the site.
 | Files | Firebase Storage only |
 | Deployment | Vercel only |
 
-**Two things block calling this production-ready:**
+**One thing blocks calling this production-ready:**
 
-1. The **itinerary migration has not run** and its status is unknown. See
-   Next steps.
-2. **No Firebase project has ever been connected.** Every Firebase code path
+1. **No Firebase project has ever been connected.** Every Firebase code path
    in this repository is still unproven against a real project. Since admin
    sign-in is now Firebase-only, the panel cannot be opened at all until the
    project exists — `docs/FIREBASE_SETUP_CHECKLIST.md` is the order to do it
@@ -92,7 +90,6 @@ Load-bearing files to understand before changing anything:
 | `lib/itineraries/store.ts` | The only itinerary store (Firestore). Route handlers call it directly. The browser's fetch wrapper is `browserStore.ts` |
 | `firestore.rules` | Denies all client access on purpose — everything goes through route handlers |
 | `storage.rules` | Real logic, not a formality: uploads genuinely go direct from the browser |
-| `scripts/migrate-itineraries.mjs` | The only way to get data out of the old Blob archive. **Do not delete until the migration is confirmed** |
 | `package.json` → `overrides` | Pins `jwks-rsa`'s `jose` to 5.x. Removing it takes the whole site down on Node 20 |
 
 ---
@@ -106,10 +103,11 @@ Load-bearing files to understand before changing anything:
   branch in the session route. `ADMIN_EMAIL` / `ADMIN_PASSWORD` /
   `ADMIN_SESSION_SECRET` are gone. **Delete them from Vercel too** — nothing
   reads them, and a live secret nobody uses is a secret nobody rotates.
-- **Vercel Blob as a data source** — `lib/itineraries/blobArchive.ts` and the
-  `repository.ts` that chose between it and Firestore at runtime. Route
-  handlers now call Firestore directly. `@vercel/blob` moved to
-  `devDependencies`; only the migration script imports it.
+- **The second data source, entirely** — the archive module and the
+  `repository.ts` that chose between it and Firestore at runtime, then its
+  one-off migration CLI, its npm dependency and its access token. Confirmed
+  by the owner to hold no data. Firestore is the only store; route handlers
+  call it directly.
 - **The base64 image fallback** — uploads that cannot reach Storage now throw a
   message the admin form shows, instead of silently reinflating the itinerary
   JSON every custom-tour visitor downloads.
@@ -206,45 +204,14 @@ duplicated responsive controls are under test: **filter by visibility first.**
 
 ## Next steps
 
-### 1. The itinerary migration — the blocker
-
-**Unknown and unverifiable from here.** This environment has no credentials, so
-the dry run cannot be attempted:
-
-```
-$ node scripts/migrate-itineraries.mjs
-Missing environment variables: FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL,
-FIREBASE_PRIVATE_KEY, FIREBASE_STORAGE_BUCKET, BLOB_READ_WRITE_TOKEN
-```
-
-The application no longer reads Vercel Blob. **If `itineraries/archive.json`
-still holds live itineraries, deploying this branch serves an empty list to the
-custom-tour wizard.** Before deploying:
-
-```bash
-# Dry run. Writes nothing, uploads nothing, deletes nothing.
-node --env-file=.env scripts/migrate-itineraries.mjs
-
-# Read the counts, then:
-node --env-file=.env scripts/migrate-itineraries.mjs --commit
-```
-
-It is safe to re-run — records are written by id, and images already stored as
-`https://` URLs are skipped. It never deletes the archive.
-
-Once the admin list, the custom-tour page and the photographs all check out:
-delete the `itineraries/archive.json` blob by hand, delete
-`scripts/migrate-itineraries.mjs`, and drop the `@vercel/blob`
-devDependency and `BLOB_READ_WRITE_TOKEN`. Vercel Blob is then gone entirely.
-
-### 2. Connect Firebase
+### 1. Connect Firebase
 
 `docs/FIREBASE_SETUP_CHECKLIST.md`, in order. Note the bootstrap: there is no
 password to sign in with any more, so the **first admin is granted from the
 command line**, and `scripts/grant-admin.mjs` doubles as the credential test —
 it uses the same service account and touches both Auth and Firestore.
 
-### 3. Decisions outstanding
+### 2. Decisions outstanding
 
 - **Analytics provider.** Requested, but not named. It changes the work:
   Plausible or Vercel Analytics are cookieless, so no consent banner is needed
@@ -257,7 +224,7 @@ it uses the same service account and touches both Auth and Firestore.
   currently carries more risk than the bugs.
 - **Pull request.** None opened. The branch is pushed.
 
-### 4. Content still required before launch
+### 3. Content still required before launch
 
 - **FAQ** — "what is included in the price" and "how and when do I pay" carry
   `contentRequired: true` in `content/<locale>/faq.json` and do not render.

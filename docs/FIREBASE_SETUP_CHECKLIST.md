@@ -86,24 +86,17 @@ Now that you can sign in, confirm the running deployment agrees:
       `{ "configured": true, "reachable": true, "missing": [] }`
 - [ ] It returns 401 when signed out
 
-## 7. Migrate the itineraries
+## 7. Check the itinerary store
+
+Firestore is the only itinerary store, and always has been for this codebase.
+There is nothing to migrate from.
 
 - [ ] Take a JSON export from the admin panel — **this is the backup**
-      (the app no longer reads Vercel Blob, so export from the *old*
-      deployment if it is still running)
 - [ ] Confirm hidden itineraries appear in the admin list and export but not
       in anonymous `GET /api/itineraries`
-- [ ] Set `BLOB_READ_WRITE_TOKEN` locally — the migration script needs it. It
-      is never needed by a deployment
-- [ ] Dry run: `node --env-file=.env scripts/migrate-itineraries.mjs`
-- [ ] Read the counts
-- [ ] Commit: `node --env-file=.env scripts/migrate-itineraries.mjs --commit`
 - [ ] Verify: admin list complete, custom-tour page correct, photographs load
       from `firebasestorage.googleapis.com`, translations survived, no
       duplicates
-- [ ] *Only then*: delete the `itineraries/archive.json` blob by hand, delete
-      `scripts/migrate-itineraries.mjs`, and drop the `@vercel/blob`
-      devDependency
 
 ## 8. Verify the features
 
