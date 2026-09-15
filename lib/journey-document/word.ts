@@ -1,8 +1,6 @@
 "use client";
 
 import { cropToAspect, tinted, toDataUrl, type LoadedImage } from "./assets";
-import { drawRouteMap } from "./mapCanvas";
-import { ARRIVAL_POINT } from "@/lib/geo/sriLanka";
 import type { JourneyDocument, JourneyItinerary, JourneyRow } from "./model";
 
 /**
@@ -31,7 +29,12 @@ function escapeHtml(text: string) {
 const PAGE_BREAK =
   '<br clear="all" style="mso-special-character:line-break;page-break-before:always" />';
 
-export function buildJourneyDoc(doc: JourneyDocument, images: Map<string, LoadedImage>): Blob {
+export function buildJourneyDoc(
+  doc: JourneyDocument,
+  images: Map<string, LoadedImage>,
+  /** The route map, already rendered — see `mapImage.ts`. */
+  map: HTMLCanvasElement | null
+): Blob {
   /** A photograph cropped, dimmed and encoded for use behind text. */
   function backdrop(src: string | undefined, aspect: number, color: string, alpha: number) {
     const image = src ? images.get(src) : undefined;
@@ -207,14 +210,15 @@ export function buildJourneyDoc(doc: JourneyDocument, images: Map<string, Loaded
         .join("")}</table>`
     : "";
 
-  /* Drawn rather than screenshotted: the wizard's map is built from tiles a
-     third party serves, and a document should not need that server to be up
-     at the moment somebody opens it. */
-  const mapSection = doc.mapStops.length
+  /* The same map the wizard showed, embedded rather than linked: a document
+     that travels over WhatsApp has to carry its own pictures. Word is given
+     both dimensions, because it will not work an aspect ratio out for itself. */
+  const mapWidth = 440;
+  const mapSection = map
     ? sectionTitle(doc.labels.mapTitle) +
-      `<p style="margin:0 0 16pt 0;"><img src="${toDataUrl(
-        drawRouteMap(doc.mapStops, ARRIVAL_POINT, { width: 800, height: 1100 })
-      )}" width="440" alt="" style="display:block;" /></p>`
+      `<p style="margin:0 0 16pt 0;"><img src="${toDataUrl(map)}" width="${mapWidth}" height="${Math.round(
+        (mapWidth * map.height) / map.width
+      )}" alt="" style="display:block;" /></p>`
     : "";
 
   const notice =

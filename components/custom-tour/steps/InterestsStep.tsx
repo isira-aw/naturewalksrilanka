@@ -88,6 +88,9 @@ export function InterestsStep({
             bestTime: t("suggestionsBestTime"),
             duration: t("suggestionsDuration"),
             highlights: t("suggestionsHighlights"),
+            gallery: t("galleryLabel"),
+            galleryPrevious: t("galleryPrevious"),
+            galleryNext: t("galleryNext"),
           }}
         />
       </div>

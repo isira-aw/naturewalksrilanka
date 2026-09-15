@@ -154,6 +154,9 @@
     "suggestionsBestTime": "Best time of year",
     "suggestionsDuration": "Suggested length",
     "suggestionsHighlights": "What you might see",
+    "galleryLabel": "Photographs",
+    "galleryPrevious": "Previous photograph",
+    "galleryNext": "Next photograph",
     "accommodationLabel": "Preferred accommodation style",
     "accommodationHint": "Choose one or more styles, or let us recommend something for each stop.",
     "accommodation": {
@@ -176,9 +179,7 @@
       "dayRangeLabel": "Days {from}–{to}",
       "driveLabel": "{km} km from the previous stop · about {duration} by road",
       "totalLabel": "{count} stops · about {km} km of driving in total",
-      "overflowNote": "Your dates are shorter than the itineraries you chose need. The plan below runs past your departure date — remove an itinerary, or talk to us about extending the trip.",
-      "downloadTitle": "Take it with you",
-      "downloadHint": "The same plan as a PDF to read, or a Word file you can edit and send back to us."
+      "overflowNote": "Your dates are shorter than the itineraries you chose need. The plan below runs past your departure date — remove an itinerary, or talk to us about extending the trip."
     },
     "contactName": "Name",
     "contactEmail": "Email",
@@ -212,7 +213,6 @@
       "notice": "This document was generated automatically from the itineraries you told us you were interested in. It is a starting point, not a fixed booking. If anything needs changing — the order of the stops, how long you stay, or the itineraries themselves — talk to our team on WhatsApp. Don't worry: they are always happy to help.",
       "whatsappLabel": "WhatsApp"
     },
-    "downloadDoc": "Download as Word",
     "amending": "You are changing trip {reference}. Send it again when you are done and we will see the update.",
     "amendFailed": "We could not open that trip. Open it from your trip page first, then choose Change this trip."
   },

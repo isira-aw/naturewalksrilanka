@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Photo } from "@/components/ui/Photo";
+import { Lightbox, type LightboxImage } from "@/components/ui/Lightbox";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils/cn";
 import type { Experience } from "@/lib/content/schema";
@@ -16,6 +17,9 @@ export type ExperienceLabels = {
   bestTime: string;
   duration: string;
   highlights: string;
+  gallery: string;
+  galleryPrevious: string;
+  galleryNext: string;
 };
 
 /**
@@ -25,7 +29,9 @@ export type ExperienceLabels = {
  *
  * The dialog is deliberately large: on a phone it is a full-height sheet, and
  * on a laptop it uses most of the window, because the photographs are the
- * point of it.
+ * point of it. Every picture in it — the itinerary's own and the "what you
+ * might see" ones — opens full size in a lightbox, which is the only way a
+ * thumbnail of a leopard is any use for choosing between two itineraries.
  */
 export function ExperienceDialog({
   experience,
@@ -41,6 +47,8 @@ export function ExperienceDialog({
   onClose: () => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  /* Which photograph is open full size, as an index into `gallery` below. */
+  const [viewing, setViewing] = useState<number | null>(null);
 
   /* Narrowed here rather than inline, so the grid below has `image` as a
      string instead of `string | undefined`. */
@@ -48,21 +56,49 @@ export function ExperienceDialog({
     (highlight): highlight is (typeof highlight) & { image: string } => Boolean(highlight.image)
   );
 
+  /* One list for the lightbox, in the order the dialog shows them: the
+     itinerary's own photographs first, then what you might see. */
+  const gallery: LightboxImage[] = useMemo(() => {
+    if (!experience) return [];
+    return [
+      ...experience.images.map((src) => ({
+        src,
+        title: experience.title,
+        blurDataURL: experience.imageBlur?.[src],
+      })),
+      ...experience.highlights
+        .filter((highlight) => highlight.image)
+        .map((highlight) => ({
+          src: highlight.image as string,
+          title: highlight.name,
+          note: highlight.note,
+          blurDataURL: experience.imageBlur?.[highlight.image as string],
+        })),
+    ];
+  }, [experience]);
+
   useEffect(() => {
     if (!experience) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
 
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") onClose();
-    }
-    document.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onKeyDown);
+      setViewing(null);
     };
-  }, [experience, onClose]);
+  }, [experience]);
+
+  useEffect(() => {
+    if (!experience) return;
+
+    function onKeyDown(event: KeyboardEvent) {
+      // While a photograph is open, Escape belongs to the lightbox.
+      if (event.key === "Escape" && viewing === null) onClose();
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [experience, onClose, viewing]);
 
   if (typeof document === "undefined") return null;
 
@@ -122,10 +158,13 @@ export function ExperienceDialog({
               <div className="lg:grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-8">
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
                   {experience.images.map((src, index) => (
-                    <div
+                    <button
                       key={src + index}
+                      type="button"
+                      onClick={() => setViewing(index)}
+                      aria-label={`${labels.gallery}: ${experience.title}`}
                       className={cn(
-                        "relative overflow-hidden rounded-xl bg-stone",
+                        "group relative overflow-hidden rounded-xl bg-stone",
                         index === 0 ? "aspect-[16/10]" : "aspect-[4/3]"
                       )}
                     >
@@ -133,9 +172,11 @@ export function ExperienceDialog({
                         src={src}
                         alt=""
                         sizes="(min-width: 1024px) 32rem, (min-width: 640px) 20rem, 100vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                         blurDataURL={experience.imageBlur?.[src]}
                       />
-                    </div>
+                      <ZoomBadge />
+                    </button>
                   ))}
                 </div>
 
@@ -182,19 +223,26 @@ export function ExperienceDialog({
                           see docs/photography.md. */}
                       {photographed.length > 0 && (
                         <ul className="mt-6 grid grid-cols-2 gap-4 xl:grid-cols-3">
-                          {photographed.map((highlight) => (
+                          {photographed.map((highlight, index) => (
                             <li
                               key={highlight.name}
                               className="overflow-hidden rounded-xl border border-stone-dark bg-warm-white"
                             >
-                              <div className="relative aspect-[4/3] bg-stone">
+                              <button
+                                type="button"
+                                onClick={() => setViewing(experience.images.length + index)}
+                                aria-label={`${labels.gallery}: ${highlight.name}`}
+                                className="group relative block aspect-[4/3] w-full bg-stone"
+                              >
                                 <Photo
                                   src={highlight.image}
                                   alt={highlight.name}
                                   sizes="(min-width: 1024px) 14rem, 45vw"
+                                  className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                                   blurDataURL={experience.imageBlur?.[highlight.image]}
                                 />
-                              </div>
+                                <ZoomBadge />
+                              </button>
                               <div className="px-3 py-3">
                                 <p className="text-sm font-medium leading-snug text-charcoal">
                                   {highlight.name}
@@ -238,8 +286,39 @@ export function ExperienceDialog({
           </motion.div>
         </motion.div>
       )}
+
+      {/* Rendered beside the dialog rather than inside it: the sheet clips its
+          own overflow, and a photograph should fill the screen. */}
+      <Lightbox
+        key="lightbox"
+        images={gallery}
+        index={viewing}
+        labels={{
+          gallery: labels.gallery,
+          close: labels.close,
+          previous: labels.galleryPrevious,
+          next: labels.galleryNext,
+        }}
+        onIndexChange={setViewing}
+        onClose={() => setViewing(null)}
+      />
     </AnimatePresence>,
     document.body
+  );
+}
+
+/** The corner mark that says a photograph opens. */
+function ZoomBadge() {
+  return (
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-charcoal/55 text-warm-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
+    >
+      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+        <circle cx="7" cy="7" r="5" />
+        <path d="M10.8 10.8 14.5 14.5M7 4.8v4.4M4.8 7h4.4" strokeLinecap="round" />
+      </svg>
+    </span>
   );
 }
 

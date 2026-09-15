@@ -3,14 +3,13 @@
 import { SRI_LANKA_OUTLINE, type LatLng } from "@/lib/geo/sriLanka";
 
 /**
- * Draws the route on a map of Sri Lanka, as a canvas both documents can embed.
+ * The fallback map: the route drawn on the island's own outline.
  *
- * The wizard shows a real slippy map, but its tiles are fetched from a tile
- * server — they cannot be read back out of the page (a cross-origin canvas is
- * tainted), and a document should not depend on a third party being reachable
- * at the moment somebody presses Download. So the printed map is drawn here
- * from the coastline in `lib/geo/sriLanka.ts`: no network, no tainting, and it
- * looks the same every time.
+ * The documents normally carry the same tiled map the wizard shows (see
+ * `mapImage.ts`). Tiles come off a server somebody else runs, though, and a
+ * traveller pressing Download on hotel wifi should still get a map — so this
+ * draws one from the coastline in `lib/geo/sriLanka.ts`, with no network and
+ * no tile server, and it looks the same every time.
  */
 
 const PAPER = "#FDFCF9";
@@ -24,7 +23,16 @@ export type MapStop = { lat: number; lng: number; label: string };
 export function drawRouteMap(
   stops: MapStop[],
   start: LatLng,
-  { width = 900, height = 1200 }: { width?: number; height?: number } = {}
+  {
+    width = 900,
+    height = 1200,
+    route,
+  }: {
+    width?: number;
+    height?: number;
+    /** The real driving geometry, when the router answered. */
+    route?: LatLng[];
+  } = {}
 ): HTMLCanvasElement {
   const canvas = document.createElement("canvas");
   canvas.width = width;
@@ -74,10 +82,13 @@ export function drawRouteMap(
 
   // ---- the route ----
   const points = [start, ...stops].map(project);
+  /* The roads where they are known, the straight line between stops where
+     they are not — either way the numbered pins sit on the same coordinates. */
+  const line = (route?.length ? route : [start, ...stops]).map(project);
 
-  if (points.length > 1) {
+  if (line.length > 1) {
     context.beginPath();
-    points.forEach(([x, y], index) => {
+    line.forEach(([x, y], index) => {
       if (index === 0) context.moveTo(x, y);
       else context.lineTo(x, y);
     });
