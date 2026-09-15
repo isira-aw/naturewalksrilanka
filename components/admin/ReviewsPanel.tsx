@@ -1,44 +1,59 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import type { Review } from "@/lib/reviews/types";
+import { localeNames, locales, routing, type Locale } from "@/i18n/routing";
+import type { Review, ReviewInvite } from "@/lib/reviews/types";
 import type { TourRequest } from "@/lib/tourRequests/types";
 
 /**
- * Enquiries, review invitations, and moderation — the three things that
- * only make sense next to each other.
+ * Review links, moderation, what is live, and the enquiry list — the four
+ * things that only make sense next to each other.
  *
- * The team works down the enquiry list, and when a trip is finished they
- * ask that traveller for a review. The link is copied from here into
- * WhatsApp or an email by hand rather than sent automatically: the team
- * already talks to these people, and an unexpected automated mail would be
- * worse than a line in a conversation that is already happening.
+ * Links are made here and copied into WhatsApp or an email by hand rather
+ * than sent automatically: the team already talks to these people, and an
+ * unexpected automated mail would be worse than a line in a conversation
+ * that is already happening. A link can be made from an enquiry, which
+ * carries that traveller's details, or from nothing at all — plenty of
+ * travellers never filled the form in, and they have reviews worth having
+ * too.
  */
 export function ReviewsPanel() {
   const [requests, setRequests] = useState<TourRequest[]>([]);
   const [pending, setPending] = useState<Review[]>([]);
+  const [published, setPublished] = useState<Review[]>([]);
+  const [invites, setInvites] = useState<ReviewInvite[]>([]);
   const [links, setLinks] = useState<Record<string, string>>({});
+  const [label, setLabel] = useState("");
+  const [locale, setLocale] = useState<Locale>(routing.defaultLocale);
+  const [creating, setCreating] = useState(false);
   const [status, setStatus] = useState<"loading" | "ready" | "unavailable">("loading");
   const [error, setError] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     try {
-      const [queue, reviews] = await Promise.all([
+      const [queue, waiting, live, sent] = await Promise.all([
         fetch("/api/admin/requests", { credentials: "same-origin", cache: "no-store" }),
         fetch("/api/admin/reviews?status=pending", {
           credentials: "same-origin",
           cache: "no-store",
         }),
+        fetch("/api/admin/reviews?status=approved", {
+          credentials: "same-origin",
+          cache: "no-store",
+        }),
+        fetch("/api/admin/reviews/invites", { credentials: "same-origin", cache: "no-store" }),
       ]);
 
-      if (queue.status === 503 || reviews.status === 503) {
+      if ([queue, waiting, live, sent].some((response) => response.status === 503)) {
         setStatus("unavailable");
         return;
       }
-      if (!queue.ok || !reviews.ok) throw new Error("load");
+      if (![queue, waiting, live, sent].every((response) => response.ok)) throw new Error("load");
 
       setRequests((await queue.json()).requests ?? []);
-      setPending((await reviews.json()).reviews ?? []);
+      setPending((await waiting.json()).reviews ?? []);
+      setPublished((await live.json()).reviews ?? []);
+      setInvites((await sent.json()).invites ?? []);
       setStatus("ready");
     } catch {
       setError("Could not load enquiries and reviews.");
@@ -56,27 +71,45 @@ export function ReviewsPanel() {
   }, [load]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
-  async function invite(reference: string) {
+  async function createInvite(body: Record<string, string>) {
+    const response = await fetch("/api/admin/reviews/invites", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (!response.ok) throw new Error("invite");
+    return (await response.json()).invite as ReviewInvite;
+  }
+
+  /** A link for one enquiry, shown under that enquiry. */
+  async function inviteFor(reference: string) {
     setError(null);
     try {
-      const response = await fetch("/api/admin/reviews/invites", {
-        method: "POST",
-        credentials: "same-origin",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ reference }),
-      });
-      if (!response.ok) throw new Error("invite");
-      const { invite: created } = await response.json();
-      setLinks((current) => ({
-        ...current,
-        [reference]: `${window.location.origin}/${created.locale}/review/${created.token}`,
-      }));
+      const created = await createInvite({ reference });
+      setLinks((current) => ({ ...current, [reference]: linkFor(created) }));
+      setInvites((current) => [created, ...current]);
     } catch {
       setError("Could not create that invitation.");
     }
   }
 
-  async function moderate(id: string, next: "approved" | "rejected") {
+  /** A link for somebody the system has never heard of. */
+  async function createLink() {
+    setError(null);
+    setCreating(true);
+    try {
+      const created = await createInvite({ label, locale });
+      setInvites((current) => [created, ...current]);
+      setLabel("");
+    } catch {
+      setError("Could not create that link.");
+    } finally {
+      setCreating(false);
+    }
+  }
+
+  async function moderate(id: string, next: Review["status"]) {
     setError(null);
     try {
       const response = await fetch("/api/admin/reviews", {
@@ -86,9 +119,35 @@ export function ReviewsPanel() {
         body: JSON.stringify({ id, status: next }),
       });
       if (!response.ok) throw new Error("moderate");
-      setPending((current) => current.filter((review) => review.id !== id));
+      const { review } = (await response.json()) as { review: Review };
+
+      setPending((current) => current.filter((item) => item.id !== id));
+      setPublished((current) => current.filter((item) => item.id !== id));
+      if (next === "approved") setPublished((current) => [review, ...current]);
+      if (next === "pending") setPending((current) => [review, ...current]);
     } catch {
       setError("Could not save that decision.");
+    }
+  }
+
+  async function remove(review: Review) {
+    /* The one action with no undo, so it asks — and says whose words are
+       about to go, because the rows look alike at a glance. */
+    if (!window.confirm(`Delete the review from ${review.author}? This cannot be undone.`)) {
+      return;
+    }
+
+    setError(null);
+    try {
+      const response = await fetch(`/api/admin/reviews?id=${encodeURIComponent(review.id)}`, {
+        method: "DELETE",
+        credentials: "same-origin",
+      });
+      if (!response.ok) throw new Error("delete");
+      setPending((current) => current.filter((item) => item.id !== review.id));
+      setPublished((current) => current.filter((item) => item.id !== review.id));
+    } catch {
+      setError("Could not delete that review.");
     }
   }
 
@@ -118,7 +177,7 @@ export function ReviewsPanel() {
         <h2 className="font-display text-2xl text-charcoal">Awaiting moderation</h2>
         <p className="mt-1.5 text-sm leading-relaxed text-charcoal/55">
           Nothing here is public until you approve it. Rejecting also deletes the
-          photographs.
+          photographs; deleting removes the review altogether.
         </p>
 
         {pending.length === 0 ? (
@@ -126,57 +185,119 @@ export function ReviewsPanel() {
         ) : (
           <ul className="mt-5 space-y-4">
             {pending.map((review) => (
+              <ReviewCard key={review.id} review={review}>
+                <Action onClick={() => void moderate(review.id, "approved")} tone="solid">
+                  Publish
+                </Action>
+                <Action onClick={() => void moderate(review.id, "rejected")}>Reject</Action>
+                <Action onClick={() => void remove(review)} tone="danger">
+                  Delete
+                </Action>
+              </ReviewCard>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section>
+        <h2 className="font-display text-2xl text-charcoal">Published</h2>
+        <p className="mt-1.5 text-sm leading-relaxed text-charcoal/55">
+          Live on the site now. Unpublishing sends one back to the queue with its
+          photographs; deleting removes it for good.
+        </p>
+
+        {published.length === 0 ? (
+          <p className="mt-5 text-sm text-charcoal/45">Nothing published yet.</p>
+        ) : (
+          <ul className="mt-5 space-y-4">
+            {published.map((review) => (
+              <ReviewCard key={review.id} review={review}>
+                <Action onClick={() => void moderate(review.id, "pending")}>Unpublish</Action>
+                <Action onClick={() => void remove(review)} tone="danger">
+                  Delete
+                </Action>
+              </ReviewCard>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section>
+        <h2 className="font-display text-2xl text-charcoal">Review links</h2>
+        <p className="mt-1.5 text-sm leading-relaxed text-charcoal/55">
+          For anyone you want a review from — no enquiry and no email address
+          needed. Make a link, send it however you are already talking to them.
+          Each one works once and expires after 60 days.
+        </p>
+
+        <div className="mt-5 rounded-2xl border border-stone-dark bg-warm-white p-5">
+          <div className="flex flex-wrap items-end gap-3">
+            <label className="min-w-0 flex-1">
+              <span className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+                Who is it for? (for your eyes only)
+              </span>
+              <input
+                value={label}
+                onChange={(event) => setLabel(event.target.value)}
+                placeholder="e.g. Hansen family, Yala, March"
+                className="mt-1.5 min-h-10 w-full rounded-xl border border-stone-dark bg-stone/20 px-3 text-sm text-charcoal"
+              />
+            </label>
+
+            <label>
+              <span className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+                Language
+              </span>
+              <select
+                value={locale}
+                onChange={(event) => setLocale(event.target.value as Locale)}
+                className="mt-1.5 min-h-10 rounded-xl border border-stone-dark bg-stone/20 px-3 text-sm text-charcoal"
+              >
+                {locales.map((option) => (
+                  <option key={option} value={option}>
+                    {localeNames[option]}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <button
+              type="button"
+              onClick={() => void createLink()}
+              disabled={creating}
+              className="min-h-10 rounded-full bg-forest px-5 text-sm font-medium text-warm-white hover:bg-forest-dark disabled:cursor-wait disabled:opacity-60"
+            >
+              {creating ? "Creating…" : "Create link"}
+            </button>
+          </div>
+        </div>
+
+        {invites.length === 0 ? (
+          <p className="mt-5 text-sm text-charcoal/45">No links yet.</p>
+        ) : (
+          <ul className="mt-5 space-y-3">
+            {invites.map((invite) => (
               <li
-                key={review.id}
+                key={invite.token}
                 className="rounded-2xl border border-stone-dark bg-warm-white p-5"
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <p className="text-sm font-medium text-charcoal">
-                    {review.author}
-                    {review.country ? `, ${review.country}` : ""}
+                    {invite.label || invite.name || invite.reference || "Untitled link"}
                   </p>
                   <p className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-                    {"★".repeat(review.rating)}
-                    {"☆".repeat(5 - review.rating)} · {review.reference}
+                    {new Date(invite.createdAt).toLocaleDateString("en-GB")} ·{" "}
+                    {localeNames[invite.locale as Locale] ?? invite.locale} · {inviteState(invite)}
                   </p>
                 </div>
-
-                <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-charcoal/80">
-                  {review.quote}
-                </p>
-
-                {review.photos.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    {review.photos.map((photo) => (
-                      /* Moderation means looking at the photographs too, not
-                         just the words. */
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img
-                        key={photo.url}
-                        src={photo.url}
-                        alt=""
-                        className="h-28 w-36 rounded-xl border border-stone-dark object-cover"
-                      />
-                    ))}
-                  </div>
+                {invite.reference && (
+                  <p className="mt-1 text-sm text-charcoal/60">Enquiry {invite.reference}</p>
                 )}
 
-                <div className="mt-5 flex gap-3">
-                  <button
-                    type="button"
-                    onClick={() => void moderate(review.id, "approved")}
-                    className="min-h-10 rounded-full bg-forest px-5 text-sm font-medium text-warm-white hover:bg-forest-dark"
-                  >
-                    Publish
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => void moderate(review.id, "rejected")}
-                    className="min-h-10 rounded-full border border-stone-dark px-5 text-sm font-medium text-charcoal hover:border-clay"
-                  >
-                    Reject
-                  </button>
-                </div>
+                {/* A spent or stale link is kept in the list — it is the record
+                    that this person was already asked — but there is nothing
+                    left to send, so it is not offered. */}
+                {inviteState(invite) === "Waiting" && <CopyField value={linkFor(invite)} />}
               </li>
             ))}
           </ul>
@@ -215,35 +336,11 @@ export function ReviewsPanel() {
                 <p className="mt-1 text-sm text-charcoal/60">{request.email}</p>
 
                 {links[request.reference] ? (
-                  <div className="mt-4">
-                    <p className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
-                      Send this link
-                    </p>
-                    <div className="mt-1.5 flex flex-wrap items-center gap-2">
-                      <input
-                        readOnly
-                        value={links[request.reference]}
-                        onFocus={(event) => event.target.select()}
-                        className="min-h-10 min-w-0 flex-1 rounded-xl border border-stone-dark bg-stone/20 px-3 text-xs text-charcoal"
-                      />
-                      <button
-                        type="button"
-                        onClick={() =>
-                          void navigator.clipboard.writeText(links[request.reference])
-                        }
-                        className="min-h-10 rounded-full border border-forest px-4 text-sm font-medium text-forest hover:bg-forest hover:text-warm-white"
-                      >
-                        Copy
-                      </button>
-                    </div>
-                    <p className="mt-1.5 text-xs text-charcoal/50">
-                      Works once, expires in 60 days.
-                    </p>
-                  </div>
+                  <CopyField value={links[request.reference]} />
                 ) : (
                   <button
                     type="button"
-                    onClick={() => void invite(request.reference)}
+                    onClick={() => void inviteFor(request.reference)}
                     className="mt-4 min-h-10 rounded-full border border-forest px-5 text-sm font-medium text-forest hover:bg-forest hover:text-warm-white"
                   >
                     Request a review
@@ -256,4 +353,113 @@ export function ReviewsPanel() {
       </section>
     </div>
   );
+}
+
+/** One review, with whatever buttons the section it sits in wants. */
+function ReviewCard({ review, children }: { review: Review; children: React.ReactNode }) {
+  return (
+    <li className="rounded-2xl border border-stone-dark bg-warm-white p-5">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <p className="text-sm font-medium text-charcoal">
+          {review.author}
+          {review.country ? `, ${review.country}` : ""}
+        </p>
+        <p className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+          {"★".repeat(review.rating)}
+          {"☆".repeat(5 - review.rating)} · {review.reference ?? "direct link"}
+        </p>
+      </div>
+
+      <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-charcoal/80">
+        {review.quote}
+      </p>
+
+      {review.photos.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-3">
+          {review.photos.map((photo) => (
+            /* Moderation means looking at the photographs too, not
+               just the words. */
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              key={photo.url}
+              src={photo.url}
+              alt=""
+              className="h-28 w-36 rounded-xl border border-stone-dark object-cover"
+            />
+          ))}
+        </div>
+      )}
+
+      <div className="mt-5 flex flex-wrap gap-3">{children}</div>
+    </li>
+  );
+}
+
+function Action({
+  onClick,
+  tone = "outline",
+  children,
+}: {
+  onClick: () => void;
+  tone?: "solid" | "outline" | "danger";
+  children: React.ReactNode;
+}) {
+  const styles = {
+    solid: "bg-forest text-warm-white hover:bg-forest-dark",
+    outline: "border border-stone-dark text-charcoal hover:border-clay",
+    danger: "border border-clay text-clay hover:bg-clay hover:text-warm-white",
+  } as const;
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`min-h-10 rounded-full px-5 text-sm font-medium ${styles[tone]}`}
+    >
+      {children}
+    </button>
+  );
+}
+
+/** A link, ready to be copied into whatever conversation is already open. */
+function CopyField({ value }: { value: string }) {
+  const [copied, setCopied] = useState(false);
+
+  return (
+    <div className="mt-4">
+      <p className="font-utility text-xs uppercase tracking-wide text-charcoal/50">
+        Send this link
+      </p>
+      <div className="mt-1.5 flex flex-wrap items-center gap-2">
+        <input
+          readOnly
+          value={value}
+          onFocus={(event) => event.target.select()}
+          className="min-h-10 min-w-0 flex-1 rounded-xl border border-stone-dark bg-stone/20 px-3 text-xs text-charcoal"
+        />
+        <button
+          type="button"
+          onClick={() => {
+            void navigator.clipboard.writeText(value);
+            setCopied(true);
+            window.setTimeout(() => setCopied(false), 2000);
+          }}
+          className="min-h-10 rounded-full border border-forest px-4 text-sm font-medium text-forest hover:bg-forest hover:text-warm-white"
+        >
+          {copied ? "Copied" : "Copy"}
+        </button>
+      </div>
+      <p className="mt-1.5 text-xs text-charcoal/50">Works once, expires in 60 days.</p>
+    </div>
+  );
+}
+
+function linkFor(invite: ReviewInvite) {
+  const origin = typeof window === "undefined" ? "" : window.location.origin;
+  return `${origin}/${invite.locale}/review/${invite.token}`;
+}
+
+function inviteState(invite: ReviewInvite) {
+  if (invite.usedAt) return "Review received";
+  return new Date(invite.expiresAt) > new Date() ? "Waiting" : "Expired";
 }

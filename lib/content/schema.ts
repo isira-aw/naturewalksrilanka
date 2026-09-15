@@ -168,6 +168,10 @@ export const testimonialSchema = z.object({
      and have no star rating; only ones submitted through the review form
      carry it. */
   rating: z.number().int().min(1).max(5).optional(),
+  /* The traveller's own photographs, for a review left through the form —
+     absolute URLs, since they live in Cloudinary rather than `public/`. A
+     hand-written entry has none. */
+  photos: z.array(z.string()).default([]),
 });
 export const testimonialsSchema = z.object({
   _reviewStatus: z.string().optional(),

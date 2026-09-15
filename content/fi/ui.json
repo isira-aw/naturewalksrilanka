@@ -154,9 +154,6 @@
     "suggestionsBestTime": "Paras ajankohta",
     "suggestionsDuration": "Ehdotettu kesto",
     "suggestionsHighlights": "Mitä voit nähdä",
-    "galleryLabel": "Valokuvat",
-    "galleryPrevious": "Edellinen kuva",
-    "galleryNext": "Seuraava kuva",
     "accommodationLabel": "Toivottu majoitustyyli",
     "accommodationHint": "Valitse yksi tai useampi tyyli, tai anna meidän suositella jokaiselle pysähdykselle sopivaa.",
     "accommodation": {
@@ -275,6 +272,12 @@
     "privacy": "Tietosuojaseloste",
     "terms": "Ehdot",
     "rights": "Kaikki oikeudet pidätetään."
+  },
+  "gallery": {
+    "label": "Valokuvat",
+    "close": "Sulje",
+    "previous": "Edellinen kuva",
+    "next": "Seuraava kuva"
   },
   "common": {
     "addressLabel": "Osoite",

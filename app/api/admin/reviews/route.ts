@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { adminIdentity, requireAdmin } from "@/lib/admin/auth";
 import { isFirebaseConfigured } from "@/lib/firebase/admin";
-import { listReviews, moderateReview } from "@/lib/reviews/store";
+import { deleteReview, listReviews, moderateReview } from "@/lib/reviews/store";
 import { reviewStatusSchema } from "@/lib/reviews/types";
 
 export const dynamic = "force-dynamic";
@@ -24,7 +24,14 @@ export async function GET(request: Request) {
   return NextResponse.json({ reviews: await listReviews(status?.data) });
 }
 
-/** Approve or reject one review. */
+/**
+ * Moves one review between states.
+ *
+ * `pending` is how something already published is taken down: it leaves the
+ * site at once and comes back to the moderation queue with its photographs
+ * intact, so a decision can be reconsidered rather than only reversed by
+ * asking the traveller to write it again.
+ */
 export async function PATCH(request: Request) {
   if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
@@ -41,7 +48,8 @@ export async function PATCH(request: Request) {
   }
 
   const { id, status } = (body ?? {}) as { id?: unknown; status?: unknown };
-  if (typeof id !== "string" || (status !== "approved" && status !== "rejected")) {
+  const next = reviewStatusSchema.safeParse(status);
+  if (typeof id !== "string" || !next.success) {
     return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   }
 
@@ -50,8 +58,33 @@ export async function PATCH(request: Request) {
      there is a signed-in staff member, so this is their address. */
   const moderator = (await adminIdentity(request)) ?? "unknown";
 
-  const review = await moderateReview(id, status, moderator);
+  const review = await moderateReview(id, next.data, moderator);
   if (!review) return NextResponse.json({ error: "not_found" }, { status: 404 });
 
   return NextResponse.json({ review });
+}
+
+/**
+ * Removes one review for good, photographs included.
+ *
+ * Separate from the status changes above because it is the one decision that
+ * cannot be walked back — a traveller who asks for their words to come off
+ * the site is owed that, and nothing less would do it.
+ */
+export async function DELETE(request: Request) {
+  if (!(await requireAdmin(request))) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  }
+  if (!isFirebaseConfigured()) {
+    return NextResponse.json({ error: "not_configured" }, { status: 503 });
+  }
+
+  const id = new URL(request.url).searchParams.get("id");
+  if (!id) return NextResponse.json({ error: "invalid_request" }, { status: 400 });
+
+  if (!(await deleteReview(id))) {
+    return NextResponse.json({ error: "not_found" }, { status: 404 });
+  }
+
+  return NextResponse.json({ deleted: id });
 }

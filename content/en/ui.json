@@ -154,9 +154,6 @@
     "suggestionsBestTime": "Best time of year",
     "suggestionsDuration": "Suggested length",
     "suggestionsHighlights": "What you might see",
-    "galleryLabel": "Photographs",
-    "galleryPrevious": "Previous photograph",
-    "galleryNext": "Next photograph",
     "accommodationLabel": "Preferred accommodation style",
     "accommodationHint": "Choose one or more styles, or let us recommend something for each stop.",
     "accommodation": {
@@ -275,6 +272,12 @@
     "privacy": "Privacy Policy",
     "terms": "Terms",
     "rights": "All rights reserved."
+  },
+  "gallery": {
+    "label": "Photographs",
+    "close": "Close",
+    "previous": "Previous photograph",
+    "next": "Next photograph"
   },
   "common": {
     "addressLabel": "Address",

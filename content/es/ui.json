@@ -154,9 +154,6 @@
     "suggestionsBestTime": "Mejor época del año",
     "suggestionsDuration": "Duración sugerida",
     "suggestionsHighlights": "Lo que puedes ver",
-    "galleryLabel": "Fotografías",
-    "galleryPrevious": "Foto anterior",
-    "galleryNext": "Foto siguiente",
     "accommodationLabel": "Tipo de alojamiento preferido",
     "accommodationHint": "Elige uno o varios estilos, o deja que te recomendemos algo en cada parada.",
     "accommodation": {
@@ -275,6 +272,12 @@
     "privacy": "Política de privacidad",
     "terms": "Términos",
     "rights": "Todos los derechos reservados."
+  },
+  "gallery": {
+    "label": "Fotografías",
+    "close": "Cerrar",
+    "previous": "Foto anterior",
+    "next": "Foto siguiente"
   },
   "common": {
     "addressLabel": "Dirección",

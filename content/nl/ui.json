@@ -154,9 +154,6 @@
     "suggestionsBestTime": "Beste reistijd",
     "suggestionsDuration": "Voorgestelde duur",
     "suggestionsHighlights": "Wat je kunt zien",
-    "galleryLabel": "Foto's",
-    "galleryPrevious": "Vorige foto",
-    "galleryNext": "Volgende foto",
     "accommodationLabel": "Voorkeur voor accommodatie",
     "accommodationHint": "Kies een of meer stijlen, of laat ons per stop iets aanraden.",
     "accommodation": {
@@ -275,6 +272,12 @@
     "privacy": "Privacybeleid",
     "terms": "Voorwaarden",
     "rights": "Alle rechten voorbehouden."
+  },
+  "gallery": {
+    "label": "Foto's",
+    "close": "Sluiten",
+    "previous": "Vorige foto",
+    "next": "Volgende foto"
   },
   "common": {
     "addressLabel": "Adres",

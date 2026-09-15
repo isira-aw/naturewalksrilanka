@@ -152,6 +152,12 @@ export default async function HomePage({
             eyebrow: t("testimonials.eyebrow"),
             title: t("testimonials.title"),
             emptyState: t("testimonials.emptyState"),
+            gallery: {
+              label: t("gallery.label"),
+              close: t("gallery.close"),
+              previous: t("gallery.previous"),
+              next: t("gallery.next"),
+            },
           }}
         />
       )}

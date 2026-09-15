@@ -31,15 +31,32 @@ function reviews() {
 
 /* ---- invites ----------------------------------------------------------- */
 
+/**
+ * Makes a review link.
+ *
+ * Everything except the language is optional, because a link made by hand is
+ * for somebody the team knows and the system does not: there is no enquiry to
+ * point at and no address to copy. What is passed is only ever a convenience —
+ * the traveller's name so the form opens with it filled in, a label so the
+ * panel can say who a link was for. The token is the credential.
+ */
 export async function createInvite(
-  input: { reference: string; email: string; name: string; locale: string },
+  input: {
+    reference?: string | null;
+    email?: string | null;
+    name?: string;
+    label?: string;
+    locale: string;
+  },
   invitedBy: string,
 ): Promise<ReviewInvite> {
   const invite: ReviewInvite = {
     token: newInviteToken(),
-    reference: input.reference,
-    email: input.email,
-    name: input.name,
+    /* Written as nulls rather than left out: Firestore rejects `undefined`. */
+    reference: input.reference ?? null,
+    email: input.email ?? null,
+    name: input.name ?? "",
+    label: input.label ?? "",
     locale: input.locale,
     createdAt: new Date().toISOString(),
     expiresAt: inviteExpiry(),
@@ -63,7 +80,25 @@ export async function getInvite(token: string): Promise<ReviewInvite | null> {
 /** Invites already sent for a reference, so the panel does not offer twice. */
 export async function invitesForReference(reference: string): Promise<ReviewInvite[]> {
   const snapshot = await invites().where("reference", "==", reference).get();
-  return snapshot.docs
+  return parseInvites(snapshot.docs);
+}
+
+/**
+ * The most recent links, newest first.
+ *
+ * A link made by hand belongs to no enquiry, so without this the panel would
+ * lose it the moment the page reloaded — and a link that cannot be found
+ * again is a link that gets made twice.
+ */
+export async function listInvites(limit = 40): Promise<ReviewInvite[]> {
+  const snapshot = await invites().orderBy("createdAt", "desc").limit(limit).get();
+  return parseInvites(snapshot.docs);
+}
+
+function parseInvites(
+  docs: FirebaseFirestore.QueryDocumentSnapshot[],
+): ReviewInvite[] {
+  return docs
     .map((doc) => reviewInviteSchema.safeParse(doc.data()))
     .filter((parsed) => parsed.success)
     .map((parsed) => parsed.data);
@@ -195,16 +230,22 @@ export async function listReviews(status?: ReviewStatus, limit = 100): Promise<R
 }
 
 /**
- * Approves or rejects. Rejecting deletes the photographs.
+ * Moves a review between states. Rejecting deletes the photographs.
  *
  * A rejected review is usually rejected *because* of what it contains, and
  * the files stay publicly readable at their URLs for as long as they exist
  * — keeping them would mean the moderation decision had no effect on the
  * thing being moderated.
+ *
+ * Back to `pending` is how a published review is taken down: it leaves the
+ * public site immediately but keeps the words and the photographs, so the
+ * decision can be looked at again rather than only undone by asking the
+ * traveller to write it out a second time. Removing it for good is
+ * `deleteReview`.
  */
 export async function moderateReview(
   id: string,
-  status: Exclude<ReviewStatus, "pending">,
+  status: ReviewStatus,
   moderatedBy: string,
 ): Promise<Review | null> {
   const ref = reviews().doc(id);
@@ -225,6 +266,29 @@ export async function moderateReview(
   };
   await ref.set(next);
   return next;
+}
+
+/**
+ * Removes a review and its photographs for good.
+ *
+ * Rejecting is the reversible decision and this is the other one: nothing is
+ * kept, and a traveller who asks for their words to be taken off the site
+ * gets exactly that. The caller is expected to have asked first — there is
+ * no undo.
+ */
+export async function deleteReview(id: string): Promise<boolean> {
+  const ref = reviews().doc(id);
+  const doc = await ref.get();
+  if (!doc.exists) return false;
+
+  const parsed = reviewSchema.safeParse(doc.data());
+  /* A record too malformed to parse is still deleted: the photographs are
+     the part that needs a valid record, and leaving the row behind would
+     mean the button did nothing. */
+  if (parsed.success) await deletePhotos(parsed.data.photos);
+
+  await ref.delete();
+  return true;
 }
 
 /**

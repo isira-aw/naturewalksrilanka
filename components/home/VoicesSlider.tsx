@@ -4,6 +4,8 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Testimonials } from "@/lib/content/schema";
 import { CarouselButton, Kicker, Words } from "@/components/ui/motion";
+import { Photo } from "@/components/ui/Photo";
+import { Lightbox, type LightboxLabels } from "@/components/ui/Lightbox";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -11,22 +13,30 @@ const EASE = [0.16, 1, 0.3, 1] as const;
  * Traveller quotes as a single large slide rather than a wall of cards — the
  * reference site's testimonial treatment. One quote holds the full width of
  * the column, and the arrows move through them with a directional crossfade.
+ *
+ * A review left through the form usually arrives with the traveller's own
+ * photographs. They are shown under the quote and open full size, because a
+ * leopard somebody photographed on their own trip is worth more to the next
+ * traveller than the sentence describing it.
  */
 export function VoicesSlider({
   testimonials,
   labels,
 }: {
   testimonials: Testimonials;
-  labels: { eyebrow: string; title: string; emptyState: string };
+  labels: { eyebrow: string; title: string; emptyState: string; gallery: LightboxLabels };
 }) {
   const items = testimonials.items;
   const [[index, direction], setSlide] = useState<[number, number]>([0, 1]);
+  const [viewing, setViewing] = useState<number | null>(null);
 
   const move = (step: 1 | -1) => {
+    setViewing(null);
     setSlide(([current]) => [(current + step + items.length) % items.length, step]);
   };
 
   const active = items[index];
+  const photos = active?.photos ?? [];
 
   return (
     <section className="bg-stone py-20 md:py-28">
@@ -93,6 +103,28 @@ export function VoicesSlider({
                     {active.author}
                     {active.country ? ` · ${active.country}` : ""}
                   </figcaption>
+
+                  {photos.length > 0 && (
+                    <ul className="mt-7 flex flex-wrap gap-3">
+                      {photos.map((src, position) => (
+                        <li key={src}>
+                          <button
+                            type="button"
+                            onClick={() => setViewing(position)}
+                            aria-label={`${labels.gallery.label}: ${active.author}`}
+                            className="group relative block h-20 w-28 overflow-hidden rounded-xl bg-charcoal/10 sm:h-24 sm:w-32"
+                          >
+                            <Photo
+                              src={src}
+                              alt=""
+                              sizes="8rem"
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </motion.figure>
               </AnimatePresence>
             </div>
@@ -103,7 +135,10 @@ export function VoicesSlider({
                   <button
                     key={item.author}
                     type="button"
-                    onClick={() => setSlide([i, i > index ? 1 : -1])}
+                    onClick={() => {
+                      setViewing(null);
+                      setSlide([i, i > index ? 1 : -1]);
+                    }}
                     aria-label={`Show testimonial ${i + 1} of ${items.length}`}
                     aria-current={i === index}
                     className="group py-3"
@@ -122,6 +157,16 @@ export function VoicesSlider({
           </div>
         )}
       </div>
+
+      {/* The photographs of whichever quote is on screen; changing slide
+          closes it, so the picture and the words never disagree. */}
+      <Lightbox
+        images={photos.map((src) => ({ src, title: active?.author }))}
+        index={viewing}
+        labels={labels.gallery}
+        onIndexChange={setViewing}
+        onClose={() => setViewing(null)}
+      />
     </section>
   );
 }
