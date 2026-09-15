@@ -196,6 +196,23 @@ which inverted the convention. Now:
 
 ---
 
+## Waiting on the demo
+
+`claude/cloudinary-image-storage` moves photographs from Firebase Storage to
+Cloudinary — **built, not merged, by request**. Firebase Auth and Firestore
+are untouched; Cloudinary has no users and no database, so Storage is the
+only third of Firebase it can take over.
+
+It branches from this branch rather than from `main`, because both touch the
+same files; merge #26 first and it fast-forwards cleanly. The demo runs on
+today's single Firebase path, and the switch lands afterwards.
+
+`docs/cloudinary.md` carries the reasoning and the acceptance checklist. Note
+that no Cloudinary account has been connected either, so it is unproven
+against a real one in the same way every Firebase path is.
+
+---
+
 ## Known issues
 
 Found by review this round, **not yet fixed**, roughly in priority order.

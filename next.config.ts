@@ -7,13 +7,17 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
-    /* Itinerary photographs now come from Firebase Storage. `next/image`
-       refuses any remote host that is not listed here — silently, from the
-       page's point of view — so this is required, not an optimisation.
-       Both hosts are listed because Firebase serves buckets from the older
-       `firebasestorage.googleapis.com` and the newer `*.firebasestorage.app`
-       depending on when the bucket was created. */
+    /* Photographs come from Cloudinary. `next/image` refuses any remote host
+       that is not listed here — silently, from the page's point of view — so
+       this is required, not an optimisation.
+
+       The two Firebase Storage hosts are still listed, and deliberately.
+       Nothing uploads to them any more, but a record written while images
+       still lived there stores an absolute Storage URL, and dropping the
+       host would blank those photographs rather than migrate them. They cost
+       nothing to keep and can be removed once no record references them. */
     remotePatterns: [
+      { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "firebasestorage.googleapis.com" },
       { protocol: "https", hostname: "*.firebasestorage.app" },
     ],

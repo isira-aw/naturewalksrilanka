@@ -2,16 +2,16 @@
 
 import { getApp, getApps, initializeApp, type FirebaseApp } from "firebase/app";
 import { getAuth, type Auth } from "firebase/auth";
-import { getStorage, type FirebaseStorage } from "firebase/storage";
 
 /**
  * Firebase in the browser.
  *
- * Deliberately narrow: this exists to sign people in and to upload files
- * straight to Storage. It never touches Firestore — every document read and
- * write goes through a route handler using the Admin SDK (see
- * `lib/firebase/admin.ts`), and `firestore.rules` denies client access, so a
- * `getFirestore` call from here would simply be refused.
+ * Deliberately narrow: this exists to sign people in, and for nothing else.
+ * It never touches Firestore — every document read and write goes through a
+ * route handler using the Admin SDK (see `lib/firebase/admin.ts`), and
+ * `firestore.rules` denies client access, so a `getFirestore` call from here
+ * would simply be refused. It never uploads either: photographs go to
+ * Cloudinary, signed by `app/api/admin/cloudinary-signature`.
  *
  * The values below are public by design. A Firebase web API key identifies
  * the project; it is not a secret, and security comes from Auth plus the
@@ -22,7 +22,6 @@ const config = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
@@ -48,9 +47,4 @@ function app(): FirebaseApp | null {
 export function firebaseAuth(): Auth | null {
   const instance = app();
   return instance ? getAuth(instance) : null;
-}
-
-export function firebaseStorage(): FirebaseStorage | null {
-  const instance = app();
-  return instance ? getStorage(instance) : null;
 }

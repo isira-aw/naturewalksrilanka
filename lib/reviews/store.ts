@@ -1,7 +1,8 @@
 import "server-only";
 import { randomUUID } from "node:crypto";
 import { requireFirebase } from "@/lib/firebase/admin";
-import { COLLECTIONS, STORAGE_PATHS } from "@/lib/firebase/collections";
+import { COLLECTIONS } from "@/lib/firebase/collections";
+import { destroyImage, uploadReviewPhoto } from "@/lib/cloudinary/media";
 import {
   ACCEPTED_PHOTO_TYPES,
   MAX_PHOTO_BYTES,
@@ -75,10 +76,13 @@ const DATA_URL = /^data:(image\/[a-z+]+);base64,(.+)$/i;
 /**
  * Stores one submitted photo, or throws.
  *
- * Uploads go through the server rather than straight from the browser, so
- * that these limits are actually enforced. A client-side check is a
- * courtesy to honest users and nothing more — anyone can call the endpoint
- * directly — and Storage rules cannot see the decoded size of a data URL.
+ * Review photographs are uploaded by the server rather than straight from
+ * the browser, unlike itinerary photographs. The reason is that the limits
+ * below have to be enforced somewhere the submitter does not control: a
+ * traveller holding a review link has no account to attribute an upload to,
+ * a client-side check is a courtesy to honest users and nothing more, and
+ * the decoded byte length of a data URL is not something an upload preset
+ * can see. So the bytes land here first, get checked, and only then go on.
  *
  * The content type is taken from the declared prefix but validated against
  * an allowlist, so a renamed executable cannot be stored as `image/jpeg`
@@ -97,23 +101,11 @@ async function storePhoto(dataUrl: string, reviewId: string, index: number): Pro
   if (buffer.byteLength > MAX_PHOTO_BYTES) throw new Error("photo_too_large");
   if (buffer.byteLength === 0) throw new Error("photo_empty");
 
-  const extension = contentType === "image/png" ? "png" : contentType === "image/webp" ? "webp" : "jpg";
-  const path = STORAGE_PATHS.reviewPhoto(reviewId, `photo-${index}.${extension}`);
-
-  const { storage } = requireFirebase();
-  const token = randomUUID();
-  const file = storage.bucket().file(path);
-  await file.save(buffer, {
-    contentType,
-    metadata: { metadata: { firebaseStorageDownloadTokens: token } },
-    resumable: false,
-  });
-
-  const bucketName = storage.bucket().name;
-  return {
-    url: `https://firebasestorage.googleapis.com/v0/b/${bucketName}/o/${encodeURIComponent(path)}?alt=media&token=${token}`,
-    path,
-  };
+  /* The validated data URL is handed on as-is. Cloudinary accepts one
+     directly, so the bytes are not decoded and re-encoded a second time
+     purely to forward them. */
+  const { url, publicId } = await uploadReviewPhoto(dataUrl, reviewId, index);
+  return { url, publicId };
 }
 
 /* ---- submitting -------------------------------------------------------- */
@@ -235,19 +227,29 @@ export async function moderateReview(
   return next;
 }
 
+/**
+ * Removes the files behind a rejected review.
+ *
+ * A photo saved before images moved to Cloudinary carries no `publicId`, and
+ * this cannot reach into the old bucket to delete it — that code is gone. It
+ * says so rather than reporting a deletion that did not happen; the file has
+ * to be removed by hand. Moderation itself never fails over tidying up.
+ */
 async function deletePhotos(photos: ReviewPhoto[]) {
   if (photos.length === 0) return;
-  const { storage } = requireFirebase();
+
   await Promise.all(
-    photos.map((photo) =>
-      storage
-        .bucket()
-        .file(photo.path)
-        .delete()
-        .catch(() => {
-          /* Already gone, or never stored. Not worth failing moderation. */
-        }),
-    ),
+    photos.map(async (photo) => {
+      if (!photo.publicId) {
+        console.error(
+          `Review photo ${photo.url} predates Cloudinary and was not deleted; remove it by hand.`,
+        );
+        return;
+      }
+      if (!(await destroyImage(photo.publicId))) {
+        console.error(`Could not delete review photo ${photo.publicId}; remove it by hand.`);
+      }
+    }),
   );
 }
 

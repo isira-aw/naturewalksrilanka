@@ -30,7 +30,8 @@ drop the file in and redeploy.
 | Section headers reused across pages | `public/images/story-1.jpg`, `story-2.jpg`, `hero-2.jpg` | The page that uses them |
 | Nandana's portrait | `public/images/nandana-portrait.jpg` | `content/<locale>/profile.json` |
 | The social sharing card | `public/images/og-default.jpg` | `content/<locale>/seo.json` → `ogImage` |
-| Itinerary photographs | Firebase Storage | Uploaded in the admin panel; see [`FIREBASE_INTEGRATION.md`](FIREBASE_INTEGRATION.md) §8 |
+| Itinerary photographs | Cloudinary | Uploaded in the admin panel; see [`cloudinary.md`](cloudinary.md) |
+| Review photographs | Cloudinary | Submitted with a review, uploaded server-side after validation; see [`cloudinary.md`](cloudinary.md) |
 | Language switcher flags | `public/images/flags/<iso>.svg` | `localeCountries` in `components/layout/LocaleSwitcher.tsx`. Not photographs — vendored SVGs, see `LICENSE.txt` beside them |
 
 ### Destinations
