@@ -11,9 +11,9 @@ import { cn } from "@/lib/utils/cn";
 /**
  * A country, not a language — "English" tells a visitor nothing about which
  * flag they're looking at, so each locale maps to the market it represents.
- * `iso` is the flagcdn.com country code: flag emoji don't render as pictures
- * on Windows (most browsers there fall back to the two-letter code), so the
- * flag is a real SVG image instead.
+ * `iso` names the file under `public/images/flags/`: flag emoji don't render
+ * as pictures on Windows (most browsers there fall back to the two-letter
+ * code), so the flag is a real SVG image instead.
  */
 const localeCountries: Record<Locale, { name: string; iso: string }> = {
   en: { name: "United Kingdom", iso: "gb" },
@@ -25,15 +25,19 @@ const localeCountries: Record<Locale, { name: string; iso: string }> = {
 
 function FlagIcon({ iso, className }: { iso: string; className?: string }) {
   return (
-    /* Deliberately a plain `img`. This is a decorative 14–32px SVG from a
-       third-party CDN: `next/image` cannot resize an SVG, would need
-       flagcdn.com added to `remotePatterns`, and would put an optimiser
-       round-trip in front of a file smaller than the request for it. It is
-       `aria-hidden` and never the LCP element, which is what the rule is
-       guarding against. */
+    /* Deliberately a plain `img`. This is a decorative 14–32px SVG served
+       from `public/`: `next/image` cannot resize an SVG without
+       `dangerouslyAllowSVG`, and would put an optimiser round-trip in front
+       of a file smaller than the request for it. It is `aria-hidden` and
+       never the LCP element, which is what the rule is guarding against.
+
+       Served from this origin, not a CDN. These five files are the only
+       images the language switcher needs, they never change, and a flag that
+       fails to load because somebody else's host is down would leave the
+       control looking broken. */
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={`https://flagcdn.com/${iso}.svg`}
+      src={`/images/flags/${iso}.svg`}
       alt=""
       aria-hidden="true"
       className={cn("shrink-0 rounded-full object-cover", className)}

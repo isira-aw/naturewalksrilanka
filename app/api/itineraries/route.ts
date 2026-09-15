@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin/auth";
-import { readArchiveEnvelope } from "@/lib/itineraries/firestoreStore";
+import { readArchiveEnvelope } from "@/lib/itineraries/store";
 
 export const dynamic = "force-dynamic";
 
@@ -22,8 +22,8 @@ export async function GET(request: Request) {
        is the one Firebase read on a public page, so an unhandled throw here
        is a 500 on the custom-tour wizard for every visitor. The client store
        already renders an empty suggestions list when this call fails
-       (`lib/itineraries/store.ts`), so answering deliberately — and logging
-       it — degrades the page instead of breaking it. */
+       (`lib/itineraries/browserStore.ts`), so answering deliberately — and
+       logging it — degrades the page instead of breaking it. */
     console.error("Could not read the itinerary archive:", error);
     return NextResponse.json({ error: "unavailable" }, { status: 503 });
   }

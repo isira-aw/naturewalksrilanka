@@ -132,7 +132,6 @@ authorise anything. Security comes from Auth and the rules files.
 | Variable | Notes |
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Absolute origin, for canonical URLs, sitemap, robots, JSON-LD |
-| `BLOB_READ_WRITE_TOKEN` | **Not used by the application.** Read only by `scripts/migrate-itineraries.mjs`, the one-off CLI that moves records out of the old Vercel Blob archive. Never needed by a deployment; delete it once the migration is done |
 | `GOOGLE_AI_API_KEY` | Gemini, for the admin translation panel. Optional — without it translation returns 503 and nothing else is affected |
 
 ### The private key is the thing that goes wrong
@@ -285,9 +284,10 @@ rather than a silently-created second collection.
 
 ### `itineraries`
 
-One document per itinerary, keyed by its `id`. Replaces the single Vercel Blob
-archive, which did a whole-file read-modify-write with no locking — two admins
-saving at once silently overwrote each other.
+One document per itinerary, keyed by its `id`. One document per record rather
+than a single whole-file archive is what removes the write race: a
+read-modify-write over one file with no locking meant two admins saving at
+once silently overwrote each other.
 
 Shape: `lib/itineraries/types.ts` (`itineraryRecordSchema`). A malformed
 document is logged and skipped rather than failing the whole list — returning
@@ -435,51 +435,7 @@ The client-side resize is a courtesy, not a control.
 `*.firebasestorage.app` in `remotePatterns`. Without them `next/image` refuses
 the URLs — silently, from the page's point of view.
 
----
-
-## 9. Migrating the itineraries
-
-The application reads Firestore only. This script is the one remaining way to
-get records out of the old Vercel Blob archive, and the only thing in the
-repository that still imports `@vercel/blob`.
-
-**Back up first.** Take a JSON export from the admin panel — that is the
-backup.
-
-```bash
-# 1. Dry run. This is the default; nothing is written.
-node --env-file=.env scripts/migrate-itineraries.mjs
-
-# 2. Read the counts — records, images, megabytes of base64. Then:
-node --env-file=.env scripts/migrate-itineraries.mjs --commit
-```
-
-The script:
-
-- **never deletes the blob archive**;
-- is **safe to re-run** — images that are already https URLs are left alone, so
-  an interrupted run can simply be repeated;
-- writes each record with `.doc(record.id).set(...)`, so re-running updates in
-  place rather than **creating duplicates**;
-- generates a blur placeholder for each image it uploads.
-
-Afterwards verify:
-
-- the admin list shows every itinerary, including hidden ones;
-- the custom-tour page shows the visible ones;
-- photographs load from `firebasestorage.googleapis.com`;
-- translations survived.
-
-**Only once all of that is right**, delete the `itineraries/archive.json` blob
-by hand, delete `scripts/migrate-itineraries.mjs`, and drop the `@vercel/blob`
-devDependency. Vercel Blob is then gone from the project entirely.
-
-If migration has already run, verify rather than repeat — check the document
-count in the Firestore console against the record count in your export.
-
----
-
-## 10. Vercel
+## 9. Vercel
 
 Set **every** variable from section 2 in Project → Settings → Environment
 Variables, for Production (and Preview, if previews should work).
@@ -506,7 +462,7 @@ links will be rejected.
 
 ---
 
-## 11. Testing checklist
+## 10. Testing checklist
 
 Run through this after connecting, and again after touching auth.
 
@@ -561,7 +517,7 @@ Run through this after connecting, and again after touching auth.
 
 ---
 
-## 12. Troubleshooting
+## 11. Troubleshooting
 
 **`configured: false`** — the named variables are not set, or the process did
 not reload. Restart `next dev`; redeploy on Vercel.
@@ -609,7 +565,7 @@ server first.
 
 ---
 
-## 13. Cost and usage
+## 12. Cost and usage
 
 The free Spark tier is generous and this site is small. Rough shape of the
 usage:
@@ -633,7 +589,7 @@ view to another.
 
 ---
 
-## 14. Backup and recovery
+## 13. Backup and recovery
 
 - **Itineraries** — the admin panel's JSON export is a complete backup. Take
   one before any migration or bulk import. Import-with-replace runs as one
@@ -661,12 +617,11 @@ view to another.
 | `lib/firebase/client.ts` | Browser SDK — sign-in and Storage uploads only |
 | `lib/firebase/collections.ts` | Collection and Storage path names |
 | `lib/admin/auth.ts` | The single authorisation point |
-| `lib/itineraries/firestoreStore.ts` | Itineraries in Firestore — the only store |
+| `lib/itineraries/store.ts` | Itineraries in Firestore — the only store |
 | `lib/tourRequests/store.ts` | Enquiries: create, get, revise, list |
 | `lib/reviews/store.ts` | Invites, photo limits, redemption, moderation |
 | `firestore.rules` / `storage.rules` | Security rules |
 | `firestore.indexes.json` | Composite indexes |
 | `scripts/grant-admin.mjs` | Grant and revoke staff access |
-| `scripts/migrate-itineraries.mjs` | One-off Blob → Firestore migration; delete once run |
 | `app/api/admin/firebase-status/route.ts` | The connectivity probe |
 | `docs/FIREBASE_SETUP_CHECKLIST.md` | The same steps, as a checklist |

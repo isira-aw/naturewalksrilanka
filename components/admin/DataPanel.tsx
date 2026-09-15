@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { itineraryStore } from "@/lib/itineraries/store";
+import { itineraryStore } from "@/lib/itineraries/browserStore";
 import { SCHEMA_VERSION, type ItineraryRecord } from "@/lib/itineraries/types";
 import { approximateBytes, formatBytes } from "@/lib/itineraries/imageFile";
 

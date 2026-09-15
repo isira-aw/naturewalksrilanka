@@ -65,7 +65,8 @@ const nextConfig: NextConfig = {
            waits for one.
 
            The paths that reach this rule are the Open Graph card fetched by
-           crawlers, the logo, and the images embedded in the PDF and Word
+           crawlers, the logo, the language switcher's flags under
+           `/images/flags/`, and the images embedded in the PDF and Word
            documents the wizard builds. Everything rendered by `Photo` goes
            through the optimiser instead, which sets its own long-lived headers
            from `images.minimumCacheTTL` above. */

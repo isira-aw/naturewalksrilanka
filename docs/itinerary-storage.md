@@ -12,15 +12,15 @@ choice to make.
 
 ```
 admin screens / custom-tour wizard
-  → lib/itineraries/store.ts        (browser; wraps the two routes below)
+  → lib/itineraries/browserStore.ts (browser; wraps the two routes below)
   → /api/itineraries                (public read)
     /api/admin/itineraries          (admin-only writes)
-  → lib/itineraries/firestoreStore.ts
+  → lib/itineraries/store.ts        (server; the only code touching Firestore)
   → Firestore
 ```
 
-An older design kept every record in a single JSON file on Vercel Blob, with a
-`repository.ts` choosing between the two at runtime. Both are gone. One
+An older design kept every record in a single JSON file, with a
+`repository.ts` choosing between backends at runtime. Both are gone. One
 document per itinerary is what removes the write race the single file had: a
 whole-file read-modify-write with no locking meant **two admins saving at once
 silently overwrote each other**.
@@ -29,12 +29,6 @@ A malformed document is logged and skipped rather than failing the whole list �
 returning fewer itineraries is bad, returning none is worse. An import with
 `replace` runs as one atomic batch and refuses outright above 500 operations
 rather than applying in halves.
-
-> **Migrating from the old archive?** `scripts/migrate-itineraries.mjs` is the
-> one-off CLI that moves records out of Vercel Blob into Firestore. It is the
-> only remaining reference to Vercel Blob anywhere in the repository. Run it,
-> check the admin panel, then delete the script and the `@vercel/blob`
-> devDependency. `docs/FIREBASE_INTEGRATION.md` §9 is the procedure.
 
 ## The routes
 
@@ -48,8 +42,8 @@ rather than applying in halves.
 - `POST` / `PUT` / `DELETE /api/admin/itineraries` — admin-only writes.
 
 The browser never talks to Firestore directly; `firestore.rules` denies it.
-`lib/itineraries/store.ts` is a thin client over those two routes and holds no
-data of its own. It refetches on tab focus — an earlier 30-second poll
+`lib/itineraries/browserStore.ts` is a thin client over those two routes and
+holds no data of its own. It refetches on tab focus — an earlier 30-second poll
 re-downloaded the whole archive on a timer for every open tab, including every
 visitor sitting on the custom-tour page.
 

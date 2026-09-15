@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { itineraryStore } from "./store";
+import { itineraryStore } from "./browserStore";
 import type { ItineraryRecord } from "./types";
 
 /**
