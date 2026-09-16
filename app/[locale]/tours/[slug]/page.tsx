@@ -240,6 +240,38 @@ export default async function TourDetailPage({
         </div>
       </section>
 
+      {/* No journey carries an inclusions list, and it is not an oversight: what
+          a journey covers is settled per traveller, so the page says why rather
+          than leaving the question unanswered. The lists still render the
+          moment a journey is given them. */}
+      {tour.included.length === 0 && tour.excluded.length === 0 && (
+        <section className="bg-warm-white py-20 md:py-28">
+          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
+            <div className="max-w-2xl">
+              <Kicker>{t("included")}</Kicker>
+              <h2 className="mt-6 font-display text-2xl leading-snug text-charcoal md:text-3xl">
+                {t("inclusionsTitle")}
+              </h2>
+              <Rise delay={0.1}>
+                <p className="mt-6 leading-relaxed text-charcoal/70">{t("inclusionsBody")}</p>
+              </Rise>
+              <Rise delay={0.18}>
+                <div className="mt-9">
+                  <WhatsAppCTA
+                    phone={navigation.contact.whatsappNumber}
+                    message={whatsappMessage}
+                    variant="primary"
+                    size="md"
+                  >
+                    {t("whatsappCta")}
+                  </WhatsAppCTA>
+                </div>
+              </Rise>
+            </div>
+          </div>
+        </section>
+      )}
+
       {(tour.included.length > 0 || tour.excluded.length > 0) && (
         <section className="bg-warm-white py-20 md:py-28">
           <div className="mx-auto grid w-full max-w-7xl gap-14 px-4 sm:px-6 md:grid-cols-2 md:gap-16 md:px-10">

@@ -1,10 +1,10 @@
 # Handoff — production cleanup, Firebase consolidation, launch polish
 
-Branch: `claude/clever-volta-i7bo35` · one commit ahead of `main`
-(`a9df9c1`) · 9 files, +263 / −308.
+Branch: `claude/nifty-dirac-cx91uz` · one commit ahead of `main` · 23 files,
++4112 / −221, almost all of it content.
 
-Rounds **#25 to #29** have merged. What follows describes the whole effort;
-*This round* is what is new since #29, and *Earlier rounds* keeps what is
+Rounds **#25 to #30** have merged. What follows describes the whole effort;
+*This round* is what is new since #30, and *Earlier rounds* keeps what is
 still worth knowing from the ones before it.
 
 > **This file is temporary.** A previous `handoff.md` was deleted in `2e25aa2`
@@ -87,6 +87,8 @@ New in this work:
 | `content/<locale>/faq.json` | FAQ content, five locales |
 | `docs/seo.md` | What is built, and the manual steps after deployment |
 | `docs/photography.md` | Where each photograph lives and what happens when one is missing |
+| `components/home/ActivityShowcase.tsx` | The "what you can discover" grid, from `activities.json` |
+| `components/home/CustomJourneyInvite.tsx` | The custom-tour chapter of the home page; the strip is the wizard's own step labels |
 
 Load-bearing files to understand before changing anything:
 
@@ -99,6 +101,9 @@ Load-bearing files to understand before changing anything:
 | `lib/cloudinary/media.ts` | Every photograph in and out. Admin uploads go direct from the browser under a signature; review photographs go through the server so the size and type limits are enforced somewhere the submitter does not control |
 | `lib/reviews/store.ts` | Review links, redemption inside a transaction, moderation, and the deletes that take photographs with them |
 | `package.json` → `overrides` | Pins `jwks-rsa`'s `jose` to 5.x. Removing it takes the whole site down on Node 20 |
+| `content/<locale>/destinations.json` | All five locales now carry the full long-form. The English file owns the structure; the other four were translated from it and say so in `_note`. Change English and four files go stale |
+| `app/[locale]/page.tsx` → `ACTIVITY_PLACE` | Which destination photograph stands for each activity. Slugs, so it holds in every locale; unmapped activities fall back rather than break |
+| `content/<locale>/profile.json` → `languages` | Empty, and that is what hides the languages row and stat. Filling it in brings both back with no code change |
 
 ---
 
@@ -155,7 +160,114 @@ Load-bearing files to understand before changing anything:
 
 ---
 
-## This round (branch `claude/clever-volta-i7bo35`)
+## This round (branch `claude/nifty-dirac-cx91uz`)
+
+A content, storytelling and conversion pass. No architectural change: no new
+dependency, no new service, no change to the Firebase wiring, the custom-tour
+business logic or the booking flow. Two presentational components are new and
+five pages were re-ordered or re-worded; everything else is `content/`.
+
+### The home page tells a story now, in a deliberate order
+
+It used to open on logistics — "one company for the whole journey", then the
+four things we arrange — before it had given anyone a reason to want Sri Lanka.
+The order is now: what this island is → why this company → who guides you → the
+journeys we run → where they happen → what you can actually do there → that you
+can build your own → what we arrange around it → how to start the conversation.
+Nothing was deleted. The fulfilment copy moved to where it reassures rather
+than where it sells, and the section comment in `app/[locale]/page.tsx` states
+the order so the next person does not undo it by accident.
+
+### Two chapters that were missing
+
+- **`components/home/ActivityShowcase.tsx`** — the six entries in
+  `activities.json`, each with a photograph and a link into a destination that
+  offers it. A visitor who came for birds or for a camera rather than for a
+  duration now sees themselves on the page, and it is the densest patch of
+  internal linking into the destination pages on the site. The photograph is
+  chosen by `ACTIVITY_PLACE` in `app/[locale]/page.tsx`: slugs, not prose, so it
+  holds in all five locales, and anything unmapped falls back to the first
+  destination listing that activity.
+- **`components/home/CustomJourneyInvite.tsx`** — the wizard is one of the real
+  business opportunities and the home page previously reached it only through a
+  secondary button. It now has its own full-bleed section, and the strip across
+  it is the wizard's own step labels, so the four things being asked for are
+  visible before anyone clicks in.
+
+### Copy that was doing the wrong job
+
+The tours index and the contact page were rendering their own meta descriptions
+and CTA labels as visible headings; both now have copy written for the reader
+while the SERP copy stays in `seo.json`. The destinations H1 was the single word
+"Destinations". Tour pages give each activity its description rather than its
+name alone, and answer "who is guiding me" from `profile.json` instead of
+leaving it to the About page. A fourth trust reason — that these are private
+journeys built around the traveller — joins `nandana.whyPoints`.
+
+### Pricing and inclusions are answered, not hidden
+
+The two FAQ items carrying `contentRequired: true` are answered in all five
+locales, and the flag is gone, so `FaqAccordion` renders them. Neither answer
+states a figure or a list, because neither exists: what a journey covers is
+decided for the dates you travel — season, weather and whatever is happening
+culturally that week — and the price is quoted by Nandana once he has seen the
+journey. Both answers route the reader to him on WhatsApp, which is how the
+business actually works.
+
+`tour.included` and `tour.excluded` are still empty on every journey, so the
+"What's included" section never rendered at all. Tour pages now carry a short
+band saying why there is no fixed list, with a WhatsApp button. **The lists
+still render the moment a journey is given them** — the band only appears when
+both are empty, so nothing has to be undone later.
+
+### Nandana's languages are no longer on the site
+
+The `CONTENT_REQUIRED` stat is out of `content/<locale>/profile.json`, so the
+About page no longer shows a dash where a number belongs, and the At-a-glance
+row is rendered only when `profile.languages` is non-empty. **Filling that array
+in is all it takes to bring both back** — no code change. `NandanaStory` sizes
+its stat row to however many stats the profile carries rather than assuming
+three.
+
+### The multilingual gap, which was the largest thing here
+
+Dutch, Spanish, Danish and Finnish destination pages carried only a one-line
+`description` where English had the full write-up — `intro`, `sections`,
+`wildlife`, `facts`, `goodToKnow` and gallery captions. Four fifths of the
+audience were getting a fraction of the page. All four locales now carry the
+whole thing, translated from the English draft and verified structurally
+identical to it (15 destinations, 32 sections, 59 wildlife lines, 60 facts, 45
+good-to-know lines, 15 captions, in every locale).
+
+Bird and mammal names stay in their international English names, as the content
+rules require. Dutch also mixed formal *u* into an otherwise informal site; that
+is now consistent throughout.
+
+**These translations are downstream of an unapproved draft.** The English
+long-form is still `"_reviewStatus": "draft-written-for-review"`. If Nandana
+revises it, the four translations need redoing — each locale file carries a
+`_note` saying so.
+
+### One factual correction
+
+Kithulgala's gallery photograph is captioned "Rafting the Kelani River" and
+shows a river with no raft in it. Re-captioned in all five locales. It is also
+why `ACTIVITY_PLACE` marks that one `gallery: true`: the destination's card
+photograph is an owl, which is not what "Adventure Sports" means.
+
+### Verified
+
+`next build` and `eslint` clean. All 130 locale routes return 200 (11 pages plus
+15 destinations, times five locales), plus `/sitemap.xml`, `/robots.txt` and
+`/llms.txt`. Translation-key parity checked across `ui`, `seo`, `navigation`,
+`faq`, `activities` and `profile` in all five locales, with no English string
+left sitting in a non-English file. Canonical, hreflang and JSON-LD unchanged
+and still emitting. New sections screenshotted in headless Chromium at 1440px
+and 390px.
+
+---
+
+## Earlier round — merged as #30 (branch `claude/clever-volta-i7bo35`)
 
 One commit on top of #29, and the two rounds before it (#28, #29) are
 described here too because they landed in the same sitting and the pieces
@@ -470,15 +582,18 @@ it matters more now that nothing in the admin panel watches that collection;
 
 ### 4. Content still required before launch
 
-- **FAQ** — "what is included in the price" and "how and when do I pay" carry
-  `contentRequired: true` in `content/<locale>/faq.json` and do not render.
-  Only Nandana can answer them.
+- **Nandana's approval of the destination long-form.** `content/en/destinations.json`
+  is drafted copy, not confirmed fact, and four locales are now translated from
+  it. This is the one that should be read before launch; a revision costs five
+  files, not one.
 - **Privacy policy** — materially wrong, and the most serious thing on this
   list. See *Known issues* §1 for exactly which sentences are false and what
   the code actually stores. Only Nandana, with legal advice, can supply the
   rest.
 - **Search Console and Bing verification codes** — `docs/seo.md` has the
   step-by-step.
-- **Native-speaker review** of the Dutch, Spanish, Danish and Finnish copy,
-  including the `search`, `faq`, `newsletter` and `gallery` strings. The
-  `gallery` ones are the newest and the least reviewed.
+- **Native-speaker review** of the Dutch, Spanish, Danish and Finnish copy. This
+  got substantially larger this round: the destination long-form in those four
+  locales is new, and so are the FAQ answers on pricing and inclusions. The
+  `search`, `newsletter` and `gallery` strings are still the least reviewed of
+  the older ones.
