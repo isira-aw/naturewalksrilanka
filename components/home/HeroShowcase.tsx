@@ -49,6 +49,7 @@ export function HeroShowcase({
     eyebrow: string;
     welcomeLine: string;
     titleLine1: string;
+    ctaPrimary: string;
     ctaSecondary: string;
     meta: string;
     whatsapp: string;
@@ -159,7 +160,7 @@ export function HeroShowcase({
           className="mt-11 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
         >
           <Link
-            href="/custom-tour"
+            href="/tours"
             className="group relative overflow-hidden rounded-full bg-warm-white px-9 py-4 font-medium text-charcoal transition-colors duration-500 hover:text-warm-white"
           >
             {/* The fill sweeps up from the base of the button on hover. */}
@@ -167,8 +168,24 @@ export function HeroShowcase({
               aria-hidden="true"
               className="absolute inset-0 translate-y-full bg-forest transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0"
             />
-            <span className="relative inline-flex items-center gap-2">
+            <span className="relative">{labels.ctaPrimary}</span>
+          </Link>
+          <Link
+            href="/custom-tour"
+            className="group inline-flex items-center gap-3 font-medium text-warm-white/90 transition-colors hover:text-warm-white"
+          >
+            <span className="relative">
               {labels.ctaSecondary}
+              <span
+                aria-hidden="true"
+                className="absolute -bottom-1.5 left-0 block h-px w-full origin-right scale-x-100 bg-warm-white/50 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:origin-left group-hover:scale-x-0"
+              />
+            </span>
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5"
+            >
+              &#8594;
             </span>
           </Link>
         </motion.div>

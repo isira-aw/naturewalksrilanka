@@ -76,6 +76,7 @@ export default async function HomePage({
           eyebrow: t("hero.eyebrow"),
           welcomeLine: t("hero.welcomeLine"),
           titleLine1: t("hero.titleLine1"),
+          ctaPrimary: t("hero.ctaPrimary"),
           ctaSecondary: t("hero.ctaSecondary"),
           meta: t("hero.trustLine"),
           whatsapp: t("whatsapp.talkToUs"),
