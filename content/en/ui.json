@@ -37,24 +37,6 @@
     "introEyebrow": "Discover Sri Lanka",
     "introTitle": "Some of this island only shows itself to people who know where to wait.",
     "introBody": "Leopard tracks in the dust at Wilpattu. An endemic bird calling somewhere in the Sinharaja canopy. Mist lifting off Horton Plains at seven in the morning. We travel with you for all of it — our own certified guides, with your accommodation and transport arranged from the first message to the last morning.",
-    "stats": [
-      {
-        "value": "20+",
-        "label": "Years guiding"
-      },
-      {
-        "value": "30+",
-        "label": "Endemic bird species"
-      },
-      {
-        "value": "15",
-        "label": "Destinations"
-      },
-      {
-        "value": "100%",
-        "label": "Certified guides"
-      }
-    ],
     "experiencesEyebrow": "What You Can Discover",
     "experiencesTitle": "One island. Many ways to experience it.",
     "experiencesBody": "Wildlife, birding, rainforest, mountains, culture, coast — choose the experiences that call to you, and let a journey bring them together in one trip.",
@@ -259,7 +241,7 @@
   "sriLanka": {
     "eyebrow": "Sri Lanka",
     "title": "Rainforest, highland and coast — closer together than you'd expect.",
-    "body": "From Wilpattu's dry-zone leopard country to Sinharaja's endemic-rich rainforest canopy, from Kandy's hill temples to the reef off Trincomalee, Sri Lanka compresses a continent's worth of habitat into a single island.",
+    "body": "From Yala's dry-zone grasslands to Ella's cloud-wrapped hill trails, from Kandy's lakeside temples to the whale-rich waters off Mirissa, Sri Lanka compresses a continent's worth of habitat into a single island.",
     "cta": "See the Destinations"
   },
   "conservation": {

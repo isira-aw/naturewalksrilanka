@@ -37,24 +37,6 @@
     "introEyebrow": "Descubre Sri Lanka",
     "introTitle": "Parte de esta isla solo se muestra a quien sabe dónde esperar.",
     "introBody": "Huellas de leopardo en el polvo de Wilpattu. Un ave endémica llamando en algún punto del dosel de Sinharaja. La niebla levantándose sobre Horton Plains a las siete de la mañana. Te acompañamos en todo ello: nuestros propios guías certificados, con tu alojamiento y tu transporte organizados desde el primer mensaje hasta la última mañana.",
-    "stats": [
-      {
-        "value": "20+",
-        "label": "Años guiando"
-      },
-      {
-        "value": "30+",
-        "label": "Aves endémicas"
-      },
-      {
-        "value": "15",
-        "label": "Destinos"
-      },
-      {
-        "value": "100%",
-        "label": "Guías certificados"
-      }
-    ],
     "experiencesEyebrow": "Lo que puedes descubrir",
     "experiencesTitle": "Una isla. Muchas formas de vivirla.",
     "experiencesBody": "Fauna, aves, selva, montaña, cultura, costa — elige las experiencias que más te llamen, y deja que un viaje las reúna en uno solo.",
@@ -259,7 +241,7 @@
   "sriLanka": {
     "eyebrow": "Sri Lanka",
     "title": "Selva, montaña y costa, mucho más cerca de lo que imaginas.",
-    "body": "Del territorio de leopardos en la zona seca de Wilpattu al dosel del bosque lluvioso de Sinharaja, lleno de especies endémicas; de los templos de las montañas de Kandy al arrecife frente a Trincomalee: Sri Lanka concentra los hábitats de un continente en una sola isla.",
+    "body": "De las llanuras secas de Yala a los senderos de montaña envueltos en nubes de Ella, de los templos junto al lago de Kandy a las aguas ricas en ballenas frente a Mirissa: Sri Lanka concentra los hábitats de un continente en una sola isla.",
     "cta": "Ver los destinos"
   },
   "conservation": {

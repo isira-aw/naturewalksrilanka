@@ -10,7 +10,6 @@ import { HeroShowcase } from "@/components/home/HeroShowcase";
 import { IntroStatement } from "@/components/home/IntroStatement";
 import { GuideFeature } from "@/components/home/GuideFeature";
 import { ServiceRail, type Service } from "@/components/home/ServiceRail";
-import { StatsRibbon, type Stat } from "@/components/home/StatsRibbon";
 import { DestinationRail } from "@/components/home/DestinationRail";
 import { ActivityShowcase, type ActivityCard } from "@/components/home/ActivityShowcase";
 import { CustomJourneyInvite } from "@/components/home/CustomJourneyInvite";
@@ -115,7 +114,6 @@ export default async function HomePage({
 
   const whyPoints = t.raw("nandana.whyPoints") as { title: string; description: string }[];
   const services = t.raw("home.services") as Service[];
-  const stats = t.raw("home.stats") as Stat[];
   const featuredDestinations = destinations.slice(0, 8);
   const experiences = activityCards(activities, destinations);
 
@@ -148,13 +146,15 @@ export default async function HomePage({
         body={t("home.introBody")}
       />
 
-      <StatsRibbon stats={stats} />
-
+      {/* No `note` here: the conservation story it would tell is the same one
+          GuideFeature tells next, with the specifics (1990, DWC, birds and
+          plants) this section doesn't have room for — saying it twice in a
+          row read as the page repeating itself. The quote still has its own
+          place on the About page, where nothing else covers it. */}
       <ReasonsList
         labels={{
           eyebrow: t("nandana.whyEyebrow"),
           title: t("nandana.whyTitle"),
-          note: t("conservation.quote"),
         }}
         points={whyPoints}
       />

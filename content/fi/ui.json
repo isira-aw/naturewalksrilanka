@@ -37,24 +37,6 @@
     "introEyebrow": "Löydä Sri Lanka",
     "introTitle": "Osa tästä saaresta näyttäytyy vain niille, jotka tietävät missä odottaa.",
     "introBody": "Leopardin jäljet Wilpattun pölyssä. Kotoperäisen linnun ääni jossakin Sinharajan latvustossa. Sumu nousemassa Horton Plainsilta seitsemältä aamulla. Olemme mukana kaikessa tässä — omat sertifioidut oppaamme, majoituksesi ja kuljetuksesi järjestettynä ensimmäisestä viestistä viimeiseen aamuun.",
-    "stats": [
-      {
-        "value": "20+",
-        "label": "Vuotta oppaana"
-      },
-      {
-        "value": "30+",
-        "label": "Kotoperäistä lintulajia"
-      },
-      {
-        "value": "15",
-        "label": "Kohdetta"
-      },
-      {
-        "value": "100%",
-        "label": "Sertifioituja oppaita"
-      }
-    ],
     "experiencesEyebrow": "Mitä voit löytää",
     "experiencesTitle": "Yksi saari. Lukemattomia tapoja kokea se.",
     "experiencesBody": "Villieläimet, linnut, sademetsä, vuoret, kulttuuri, rannikko — valitse kokemukset, jotka puhuttelevat sinua, ja anna matkan koota ne yhdeksi.",
@@ -259,7 +241,7 @@
   "sriLanka": {
     "eyebrow": "Sri Lanka",
     "title": "Sademetsä, ylängöt ja rannikko — lähempänä toisiaan kuin uskoisit.",
-    "body": "Wilpattun kuivan vyöhykkeen leopardimailta Sinharajan kotoperäisiä lajeja kuhisevaan sademetsään, Kandyn vuoristotemppeleistä Trincomaleen edustan riuttaan — Sri Lanka tiivistää mantereellisen kirjon elinympäristöjä yhdelle saarelle.",
+    "body": "Yalan kuivista ruohotasangoista Ellan pilvien peittämiin vuoristopolkuihin, Kandyn järvenrantatempeleistä Mirissan edustan valaita kuhiseviin vesiin — Sri Lanka tiivistää mantereellisen kirjon elinympäristöjä yhdelle saarelle.",
     "cta": "Katso kohteet"
   },
   "conservation": {

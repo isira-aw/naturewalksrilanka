@@ -37,24 +37,6 @@
     "introEyebrow": "Ontdek Sri Lanka",
     "introTitle": "Een deel van dit eiland laat zich alleen zien aan wie weet waar hij moet wachten.",
     "introBody": "Luipaardsporen in het stof van Wilpattu. Een endemische vogel die ergens hoog in het bladerdak van Sinharaja roept. Mist die om zeven uur 's ochtends van de Horton Plains trekt. Wij zijn overal bij — onze eigen gecertificeerde gidsen, met je accommodatie en vervoer geregeld, van het eerste bericht tot de laatste ochtend.",
-    "stats": [
-      {
-        "value": "20+",
-        "label": "Jaar als gids"
-      },
-      {
-        "value": "30+",
-        "label": "Endemische vogelsoorten"
-      },
-      {
-        "value": "15",
-        "label": "Bestemmingen"
-      },
-      {
-        "value": "100%",
-        "label": "Gecertificeerde gidsen"
-      }
-    ],
     "experiencesEyebrow": "Wat je kunt ontdekken",
     "experiencesTitle": "Eén eiland. Talloze manieren om het te beleven.",
     "experiencesBody": "Wildlife, vogels, regenwoud, bergen, cultuur, kust — kies de ervaringen die je aanspreken, en laat een reis ze voor je samenbrengen.",
@@ -259,7 +241,7 @@
   "sriLanka": {
     "eyebrow": "Sri Lanka",
     "title": "Regenwoud, hoogland en kust — dichter bij elkaar dan je verwacht.",
-    "body": "Van het luipaardgebied in de droge zone van Wilpattu tot het endemische regenwoud van Sinharaja, van de tempels in de heuvels van Kandy tot het rif voor Trincomalee: Sri Lanka perst een continent aan leefgebieden samen op één eiland.",
+    "body": "Van de droge grasvlaktes van Yala tot de in wolken gehulde heuvelpaden van Ella, van de tempels aan het meer van Kandy tot de walvisrijke wateren voor Mirissa: Sri Lanka perst een continent aan leefgebieden samen op één eiland.",
     "cta": "Bekijk de bestemmingen"
   },
   "conservation": {

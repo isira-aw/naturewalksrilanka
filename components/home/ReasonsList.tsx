@@ -9,14 +9,15 @@ const EASE = [0.16, 1, 0.3, 1] as const;
  * The credibility block, built as the reference site builds its editorial
  * lists: numbered full-width rows separated by hairlines that draw themselves
  * in, each row warming into forest on hover — no icons, the numbering and the
- * rules do that work. Closed by the conservation note that explains where the
- * guiding came from.
+ * rules do that work. `note` can close it with a supporting quote; leave it
+ * out where the row below already tells that story, so the page doesn't say
+ * the same thing twice back to back.
  */
 export function ReasonsList({
   labels,
   points,
 }: {
-  labels: { eyebrow: string; title: string; note: string };
+  labels: { eyebrow: string; title: string; note?: string };
   points: { title: string; description: string }[];
 }) {
   return (
@@ -82,11 +83,13 @@ export function ReasonsList({
           />
         </ul>
 
-        <Rise delay={0.1}>
-          <div className="mt-14 max-w-2xl border-l-2 border-clay bg-stone/70 p-7">
-            <p className="leading-relaxed text-charcoal/65">{labels.note}</p>
-          </div>
-        </Rise>
+        {labels.note && (
+          <Rise delay={0.1}>
+            <div className="mt-14 max-w-2xl border-l-2 border-clay bg-stone/70 p-7">
+              <p className="leading-relaxed text-charcoal/65">{labels.note}</p>
+            </div>
+          </Rise>
+        )}
       </div>
     </section>
   );

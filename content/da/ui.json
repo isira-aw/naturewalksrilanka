@@ -37,24 +37,6 @@
     "introEyebrow": "Oplev Sri Lanka",
     "introTitle": "Noget af denne ø viser sig kun for dem, der ved, hvor man skal vente.",
     "introBody": "Leopardspor i støvet ved Wilpattu. En endemisk fugl, der kalder et sted oppe i Sinharajas trækroner. Tåge, der letter fra Horton Plains klokken syv om morgenen. Vi er med hele vejen — vores egne certificerede guider, med din overnatning og transport arrangeret fra den første besked til den sidste morgen.",
-    "stats": [
-      {
-        "value": "20+",
-        "label": "År som guide"
-      },
-      {
-        "value": "30+",
-        "label": "Endemiske fuglearter"
-      },
-      {
-        "value": "15",
-        "label": "Destinationer"
-      },
-      {
-        "value": "100%",
-        "label": "Certificerede guider"
-      }
-    ],
     "experiencesEyebrow": "Det kan du opleve",
     "experiencesTitle": "Én ø. Utallige måder at opleve den på.",
     "experiencesBody": "Dyreliv, fugle, regnskov, bjerge, kultur, kyst — vælg de oplevelser, der taler til dig, og lad en rejse samle dem i én tur.",
@@ -259,7 +241,7 @@
   "sriLanka": {
     "eyebrow": "Sri Lanka",
     "title": "Regnskov, højland og kyst — tættere på hinanden, end du tror.",
-    "body": "Fra leopardernes tørre landskab i Wilpattu til Sinharajas regnskovskroner fulde af endemiske arter, fra templerne i bjergene ved Kandy til revet ud for Trincomalee: Sri Lanka samler et helt kontinents natur på én ø.",
+    "body": "Fra Yalas tørre græssletter til Ellas skydækkede bjergstier, fra templerne ved søen i Kandy til de hvalrige farvande ud for Mirissa: Sri Lanka samler et helt kontinents natur på én ø.",
     "cta": "Se destinationerne"
   },
   "conservation": {
