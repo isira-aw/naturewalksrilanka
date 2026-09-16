@@ -26,6 +26,8 @@ export function CustomJourneyInvite({
     eyebrow: string;
     title: string;
     body: string;
+    /** "Tell us → We plan → You explore" — the process in three words, above the step strip. */
+    process?: string;
     stepsLabel: string;
     cta: string;
   };
@@ -79,6 +81,14 @@ export function CustomJourneyInvite({
           <Rise delay={0.22}>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-warm-white/80">{labels.body}</p>
           </Rise>
+
+          {labels.process && (
+            <Rise delay={0.28}>
+              <p className="mt-8 font-display text-lg text-warm-white/90 md:text-xl">
+                {labels.process}
+              </p>
+            </Rise>
+          )}
         </div>
 
         <Rise delay={0.3}>

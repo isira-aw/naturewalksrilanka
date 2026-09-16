@@ -26,11 +26,12 @@
   },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
-    "titleLine1": "Más allá de",
-    "titleLine2": "lo habitual",
-    "subtitle": "Viajes privados de naturaleza por Sri Lanka, con guías certificados que saben dónde mirar.",
-    "ctaPrimary": "Ver los viajes",
-    "ctaSecondary": "Diseña tu viaje"
+    "titleLine1": "Descubre el Sri Lanka",
+    "titleLine2": "que viniste a buscar.",
+    "subtitle": "Viajes privados por bosques salvajes, paisajes antiguos y rincones tranquilos de la isla — guiados por quienes saben exactamente dónde mirar.",
+    "ctaPrimary": "Explora nuestros viajes",
+    "ctaSecondary": "Planifica tu viaje",
+    "trustLabel": "Viajes privados"
   },
   "home": {
     "introEyebrow": "Descubre Sri Lanka",
@@ -55,11 +56,11 @@
       }
     ],
     "experiencesEyebrow": "Lo que puedes descubrir",
-    "experiencesTitle": "Fauna, aves, senderos de bosque y todo lo que hay entre medias.",
-    "experiencesBody": "Seis maneras de pasar un día en Sri Lanka. Todos nuestros viajes incluyen aves y fauna; el resto lo eliges tú.",
+    "experiencesTitle": "Una isla. Muchas formas de vivirla.",
+    "experiencesBody": "Fauna, aves, selva, montaña, cultura, costa — elige las experiencias que más te llamen, y deja que un viaje las reúna en uno solo.",
     "experiencesWhere": "Dónde encontrarlo",
     "servicesEyebrow": "Lo que organizamos",
-    "servicesTitle": "Todo lo que un viaje necesita, desde un mismo sitio.",
+    "servicesTitle": "Tú disfrutas el viaje. Nosotros nos ocupamos del resto.",
     "services": [
       {
         "title": "Guías certificados",
@@ -79,11 +80,12 @@
       }
     ],
     "guideRole": "Fundador y guía principal",
-    "guideBody": "Nandana empezó en la conservación de la fauna en 1990, se acreditó como guía nacional en 2002 y fundó Nature Walks Sri Lanka en 2017. Sigue guiando viajes él mismo.",
-    "guideCta": "Lee la historia de Nandana",
+    "guideBody": "Antes de ser guía, Nandana pasó años en el Departamento de Conservación de la Fauna de Sri Lanka, estudiando las aves, plantas e insectos de la isla y enseñando a otros a reconocerlos. Se acreditó como guía nacional en 2002 y fundó Nature Walks Sri Lanka en 2017. Sigue guiando viajes él mismo.",
+    "guideCta": "Conoce a Nandana",
     "customEyebrow": "Crea tu propio viaje",
     "customTitle": "No tienes que elegir de una lista.",
-    "customBody": "Cuéntanos qué quieres de verdad de Sri Lanka — aves endémicas, leopardos a primera luz, una montaña de la que has leído, días con nada más que una cámara — y construimos la ruta, el guía y los alojamientos alrededor de eso. De uno a doce viajeros, cualquier fecha del año.",
+    "customBody": "Cuéntanos cuándo viajas, con quién, qué quieres ver — aves endémicas, leopardos a primera luz, una montaña de la que has leído — y cómo prefieres alojarte. Nosotros construimos la ruta, el guía y el alojamiento alrededor de eso. De uno a doce viajeros, cualquier fecha del año.",
+    "customProcess": "Cuéntanoslo → Lo planificamos → Tú lo descubres",
     "customStepsLabel": "Lo que nos cuentas",
     "journeysCta": "Ver todos los viajes",
     "placesCta": "Ver todos los destinos"
@@ -91,6 +93,7 @@
   "tours": {
     "sectionEyebrow": "Viajes",
     "sectionTitle": "¿Cuánto tiempo quieres dedicar a Sri Lanka?",
+    "homeIntro": "Empieza con un viaje. Hazlo tuyo — cualquiera de las rutas de abajo se puede acortar, alargar o rehacer en torno a lo que más te importa.",
     "indexEyebrow": "Nuestros viajes",
     "indexLead": "Cada ruta de esta página la guía nuestro propio equipo certificado, con alojamiento y transporte organizados de principio a fin. Cualquiera de ellas se puede acortar, alargar o rehacer en torno a lo que más te apetezca ver.",
     "custom": "Diseña tu propio viaje",
@@ -272,7 +275,7 @@
   "finalCta": {
     "eyebrow": "Empieza a planificar",
     "title": "Tu Sri Lanka empieza con una conversación.",
-    "subtitle": "Sin formularios ni esperas: escribe directamente a Nature Walks Sri Lanka por WhatsApp."
+    "subtitle": "Sin formularios ni esperas — escríbenos y empezamos juntos a dar forma a tu viaje."
   },
   "contact": {
     "title": "Habla con las personas que te van a guiar.",

@@ -136,7 +136,7 @@ export default async function HomePage({
           subtitle: t("hero.subtitle"),
           ctaPrimary: t("hero.ctaPrimary"),
           ctaSecondary: t("hero.ctaSecondary"),
-          meta: `${profile.experience} · ${profile.certification}`,
+          meta: `${profile.experience} · ${profile.certification} · ${t("hero.trustLabel")}`,
           whatsapp: t("whatsapp.talkToUs"),
         }}
         navigation={navigation}
@@ -174,6 +174,7 @@ export default async function HomePage({
         labels={{
           eyebrow: t("tours.sectionEyebrow"),
           title: t("tours.sectionTitle"),
+          intro: t("tours.homeIntro"),
           cta: t("tours.cta"),
           daysLabel: t("tours.daysLabel"),
           highlightsTitle: t("tours.highlightsTitle"),
@@ -207,6 +208,7 @@ export default async function HomePage({
           eyebrow: t("home.customEyebrow"),
           title: t("home.customTitle"),
           body: t("home.customBody"),
+          process: t("home.customProcess"),
           stepsLabel: t("home.customStepsLabel"),
           cta: t("customTour.start"),
         }}

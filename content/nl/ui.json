@@ -26,11 +26,12 @@
   },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
-    "titleLine1": "Voorbij het",
-    "titleLine2": "gewone",
-    "subtitle": "Privé natuurreizen door Sri Lanka, met gecertificeerde gidsen die weten waar ze moeten kijken.",
-    "ctaPrimary": "Bekijk de reizen",
-    "ctaSecondary": "Stel je reis samen"
+    "titleLine1": "Zie het Sri Lanka",
+    "titleLine2": "dat je zoekt.",
+    "subtitle": "Privéreizen door wilde bossen, eeuwenoude landschappen en verborgen hoekjes van het eiland — geleid door mensen die precies weten waar ze moeten kijken.",
+    "ctaPrimary": "Bekijk onze reizen",
+    "ctaSecondary": "Plan je reis",
+    "trustLabel": "Privéreizen"
   },
   "home": {
     "introEyebrow": "Ontdek Sri Lanka",
@@ -55,11 +56,11 @@
       }
     ],
     "experiencesEyebrow": "Wat je kunt ontdekken",
-    "experiencesTitle": "Dieren, vogels, bospaden en alles daartussenin.",
-    "experiencesBody": "Zes manieren om een dag op Sri Lanka door te brengen. Elke reis die wij maken bevat vogels en wildlife — de rest kies je zelf.",
+    "experiencesTitle": "Eén eiland. Talloze manieren om het te beleven.",
+    "experiencesBody": "Wildlife, vogels, regenwoud, bergen, cultuur, kust — kies de ervaringen die je aanspreken, en laat een reis ze voor je samenbrengen.",
     "experiencesWhere": "Waar je het vindt",
     "servicesEyebrow": "Wat wij regelen",
-    "servicesTitle": "Alles wat een reis nodig heeft, op één plek.",
+    "servicesTitle": "Jij geniet van de reis. Wij regelen de rest.",
     "services": [
       {
         "title": "Gecertificeerde gidsen",
@@ -79,11 +80,12 @@
       }
     ],
     "guideRole": "Oprichter en hoofdgids",
-    "guideBody": "Nandana begon in 1990 in het natuurbehoud, werd in 2002 gediplomeerd nationaal gids en richtte in 2017 Nature Walks Sri Lanka op. Hij begeleidt nog altijd zelf reizen.",
-    "guideCta": "Lees het verhaal van Nandana",
+    "guideBody": "Voordat hij gids was, bracht Nandana jaren door bij Sri Lanka's Department of Wildlife Conservation — hij bestudeerde de vogels, planten en insecten van het eiland en leerde anderen ze te herkennen. In 2002 werd hij gediplomeerd nationaal gids en in 2017 richtte hij Nature Walks Sri Lanka op. Hij begeleidt nog altijd zelf reizen.",
+    "guideCta": "Ontmoet Nandana",
     "customEyebrow": "Stel je eigen reis samen",
     "customTitle": "Je hoeft niet uit een lijst te kiezen.",
-    "customBody": "Vertel ons wat je echt uit Sri Lanka wilt halen — endemische vogels, luipaarden bij het eerste licht, een berg waarover je hebt gelezen, dagen met niets dan een camera — en wij bouwen de route, de gids en de overnachtingen daaromheen. Eén tot twaalf reizigers, elke datum van het jaar.",
+    "customBody": "Vertel ons wanneer je reist, met wie, wat je wilt zien — endemische vogels, luipaarden bij het eerste licht, een berg waarover je hebt gelezen — en hoe je het liefst verblijft. Wij bouwen de route, de gids en de accommodatie daaromheen. Eén tot twaalf reizigers, elke datum van het jaar.",
+    "customProcess": "Vertel het ons → Wij plannen → Jij ontdekt",
     "customStepsLabel": "Wat je ons vertelt",
     "journeysCta": "Bekijk alle reizen",
     "placesCta": "Bekijk alle bestemmingen"
@@ -91,6 +93,7 @@
   "tours": {
     "sectionEyebrow": "Reizen",
     "sectionTitle": "Hoe lang wil je Sri Lanka ontdekken?",
+    "homeIntro": "Begin met een reis. Maak hem van jou — elke route hieronder kan worden ingekort, verlengd of helemaal herbouwd rond wat jij het belangrijkst vindt.",
     "indexEyebrow": "Onze reizen",
     "indexLead": "Elke route hier wordt begeleid door ons eigen gecertificeerde team, met accommodatie en vervoer overal geregeld. Elke reis kan korter, langer of helemaal opnieuw worden opgebouwd rond wat jij het liefst wilt zien.",
     "custom": "Stel je eigen reis samen",
@@ -272,7 +275,7 @@
   "finalCta": {
     "eyebrow": "Begin met plannen",
     "title": "Jouw Sri Lanka begint met een gesprek.",
-    "subtitle": "Geen formulieren, geen wachttijd — stuur Nature Walks Sri Lanka rechtstreeks een bericht via WhatsApp."
+    "subtitle": "Geen formulieren, geen wachttijd — stuur ons een bericht en we beginnen samen je reis vorm te geven."
   },
   "contact": {
     "title": "Praat met de mensen die je gaan begeleiden.",

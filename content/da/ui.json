@@ -26,11 +26,12 @@
   },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
-    "titleLine1": "Ud over",
-    "titleLine2": "det sædvanlige",
-    "subtitle": "Private naturrejser gennem Sri Lanka med certificerede guider, der ved, hvor man skal kigge.",
-    "ctaPrimary": "Se rejserne",
-    "ctaSecondary": "Sammensæt din rejse"
+    "titleLine1": "Se det Sri Lanka",
+    "titleLine2": "du kom for at finde.",
+    "subtitle": "Private rejser gennem vilde skove, ældgamle landskaber og øens stille kroge — guidet af folk, der ved præcis, hvor de skal kigge.",
+    "ctaPrimary": "Se vores rejser",
+    "ctaSecondary": "Planlæg din rejse",
+    "trustLabel": "Private rejser"
   },
   "home": {
     "introEyebrow": "Oplev Sri Lanka",
@@ -55,11 +56,11 @@
       }
     ],
     "experiencesEyebrow": "Det kan du opleve",
-    "experiencesTitle": "Dyr, fugle, skovstier og alt derimellem.",
-    "experiencesBody": "Seks måder at bruge en dag på Sri Lanka. Alle vores rejser indeholder fugle og dyreliv — resten vælger du selv.",
+    "experiencesTitle": "Én ø. Utallige måder at opleve den på.",
+    "experiencesBody": "Dyreliv, fugle, regnskov, bjerge, kultur, kyst — vælg de oplevelser, der taler til dig, og lad en rejse samle dem i én tur.",
     "experiencesWhere": "Hvor du finder det",
     "servicesEyebrow": "Det arrangerer vi",
-    "servicesTitle": "Alt, hvad en rejse kræver, fra ét sted.",
+    "servicesTitle": "Du nyder rejsen. Vi klarer det praktiske.",
     "services": [
       {
         "title": "Certificerede guider",
@@ -79,11 +80,12 @@
       }
     ],
     "guideRole": "Grundlægger og chefguide",
-    "guideBody": "Nandana startede i naturbevarelse i 1990, blev uddannet national guide i 2002 og grundlagde Nature Walks Sri Lanka i 2017. Han guider stadig selv.",
-    "guideCta": "Læs Nandanas historie",
+    "guideBody": "Før han blev guide, brugte Nandana flere år hos Sri Lankas Department of Wildlife Conservation — han studerede øens fugle, planter og insekter og lærte andre at genkende dem. Han blev uddannet national guide i 2002 og grundlagde Nature Walks Sri Lanka i 2017. Han guider stadig selv rejser.",
+    "guideCta": "Mød Nandana",
     "customEyebrow": "Sammensæt din egen rejse",
     "customTitle": "Du behøver ikke vælge fra en liste.",
-    "customBody": "Fortæl os, hvad du virkelig vil have ud af Sri Lanka — endemiske fugle, leoparder i det første lys, et bjerg du har læst om, dage med intet andet end et kamera — så bygger vi ruten, guiden og overnatningerne op om det. Fra én til tolv rejsende, på en hvilken som helst dato.",
+    "customBody": "Fortæl os hvornår du rejser, med hvem, hvad du vil se — endemiske fugle, leoparder i det første lys, et bjerg du har læst om — og hvordan du helst bor. Vi bygger ruten, guiden og overnatningen op om det. Fra én til tolv rejsende, på en hvilken som helst dato.",
+    "customProcess": "Fortæl os det → Vi planlægger → Du oplever",
     "customStepsLabel": "Det, du fortæller os",
     "journeysCta": "Se alle rejser",
     "placesCta": "Se alle destinationer"
@@ -91,6 +93,7 @@
   "tours": {
     "sectionEyebrow": "Rejser",
     "sectionTitle": "Hvor lang tid vil du bruge på Sri Lanka?",
+    "homeIntro": "Start med en rejse. Gør den til din egen — enhver rute herunder kan gøres kortere, længere eller bygges helt om efter det, der betyder mest for dig.",
     "indexEyebrow": "Vores rejser",
     "indexLead": "Hver rute her guides af vores eget certificerede team, med overnatning og transport arrangeret hele vejen. Alle kan gøres kortere, længere eller bygges helt om efter det, du helst vil se.",
     "custom": "Sammensæt din egen rejse",
@@ -272,7 +275,7 @@
   "finalCta": {
     "eyebrow": "Kom i gang",
     "title": "Dit Sri Lanka begynder med en samtale.",
-    "subtitle": "Ingen formularer, ingen ventetid — skriv direkte til Nature Walks Sri Lanka på WhatsApp."
+    "subtitle": "Ingen formularer, ingen ventetid — skriv til os, og vi begynder sammen at forme din rejse."
   },
   "contact": {
     "title": "Tal med dem, der skal guide dig.",
