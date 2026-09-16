@@ -25,41 +25,18 @@
     }
   },
   "hero": {
-    "eyebrow": "Nature Walks Sri Lanka",
-    "titleLine1": "Ud over",
-    "titleLine2": "det sædvanlige",
-    "subtitle": "Private rejser gennem øens vilde hjerte.",
-    "ctaPrimary": "Se rejserne",
-    "ctaSecondary": "Sammensæt din rejse"
+    "eyebrow": "PRIVATE REJSER I SRI LANKA",
+    "titleLine1": "Kom og oplev Sri Lanka sammen med os.",
+    "subtitle": "Dyreliv, regnskove, bjerge, oldtidssteder og stille strande — samlet i en rejse skabt omkring dig.",
+    "ctaPrimary": "Udforsk vores rejser",
+    "ctaSecondary": "Sammensæt din rejse →",
+    "trustLine": "20+ års erfaring som guide · Certificerede guider fra Sri Lanka Tourism Board"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Ét selskab til hele rejsen.",
-    "introBody": "Certificerede guider, overnatning og transport — arrangeret af os, fra din første besked til din sidste morgen på øen.",
+    "introTitle": "Sri Lanka er lille nok at krydse — men for rigt til at skynde sig igennem.",
+    "introBody": "En regnskov om morgenen. En elefantsti om eftermiddagen. Tekultur i bjergene. En stille strand før solnedgang. Vi skaber private rejser, der samler disse oplevelser på en naturlig måde.",
     "introClosing": "Du ser ikke bare Sri Lanka. Du lærer det at kende.",
-    "natureImmersion": {
-      "label": "Sri Lankas vilde side",
-      "title": "Se nærmere.",
-      "body": "Regnskoven rører på sig, hvis du bliver stående længe nok til at lægge mærke til det."
-    },
-    "stats": [
-      {
-        "value": "20+",
-        "label": "År som guide"
-      },
-      {
-        "value": "30+",
-        "label": "Endemiske fuglearter"
-      },
-      {
-        "value": "15",
-        "label": "Destinationer"
-      },
-      {
-        "value": "100%",
-        "label": "Certificerede guider"
-      }
-    ],
     "servicesEyebrow": "Det arrangerer vi",
     "servicesTitle": "Alt, hvad en rejse kræver, fra ét sted.",
     "services": [
@@ -84,7 +61,8 @@
     "guideBody": "Nandana startede i naturbevarelse i 1990, blev uddannet national guide i 2002 og grundlagde Nature Walks Sri Lanka i 2017. Han guider stadig selv.",
     "guideCta": "Læs Nandanas historie",
     "journeysCta": "Se alle rejser",
-    "placesCta": "Se alle destinationer"
+    "placesCta": "Se alle destinationer",
+    "guideHeading": "Mød personen bag rejserne."
   },
   "tours": {
     "sectionEyebrow": "Rejser",
@@ -225,21 +203,22 @@
     "certificationLabel": "Certificering",
     "introTitle": "Et helt liv til fods gennem Sri Lanka.",
     "whyEyebrow": "Derfor skal du rejse med os",
-    "whyTitle": "Et guideselskab, ikke en bookingskranke.",
+    "whyTitle": "Rejs i Sri Lanka med folk, der kender det.",
     "whyPoints": [
       {
-        "title": "Alle guider er certificerede",
-        "description": "Alle vores guider er certificeret af Sri Lanka Tourism Board."
+        "title": "Folk, der kender øen",
+        "description": "Vores guider gør mere end at tage dig fra ét sted til et andet. De kender skovene, dyrelivet, fuglene, sæsonerne og lokalsamfundene efter mange år i felten."
       },
       {
-        "title": "Trænet i felten",
-        "description": "Guidning, der er vokset ud af feltarbejde — oplært af Nandana selv."
+        "title": "Ét team, fra start til slut",
+        "description": "Din guide, transport, overnatning og daglige planer arbejder sammen som én rejse. Du bliver ikke sendt videre fra det ene firma til det andet."
       },
       {
-        "title": "Ét selskab, én rejse",
-        "description": "Guider, overnatning og transport fra os — ét nummer til det hele."
+        "title": "Din rejse, på din måde",
+        "description": "Nogle rejsende vil have dyreliv fra solopgang til solnedgang. Andre vil have lidt dyreliv, lidt kultur, tid i bjergene og et par stille dage ved havet. Vi former rejsen omkring det, du gerne vil opleve."
       }
-    ]
+    ],
+    "whyIntro": "En god rejse handler om mere end de steder, du besøger. Det handler om, hvem der tager dig med, hvad du lægger mærke til undervejs, og hvor naturligt det hele falder på plads."
   },
   "sriLanka": {
     "eyebrow": "Sri Lanka",
@@ -258,16 +237,17 @@
     "emptyState": "Vi er ved at samle rejsendes fortællinger her — kig forbi igen snart, eller skriv til os på WhatsApp for referencer."
   },
   "finalCta": {
-    "eyebrow": "Kom i gang",
+    "eyebrow": "LAD OS PLANLÆGGE DIN REJSE",
     "title": "Dit Sri Lanka begynder med en samtale.",
-    "subtitle": "Ingen formularer, ingen ventetid — skriv direkte til Nature Walks Sri Lanka på WhatsApp."
+    "subtitle": "Fortæl os, hvad du gerne vil se, hvordan du kan lide at rejse, og hvor meget tid du har. Vi hjælper dig med at forme rejsen.",
+    "reassurance": "Ingen komplicerede formularer. Bare en samtale om Sri Lanka."
   },
   "whatsapp": {
     "talkToUs": "Skriv til os",
     "askUs": "Stil et spørgsmål",
     "discussJourney": "Spørg om denne rejse",
     "buildJourney": "Sammensæt min rejse",
-    "finalCta": "Kom i gang på WhatsApp"
+    "finalCta": "Skriv til os på WhatsApp"
   },
   "footer": {
     "tagline": "Private natur- og dyrelivsrejser i Sri Lanka med certificerede guider, overnatning og transport arrangeret hele vejen.",

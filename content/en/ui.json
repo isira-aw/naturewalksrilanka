@@ -25,41 +25,18 @@
     }
   },
   "hero": {
-    "eyebrow": "Nature Walks Sri Lanka",
-    "titleLine1": "Beyond the",
-    "titleLine2": "ordinary",
-    "subtitle": "Private journeys through the wild heart of the island.",
-    "ctaPrimary": "Explore Tours",
-    "ctaSecondary": "Build Your Journey"
+    "eyebrow": "PRIVATE JOURNEYS IN SRI LANKA",
+    "titleLine1": "Come discover Sri Lanka with us.",
+    "subtitle": "Wildlife, forests, mountains, ancient places and quiet beaches — brought together in a journey made around you.",
+    "ctaPrimary": "Explore Our Journeys",
+    "ctaSecondary": "Build Your Journey →",
+    "trustLine": "20+ years of guiding · Sri Lanka Tourism Board certified guides"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "One company for the whole journey.",
-    "introBody": "Certified guides, accommodation and transport — arranged by us, from your first message to your last morning on the island.",
+    "introTitle": "Sri Lanka is small enough to cross — but too rich to rush.",
+    "introBody": "A rainforest in the morning. An elephant trail in the afternoon. Tea country in the hills. A quiet beach before sunset. We create private journeys that bring these experiences together naturally.",
     "introClosing": "You don't just see Sri Lanka. You get to know it.",
-    "natureImmersion": {
-      "label": "The wild side of Sri Lanka",
-      "title": "Look closer.",
-      "body": "The rainforest moves if you stay still long enough to notice."
-    },
-    "stats": [
-      {
-        "value": "20+",
-        "label": "Years guiding"
-      },
-      {
-        "value": "30+",
-        "label": "Endemic bird species"
-      },
-      {
-        "value": "15",
-        "label": "Destinations"
-      },
-      {
-        "value": "100%",
-        "label": "Certified guides"
-      }
-    ],
     "servicesEyebrow": "What We Arrange",
     "servicesTitle": "Everything a journey needs, from one place.",
     "services": [
@@ -84,7 +61,8 @@
     "guideBody": "Nandana began in wildlife conservation in 1990, qualified as a national guide in 2002, and founded Nature Walks Sri Lanka in 2017. He still leads tours himself.",
     "guideCta": "Read Nandana's story",
     "journeysCta": "See all journeys",
-    "placesCta": "See all destinations"
+    "placesCta": "See all destinations",
+    "guideHeading": "Meet the person behind the journeys."
   },
   "tours": {
     "sectionEyebrow": "Journeys",
@@ -225,21 +203,22 @@
     "certificationLabel": "Certification",
     "introTitle": "A lifetime spent walking through Sri Lanka.",
     "whyEyebrow": "Why Travel With Us",
-    "whyTitle": "A guiding company, not a booking desk.",
+    "whyTitle": "Travel Sri Lanka with people who know it.",
     "whyPoints": [
       {
-        "title": "Every guide certified",
-        "description": "All our guides are certified by the Sri Lanka Tourism Board."
+        "title": "People who know the island",
+        "description": "Our guides do more than take you from one place to another. They know the forests, wildlife, birds, seasons and local communities through years of being in the field."
       },
       {
-        "title": "Field-trained, not scripted",
-        "description": "Guiding that grew out of conservation fieldwork, taught by Nandana himself."
+        "title": "One team, from beginning to end",
+        "description": "Your guide, transport, accommodation and daily plans work together as one journey. You are not passed from one company to another."
       },
       {
-        "title": "One company, one journey",
-        "description": "Guides, stays and transport from us — one number for anything."
+        "title": "Your journey, your way",
+        "description": "Some travellers want wildlife from sunrise to sunset. Others want a little wildlife, some culture, time in the mountains and a few quiet days by the sea. We shape the journey around what you want to experience."
       }
-    ]
+    ],
+    "whyIntro": "A good journey is about more than the places you visit. It is about who takes you there, what you notice along the way, and how naturally everything comes together."
   },
   "sriLanka": {
     "eyebrow": "Sri Lanka",
@@ -258,16 +237,17 @@
     "emptyState": "Traveler stories are being gathered here — check back soon, or message us on WhatsApp for references."
   },
   "finalCta": {
-    "eyebrow": "Start Planning",
-    "title": "Your Sri Lanka begins with a conversation.",
-    "subtitle": "No forms, no wait — message Nature Walks Sri Lanka directly on WhatsApp."
+    "eyebrow": "LET'S PLAN YOUR JOURNEY",
+    "title": "Your Sri Lanka starts with a conversation.",
+    "subtitle": "Tell us what you would love to see, how you like to travel and how much time you have. We'll help you shape the journey.",
+    "reassurance": "No complicated forms. Just a conversation about Sri Lanka."
   },
   "whatsapp": {
     "talkToUs": "Talk to us",
     "askUs": "Ask a question",
     "discussJourney": "Discuss This Journey",
     "buildJourney": "Build My Journey",
-    "finalCta": "Start Planning on WhatsApp"
+    "finalCta": "Talk to us on WhatsApp"
   },
   "footer": {
     "tagline": "Private nature and wildlife journeys through Sri Lanka, with certified guides, accommodation and transport arranged throughout.",

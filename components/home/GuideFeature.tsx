@@ -19,7 +19,7 @@ export function GuideFeature({
   labels,
 }: {
   profile: Profile;
-  labels: { eyebrow: string; role: string; body: string; cta: string };
+  labels: { eyebrow: string; heading: string; role: string; body: string; cta: string };
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -59,14 +59,14 @@ export function GuideFeature({
             <Kicker>{labels.eyebrow}</Kicker>
 
             <Words
-              text={profile.name}
+              text={labels.heading}
               delay={0.05}
               className="mt-6 font-display text-3xl leading-tight tracking-tight text-charcoal md:text-4xl"
             />
 
             <Rise delay={0.15}>
               <p className="mt-3 font-utility text-xs uppercase tracking-[0.2em] text-charcoal/55">
-                {labels.role}
+                {profile.name} · {labels.role}
               </p>
             </Rise>
 

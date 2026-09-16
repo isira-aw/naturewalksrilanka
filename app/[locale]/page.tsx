@@ -9,11 +9,9 @@ import { HeroShowcase } from "@/components/home/HeroShowcase";
 import { IntroStatement } from "@/components/home/IntroStatement";
 import { GuideFeature } from "@/components/home/GuideFeature";
 import { ServiceRail, type Service } from "@/components/home/ServiceRail";
-import { StatsRibbon, type Stat } from "@/components/home/StatsRibbon";
 import { DestinationRail } from "@/components/home/DestinationRail";
 import { ReasonsList } from "@/components/home/ReasonsList";
 import { JourneyShowcase } from "@/components/home/JourneyShowcase";
-import { NatureImmersion } from "@/components/home/NatureImmersion";
 import { VoicesSlider } from "@/components/home/VoicesSlider";
 import { PlanCta } from "@/components/whatsapp/PlanCta";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -66,7 +64,6 @@ export default async function HomePage({
 
   const whyPoints = t.raw("nandana.whyPoints") as { title: string; description: string }[];
   const services = t.raw("home.services") as Service[];
-  const stats = t.raw("home.stats") as Stat[];
   const featuredDestinations = destinations.slice(0, 8);
 
   return (
@@ -78,11 +75,10 @@ export default async function HomePage({
         labels={{
           eyebrow: t("hero.eyebrow"),
           titleLine1: t("hero.titleLine1"),
-          titleLine2: t("hero.titleLine2"),
           subtitle: t("hero.subtitle"),
           ctaPrimary: t("hero.ctaPrimary"),
           ctaSecondary: t("hero.ctaSecondary"),
-          meta: `${profile.experience} · ${profile.certification}`,
+          meta: t("hero.trustLine"),
           whatsapp: t("whatsapp.talkToUs"),
         }}
         navigation={navigation}
@@ -94,8 +90,6 @@ export default async function HomePage({
         body={t("home.introBody")}
         closing={t("home.introClosing")}
       />
-
-      <StatsRibbon stats={stats} />
 
       <ServiceRail
         labels={{
@@ -109,17 +103,10 @@ export default async function HomePage({
         profile={profile}
         labels={{
           eyebrow: t("nandana.introEyebrow"),
+          heading: t("home.guideHeading"),
           role: t("home.guideRole"),
           body: t("home.guideBody"),
           cta: t("home.guideCta"),
-        }}
-      />
-
-      <NatureImmersion
-        labels={{
-          label: t("home.natureImmersion.label"),
-          title: t("home.natureImmersion.title"),
-          body: t("home.natureImmersion.body"),
         }}
       />
 
@@ -150,6 +137,7 @@ export default async function HomePage({
         labels={{
           eyebrow: t("nandana.whyEyebrow"),
           title: t("nandana.whyTitle"),
+          intro: t("nandana.whyIntro"),
           note: t("conservation.quote"),
         }}
         points={whyPoints}
@@ -179,6 +167,7 @@ export default async function HomePage({
           title: t("finalCta.title"),
           subtitle: t("finalCta.subtitle"),
           cta: t("whatsapp.finalCta"),
+          reassurance: t("finalCta.reassurance"),
         }}
         secondary={{ href: "/custom-tour", label: t("customTour.start") }}
       />

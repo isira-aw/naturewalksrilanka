@@ -25,41 +25,18 @@
     }
   },
   "hero": {
-    "eyebrow": "Nature Walks Sri Lanka",
-    "titleLine1": "Voorbij het",
-    "titleLine2": "gewone",
-    "subtitle": "Privéreizen door het wilde hart van het eiland.",
-    "ctaPrimary": "Bekijk de reizen",
-    "ctaSecondary": "Stel je reis samen"
+    "eyebrow": "PRIVÉREIZEN IN SRI LANKA",
+    "titleLine1": "Kom Sri Lanka met ons ontdekken.",
+    "subtitle": "Wilde dieren, regenwouden, bergen, oude plekken en rustige stranden — samengebracht in een reis die om jou heen wordt gebouwd.",
+    "ctaPrimary": "Ontdek onze reizen",
+    "ctaSecondary": "Stel je reis samen →",
+    "trustLine": "20+ jaar ervaring als gids · Door de Sri Lanka Tourism Board gecertificeerde gidsen"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Eén bedrijf voor de hele reis.",
-    "introBody": "Gecertificeerde gidsen, accommodatie en vervoer — door ons geregeld, van je eerste bericht tot je laatste ochtend op het eiland.",
+    "introTitle": "Sri Lanka is klein genoeg om te doorkruisen — maar te rijk om te haasten.",
+    "introBody": "Een regenwoud in de ochtend. Een olifantenpad in de middag. Theelandschappen in de heuvels. Een rustig strand voor zonsondergang. Wij maken privéreizen die deze ervaringen op een natuurlijke manier samenbrengen.",
     "introClosing": "Je ziet Sri Lanka niet alleen. Je leert het kennen.",
-    "natureImmersion": {
-      "label": "De wilde kant van Sri Lanka",
-      "title": "Kijk beter.",
-      "body": "Het regenwoud beweegt als je lang genoeg stilstaat om het op te merken."
-    },
-    "stats": [
-      {
-        "value": "20+",
-        "label": "Jaar als gids"
-      },
-      {
-        "value": "30+",
-        "label": "Endemische vogelsoorten"
-      },
-      {
-        "value": "15",
-        "label": "Bestemmingen"
-      },
-      {
-        "value": "100%",
-        "label": "Gecertificeerde gidsen"
-      }
-    ],
     "servicesEyebrow": "Wat wij regelen",
     "servicesTitle": "Alles wat een reis nodig heeft, op één plek.",
     "services": [
@@ -84,7 +61,8 @@
     "guideBody": "Nandana begon in 1990 in het natuurbehoud, werd in 2002 gediplomeerd nationaal gids en richtte in 2017 Nature Walks Sri Lanka op. Hij begeleidt nog altijd zelf reizen.",
     "guideCta": "Lees het verhaal van Nandana",
     "journeysCta": "Bekijk alle reizen",
-    "placesCta": "Bekijk alle bestemmingen"
+    "placesCta": "Bekijk alle bestemmingen",
+    "guideHeading": "Maak kennis met de persoon achter de reizen."
   },
   "tours": {
     "sectionEyebrow": "Reizen",
@@ -225,21 +203,22 @@
     "certificationLabel": "Certificering",
     "introTitle": "Een leven lang wandelen door Sri Lanka.",
     "whyEyebrow": "Waarom met ons reizen",
-    "whyTitle": "Een gidsenbedrijf, geen boekingsbalie.",
+    "whyTitle": "Reis door Sri Lanka met mensen die het kennen.",
     "whyPoints": [
       {
-        "title": "Elke gids gecertificeerd",
-        "description": "Al onze gidsen zijn gecertificeerd door de Sri Lanka Tourism Board."
+        "title": "Mensen die het eiland kennen",
+        "description": "Onze gidsen doen meer dan je van de ene plek naar de andere brengen. Ze kennen de bossen, het wildlife, de vogels, de seizoenen en de lokale gemeenschappen door jarenlange ervaring in het veld."
       },
       {
-        "title": "Getraind in het veld",
-        "description": "Gidsen dat voortkwam uit veldwerk, met Nandana als opleider."
+        "title": "Eén team, van begin tot eind",
+        "description": "Je gids, vervoer, accommodatie en dagelijkse planning werken samen als één reis. Je wordt niet doorgestuurd van het ene bedrijf naar het andere."
       },
       {
-        "title": "Eén bedrijf, één reis",
-        "description": "Gidsen, verblijven en vervoer van ons — één nummer voor alles."
+        "title": "Jouw reis, op jouw manier",
+        "description": "Sommige reizigers willen van zonsopgang tot zonsondergang wildlife zien. Anderen willen een beetje wildlife, wat cultuur, tijd in de bergen en een paar rustige dagen aan zee. Wij vormen de reis rond wat jij wilt beleven."
       }
-    ]
+    ],
+    "whyIntro": "Een goede reis gaat om meer dan de plekken die je bezoekt. Het gaat om wie je meeneemt, wat je onderweg opmerkt en hoe vanzelfsprekend alles samenkomt."
   },
   "sriLanka": {
     "eyebrow": "Sri Lanka",
@@ -258,16 +237,17 @@
     "emptyState": "Verhalen van reizigers worden hier verzameld — kom binnenkort terug of stuur ons een WhatsApp-bericht voor referenties."
   },
   "finalCta": {
-    "eyebrow": "Begin met plannen",
+    "eyebrow": "LATEN WE JE REIS PLANNEN",
     "title": "Jouw Sri Lanka begint met een gesprek.",
-    "subtitle": "Geen formulieren, geen wachttijd — stuur Nature Walks Sri Lanka rechtstreeks een bericht via WhatsApp."
+    "subtitle": "Vertel ons wat je graag zou willen zien, hoe je graag reist en hoeveel tijd je hebt. Wij helpen je de reis vorm te geven.",
+    "reassurance": "Geen ingewikkelde formulieren. Gewoon een gesprek over Sri Lanka."
   },
   "whatsapp": {
     "talkToUs": "Neem contact op",
     "askUs": "Stel een vraag",
     "discussJourney": "Bespreek deze reis",
     "buildJourney": "Stel mijn reis samen",
-    "finalCta": "Begin met plannen via WhatsApp"
+    "finalCta": "Stuur ons een bericht via WhatsApp"
   },
   "footer": {
     "tagline": "Privéreizen door de natuur en de dierenwereld van Sri Lanka, met gecertificeerde gidsen, accommodatie en vervoer volledig geregeld.",

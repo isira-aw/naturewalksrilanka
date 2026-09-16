@@ -22,7 +22,7 @@ export function PlanCta({
   secondary,
 }: {
   whatsappNumber: string;
-  labels: { eyebrow: string; title: string; subtitle: string; cta: string };
+  labels: { eyebrow: string; title: string; subtitle: string; cta: string; reassurance?: string };
   /** Optional second route into planning, e.g. the custom-tour wizard. */
   secondary?: { href: string; label: string };
 }) {
@@ -85,35 +85,42 @@ export function PlanCta({
           transition={{ duration: 0.8, ease: EASE, delay: 0.32 }}
           className="mt-11 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
         >
+          {secondary && (
+            <Link
+              href={secondary.href}
+              className="group relative overflow-hidden rounded-full bg-warm-white px-9 py-4 font-medium text-forest transition-colors duration-500 hover:text-warm-white"
+            >
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 translate-y-full bg-charcoal transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0"
+              />
+              <span className="relative inline-flex items-center gap-2">
+                {secondary.label}
+                <span aria-hidden="true">&#8594;</span>
+              </span>
+            </Link>
+          )}
           <WhatsAppCTA
             phone={whatsappNumber}
             message={buildGeneralMessage()}
-            variant="inverted"
+            variant="quiet"
             size="lg"
           >
             {labels.cta}
           </WhatsAppCTA>
-          {secondary && (
-            <Link
-              href={secondary.href}
-              className="group inline-flex items-center gap-3 font-medium text-warm-white/90 transition-colors hover:text-warm-white"
-            >
-              <span className="relative">
-                {secondary.label}
-                <span
-                  aria-hidden="true"
-                  className="absolute -bottom-1.5 left-0 block h-px w-full origin-right scale-x-100 bg-warm-white/45 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:origin-left group-hover:scale-x-0"
-                />
-              </span>
-              <span
-                aria-hidden="true"
-                className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5"
-              >
-                &#8594;
-              </span>
-            </Link>
-          )}
         </motion.div>
+
+        {labels.reassurance && (
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-90px" }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.42 }}
+            className="mt-8 text-sm text-warm-white/60"
+          >
+            {labels.reassurance}
+          </motion.p>
+        )}
       </div>
     </section>
   );
