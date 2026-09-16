@@ -9,6 +9,7 @@ import { getContent, getTourBySlug } from "@/lib/content/loader";
 import { PageHero } from "@/components/ui/PageHero";
 import { ArrowLink, Kicker, Rise } from "@/components/ui/motion";
 import { EditorialList } from "@/components/ui/EditorialList";
+import { Photo } from "@/components/ui/Photo";
 import { WhatsAppCTA } from "@/components/whatsapp/WhatsAppCTA";
 import { buildTourInquiryMessage } from "@/lib/whatsapp/buildMessage";
 import { ItineraryTimeline } from "@/components/itinerary/ItineraryTimeline";
@@ -59,15 +60,17 @@ export default async function TourDetailPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, tCommon, tAll, tour, destinations, activities, navigation] = await Promise.all([
-    getTranslations({ locale: l, namespace: "tours" }),
-    getTranslations({ locale: l, namespace: "common" }),
-    getTranslations({ locale: l }),
-    getTourBySlug(l, slug),
-    getContent(l, "destinations"),
-    getContent(l, "activities"),
-    getContent(l, "navigation"),
-  ]);
+  const [t, tCommon, tAll, tour, destinations, activities, navigation, profile] =
+    await Promise.all([
+      getTranslations({ locale: l, namespace: "tours" }),
+      getTranslations({ locale: l, namespace: "common" }),
+      getTranslations({ locale: l }),
+      getTourBySlug(l, slug),
+      getContent(l, "destinations"),
+      getContent(l, "activities"),
+      getContent(l, "navigation"),
+      getContent(l, "profile"),
+    ]);
 
   if (!tour) notFound();
 
@@ -170,10 +173,19 @@ export default async function TourDetailPage({
                 <p className="font-utility text-xs uppercase tracking-[0.2em] text-forest">
                   {t("activitiesTitle")}
                 </p>
-                <EditorialList
-                  items={tourActivities.map((activity) => activity.name)}
-                  className="mt-6"
-                />
+                {/* The names alone say nothing to somebody deciding between
+                    journeys; the description from `activities.json` is what
+                    tells them what the days actually hold. */}
+                <dl className="mt-6 border-t border-charcoal/15">
+                  {tourActivities.map((activity) => (
+                    <div key={activity.slug} className="border-b border-charcoal/15 py-5">
+                      <dt className="font-display text-lg text-charcoal">{activity.name}</dt>
+                      <dd className="mt-2 text-sm leading-relaxed text-charcoal/65">
+                        {activity.description}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             )}
           </div>
@@ -187,6 +199,44 @@ export default async function TourDetailPage({
             itineraryTitle={t("itineraryTitle")}
             contentRequiredLabel={tCommon("contentRequired")}
           />
+        </div>
+      </section>
+
+      {/* A traveller reading a whole itinerary is deciding who to hand their
+          fortnight to, so the page answers that here rather than leaving it to
+          the About page alone. */}
+      <section className="bg-warm-white py-20 md:py-28">
+        <div className="mx-auto grid w-full max-w-7xl items-center gap-10 px-4 sm:px-6 md:grid-cols-12 md:gap-16 md:px-10">
+          <div className="relative aspect-[4/5] w-full overflow-hidden md:col-span-4">
+            <Photo
+              src={profile.portraitImage}
+              alt={`Portrait of ${profile.name} in the field`}
+              sizes="(min-width: 768px) 32vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+
+          <div className="md:col-span-8">
+            <Kicker>{t("guidedBy")}</Kicker>
+            <h2 className="mt-6 font-display text-3xl leading-tight tracking-tight text-charcoal md:text-4xl">
+              {profile.name}
+            </h2>
+            <p className="mt-3 font-utility text-xs uppercase tracking-[0.2em] text-charcoal/55">
+              {tAll("home.guideRole")}
+            </p>
+            <Rise delay={0.1}>
+              <p className="mt-7 max-w-xl text-lg leading-relaxed text-charcoal/75">
+                {tAll("home.guideBody")}
+              </p>
+            </Rise>
+            <ul className="mt-8 flex flex-wrap gap-x-10 gap-y-3 border-t border-charcoal/15 pt-6 font-utility text-xs uppercase tracking-[0.15em] text-charcoal/55">
+              <li>{profile.experience}</li>
+              <li>{profile.certification}</li>
+            </ul>
+            <ArrowLink href="/about-nandana" className="mt-8">
+              {tAll("home.guideCta")}
+            </ArrowLink>
+          </div>
         </div>
       </section>
 

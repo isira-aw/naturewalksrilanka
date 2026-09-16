@@ -5,17 +5,58 @@
     "region": "Vestkysten",
     "description": "Indgangen til Sri Lanka, tæt på den internationale lufthavn. Byen har en hollandsk kanal, et travlt fiskemarked og en rolig første eller sidste nat på rejsen.",
     "image": "/images/destinations/negombo/negombo2.jpg",
+    "heroImage": "/images/destinations/negombo/negombo.jpg",
     "activities": [
       "culture-history"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/negombo/negombo.jpg",
+    "intro": "Negombo er den første eller sidste nat på næsten alle rejser, og det er netop byens rolle: en fungerende fiskerby tyve minutter fra den internationale lufthavn, hvor du kan sove flyveturen ud ved havet i stedet for at køre ind i natten. Den er desuden en uforstyrret formiddag værd.",
+    "sections": [
+      {
+        "title": "En fiskerby, ikke en badeby",
+        "body": "Lagunen er blevet fisket af de samme familier i generationer, og stranden fyldes hver morgen med udriggerkanoer, der kommer ind for vinden. Lellama-fiskemarkedet ved daggry er byen på fuld volumen — auktionarius, is, måger og dagens fangst lagt ud på sandet."
+      },
+      {
+        "title": "Hollandsk kanal og gamle kirker",
+        "body": "Hamilton-kanalen, gravet under hollandsk styre for at føre kanel sydpå til Colombo, løber tværs gennem byen og ses bedst i det første lys. Negombos store katolske menighed har efterladt byen en himmelrand af kirketårne, og derfor kaldes kysten her ofte Lille Rom."
+      }
+    ],
+    "wildlife": [
+      "Laguner og mangrovefugle — herons, egrets, kingfishers",
+      "Overvintrende vadefugle på vaderne",
+      "Brahminy kites over fiskerstranden"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Hele året; december til marts er tørrest"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "Én nat, før eller efter flyet"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "20–30 minutter fra Bandaranaike International Airport"
+      },
+      {
+        "label": "Passer sammen med",
+        "value": "En tidlig start nordpå mod Wilpattu eller Anuradhapura"
+      }
+    ],
+    "goodToKnow": [
+      "Fiskemarkedet går i gang omkring klokken seks og er slut hen ad formiddagen.",
+      "Badning er bedst i strandens nordlige ende, væk fra fiskerbådene.",
+      "Et godt sted at veksle penge og købe det, du har glemt, før turen går indenlands."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/negombo/negombo3.jpg",
-        "alt": "Negombo"
+        "alt": "Udriggerkanoer på Negombos strand ved solopgang",
+        "caption": "Udriggerkanoer på Negombos strand ved solopgang"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "wilpattu",
@@ -23,18 +64,61 @@
     "region": "Nordvestprovinsen",
     "description": "Sri Lankas største nationalpark, kendt for leopard, læbebjørn og elefant, sine naturlige søer (villus) og tørzonens fugleliv.",
     "image": "/images/destinations/wilpattu/wilpattu2.jpg",
+    "heroImage": "/images/destinations/wilpattu/wilpattu.jpg",
     "activities": [
       "wildlife-safari",
       "birding"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/wilpattu/wilpattu.jpg",
+    "intro": "Wilpattu er Sri Lankas største nationalpark og efter vores mening den bedre leopardpark — ikke fordi der er flere leoparder end i Yala, men fordi der er færre jeeps. Parken har navn efter sine villus: naturlige, regnfyldte søer omkranset af åbent græs, hvor dyrene kommer frem i det åbne.",
+    "sections": [
+      {
+        "title": "Villus, og hvorfor de betyder noget",
+        "body": "En villu er et lavt bassin, der holder på regnvandet i et landskab, som ellers skjuler alt i tæt, tørt krat. At sidde stille ved kanten af en i en time er en helt anden måde at kigge på end at køre sporene igennem, og det er sådan, de fleste af vores bedste observationer opstår."
+      },
+      {
+        "title": "Sådan arbejder vi parken",
+        "body": "Vi kører ind, når der åbnes, og bliver hen over middag, når de fleste jeeps er kørt hjem. Spor, advarselskald fra spotted deer og languraber samt tålmodighed gør mere her end radiosnak — Nandana læser parken i stedet for at jagte den."
+      }
+    ],
+    "wildlife": [
+      "Sri Lankan leopard",
+      "Sloth bear — bedste chancer fra juni til august, når palu-frugten modnes",
+      "Asian elephant",
+      "Spotted deer, sambar, wild buffalo, mugger crocodile",
+      "Fugle i den tørre zone: painted stork, black-necked stork, Sri Lanka junglefowl, changeable hawk-eagle"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Februar til oktober; parken kan lukke ved kraftig regn"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "To nætter, til en hel dag og en halv dag i parken"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "Cirka 3 timer fra Negombo, 1,5 time fra Anuradhapura"
+      },
+      {
+        "label": "Terræn",
+        "value": "Tør skov, krat og åbne villus"
+      }
+    ],
+    "goodToKnow": [
+      "En heldagstur med madpakke ser langt mere end en kort eftermiddagsrunde.",
+      "Observationer kan aldrig garanteres — den, der lover dig en leopard, sælger dig noget.",
+      "Tag neutralt tøj, en hat og mere vand med, end du tror, du skal bruge."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/wilpattu/wilpattu3.avif",
-        "alt": "Wilpattu Nationalpark"
+        "alt": "En leopard hviler på et spor i Wilpattu",
+        "caption": "En leopard hviler på et spor i Wilpattu"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "anuradhapura",
@@ -42,17 +126,58 @@
     "region": "Nordcentralprovinsen",
     "description": "En af Sri Lankas gamle hovedstæder med et vidtstrakt ruinområde, der besøges sammen med det nærliggende Mihintale-tempel.",
     "image": "/images/destinations/anuradhapura/anuradhapura2.webp",
+    "heroImage": "/images/destinations/anuradhapura/anuradhapura.jpg",
     "activities": [
       "culture-history"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/anuradhapura/anuradhapura.jpg",
+    "intro": "Anuradhapura var øens hovedstad i mere end tusind år, og den er stadig en levende pilgrimsby snarere end et ruinfelt. Hvidklædte pilgrimme, olielamper og lotusblomster bevæger sig mellem monumenter, der allerede var gamle, da Europas katedraler blev bygget.",
+    "sections": [
+      {
+        "title": "Den hellige by",
+        "body": "I hjertet står Sri Maha Bodhi, et helligt figentræ groet af en aflægger af det træ, hvorunder Buddha nåede oplysning, plantet her i det tredje århundrede f.Kr. og passet uden afbrydelse lige siden. Omkring det står de store stupaer — Ruwanwelisaya, Jetavanaramaya, Abhayagiri — hver en enorm massiv kuppel af tegl."
+      },
+      {
+        "title": "Mihintale, hvor det begyndte",
+        "body": "Tolv kilometer mod øst fører en trappe på 1.840 granittrin op til Mihintale, hvor munken Mahinda mødte kong Devanampiya Tissa, og buddhismen kom til Sri Lanka. Tag derop i det første lys: opstigningen er kølig, udsigten over den tørre slette er lang, og stedet er stille."
+      }
+    ],
+    "wildlife": [
+      "Grey langur og toque macaque omkring ruinerne",
+      "Fugle ved vandreservoirerne — pelicans, painted storks, open-billed storks",
+      "Indian peafowl ved daggry på dæmningerne"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Hele året; maj til september er varmest"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "En hel dag, to hvis Mihintale skal med ordentligt"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "Cirka 4 timer fra Colombo, 1,5 time fra Wilpattu"
+      },
+      {
+        "label": "Påklædning",
+        "value": "Skuldre og knæ dækket; sko af ved de hellige steder"
+      }
+    ],
+    "goodToKnow": [
+      "Poya-dage (fuldmåne) er noget helt særligt at opleve — og meget besøgte.",
+      "Området strækker sig over kilometer — en bil mellem grupperne redder dagen.",
+      "Hvidt tøj er pilgrimmens skik og altid velkomment."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/anuradhapura/anuradhapura3.jpg",
-        "alt": "Anuradhapura"
+        "alt": "Den hvide Ruwanwelisaya-stupa",
+        "caption": "Den hvide Ruwanwelisaya-stupa"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "trincomalee",
@@ -60,18 +185,60 @@
     "region": "Østprovinsen",
     "description": "En havneby på østkysten og udgangspunkt for ture til Pigeon Island og delfinsafari.",
     "image": "/images/destinations/trincomalee/trincomalee2.jpg",
+    "heroImage": "/images/destinations/trincomalee/trincomalee.jpg",
     "activities": [
       "beach",
       "wildlife-safari"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/trincomalee/trincomalee.jpg",
+    "intro": "Trincomalee ligger ved en af verdens fineste naturlige havne, på en kyst, der har omvendt sæson af resten af øen. Når sydvesten ligger under monsunen, er Trinco roligt, klart og til at bade i.",
+    "sections": [
+      {
+        "title": "Koneswaram og havnen",
+        "body": "Koneswaram-templet ligger på Swami Rock over et lodret fald til havet — et hinduistisk sted med lang historie, genopbygget efter at portugiserne ødelagde det oprindelige. Nedenfor åbner havnen sig, dyb nok til at være blevet kæmpet om af hver eneste flåde, der nogensinde kom forbi."
+      },
+      {
+        "title": "Rev og åbent vand",
+        "body": "Pigeon Island, en kort bådtur ud for Nilaveli, er en marin nationalpark med levende koral, revfisk og blacktip reef sharks på det lave vand. Længere ude er det dybe vand ud for Trincomalee et af øens hvalområder i den østlige sæson."
+      }
+    ],
+    "wildlife": [
+      "Blue whale og sperm whale ude på dybet, i sæsonen",
+      "Spinner dolphin, ofte i store flokke",
+      "Revfisk, blacktip reef sharks og hawksbill turtles ved Pigeon Island",
+      "White-bellied sea eagle langs pynterne"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Maj til september — østkystens tørre sæson"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "To til tre nætter"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "Cirka 3 timer fra Sigiriya eller Polonnaruwa"
+      },
+      {
+        "label": "Strande",
+        "value": "Uppuveli for ro, Nilaveli for bådene til Pigeon Island"
+      }
+    ],
+    "goodToKnow": [
+      "Snorkeludstyr kan lejes lokalt, men tag din egen maske med, hvis du er kræsen.",
+      "Kun revvenlig solcreme ved Pigeon Island — det er en nationalpark.",
+      "Hvalsafari afhænger af vejret og starter altid tidligt."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/trincomalee/trincomalee3.jpg",
-        "alt": "Trincomalee"
+        "alt": "Koneswaram-templet over Swami Rock",
+        "caption": "Koneswaram-templet over Swami Rock"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "sigiriya",
@@ -79,18 +246,60 @@
     "region": "Centralprovinsen",
     "description": "Hjemsted for Løveklippen og Pidurangala-templet, med den gamle by Polonnaruwa og Minneriya Nationalpark i nærheden.",
     "image": "/images/destinations/sigiriya/sigiriya2.jpg",
+    "heroImage": "/images/destinations/sigiriya/sigiriya.jpg",
     "activities": [
       "culture-history",
       "wildlife-safari"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/sigiriya/sigiriya.jpg",
+    "intro": "En granitprop fra en uddød vulkan, der rejser sig to hundrede meter op af flad skov, med en kongelig borg fra 400-tallet på toppen. Sigiriya er det mest fotograferede i Sri Lanka og stadig hvert trin værd.",
+    "sections": [
+      {
+        "title": "Opstigningen",
+        "body": "Kong Kasyapa byggede sit palads på toppen, som man nåede gennem en port formet som en løve — kun de enorme poter er tilbage. På vejen op rummer et beskyttet galleri freskoerne af Sigiriya-jomfruerne, malet for mere end femten hundrede år siden, og den polerede spejlvæg bærer graffiti efterladt af besøgende fra 700-tallet og frem."
+      },
+      {
+        "title": "Det, de fleste går glip af",
+        "body": "Vandhaverne ved foden er en ingeniørbedrift i sig selv, med springvand der stadig virker i regntiden. Og Pidurangala, klippen overfor, er den bedre solopgang: en mere ujævn kravletur, halvt så mange mennesker, og udsigten er til Sigiriya selv."
+      }
+    ],
+    "wildlife": [
+      "Toque macaque og grey langur på de nedre terrasser",
+      "Sri Lanka grey hornbill og Sri Lanka junglefowl i skoven omkring",
+      "Painted-lip lizard på klippefladerne",
+      "Elefanter på vejen mod Minneriya i skumringen"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Hele året; gå op klokken 7 om morgenen eller efter 15.30"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "En halv dag til klippen, to nætter hvis Polonnaruwa skal med"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "Cirka 3,5 time fra Negombo, 1 time fra Polonnaruwa"
+      },
+      {
+        "label": "Opstigningen",
+        "value": "Cirka 1.200 trin, stejle metaltrapper nær toppen"
+      }
+    ],
+    "goodToKnow": [
+      "Ikke noget for svær højdeskræk — de sidste trapper er åbne til den ene side.",
+      "Vand, hat og en tidlig start; der er ingen skygge på toppen.",
+      "Gedehamse lukker af og til dele af opstigningen; vagternes ord er endeligt."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/sigiriya/sigiriya3.jpg",
-        "alt": "Sigiriya"
+        "alt": "Sigiriya-klippen, der rejser sig op af skoven",
+        "caption": "Sigiriya-klippen, der rejser sig op af skoven"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "polonnaruwa",
@@ -98,17 +307,63 @@
     "region": "Nordcentralprovinsen",
     "description": "Sri Lankas anden gamle hovedstad, som opleves på en rundtur i ruinbyen kombineret med et besøg i Minneriya Nationalpark.",
     "image": "/images/destinations/polonnaruwa/polonnaruwa2.jpg",
+    "heroImage": "/images/destinations/polonnaruwa/polonnaruwa.jpg",
     "activities": [
       "culture-history"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/polonnaruwa/polonnaruwa.jpg",
+    "intro": "Øens anden hovedstad og den mest læsbare gamle by i Sri Lanka: et kompakt sæt af paladser, templer og et stort vandreservoir, som kan gås og cykles, og som for størstedelens vedkommende blev bygget i ét udbrud af selvtillid i 1100-tallet.",
+    "sections": [
+      {
+        "title": "Bedst fra en cykel",
+        "body": "Ruinerne er spredt over nogle få flade kilometer parklandskab under store træer, hvilket gør cyklen til den rigtige måde at se dem på. Vatadage, billedhuset Lankatilaka og kongepaladset ligger alle inden for en let tur fra hinanden."
+      },
+      {
+        "title": "Gal Vihara",
+        "body": "Fire kolossale Buddha-figurer hugget ud af én granitflade — en siddende figur, et lille billede i en klippehule, en stående figur med en sjælden korsarmet holdning og en liggende Buddha, der er syv meter længere end en bus. Stenen blev valgt, så årerne følger kappens folder, og udskæringen er ikke blevet overgået i otte hundrede år."
+      },
+      {
+        "title": "Parakrama Samudra",
+        "body": "Parakramas Hav, et kunstvandingsreservoir stort nok til at have sin egen horisont, vander stadig rismarkerne omkring byen. Ved solnedgang er det dér, man skal være, og de nærliggende reservoirer Minneriya og Kaudulla trækker i de tørre måneder en af Asiens store elefantforsamlinger."
+      }
+    ],
+    "wildlife": [
+      "Asian elephant ved Minneriya og Kaudulla, august til september for the Gathering",
+      "Fugle ved reservoirerne — pelicans, cormorants, egrets, storks",
+      "Toque macaque mellem ruinerne",
+      "Land monitors og mugger crocodiles på dæmningerne"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Hele året; the Gathering topper i august og september"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "En hel dag, to nætter hvis du lægger en aftensafari til"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "1 time fra Sigiriya, 3 timer fra Kandy"
+      },
+      {
+        "label": "Rundt på stedet",
+        "value": "Cykel, med bil til de yderligt liggende grupper"
+      }
+    ],
+    "goodToKnow": [
+      "Start klokken 7 — der er næsten ingen skygge på området ved elleve-tiden.",
+      "Skuldre og knæ dækket; sko og hat af i billedhusene.",
+      "Museet ved indgangen er tyve minutter værd, før du cykler ud."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/polonnaruwa/polonnaruwa3.jpg",
-        "alt": "Polonnaruwa"
+        "alt": "Den liggende Buddha ved Gal Vihara",
+        "caption": "Den liggende Buddha ved Gal Vihara"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "kandy",
@@ -116,17 +371,59 @@
     "region": "Centralprovinsen",
     "description": "Højlandets kulturelle hovedstad: Tandtemplet, et kulturelt danseshow, tefabrikker og Dambulla-huletemplet på vejen.",
     "image": "/images/destinations/kandy/kandy2.jpg",
+    "heroImage": "/images/destinations/kandy/kandy.jpg",
     "activities": [
       "culture-history"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/kandy/kandy.jpg",
+    "intro": "Det sidste kongerige, der faldt for briterne, holdt stand i tre århundreder i en skål af skovklædte bakker og er stadig øens ceremonielle hjerte. Kandy er en levende by med en sø i midten og et regnskovsreservat på højderyggen ovenover.",
+    "sections": [
+      {
+        "title": "Tandtemplet",
+        "body": "Sri Dalada Maligawa rummer en af Buddhas tænder og dermed en lang tradition om, at den, der har relikviet, har landet. Kom til en af de tre daglige pujaer, hvor trommerne spiller og det indre kammer åbnes; selve bygningen — mørkt træ, elfenbensindlæg, malede lofter — fortjener en langsom runde."
+      },
+      {
+        "title": "Over byen",
+        "body": "Udawattakele, den gamle kongelige skovhave bag templet, er fuglekig i gåafstand fra centrum. Tre kilometer ude rummer de Kongelige Botaniske Haver i Peradeniya et kæmpe javansk figentræ, et orkidéhus og en palmeallé, med en koloni af flagermus over hovedet, som skal ses i skumringen."
+      }
+    ],
+    "wildlife": [
+      "Layard's parakeet, yellow-fronted barbet og andre endemiske arter i Udawattakele",
+      "Indian flying fox, der hænger i træerne i Peradeniya",
+      "Purple-faced langur i skovreservatet",
+      "Water monitors langs søbredden"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Hele året; Esala Perahera falder i juli eller august"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "To nætter"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "3 timer fra Colombo; toget til højlandet kører herfra"
+      },
+      {
+        "label": "Højde",
+        "value": "Omkring 500 m — køligere og grønnere end kysten"
+      }
+    ],
+    "goodToKnow": [
+      "Aftenens puja er den mest stemningsfulde; vær der tyve minutter før.",
+      "Hvidt eller afdæmpet tøj til templet, og skoene bliver ved indgangen.",
+      "Esala Perahera fylder byen i ti nætter — book i god tid eller planlæg udenom."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/kandy/kandy3.jpg",
-        "alt": "Kandy"
+        "alt": "Tandtemplet i skumringen",
+        "caption": "Tandtemplet i skumringen"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "kithulgala",
@@ -134,18 +431,60 @@
     "region": "Sabaragamuwa-provinsen",
     "description": "En landsby i regnskovskanten ved Kelani-floden, kendt for river rafting, canyoning, zipline og et rigt fugleliv.",
     "image": "/images/destinations/kithulgala/kithulgala2.jpg",
+    "heroImage": "/images/destinations/kithulgala/kithulgala.jpg",
     "activities": [
       "adventure-sports",
       "birding"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/kithulgala/kithulgala.jpg",
+    "intro": "En regnskovslandsby ved Kelani-floden, mest kendt for det vilde vand og for broen, der blev sprængt i Broen over floden Kwai. Den er også et af øens mest pålidelige steder til endemiske lavlandsfugle, og næsten ingen kommer hertil for det.",
+    "sections": [
+      {
+        "title": "Floden",
+        "body": "Kelani løber her i grad to til tre — stor nok til at være rigtig sjov, mild nok til en første rafting. Den samme kløft giver canyoning, spring og naturlige rutsjebaner, kørt af lokale hold, der ved præcis, hvilke bassiner der er sikre ved hvilken vandstand."
+      },
+      {
+        "title": "Skoven på den anden side",
+        "body": "Makandawa skovreservat nås med en lille færge over floden og derefter en opstigning ind i våd lavlandsregnskov. Den rummer en stor del af Sinharajas endemiske liste inden for en langt kortere gåtur, hvilket gør den til en god første regnskovsmorgen før den dybere tur sydpå."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka spurfowl, green-billed coucal og chestnut-backed owlet",
+      "Sri Lanka blue magpie, Layard's parakeet",
+      "Blandede fourageringsflokke tidligt om morgenen",
+      "Hump-nosed lizard og endemiske frøer langs vandløbene"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "December til april til rafting; fuglekig hele året"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "En eller to nætter"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "Cirka 2 timer fra Colombo, 2,5 time fra Kandy"
+      },
+      {
+        "label": "Terræn",
+        "value": "Våd lavlandsregnskov, stejl og glat visse steder"
+      }
+    ],
+    "goodToKnow": [
+      "Det regner her — rigtigt — og det er hele pointen med skoven.",
+      "Iglesokker til skovturene; guiderne har ekstra med.",
+      "Raftingudbyderne er meget forskellige; vi bruger det samme hold hver gang."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/kithulgala/kithulgala3.webp",
-        "alt": "Kithulgala"
+        "alt": "Kelani-floden gennem regnskoven ved Kithulgala",
+        "caption": "Kelani-floden gennem regnskoven ved Kithulgala"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "ella",
@@ -153,18 +492,60 @@
     "region": "Uva-provinsen",
     "description": "En højlandsby, man når med en af verdens smukkeste togture, med Nine Arch-broen, Little Adam's Peak og Ravana-vandfaldet.",
     "image": "/images/destinations/ella/ella2.jpg",
+    "heroImage": "/images/destinations/ella/ella.jpg",
     "activities": [
       "trekking",
       "culture-history"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/ella/ella.jpg",
+    "intro": "Et hul i bjergene, hvor højlandet falder væk mod den sydlige slette, pakket ind i te og tågeskov. Ella er lille, til at gå rundt i og har højlandets bedste korte vandreture, der starter lige uden for landsbyen.",
+    "sections": [
+      {
+        "title": "Ture fra døren",
+        "body": "Little Adam's Peak er en rolig time gennem teen op til en ryg med hele kløften bredt ud nedenunder. Ella Rock er længere, stejlere og mere stille og gøres bedst tidligt med en, der kender frakørslen — stien er ikke skiltet, og halvdelen af dem, der går på den, er faret vild."
+      },
+      {
+        "title": "Broen og toget",
+        "body": "Nine Arches Bridge, bygget i sten og tegl da stålet slap op under Første Verdenskrig, buer gennem skoven neden for landsbyen; toget, der kører over den, er et af øens syn. Selve banen, fra Nanu Oya eller Haputale ned til Ella, er grunden til, at mange overhovedet tager til højlandet."
+      }
+    ],
+    "wildlife": [
+      "Yellow-eared bulbul og Sri Lanka white-eye i teen og krattet",
+      "Crested serpent eagle over kløften",
+      "Purple-faced langur i skovpletterne",
+      "Sommerfugle i usædvanlige mængder efter regn"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Januar til marts; bjergene klarer op om morgenen"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "To nætter"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "Tog fra Nanu Oya eller Haputale; 3 timer ad vejen fra Nuwara Eliya"
+      },
+      {
+        "label": "Højde",
+        "value": "Omkring 1.040 m — varme dage, kølige nætter"
+      }
+    ],
+    "goodToKnow": [
+      "Book togpladser i god tid, eller rejs i vognen uden reservation og stå ved døren.",
+      "Skyerne lukker til sidst på formiddagen; tag udsigtspunkterne tidligt.",
+      "Ordentlige sko til Ella Rock — det er en rigtig bjergtur, ikke en spadseretur."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/ella/ella3.jpg",
-        "alt": "Ella"
+        "alt": "Et tog på Nine Arches Bridge",
+        "caption": "Et tog på Nine Arches Bridge"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "yala",
@@ -172,18 +553,60 @@
     "region": "Sydprovinsen",
     "description": "En tørzonepark med krat, vandreservoirer, brakke laguner og flodnære habitater — landets bedste park til at se leopard og læbebjørn.",
     "image": "/images/destinations/yala/yala2.jpg",
+    "heroImage": "/images/destinations/yala/yala.webp",
     "activities": [
       "wildlife-safari",
       "birding"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/yala/yala.webp",
+    "intro": "Parken, der gjorde Sri Lanka til en leoparddestination: tørt krat, granitknolde og laguner, der møder havet, med en af de højeste registrerede leopardtætheder nogen steder. Den er også landets travleste park, og hvordan du besøger den, betyder alt.",
+    "sections": [
+      {
+        "title": "Leopardland",
+        "body": "Block 1 er der, hvor tætheden er, og hvor jeepsene er. Vi kører ind, når porten åbner, arbejder de roligere vestlige spor og de klippeknolde, hvor leoparder ligger i morgensolen, og undgår køen, der samler sig om enhver observation, der går over radioen."
+      },
+      {
+        "title": "Mere end kattene",
+        "body": "Yalas elefanter er her året rundt; sloth bears dukker op i de måneder, hvor frugten modner; og kystlagunerne rummer flamingoer, skestorke og pelikaner i den nordlige vinter. Det gamle kloster Sithulpawwa, stadig i brug inden for parkens grænse, er værd at kombinere med en eftermiddagstur."
+      }
+    ],
+    "wildlife": [
+      "Sri Lankan leopard",
+      "Asian elephant og sloth bear",
+      "Mugger crocodile, spotted deer, wild buffalo",
+      "Trækkende vadefugle og flamingo på lagunerne, november til marts"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Februar til juli; parken lukker normalt i september"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "To nætter, til en morgen- og en eftermiddagstur"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "Cirka 30 minutter fra Tissamaharama"
+      },
+      {
+        "label": "Alternativ",
+        "value": "Bundala lige i nærheden, for vådområdefugle og ingen trængsel"
+      }
+    ],
+    "goodToKnow": [
+      "Den første jeep gennem porten ser en anden park end den tiende.",
+      "Bliv i bilen og hold lyden nede — det er hele etiketten.",
+      "Block 1 er travl; spørg os om Block 5 og Bundala, hvis du vil have roligere morgener."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/yala/yala3.jpg",
-        "alt": "Yala Nationalpark"
+        "alt": "En leopard på en granitknold i Yala",
+        "caption": "En leopard på en granitknold i Yala"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "sinharaja",
@@ -191,18 +614,60 @@
     "region": "Sabaragamuwa-provinsen",
     "description": "Et UNESCO-verdensarvsområde med Asiens rigeste biodiversitet og hjemsted for størstedelen af Sri Lankas endemiske planter og dyr.",
     "image": "/images/destinations/sinharaja/sinharaja2.jpg",
+    "heroImage": "/images/destinations/sinharaja/sinharaja.jpg",
     "activities": [
       "birding",
       "trekking"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/sinharaja/sinharaja.jpg",
+    "intro": "Sri Lankas sidste betydelige stykke oprindelig lavlandsregnskov, UNESCO-verdensarv og landets absolut bedste sted at se endemiske fugle. Det regner, det drypper, der er igler, og man må ikke gå glip af det.",
+    "sections": [
+      {
+        "title": "At gå i skoven",
+        "body": "Her køres der ikke: man går, langsomt, ad skovspor med tilladelse og guide. Sinharajas fugle bevæger sig i blandede fourageringsflokke — tyve eller tredive fugle af et dusin arter, der rejser sammen — og halvdelen af kunsten er at stå stille det rigtige sted, når en flok kommer."
+      },
+      {
+        "title": "Endemiske arter",
+        "body": "Af Sri Lankas endemiske fugle findes langt de fleste i denne skov, flere af dem næsten ingen andre steder. Nandana har gået disse stier siden sine år i naturbevarelse og kender flokkenes ruter, overnatningspladserne og kaldene."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka blue magpie, red-faced malkoha, green-billed coucal",
+      "Sri Lanka spurfowl og Sri Lanka scaly thrush",
+      "Purple-faced langur, giant squirrel",
+      "Endemiske frøer, agamer og regnskovssommerfugle"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Januar til april og august til september, mellem monsunerne"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "To nætter, til to hele morgener i skoven"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "Kudawa-indgangen, cirka 4 timer fra Colombo"
+      },
+      {
+        "label": "Terræn",
+        "value": "Vådt, stejlt, glat — en rigtig skov, ikke en park"
+      }
+    ],
+    "goodToKnow": [
+      "Iglesokker, regnslag til kameraet og ingen paraply inde i flokken.",
+      "Morgenerne er til fuglekig; eftermiddagene er som regel regn.",
+      "Grupperne holdes små, og tilladelserne udstedes ved porten — det klarer vi."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/sinharaja/sinharaja3.jpg",
-        "alt": "Sinharaja-regnskoven"
+        "alt": "Regnskovens kronetag ved Sinharaja",
+        "caption": "Regnskovens kronetag ved Sinharaja"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "nuwara-eliya",
@@ -210,17 +675,59 @@
     "region": "Det centrale højland",
     "description": "En kølig bjergby med Victoria Park og indgangen til Horton Plains Nationalpark.",
     "image": "/images/destinations/nuwara-eliya/nuwara-eliya2.jpg",
+    "heroImage": "/images/destinations/nuwara-eliya/nuwara-eliya.jpg",
     "activities": [
       "birding"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/nuwara-eliya/nuwara-eliya.jpg",
+    "intro": "Teland i nitten hundrede meters højde, anlagt af hjemvéramte britiske plantageejere og stadig fuld af hække, væddeløbsbaner og gavle. Det er Sri Lankas koldeste by og den grønneste, og dens lille bypark er et af landets fineste steder til fuglekig.",
+    "sections": [
+      {
+        "title": "Te, ordentligt forklaret",
+        "body": "Bakkerne omkring byen er dækket af te, og et fabriksbesøg her er værd at gøre én gang: plukningen, visnelofterne, rulningen og sorteringen, efterfulgt af en smagning, der for altid ødelægger supermarkedste for dig."
+      },
+      {
+        "title": "Victoria Park",
+        "body": "En offentlig have midt i byen, som tilfældigvis er en magnet for sjældne overvintrende fugle. Kashmir flycatcher, pied thrush og Indian pitta er alle regelmæssige her mellem november og marts — i en park med musikpavillon og legeplads."
+      }
+    ],
+    "wildlife": [
+      "Kashmir flycatcher, pied thrush og Indian pitta om vinteren",
+      "Sri Lanka bush warbler og yellow-eared bulbul",
+      "Sambar deer, der går ind i byen efter mørkets frembrud",
+      "Højlandets endemiske arter på sporene ved Pedro Estate"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Januar til marts for fuglene; april for sæsonen"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "En eller to nætter"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "2,5 time fra Kandy; toget standser i Nanu Oya"
+      },
+      {
+        "label": "Højde",
+        "value": "1.868 m — tag noget varmt med til aftenen"
+      }
+    ],
+    "goodToKnow": [
+      "Nætterne er reelt kolde, og de fleste hoteller har ingen opvarmning.",
+      "April er srilankansk ferietid her; byen fyldes, og priserne stiger.",
+      "Victoria Park koster en lille entré og åbner tidligt — gå derind i det første lys."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/nuwara-eliya/nuwara-eliya3.jpg",
-        "alt": "Nuwara Eliya"
+        "alt": "Teplantager over Nuwara Eliya",
+        "caption": "Teplantager over Nuwara Eliya"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "horton-plains",
@@ -228,18 +735,60 @@
     "region": "Det centrale højland",
     "description": "Bjerggræsland og tågeskov i højden med flere af Sri Lankas endemiske højlandsfugle.",
     "image": "/images/destinations/horton-plains/horton-plains2.jpg",
+    "heroImage": "/images/destinations/horton-plains/horton-plains.jpg",
     "activities": [
       "birding",
       "trekking"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/horton-plains/horton-plains.jpg",
+    "intro": "En højslette af bjerggræsland og tågeskov over to tusind meter, hvor øen simpelthen holder op: ved World's End falder jorden otte hundrede og firs meter i ét skridt, med de sydlige sletter bredt ud nedenfor.",
+    "sections": [
+      {
+        "title": "Rundturen",
+        "body": "En rundtur på omkring ni kilometer tager Little World's End, selve World's End og Baker's Falls med, over græsland, gennem tågeskov og over vandløb. Den er ikke svær, men højden og den tidlige start er reelle; de fleste er tilbage ved parkeringspladsen midt på formiddagen."
+      },
+      {
+        "title": "Derfor starter man ved daggry",
+        "body": "Skrænten skyer til næsten hver dag mellem ni og ti, og når først det sker, er World's End en hvid mur. At stå ved porten, når den åbner, er hele tricket — og det giver dig samtidig højsletten, når den er bedst, stedvis frostdækket, med sambar deer græssende i det åbne."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka whistling thrush i det første lys nær vandløbene",
+      "Sri Lanka bush warbler, dull-blue flycatcher, yellow-eared bulbul",
+      "Sambar deer på græssletten",
+      "Purple-faced langur (højlandets bear monkey) i tågeskoven"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "Januar til marts, tørrest og klarest"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "En halv dag, fra en base i Nuwara Eliya eller Ella"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "Cirka 1,5 time ad vejen fra Nuwara Eliya"
+      },
+      {
+        "label": "Turen",
+        "value": "9,5 km rundtur, 3 til 4 timer, i 2.100–2.300 m"
+      }
+    ],
+    "goodToKnow": [
+      "Tag af sted klokken 5.30 — udsigten lukker med skyerne midt på formiddagen.",
+      "Det er tæt på frysepunktet ved daggry og varmt klokken ni; klæd dig i lag.",
+      "Plastik må ikke komme forbi porten, og rangerne tjekker taskerne."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/horton-plains/horton-plains3.webp",
-        "alt": "Horton Plains Nationalpark"
+        "alt": "Skrænten ved World's End",
+        "caption": "Skrænten ved World's End"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "tissamaharama",
@@ -247,17 +796,63 @@
     "region": "Sydprovinsen",
     "description": "En basisby nær Yala med fuglekiggeri omkring de gamle vandreservoirer og et fuglereservat i nærheden.",
     "image": "/images/destinations/tissamaharama/tissamaharama2.jpg",
+    "heroImage": "/images/destinations/tissamaharama/tissamaharama.jpg",
     "activities": [
       "birding"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/tissamaharama/tissamaharama.jpg",
+    "intro": "En stille by bygget omkring et gammelt vandreservoir og en hvid stupa, og den naturlige base for Yala og Bundala. De fleste sover her og ser ikke byen, hvilket er ærgerligt — reservoiret ved daggry er lige så godt som noget inde i parkerne.",
+    "sections": [
+      {
+        "title": "Reservoiret og stupaen",
+        "body": "Tissa Wewa blev bygget for mere end to tusind år siden og vander stadig rismarkerne omkring byen. Dæmningen i det første lys, med Tissamaharama-stupaen bagved og pelikaner, der arbejder det lave vand, er en af de roligste halve timer i syden."
+      },
+      {
+        "title": "Bundala, fuglekiggerens park",
+        "body": "En halv time væk ligger Bundala, et Ramsar-vådområde af laguner og klitter, hvor greater flamingo overvintrer i stort tal sammen med tusindvis af trækkende vadefugle. Der er også elefanter og krokodiller — og en brøkdel af Yalas trafik."
+      },
+      {
+        "title": "Kataragama",
+        "body": "Tyve kilometer mod nord ligger Kataragama, en af øens vigtigste pilgrimsbyer, hellig for buddhister, hinduer og muslimer på én gang. Aftenens puja, med trommer og ild, er noget helt særligt at stå i udkanten af."
+      }
+    ],
+    "wildlife": [
+      "Greater flamingo ved Bundala, november til marts",
+      "Painted stork, spoonbill og tusindvis af trækkende vadefugle",
+      "Asian elephant på sporene i Bundala",
+      "Mugger crocodile i reservoirerne"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "November til marts for trækfuglene; februar til juli for Yala"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "To nætter, som base for parkerne i syden"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "Cirka 5 timer fra Ella, 4 timer fra Mirissa"
+      },
+      {
+        "label": "I nærheden",
+        "value": "Yala 30 minutter, Bundala 30 minutter, Kataragama 30 minutter"
+      }
+    ],
+    "goodToKnow": [
+      "Safarijeepene kører omkring klokken 5 — spis tidligt aftenen før.",
+      "Reservoirets dæmning er offentlig vej; gå den ved daggry med en kikkert.",
+      "Kataragama er først et bedested og dernæst en seværdighed; klæd og opfør dig derefter."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/tissamaharama/tissamaharama3.jpg",
-        "alt": "Tissamaharama"
+        "alt": "Tissa Wewa i det første lys",
+        "caption": "Tissa Wewa i det første lys"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   },
   {
     "slug": "mirissa",
@@ -265,17 +860,59 @@
     "region": "Sydprovinsen",
     "description": "En strandby på sydkysten, som kombineres med et besøg i Galles hollandske fort.",
     "image": "/images/destinations/mirissa/mirissa2.jpg",
+    "heroImage": "/images/destinations/mirissa/mirissa.webp",
     "activities": [
       "beach",
       "culture-history"
     ],
-    "_reviewStatus": "needs-native-review",
-    "heroImage": "/images/destinations/mirissa/mirissa.webp",
+    "intro": "Rejsens afslutning på de fleste af vores ruter: en bue af sand på sydkysten med palmer, der hælder ud over den, varmt vand og Sri Lankas dybeste hvalområde lige ud for kysten.",
+    "sections": [
+      {
+        "title": "Blåhvaler",
+        "body": "Kontinentalsoklen kommer tæt på kysten her, hvilket bringer blue whales — det største dyr, der nogensinde har levet — inden for et par timer fra havnen. Sperm whales, Bryde's whales og store flokke af spinner dolphins bruger det samme vand. Bådene sejler før daggry."
+      },
+      {
+        "title": "Kysten til begge sider",
+        "body": "Weligama, lige ved siden af, er hvor alle lærer at surfe, på et langt og mildt strandbrud. Galle, en time mod vest, er en hollandsk fæstningsby af volde, pakhuse og huse med skodder, som er en hel eftermiddag og en aftentur på murene værd."
+      }
+    ],
+    "wildlife": [
+      "Blue whale og sperm whale, november til april",
+      "Spinner dolphin, ofte i hundredvis",
+      "Green turtles på det lave vand ved Hikkaduwa og Habaraduwa",
+      "Sea eagles og terner langs pynterne"
+    ],
+    "facts": [
+      {
+        "label": "Bedste tid",
+        "value": "November til april — sydkystens tørre sæson"
+      },
+      {
+        "label": "Tidsforbrug",
+        "value": "To eller tre nætter til at afslutte en rejse"
+      },
+      {
+        "label": "Sådan kommer du dertil",
+        "value": "Cirka 2,5 time fra Tissamaharama; 2 timer fra Colombo ad motorvejen"
+      },
+      {
+        "label": "I nærheden",
+        "value": "Weligama for surf, Galle Fort for en eftermiddag"
+      }
+    ],
+    "goodToKnow": [
+      "Hvalbådene sejler klokken 6, og havet er roligst tidligt.",
+      "Vælg en udbyder, der holder den lovpligtige afstand — vi booker ansvarligt eller slet ikke.",
+      "Bugten har en stærk strøm i den østlige ende; svøm mod midten."
+    ],
     "gallery": [
       {
         "src": "/images/destinations/mirissa/mirissa3.jpg",
-        "alt": "Mirissa"
+        "alt": "Bugten ved Mirissa set fra pynten",
+        "caption": "Bugten ved Mirissa set fra pynten"
       }
-    ]
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
   }
 ]

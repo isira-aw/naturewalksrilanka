@@ -28,14 +28,14 @@
     "eyebrow": "Nature Walks Sri Lanka",
     "titleLine1": "Beyond the",
     "titleLine2": "ordinary",
-    "subtitle": "Private journeys through the wild heart of the island.",
+    "subtitle": "Private nature journeys through Sri Lanka, with certified guides who know where to look.",
     "ctaPrimary": "Explore Tours",
     "ctaSecondary": "Build Your Journey"
   },
   "home": {
-    "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "One company for the whole journey.",
-    "introBody": "Certified guides, accommodation and transport — arranged by us, from your first message to your last morning on the island.",
+    "introEyebrow": "Discover Sri Lanka",
+    "introTitle": "Some of this island only shows itself to people who know where to wait.",
+    "introBody": "Leopard tracks in the dust at Wilpattu. An endemic bird calling somewhere in the Sinharaja canopy. Mist lifting off Horton Plains at seven in the morning. We travel with you for all of it — our own certified guides, with your accommodation and transport arranged from the first message to the last morning.",
     "stats": [
       {
         "value": "20+",
@@ -54,6 +54,10 @@
         "label": "Certified guides"
       }
     ],
+    "experiencesEyebrow": "What You Can Discover",
+    "experiencesTitle": "Wildlife, birds, forest trails and everything between them.",
+    "experiencesBody": "Six ways to spend a day in Sri Lanka. Every journey we run includes birding and wildlife — the rest is yours to choose.",
+    "experiencesWhere": "Where to find it",
     "servicesEyebrow": "What We Arrange",
     "servicesTitle": "Everything a journey needs, from one place.",
     "services": [
@@ -77,13 +81,19 @@
     "guideRole": "Founder & lead guide",
     "guideBody": "Nandana began in wildlife conservation in 1990, qualified as a national guide in 2002, and founded Nature Walks Sri Lanka in 2017. He still leads tours himself.",
     "guideCta": "Read Nandana's story",
+    "customEyebrow": "Create Your Own Journey",
+    "customTitle": "You don't have to choose from a list.",
+    "customBody": "Tell us what you actually want out of Sri Lanka — endemic birds, leopards at first light, a mountain you have read about, days with nothing but a camera — and we build the route, the guide and the stays around it. One to twelve travellers, any date of the year.",
+    "customStepsLabel": "What you tell us",
     "journeysCta": "See all journeys",
     "placesCta": "See all destinations"
   },
   "tours": {
     "sectionEyebrow": "Journeys",
     "sectionTitle": "How long would you like to explore Sri Lanka?",
-    "custom": "Custom",
+    "indexEyebrow": "Our journeys",
+    "indexLead": "Every route here is guided by our own certified team, with accommodation and transport arranged throughout. Any of them can be shortened, extended or rebuilt around what you most want to see.",
+    "custom": "Design your own journey",
     "cta": "Explore Journey",
     "daysLabel": "Days",
     "included": "What's included",
@@ -92,6 +102,7 @@
     "highlightsTitle": "Highlights",
     "destinationsTitle": "Destinations",
     "activitiesTitle": "Activities",
+    "guidedBy": "Who guides this journey",
     "customizeCta": "Customize This Journey",
     "whatsappCta": "Discuss This Journey"
   },
@@ -99,7 +110,7 @@
     "eyebrow": "Custom Tour",
     "titleLine1": "Your Sri Lanka.",
     "titleLine2": "Your way.",
-    "intro": "Tell us how you'd like to experience Sri Lanka, and we'll shape a private journey around it — guide, accommodation and transport included.",
+    "intro": "You don't have to choose a fixed tour. Tell us what you want to see, how long you have and how you like to travel, and we will shape a private journey around it — guide, accommodation and transport arranged throughout.",
     "start": "Build My Journey",
     "steps": {
       "travelers": "Travelers",
@@ -232,6 +243,10 @@
       {
         "title": "One company, one journey",
         "description": "Guides, stays and transport from us — one number for anything."
+      },
+      {
+        "title": "Built around you",
+        "description": "Private journeys only: your own guide, your own vehicle, and a route that can still change while you are on it."
       }
     ]
   },
@@ -255,6 +270,10 @@
     "eyebrow": "Start Planning",
     "title": "Your Sri Lanka begins with a conversation.",
     "subtitle": "No forms, no wait — message Nature Walks Sri Lanka directly on WhatsApp."
+  },
+  "contact": {
+    "title": "Talk to the people who will be guiding you.",
+    "lead": "Tell us roughly what you have in mind — when you would like to come, how long you have, what you most want to see — and Nandana or one of our guides will answer you personally. WhatsApp is the quickest way to reach us."
   },
   "whatsapp": {
     "talkToUs": "Talk to us",
@@ -286,6 +305,8 @@
   },
   "destinations": {
     "allRegions": "All regions",
+    "pageTitle": "Where to go in Sri Lanka",
+    "indexEyebrow": "Every place we travel",
     "count": "places",
     "atAGlance": "At a glance",
     "story": "The place",

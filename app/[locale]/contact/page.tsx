@@ -40,21 +40,20 @@ export default async function ContactPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, navigation, seo, faq] = await Promise.all([
+  const [t, navigation, faq] = await Promise.all([
     getTranslations({ locale: l }),
     getContent(l, "navigation"),
-    getContent(l, "seo"),
     getContent(l, "faq"),
   ]);
-
-  const page = seo.pages.contact;
 
   return (
     <>
       <PageHero
         eyebrow={t("finalCta.eyebrow")}
-        title={page.title}
-        lead={page.description}
+        /* The title tag and the H1 are written for different readers: the SEO
+           copy stays in `seo.json`, the page speaks to the visitor. */
+        title={t("contact.title")}
+        lead={t("contact.lead")}
         image={{
           src: "/images/story-2.jpg",
           alt: "A photography group in the Sinharaja rainforest",

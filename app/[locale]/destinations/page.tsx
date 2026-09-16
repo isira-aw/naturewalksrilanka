@@ -53,7 +53,9 @@ export default async function DestinationsPage({
     <>
       <PageHero
         eyebrow={t("sriLanka.eyebrow")}
-        title={t("tours.destinationsTitle")}
+        /* "Destinations" alone is a weak H1 for a page that is the answer to
+           "where should I go in Sri Lanka" — the heading says so plainly. */
+        title={t("destinations.pageTitle")}
         lead={t("sriLanka.body")}
         image={{
           src: "/images/destinations/destinations.jpg",
@@ -64,7 +66,7 @@ export default async function DestinationsPage({
       <section className="bg-warm-white py-20 md:py-28">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
           <div className="max-w-2xl">
-            <Kicker>{t("home.placesCta")}</Kicker>
+            <Kicker>{t("destinations.indexEyebrow")}</Kicker>
             <Rise delay={0.1}>
               <h2 className="mt-6 font-display text-3xl leading-tight tracking-tight text-charcoal md:text-4xl">
                 {t("sriLanka.title")}
