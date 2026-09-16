@@ -15,12 +15,30 @@
     "sertifioitu opas Sri Lanka"
   ],
   "pages": {
-    "home": { "title": "Yksityisiä luonto- ja eläinmatkoja Sri Lankassa", "description": "Koe Sri Lanka tavanomaisen tuolla puolen — yksityisiä eläin-, lintu- ja kulttuurimatkoja Nature Walks Sri Lankalta, oppaina Sri Lanka Tourism Boardin sertifioimat ammattilaiset sekä majoitus ja kuljetukset järjestettyinä." },
-    "tours": { "title": "Sri Lankan kiertomatkat — 10, 12, 16 ja 18 päivää", "description": "Neljä yksityismatkaa Sri Lankassa: safareita, lintujen tarkkailua, ylänköjä ja kulttuuria Nature Walks Sri Lankan sertifioidun tiimin opastuksella." },
-    "customTour": { "title": "Rakenna räätälöity matka Sri Lankaan", "description": "Suunnittele yksityinen ja henkilökohtainen matka Sri Lankaan Nature Walks Sri Lankan kanssa — valitse päivämäärät, kiinnostuksen kohteet ja majoitus ja keskustele niistä suoraan WhatsAppissa." },
-    "aboutNandana": { "title": "Tietoa Nandana Hewagamagesta", "description": "Yli 20 vuotta Sri Lankan luonnon ja kulttuurin opastusta luonnonsuojeluvirastosta Nature Walks Sri Lankan perustamiseen." },
-    "destinations": { "title": "Sri Lankan kohteet", "description": "Kansallispuistot, muinaiskaupungit ja ylänköpolut, joissa Nature Walks Sri Lankan matkalla vieraillaan." },
-    "contact": { "title": "Ota yhteyttä Nature Walks Sri Lankaan", "description": "Ota yhteyttä Nandana Hewagamageen ja Nature Walks Sri Lankan tiimiin ja aloita yksityismatkasi suunnittelu." }
+    "home": {
+      "title": "Yksityisiä luonto- ja eläinmatkoja Sri Lankassa",
+      "description": "Koe Sri Lanka tavanomaisen tuolla puolen — yksityisiä eläin-, lintu- ja kulttuurimatkoja Nature Walks Sri Lankalta, oppaina Sri Lanka Tourism Boardin sertifioimat ammattilaiset sekä majoitus ja kuljetukset järjestettyinä."
+    },
+    "tours": {
+      "title": "Sri Lankan kiertomatkat — 10, 12, 16 ja 18 päivää",
+      "description": "Neljä yksityismatkaa Sri Lankassa: safareita, lintujen tarkkailua, ylänköjä ja kulttuuria Nature Walks Sri Lankan sertifioidun tiimin opastuksella."
+    },
+    "customTour": {
+      "title": "Rakenna räätälöity matka Sri Lankaan",
+      "description": "Suunnittele yksityinen Sri Lankan matka omien kiinnostustesi ympärille — villieläimet, linnut, vaellus tai valokuvaus. Valitse päivämäärät, kiinnostuksen kohteet ja majoitus, ja keskustele siitä sitten WhatsAppissa."
+    },
+    "aboutNandana": {
+      "title": "Tietoa Nandana Hewagamagesta",
+      "description": "Yli 20 vuotta Sri Lankan luonnon ja kulttuurin opastusta luonnonsuojeluvirastosta Nature Walks Sri Lankan perustamiseen."
+    },
+    "destinations": {
+      "title": "Sri Lankan kohteet — kansallispuistot, muinaiskaupungit ja ylängöt",
+      "description": "Kansallispuistot, muinaiskaupungit ja ylänköpolut, joissa Nature Walks Sri Lankan matkalla vieraillaan."
+    },
+    "contact": {
+      "title": "Ota yhteyttä Nature Walks Sri Lankaan",
+      "description": "Ota yhteyttä Nandana Hewagamageen ja Nature Walks Sri Lankan tiimiin ja aloita yksityismatkasi suunnittelu."
+    }
   },
   "_reviewStatus": "needs-native-review"
 }

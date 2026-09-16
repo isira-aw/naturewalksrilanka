@@ -1,6 +1,6 @@
 {
   "_reviewStatus": "needs-native-review",
-  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Nothing here states a price, an inclusion, a language spoken, a cancellation policy or an insurance requirement, because none of those is recorded anywhere in this repository yet. Items marked contentRequired are the questions travellers ask most that only Nandana can answer — fill those in before launch.",
+  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Pricing and inclusions are deliberately not stated as figures or lists: both are settled with Nandana on WhatsApp once he has seen the journey, which is how this business actually works.",
   "items": [
     {
       "question": "Hvordan booker jeg en rejse?",
@@ -24,13 +24,11 @@
     },
     {
       "question": "Hvad er inkluderet i prisen, og hvad er ikke?",
-      "answer": "CONTENT_REQUIRED",
-      "contentRequired": true
+      "answer": "Der er ingen fast liste over, hvad der er inkluderet, fordi der ikke er nogen fast rejse. Hvad en rejse dækker, lægges fast ud fra de datoer, du rejser: årstiden og vejret afgør, hvilke parker, tog og både der er dagen værd, og hvad der sker kulturelt, mens du er her — en perahera, en poya-dag, en festival — ændrer, hvad ugen er værd at bygge op om. Nandana gennemgår det med dig på WhatsApp og fortæller dig præcis, hvad din rejse dækker, før noget aftales."
     },
     {
       "question": "Hvordan og hvornår betaler jeg?",
-      "answer": "CONTENT_REQUIRED",
-      "contentRequired": true
+      "answer": "Vi offentliggør ikke en pris, for der er ikke noget at prissætte, før vi har set din rejse. Så snart vi kender dine datoer, jeres selskab og ruten, kigger Nandana på det og giver dig selv beløbet sammen med, hvad det dækker. Det hele aftales direkte med ham på WhatsApp — der er ingen betalingsside på dette website."
     }
   ]
 }

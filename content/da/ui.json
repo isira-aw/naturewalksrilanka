@@ -26,16 +26,17 @@
   },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
-    "titleLine1": "Ud over",
-    "titleLine2": "det sædvanlige",
-    "subtitle": "Private rejser gennem øens vilde hjerte.",
-    "ctaPrimary": "Se rejserne",
-    "ctaSecondary": "Sammensæt din rejse"
+    "titleLine1": "Se det Sri Lanka",
+    "titleLine2": "du kom for at finde.",
+    "subtitle": "Private rejser gennem vilde skove, ældgamle landskaber og øens stille kroge — guidet af folk, der ved præcis, hvor de skal kigge.",
+    "ctaPrimary": "Se vores rejser",
+    "ctaSecondary": "Planlæg din rejse",
+    "trustLabel": "Private rejser"
   },
   "home": {
-    "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Ét selskab til hele rejsen.",
-    "introBody": "Certificerede guider, overnatning og transport — arrangeret af os, fra din første besked til din sidste morgen på øen.",
+    "introEyebrow": "Oplev Sri Lanka",
+    "introTitle": "Noget af denne ø viser sig kun for dem, der ved, hvor man skal vente.",
+    "introBody": "Leopardspor i støvet ved Wilpattu. En endemisk fugl, der kalder et sted oppe i Sinharajas trækroner. Tåge, der letter fra Horton Plains klokken syv om morgenen. Vi er med hele vejen — vores egne certificerede guider, med din overnatning og transport arrangeret fra den første besked til den sidste morgen.",
     "stats": [
       {
         "value": "20+",
@@ -54,8 +55,12 @@
         "label": "Certificerede guider"
       }
     ],
+    "experiencesEyebrow": "Det kan du opleve",
+    "experiencesTitle": "Én ø. Utallige måder at opleve den på.",
+    "experiencesBody": "Dyreliv, fugle, regnskov, bjerge, kultur, kyst — vælg de oplevelser, der taler til dig, og lad en rejse samle dem i én tur.",
+    "experiencesWhere": "Hvor du finder det",
     "servicesEyebrow": "Det arrangerer vi",
-    "servicesTitle": "Alt, hvad en rejse kræver, fra ét sted.",
+    "servicesTitle": "Du nyder rejsen. Vi klarer det praktiske.",
     "services": [
       {
         "title": "Certificerede guider",
@@ -75,23 +80,34 @@
       }
     ],
     "guideRole": "Grundlægger og chefguide",
-    "guideBody": "Nandana startede i naturbevarelse i 1990, blev uddannet national guide i 2002 og grundlagde Nature Walks Sri Lanka i 2017. Han guider stadig selv.",
-    "guideCta": "Læs Nandanas historie",
+    "guideBody": "Før han blev guide, brugte Nandana flere år hos Sri Lankas Department of Wildlife Conservation — han studerede øens fugle, planter og insekter og lærte andre at genkende dem. Han blev uddannet national guide i 2002 og grundlagde Nature Walks Sri Lanka i 2017. Han guider stadig selv rejser.",
+    "guideCta": "Mød Nandana",
+    "customEyebrow": "Sammensæt din egen rejse",
+    "customTitle": "Du behøver ikke vælge fra en liste.",
+    "customBody": "Fortæl os hvornår du rejser, med hvem, hvad du vil se — endemiske fugle, leoparder i det første lys, et bjerg du har læst om — og hvordan du helst bor. Vi bygger ruten, guiden og overnatningen op om det. Fra én til tolv rejsende, på en hvilken som helst dato.",
+    "customProcess": "Fortæl os det → Vi planlægger → Du oplever",
+    "customStepsLabel": "Det, du fortæller os",
     "journeysCta": "Se alle rejser",
     "placesCta": "Se alle destinationer"
   },
   "tours": {
     "sectionEyebrow": "Rejser",
     "sectionTitle": "Hvor lang tid vil du bruge på Sri Lanka?",
-    "custom": "Skræddersyet",
+    "homeIntro": "Start med en rejse. Gør den til din egen — enhver rute herunder kan gøres kortere, længere eller bygges helt om efter det, der betyder mest for dig.",
+    "indexEyebrow": "Vores rejser",
+    "indexLead": "Hver rute her guides af vores eget certificerede team, med overnatning og transport arrangeret hele vejen. Alle kan gøres kortere, længere eller bygges helt om efter det, du helst vil se.",
+    "custom": "Sammensæt din egen rejse",
     "cta": "Se rejsen",
     "daysLabel": "Dage",
     "included": "Det er inkluderet",
     "excluded": "Ikke inkluderet",
+    "inclusionsTitle": "Hvad en rejse dækker",
+    "inclusionsBody": "Hver rejse sættes sammen efter de datoer, du rejser, så hvad den dækker, flytter sig med årstiden, vejret og hvad der sker kulturelt, mens du er her. Nandana gennemgår det med dig og fortæller dig præcis, hvad din rejse dækker, før noget aftales.",
     "itineraryTitle": "Dag for dag",
     "highlightsTitle": "Højdepunkter",
     "destinationsTitle": "Destinationer",
     "activitiesTitle": "Aktiviteter",
+    "guidedBy": "Hvem guider denne rejse",
     "customizeCta": "Tilpas denne rejse",
     "whatsappCta": "Spørg om denne rejse"
   },
@@ -99,7 +115,7 @@
     "eyebrow": "Skræddersyet rejse",
     "titleLine1": "Dit Sri Lanka.",
     "titleLine2": "På din måde.",
-    "intro": "Fortæl os, hvordan du gerne vil opleve Sri Lanka, så bygger vi en privat rejse op omkring det — med guide, overnatning og transport.",
+    "intro": "Du behøver ikke vælge en færdig rejse. Fortæl os, hvad du vil se, hvor lang tid du har, og hvordan du bedst kan lide at rejse, så former vi en privat rejse om det — guide, overnatning og transport arrangeret hele vejen.",
     "start": "Sammensæt min rejse",
     "steps": {
       "travelers": "Rejsende",
@@ -217,6 +233,7 @@
     "introEyebrow": "Hvem er Nandana",
     "experienceLabel": "Erfaring",
     "certificationLabel": "Certificering",
+    "languagesLabel": "Sprog",
     "introTitle": "Et helt liv til fods gennem Sri Lanka.",
     "whyEyebrow": "Derfor skal du rejse med os",
     "whyTitle": "Et guideselskab, ikke en bookingskranke.",
@@ -232,6 +249,10 @@
       {
         "title": "Ét selskab, én rejse",
         "description": "Guider, overnatning og transport fra os — ét nummer til det hele."
+      },
+      {
+        "title": "Bygget op om dig",
+        "description": "Kun private rejser: din egen guide, din egen bil og en rute, der stadig kan ændre sig undervejs."
       }
     ]
   },
@@ -254,7 +275,11 @@
   "finalCta": {
     "eyebrow": "Kom i gang",
     "title": "Dit Sri Lanka begynder med en samtale.",
-    "subtitle": "Ingen formularer, ingen ventetid — skriv direkte til Nature Walks Sri Lanka på WhatsApp."
+    "subtitle": "Ingen formularer, ingen ventetid — skriv til os, og vi begynder sammen at forme din rejse."
+  },
+  "contact": {
+    "title": "Tal med dem, der skal guide dig.",
+    "lead": "Fortæl os cirka, hvad du går og tænker på — hvornår du gerne vil komme, hvor lang tid du har, hvad du helst vil se — så svarer Nandana eller en af vores guider dig personligt. På WhatsApp får du hurtigst fat i os."
   },
   "whatsapp": {
     "talkToUs": "Skriv til os",
@@ -287,6 +312,8 @@
   "_reviewStatus": "needs-native-review",
   "destinations": {
     "allRegions": "Alle regioner",
+    "pageTitle": "Hvor skal du hen på Sri Lanka",
+    "indexEyebrow": "Alle de steder, vi kommer",
     "count": "steder",
     "atAGlance": "Kort fortalt",
     "story": "Stedet",

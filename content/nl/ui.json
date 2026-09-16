@@ -26,16 +26,17 @@
   },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
-    "titleLine1": "Voorbij het",
-    "titleLine2": "gewone",
-    "subtitle": "Privéreizen door het wilde hart van het eiland.",
-    "ctaPrimary": "Bekijk de reizen",
-    "ctaSecondary": "Stel je reis samen"
+    "titleLine1": "Zie het Sri Lanka",
+    "titleLine2": "dat je zoekt.",
+    "subtitle": "Privéreizen door wilde bossen, eeuwenoude landschappen en verborgen hoekjes van het eiland — geleid door mensen die precies weten waar ze moeten kijken.",
+    "ctaPrimary": "Bekijk onze reizen",
+    "ctaSecondary": "Plan je reis",
+    "trustLabel": "Privéreizen"
   },
   "home": {
-    "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Eén bedrijf voor de hele reis.",
-    "introBody": "Gecertificeerde gidsen, accommodatie en vervoer — door ons geregeld, van je eerste bericht tot je laatste ochtend op het eiland.",
+    "introEyebrow": "Ontdek Sri Lanka",
+    "introTitle": "Een deel van dit eiland laat zich alleen zien aan wie weet waar hij moet wachten.",
+    "introBody": "Luipaardsporen in het stof van Wilpattu. Een endemische vogel die ergens hoog in het bladerdak van Sinharaja roept. Mist die om zeven uur 's ochtends van de Horton Plains trekt. Wij zijn overal bij — onze eigen gecertificeerde gidsen, met je accommodatie en vervoer geregeld, van het eerste bericht tot de laatste ochtend.",
     "stats": [
       {
         "value": "20+",
@@ -54,8 +55,12 @@
         "label": "Gecertificeerde gidsen"
       }
     ],
+    "experiencesEyebrow": "Wat je kunt ontdekken",
+    "experiencesTitle": "Eén eiland. Talloze manieren om het te beleven.",
+    "experiencesBody": "Wildlife, vogels, regenwoud, bergen, cultuur, kust — kies de ervaringen die je aanspreken, en laat een reis ze voor je samenbrengen.",
+    "experiencesWhere": "Waar je het vindt",
     "servicesEyebrow": "Wat wij regelen",
-    "servicesTitle": "Alles wat een reis nodig heeft, op één plek.",
+    "servicesTitle": "Jij geniet van de reis. Wij regelen de rest.",
     "services": [
       {
         "title": "Gecertificeerde gidsen",
@@ -75,23 +80,34 @@
       }
     ],
     "guideRole": "Oprichter en hoofdgids",
-    "guideBody": "Nandana begon in 1990 in het natuurbehoud, werd in 2002 gediplomeerd nationaal gids en richtte in 2017 Nature Walks Sri Lanka op. Hij begeleidt nog altijd zelf reizen.",
-    "guideCta": "Lees het verhaal van Nandana",
+    "guideBody": "Voordat hij gids was, bracht Nandana jaren door bij Sri Lanka's Department of Wildlife Conservation — hij bestudeerde de vogels, planten en insecten van het eiland en leerde anderen ze te herkennen. In 2002 werd hij gediplomeerd nationaal gids en in 2017 richtte hij Nature Walks Sri Lanka op. Hij begeleidt nog altijd zelf reizen.",
+    "guideCta": "Ontmoet Nandana",
+    "customEyebrow": "Stel je eigen reis samen",
+    "customTitle": "Je hoeft niet uit een lijst te kiezen.",
+    "customBody": "Vertel ons wanneer je reist, met wie, wat je wilt zien — endemische vogels, luipaarden bij het eerste licht, een berg waarover je hebt gelezen — en hoe je het liefst verblijft. Wij bouwen de route, de gids en de accommodatie daaromheen. Eén tot twaalf reizigers, elke datum van het jaar.",
+    "customProcess": "Vertel het ons → Wij plannen → Jij ontdekt",
+    "customStepsLabel": "Wat je ons vertelt",
     "journeysCta": "Bekijk alle reizen",
     "placesCta": "Bekijk alle bestemmingen"
   },
   "tours": {
     "sectionEyebrow": "Reizen",
     "sectionTitle": "Hoe lang wil je Sri Lanka ontdekken?",
-    "custom": "Op maat",
+    "homeIntro": "Begin met een reis. Maak hem van jou — elke route hieronder kan worden ingekort, verlengd of helemaal herbouwd rond wat jij het belangrijkst vindt.",
+    "indexEyebrow": "Onze reizen",
+    "indexLead": "Elke route hier wordt begeleid door ons eigen gecertificeerde team, met accommodatie en vervoer overal geregeld. Elke reis kan korter, langer of helemaal opnieuw worden opgebouwd rond wat jij het liefst wilt zien.",
+    "custom": "Stel je eigen reis samen",
     "cta": "Bekijk deze reis",
     "daysLabel": "Dagen",
     "included": "Wat is inbegrepen",
     "excluded": "Niet inbegrepen",
+    "inclusionsTitle": "Wat een reis omvat",
+    "inclusionsBody": "Elke reis wordt samengesteld voor de data waarop je reist, dus wat erin zit verschuift met het seizoen, het weer en wat er cultureel speelt terwijl je er bent. Nandana neemt het met je door en vertelt je precies wat jouw reis omvat voordat er iets wordt afgesproken.",
     "itineraryTitle": "Dag voor dag",
     "highlightsTitle": "Hoogtepunten",
     "destinationsTitle": "Bestemmingen",
     "activitiesTitle": "Activiteiten",
+    "guidedBy": "Wie deze reis begeleidt",
     "customizeCta": "Pas deze reis aan",
     "whatsappCta": "Bespreek deze reis"
   },
@@ -99,7 +115,7 @@
     "eyebrow": "Reis op maat",
     "titleLine1": "Jouw Sri Lanka.",
     "titleLine2": "Op jouw manier.",
-    "intro": "Vertel ons hoe je Sri Lanka wilt beleven, dan bouwen wij daar een privéreis omheen — inclusief gids, accommodatie en vervoer.",
+    "intro": "Je hoeft geen vaste reis te kiezen. Vertel ons wat je wilt zien, hoeveel tijd je hebt en hoe je graag reist, dan geven wij daar een privéreis omheen vorm — gids, accommodatie en vervoer worden overal geregeld.",
     "start": "Stel mijn reis samen",
     "steps": {
       "travelers": "Reizigers",
@@ -166,17 +182,17 @@
     },
     "accommodationNotesLabel": "Nog iets over de accommodatie?",
     "journeyPlan": {
-      "title": "Uw reis, stop voor stop",
-      "intro": "We hebben de gekozen itineraries in een logische rijvolgorde gezet, vanaf de luchthaven, en op uw data afgestemd.",
-      "empty": "Ga terug naar Interesses en voeg minstens één itinerary toe — uw reisplan wordt daaruit opgebouwd.",
-      "routeTitle": "Uw route",
-      "mapTitle": "Uw route op de kaart",
+      "title": "Jouw reis, stop voor stop",
+      "intro": "We hebben de gekozen itineraries in een logische rijvolgorde gezet, vanaf de luchthaven, en op jouw data afgestemd.",
+      "empty": "Ga terug naar Interesses en voeg minstens één itinerary toe — je reisplan wordt daaruit opgebouwd.",
+      "routeTitle": "Jouw route",
+      "mapTitle": "Jouw route op de kaart",
       "startLabel": "Aankomst — Bandaranaike International Airport",
       "dayLabel": "Dag {day}",
       "dayRangeLabel": "Dag {from}–{to}",
       "driveLabel": "{km} km vanaf de vorige stop · ongeveer {duration} over de weg",
       "totalLabel": "{count} stops · in totaal ongeveer {km} km rijden",
-      "overflowNote": "Uw data zijn korter dan de gekozen itineraries nodig hebben. Het plan hieronder loopt door na uw vertrekdatum — verwijder een itinerary of overleg met ons over een langere reis."
+      "overflowNote": "Je data zijn korter dan de gekozen itineraries nodig hebben. Het plan hieronder loopt door na je vertrekdatum — verwijder een itinerary of overleg met ons over een langere reis."
     },
     "contactName": "Naam",
     "contactEmail": "E-mail",
@@ -204,10 +220,10 @@
       "contactTitle": "Jouw gegevens",
       "footer": "Nature Walk Sri Lanka · naturewalksrilanka.com",
       "fileName": "sri-lanka-reis",
-      "routeTitle": "Uw route, stop voor stop",
-      "mapTitle": "Uw route op de kaart",
+      "routeTitle": "Jouw route, stop voor stop",
+      "mapTitle": "Jouw route op de kaart",
       "noticeTitle": "Over dit document",
-      "notice": "Dit document is automatisch samengesteld uit de itineraries waarin u aangaf geïnteresseerd te zijn. Het is een startpunt, geen vaste boeking. Moet er iets veranderen — de volgorde van de stops, de duur, of de itineraries zelf — neem dan contact op met ons team via WhatsApp. Geen zorgen: ze helpen u graag.",
+      "notice": "Dit document is automatisch samengesteld uit de itineraries waarin je aangaf geïnteresseerd te zijn. Het is een startpunt, geen vaste boeking. Moet er iets veranderen — de volgorde van de stops, de duur, of de itineraries zelf — neem dan contact op met ons team via WhatsApp. Geen zorgen: ze helpen je graag.",
       "whatsappLabel": "WhatsApp"
     },
     "amending": "Je wijzigt reis {reference}. Verstuur hem opnieuw als je klaar bent, dan zien wij de wijziging.",
@@ -217,6 +233,7 @@
     "introEyebrow": "Wie is Nandana",
     "experienceLabel": "Ervaring",
     "certificationLabel": "Certificering",
+    "languagesLabel": "Talen",
     "introTitle": "Een leven lang wandelen door Sri Lanka.",
     "whyEyebrow": "Waarom met ons reizen",
     "whyTitle": "Een gidsenbedrijf, geen boekingsbalie.",
@@ -232,6 +249,10 @@
       {
         "title": "Eén bedrijf, één reis",
         "description": "Gidsen, verblijven en vervoer van ons — één nummer voor alles."
+      },
+      {
+        "title": "Gebouwd rond jou",
+        "description": "Alleen privéreizen: je eigen gids, je eigen auto, en een route die onderweg nog kan veranderen."
       }
     ]
   },
@@ -254,7 +275,11 @@
   "finalCta": {
     "eyebrow": "Begin met plannen",
     "title": "Jouw Sri Lanka begint met een gesprek.",
-    "subtitle": "Geen formulieren, geen wachttijd — stuur Nature Walks Sri Lanka rechtstreeks een bericht via WhatsApp."
+    "subtitle": "Geen formulieren, geen wachttijd — stuur ons een bericht en we beginnen samen je reis vorm te geven."
+  },
+  "contact": {
+    "title": "Praat met de mensen die je gaan begeleiden.",
+    "lead": "Vertel ons ongeveer wat je in gedachten hebt — wanneer je wilt komen, hoeveel tijd je hebt, wat je het liefst wilt zien — en Nandana of een van onze gidsen antwoordt je persoonlijk. Via WhatsApp bereik je ons het snelst."
   },
   "whatsapp": {
     "talkToUs": "Neem contact op",
@@ -287,6 +312,8 @@
   "_reviewStatus": "needs-native-review",
   "destinations": {
     "allRegions": "Alle regio's",
+    "pageTitle": "Waar je heen kunt op Sri Lanka",
+    "indexEyebrow": "Alle plekken waar we komen",
     "count": "plaatsen",
     "atAGlance": "In het kort",
     "story": "De plek",
@@ -376,11 +403,11 @@
   },
   "newsletter": {
     "title": "Veldnotities",
-    "body": "Af en toe een bericht over wat er in de parken en bossen te zien is, en wanneer u daarvoor moet komen. Hooguit een paar keer per jaar.",
-    "placeholder": "Uw e-mailadres",
+    "body": "Af en toe een bericht over wat er in de parken en bossen te zien is, en wanneer je daarvoor moet komen. Hooguit een paar keer per jaar.",
+    "placeholder": "Je e-mailadres",
     "submit": "Aanmelden",
     "sending": "Versturen…",
-    "success": "U staat op de lijst. Houd de eerste notitie in de gaten.",
+    "success": "Je staat op de lijst. Houd de eerste notitie in de gaten.",
     "invalid": "Dat lijkt geen e-mailadres. Controleer het en probeer opnieuw.",
     "failed": "Aanmelden is nu niet mogelijk. Probeer het later opnieuw.",
     "honeypot": "Bedrijf (laat dit leeg)"

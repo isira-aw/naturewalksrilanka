@@ -26,16 +26,17 @@
   },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
-    "titleLine1": "Más allá de",
-    "titleLine2": "lo habitual",
-    "subtitle": "Viajes privados por el corazón salvaje de la isla.",
-    "ctaPrimary": "Ver los viajes",
-    "ctaSecondary": "Diseña tu viaje"
+    "titleLine1": "Descubre el Sri Lanka",
+    "titleLine2": "que viniste a buscar.",
+    "subtitle": "Viajes privados por bosques salvajes, paisajes antiguos y rincones tranquilos de la isla — guiados por quienes saben exactamente dónde mirar.",
+    "ctaPrimary": "Explora nuestros viajes",
+    "ctaSecondary": "Planifica tu viaje",
+    "trustLabel": "Viajes privados"
   },
   "home": {
-    "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Una sola empresa para todo el viaje.",
-    "introBody": "Guías certificados, alojamiento y transporte, organizados por nosotros desde tu primer mensaje hasta tu última mañana en la isla.",
+    "introEyebrow": "Descubre Sri Lanka",
+    "introTitle": "Parte de esta isla solo se muestra a quien sabe dónde esperar.",
+    "introBody": "Huellas de leopardo en el polvo de Wilpattu. Un ave endémica llamando en algún punto del dosel de Sinharaja. La niebla levantándose sobre Horton Plains a las siete de la mañana. Te acompañamos en todo ello: nuestros propios guías certificados, con tu alojamiento y tu transporte organizados desde el primer mensaje hasta la última mañana.",
     "stats": [
       {
         "value": "20+",
@@ -54,8 +55,12 @@
         "label": "Guías certificados"
       }
     ],
+    "experiencesEyebrow": "Lo que puedes descubrir",
+    "experiencesTitle": "Una isla. Muchas formas de vivirla.",
+    "experiencesBody": "Fauna, aves, selva, montaña, cultura, costa — elige las experiencias que más te llamen, y deja que un viaje las reúna en uno solo.",
+    "experiencesWhere": "Dónde encontrarlo",
     "servicesEyebrow": "Lo que organizamos",
-    "servicesTitle": "Todo lo que un viaje necesita, desde un mismo sitio.",
+    "servicesTitle": "Tú disfrutas el viaje. Nosotros nos ocupamos del resto.",
     "services": [
       {
         "title": "Guías certificados",
@@ -75,23 +80,34 @@
       }
     ],
     "guideRole": "Fundador y guía principal",
-    "guideBody": "Nandana empezó en la conservación de la fauna en 1990, se acreditó como guía nacional en 2002 y fundó Nature Walks Sri Lanka en 2017. Sigue guiando viajes él mismo.",
-    "guideCta": "Lee la historia de Nandana",
+    "guideBody": "Antes de ser guía, Nandana pasó años en el Departamento de Conservación de la Fauna de Sri Lanka, estudiando las aves, plantas e insectos de la isla y enseñando a otros a reconocerlos. Se acreditó como guía nacional en 2002 y fundó Nature Walks Sri Lanka en 2017. Sigue guiando viajes él mismo.",
+    "guideCta": "Conoce a Nandana",
+    "customEyebrow": "Crea tu propio viaje",
+    "customTitle": "No tienes que elegir de una lista.",
+    "customBody": "Cuéntanos cuándo viajas, con quién, qué quieres ver — aves endémicas, leopardos a primera luz, una montaña de la que has leído — y cómo prefieres alojarte. Nosotros construimos la ruta, el guía y el alojamiento alrededor de eso. De uno a doce viajeros, cualquier fecha del año.",
+    "customProcess": "Cuéntanoslo → Lo planificamos → Tú lo descubres",
+    "customStepsLabel": "Lo que nos cuentas",
     "journeysCta": "Ver todos los viajes",
     "placesCta": "Ver todos los destinos"
   },
   "tours": {
     "sectionEyebrow": "Viajes",
     "sectionTitle": "¿Cuánto tiempo quieres dedicar a Sri Lanka?",
-    "custom": "A medida",
+    "homeIntro": "Empieza con un viaje. Hazlo tuyo — cualquiera de las rutas de abajo se puede acortar, alargar o rehacer en torno a lo que más te importa.",
+    "indexEyebrow": "Nuestros viajes",
+    "indexLead": "Cada ruta de esta página la guía nuestro propio equipo certificado, con alojamiento y transporte organizados de principio a fin. Cualquiera de ellas se puede acortar, alargar o rehacer en torno a lo que más te apetezca ver.",
+    "custom": "Diseña tu propio viaje",
     "cta": "Ver este viaje",
     "daysLabel": "Días",
     "included": "Qué incluye",
     "excluded": "No incluye",
+    "inclusionsTitle": "Qué incluye un viaje",
+    "inclusionsBody": "Cada viaje se monta para las fechas en que viajas, así que lo que cubre cambia con la estación, el tiempo y lo que esté ocurriendo culturalmente mientras estés aquí. Nandana lo repasa contigo y te dice exactamente qué cubre tu viaje antes de cerrar nada.",
     "itineraryTitle": "Día a día",
     "highlightsTitle": "Lo más destacado",
     "destinationsTitle": "Destinos",
     "activitiesTitle": "Actividades",
+    "guidedBy": "Quién guía este viaje",
     "customizeCta": "Personaliza este viaje",
     "whatsappCta": "Consultar sobre este viaje"
   },
@@ -99,7 +115,7 @@
     "eyebrow": "Viaje a medida",
     "titleLine1": "Tu Sri Lanka.",
     "titleLine2": "A tu manera.",
-    "intro": "Cuéntanos cómo quieres vivir Sri Lanka y diseñaremos un viaje privado a tu medida, con guía, alojamiento y transporte incluidos.",
+    "intro": "No tienes que elegir un viaje cerrado. Cuéntanos qué quieres ver, cuánto tiempo tienes y cómo te gusta viajar, y damos forma a un viaje privado a tu medida: guía, alojamiento y transporte organizados de principio a fin.",
     "start": "Diseñar mi viaje",
     "steps": {
       "travelers": "Viajeros",
@@ -217,6 +233,7 @@
     "introEyebrow": "Quién es Nandana",
     "experienceLabel": "Experiencia",
     "certificationLabel": "Certificación",
+    "languagesLabel": "Idiomas",
     "introTitle": "Toda una vida recorriendo Sri Lanka a pie.",
     "whyEyebrow": "Por qué viajar con nosotros",
     "whyTitle": "Una empresa de guías, no un mostrador de reservas.",
@@ -232,6 +249,10 @@
       {
         "title": "Una empresa, un viaje",
         "description": "Guías, alojamiento y transporte nuestros: un único número para todo."
+      },
+      {
+        "title": "Hecho a tu medida",
+        "description": "Solo viajes privados: tu propio guía, tu propio vehículo y una ruta que todavía puede cambiar sobre la marcha."
       }
     ]
   },
@@ -254,7 +275,11 @@
   "finalCta": {
     "eyebrow": "Empieza a planificar",
     "title": "Tu Sri Lanka empieza con una conversación.",
-    "subtitle": "Sin formularios ni esperas: escribe directamente a Nature Walks Sri Lanka por WhatsApp."
+    "subtitle": "Sin formularios ni esperas — escríbenos y empezamos juntos a dar forma a tu viaje."
+  },
+  "contact": {
+    "title": "Habla con las personas que te van a guiar.",
+    "lead": "Cuéntanos a grandes rasgos lo que tienes en mente — cuándo te gustaría venir, cuánto tiempo tienes, qué es lo que más quieres ver — y Nandana o uno de nuestros guías te responderá personalmente. Por WhatsApp nos localizas antes."
   },
   "whatsapp": {
     "talkToUs": "Habla con nosotros",
@@ -287,6 +312,8 @@
   "_reviewStatus": "needs-native-review",
   "destinations": {
     "allRegions": "Todas las regiones",
+    "pageTitle": "Adónde ir en Sri Lanka",
+    "indexEyebrow": "Todos los lugares que visitamos",
     "count": "lugares",
     "atAGlance": "De un vistazo",
     "story": "El lugar",

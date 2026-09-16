@@ -13,11 +13,16 @@
     "Kulttuuri ja historia"
   ],
   "stats": [
-    { "value": "20+", "label": "Vuotta oppaana" },
-    { "value": "CONTENT_REQUIRED", "label": "Kieltä" },
-    { "value": "Sri Lanka", "label": "Hänen kotinsa" }
+    {
+      "value": "20+",
+      "label": "Vuotta oppaana"
+    },
+    {
+      "value": "Sri Lanka",
+      "label": "Hänen kotinsa"
+    }
   ],
   "portraitImage": "/images/nandana-portrait.jpg",
-  "_note": "Languages list not yet confirmed — brief states 5 languages but does not name them. Leave as CONTENT_REQUIRED until Nandana confirms.",
+  "_note": "Languages are not published on the site: the stat and the At-a-glance row are both driven by `languages`, so filling that array in is all it takes to bring them back once Nandana confirms them.",
   "_reviewStatus": "needs-native-review"
 }

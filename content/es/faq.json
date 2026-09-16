@@ -1,6 +1,6 @@
 {
   "_reviewStatus": "needs-native-review",
-  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Nothing here states a price, an inclusion, a language spoken, a cancellation policy or an insurance requirement, because none of those is recorded anywhere in this repository yet. Items marked contentRequired are the questions travellers ask most that only Nandana can answer — fill those in before launch.",
+  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Pricing and inclusions are deliberately not stated as figures or lists: both are settled with Nandana on WhatsApp once he has seen the journey, which is how this business actually works.",
   "items": [
     {
       "question": "¿Cómo reservo un viaje?",
@@ -24,13 +24,11 @@
     },
     {
       "question": "¿Qué incluye el precio y qué no?",
-      "answer": "CONTENT_REQUIRED",
-      "contentRequired": true
+      "answer": "No hay una lista fija de lo que se incluye, porque no hay un viaje fijo. Lo que cubre un viaje se decide para las fechas en que viajas: la estación y el tiempo determinan qué parques, trenes y barcos merecen el día, y lo que esté ocurriendo culturalmente mientras estés aquí — una perahera, un día de poya, una fiesta — cambia en torno a qué merece la pena montar la semana. Nandana lo repasa contigo por WhatsApp y te dice exactamente qué cubre tu viaje antes de cerrar nada."
     },
     {
       "question": "¿Cómo y cuándo se paga?",
-      "answer": "CONTENT_REQUIRED",
-      "contentRequired": true
+      "answer": "No publicamos un precio, porque no hay nada que presupuestar hasta que hayamos visto tu viaje. En cuanto sabemos tus fechas, quiénes vais y la ruta, Nandana lo revisa y te da él mismo la cifra, junto con lo que incluye. Se acuerda todo directamente con él por WhatsApp: esta web no tiene página de pago."
     }
   ]
 }
