@@ -1,6 +1,6 @@
 {
   "_reviewStatus": "needs-native-review",
-  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Nothing here states a price, an inclusion, a language spoken, a cancellation policy or an insurance requirement, because none of those is recorded anywhere in this repository yet. Items marked contentRequired are the questions travellers ask most that only Nandana can answer — fill those in before launch.",
+  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Pricing and inclusions are deliberately not stated as figures or lists: both are settled with Nandana on WhatsApp once he has seen the journey, which is how this business actually works.",
   "items": [
     {
       "question": "Hoe boek ik een reis?",
@@ -24,13 +24,11 @@
     },
     {
       "question": "Wat is inbegrepen in de prijs en wat niet?",
-      "answer": "CONTENT_REQUIRED",
-      "contentRequired": true
+      "answer": "Er is geen vaste lijst met wat inbegrepen is, omdat er geen vaste reis is. Wat een reis omvat, bepalen we voor de data waarop je reist: het seizoen en het weer bepalen welke parken, treinen en boten de dag waard zijn, en wat er cultureel speelt terwijl je er bent — een perahera, een poya-dag, een festival — verandert waar je de week omheen bouwt. Nandana neemt het met je door via WhatsApp en vertelt je precies wat jouw reis omvat voordat er iets wordt afgesproken."
     },
     {
       "question": "Hoe en wanneer betaal ik?",
-      "answer": "CONTENT_REQUIRED",
-      "contentRequired": true
+      "answer": "Wij publiceren geen prijs, want er valt niets te prijzen zolang we je reis niet gezien hebben. Zodra we je data, je gezelschap en de route kennen, kijkt Nandana ernaar en geeft hij je zelf het bedrag, samen met wat daarin zit. Je regelt het rechtstreeks met hem via WhatsApp — deze site heeft geen betaalpagina."
     }
   ]
 }

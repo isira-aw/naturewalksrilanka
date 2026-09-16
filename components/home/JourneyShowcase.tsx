@@ -24,6 +24,8 @@ export function JourneyShowcase({
   labels: {
     eyebrow: string;
     title: string;
+    /** One line making clear these are starting points, not a fixed menu. */
+    intro?: string;
     cta: string;
     daysLabel: string;
     highlightsTitle: string;
@@ -44,6 +46,11 @@ export function JourneyShowcase({
             delay={0.05}
             className="mt-6 font-display text-3xl leading-tight tracking-tight text-charcoal md:text-4xl"
           />
+          {labels.intro && (
+            <Rise delay={0.12}>
+              <p className="mt-5 max-w-xl leading-relaxed text-charcoal/70">{labels.intro}</p>
+            </Rise>
+          )}
         </div>
 
         <Rise delay={0.15} className="mt-10">

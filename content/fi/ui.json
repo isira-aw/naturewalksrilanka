@@ -26,36 +26,23 @@
   },
   "hero": {
     "eyebrow": "Nature Walks Sri Lanka",
-    "titleLine1": "Tavanomaisen",
-    "titleLine2": "tuolle puolen",
-    "subtitle": "Yksityismatkoja saaren villiin sydämeen.",
-    "ctaPrimary": "Tutustu matkoihin",
-    "ctaSecondary": "Rakenna oma matkasi"
+    "titleLine1": "Löydä se Sri Lanka,",
+    "titleLine2": "jota tulit etsimään.",
+    "subtitle": "Yksityismatkoja villien metsien, muinaisten maisemien ja saaren hiljaisten kolkkien halki — oppaina ihmiset, jotka tietävät tarkalleen mistä katsoa.",
+    "ctaPrimary": "Tutustu matkoihimme",
+    "ctaSecondary": "Suunnittele matkasi",
+    "trustLabel": "Yksityismatkoja"
   },
   "home": {
-    "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Yksi yritys koko matkalle.",
-    "introBody": "Sertifioidut oppaat, majoitus ja kuljetukset — meidän järjestäminämme ensimmäisestä viestistäsi viimeiseen aamuusi saarella.",
-    "stats": [
-      {
-        "value": "20+",
-        "label": "Vuotta oppaana"
-      },
-      {
-        "value": "30+",
-        "label": "Kotoperäistä lintulajia"
-      },
-      {
-        "value": "15",
-        "label": "Kohdetta"
-      },
-      {
-        "value": "100%",
-        "label": "Sertifioituja oppaita"
-      }
-    ],
+    "introEyebrow": "Löydä Sri Lanka",
+    "introTitle": "Osa tästä saaresta näyttäytyy vain niille, jotka tietävät missä odottaa.",
+    "introBody": "Leopardin jäljet Wilpattun pölyssä. Kotoperäisen linnun ääni jossakin Sinharajan latvustossa. Sumu nousemassa Horton Plainsilta seitsemältä aamulla. Olemme mukana kaikessa tässä — omat sertifioidut oppaamme, majoituksesi ja kuljetuksesi järjestettynä ensimmäisestä viestistä viimeiseen aamuun.",
+    "experiencesEyebrow": "Mitä voit löytää",
+    "experiencesTitle": "Yksi saari. Lukemattomia tapoja kokea se.",
+    "experiencesBody": "Villieläimet, linnut, sademetsä, vuoret, kulttuuri, rannikko — valitse kokemukset, jotka puhuttelevat sinua, ja anna matkan koota ne yhdeksi.",
+    "experiencesWhere": "Mistä sen löytää",
     "servicesEyebrow": "Mitä järjestämme",
-    "servicesTitle": "Kaikki mitä matka vaatii, samasta paikasta.",
+    "servicesTitle": "Sinä nautit matkasta. Me hoidamme loput.",
     "services": [
       {
         "title": "Sertifioidut oppaat",
@@ -75,23 +62,34 @@
       }
     ],
     "guideRole": "Perustaja ja pääopas",
-    "guideBody": "Nandana aloitti luonnonsuojelutyössä 1990, valmistui kansalliseksi oppaaksi 2002 ja perusti Nature Walks Sri Lankan 2017. Hän opastaa yhä itse matkoja.",
-    "guideCta": "Lue Nandanan tarina",
+    "guideBody": "Ennen opastyötään Nandana vietti vuosia Sri Lankan luonnonsuojeluvirastossa tutkien saaren lintuja, kasveja ja hyönteisiä sekä opettaen muita tunnistamaan niitä. Hän valmistui kansalliseksi oppaaksi 2002 ja perusti Nature Walks Sri Lankan 2017. Hän opastaa yhä itse matkoja.",
+    "guideCta": "Tapaa Nandana",
+    "customEyebrow": "Rakenna oma matkasi",
+    "customTitle": "Sinun ei tarvitse valita listalta.",
+    "customBody": "Kerro meille milloin matkustat, kenen kanssa, mitä haluat nähdä — kotoperäisiä lintuja, leopardeja ensivalossa, vuoren josta olet lukenut — ja miten haluat majoittua. Rakennamme reitin, oppaan ja majoituksen sen ympärille. Yhdestä kahteentoista matkalaista, minä päivänä tahansa.",
+    "customProcess": "Kerro meille → Me suunnittelemme → Sinä koet",
+    "customStepsLabel": "Mitä kerrot meille",
     "journeysCta": "Katso kaikki matkat",
     "placesCta": "Katso kaikki kohteet"
   },
   "tours": {
     "sectionEyebrow": "Matkat",
     "sectionTitle": "Kuinka pitkään haluat tutustua Sri Lankaan?",
-    "custom": "Räätälöity",
+    "homeIntro": "Aloita matkasta. Tee siitä omasi — mitä tahansa alla olevista reiteistä voi lyhentää, pidentää tai rakentaa kokonaan uudelleen sen ympärille, mikä sinulle on tärkeintä.",
+    "indexEyebrow": "Matkamme",
+    "indexLead": "Jokaista näistä reiteistä opastaa oma sertifioitu tiimimme, ja majoitus ja kuljetukset on järjestetty koko matkan ajaksi. Mitä tahansa niistä voi lyhentää, pidentää tai rakentaa kokonaan uudelleen sen ympärille, mitä eniten haluat nähdä.",
+    "custom": "Suunnittele oma matkasi",
     "cta": "Tutustu matkaan",
     "daysLabel": "Päivää",
     "included": "Sisältyy hintaan",
     "excluded": "Ei sisälly",
+    "inclusionsTitle": "Mitä matka kattaa",
+    "inclusionsBody": "Jokainen matka kootaan juuri sinun matkapäivillesi, joten se mitä siihen kuuluu vaihtelee vuodenajan, sään ja käyntisi aikana tapahtuvien kulttuuritapahtumien mukaan. Nandana käy sen kanssasi läpi ja kertoo tarkalleen mitä matkasi kattaa ennen kuin mistään sovitaan.",
     "itineraryTitle": "Päivä kerrallaan",
     "highlightsTitle": "Kohokohdat",
     "destinationsTitle": "Kohteet",
     "activitiesTitle": "Aktiviteetit",
+    "guidedBy": "Kuka opastaa tämän matkan",
     "customizeCta": "Muokkaa tätä matkaa",
     "whatsappCta": "Kysy tästä matkasta"
   },
@@ -99,7 +97,7 @@
     "eyebrow": "Räätälöity matka",
     "titleLine1": "Sinun Sri Lankasi.",
     "titleLine2": "Sinun tavallasi.",
-    "intro": "Kerro, miten haluat kokea Sri Lankan, niin rakennamme sen ympärille yksityismatkan — opas, majoitus ja kuljetukset mukaan lukien.",
+    "intro": "Sinun ei tarvitse valita valmista matkaa. Kerro, mitä haluat nähdä, kuinka paljon aikaa sinulla on ja millainen matkustaja olet, niin muotoilemme sen ympärille yksityismatkan — opas, majoitus ja kuljetukset järjestettynä koko matkan ajaksi.",
     "start": "Rakenna matkani",
     "steps": {
       "travelers": "Matkustajat",
@@ -217,6 +215,7 @@
     "introEyebrow": "Kuka on Nandana",
     "experienceLabel": "Kokemus",
     "certificationLabel": "Sertifiointi",
+    "languagesLabel": "Kielet",
     "introTitle": "Elämä kuljettuna Sri Lankan halki.",
     "whyEyebrow": "Miksi matkustaa kanssamme",
     "whyTitle": "Opasyritys, ei varaustiski.",
@@ -232,13 +231,17 @@
       {
         "title": "Yksi yritys, yksi matka",
         "description": "Oppaat, majoitus ja kuljetukset meiltä — yksi numero kaikkeen."
+      },
+      {
+        "title": "Rakennettu sinun ympärillesi",
+        "description": "Vain yksityismatkoja: oma opas, oma auto ja reitti, joka voi vielä muuttua matkan aikana."
       }
     ]
   },
   "sriLanka": {
     "eyebrow": "Sri Lanka",
     "title": "Sademetsä, ylängöt ja rannikko — lähempänä toisiaan kuin uskoisit.",
-    "body": "Wilpattun kuivan vyöhykkeen leopardimailta Sinharajan kotoperäisiä lajeja kuhisevaan sademetsään, Kandyn vuoristotemppeleistä Trincomaleen edustan riuttaan — Sri Lanka tiivistää mantereellisen kirjon elinympäristöjä yhdelle saarelle.",
+    "body": "Yalan kuivista ruohotasangoista Ellan pilvien peittämiin vuoristopolkuihin, Kandyn järvenrantatempeleistä Mirissan edustan valaita kuhiseviin vesiin — Sri Lanka tiivistää mantereellisen kirjon elinympäristöjä yhdelle saarelle.",
     "cta": "Katso kohteet"
   },
   "conservation": {
@@ -254,7 +257,11 @@
   "finalCta": {
     "eyebrow": "Aloita suunnittelu",
     "title": "Sinun Sri Lankasi alkaa keskustelusta.",
-    "subtitle": "Ei lomakkeita, ei odottelua — viesti suoraan Nature Walks Sri Lankalle WhatsAppissa."
+    "subtitle": "Ei lomakkeita, ei odottelua — viesti meille, niin aloitamme yhdessä matkasi muotoilun."
+  },
+  "contact": {
+    "title": "Keskustele niiden kanssa, jotka sinua opastavat.",
+    "lead": "Kerro suurin piirtein, mitä sinulla on mielessä — milloin haluaisit tulla, kuinka paljon aikaa sinulla on, mitä eniten haluat nähdä — ja Nandana tai joku oppaistamme vastaa sinulle henkilökohtaisesti. WhatsAppilla tavoitat meidät nopeimmin."
   },
   "whatsapp": {
     "talkToUs": "Ota yhteyttä",
@@ -287,6 +294,8 @@
   "_reviewStatus": "needs-native-review",
   "destinations": {
     "allRegions": "Kaikki alueet",
+    "pageTitle": "Minne mennä Sri Lankalla",
+    "indexEyebrow": "Kaikki kohteemme",
     "count": "kohdetta",
     "atAGlance": "Lyhyesti",
     "story": "Paikka",

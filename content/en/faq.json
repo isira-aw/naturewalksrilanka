@@ -1,6 +1,6 @@
 {
   "_reviewStatus": "draft-written-for-review",
-  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Nothing here states a price, an inclusion, a language spoken, a cancellation policy or an insurance requirement, because none of those is recorded anywhere in this repository yet. Items marked contentRequired are the questions travellers ask most that only Nandana can answer — fill those in before launch.",
+  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Pricing and inclusions are deliberately not stated as figures or lists: both are settled with Nandana on WhatsApp once he has seen the journey, which is how this business actually works.",
   "items": [
     {
       "question": "How do I book a tour?",
@@ -24,13 +24,11 @@
     },
     {
       "question": "What is included in the price, and what is not?",
-      "answer": "CONTENT_REQUIRED",
-      "contentRequired": true
+      "answer": "There is no fixed inclusions list, because there is no fixed journey. What a journey covers is worked out for the dates you travel: the season and the weather decide which parks, trains and boats are worth the day, and what is happening culturally while you are here — a perahera, a poya day, a festival — changes what is worth building the week around. Nandana goes through it with you on WhatsApp and tells you exactly what your journey covers before anything is agreed."
     },
     {
       "question": "How and when do I pay?",
-      "answer": "CONTENT_REQUIRED",
-      "contentRequired": true
+      "answer": "We do not publish a price, because there is nothing to price until we have seen your journey. Once we know your dates, your party and the route, Nandana looks it over and gives you the figure himself, along with what it covers. It is all settled directly with him on WhatsApp — there is no payment page on this site."
     }
   ]
 }

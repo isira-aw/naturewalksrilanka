@@ -43,11 +43,10 @@ export default async function ToursPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, tours, navigation, seo] = await Promise.all([
+  const [t, tours, navigation] = await Promise.all([
     getTranslations({ locale: l }),
     getContent(l, "tours"),
     getContent(l, "navigation"),
-    getContent(l, "seo"),
   ]);
 
   return (
@@ -55,7 +54,9 @@ export default async function ToursPage({
       <PageHero
         eyebrow={t("tours.sectionEyebrow")}
         title={t("tours.sectionTitle")}
-        lead={seo.pages.tours.description}
+        /* Written for the visitor rather than for the SERP: the meta
+           description stays in `seo.json` and is not repeated on the page. */
+        lead={t("tours.indexLead")}
         image={{
           src: "/images/tours/tour-16-days.jpg",
           alt: "Travellers at the Lion Rock stairway, Sigiriya",
@@ -66,7 +67,7 @@ export default async function ToursPage({
       <section className="bg-warm-white py-20 md:py-28">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
           <div className="max-w-2xl">
-            <Kicker>{t("home.journeysCta")}</Kicker>
+            <Kicker>{t("tours.indexEyebrow")}</Kicker>
           </div>
 
           <div className="mt-12">
@@ -84,9 +85,19 @@ export default async function ToursPage({
             ))}
           </div>
 
-          <ArrowLink href="/custom-tour" className="mt-14">
-            {t("tours.custom")}
-          </ArrowLink>
+          {/* The list ends by opening the other door: these four routes are a
+              starting point, not the whole offer. */}
+          <div className="mt-16 border-t border-charcoal/15 pt-10">
+            <h2 className="max-w-2xl font-display text-2xl leading-snug text-charcoal md:text-3xl">
+              {t("home.customTitle")}
+            </h2>
+            <p className="mt-4 max-w-xl leading-relaxed text-charcoal/65">
+              {t("customTour.intro")}
+            </p>
+            <ArrowLink href="/custom-tour" className="mt-8">
+              {t("tours.custom")}
+            </ArrowLink>
+          </div>
         </div>
       </section>
 

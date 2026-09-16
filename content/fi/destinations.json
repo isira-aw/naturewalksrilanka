@@ -1,17 +1,918 @@
 [
-  { "slug": "negombo", "name": "Negombo", "region": "Länsirannikko", "description": "Portti Sri Lankaan aivan kansainvälisen lentokentän tuntumassa. Kaupungissa on hollantilaisten rakentama kanava, vilkas kalatori ja rauhallinen ensimmäinen tai viimeinen yö matkalla.", "image": "/images/destinations/negombo/negombo2.jpg", "heroImage": "/images/destinations/negombo/negombo.jpg", "activities": ["culture-history"], "gallery": [{"src":"/images/destinations/negombo/negombo3.jpg","alt":"Negombo"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "wilpattu", "name": "Wilpattun kansallispuisto", "region": "Luoteisprovinssi", "description": "Sri Lankan suurin kansallispuisto, joka tunnetaan leopardeista, laiskakarhuista ja norsuista, luonnonjärvistään (villus) sekä kuivan vyöhykkeen linnustosta.", "image": "/images/destinations/wilpattu/wilpattu2.jpg", "heroImage": "/images/destinations/wilpattu/wilpattu.jpg", "activities": ["wildlife-safari","birding"], "gallery": [{"src":"/images/destinations/wilpattu/wilpattu3.avif","alt":"Wilpattun kansallispuisto"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "anuradhapura", "name": "Anuradhapura", "region": "Pohjoinen keskiprovinssi", "description": "Yksi Sri Lankan muinaisista pääkaupungeista, jonka laajaan raunioalueeseen tutustutaan yhdessä läheisen Mihintalen temppelin kanssa.", "image": "/images/destinations/anuradhapura/anuradhapura2.webp", "heroImage": "/images/destinations/anuradhapura/anuradhapura.jpg", "activities": ["culture-history"], "gallery": [{"src":"/images/destinations/anuradhapura/anuradhapura3.jpg","alt":"Anuradhapura"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "trincomalee", "name": "Trincomalee", "region": "Itäprovinssi", "description": "Itärannikon satamakaupunki ja lähtöpiste Pigeon Islandille sekä delfiiniretkille.", "image": "/images/destinations/trincomalee/trincomalee2.jpg", "heroImage": "/images/destinations/trincomalee/trincomalee.jpg", "activities": ["beach","wildlife-safari"], "gallery": [{"src":"/images/destinations/trincomalee/trincomalee3.jpg","alt":"Trincomalee"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "sigiriya", "name": "Sigiriya", "region": "Keskiprovinssi", "description": "Leijonakallion linnoituksen ja Pidurangalan temppelin kotipaikka, lähistöllä Polonnaruwan muinaiskaupunki ja Minneriyan kansallispuisto.", "image": "/images/destinations/sigiriya/sigiriya2.jpg", "heroImage": "/images/destinations/sigiriya/sigiriya.jpg", "activities": ["culture-history","wildlife-safari"], "gallery": [{"src":"/images/destinations/sigiriya/sigiriya3.jpg","alt":"Sigiriya"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "polonnaruwa", "name": "Polonnaruwa", "region": "Pohjoinen keskiprovinssi", "description": "Sri Lankan toinen muinainen pääkaupunki, johon tutustutaan muinaiskaupunkikierroksella yhdessä Minneriyan kansallispuiston kanssa.", "image": "/images/destinations/polonnaruwa/polonnaruwa2.jpg", "heroImage": "/images/destinations/polonnaruwa/polonnaruwa.jpg", "activities": ["culture-history"], "gallery": [{"src":"/images/destinations/polonnaruwa/polonnaruwa3.jpg","alt":"Polonnaruwa"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "kandy", "name": "Kandy", "region": "Keskiprovinssi", "description": "Ylänköjen kulttuuripääkaupunki: Hampaan temppeli, kulttuurinäytös, teetehtaita ja matkan varrella Dambullan luolatemppeli.", "image": "/images/destinations/kandy/kandy2.jpg", "heroImage": "/images/destinations/kandy/kandy.jpg", "activities": ["culture-history"], "gallery": [{"src":"/images/destinations/kandy/kandy3.jpg","alt":"Kandy"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "kithulgala", "name": "Kithulgala", "region": "Sabaragamuwan provinssi", "description": "Sademetsän reunalla Kelani-joen varrella sijaitseva kylä, joka tunnetaan koskenlaskusta, canyoningista, vaijeriliu'uista ja rikkaasta linnustosta.", "image": "/images/destinations/kithulgala/kithulgala2.jpg", "heroImage": "/images/destinations/kithulgala/kithulgala.jpg", "activities": ["adventure-sports","birding"], "gallery": [{"src":"/images/destinations/kithulgala/kithulgala3.webp","alt":"Kithulgala"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "ella", "name": "Ella", "region": "Uvan provinssi", "description": "Ylänkökylä, jonne pääsee yhdellä maailman kauneimmista junamatkoista. Täällä ovat Nine Arch -silta, Little Adam's Peak ja Ravanan vesiputous.", "image": "/images/destinations/ella/ella2.jpg", "heroImage": "/images/destinations/ella/ella.jpg", "activities": ["trekking","culture-history"], "gallery": [{"src":"/images/destinations/ella/ella3.jpg","alt":"Ella"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "yala", "name": "Yalan kansallispuisto", "region": "Eteläprovinssi", "description": "Kuivan vyöhykkeen puisto, jossa on pensaikkoviidakkoa, tekojärviä, murtovesilaguuneja ja jokivarsien elinympäristöjä — maan paras puisto leopardin ja laiskakarhun näkemiseen.", "image": "/images/destinations/yala/yala2.jpg", "heroImage": "/images/destinations/yala/yala.webp", "activities": ["wildlife-safari","birding"], "gallery": [{"src":"/images/destinations/yala/yala3.jpg","alt":"Yalan kansallispuisto"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "sinharaja", "name": "Sinharajan sademetsä", "region": "Sabaragamuwan provinssi", "description": "Unescon maailmanperintökohde, jossa on Aasian rikkain luonnon monimuotoisuus ja lähes koko Sri Lankan kotoperäinen kasvisto ja eläimistö.", "image": "/images/destinations/sinharaja/sinharaja2.jpg", "heroImage": "/images/destinations/sinharaja/sinharaja.jpg", "activities": ["birding","trekking"], "gallery": [{"src":"/images/destinations/sinharaja/sinharaja3.jpg","alt":"Sinharajan sademetsä"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "nuwara-eliya", "name": "Nuwara Eliya", "region": "Keskiylängöt", "description": "Viileän ilmaston vuoristokaupunki, jossa on Victoria Park ja portti Horton Plainsin kansallispuistoon.", "image": "/images/destinations/nuwara-eliya/nuwara-eliya2.jpg", "heroImage": "/images/destinations/nuwara-eliya/nuwara-eliya.jpg", "activities": ["birding"], "gallery": [{"src":"/images/destinations/nuwara-eliya/nuwara-eliya3.jpg","alt":"Nuwara Eliya"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "horton-plains", "name": "Horton Plainsin kansallispuisto", "region": "Keskiylängöt", "description": "Vuoristoniittyä ja sumumetsää korkealla, kotina useille Sri Lankan ylänköjen kotoperäisille linnuille.", "image": "/images/destinations/horton-plains/horton-plains2.jpg", "heroImage": "/images/destinations/horton-plains/horton-plains.jpg", "activities": ["birding","trekking"], "gallery": [{"src":"/images/destinations/horton-plains/horton-plains3.webp","alt":"Horton Plainsin kansallispuisto"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "tissamaharama", "name": "Tissamaharama", "region": "Eteläprovinssi", "description": "Tukikohtakaupunki lähellä Yalaa, jossa lintuja tarkkaillaan muinaisten tekoaltaiden ympärillä ja läheisessä lintusuojelualueessa.", "image": "/images/destinations/tissamaharama/tissamaharama2.jpg", "heroImage": "/images/destinations/tissamaharama/tissamaharama.jpg", "activities": ["birding"], "gallery": [{"src":"/images/destinations/tissamaharama/tissamaharama3.jpg","alt":"Tissamaharama"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "mirissa", "name": "Mirissa", "region": "Eteläprovinssi", "description": "Etelärannikon rantakaupunki, johon yhdistetään vierailu Gallen hollantilaislinnoituksessa.", "image": "/images/destinations/mirissa/mirissa2.jpg", "heroImage": "/images/destinations/mirissa/mirissa.webp", "activities": ["beach","culture-history"], "gallery": [{"src":"/images/destinations/mirissa/mirissa3.jpg","alt":"Mirissa"}], "_reviewStatus": "needs-native-review" }
+  {
+    "slug": "negombo",
+    "name": "Negombo",
+    "region": "Länsirannikko",
+    "description": "Portti Sri Lankaan aivan kansainvälisen lentokentän tuntumassa. Kaupungissa on hollantilaisten rakentama kanava, vilkas kalatori ja rauhallinen ensimmäinen tai viimeinen yö matkalla.",
+    "image": "/images/destinations/negombo/negombo2.jpg",
+    "heroImage": "/images/destinations/negombo/negombo.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "Negombo on lähes jokaisen matkan ensimmäinen tai viimeinen yö, ja juuri siihen se sopii: toimiva kalastajakaupunki kahdenkymmenen minuutin päässä kansainväliseltä lentokentältä, jossa voit nukkua lennon pois meren äärellä sen sijaan että ajaisit yöhön. Se on myös aidosti kiireettömän aamun arvoinen.",
+    "sections": [
+      {
+        "title": "Kalastajakaupunki, ei lomakohde",
+        "body": "Lagunia ovat kalastaneet samat suvut sukupolvien ajan, ja ranta täyttyy joka aamu ulkolaitakanooteista, jotka tulevat sisään tuulen mukana. Lellaman kalatori aamun sarastaessa on kaupunki täydellä äänenvoimakkuudella — huutokaupanpitäjiä, jäätä, lokkeja ja päivän saalis levitettynä hiekalle."
+      },
+      {
+        "title": "Hollantilainen kanava ja vanhat kirkot",
+        "body": "Hamiltonin kanava, joka kaivettiin hollantilaisvallan aikana kuljettamaan kanelia etelään Colomboon, kulkee suoraan kaupungin läpi ja on kauneimmillaan ensivalossa. Negombon suuri katolinen yhteisö on jättänyt kaupungille kirkontornien siluetin — siksi tätä rannikkoa kutsutaan usein Pieneksi Roomaksi."
+      }
+    ],
+    "wildlife": [
+      "Laguunin ja mangrovemetsän linnut — herons, egrets, kingfishers",
+      "Talvehtivat kahlaajat liejurannoilla",
+      "Brahminy kites kalastajarannan yllä"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Ympäri vuoden; joulukuusta maaliskuuhun on kuivinta"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Yksi yö, ennen lentoa tai sen jälkeen"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "20–30 minuuttia Bandaranaiken kansainväliseltä lentoasemalta"
+      },
+      {
+        "label": "Sopii yhteen",
+        "value": "Aikaisen lähdön kanssa pohjoiseen Wilpattuun tai Anuradhapuraan"
+      }
+    ],
+    "goodToKnow": [
+      "Kalatori alkaa noin kuudelta aamulla ja on ohi aamupäivän puoliväliin mennessä.",
+      "Uiminen sujuu parhaiten rannan pohjoispäässä, poissa kalastusveneiden luota.",
+      "Hyvä paikka vaihtaa rahaa ja hankkia unohtuneet tavarat ennen sisämaahan lähtöä."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/negombo/negombo3.jpg",
+        "alt": "Ulkolaitakanootteja Negombon rannalla auringonnousussa",
+        "caption": "Ulkolaitakanootteja Negombon rannalla auringonnousussa"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "wilpattu",
+    "name": "Wilpattun kansallispuisto",
+    "region": "Luoteisprovinssi",
+    "description": "Sri Lankan suurin kansallispuisto, joka tunnetaan leopardeista, laiskakarhuista ja norsuista, luonnonjärvistään (villus) sekä kuivan vyöhykkeen linnustosta.",
+    "image": "/images/destinations/wilpattu/wilpattu2.jpg",
+    "heroImage": "/images/destinations/wilpattu/wilpattu.jpg",
+    "activities": [
+      "wildlife-safari",
+      "birding"
+    ],
+    "intro": "Wilpattu on Sri Lankan suurin kansallispuisto ja meidän mielestämme parempi leopardipuisto — ei siksi, että leopardeja olisi enemmän kuin Yalassa, vaan siksi että jeeppejä on vähemmän. Puisto on saanut nimensä villuistaan: luonnollisista, sadeveden täyttämistä lammista, joita reunustaa avoin ruohikko ja joille eläimet tulevat näkyville.",
+    "sections": [
+      {
+        "title": "Villut ja miksi niillä on väliä",
+        "body": "Villu on matala painanne, joka pidättää sadevettä maisemassa, joka muuten kätkee kaiken tiheään kuivan vyöhykkeen pensaikkoon. Tunnin hiljaa istuminen sellaisen reunalla on aivan eri tapa katsoa kuin urien ajaminen, ja juuri niin syntyvät parhaat havaintomme."
+      },
+      {
+        "title": "Miten me työskentelemme puistossa",
+        "body": "Menemme sisään heti aukeamisen jälkeen ja jäämme keskipäivän yli, kun useimmat jeepit ovat jo palanneet. Jäljet, spotted deerin ja langurien varoitusäänet sekä kärsivällisyys vievät täällä pidemmälle kuin radiopuhe — Nandana lukee puistoa sen sijaan että jahtaisi sitä."
+      }
+    ],
+    "wildlife": [
+      "Sri Lankan leopard",
+      "Sloth bear — parhaat mahdollisuudet kesäkuusta elokuuhun, kun palu-hedelmä kypsyy",
+      "Asian elephant",
+      "Spotted deer, sambar, wild buffalo, mugger crocodile",
+      "Kuivan vyöhykkeen linnut: painted stork, black-necked stork, Sri Lanka junglefowl, changeable hawk-eagle"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Helmikuusta lokakuuhun; rankkasateilla puisto voi sulkeutua"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Kaksi yötä, kokonaiseen päivään ja puolen päivän ajoon"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "Noin 3 tuntia Negombosta, 1,5 tuntia Anuradhapurasta"
+      },
+      {
+        "label": "Maasto",
+        "value": "Kuivan vyöhykkeen metsää, pensaikkoa ja avoimia villuja"
+      }
+    ],
+    "goodToKnow": [
+      "Kokopäivän ajo eväiden kanssa näyttää paljon enemmän kuin lyhyt iltapäiväkierros.",
+      "Havaintoja ei koskaan taata — se, joka lupaa sinulle leopardin, on myymässä jotain.",
+      "Ota mukaan neutraalit vaatteet, hattu ja enemmän vettä kuin luulet tarvitsevasi."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/wilpattu/wilpattu3.avif",
+        "alt": "Leopardi lepäämässä uralla Wilpattussa",
+        "caption": "Leopardi lepäämässä uralla Wilpattussa"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "anuradhapura",
+    "name": "Anuradhapura",
+    "region": "Pohjoinen keskiprovinssi",
+    "description": "Yksi Sri Lankan muinaisista pääkaupungeista, jonka laajaan raunioalueeseen tutustutaan yhdessä läheisen Mihintalen temppelin kanssa.",
+    "image": "/images/destinations/anuradhapura/anuradhapura2.webp",
+    "heroImage": "/images/destinations/anuradhapura/anuradhapura.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "Anuradhapura oli saaren pääkaupunki yli tuhannen vuoden ajan, ja se on yhä elävä pyhiinvaelluskaupunki eikä raunioalue. Valkopukuiset pyhiinvaeltajat, öljylamput ja lootuskukat liikkuvat monumenttien keskellä, jotka olivat jo vanhoja Euroopan katedraaleja rakennettaessa.",
+    "sections": [
+      {
+        "title": "Pyhä kaupunki",
+        "body": "Sen sydämessä on Sri Maha Bodhi, pyhä viikunapuu, joka on kasvatettu pistokkaasta siitä puusta, jonka alla Buddha saavutti valaistumisen. Se istutettiin tänne 200-luvulla eaa. ja sitä on hoidettu katkeamatta siitä lähtien. Sen ympärillä kohoavat suuret stupat — Ruwanwelisaya, Jetavanaramaya, Abhayagiri — kukin valtava umpinainen tiilikupoli."
+      },
+      {
+        "title": "Mihintale, mistä kaikki alkoi",
+        "body": "Kahdentoista kilometrin päässä idässä nousee 1 840 graniittiportaan portaikko Mihintaleen, jossa munkki Mahinda tapasi kuningas Devanampiya Tissan ja buddhalaisuus saapui Sri Lankaan. Mene ensivalossa: nousu on viileä, näkymä kuivan vyöhykkeen tasangolle on pitkä ja paikka on hiljainen."
+      }
+    ],
+    "wildlife": [
+      "Grey langur ja toque macaque raunioiden ympärillä",
+      "Tekoaltaiden linnut — pelicans, painted storks, open-billed storks",
+      "Indian peafowl aamunkoitteessa penkereillä"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Ympäri vuoden; toukokuusta syyskuuhun on kuuminta"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Yksi kokonainen päivä, kaksi jos otat Mihintalen kunnolla mukaan"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "Noin 4 tuntia Colombosta, 1,5 tuntia Wilpattusta"
+      },
+      {
+        "label": "Pukeutuminen",
+        "value": "Hartiat ja polvet peitettyinä; kengät pois pyhillä paikoilla"
+      }
+    ],
+    "goodToKnow": [
+      "Poya-päivät (täysikuu) ovat poikkeuksellisia kokea — ja hyvin vilkkaita.",
+      "Alue levittäytyy kilometrien alalle — auto ryhmien välillä pelastaa päivän.",
+      "Valkoinen vaatetus on pyhiinvaeltajan tapa ja aina tervetullut."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/anuradhapura/anuradhapura3.jpg",
+        "alt": "Valkoinen Ruwanwelisaya-stupa",
+        "caption": "Valkoinen Ruwanwelisaya-stupa"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "trincomalee",
+    "name": "Trincomalee",
+    "region": "Itäprovinssi",
+    "description": "Itärannikon satamakaupunki ja lähtöpiste Pigeon Islandille sekä delfiiniretkille.",
+    "image": "/images/destinations/trincomalee/trincomalee2.jpg",
+    "heroImage": "/images/destinations/trincomalee/trincomalee.jpg",
+    "activities": [
+      "beach",
+      "wildlife-safari"
+    ],
+    "intro": "Trincomalee sijaitsee yhden maailman hienoimman luonnonsataman äärellä, rannikolla jonka vuodenajat kulkevat päinvastoin kuin muualla saarella. Kun lounaisosa on monsuunin alla, Trinco on tyyni, kirkas ja uimakelpoinen.",
+    "sections": [
+      {
+        "title": "Koneswaram ja satama",
+        "body": "Koneswaramin temppeli seisoo Swami Rockilla jyrkän meripudotuksen yllä — pitkän historian hindulainen pyhäkkö, joka rakennettiin uudelleen sen jälkeen kun portugalilaiset tuhosivat alkuperäisen. Sen alla avautuu satama, riittävän syvä siihen että jokainen tänne koskaan tullut laivasto on taistellut siitä."
+      },
+      {
+        "title": "Riutta ja avovesi",
+        "body": "Pigeon Island, lyhyen venematkan päässä Nilavelistä, on merellinen kansallispuisto, jossa on elävää korallia, riuttakaloja ja blacktip reef sharkseja matalikoilla. Kauempana ulapalla Trincomaleen syvä vesi on itäisen kauden aikaan yksi saaren valasalueista."
+      }
+    ],
+    "wildlife": [
+      "Blue whale ja sperm whale ulapalla, sesonkiaikaan",
+      "Spinner dolphin, usein suurina parvina",
+      "Riuttakalat, blacktip reef sharks ja hawksbill turtles Pigeon Islandilla",
+      "White-bellied sea eagle niemien yllä"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Toukokuusta syyskuuhun — itärannikon kuiva kausi"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Kahdesta kolmeen yötä"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "Noin 3 tuntia Sigiriyasta tai Polonnaruwasta"
+      },
+      {
+        "label": "Rannat",
+        "value": "Uppuveli rauhaan, Nilaveli Pigeon Islandin veneisiin"
+      }
+    ],
+    "goodToKnow": [
+      "Snorkkelivarusteita saa paikan päältä, mutta ota oma maski mukaan, jos olet tarkka.",
+      "Pigeon Islandilla vain riuttaystävällistä aurinkovoidetta — se on kansallispuisto.",
+      "Valassafari riippuu säästä ja alkaa aina aikaisin."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/trincomalee/trincomalee3.jpg",
+        "alt": "Koneswaramin temppeli Swami Rockin yllä",
+        "caption": "Koneswaramin temppeli Swami Rockin yllä"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "sigiriya",
+    "name": "Sigiriya",
+    "region": "Keskiprovinssi",
+    "description": "Leijonakallion linnoituksen ja Pidurangalan temppelin kotipaikka, lähistöllä Polonnaruwan muinaiskaupunki ja Minneriyan kansallispuisto.",
+    "image": "/images/destinations/sigiriya/sigiriya2.jpg",
+    "heroImage": "/images/destinations/sigiriya/sigiriya.jpg",
+    "activities": [
+      "culture-history",
+      "wildlife-safari"
+    ],
+    "intro": "Sammuneen tulivuoren graniittitulppa, joka kohoaa kaksisataa metriä tasaisen metsän yläpuolelle, ja sen päällä 400-luvun kuninkaallinen linnoitus. Sigiriya on Sri Lankan valokuvatuin kohde ja yhä jokaisen askeleen arvoinen.",
+    "sections": [
+      {
+        "title": "Nousu",
+        "body": "Kuningas Kasyapa rakensi palatsinsa huipulle, jonne päästiin leijonan muotoisesta portista — vain valtavat tassut ovat jäljellä. Matkalla ylös suojaisassa galleriassa ovat Sigiriyan neitojen freskot, maalattu yli tuhatviisisataa vuotta sitten, ja kiillotetulla peiliseinällä on kävijöiden jättämiä kirjoituksia 700-luvulta alkaen."
+      },
+      {
+        "title": "Mitä useimmat jättävät väliin",
+        "body": "Juurella olevat vesipuutarhat ovat omanlaisensa insinööritaidon näyte, ja niiden suihkulähteet toimivat yhä sadekaudella. Ja Pidurangala, vastapäinen kallio, on parempi auringonnousupaikka: karumpi kiipeäminen, puolet vähemmän väkeä, ja näkymä on Sigiriyaan itseensä."
+      }
+    ],
+    "wildlife": [
+      "Toque macaque ja grey langur alemmilla terasseilla",
+      "Sri Lanka grey hornbill ja Sri Lanka junglefowl ympäröivässä metsässä",
+      "Painted-lip lizard kallioseinämillä",
+      "Norsuja Minneriyan tiellä hämärissä"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Ympäri vuoden; nouse klo 7 aamulla tai klo 15.30 jälkeen"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Puoli päivää kalliolle, kaksi yötä jos otat Polonnaruwan mukaan"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "Noin 3,5 tuntia Negombosta, 1 tunti Polonnaruwasta"
+      },
+      {
+        "label": "Nousu",
+        "value": "Noin 1 200 porrasta, huipun lähellä jyrkkiä metalliportaita"
+      }
+    ],
+    "goodToKnow": [
+      "Ei sovi vakavasta korkeanpaikankammosta kärsivälle — viimeiset portaat ovat toiselta sivulta avoimet.",
+      "Vettä, hattu ja aikainen lähtö; huipulla ei ole varjoa.",
+      "Ampiaiset sulkevat toisinaan osia nousureitistä; vartijoiden sana ratkaisee."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/sigiriya/sigiriya3.jpg",
+        "alt": "Sigiriyan kallio kohoamassa metsän yllä",
+        "caption": "Sigiriyan kallio kohoamassa metsän yllä"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "polonnaruwa",
+    "name": "Polonnaruwa",
+    "region": "Pohjoinen keskiprovinssi",
+    "description": "Sri Lankan toinen muinainen pääkaupunki, johon tutustutaan muinaiskaupunkikierroksella yhdessä Minneriyan kansallispuiston kanssa.",
+    "image": "/images/destinations/polonnaruwa/polonnaruwa2.jpg",
+    "heroImage": "/images/destinations/polonnaruwa/polonnaruwa.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "Saaren toinen pääkaupunki ja Sri Lankan helpoimmin luettava muinaiskaupunki: tiivis, kävellen ja pyörällä kierrettävä kokonaisuus palatseja, temppeleitä ja suuri tekoallas, suurimmaksi osaksi rakennettu yhdessä 1100-luvun itseluottamuksen purkauksessa.",
+    "sections": [
+      {
+        "title": "Parhaiten pyörän selästä",
+        "body": "Rauniot levittäytyvät muutaman tasaisen kilometrin alalle puistomaisemaan suurten puiden alle, mikä tekee pyörästä oikean tavan nähdä ne. Vatadage, Lankatilakan kuvahuone ja kuninkaanpalatsi ovat kaikki helpon pyöräilymatkan päässä toisistaan."
+      },
+      {
+        "title": "Gal Vihara",
+        "body": "Neljä jättimäistä Buddha-hahmoa veistettynä yhdestä graniittiseinämästä — istuva hahmo, pieni kuva kallioonkalossa, seisova hahmo harvinaisessa ristikäsiasennossa ja makaava Buddha, joka on seitsemän metriä bussia pidempi. Kivi valittiin niin, että syy kulkee kaavun laskosten mukana, eikä veistotyötä ole kahdeksassasadassa vuodessa parannettu."
+      },
+      {
+        "title": "Parakrama Samudra",
+        "body": "Parakraman meri, kastelualtaana niin suuri että sillä on oma horisonttinsa, kastelee yhä kaupunkia ympäröiviä riisipeltoja. Hämärissä siellä kannattaa olla, ja läheiset Minneriyan ja Kaudullan altaat keräävät kuivina kuukausina yhden Aasian suurimmista norsukokoontumisista."
+      }
+    ],
+    "wildlife": [
+      "Asian elephant Minneriyassa ja Kaudullassa, elo–syyskuussa the Gathering -aikaan",
+      "Altaiden linnut — pelicans, cormorants, egrets, storks",
+      "Toque macaque raunioiden keskellä",
+      "Land monitors ja mugger crocodiles penkereillä"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Ympäri vuoden; the Gathering huipentuu elo–syyskuussa"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Yksi kokonainen päivä, kaksi yötä jos lisäät iltasafarin"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "1 tunti Sigiriyasta, 3 tuntia Kandysta"
+      },
+      {
+        "label": "Liikkuminen",
+        "value": "Polkupyörällä, autolla kauempana oleviin ryhmiin"
+      }
+    ],
+    "goodToKnow": [
+      "Aloita klo 7 — yhdeltätoista alueella on tuskin lainkaan varjoa.",
+      "Hartiat ja polvet peitettyinä; kengät ja hattu pois kuvahuoneissa.",
+      "Sisäänkäynnin museo on kahdenkymmenen minuutin arvoinen ennen kuin lähdet pyörällä liikkeelle."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/polonnaruwa/polonnaruwa3.jpg",
+        "alt": "Makaava Buddha Gal Viharassa",
+        "caption": "Makaava Buddha Gal Viharassa"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "kandy",
+    "name": "Kandy",
+    "region": "Keskiprovinssi",
+    "description": "Ylänköjen kulttuuripääkaupunki: Hampaan temppeli, kulttuurinäytös, teetehtaita ja matkan varrella Dambullan luolatemppeli.",
+    "image": "/images/destinations/kandy/kandy2.jpg",
+    "heroImage": "/images/destinations/kandy/kandy.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "Viimeinen kuningaskunta, joka kaatui briteille, piti puolensa kolme vuosisataa metsäisten kukkuloiden muodostamassa maljassa ja on yhä saaren seremoniallinen sydän. Kandy on toimiva kaupunki, jonka keskellä on järvi ja jonka yllä harjanteella on sademetsäsuojelualue.",
+    "sections": [
+      {
+        "title": "Pyhän hampaan temppeli",
+        "body": "Sri Dalada Maligawa säilyttää Buddhan hammasta ja sen mukana pitkää perinnettä, jonka mukaan se joka pitää hallussaan reliikkiä, pitää hallussaan maata. Tule johonkin kolmesta päivittäisestä pujasta, kun rummut soivat ja sisäkammio avataan; rakennus itse — tummaa puuta, norsunluukoristeita, maalattuja kattoja — palkitsee hitaan kierroksen."
+      },
+      {
+        "title": "Kaupungin yläpuolella",
+        "body": "Udawattakele, temppelin takana oleva vanha kuninkaallinen metsäpuutarha, on lintujen tarkkailua kävelymatkan päässä keskustasta. Kolmen kilometrin päässä Peradeniyan kuninkaallisessa kasvitieteellisessä puutarhassa on jättimäinen jaavanviikuna, orkideahuone ja palmukuja sekä pään päällä lentävien koirien yhdyskunta, joka on nähtävä hämärissä."
+      }
+    ],
+    "wildlife": [
+      "Layard's parakeet, yellow-fronted barbet ja muita kotoperäisiä lajeja Udawattakelessä",
+      "Indian flying fox puissa Peradeniyassa",
+      "Purple-faced langur metsäsuojelualueella",
+      "Water monitors järven rantaa pitkin"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Ympäri vuoden; Esala Perahera osuu heinä- tai elokuuhun"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Kaksi yötä"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "3 tuntia Colombosta; ylängön juna lähtee täältä"
+      },
+      {
+        "label": "Korkeus",
+        "value": "Noin 500 m — viileämpää ja vehreämpää kuin rannikolla"
+      }
+    ],
+    "goodToKnow": [
+      "Iltapuja on tunnelmallisin; ole paikalla kaksikymmentä minuuttia etuajassa.",
+      "Valkoinen tai hillitty vaatetus temppeliin, ja kengät jätetään sisäänkäynnille.",
+      "Esala Perahera täyttää kaupungin kymmeneksi yöksi — varaa hyvissä ajoin tai suunnittele sen ohi."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/kandy/kandy3.jpg",
+        "alt": "Pyhän hampaan temppeli hämärissä",
+        "caption": "Pyhän hampaan temppeli hämärissä"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "kithulgala",
+    "name": "Kithulgala",
+    "region": "Sabaragamuwan provinssi",
+    "description": "Sademetsän reunalla Kelani-joen varrella sijaitseva kylä, joka tunnetaan koskenlaskusta, canyoningista, vaijeriliu'uista ja rikkaasta linnustosta.",
+    "image": "/images/destinations/kithulgala/kithulgala2.jpg",
+    "heroImage": "/images/destinations/kithulgala/kithulgala.jpg",
+    "activities": [
+      "adventure-sports",
+      "birding"
+    ],
+    "intro": "Sademetsäkylä Kelani-joen varrella, tunnetuin koskistaan ja sillasta, joka räjäytettiin elokuvassa Kwai-joen silta. Se on myös yksi saaren luotettavimmista paikoista alankojen kotoperäisille linnuille, eikä sen takia tule tänne juuri kukaan.",
+    "sections": [
+      {
+        "title": "Joki",
+        "body": "Kelani virtaa täällä luokkaa kaksi–kolme — riittävän isona ollakseen aidosti hauska, riittävän anteeksiantavana ensimmäiseen koskenlaskuun. Sama rotko tarjoaa canyoningia, hyppyjä ja luonnonliukumäkiä, ja sitä vetävät paikalliset tiimit, jotka tietävät tarkalleen mitkä altaat ovat turvallisia milläkin vedenkorkeudella."
+      },
+      {
+        "title": "Metsä joen toisella puolen",
+        "body": "Makandawan metsäsuojelualueelle pääsee pienellä lautalla joen yli ja sen jälkeen nousemalla kosteaan alankosademetsään. Se pitää sisällään suuren osan Sinharajan kotoperäisistä lajeista paljon lyhyemmän kävelyn päässä, mikä tekee siitä hyvän ensimmäisen sademetsäaamun ennen syvempää matkaa etelään."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka spurfowl, green-billed coucal ja chestnut-backed owlet",
+      "Sri Lanka blue magpie, Layard's parakeet",
+      "Sekaparvet ruokailemassa varhain aamulla",
+      "Hump-nosed lizard ja kotoperäisiä sammakoita purojen varsilla"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Joulukuusta huhtikuuhun koskenlaskuun; lintuja voi katsoa ympäri vuoden"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Yksi tai kaksi yötä"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "Noin 2 tuntia Colombosta, 2,5 tuntia Kandysta"
+      },
+      {
+        "label": "Maasto",
+        "value": "Kosteaa alankosademetsää, paikoin jyrkkää ja liukasta"
+      }
+    ],
+    "goodToKnow": [
+      "Täällä sataa — kunnolla — ja juuri siitä metsä elää.",
+      "Iilimatosukat metsäkävelyille; oppailla on varalla.",
+      "Koskenlaskuyritysten taso vaihtelee; me käytämme joka kerta samaa tiimiä."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/kithulgala/kithulgala3.webp",
+        "alt": "Kelani-joki sademetsän halki Kithulgalassa",
+        "caption": "Kelani-joki sademetsän halki Kithulgalassa"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "ella",
+    "name": "Ella",
+    "region": "Uvan provinssi",
+    "description": "Ylänkökylä, jonne pääsee yhdellä maailman kauneimmista junamatkoista. Täällä ovat Nine Arch -silta, Little Adam's Peak ja Ravanan vesiputous.",
+    "image": "/images/destinations/ella/ella2.jpg",
+    "heroImage": "/images/destinations/ella/ella.jpg",
+    "activities": [
+      "trekking",
+      "culture-history"
+    ],
+    "intro": "Aukko vuoristossa, jossa vuoret putoavat kohti eteläistä tasankoa, teen ja sumumetsän verhoamana. Ella on pieni, kävellen kierrettävä, ja siellä ovat ylängön parhaat lyhyet vaellukset, jotka lähtevät suoraan kylästä.",
+    "sections": [
+      {
+        "title": "Vaelluksia ovelta",
+        "body": "Little Adam's Peak on rauhallinen tunti teepensaiden läpi harjanteelle, jolta koko aukko avautuu alapuolella. Ella Rock on pidempi, jyrkempi ja hiljaisempi, ja se kannattaa tehdä aikaisin jonkun kanssa, joka tuntee käännöksen — polkua ei ole viitoitettu ja puolet kulkijoista on eksyksissä."
+      },
+      {
+        "title": "Silta ja juna",
+        "body": "Nine Arches Bridge, rakennettu kivestä ja tiilestä kun terästä ei ensimmäisen maailmansodan aikana riittänyt, kaartaa metsän läpi kylän alapuolella; sen yli kulkeva juna on yksi saaren nähtävyyksistä. Itse rata, Nanu Oyalta tai Haputalesta alas Ellaan, on monelle koko syy tulla ylängölle."
+      }
+    ],
+    "wildlife": [
+      "Yellow-eared bulbul ja Sri Lanka white-eye teepensaikossa ja pensaikoissa",
+      "Crested serpent eagle aukon yllä",
+      "Purple-faced langur metsälaikuissa",
+      "Perhosia poikkeuksellisia määriä sateen jälkeen"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Tammikuusta maaliskuuhun; vuoret kirkastuvat aamulla"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Kaksi yötä"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "Juna Nanu Oyalta tai Haputalesta; 3 tuntia maanteitse Nuwara Eliyasta"
+      },
+      {
+        "label": "Korkeus",
+        "value": "Noin 1 040 m — lämpimät päivät, viileät yöt"
+      }
+    ],
+    "goodToKnow": [
+      "Varaa junapaikat hyvissä ajoin, tai matkusta paikattomassa vaunussa ja seiso ovella.",
+      "Pilvi sulkeutuu aamupäivän lopulla; tee näköalapaikat aikaisin.",
+      "Kunnon kengät Ella Rockille — se on oikea vuorikävely, ei kävelylenkki."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/ella/ella3.jpg",
+        "alt": "Juna ylittämässä Nine Arches Bridgeä",
+        "caption": "Juna ylittämässä Nine Arches Bridgeä"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "yala",
+    "name": "Yalan kansallispuisto",
+    "region": "Eteläprovinssi",
+    "description": "Kuivan vyöhykkeen puisto, jossa on pensaikkoviidakkoa, tekojärviä, murtovesilaguuneja ja jokivarsien elinympäristöjä — maan paras puisto leopardin ja laiskakarhun näkemiseen.",
+    "image": "/images/destinations/yala/yala2.jpg",
+    "heroImage": "/images/destinations/yala/yala.webp",
+    "activities": [
+      "wildlife-safari",
+      "birding"
+    ],
+    "intro": "Puisto, joka teki Sri Lankasta leopardikohteen: kuivaa pensaikkoa, graniittipaljastumia ja merta koskettavia laguuneja, ja yksi maailman korkeimmista mitatuista leopardintiheyksistä. Se on myös maan vilkkain puisto, ja sillä miten siellä vierailee on väliä.",
+    "sections": [
+      {
+        "title": "Leopardien maa",
+        "body": "Block 1 on se, jossa tiheys on — ja jossa jeepit ovat. Me menemme sisään portin auetessa, työstämme hiljaisempia läntisiä uria ja kalliopaljastumia, joilla leopardit makaavat aamuauringossa, ja vältämme jonon, joka muodostuu jokaisen radiossa kuulutetun havainnon ympärille."
+      },
+      {
+        "title": "Muutakin kuin kissat",
+        "body": "Yalan norsut ovat täällä ympäri vuoden; sloth bear ilmestyy hedelmäkuukausina; ja rannikon laguuneilla on pohjoisen talven aikaan flamingoja, kapustahaikaroita ja pelikaaneja. Sithulpawwan muinainen luostari, yhä käytössä puiston rajojen sisällä, kannattaa yhdistää iltapäivän ajoon."
+      }
+    ],
+    "wildlife": [
+      "Sri Lankan leopard",
+      "Asian elephant ja sloth bear",
+      "Mugger crocodile, spotted deer, wild buffalo",
+      "Muuttavia kahlaajia ja flamingo laguuneilla, marraskuusta maaliskuuhun"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Helmikuusta heinäkuuhun; puisto sulkeutuu yleensä syyskuussa"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Kaksi yötä, aamu- ja iltapäiväajoon"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "Noin 30 minuuttia Tissamaharamasta"
+      },
+      {
+        "label": "Vaihtoehto",
+        "value": "Bundala aivan vieressä, kosteikkolinnuille ja ilman ruuhkaa"
+      }
+    ],
+    "goodToKnow": [
+      "Ensimmäinen jeeppi portista näkee eri puiston kuin kymmenes.",
+      "Pysy autossa ja pidä äänet matalalla — siinä on koko etiketti.",
+      "Block 1 on vilkas; kysy meiltä Block 5:stä ja Bundalasta, jos haluat rauhallisempia aamuja."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/yala/yala3.jpg",
+        "alt": "Leopardi graniittipaljastumalla Yalassa",
+        "caption": "Leopardi graniittipaljastumalla Yalassa"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "sinharaja",
+    "name": "Sinharajan sademetsä",
+    "region": "Sabaragamuwan provinssi",
+    "description": "Unescon maailmanperintökohde, jossa on Aasian rikkain luonnon monimuotoisuus ja lähes koko Sri Lankan kotoperäinen kasvisto ja eläimistö.",
+    "image": "/images/destinations/sinharaja/sinharaja2.jpg",
+    "heroImage": "/images/destinations/sinharaja/sinharaja.jpg",
+    "activities": [
+      "birding",
+      "trekking"
+    ],
+    "intro": "Sri Lankan viimeinen merkittävä alkuperäisen alankosademetsän alue, Unescon maailmanperintökohde ja maan ehdottomasti paras paikka nähdä kotoperäisiä lintuja. Siellä sataa, siellä tippuu, siellä on iilimatoja, eikä sitä sovi jättää väliin.",
+    "sections": [
+      {
+        "title": "Metsässä kävely",
+        "body": "Täällä ei ajeta: täällä kävellään, hitaasti, metsäpolkuja luvan ja oppaan kanssa. Sinharajan linnut liikkuvat sekaparvina — kaksikymmentä tai kolmekymmentä lintua tusinasta lajista matkalla yhdessä — ja puolet taidosta on seisoa hiljaa oikeassa paikassa, kun sellainen saapuu."
+      },
+      {
+        "title": "Kotoperäiset lajit",
+        "body": "Sri Lankan kotoperäisistä linnuista valtaosa löytyy tästä metsästä, useat lähes ei mistään muualta. Nandana on kulkenut näitä polkuja luonnonsuojeluvuosistaan lähtien ja tuntee parvien reitit, yöpymispaikat ja äänet."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka blue magpie, red-faced malkoha, green-billed coucal",
+      "Sri Lanka spurfowl ja Sri Lanka scaly thrush",
+      "Purple-faced langur, giant squirrel",
+      "Kotoperäisiä sammakoita, agamalisko ja sademetsäperhosia"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Tammikuusta huhtikuuhun ja elokuusta syyskuuhun, monsuunien välissä"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Kaksi yötä, kahteen kokonaiseen aamuun metsässä"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "Kudawan sisäänkäynti, noin 4 tuntia Colombosta"
+      },
+      {
+        "label": "Maasto",
+        "value": "Märkää, jyrkkää, liukasta — oikea metsä, ei puisto"
+      }
+    ],
+    "goodToKnow": [
+      "Iilimatosukat, sadesuoja kameralle, eikä sateenvarjoa parven keskellä.",
+      "Aamut ovat lintuja varten; iltapäivät ovat yleensä sadetta.",
+      "Ryhmät pidetään pieninä ja luvat myönnetään portilla — me hoidamme sen."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/sinharaja/sinharaja3.jpg",
+        "alt": "Sademetsän latvusto Sinharajassa",
+        "caption": "Sademetsän latvusto Sinharajassa"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "nuwara-eliya",
+    "name": "Nuwara Eliya",
+    "region": "Keskiylängöt",
+    "description": "Viileän ilmaston vuoristokaupunki, jossa on Victoria Park ja portti Horton Plainsin kansallispuistoon.",
+    "image": "/images/destinations/nuwara-eliya/nuwara-eliya2.jpg",
+    "heroImage": "/images/destinations/nuwara-eliya/nuwara-eliya.jpg",
+    "activities": [
+      "birding"
+    ],
+    "intro": "Teeseutua yhdeksäntoistasadan metrin korkeudessa, brittiläisten koti-ikävää potevien plantaasinomistajien suunnittelemana ja yhä täynnä pensasaitoja, raviratoja ja päätykolmioita. Se on Sri Lankan kylmin ja vehrein kaupunki, ja sen pieni kaupunginpuisto on yksi maan hienoimmista lintupaikoista.",
+    "sections": [
+      {
+        "title": "Tee, kunnolla selitettynä",
+        "body": "Kaupunkia ympäröivät kukkulat ovat sen peitossa, ja tehdasvierailu kannattaa tehdä täällä kerran: poiminta, kuivatusullakot, rullaus ja lajittelu, ja lopuksi maistelu, joka pilaa marketin teen sinulta lopullisesti."
+      },
+      {
+        "title": "Victoria Park",
+        "body": "Julkinen puutarha keskellä kaupunkia, joka sattuu olemaan magneetti harvinaisille talvehtijoille. Kashmir flycatcher, pied thrush ja Indian pitta ovat kaikki säännöllisiä täällä marraskuun ja maaliskuun välillä — puistossa, jossa on soittolava ja leikkipaikka."
+      }
+    ],
+    "wildlife": [
+      "Kashmir flycatcher, pied thrush ja Indian pitta talvella",
+      "Sri Lanka bush warbler ja yellow-eared bulbul",
+      "Sambar deer, jotka kävelevät kaupunkiin pimeän tultua",
+      "Ylängön kotoperäisiä lajeja Pedro Estaten poluilla"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Tammikuusta maaliskuuhun linnuille; huhtikuu sesongin vuoksi"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Yksi tai kaksi yötä"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "2,5 tuntia Kandysta; juna pysähtyy Nanu Oyalla"
+      },
+      {
+        "label": "Korkeus",
+        "value": "1 868 m — ota jotain lämmintä illaksi"
+      }
+    ],
+    "goodToKnow": [
+      "Yöt ovat aidosti kylmiä eikä useimmissa hotelleissa ole lämmitystä.",
+      "Huhtikuu on täällä srilankalaisten lomakausi; kaupunki täyttyy ja hinnat nousevat.",
+      "Victoria Park perii pienen sisäänpääsymaksun ja avaa aikaisin — mene ensivalossa."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/nuwara-eliya/nuwara-eliya3.jpg",
+        "alt": "Teeviljelmiä Nuwara Eliyan yllä",
+        "caption": "Teeviljelmiä Nuwara Eliyan yllä"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "horton-plains",
+    "name": "Horton Plainsin kansallispuisto",
+    "region": "Keskiylängöt",
+    "description": "Vuoristoniittyä ja sumumetsää korkealla, kotina useille Sri Lankan ylänköjen kotoperäisille linnuille.",
+    "image": "/images/destinations/horton-plains/horton-plains2.jpg",
+    "heroImage": "/images/destinations/horton-plains/horton-plains.jpg",
+    "activities": [
+      "birding",
+      "trekking"
+    ],
+    "intro": "Korkea ylätasanko vuoristoniittyä ja sumumetsää yli kahden tuhannen metrin korkeudessa, jossa saari yksinkertaisesti loppuu: World's Endissä maa putoaa kahdeksansataakahdeksankymmentä metriä yhdellä askeleella, ja eteläiset tasangot levittäytyvät alapuolelle.",
+    "sections": [
+      {
+        "title": "Lenkki",
+        "body": "Noin yhdeksän kilometrin kierros kulkee Little World's Endin, World's Endin itsensä ja Baker's Fallsin kautta, niityn yli, sumumetsän läpi ja purojen poikki. Vaikea se ei ole, mutta korkeus ja aikainen lähtö ovat todellisia; useimmat ovat takaisin parkkipaikalla aamupäivän puolivälissä."
+      },
+      {
+        "title": "Miksi lähdetään aamunkoitteessa",
+        "body": "Jyrkänne pilvistyy lähes joka päivä yhdeksän ja kymmenen välillä, ja sen jälkeen World's End on valkoinen seinä. Portilla oleminen sen auetessa on koko juju — se antaa sinulle myös ylätasangon parhaimmillaan, paikoin kuuran peitossa, ja sambar deerit laiduntamassa avoimella."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka whistling thrush ensivalossa purojen lähellä",
+      "Sri Lanka bush warbler, dull-blue flycatcher, yellow-eared bulbul",
+      "Sambar deer niityillä",
+      "Purple-faced langur (ylängön bear monkey) sumumetsässä"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Tammikuusta maaliskuuhun, kuivinta ja kirkkainta"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Puoli päivää, tukikohtana Nuwara Eliya tai Ella"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "Noin 1,5 tuntia maanteitse Nuwara Eliyasta"
+      },
+      {
+        "label": "Reitti",
+        "value": "9,5 km lenkki, 3–4 tuntia, korkeudessa 2 100–2 300 m"
+      }
+    ],
+    "goodToKnow": [
+      "Lähde klo 5.30 — näkymä sulkeutuu pilveen aamupäivän puolivälissä.",
+      "Aamunkoitteessa on lähellä pakkasta ja yhdeksältä lämmin; pukeudu kerroksittain.",
+      "Muovia ei päästetä portin ohi, ja partiot tarkastavat laukut."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/horton-plains/horton-plains3.webp",
+        "alt": "Jyrkänne World's Endissä",
+        "caption": "Jyrkänne World's Endissä"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "tissamaharama",
+    "name": "Tissamaharama",
+    "region": "Eteläprovinssi",
+    "description": "Tukikohtakaupunki lähellä Yalaa, jossa lintuja tarkkaillaan muinaisten tekoaltaiden ympärillä ja läheisessä lintusuojelualueessa.",
+    "image": "/images/destinations/tissamaharama/tissamaharama2.jpg",
+    "heroImage": "/images/destinations/tissamaharama/tissamaharama.jpg",
+    "activities": [
+      "birding"
+    ],
+    "intro": "Rauhallinen kaupunki muinaisen tekoaltaan ja valkoisen stupan ympärillä, ja luontainen tukikohta Yalaan ja Bundalaan. Useimmat nukkuvat täällä näkemättä siitä mitään, mikä on sääli — allas aamunkoitteessa on yhtä hyvä kuin mikä tahansa puistojen sisällä.",
+    "sections": [
+      {
+        "title": "Allas ja stupa",
+        "body": "Tissa Wewa rakennettiin yli kaksituhatta vuotta sitten ja kastelee yhä kaupungin ympärillä olevia riisipeltoja. Sen penger ensivalossa, Tissamaharaman stupa takanaan ja pelikaanit matalikkoa työstämässä, on yksi etelän rauhallisimmista puolista tunneista."
+      },
+      {
+        "title": "Bundala, lintuharrastajan puisto",
+        "body": "Puolen tunnin päässä Bundala on Ramsar-kosteikko laguuneja ja dyynejä, jossa greater flamingo talvehtii suurin määrin yhdessä tuhansien muuttavien kahlaajien kanssa. Siellä on myös norsuja ja krokotiileja — ja murto-osa Yalan liikenteestä."
+      },
+      {
+        "title": "Kataragama",
+        "body": "Kahdenkymmenen kilometrin päässä pohjoisessa on Kataragama, yksi saaren tärkeimmistä pyhiinvaelluskaupungeista, pyhä yhtä lailla buddhalaisille, hinduille ja muslimeille. Iltapuja rumpuineen ja tulineen on poikkeuksellista seistä sen laidalla katsomassa."
+      }
+    ],
+    "wildlife": [
+      "Greater flamingo Bundalassa, marraskuusta maaliskuuhun",
+      "Painted stork, spoonbill ja tuhansia muuttavia kahlaajia",
+      "Asian elephant Bundalan urilla",
+      "Mugger crocodile tekoaltaissa"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Marraskuusta maaliskuuhun muuttolinnuille; helmikuusta heinäkuuhun Yalaan"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Kaksi yötä, etelän puistojen tukikohtana"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "Noin 5 tuntia Ellasta, 4 tuntia Mirissasta"
+      },
+      {
+        "label": "Lähellä",
+        "value": "Yala 30 minuuttia, Bundala 30 minuuttia, Kataragama 30 minuuttia"
+      }
+    ],
+    "goodToKnow": [
+      "Safarijeepit lähtevät noin viideltä aamulla — syö illallinen aikaisin edellisenä iltana.",
+      "Altaan penger on yleinen tie; kävele se aamunkoitteessa kiikarit mukana.",
+      "Kataragama on ensin rukouspaikka ja vasta sitten nähtävyys; pukeudu ja käyttäydy sen mukaan."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/tissamaharama/tissamaharama3.jpg",
+        "alt": "Tissa Wewa ensivalossa",
+        "caption": "Tissa Wewa ensivalossa"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "mirissa",
+    "name": "Mirissa",
+    "region": "Eteläprovinssi",
+    "description": "Etelärannikon rantakaupunki, johon yhdistetään vierailu Gallen hollantilaislinnoituksessa.",
+    "image": "/images/destinations/mirissa/mirissa2.jpg",
+    "heroImage": "/images/destinations/mirissa/mirissa.webp",
+    "activities": [
+      "beach",
+      "culture-history"
+    ],
+    "intro": "Useimpien reittiemme päätepiste: kaarre hiekkaa etelärannikolla, palmut kallistuneina sen yli, lämmin vesi ja aivan rannan edustalla Sri Lankan syvin valaiden tarkkailualue.",
+    "sections": [
+      {
+        "title": "Sinivalaat",
+        "body": "Mannerjalusta tulee täällä lähelle rannikkoa, mikä tuo blue whalet — suurimman koskaan eläneen eläimen — parin tunnin päähän satamasta. Sperm whalet, Bryde's whalet ja suuret spinner dolphin -parvet käyttävät samaa vettä. Veneet lähtevät ennen auringonnousua."
+      },
+      {
+        "title": "Rannikko molemmin puolin",
+        "body": "Weligamassa, naapurissa, kaikki opettelevat surffaamaan pitkässä ja anteeksiantavassa rantamurrossa. Galle, tunnin päässä lännessä, on hollantilainen linnoituskaupunki valleineen, varastoineen ja ikkunaluukullisine taloineen — kokonaisen iltapäivän ja muureilla tehdyn iltakävelyn arvoinen."
+      }
+    ],
+    "wildlife": [
+      "Blue whale ja sperm whale, marraskuusta huhtikuuhun",
+      "Spinner dolphin, usein satamäärin",
+      "Green turtles matalikoilla Hikkaduwassa ja Habaraduwassa",
+      "Sea eagles ja tiiroja niemien yllä"
+    ],
+    "facts": [
+      {
+        "label": "Paras aika",
+        "value": "Marraskuusta huhtikuuhun — etelärannikon kuiva kausi"
+      },
+      {
+        "label": "Aikaa tarvitaan",
+        "value": "Kaksi tai kolme yötä matkan päätteeksi"
+      },
+      {
+        "label": "Miten sinne pääsee",
+        "value": "Noin 2,5 tuntia Tissamaharamasta; 2 tuntia Colombosta moottoritietä"
+      },
+      {
+        "label": "Lähellä",
+        "value": "Weligama surffaukseen, Galle Fort iltapäiväksi"
+      }
+    ],
+    "goodToKnow": [
+      "Valasveneet lähtevät klo 6 ja meri on tyynimmillään aikaisin.",
+      "Valitse toimija, joka pitää laissa määrätyn etäisyyden — me varaamme vastuullisesti tai emme lainkaan.",
+      "Lahdessa on voimakas virtaus itäpäässä; ui kohti keskustaa."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/mirissa/mirissa3.jpg",
+        "alt": "Mirissan lahti niemeltä katsottuna",
+        "caption": "Mirissan lahti niemeltä katsottuna"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  }
 ]

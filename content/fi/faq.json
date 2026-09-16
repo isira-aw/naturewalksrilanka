@@ -1,6 +1,6 @@
 {
   "_reviewStatus": "needs-native-review",
-  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Nothing here states a price, an inclusion, a language spoken, a cancellation policy or an insurance requirement, because none of those is recorded anywhere in this repository yet. Items marked contentRequired are the questions travellers ask most that only Nandana can answer — fill those in before launch.",
+  "_note": "Drafted from facts already on this site (the profile, the journeys and the booking flow). Pricing and inclusions are deliberately not stated as figures or lists: both are settled with Nandana on WhatsApp once he has seen the journey, which is how this business actually works.",
   "items": [
     {
       "question": "Miten varaan matkan?",
@@ -24,13 +24,11 @@
     },
     {
       "question": "Mitä hintaan sisältyy ja mitä ei?",
-      "answer": "CONTENT_REQUIRED",
-      "contentRequired": true
+      "answer": "Kiinteää listaa siitä mitä hintaan sisältyy ei ole, koska kiinteää matkaakaan ei ole. Se mitä matka kattaa, mietitään juuri sinun matkapäivillesi: vuodenaika ja sää ratkaisevat mitkä puistot, junat ja veneet ovat päivän arvoisia, ja se mitä kulttuurisesti tapahtuu käyntisi aikana — perahera, poya-päivä, juhla — muuttaa sen, minkä ympärille viikko kannattaa rakentaa. Nandana käy sen kanssasi läpi WhatsAppissa ja kertoo tarkalleen mitä matkasi kattaa ennen kuin mistään sovitaan."
     },
     {
       "question": "Miten ja milloin maksan?",
-      "answer": "CONTENT_REQUIRED",
-      "contentRequired": true
+      "answer": "Emme julkaise hintaa, koska mitään ei ole hinnoiteltavana ennen kuin olemme nähneet matkasi. Kun tiedämme päivämääräsi, seurueesi ja reitin, Nandana käy sen läpi ja antaa summan sinulle itse, yhdessä sen kanssa mitä se kattaa. Kaikki sovitaan suoraan hänen kanssaan WhatsAppissa — tällä sivustolla ei ole maksusivua."
     }
   ]
 }

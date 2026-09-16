@@ -1,17 +1,918 @@
 [
-  { "slug": "negombo", "name": "Negombo", "region": "Westkust", "description": "De toegangspoort tot Sri Lanka, vlak bij de internationale luchthaven. Bekend om zijn Nederlandse kanaal, een levendige vismarkt en een rustige eerste of laatste nacht van de reis.", "image": "/images/destinations/negombo/negombo2.jpg", "heroImage": "/images/destinations/negombo/negombo.jpg", "activities": ["culture-history"], "gallery": [{"src":"/images/destinations/negombo/negombo3.jpg","alt":"Negombo"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "wilpattu", "name": "Nationaal Park Wilpattu", "region": "Noordwestelijke Provincie", "description": "Het grootste nationale park van Sri Lanka, bekend om luipaard, lippenbeer, olifant, zijn natuurlijke meren (villus) en de vogels van de droge zone.", "image": "/images/destinations/wilpattu/wilpattu2.jpg", "heroImage": "/images/destinations/wilpattu/wilpattu.jpg", "activities": ["wildlife-safari","birding"], "gallery": [{"src":"/images/destinations/wilpattu/wilpattu3.avif","alt":"Nationaal Park Wilpattu"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "anuradhapura", "name": "Anuradhapura", "region": "Noord-Centrale Provincie", "description": "Een van de oude hoofdsteden van Sri Lanka, met een uitgestrekt complex van ruïnes dat je bezoekt samen met de nabijgelegen Mihintale-tempel.", "image": "/images/destinations/anuradhapura/anuradhapura2.webp", "heroImage": "/images/destinations/anuradhapura/anuradhapura.jpg", "activities": ["culture-history"], "gallery": [{"src":"/images/destinations/anuradhapura/anuradhapura3.jpg","alt":"Anuradhapura"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "trincomalee", "name": "Trincomalee", "region": "Oostelijke Provincie", "description": "Een havenstad aan de oostkust en het vertrekpunt voor Pigeon Island en tochten om dolfijnen te spotten.", "image": "/images/destinations/trincomalee/trincomalee2.jpg", "heroImage": "/images/destinations/trincomalee/trincomalee.jpg", "activities": ["beach","wildlife-safari"], "gallery": [{"src":"/images/destinations/trincomalee/trincomalee3.jpg","alt":"Trincomalee"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "sigiriya", "name": "Sigiriya", "region": "Centrale Provincie", "description": "Thuis van de Leeuwenrots en de Pidurangala-tempel, met de oude stad Polonnaruwa en Nationaal Park Minneriya in de buurt.", "image": "/images/destinations/sigiriya/sigiriya2.jpg", "heroImage": "/images/destinations/sigiriya/sigiriya.jpg", "activities": ["culture-history","wildlife-safari"], "gallery": [{"src":"/images/destinations/sigiriya/sigiriya3.jpg","alt":"Sigiriya"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "polonnaruwa", "name": "Polonnaruwa", "region": "Noord-Centrale Provincie", "description": "De tweede oude hoofdstad van Sri Lanka, te bezoeken tijdens een rondleiding door de oude stad in combinatie met Nationaal Park Minneriya.", "image": "/images/destinations/polonnaruwa/polonnaruwa2.jpg", "heroImage": "/images/destinations/polonnaruwa/polonnaruwa.jpg", "activities": ["culture-history"], "gallery": [{"src":"/images/destinations/polonnaruwa/polonnaruwa3.jpg","alt":"Polonnaruwa"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "kandy", "name": "Kandy", "region": "Centrale Provincie", "description": "De culturele hoofdstad van het heuvelland: de Tempel van de Tand, een cultureel dansprogramma, theefabrieken en onderweg de grottempel van Dambulla.", "image": "/images/destinations/kandy/kandy2.jpg", "heroImage": "/images/destinations/kandy/kandy.jpg", "activities": ["culture-history"], "gallery": [{"src":"/images/destinations/kandy/kandy3.jpg","alt":"Kandy"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "kithulgala", "name": "Kithulgala", "region": "Provincie Sabaragamuwa", "description": "Een dorp aan de rand van het regenwoud aan de Kelani-rivier, bekend om wildwaterraften, canyoning, ziplining en een rijke vogelwereld.", "image": "/images/destinations/kithulgala/kithulgala2.jpg", "heroImage": "/images/destinations/kithulgala/kithulgala.jpg", "activities": ["adventure-sports","birding"], "gallery": [{"src":"/images/destinations/kithulgala/kithulgala3.webp","alt":"Kithulgala"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "ella", "name": "Ella", "region": "Provincie Uva", "description": "Een dorp in het heuvelland dat je bereikt via een van de mooiste treinreizen ter wereld, met de Nine Arch Bridge, Little Adam's Peak en de Ravana-waterval.", "image": "/images/destinations/ella/ella2.jpg", "heroImage": "/images/destinations/ella/ella.jpg", "activities": ["trekking","culture-history"], "gallery": [{"src":"/images/destinations/ella/ella3.jpg","alt":"Ella"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "yala", "name": "Nationaal Park Yala", "region": "Zuidelijke Provincie", "description": "Een park in de droge zone met struikjungle, waterreservoirs, brakke lagunes en rivierlandschappen — het beste park van het land om luipaard en lippenbeer te zien.", "image": "/images/destinations/yala/yala2.jpg", "heroImage": "/images/destinations/yala/yala.webp", "activities": ["wildlife-safari","birding"], "gallery": [{"src":"/images/destinations/yala/yala3.jpg","alt":"Nationaal Park Yala"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "sinharaja", "name": "Regenwoud Sinharaja", "region": "Provincie Sabaragamuwa", "description": "UNESCO-werelderfgoed met de rijkste biodiversiteit van Azië en de thuisbasis van vrijwel alle endemische planten en dieren van Sri Lanka.", "image": "/images/destinations/sinharaja/sinharaja2.jpg", "heroImage": "/images/destinations/sinharaja/sinharaja.jpg", "activities": ["birding","trekking"], "gallery": [{"src":"/images/destinations/sinharaja/sinharaja3.jpg","alt":"Regenwoud Sinharaja"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "nuwara-eliya", "name": "Nuwara Eliya", "region": "Centrale Hooglanden", "description": "Een koel gelegen bergstadje met Victoria Park en de toegangspoort tot Nationaal Park Horton Plains.", "image": "/images/destinations/nuwara-eliya/nuwara-eliya2.jpg", "heroImage": "/images/destinations/nuwara-eliya/nuwara-eliya.jpg", "activities": ["birding"], "gallery": [{"src":"/images/destinations/nuwara-eliya/nuwara-eliya3.jpg","alt":"Nuwara Eliya"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "horton-plains", "name": "Nationaal Park Horton Plains", "region": "Centrale Hooglanden", "description": "Berggrasland en nevelwoud op hoogte, met verschillende endemische vogelsoorten van het Sri Lankaanse hoogland.", "image": "/images/destinations/horton-plains/horton-plains2.jpg", "heroImage": "/images/destinations/horton-plains/horton-plains.jpg", "activities": ["birding","trekking"], "gallery": [{"src":"/images/destinations/horton-plains/horton-plains3.webp","alt":"Nationaal Park Horton Plains"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "tissamaharama", "name": "Tissamaharama", "region": "Zuidelijke Provincie", "description": "Een uitvalsbasis vlak bij Yala, met vogels kijken rond de eeuwenoude waterreservoirs en een vogelreservaat in de buurt.", "image": "/images/destinations/tissamaharama/tissamaharama2.jpg", "heroImage": "/images/destinations/tissamaharama/tissamaharama.jpg", "activities": ["birding"], "gallery": [{"src":"/images/destinations/tissamaharama/tissamaharama3.jpg","alt":"Tissamaharama"}], "_reviewStatus": "needs-native-review" },
-  { "slug": "mirissa", "name": "Mirissa", "region": "Zuidelijke Provincie", "description": "Een badplaats aan de zuidkust, te combineren met een bezoek aan het Nederlandse fort van Galle.", "image": "/images/destinations/mirissa/mirissa2.jpg", "heroImage": "/images/destinations/mirissa/mirissa.webp", "activities": ["beach","culture-history"], "gallery": [{"src":"/images/destinations/mirissa/mirissa3.jpg","alt":"Mirissa"}], "_reviewStatus": "needs-native-review" }
+  {
+    "slug": "negombo",
+    "name": "Negombo",
+    "region": "Westkust",
+    "description": "De toegangspoort tot Sri Lanka, vlak bij de internationale luchthaven. Bekend om zijn Nederlandse kanaal, een levendige vismarkt en een rustige eerste of laatste nacht van de reis.",
+    "image": "/images/destinations/negombo/negombo2.jpg",
+    "heroImage": "/images/destinations/negombo/negombo.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "Negombo is de eerste of laatste nacht van bijna elke reis, en daar is de plaats ook uitstekend voor: een werkend vissersstadje op twintig minuten van de internationale luchthaven, waar je je vlucht aan zee kunt uitslapen in plaats van de nacht in te rijden. Het is bovendien een ongehaaste ochtend meer dan waard.",
+    "sections": [
+      {
+        "title": "Een vissersstad, geen badplaats",
+        "body": "De lagune wordt al generaties lang door dezelfde families bevist, en het strand loopt elke ochtend vol met uitleggerkano's die op de wind binnenkomen. De Lellama-vismarkt bij zonsopgang is de stad op vol volume — afslagers, ijs, meeuwen en de vangst van de dag uitgestald op het zand."
+      },
+      {
+        "title": "Hollands kanaal en oude kerken",
+        "body": "Het Hamiltonkanaal, onder Nederlands bestuur gegraven om kaneel naar Colombo te vervoeren, loopt dwars door de stad en is het mooist bij het eerste licht. De grote katholieke gemeenschap heeft Negombo een skyline van kerktorens nagelaten — daarom wordt deze kust ook wel Klein Rome genoemd."
+      }
+    ],
+    "wildlife": [
+      "Lagune- en mangrovevogels — herons, egrets, kingfishers",
+      "Overwinterende steltlopers op de slikplaten",
+      "Brahminy kites boven het vissersstrand"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Het hele jaar; december tot maart is het droogst"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Eén nacht, voor of na je vlucht"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "20–30 minuten vanaf Bandaranaike International Airport"
+      },
+      {
+        "label": "Past bij",
+        "value": "Een vroege start noordwaarts naar Wilpattu of Anuradhapura"
+      }
+    ],
+    "goodToKnow": [
+      "De vismarkt begint rond zes uur 's ochtends en is halverwege de ochtend afgelopen.",
+      "Zwemmen gaat het best aan het noordelijke eind van het strand, weg van de vissersboten.",
+      "Een goede plek om geld te wisselen en te halen wat je vergeten bent, voordat je landinwaarts gaat."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/negombo/negombo3.jpg",
+        "alt": "Uitleggerkano's op het strand van Negombo bij zonsopgang",
+        "caption": "Uitleggerkano's op het strand van Negombo bij zonsopgang"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "wilpattu",
+    "name": "Nationaal Park Wilpattu",
+    "region": "Noordwestelijke Provincie",
+    "description": "Het grootste nationale park van Sri Lanka, bekend om luipaard, lippenbeer, olifant, zijn natuurlijke meren (villus) en de vogels van de droge zone.",
+    "image": "/images/destinations/wilpattu/wilpattu2.jpg",
+    "heroImage": "/images/destinations/wilpattu/wilpattu.jpg",
+    "activities": [
+      "wildlife-safari",
+      "birding"
+    ],
+    "intro": "Wilpattu is het grootste nationale park van Sri Lanka en wat ons betreft het betere luipaardpark — niet omdat er meer luipaarden zijn dan in Yala, maar omdat er minder jeeps zijn. Het park is genoemd naar zijn villus: natuurlijke, door regen gevoede meren met open grasranden, waar de dieren zich in het open veld laten zien.",
+    "sections": [
+      {
+        "title": "Villus, en waarom ze ertoe doen",
+        "body": "Een villu is een ondiepe kom die regenwater vasthoudt in een landschap dat verder alles verbergt in dichte droge struikbossen. Een uur lang stil aan de rand van zo'n meer zitten is iets heel anders dan de paden afrijden, en zo ontstaan onze mooiste waarnemingen."
+      },
+      {
+        "title": "Hoe wij het park aanpakken",
+        "body": "We gaan bij opening naar binnen en blijven door het midden van de dag, wanneer de meeste jeeps al terug zijn. Sporen, alarmroepen van spotted deer en langurs, en geduld doen hier meer dan radioverkeer — Nandana leest het park in plaats van het achterna te jagen."
+      }
+    ],
+    "wildlife": [
+      "Sri Lankan leopard",
+      "Sloth bear — de beste kans van juni tot augustus, als de palu-vruchten rijpen",
+      "Asian elephant",
+      "Spotted deer, sambar, wild buffalo, mugger crocodile",
+      "Vogels van de droge zone: painted stork, black-necked stork, Sri Lanka junglefowl, changeable hawk-eagle"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Februari tot oktober; bij zware regen kan het park sluiten"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Twee nachten, voor een hele dag en een halve dag in het park"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "Ongeveer 3 uur vanaf Negombo, 1,5 uur vanaf Anuradhapura"
+      },
+      {
+        "label": "Terrein",
+        "value": "Droog bos, struikgewas en open villus"
+      }
+    ],
+    "goodToKnow": [
+      "Een hele dag met een lunchpakket levert veel meer op dan een kort rondje in de middag.",
+      "Waarnemingen zijn nooit gegarandeerd — wie je een luipaard belooft, verkoopt je iets.",
+      "Neem neutrale kleding mee, een hoed, en meer water dan je denkt nodig te hebben."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/wilpattu/wilpattu3.avif",
+        "alt": "Een luipaard rustend op een pad in Wilpattu",
+        "caption": "Een luipaard rustend op een pad in Wilpattu"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "anuradhapura",
+    "name": "Anuradhapura",
+    "region": "Noord-Centrale Provincie",
+    "description": "Een van de oude hoofdsteden van Sri Lanka, met een uitgestrekt complex van ruïnes dat je bezoekt samen met de nabijgelegen Mihintale-tempel.",
+    "image": "/images/destinations/anuradhapura/anuradhapura2.webp",
+    "heroImage": "/images/destinations/anuradhapura/anuradhapura.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "Anuradhapura was ruim duizend jaar lang de hoofdstad van het eiland, en is nog altijd een levende pelgrimsstad in plaats van een ruïneveld. Pelgrims in het wit, olielampjes en lotusbloemen bewegen zich tussen monumenten die al oud waren toen de kathedralen van Europa werden gebouwd.",
+    "sections": [
+      {
+        "title": "De heilige stad",
+        "body": "In het hart staat de Sri Maha Bodhi, een heilige vijgenboom gekweekt uit een stek van de boom waaronder de Boeddha verlichting bereikte, hier geplant in de derde eeuw voor Christus en sindsdien zonder onderbreking verzorgd. Eromheen staan de grote stupa's — Ruwanwelisaya, Jetavanaramaya, Abhayagiri — elk een enorme massieve koepel van baksteen."
+      },
+      {
+        "title": "Mihintale, waar het begon",
+        "body": "Twaalf kilometer naar het oosten klimt een trap van 1.840 granieten treden naar Mihintale, waar de monnik Mahinda koning Devanampiya Tissa ontmoette en het boeddhisme Sri Lanka binnenkwam. Ga bij het eerste licht: de klim is koel, het uitzicht over de droge vlakte is eindeloos en het is er stil."
+      }
+    ],
+    "wildlife": [
+      "Grey langur en toque macaque rond de ruïnes",
+      "Vogels van de waterreservoirs — pelicans, painted storks, open-billed storks",
+      "Indian peafowl bij dageraad op de dijken"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Het hele jaar; mei tot september is het heetst"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Eén volle dag, twee als je Mihintale er goed bij neemt"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "Ongeveer 4 uur vanaf Colombo, 1,5 uur vanaf Wilpattu"
+      },
+      {
+        "label": "Kleding",
+        "value": "Schouders en knieën bedekt; schoenen uit bij de heilige plaatsen"
+      }
+    ],
+    "goodToKnow": [
+      "Poya-dagen (volle maan) zijn buitengewoon om mee te maken, en erg druk.",
+      "Het terrein strekt zich over kilometers uit — een auto tussen de clusters scheelt je de dag.",
+      "Witte kleding is de gewoonte van de pelgrim, en altijd welkom."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/anuradhapura/anuradhapura3.jpg",
+        "alt": "De witte Ruwanwelisaya-stupa",
+        "caption": "De witte Ruwanwelisaya-stupa"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "trincomalee",
+    "name": "Trincomalee",
+    "region": "Oostelijke Provincie",
+    "description": "Een havenstad aan de oostkust en het vertrekpunt voor Pigeon Island en tochten om dolfijnen te spotten.",
+    "image": "/images/destinations/trincomalee/trincomalee2.jpg",
+    "heroImage": "/images/destinations/trincomalee/trincomalee.jpg",
+    "activities": [
+      "beach",
+      "wildlife-safari"
+    ],
+    "intro": "Trincomalee ligt aan een van de mooiste natuurlijke havens ter wereld, aan een kust die een tegengesteld seizoen kent aan de rest van het eiland. Terwijl het zuidwesten onder de moesson ligt, is Trinco kalm, helder en zwembaar.",
+    "sections": [
+      {
+        "title": "Koneswaram en de haven",
+        "body": "De Koneswaram-tempel staat op Swami Rock, boven een loodrechte val naar zee — een hindoeheiligdom van oude datum, herbouwd nadat de Portugezen het origineel verwoestten. Eronder opent zich de haven, diep genoeg om door elke vloot die hier ooit kwam betwist te worden."
+      },
+      {
+        "title": "Rif en open water",
+        "body": "Pigeon Island, een korte boottocht voor de kust van Nilaveli, is een marien nationaal park met levend koraal, rifvissen en blacktip reef sharks in het ondiepe water. Verder uit de kust is het diepe water voor Trincomalee in het oostelijke seizoen een van de walvisgronden van het eiland."
+      }
+    ],
+    "wildlife": [
+      "Blue whale en sperm whale voor de kust, in het seizoen",
+      "Spinner dolphin, vaak in grote scholen",
+      "Rifvissen, blacktip reef sharks en hawksbill turtles bij Pigeon Island",
+      "White-bellied sea eagle langs de kaap"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Mei tot september — het droge seizoen van de oostkust"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Twee tot drie nachten"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "Ongeveer 3 uur vanaf Sigiriya of Polonnaruwa"
+      },
+      {
+        "label": "Stranden",
+        "value": "Uppuveli voor rust, Nilaveli voor de boten naar Pigeon Island"
+      }
+    ],
+    "goodToKnow": [
+      "Snorkeluitrusting is ter plekke te huur, maar neem je eigen masker mee als je kieskeurig bent.",
+      "Bij Pigeon Island alleen rifveilige zonnebrand — het is een nationaal park.",
+      "Walvissen spotten hangt van het weer af en begint altijd vroeg."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/trincomalee/trincomalee3.jpg",
+        "alt": "De Koneswaram-tempel boven Swami Rock",
+        "caption": "De Koneswaram-tempel boven Swami Rock"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "sigiriya",
+    "name": "Sigiriya",
+    "region": "Centrale Provincie",
+    "description": "Thuis van de Leeuwenrots en de Pidurangala-tempel, met de oude stad Polonnaruwa en Nationaal Park Minneriya in de buurt.",
+    "image": "/images/destinations/sigiriya/sigiriya2.jpg",
+    "heroImage": "/images/destinations/sigiriya/sigiriya.jpg",
+    "activities": [
+      "culture-history",
+      "wildlife-safari"
+    ],
+    "intro": "Een granieten pijp van een uitgedoofde vulkaan die tweehonderd meter boven vlak bos uitrijst, met daarbovenop een koninklijke burcht uit de vijfde eeuw. Sigiriya is het meest gefotografeerde ding van Sri Lanka en nog altijd elke trede waard.",
+    "sections": [
+      {
+        "title": "De klim",
+        "body": "Koning Kasyapa bouwde zijn paleis op de top, bereikbaar via een poort in de vorm van een leeuw — alleen de enorme klauwen zijn over. Onderweg omhoog ligt een beschutte galerij met de fresco's van de Sigiriya-maagden, ruim vijftienhonderd jaar geleden geschilderd, en draagt de gepolijste spiegelmuur graffiti van bezoekers vanaf de achtste eeuw."
+      },
+      {
+        "title": "Wat de meesten missen",
+        "body": "De watertuinen aan de voet zijn op zichzelf een technisch hoogstandje, met fonteinen die in het regenseizoen nog steeds werken. En Pidurangala, de rots ertegenover, is de betere zonsopgang: een ruwere klauterpartij, de helft van de drukte, en het uitzicht is op Sigiriya zelf."
+      }
+    ],
+    "wildlife": [
+      "Toque macaque en grey langur op de lagere terrassen",
+      "Sri Lanka grey hornbill en Sri Lanka junglefowl in het omringende bos",
+      "Painted-lip lizard op de rotswanden",
+      "Olifanten op de weg naar Minneriya in de schemering"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Het hele jaar; klim om 7 uur 's ochtends of na 15.30 uur"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Een halve dag voor de rots, twee nachten om Polonnaruwa mee te nemen"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "Ongeveer 3,5 uur vanaf Negombo, 1 uur vanaf Polonnaruwa"
+      },
+      {
+        "label": "De klim",
+        "value": "Ruwweg 1.200 treden, met steile metalen trappen bij de top"
+      }
+    ],
+    "goodToKnow": [
+      "Niets voor wie ernstige hoogtevrees heeft — de laatste trappen zijn aan één kant open.",
+      "Water, een hoed en vroeg beginnen; op de top is geen schaduw.",
+      "Soms sluiten hoornaars een deel van de klim af; het woord van de bewakers is beslissend."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/sigiriya/sigiriya3.jpg",
+        "alt": "De rots van Sigiriya boven het bos",
+        "caption": "De rots van Sigiriya boven het bos"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "polonnaruwa",
+    "name": "Polonnaruwa",
+    "region": "Noord-Centrale Provincie",
+    "description": "De tweede oude hoofdstad van Sri Lanka, te bezoeken tijdens een rondleiding door de oude stad in combinatie met Nationaal Park Minneriya.",
+    "image": "/images/destinations/polonnaruwa/polonnaruwa2.jpg",
+    "heroImage": "/images/destinations/polonnaruwa/polonnaruwa.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "De tweede hoofdstad van het eiland, en de best leesbare oude stad van Sri Lanka: een compact geheel van paleizen, tempels en een groot waterreservoir, te voet en op de fiets te doen, grotendeels gebouwd in één uitbarsting van twaalfde-eeuws zelfvertrouwen.",
+    "sections": [
+      {
+        "title": "Het mooist vanaf een fiets",
+        "body": "De ruïnes liggen verspreid over een paar vlakke kilometers parkland onder grote bomen, wat de fiets tot de juiste manier maakt om ze te zien. De Vatadage, het Lankatilaka-beeldhuis en het koninklijk paleis liggen alle op een makkelijk fietsafstandje van elkaar."
+      },
+      {
+        "title": "Gal Vihara",
+        "body": "Vier kolossale Boeddhafiguren, uitgehakt uit één granieten wand — een zittende figuur, een klein beeld in een rotsholte, een staande figuur met een zeldzame gekruiste armhouding, en een liggende Boeddha die zeven meter langer is dan een bus. De steen is zo gekozen dat de nerf met de plooien van het gewaad meeloopt, en het houwwerk is in achthonderd jaar niet verbeterd."
+      },
+      {
+        "title": "Parakrama Samudra",
+        "body": "De Zee van Parakrama, een irrigatiereservoir groot genoeg voor een eigen horizon, bewatert nog altijd de rijstvelden rond de stad. Bij zonsondergang moet je daar zijn, en de nabijgelegen reservoirs van Minneriya en Kaudulla trekken in de droge maanden een van de grootste olifantenverzamelingen van Azië."
+      }
+    ],
+    "wildlife": [
+      "Asian elephant bij Minneriya en Kaudulla, augustus tot september voor de Gathering",
+      "Vogels van de waterreservoirs — pelicans, cormorants, egrets, storks",
+      "Toque macaque tussen de ruïnes",
+      "Land monitors en mugger crocodiles op de dijken"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Het hele jaar; de Gathering piekt in augustus en september"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Eén volle dag, twee nachten als je er een avondsafari bij doet"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "1 uur vanaf Sigiriya, 3 uur vanaf Kandy"
+      },
+      {
+        "label": "Ter plaatse",
+        "value": "Fiets, met een auto voor de buitenliggende groepen"
+      }
+    ],
+    "goodToKnow": [
+      "Begin om 7 uur — tegen elven is er nauwelijks schaduw op het terrein.",
+      "Schouders en knieën bedekt; schoenen en hoed af bij de beeldhuizen.",
+      "Het museum bij de ingang is twintig minuten waard voordat je wegfietst."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/polonnaruwa/polonnaruwa3.jpg",
+        "alt": "De liggende Boeddha bij Gal Vihara",
+        "caption": "De liggende Boeddha bij Gal Vihara"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "kandy",
+    "name": "Kandy",
+    "region": "Centrale Provincie",
+    "description": "De culturele hoofdstad van het heuvelland: de Tempel van de Tand, een cultureel dansprogramma, theefabrieken en onderweg de grottempel van Dambulla.",
+    "image": "/images/destinations/kandy/kandy2.jpg",
+    "heroImage": "/images/destinations/kandy/kandy.jpg",
+    "activities": [
+      "culture-history"
+    ],
+    "intro": "Het laatste koninkrijk dat voor de Britten viel, dat zich drie eeuwen staande hield in een kom van beboste heuvels, en nog altijd het ceremoniële hart van het eiland. Kandy is een werkende stad met een meer in het midden en een regenwoudreservaat op de bergrug erboven.",
+    "sections": [
+      {
+        "title": "De Tempel van de Heilige Tand",
+        "body": "Sri Dalada Maligawa bewaart een tand van de Boeddha, en daarmee een lange traditie dat wie de relikwie bezit, het land bezit. Kom voor een van de drie dagelijkse puja's, wanneer de trommelaars spelen en de binnenkamer wordt geopend; het gebouw zelf — donker hout, ivoorinleg, beschilderde plafonds — verdient een langzame wandeling."
+      },
+      {
+        "title": "Boven de stad",
+        "body": "Udawattakele, de oude koninklijke bostuin achter de tempel, is vogels kijken op loopafstand van het centrum. Drie kilometer verderop liggen de Koninklijke Botanische Tuinen van Peradeniya, met een reusachtige Javaanse vijgenboom, een orchideeënkas en een palmenlaan, en een kolonie vleerhonden boven je hoofd die je bij schemering gezien moet hebben."
+      }
+    ],
+    "wildlife": [
+      "Layard's parakeet, yellow-fronted barbet en andere endemen in Udawattakele",
+      "Indian flying fox in de bomen van Peradeniya",
+      "Purple-faced langur in het bosreservaat",
+      "Water monitors langs de oever van het meer"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Het hele jaar; de Esala Perahera valt in juli of augustus"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Twee nachten"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "3 uur vanaf Colombo; de trein naar het heuvelland vertrekt hier"
+      },
+      {
+        "label": "Hoogte",
+        "value": "Ongeveer 500 m — koeler en groener dan de kust"
+      }
+    ],
+    "goodToKnow": [
+      "De avondpuja is de sfeervolste; wees twintig minuten van tevoren binnen.",
+      "Witte of ingetogen kleding voor de tempel, en schoenen blijven bij de ingang.",
+      "De Esala Perahera vult de stad tien nachten lang — boek ver vooruit of plan eromheen."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/kandy/kandy3.jpg",
+        "alt": "De Tempel van de Heilige Tand in de schemering",
+        "caption": "De Tempel van de Heilige Tand in de schemering"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "kithulgala",
+    "name": "Kithulgala",
+    "region": "Provincie Sabaragamuwa",
+    "description": "Een dorp aan de rand van het regenwoud aan de Kelani-rivier, bekend om wildwaterraften, canyoning, ziplining en een rijke vogelwereld.",
+    "image": "/images/destinations/kithulgala/kithulgala2.jpg",
+    "heroImage": "/images/destinations/kithulgala/kithulgala.jpg",
+    "activities": [
+      "adventure-sports",
+      "birding"
+    ],
+    "intro": "Een regenwouddorp aan de Kelani-rivier, vooral bekend van het wildwater en van de brug die werd opgeblazen in The Bridge on the River Kwai. Het is ook een van de betrouwbaarste plekken van het eiland voor endemische laaglandvogels, en daar komt bijna niemand voor.",
+    "sections": [
+      {
+        "title": "De rivier",
+        "body": "De Kelani stroomt hier in klasse twee tot drie — groot genoeg om echt leuk te zijn, vergevingsgezind genoeg voor een eerste raft. Dezelfde kloof biedt canyoning, sprongen en natuurlijke glijbanen, begeleid door lokale teams die precies weten welke poelen bij welk waterpeil veilig zijn."
+      },
+      {
+        "title": "Het bos aan de overkant",
+        "body": "Het bosreservaat Makandawa bereik je met een klein veerbootje over de rivier en daarna een klim het natte laaglandregenwoud in. Het herbergt een groot deel van de endemen van Sinharaja binnen een veel kortere wandeling, wat het tot een goede eerste regenwoudochtend maakt vóór de diepere tocht naar het zuiden."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka spurfowl, green-billed coucal en chestnut-backed owlet",
+      "Sri Lanka blue magpie, Layard's parakeet",
+      "Gemengde foeragerende vogelgroepen in de vroege ochtend",
+      "Hump-nosed lizard en endemische kikkers langs de beken"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "December tot april om te raften; vogels kijken kan het hele jaar"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Eén of twee nachten"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "Ongeveer 2 uur vanaf Colombo, 2,5 uur vanaf Kandy"
+      },
+      {
+        "label": "Terrein",
+        "value": "Nat laaglandregenwoud, plaatselijk steil en glad"
+      }
+    ],
+    "goodToKnow": [
+      "Het regent hier — echt — en dat is precies waar het bos van leeft.",
+      "Bloedzuigersokken voor de boswandelingen; de gidsen hebben reserve bij zich.",
+      "De raftingaanbieders verschillen sterk; wij werken altijd met hetzelfde team."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/kithulgala/kithulgala3.webp",
+        "alt": "De Kelani-rivier door het regenwoud bij Kithulgala",
+        "caption": "De Kelani-rivier door het regenwoud bij Kithulgala"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "ella",
+    "name": "Ella",
+    "region": "Provincie Uva",
+    "description": "Een dorp in het heuvelland dat je bereikt via een van de mooiste treinreizen ter wereld, met de Nine Arch Bridge, Little Adam's Peak en de Ravana-waterval.",
+    "image": "/images/destinations/ella/ella2.jpg",
+    "heroImage": "/images/destinations/ella/ella.jpg",
+    "activities": [
+      "trekking",
+      "culture-history"
+    ],
+    "intro": "Een opening in de bergen waar het hoogland wegvalt naar de zuidelijke vlakte, gehuld in thee en nevelwoud. Ella is klein, goed te belopen en heeft de beste korte wandelingen van het heuvelland, die pal vanuit het dorp vertrekken.",
+    "sections": [
+      {
+        "title": "Wandelingen vanaf de deur",
+        "body": "Little Adam's Peak is een rustig uur door de thee naar een bergkam met de hele kloof onder je. Ella Rock is langer, steiler en stiller, en kun je het best vroeg doen met iemand die de afslag kent — het pad is niet bewegwijzerd en de helft van de wandelaars erop is verdwaald."
+      },
+      {
+        "title": "De brug en de trein",
+        "body": "De Nine Arches Bridge, gebouwd in steen en baksteen toen er tijdens de Eerste Wereldoorlog geen staal meer was, maakt een bocht door het bos onder het dorp; de trein die eroverheen rijdt is een van de bezienswaardigheden van het eiland. De lijn zelf, van Nanu Oya of Haputale omlaag naar Ella, is voor veel mensen de reden om überhaupt naar het heuvelland te komen."
+      }
+    ],
+    "wildlife": [
+      "Yellow-eared bulbul en Sri Lanka white-eye in de thee en het struikgewas",
+      "Crested serpent eagle boven de kloof",
+      "Purple-faced langur in de bosplekken",
+      "Vlinders in buitengewone aantallen na regen"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Januari tot maart; 's ochtends klaren de bergen op"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Twee nachten"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "Trein vanaf Nanu Oya of Haputale; 3 uur over de weg vanaf Nuwara Eliya"
+      },
+      {
+        "label": "Hoogte",
+        "value": "Ongeveer 1.040 m — warme dagen, koele nachten"
+      }
+    ],
+    "goodToKnow": [
+      "Reserveer treinstoelen ruim van tevoren, of reis in het ongereserveerde rijtuig en ga bij de deur staan.",
+      "Tegen het eind van de ochtend trekt de bewolking dicht; doe de uitzichtpunten vroeg.",
+      "Stevige schoenen voor Ella Rock — het is een echte bergwandeling, geen ommetje."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/ella/ella3.jpg",
+        "alt": "Een trein op de Nine Arches Bridge",
+        "caption": "Een trein op de Nine Arches Bridge"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "yala",
+    "name": "Nationaal Park Yala",
+    "region": "Zuidelijke Provincie",
+    "description": "Een park in de droge zone met struikjungle, waterreservoirs, brakke lagunes en rivierlandschappen — het beste park van het land om luipaard en lippenbeer te zien.",
+    "image": "/images/destinations/yala/yala2.jpg",
+    "heroImage": "/images/destinations/yala/yala.webp",
+    "activities": [
+      "wildlife-safari",
+      "birding"
+    ],
+    "intro": "Het park dat Sri Lanka tot luipaardbestemming maakte: droog struikgewas, granieten rotspunten en lagunes die de zee raken, met een van de hoogste geregistreerde luipaarddichtheden ter wereld. Het is ook het drukste park van het land, en hóe je het bezoekt maakt alles uit.",
+    "sections": [
+      {
+        "title": "Luipaardenland",
+        "body": "Block 1 is waar de dichtheid zit, en waar de jeeps zijn. Wij gaan naar binnen zodra de poort opengaat, rijden de stillere westelijke paden en de rotspunten waar luipaarden in de ochtendzon liggen, en mijden de file die ontstaat rond elke waarneming die over de radio gaat."
+      },
+      {
+        "title": "Meer dan de katten",
+        "body": "De olifanten van Yala zijn er het hele jaar; sloth bears verschijnen in de maanden dat het fruit rijpt; en in de kustlagunes staan in de noordelijke winter flamingo's, spoonbills en pelikanen. Het oude klooster Sithulpawwa, nog altijd in gebruik binnen de parkgrens, combineert goed met een middagrit."
+      }
+    ],
+    "wildlife": [
+      "Sri Lankan leopard",
+      "Asian elephant en sloth bear",
+      "Mugger crocodile, spotted deer, wild buffalo",
+      "Trekkende steltlopers en flamingo op de lagunes, november tot maart"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Februari tot juli; in september is het park meestal gesloten"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Twee nachten, voor een ochtend- en een middagrit"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "Ongeveer 30 minuten vanaf Tissamaharama"
+      },
+      {
+        "label": "Alternatief",
+        "value": "Bundala, vlakbij, voor moerasvogels en geen drukte"
+      }
+    ],
+    "goodToKnow": [
+      "De eerste jeep door de poort ziet een ander park dan de tiende.",
+      "Blijf in de auto en houd het stil — dat is de hele etiquette.",
+      "Block 1 is druk; vraag ons naar Block 5 en Bundala voor rustigere ochtenden."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/yala/yala3.jpg",
+        "alt": "Een luipaard op een granieten rots in Yala",
+        "caption": "Een luipaard op een granieten rots in Yala"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "sinharaja",
+    "name": "Regenwoud Sinharaja",
+    "region": "Provincie Sabaragamuwa",
+    "description": "UNESCO-werelderfgoed met de rijkste biodiversiteit van Azië en de thuisbasis van vrijwel alle endemische planten en dieren van Sri Lanka.",
+    "image": "/images/destinations/sinharaja/sinharaja2.jpg",
+    "heroImage": "/images/destinations/sinharaja/sinharaja.jpg",
+    "activities": [
+      "birding",
+      "trekking"
+    ],
+    "intro": "Het laatste substantiële stuk oorspronkelijk laaglandregenwoud van Sri Lanka, UNESCO-werelderfgoed, en de allerbeste plek van het land om endemische vogels te zien. Het regent er, het druipt er, er zijn bloedzuigers, en je mag het niet missen.",
+    "sections": [
+      {
+        "title": "Lopen in het bos",
+        "body": "Hier wordt niet gereden: je loopt, langzaam, over bospaden met een vergunning en een gids. De vogels van Sinharaja bewegen in gemengde foeragerende groepen — twintig of dertig vogels van een stuk of twaalf soorten die samen optrekken — en de halve kunst is stil te staan op de juiste plek wanneer er een langskomt."
+      },
+      {
+        "title": "Endemen",
+        "body": "Van de endemische vogels van Sri Lanka is de overgrote meerderheid in dit bos te vinden, sommige vrijwel nergens anders. Nandana loopt deze paden al sinds zijn tijd in het natuurbehoud, en kent de routes van de groepen, de slaapplaatsen en de roepen."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka blue magpie, red-faced malkoha, green-billed coucal",
+      "Sri Lanka spurfowl en Sri Lanka scaly thrush",
+      "Purple-faced langur, giant squirrel",
+      "Endemische kikkers, agamen en regenwoudvlinders"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Januari tot april en augustus tot september, tussen de moessons"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Twee nachten, voor twee volle ochtenden in het bos"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "Ingang Kudawa, ongeveer 4 uur vanaf Colombo"
+      },
+      {
+        "label": "Terrein",
+        "value": "Nat, steil, glad — een echt bos, geen park"
+      }
+    ],
+    "goodToKnow": [
+      "Bloedzuigersokken, regenhoes voor de camera, en geen paraplu in de vogelgroep.",
+      "De ochtenden zijn voor de vogels; de middagen zijn meestal regen.",
+      "De groepen blijven klein en vergunningen worden bij de poort afgegeven — dat regelen wij."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/sinharaja/sinharaja3.jpg",
+        "alt": "Het bladerdak van het regenwoud van Sinharaja",
+        "caption": "Het bladerdak van het regenwoud van Sinharaja"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "nuwara-eliya",
+    "name": "Nuwara Eliya",
+    "region": "Centrale Hooglanden",
+    "description": "Een koel gelegen bergstadje met Victoria Park en de toegangspoort tot Nationaal Park Horton Plains.",
+    "image": "/images/destinations/nuwara-eliya/nuwara-eliya2.jpg",
+    "heroImage": "/images/destinations/nuwara-eliya/nuwara-eliya.jpg",
+    "activities": [
+      "birding"
+    ],
+    "intro": "Theegebied op negentienhonderd meter, aangelegd door Britse planters met heimwee en nog altijd vol heggen, renbanen en puntgevels. Het is het koudste stadje van Sri Lanka en het groenste, en het kleine stadspark is een van de mooiste vogelplekken van het land.",
+    "sections": [
+      {
+        "title": "Thee, goed uitgelegd",
+        "body": "De heuvels rond de stad staan er vol mee, en een fabrieksbezoek is hier één keer echt de moeite waard: het plukken, de verwelkingszolders, het rollen en het sorteren, gevolgd door een proeverij die supermarktthee voorgoed voor je verpest."
+      },
+      {
+        "title": "Victoria Park",
+        "body": "Een openbaar park midden in de stad dat toevallig een magneet is voor zeldzame overwinteraars. Kashmir flycatcher, pied thrush en Indian pitta zijn hier tussen november en maart allemaal regelmatig te zien, in een park met een muziekkoepel en een speeltuin."
+      }
+    ],
+    "wildlife": [
+      "Kashmir flycatcher, pied thrush en Indian pitta in de winter",
+      "Sri Lanka bush warbler en yellow-eared bulbul",
+      "Sambar deer, die na donker de stad in lopen",
+      "Endemen van het heuvelland op de paden van Pedro Estate"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Januari tot maart voor de vogels; april voor het seizoen"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Eén of twee nachten"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "2,5 uur vanaf Kandy; de trein stopt in Nanu Oya"
+      },
+      {
+        "label": "Hoogte",
+        "value": "1.868 m — neem iets warms mee voor de avond"
+      }
+    ],
+    "goodToKnow": [
+      "De nachten zijn echt koud en de meeste hotels hebben geen verwarming.",
+      "April is hier het vakantieseizoen van Sri Lanka; de stad loopt vol en de prijzen stijgen.",
+      "Victoria Park vraagt een kleine entree en gaat vroeg open — ga bij het eerste licht."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/nuwara-eliya/nuwara-eliya3.jpg",
+        "alt": "Theeplantages boven Nuwara Eliya",
+        "caption": "Theeplantages boven Nuwara Eliya"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "horton-plains",
+    "name": "Nationaal Park Horton Plains",
+    "region": "Centrale Hooglanden",
+    "description": "Berggrasland en nevelwoud op hoogte, met verschillende endemische vogelsoorten van het Sri Lankaanse hoogland.",
+    "image": "/images/destinations/horton-plains/horton-plains2.jpg",
+    "heroImage": "/images/destinations/horton-plains/horton-plains.jpg",
+    "activities": [
+      "birding",
+      "trekking"
+    ],
+    "intro": "Een hoogvlakte van berggrasland en nevelwoud boven de tweeduizend meter, waar het eiland eenvoudigweg ophoudt: bij World's End valt de grond in één stap achthonderdtachtig meter weg, met de zuidelijke vlakten uitgestrekt in de diepte.",
+    "sections": [
+      {
+        "title": "De rondwandeling",
+        "body": "Een rondje van zo'n negen kilometer voert langs Little World's End, World's End zelf en Baker's Falls, over grasland, door nevelwoud en over beken. Moeilijk is het niet, maar de hoogte en het vroege begin zijn echt; de meeste mensen zijn halverwege de ochtend terug bij de parkeerplaats."
+      },
+      {
+        "title": "Waarom je bij dageraad begint",
+        "body": "De steilrand betrekt bijna elke dag tussen negen en tien uur, en dan is World's End een witte muur. Bij de poort staan als hij opengaat is de hele truc — het geeft je bovendien de hoogvlakte op haar mooist, plaatselijk berijpt, met sambar deer die in de open ruimte grazen."
+      }
+    ],
+    "wildlife": [
+      "Sri Lanka whistling thrush bij het eerste licht langs de beken",
+      "Sri Lanka bush warbler, dull-blue flycatcher, yellow-eared bulbul",
+      "Sambar deer in het grasland",
+      "Purple-faced langur (de bear monkey van het hoogland) in het nevelwoud"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "Januari tot maart, het droogst en helderst"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Een halve dag, vanuit Nuwara Eliya of Ella"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "Ongeveer 1,5 uur over de weg vanaf Nuwara Eliya"
+      },
+      {
+        "label": "De wandeling",
+        "value": "Rondje van 9,5 km, 3 tot 4 uur, op 2.100–2.300 m"
+      }
+    ],
+    "goodToKnow": [
+      "Vertrek om half zes 's ochtends — halverwege de ochtend sluit de wolk het uitzicht af.",
+      "Bij dageraad is het bijna vriezen en om negen uur warm; kleed je in lagen.",
+      "Voorbij de poort is geen plastic toegestaan en de rangers controleren de tassen."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/horton-plains/horton-plains3.webp",
+        "alt": "De steilrand bij World's End",
+        "caption": "De steilrand bij World's End"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "tissamaharama",
+    "name": "Tissamaharama",
+    "region": "Zuidelijke Provincie",
+    "description": "Een uitvalsbasis vlak bij Yala, met vogels kijken rond de eeuwenoude waterreservoirs en een vogelreservaat in de buurt.",
+    "image": "/images/destinations/tissamaharama/tissamaharama2.jpg",
+    "heroImage": "/images/destinations/tissamaharama/tissamaharama.jpg",
+    "activities": [
+      "birding"
+    ],
+    "intro": "Een rustig stadje rond een oud waterreservoir en een witte stupa, en de natuurlijke uitvalsbasis voor Yala en Bundala. De meeste mensen slapen hier en zien er verder niets van, wat jammer is — het reservoir bij dageraad is net zo goed als wat er in de parken te zien valt.",
+    "sections": [
+      {
+        "title": "Het reservoir en de stupa",
+        "body": "Tissa Wewa werd ruim tweeduizend jaar geleden aangelegd en bewatert nog altijd de rijstvelden rond de stad. De dijk bij het eerste licht, met de stupa van Tissamaharama erachter en pelikanen die het ondiepe water afwerken, levert een van de rustigste halfuurtjes van het zuiden op."
+      },
+      {
+        "title": "Bundala, het park voor vogelaars",
+        "body": "Een half uur verderop ligt Bundala, een Ramsar-wetland van lagunes en duinen waar greater flamingos in aantallen overwinteren, samen met duizenden trekkende steltlopers. Er zijn ook olifanten en krokodillen, en een fractie van het verkeer van Yala."
+      },
+      {
+        "title": "Kataragama",
+        "body": "Twintig kilometer noordelijk ligt Kataragama, een van de belangrijkste bedevaartsplaatsen van het eiland, heilig voor boeddhisten, hindoes en moslims. De avondpuja, met trommels en vuur, is iets bijzonders om aan de rand van mee te maken."
+      }
+    ],
+    "wildlife": [
+      "Greater flamingo bij Bundala, november tot maart",
+      "Painted stork, spoonbill en duizenden trekkende steltlopers",
+      "Asian elephant op de paden van Bundala",
+      "Mugger crocodile in de waterreservoirs"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "November tot maart voor de trekvogels; februari tot juli voor Yala"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Twee nachten, als basis voor de zuidelijke parken"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "Ongeveer 5 uur vanaf Ella, 4 uur vanaf Mirissa"
+      },
+      {
+        "label": "In de buurt",
+        "value": "Yala 30 minuten, Bundala 30 minuten, Kataragama 30 minuten"
+      }
+    ],
+    "goodToKnow": [
+      "De safarijeeps vertrekken rond vijf uur 's ochtends — eet de avond ervoor vroeg.",
+      "De dijk van het reservoir is een openbare weg; loop hem bij dageraad met een verrekijker.",
+      "Kataragama is eerst een gebedsplaats en pas daarna een bezienswaardigheid; kleed en gedraag je daarnaar."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/tissamaharama/tissamaharama3.jpg",
+        "alt": "Tissa Wewa bij het eerste licht",
+        "caption": "Tissa Wewa bij het eerste licht"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  },
+  {
+    "slug": "mirissa",
+    "name": "Mirissa",
+    "region": "Zuidelijke Provincie",
+    "description": "Een badplaats aan de zuidkust, te combineren met een bezoek aan het Nederlandse fort van Galle.",
+    "image": "/images/destinations/mirissa/mirissa2.jpg",
+    "heroImage": "/images/destinations/mirissa/mirissa.webp",
+    "activities": [
+      "beach",
+      "culture-history"
+    ],
+    "intro": "Voor de meeste van onze routes het einde van de reis: een boog zand aan de zuidkust met palmen die eroverheen hangen, warm water, en vlak voor de kust het diepste walvisgebied van Sri Lanka.",
+    "sections": [
+      {
+        "title": "Blauwe vinvissen",
+        "body": "Het continentaal plat komt hier dicht bij de kust, waardoor blue whales — het grootste dier dat ooit geleefd heeft — op een paar uur van de haven zitten. Sperm whales, Bryde's whales en grote scholen spinner dolphins gebruiken hetzelfde water. De boten vertrekken voor zonsopgang."
+      },
+      {
+        "title": "De kust aan weerszijden",
+        "body": "In Weligama, hiernaast, leert iedereen surfen, op een lange en vergevingsgezinde strandbreker. Galle, een uur naar het westen, is een Nederlandse vestingstad van wallen, pakhuizen en huizen met luiken, een hele middag waard plus een avondwandeling over de muren."
+      }
+    ],
+    "wildlife": [
+      "Blue whale en sperm whale, november tot april",
+      "Spinner dolphin, vaak in honderdtallen",
+      "Green turtles in het ondiepe water bij Hikkaduwa en Habaraduwa",
+      "Sea eagles en sterns langs de kaap"
+    ],
+    "facts": [
+      {
+        "label": "Beste tijd",
+        "value": "November tot april — het droge seizoen van de zuidkust"
+      },
+      {
+        "label": "Hoeveel tijd",
+        "value": "Twee of drie nachten om een reis mee af te sluiten"
+      },
+      {
+        "label": "Hoe je er komt",
+        "value": "Ongeveer 2,5 uur vanaf Tissamaharama; 2 uur vanaf Colombo over de snelweg"
+      },
+      {
+        "label": "In de buurt",
+        "value": "Weligama om te surfen, Galle Fort voor een middag"
+      }
+    ],
+    "goodToKnow": [
+      "De walvisboten vertrekken om zes uur 's ochtends en de zee is vroeg het rustigst.",
+      "Kies een aanbieder die de wettelijke afstand houdt — wij boeken verantwoord of niet.",
+      "De baai heeft een sterke stroming aan de oostkant; zwem richting het midden."
+    ],
+    "gallery": [
+      {
+        "src": "/images/destinations/mirissa/mirissa3.jpg",
+        "alt": "De baai van Mirissa vanaf de landtong",
+        "caption": "De baai van Mirissa vanaf de landtong"
+      }
+    ],
+    "_reviewStatus": "needs-native-review",
+    "_note": "Long-form text translated from the English draft in content/en/destinations.json; retranslate if that draft changes after Nandana's review."
+  }
 ]
