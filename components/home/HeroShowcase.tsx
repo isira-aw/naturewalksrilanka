@@ -47,9 +47,8 @@ export function HeroShowcase({
 }: {
   labels: {
     eyebrow: string;
+    welcomeLine: string;
     titleLine1: string;
-    subtitle: string;
-    ctaPrimary: string;
     ctaSecondary: string;
     meta: string;
     whatsapp: string;
@@ -134,34 +133,33 @@ export function HeroShowcase({
           {labels.eyebrow}
         </motion.p>
 
-        <h1 className="mx-auto mt-6 max-w-3xl font-display text-[2.75rem] leading-[1.05] tracking-tight text-warm-white sm:text-6xl md:text-7xl">
+        <h1 className="mx-auto mt-6 max-w-3xl font-display leading-[1.05] tracking-tight text-warm-white">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.15 }}
+            className="block text-xl font-medium uppercase tracking-[0.2em] text-warm-white/80 sm:text-2xl"
+          >
+            {labels.welcomeLine}
+          </motion.span>
           <motion.span
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
-            className="block"
+            transition={{ duration: 0.8, ease: EASE, delay: 0.28 }}
+            className="mt-3 block text-[2.75rem] sm:text-6xl md:text-7xl"
           >
             {labels.titleLine1}
           </motion.span>
         </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.4 }}
-          className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-warm-white/85"
-        >
-          {labels.subtitle}
-        </motion.p>
-
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.52 }}
+          transition={{ duration: 0.7, ease: EASE, delay: 0.48 }}
           className="mt-11 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
         >
           <Link
-            href="/tours"
+            href="/custom-tour"
             className="group relative overflow-hidden rounded-full bg-warm-white px-9 py-4 font-medium text-charcoal transition-colors duration-500 hover:text-warm-white"
           >
             {/* The fill sweeps up from the base of the button on hover. */}
@@ -169,24 +167,8 @@ export function HeroShowcase({
               aria-hidden="true"
               className="absolute inset-0 translate-y-full bg-forest transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0"
             />
-            <span className="relative">{labels.ctaPrimary}</span>
-          </Link>
-          <Link
-            href="/custom-tour"
-            className="group inline-flex items-center gap-3 font-medium text-warm-white/90 transition-colors hover:text-warm-white"
-          >
-            <span className="relative">
+            <span className="relative inline-flex items-center gap-2">
               {labels.ctaSecondary}
-              <span
-                aria-hidden="true"
-                className="absolute -bottom-1.5 left-0 block h-px w-full origin-right scale-x-100 bg-warm-white/50 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:origin-left group-hover:scale-x-0"
-              />
-            </span>
-            <span
-              aria-hidden="true"
-              className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5"
-            >
-              &#8594;
             </span>
           </Link>
         </motion.div>

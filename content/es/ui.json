@@ -25,18 +25,16 @@
     }
   },
   "hero": {
-    "eyebrow": "VIAJES PRIVADOS EN SRI LANKA",
-    "titleLine1": "Ven a descubrir Sri Lanka con nosotros.",
-    "subtitle": "Fauna, selvas, montañas, lugares antiguos y playas tranquilas, reunidos en un viaje creado en torno a ti.",
-    "ctaPrimary": "Explora nuestros viajes",
+    "eyebrow": "Nature Walks Sri Lanka",
+    "welcomeLine": "BIENVENIDOS.",
+    "titleLine1": "Descubre Sri Lanka Con Nosotros.",
     "ctaSecondary": "Diseña tu viaje →",
     "trustLine": "Más de 20 años de experiencia guiando · Guías certificados por la Junta de Turismo de Sri Lanka"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Sri Lanka es lo bastante pequeña para recorrerla, pero demasiado rica para hacerlo con prisa.",
-    "introBody": "Una selva tropical por la mañana. Un sendero de elefantes por la tarde. Campos de té en las colinas. Una playa tranquila antes del atardecer. Creamos viajes privados que reúnen estas experiencias de forma natural.",
-    "introClosing": "No te limitas a ver Sri Lanka. Llegas a conocerla.",
+    "introTitle": "Descubre Sri Lanka",
+    "introBody": "Parte de esta isla solo se muestra a quienes saben dónde esperar. Huellas de leopardo en el polvo de Wilpattu. Un ave endémica que canta en algún lugar del dosel de Sinharaja. La niebla que se levanta sobre Horton Plains a las siete de la mañana. Viajamos contigo para todo ello — nuestros propios guías certificados, con tu alojamiento y transporte organizados desde el primer mensaje hasta la última mañana.",
     "servicesEyebrow": "Lo que organizamos",
     "servicesTitle": "Todo lo que un viaje necesita, desde un mismo sitio.",
     "services": [

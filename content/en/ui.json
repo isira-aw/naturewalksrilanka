@@ -25,18 +25,16 @@
     }
   },
   "hero": {
-    "eyebrow": "PRIVATE JOURNEYS IN SRI LANKA",
-    "titleLine1": "Come discover Sri Lanka with us.",
-    "subtitle": "Wildlife, forests, mountains, ancient places and quiet beaches — brought together in a journey made around you.",
-    "ctaPrimary": "Explore Our Journeys",
+    "eyebrow": "Nature Walks Sri Lanka",
+    "welcomeLine": "WELCOME.",
+    "titleLine1": "Discover Sri Lanka With Us.",
     "ctaSecondary": "Build Your Journey →",
     "trustLine": "20+ years of guiding · Sri Lanka Tourism Board certified guides"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Sri Lanka is small enough to cross — but too rich to rush.",
-    "introBody": "A rainforest in the morning. An elephant trail in the afternoon. Tea country in the hills. A quiet beach before sunset. We create private journeys that bring these experiences together naturally.",
-    "introClosing": "You don't just see Sri Lanka. You get to know it.",
+    "introTitle": "Discover Sri Lanka",
+    "introBody": "Some of this island only shows itself to people who know where to wait. Leopard tracks in the dust at Wilpattu. An endemic bird calling somewhere in the Sinharaja canopy. Mist lifting off Horton Plains at seven in the morning. We travel with you for all of it — our own certified guides, with your accommodation and transport arranged from the first message to the last morning.",
     "servicesEyebrow": "What We Arrange",
     "servicesTitle": "Everything a journey needs, from one place.",
     "services": [

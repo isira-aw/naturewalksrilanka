@@ -25,18 +25,16 @@
     }
   },
   "hero": {
-    "eyebrow": "YKSITYISMATKAT SRI LANKASSA",
-    "titleLine1": "Tule löytämään Sri Lanka kanssamme.",
-    "subtitle": "Eläimistö, sademetsät, vuoret, muinaiset paikat ja hiljaiset rannat — yhdistettynä matkaksi, joka rakentuu juuri sinun ympärillesi.",
-    "ctaPrimary": "Tutustu matkoihimme",
+    "eyebrow": "Nature Walks Sri Lanka",
+    "welcomeLine": "TERVETULOA.",
+    "titleLine1": "Löydä Sri Lanka Kanssamme.",
     "ctaSecondary": "Rakenna oma matkasi →",
     "trustLine": "Yli 20 vuoden kokemus oppaana · Sri Lanka Tourism Boardin sertifioimat oppaat"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Sri Lanka on tarpeeksi pieni ylittää — mutta liian rikas kiireellä koettavaksi.",
-    "introBody": "Sademetsä aamulla. Norsupolku iltapäivällä. Teemaisemat vuorilla. Hiljainen ranta ennen auringonlaskua. Luomme yksityisiä matkoja, jotka tuovat nämä kokemukset yhteen luonnollisesti.",
-    "introClosing": "Et vain näe Sri Lankaa. Opit tuntemaan sen.",
+    "introTitle": "Löydä Sri Lanka",
+    "introBody": "Osa tästä saaresta näyttäytyy vain niille, jotka tietävät, missä odottaa. Leopardin jälkiä pölyssä Wilpattussa. Endeeminen lintu kutsumassa jossain Sinharajan latvustossa. Sumu, joka nousee Horton Plainsilta kello seitsemän aamulla. Matkustamme kanssasi kaiken tämän läpi — omat sertifioidut oppaamme, majoituksesi ja kuljetuksesi järjestettynä ensimmäisestä viestistä viimeiseen aamuun.",
     "servicesEyebrow": "Mitä järjestämme",
     "servicesTitle": "Kaikki mitä matka vaatii, samasta paikasta.",
     "services": [

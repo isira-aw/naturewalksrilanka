@@ -74,9 +74,8 @@ export default async function HomePage({
       <HeroShowcase
         labels={{
           eyebrow: t("hero.eyebrow"),
+          welcomeLine: t("hero.welcomeLine"),
           titleLine1: t("hero.titleLine1"),
-          subtitle: t("hero.subtitle"),
-          ctaPrimary: t("hero.ctaPrimary"),
           ctaSecondary: t("hero.ctaSecondary"),
           meta: t("hero.trustLine"),
           whatsapp: t("whatsapp.talkToUs"),
@@ -88,7 +87,6 @@ export default async function HomePage({
         eyebrow={t("home.introEyebrow")}
         title={t("home.introTitle")}
         body={t("home.introBody")}
-        closing={t("home.introClosing")}
       />
 
       <ServiceRail

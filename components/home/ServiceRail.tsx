@@ -58,10 +58,18 @@ export function ServiceRail({
         </div>
       </div>
 
-      <div
-        ref={ref}
-        className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] ps-[max(1rem,calc((100%-80rem)/2+1rem))] pe-4 scroll-ps-[max(1rem,calc((100%-80rem)/2+1rem))] sm:ps-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] sm:scroll-ps-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] md:ps-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] md:scroll-ps-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] [&::-webkit-scrollbar]:hidden"
-      >
+      <div className="relative">
+        {/* On mobile the next card peeks at the edge (cards are sized to
+            78vw), and this fade hints there is more to scroll to without an
+            explicit "scroll" label or button. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-warm-white to-transparent md:hidden"
+        />
+        <div
+          ref={ref}
+          className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] ps-[max(1rem,calc((100%-80rem)/2+1rem))] pe-4 scroll-ps-[max(1rem,calc((100%-80rem)/2+1rem))] sm:ps-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] sm:scroll-ps-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] md:ps-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] md:scroll-ps-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] [&::-webkit-scrollbar]:hidden"
+        >
         {services.map((service, index) => (
           <motion.article
               key={service.title}
@@ -88,6 +96,7 @@ export function ServiceRail({
             </div>
           </motion.article>
         ))}
+        </div>
       </div>
 
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">

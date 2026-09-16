@@ -63,10 +63,18 @@ export function DestinationRail({
         </div>
       </div>
 
-      <div
-        ref={ref}
-        className="mt-14 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] ps-[max(1rem,calc((100%-80rem)/2+1rem))] pe-4 scroll-ps-[max(1rem,calc((100%-80rem)/2+1rem))] sm:ps-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] sm:scroll-ps-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] md:ps-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] md:scroll-ps-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] [&::-webkit-scrollbar]:hidden"
-      >
+      <div className="relative">
+        {/* On mobile the next card peeks at the edge (cards are sized to
+            76vw), and this fade hints there is more to scroll to without an
+            explicit "scroll" label or button. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-stone to-transparent md:hidden"
+        />
+        <div
+          ref={ref}
+          className="mt-14 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] ps-[max(1rem,calc((100%-80rem)/2+1rem))] pe-4 scroll-ps-[max(1rem,calc((100%-80rem)/2+1rem))] sm:ps-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] sm:scroll-ps-[max(1.5rem,calc((100%-80rem)/2+1.5rem))] md:ps-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] md:scroll-ps-[max(2.5rem,calc((100%-80rem)/2+2.5rem))] [&::-webkit-scrollbar]:hidden"
+        >
         {destinations.map((destination, index) => (
           <motion.article
             key={destination.slug}
@@ -113,6 +121,7 @@ export function DestinationRail({
           >
             <ArrowLabel>{labels.cta}</ArrowLabel>
           </Link>
+        </div>
         </div>
       </div>
 

@@ -85,9 +85,9 @@ export function ReasonsList({
         </div>
 
         <Rise delay={0.1}>
-          <div className="mt-14 max-w-2xl border-l-2 border-clay bg-stone/70 p-7">
-            <p className="leading-relaxed text-charcoal/65">{labels.note}</p>
-          </div>
+          <p className="mt-14 max-w-2xl font-display text-lg italic leading-relaxed text-charcoal/70">
+            {labels.note}
+          </p>
         </Rise>
       </div>
     </section>

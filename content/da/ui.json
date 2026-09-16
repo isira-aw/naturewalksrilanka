@@ -25,18 +25,16 @@
     }
   },
   "hero": {
-    "eyebrow": "PRIVATE REJSER I SRI LANKA",
-    "titleLine1": "Kom og oplev Sri Lanka sammen med os.",
-    "subtitle": "Dyreliv, regnskove, bjerge, oldtidssteder og stille strande — samlet i en rejse skabt omkring dig.",
-    "ctaPrimary": "Udforsk vores rejser",
+    "eyebrow": "Nature Walks Sri Lanka",
+    "welcomeLine": "VELKOMMEN.",
+    "titleLine1": "Oplev Sri Lanka Sammen Med Os.",
     "ctaSecondary": "Sammensæt din rejse →",
     "trustLine": "20+ års erfaring som guide · Certificerede guider fra Sri Lanka Tourism Board"
   },
   "home": {
     "introEyebrow": "Nature Walks Sri Lanka",
-    "introTitle": "Sri Lanka er lille nok at krydse — men for rigt til at skynde sig igennem.",
-    "introBody": "En regnskov om morgenen. En elefantsti om eftermiddagen. Tekultur i bjergene. En stille strand før solnedgang. Vi skaber private rejser, der samler disse oplevelser på en naturlig måde.",
-    "introClosing": "Du ser ikke bare Sri Lanka. Du lærer det at kende.",
+    "introTitle": "Oplev Sri Lanka",
+    "introBody": "Noget af denne ø viser sig kun for dem, der ved, hvor de skal vente. Leopardspor i støvet ved Wilpattu. En endemisk fugl, der kalder et sted i Sinharajas trækroner. Tåge, der letter over Horton Plains klokken syv om morgenen. Vi rejser med dig gennem det hele — vores egne certificerede guider, med din indkvartering og transport arrangeret fra den første besked til den sidste morgen.",
     "servicesEyebrow": "Det arrangerer vi",
     "servicesTitle": "Alt, hvad en rejse kræver, fra ét sted.",
     "services": [
