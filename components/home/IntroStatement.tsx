@@ -13,10 +13,14 @@ export function IntroStatement({
   eyebrow,
   title,
   body,
+  closing,
 }: {
   eyebrow: string;
   title: string;
   body: string;
+  /** The larger, bolder line the statement resolves to — visually dominant
+      over the supporting paragraph above it. */
+  closing?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -47,6 +51,14 @@ export function IntroStatement({
           <Rise delay={0.25} className="mt-7">
             <p className="mx-auto max-w-2xl text-lg leading-relaxed text-charcoal/70">{body}</p>
           </Rise>
+
+          {closing && (
+            <Rise delay={0.4} className="mt-12">
+              <p className="mx-auto max-w-2xl font-display text-2xl leading-tight tracking-tight text-charcoal md:text-4xl">
+                {closing}
+              </p>
+            </Rise>
+          )}
 
           <Ledger className="mx-auto mt-14 max-w-[6rem]" />
         </motion.div>

@@ -45,9 +45,8 @@ export default async function AboutNandanaPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, tCommon, profile, navigation, testimonials] = await Promise.all([
+  const [t, profile, navigation, testimonials] = await Promise.all([
     getTranslations({ locale: l }),
-    getTranslations({ locale: l, namespace: "common" }),
     getContent(l, "profile"),
     getContent(l, "navigation"),
     getContent(l, "testimonials"),
@@ -59,8 +58,6 @@ export default async function AboutNandanaPage({
   const voices = await publishedTestimonials(testimonials, l);
 
   const whyPoints = t.raw("nandana.whyPoints") as { title: string; description: string }[];
-  // profile.stats is authored as [Years Guiding, Languages, His Home] in every locale.
-  const languagesLabel = profile.stats[1]?.label ?? "Languages";
 
   return (
     <>
@@ -94,16 +91,14 @@ export default async function AboutNandanaPage({
                 </dt>
                 <dd className="text-charcoal/80 md:col-span-9">{profile.experience}</dd>
               </div>
-              <div className="grid gap-1 border-b border-charcoal/15 py-5 md:grid-cols-12 md:gap-8">
-                <dt className="font-utility text-[11px] uppercase tracking-[0.15em] text-charcoal/45 md:col-span-3">
-                  {languagesLabel}
-                </dt>
-                <dd className="text-charcoal/80 md:col-span-9">
-                  {profile.languages.length > 0
-                    ? profile.languages.join(", ")
-                    : tCommon("contentRequired")}
-                </dd>
-              </div>
+              {profile.languages.length > 0 && (
+                <div className="grid gap-1 border-b border-charcoal/15 py-5 md:grid-cols-12 md:gap-8">
+                  <dt className="font-utility text-[11px] uppercase tracking-[0.15em] text-charcoal/45 md:col-span-3">
+                    {profile.stats[1]?.label ?? "Languages"}
+                  </dt>
+                  <dd className="text-charcoal/80 md:col-span-9">{profile.languages.join(", ")}</dd>
+                </div>
+              )}
               <div className="grid gap-1 border-b border-charcoal/15 py-5 md:grid-cols-12 md:gap-8">
                 <dt className="font-utility text-[11px] uppercase tracking-[0.15em] text-charcoal/45 md:col-span-3">
                   {t("nandana.certificationLabel")}

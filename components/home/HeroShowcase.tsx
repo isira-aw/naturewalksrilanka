@@ -47,9 +47,8 @@ export function HeroShowcase({
 }: {
   labels: {
     eyebrow: string;
+    welcomeLine: string;
     titleLine1: string;
-    titleLine2: string;
-    subtitle: string;
     ctaPrimary: string;
     ctaSecondary: string;
     meta: string;
@@ -82,7 +81,7 @@ export function HeroShowcase({
       ref={ref}
       /* The header is sticky and in flow, so the frame takes the viewport minus
          its height and the fold still lands exactly at the hero's foot. */
-      className="relative flex h-[calc(100svh-4rem)] min-h-[620px] items-center justify-center overflow-hidden bg-charcoal lg:h-[calc(100svh-5rem)]"
+      className="relative flex h-[calc(100svh-4rem)] min-h-[620px] items-end overflow-hidden bg-charcoal lg:h-[calc(100svh-5rem)]"
     >
       <motion.div style={reduceMotion ? undefined : { y: imageY }} className="absolute inset-0">
         <AnimatePresence initial={false}>
@@ -124,45 +123,40 @@ export function HeroShowcase({
 
       <motion.div
         style={reduceMotion ? undefined : { y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto w-full max-w-4xl px-4 text-center sm:px-6 md:px-10"
+        className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-4 pb-32 text-center sm:px-6 md:px-10 md:pb-36"
       >
         <motion.p
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
+          transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
           className="font-utility text-xs uppercase tracking-[0.4em] text-warm-white/75"
         >
           {labels.eyebrow}
         </motion.p>
 
-        <h1 className="mt-7 font-display text-[2.75rem] leading-[1.05] tracking-tight text-warm-white sm:text-6xl md:text-7xl">
-          {[labels.titleLine1, labels.titleLine2].map((line, i) => (
-            <span key={line} className="block overflow-hidden pb-[0.08em]">
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={{ y: "0%" }}
-                transition={{ duration: 1.1, ease: EASE, delay: 0.25 + i * 0.12 }}
-                className="block"
-              >
-                {line}
-              </motion.span>
-            </span>
-          ))}
+        <h1 className="mx-auto mt-6 max-w-3xl font-display leading-[1.05] tracking-tight text-warm-white">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.15 }}
+            className="block text-xl font-medium uppercase tracking-[0.2em] text-warm-white/80 sm:text-2xl"
+          >
+            {labels.welcomeLine}
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.28 }}
+            className="mt-3 block text-[2.75rem] sm:text-6xl md:text-7xl"
+          >
+            {labels.titleLine1}
+          </motion.span>
         </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
-          className="mx-auto mt-7 max-w-md text-lg leading-relaxed text-warm-white/85"
-        >
-          {labels.subtitle}
-        </motion.p>
-
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE, delay: 0.68 }}
+          transition={{ duration: 0.7, ease: EASE, delay: 0.48 }}
           className="mt-11 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
         >
           <Link
