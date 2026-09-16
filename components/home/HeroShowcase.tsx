@@ -82,7 +82,7 @@ export function HeroShowcase({
       ref={ref}
       /* The header is sticky and in flow, so the frame takes the viewport minus
          its height and the fold still lands exactly at the hero's foot. */
-      className="relative flex h-[calc(100svh-4rem)] min-h-[620px] items-center justify-center overflow-hidden bg-charcoal lg:h-[calc(100svh-5rem)]"
+      className="relative flex h-[calc(100svh-4rem)] min-h-[620px] items-end overflow-hidden bg-charcoal lg:h-[calc(100svh-5rem)]"
     >
       <motion.div style={reduceMotion ? undefined : { y: imageY }} className="absolute inset-0">
         <AnimatePresence initial={false}>
@@ -124,7 +124,7 @@ export function HeroShowcase({
 
       <motion.div
         style={reduceMotion ? undefined : { y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto w-full max-w-4xl px-4 text-center sm:px-6 md:px-10"
+        className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-32 text-left sm:px-6 md:px-10 md:pb-36"
       >
         <motion.p
           initial={{ opacity: 0, y: 14 }}
@@ -135,7 +135,7 @@ export function HeroShowcase({
           {labels.eyebrow}
         </motion.p>
 
-        <h1 className="mt-7 font-display text-[2.75rem] leading-[1.05] tracking-tight text-warm-white sm:text-6xl md:text-7xl">
+        <h1 className="mt-6 max-w-3xl font-display text-[3.25rem] leading-[0.98] tracking-tight text-warm-white sm:text-7xl md:text-8xl">
           {[labels.titleLine1, labels.titleLine2].map((line, i) => (
             <span key={line} className="block overflow-hidden pb-[0.08em]">
               <motion.span
@@ -154,7 +154,7 @@ export function HeroShowcase({
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
-          className="mx-auto mt-7 max-w-md text-lg leading-relaxed text-warm-white/85"
+          className="mt-7 max-w-md text-lg leading-relaxed text-warm-white/85"
         >
           {labels.subtitle}
         </motion.p>
@@ -163,7 +163,7 @@ export function HeroShowcase({
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: EASE, delay: 0.68 }}
-          className="mt-11 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
+          className="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4"
         >
           <Link
             href="/tours"

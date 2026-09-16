@@ -13,6 +13,7 @@ import { StatsRibbon, type Stat } from "@/components/home/StatsRibbon";
 import { DestinationRail } from "@/components/home/DestinationRail";
 import { ReasonsList } from "@/components/home/ReasonsList";
 import { JourneyShowcase } from "@/components/home/JourneyShowcase";
+import { NatureImmersion } from "@/components/home/NatureImmersion";
 import { VoicesSlider } from "@/components/home/VoicesSlider";
 import { PlanCta } from "@/components/whatsapp/PlanCta";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -91,6 +92,7 @@ export default async function HomePage({
         eyebrow={t("home.introEyebrow")}
         title={t("home.introTitle")}
         body={t("home.introBody")}
+        closing={t("home.introClosing")}
       />
 
       <StatsRibbon stats={stats} />
@@ -110,6 +112,14 @@ export default async function HomePage({
           role: t("home.guideRole"),
           body: t("home.guideBody"),
           cta: t("home.guideCta"),
+        }}
+      />
+
+      <NatureImmersion
+        labels={{
+          label: t("home.natureImmersion.label"),
+          title: t("home.natureImmersion.title"),
+          body: t("home.natureImmersion.body"),
         }}
       />
 

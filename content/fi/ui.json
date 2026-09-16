@@ -36,6 +36,12 @@
     "introEyebrow": "Nature Walks Sri Lanka",
     "introTitle": "Yksi yritys koko matkalle.",
     "introBody": "Sertifioidut oppaat, majoitus ja kuljetukset — meidän järjestäminämme ensimmäisestä viestistäsi viimeiseen aamuusi saarella.",
+    "introClosing": "Et vain näe Sri Lankaa. Opit tuntemaan sen.",
+    "natureImmersion": {
+      "label": "Sri Lankan villi puoli",
+      "title": "Katso tarkemmin.",
+      "body": "Sademetsä liikkuu, jos pysyt hiljaa tarpeeksi kauan huomataksesi sen."
+    },
     "stats": [
       {
         "value": "20+",

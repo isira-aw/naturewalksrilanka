@@ -36,6 +36,12 @@
     "introEyebrow": "Nature Walks Sri Lanka",
     "introTitle": "One company for the whole journey.",
     "introBody": "Certified guides, accommodation and transport — arranged by us, from your first message to your last morning on the island.",
+    "introClosing": "You don't just see Sri Lanka. You get to know it.",
+    "natureImmersion": {
+      "label": "The wild side of Sri Lanka",
+      "title": "Look closer.",
+      "body": "The rainforest moves if you stay still long enough to notice."
+    },
     "stats": [
       {
         "value": "20+",

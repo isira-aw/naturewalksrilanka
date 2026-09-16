@@ -36,6 +36,12 @@
     "introEyebrow": "Nature Walks Sri Lanka",
     "introTitle": "Una sola empresa para todo el viaje.",
     "introBody": "Guías certificados, alojamiento y transporte, organizados por nosotros desde tu primer mensaje hasta tu última mañana en la isla.",
+    "introClosing": "No te limitas a ver Sri Lanka. Llegas a conocerla.",
+    "natureImmersion": {
+      "label": "El lado salvaje de Sri Lanka",
+      "title": "Mira más de cerca.",
+      "body": "La selva tropical se mueve si te quedas quieto el tiempo suficiente para notarlo."
+    },
     "stats": [
       {
         "value": "20+",
