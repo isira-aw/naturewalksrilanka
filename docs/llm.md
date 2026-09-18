@@ -53,7 +53,12 @@ Worth writing down, because it is the part people assume:
 
 - A **JSON response schema** — the model cannot return prose where an object
   is expected.
-- `temperature: 0.2`, `maxOutputTokens: 4096`.
+- `temperature: 0.2`, `maxOutputTokens: 8192`, `thinkingLevel: LOW`.
+  Gemini 3 pays for its thinking out of `maxOutputTokens`, so the budget has to
+  cover both — run out while the model is still thinking and the reply comes
+  back with no text at all and `finishReason: "MAX_TOKENS"`, which is
+  indistinguishable from the service having nothing to say. Prose that is
+  already written does not need deliberation, hence the low thinking level.
 - The reply is parsed against `translatableSchema`; anything that does not fit
   is rejected.
 - **The highlight count must match the input exactly.** A translation that
@@ -75,7 +80,7 @@ Translations section words its retry prompt off exactly that distinction.
 | No API key | "Translation is not configured on this deployment." | Set `GOOGLE_AI_API_KEY` |
 | Model id wrong or retired | Gemini unavailable | Test the connection in the **AI** section, then set `GOOGLE_AI_MODEL` |
 | Service down or rate limited | Gemini unavailable | Retry later |
-| Empty or malformed reply | "unexpected shape" | Retry; it is usually transient |
+| Empty or malformed reply | "unexpected shape", or an empty response naming its `finishReason` | Retry; it is usually transient. `MAX_TOKENS` means the budget above is too small for the itinerary |
 | Wrong number of highlights | Says how many came back | Retry |
 
 In every case the itinerary keeps its English text, and a traveller reading
@@ -91,11 +96,18 @@ down for the next leaves only the locales that actually failed to retry.
 because Google retires and renames model ids on its own schedule, and a wrong
 id fails every translation with an error that reads exactly like an outage.
 
-**The default `gemini-3.6-flash` has still never been run against a real
-key.** It was the current id when this was written. Before trusting it, open
-the **AI** section and press *Test the connection*: it makes one tiny request
-and distinguishes "key rejected" from "no such model" from "service
-unreachable", which otherwise all look the same.
+The default `gemini-3.6-flash` answers both the translation call and the test
+button. Before trusting a change, open the **AI** section and press *Test the
+connection*: it makes one tiny request and distinguishes "key rejected" from
+"no such model" from "service unreachable", which otherwise all look the same.
+It now reports the `finishReason` when the model answers with no text, because
+the first thing that went wrong was the test's own request rather than the
+service: an 8-token ceiling that a thinking model spent on thinking, reported
+as "the model returned nothing" against a perfectly good key.
+
+`thinkingLevel` is a Gemini 3 field. Point `GOOGLE_AI_MODEL` at an older model
+that rejects it and both calls retry once without it, so an older id still
+works.
 
 ## Cost
 
