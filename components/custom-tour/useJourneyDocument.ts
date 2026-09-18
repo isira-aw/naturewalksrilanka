@@ -29,11 +29,19 @@ export function useJourneyDocument({
   locale,
   plan,
   whatsappNumber,
+  noticeOverride,
 }: {
   state: WizardState;
   locale: string;
   plan: JourneyPlan;
   whatsappNumber: string;
+  /**
+   * Replaces the translated closing notice, when the team has set one in the
+   * panel. Blank means use the translation, which is the better default: an
+   * override is written in one language and the document follows the
+   * traveller's.
+   */
+  noticeOverride?: string;
 }) {
   const t = useTranslations("customTour");
   const [pending, setPending] = useState<"pdf" | "doc" | null>(null);
@@ -72,7 +80,7 @@ export function useJourneyDocument({
           mapTitle: t("document.mapTitle"),
           contactTitle: t("document.contactTitle"),
           noticeTitle: t("document.noticeTitle"),
-          notice: t("document.notice"),
+          notice: noticeOverride?.trim() || t("document.notice"),
           whatsappLabel: t("document.whatsappLabel"),
           highlightsTitle: t("suggestionsHighlights"),
           bestTimeLabel: t("suggestionsBestTime"),
@@ -109,7 +117,7 @@ export function useJourneyDocument({
         formatDriveLabel: (km, duration) => t("journeyPlan.driveLabel", { km, duration }),
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [state, locale, plan, whatsappNumber, t]
+    [state, locale, plan, whatsappNumber, noticeOverride, t]
   );
 
   const download = useCallback(

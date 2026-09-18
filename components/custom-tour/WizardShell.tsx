@@ -1,11 +1,16 @@
 "use client";
 
-import { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils/cn";
 import type { Experience } from "@/lib/content/schema";
+import {
+  DEFAULT_CUSTOM_TOUR_SETTINGS,
+  TRAVELLER_CEILING,
+  type CustomTourSettings,
+} from "@/lib/settings/customTour";
 import { StepProgressBar, StepProgressRail } from "./StepProgress";
 import { isValidRange, type DateRangeValue } from "@/lib/tour/dateRange";
 import { useItineraries } from "@/lib/itineraries/useItineraries";
@@ -72,7 +77,14 @@ const STEP_KEYS = [
 
 /** The party sizes the company takes: a solo traveller up to a group of twelve. */
 export const MIN_TRAVELERS = 1;
-export const MAX_TRAVELERS = 12;
+/**
+ * The default ceiling, and the one used whenever settings cannot be read.
+ *
+ * The live limit comes from `settings.maxTravellers` and is handed down as a
+ * prop — see `lib/settings/customTour.ts`. This constant remains because the
+ * reducer needs something to clamp against before the prop reaches it.
+ */
+export const MAX_TRAVELERS = DEFAULT_CUSTOM_TOUR_SETTINGS.maxTravellers;
 
 const initialState: WizardState = {
   step: 1,
@@ -98,7 +110,10 @@ function reducer(state: WizardState, action: WizardAction): WizardState {
     case "SET_TRAVELERS":
       return {
         ...state,
-        travelers: Math.min(MAX_TRAVELERS, Math.max(MIN_TRAVELERS, action.value)),
+        /* The reducer is module-level and cannot see the settings, so it
+           clamps to the hard ceiling. The configured limit is enforced where
+           it can be: the step's plus button, and validation below. */
+        travelers: Math.min(TRAVELLER_CEILING, Math.max(MIN_TRAVELERS, action.value)),
       };
     case "SET_DATE_RANGE":
       return { ...state, dateRange: action.value };
@@ -154,11 +169,18 @@ export function WizardShell({
   locale,
   whatsappNumber,
   experiences: published,
+  settings = DEFAULT_CUSTOM_TOUR_SETTINGS,
 }: {
   locale: string;
   whatsappNumber: string;
   /** Itineraries committed to `content/`; the admin page adds the rest. */
   experiences: Experience[];
+  /**
+   * What the team has configured in the panel. Defaulted rather than
+   * required, so a Firestore outage on a public page degrades to the
+   * behaviour the wizard had before any of it was configurable.
+   */
+  settings?: CustomTourSettings;
 }) {
   const t = useTranslations("customTour");
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -271,7 +293,20 @@ export function WizardShell({
       headers: { "Content-Type": "application/json" },
       credentials: "same-origin",
       keepalive: true,
-      body: JSON.stringify({ payload, locale, reference: amending ?? undefined }),
+      body: JSON.stringify({
+        payload,
+        locale,
+        reference: amending ?? undefined,
+        /* Pinned so the admin panel can reproduce *this* document later. A
+           rebuild from the payload alone would use the itineraries as they
+           stand then, which is not what the traveller is holding. */
+        documentSnapshot: {
+          at: new Date().toISOString(),
+          locale,
+          document: journeyDocument,
+        },
+        downloads: savedCopies.current,
+      }),
     }).catch(() => {
       /* Nothing to show: the traveller is already on their way to WhatsApp. */
     });
@@ -297,8 +332,46 @@ export function WizardShell({
     [selected, state.dateRange]
   );
 
-  const { download, pending, failed, interestLabels, accommodationLabels, datesValue, chosenIdeas } =
-    useJourneyDocument({ state, locale, plan, whatsappNumber });
+  const {
+    /* Renamed on the way out: an unqualified `document` in this scope would
+       shadow the global one, and this file reaches for `window.document`. */
+    document: journeyDocument,
+    download: downloadDocument,
+    pending,
+    failed,
+    interestLabels,
+    accommodationLabels,
+    datesValue,
+    chosenIdeas,
+  } = useJourneyDocument({
+    state,
+    locale,
+    plan,
+    whatsappNumber,
+    noticeOverride: settings.documentNotice,
+  });
+
+  /**
+   * Which take-away files the traveller has saved during this visit.
+   *
+   * Recorded here rather than server-side because a download almost always
+   * happens *before* they press send — at which point the enquiry does not
+   * exist yet and there is no reference to attach it to. The list rides
+   * along with the enquiry instead. A download after sending is therefore
+   * not counted, which is the honest limit of doing it this way.
+   */
+  const savedCopies = useRef<{ kind: "pdf" | "doc"; at: string; locale: string }[]>([]);
+
+  const download = useCallback(
+    async (kind: "pdf" | "doc") => {
+      await downloadDocument(kind);
+      savedCopies.current = [
+        ...savedCopies.current,
+        { kind, at: new Date().toISOString(), locale },
+      ].slice(-25);
+    },
+    [downloadDocument, locale]
+  );
 
   useEffect(() => {
     /* A step change swaps the whole panel; on a phone the new step would
@@ -318,7 +391,7 @@ export function WizardShell({
   function validateCurrentStep(): string | null {
     switch (currentStepKey) {
       case "travelers":
-        if (state.travelers < MIN_TRAVELERS || state.travelers > MAX_TRAVELERS) {
+        if (state.travelers < MIN_TRAVELERS || state.travelers > settings.maxTravellers) {
           return t("errorTravelers");
         }
         return null;
@@ -419,6 +492,7 @@ export function WizardShell({
                 <TravelersStep
                   value={state.travelers}
                   onChange={(value) => dispatch({ type: "SET_TRAVELERS", value })}
+                  max={settings.maxTravellers}
                 />
               )}
               {currentStepKey === "dates" && (
@@ -432,6 +506,7 @@ export function WizardShell({
                 <InterestsStep
                   value={state.interests}
                   onToggle={(value) => dispatch({ type: "TOGGLE_INTEREST", value, experiences })}
+                  categories={settings.interests}
                   experiences={experiences}
                   selectedExperiences={state.selectedExperiences}
                   onToggleExperience={(value) => dispatch({ type: "TOGGLE_EXPERIENCE", value })}
@@ -441,6 +516,7 @@ export function WizardShell({
                 <AccommodationStep
                   value={state.accommodation}
                   onToggle={(value) => dispatch({ type: "TOGGLE_ACCOMMODATION", value })}
+                  options={settings.accommodation}
                   notes={state.accommodationNotes}
                   onNotesChange={(value) => dispatch({ type: "SET_ACCOMMODATION_NOTES", value })}
                 />

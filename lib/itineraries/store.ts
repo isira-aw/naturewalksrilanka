@@ -51,7 +51,26 @@ export async function listRecords(): Promise<ItineraryRecord[]> {
     }
   }
 
-  return records.sort((a, b) => a.head.localeCompare(b.head));
+  return records.sort(byPlacement);
+}
+
+/**
+ * The order the wizard offers itineraries in, and the order the admin list
+ * shows them in — one rule, so the team sees what a traveller will.
+ *
+ * Featured first, then anything with an explicit position, then everything
+ * else alphabetically. An itinerary with no position sorts after every
+ * itinerary that has one, which is how the whole list behaved before
+ * positions existed: set none and nothing moves.
+ */
+function byPlacement(a: ItineraryRecord, b: ItineraryRecord) {
+  if (a.featured !== b.featured) return a.featured ? -1 : 1;
+
+  const left = a.sortOrder ?? Number.POSITIVE_INFINITY;
+  const right = b.sortOrder ?? Number.POSITIVE_INFINITY;
+  if (left !== right) return left - right;
+
+  return a.head.localeCompare(b.head);
 }
 
 /** Creates or replaces exactly one itinerary. */

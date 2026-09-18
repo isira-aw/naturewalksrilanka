@@ -3,7 +3,25 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { translatableSchema, type TranslatableFields } from "@/lib/itineraries/types";
 import { localeNames, type Locale } from "@/i18n/routing";
 
-const MODEL = "gemini-3.6-flash";
+/**
+ * The model, overridable without a deployment.
+ *
+ * Google retires and renames model ids on its own schedule, and a wrong one
+ * fails every translation with an error that reads like an outage. Making it
+ * an environment variable means correcting it is a settings change, not a
+ * release. The default is the id this was written against; the AI section of
+ * the admin panel has a button that proves whether it still resolves.
+ */
+export const DEFAULT_MODEL = "gemini-3.6-flash";
+
+export function translationModel(): string {
+  return process.env.GOOGLE_AI_MODEL?.trim() || DEFAULT_MODEL;
+}
+
+export function isTranslationConfigured(): boolean {
+  return Boolean(process.env.GOOGLE_AI_API_KEY);
+}
+
 const MAX_OUTPUT_TOKENS = 4096;
 
 const responseSchema = {
@@ -68,7 +86,7 @@ export async function translateItinerary(
   try {
     const ai = new GoogleGenAI({ apiKey });
     const response = await ai.models.generateContent({
-      model: MODEL,
+      model: translationModel(),
       contents: buildPrompt(source, locale),
       config: {
         responseMimeType: "application/json",
@@ -99,5 +117,42 @@ export async function translateItinerary(
   } catch (error) {
     console.error("[admin] itinerary translation failed", error);
     return { ok: false, error: "Gemini is unavailable right now. Try again later." };
+  }
+}
+
+/**
+ * Does the configured key and model actually work?
+ *
+ * Asks for one token, which is the cheapest question that still exercises the
+ * whole path: the key is accepted, the model id resolves, and the service is
+ * reachable. Everything this can go wrong with has gone wrong for somebody —
+ * and until now the only way to find out was to translate a real itinerary
+ * and read the failure.
+ */
+export async function checkTranslationService(): Promise<
+  { ok: true; model: string } | { ok: false; model: string; error: string }
+> {
+  const model = translationModel();
+  const apiKey = process.env.GOOGLE_AI_API_KEY;
+  if (!apiKey) {
+    return { ok: false, model, error: "GOOGLE_AI_API_KEY is not set on this deployment." };
+  }
+
+  try {
+    const ai = new GoogleGenAI({ apiKey });
+    const response = await ai.models.generateContent({
+      model,
+      contents: "Reply with the single word: ok",
+      config: { maxOutputTokens: 8, temperature: 0 },
+    });
+
+    if (!response.text) return { ok: false, model, error: "The model returned nothing." };
+    return { ok: true, model };
+  } catch (error) {
+    /* Surfaced rather than swallowed: "model not found" and "key rejected"
+       need completely different fixes, and the whole point of this check is
+       to tell them apart. */
+    const message = error instanceof Error ? error.message : String(error);
+    return { ok: false, model, error: message.slice(0, 300) };
   }
 }

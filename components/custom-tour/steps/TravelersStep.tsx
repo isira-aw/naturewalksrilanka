@@ -11,9 +11,12 @@ const QUICK_PICKS = [1, 2, 4, 6];
 export function TravelersStep({
   value,
   onChange,
+  /** From the wizard settings; the constant is only the fallback. */
+  max = MAX_TRAVELERS,
 }: {
   value: number;
   onChange: (value: number) => void;
+  max?: number;
 }) {
   const t = useTranslations("customTour");
 
@@ -38,7 +41,7 @@ export function TravelersStep({
           <CounterButton
             label={t("travelersIncrease")}
             onClick={() => onChange(value + 1)}
-            disabled={value >= MAX_TRAVELERS}
+            disabled={value >= max}
           >
             +
           </CounterButton>

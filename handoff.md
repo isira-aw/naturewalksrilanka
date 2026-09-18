@@ -53,9 +53,13 @@ anywhere on the site.
 | Deployment | Vercel only |
 | Third-party hosts | Fonts are self-hosted by `next/font` and flags are local. Three services are reached at runtime: Cloudinary for every photograph, and OpenStreetMap tiles plus OSRM routing for the journey map — see *Known issues* §3 |
 
-**One thing blocks calling this production-ready:**
+**Firebase is now connected, on the Spark (free) plan.** The paragraph below
+is kept because it still describes every code path written before that, none
+of which has been exercised against the real project yet — and because the
+setup checklist is still the order to work through. See `PLAN.md` →
+*What is still not proven* for the current list.
 
-1. **No Firebase project has ever been connected.** Every Firebase code path
+1. **No Firebase project had ever been connected.** Every Firebase code path
    in this repository is still unproven against a real project. Since admin
    sign-in is now Firebase-only, the panel cannot be opened at all until the
    project exists — `docs/FIREBASE_SETUP_CHECKLIST.md` is the order to do it
@@ -302,7 +306,13 @@ against a real one in the same way every Firebase path is.
 Found by review, **still not fixed**, roughly in priority order. None of them
 is new this round; all of them outlive it.
 
-### 1. The privacy policy contradicts the code
+### 1. The privacy policy contradicts the code — and now more so
+
+Unchanged and still the most serious thing here. Note that this has grown:
+an enquiry now also stores a snapshot of the journey document and a log of
+which files the traveller downloaded. Both are covered by the same false
+sentences.
+
 
 `app/[locale]/privacy/page.tsx` says the site "does not run a server-side
 database of visitor or customer information" and that enquiry details are
@@ -318,7 +328,13 @@ needs business facts nobody here can invent — retention, legal basis,
 controller, data-subject rights — so it needs Nandana and, ideally, a
 lawyer. The factual half (what the code stores) is written down above.
 
-### 2. The enquiry endpoint is unauthenticated and unbounded — and now unwatched
+### 2. ~~The enquiry endpoint is unauthenticated and unbounded~~ — fixed
+
+`requestPayloadSchema` now bounds every free-text field and every array, and
+the admin **Customers** section watches the collection again. The original
+note follows, for the reasoning.
+
+### 2a. The original note
 
 `POST /api/custom-tour/requests` has no auth, no rate limit and no honeypot,
 and `requestPayloadSchema` puts no `.max()` on `name`, `requirements` or
@@ -348,8 +364,10 @@ unnoticed, and only `/my-trip/<reference>` would ever look at it.
   line on a drawn island rather than failing, but a busy site should move to a
   keyed tile provider. None of the three is exercised by `next build`, and the
   map ones only render deep inside the wizard.
-- **`lib/ai/translateItinerary.ts` pins `gemini-3.6-flash`.** Worth
-  confirming that id is current; it has never run against a real key.
+- ~~**`lib/ai/translateItinerary.ts` pins `gemini-3.6-flash`.**~~ It is now
+  `GOOGLE_AI_MODEL`, defaulting to that id, and the admin panel's **AI**
+  section has a button that proves whether it still resolves. The id itself
+  has still never been run against a real key — press the button.
 
 ---
 

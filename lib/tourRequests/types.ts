@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TRAVELLER_CEILING } from "@/lib/settings/customTour";
 
 /**
  * A custom tour enquiry, as recorded when the traveller sends it.
@@ -26,24 +27,100 @@ export const REQUEST_STATUSES = [
 export const requestStatusSchema = z.enum(REQUEST_STATUSES);
 export type RequestStatus = z.infer<typeof requestStatusSchema>;
 
+/**
+ * Upper bounds on every free-text field.
+ *
+ * This endpoint is unauthenticated by design — a traveller must be able to
+ * send an enquiry without an account. Without a ceiling on the prose fields
+ * one request could push about a megabyte into Firestore, and nothing stopped
+ * a loop of them. The limits are set well above what a real enquiry needs:
+ * the longest genuine "requirements" anyone has written is a few paragraphs.
+ */
+export const FIELD_LIMITS = {
+  name: 120,
+  email: 254,
+  phone: 40,
+  country: 80,
+  requirements: 4000,
+  accommodationNotes: 2000,
+  /** One slug. The count is capped separately. */
+  slug: 120,
+  interests: 20,
+  selectedExperiences: 40,
+  accommodation: 20,
+} as const;
+
 /** What the wizard sends. Mirrors `WizardState` without the step counter. */
 export const requestPayloadSchema = z.object({
-  travelers: z.number().int().min(1).max(12),
+  /* The hard ceiling, not the configurable limit the wizard offers. This
+     endpoint is unauthenticated, so its validation cannot depend on a
+     Firestore read that might fail — and must not be widened by anything the
+     caller controls. `lib/settings/customTour.ts` explains the two. */
+  travelers: z.number().int().min(1).max(TRAVELLER_CEILING),
   dateRange: z.object({
     start: z.string().nullable(),
     end: z.string().nullable(),
   }),
-  interests: z.array(z.string()),
-  selectedExperiences: z.array(z.string()),
-  accommodation: z.array(z.string()),
-  accommodationNotes: z.string(),
-  name: z.string().min(1),
-  email: z.string().email(),
-  phone: z.string().min(1),
-  country: z.string(),
-  requirements: z.string(),
+  interests: z.array(z.string().max(FIELD_LIMITS.slug)).max(FIELD_LIMITS.interests),
+  selectedExperiences: z
+    .array(z.string().max(FIELD_LIMITS.slug))
+    .max(FIELD_LIMITS.selectedExperiences),
+  accommodation: z
+    .array(z.string().max(FIELD_LIMITS.slug))
+    .max(FIELD_LIMITS.accommodation),
+  accommodationNotes: z.string().max(FIELD_LIMITS.accommodationNotes),
+  name: z.string().min(1).max(FIELD_LIMITS.name),
+  email: z.string().email().max(FIELD_LIMITS.email),
+  phone: z.string().min(1).max(FIELD_LIMITS.phone),
+  country: z.string().max(FIELD_LIMITS.country),
+  requirements: z.string().max(FIELD_LIMITS.requirements),
 });
 export type RequestPayload = z.infer<typeof requestPayloadSchema>;
+
+/**
+ * A take-away document the traveller actually saved, recorded when the
+ * download succeeds.
+ *
+ * Only that it happened — no file is stored here. The document itself is
+ * reproduced from `documentSnapshot` below.
+ */
+export const requestDownloadSchema = z.object({
+  kind: z.enum(["pdf", "doc"]),
+  at: z.string(),
+  locale: z.string(),
+});
+export type RequestDownload = z.infer<typeof requestDownloadSchema>;
+
+/**
+ * The resolved journey document, as it stood when the enquiry was sent.
+ *
+ * Kept as an opaque object on purpose. `JourneyDocument` lives in
+ * `lib/journey-document/model.ts` and is shaped by what the renderers need;
+ * pinning its shape here as well would mean two definitions to keep in step,
+ * and a snapshot that fails to parse is worse than one that is merely old.
+ * It is validated on the way *out*, where a malformed one can simply fall
+ * back to rebuilding from today's itineraries.
+ *
+ * Photographs are URLs, never binary — a snapshot is tens of kilobytes.
+ */
+export const documentSnapshotSchema = z.object({
+  /** When it was taken, which is not necessarily when the enquiry was sent. */
+  at: z.string(),
+  /** The locale the traveller was reading, so the rebuild matches their copy. */
+  locale: z.string(),
+  /** A `JourneyDocument`. Parsed where it is used, not here. */
+  document: z.unknown(),
+});
+export type DocumentSnapshot = z.infer<typeof documentSnapshotSchema>;
+
+/** One superseded version of an enquiry, kept in the `revisions` subcollection. */
+export const requestRevisionSchema = z.object({
+  revision: z.number().int().min(0),
+  payload: requestPayloadSchema,
+  status: requestStatusSchema,
+  supersededAt: z.string(),
+});
+export type RequestRevision = z.infer<typeof requestRevisionSchema>;
 
 export const tourRequestSchema = z.object({
   /** Short, sayable over the phone, and printed on the WhatsApp message. */
@@ -57,6 +134,18 @@ export const tourRequestSchema = z.object({
   updatedAt: z.string(),
   /** How many times the traveller has revised it. */
   revision: z.number().int().min(0).default(0),
+  /**
+   * The journey document as the traveller's browser built it.
+   *
+   * Without this the admin panel can still rebuild the PDF — the plan is
+   * pure arithmetic over `payload` — but it would rebuild it from *today's*
+   * itineraries, so editing or deleting an itinerary would silently change
+   * what a past enquiry appears to have asked for. The snapshot is what
+   * makes the rebuilt file the traveller's file.
+   */
+  documentSnapshot: documentSnapshotSchema.optional(),
+  /** Which take-away files the traveller actually saved, and when. */
+  downloads: z.array(requestDownloadSchema).default([]),
 });
 export type TourRequest = z.infer<typeof tourRequestSchema>;
 

@@ -4,7 +4,10 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils/cn";
 import { SuggestionsPanel } from "@/components/custom-tour/SuggestionsPanel";
 import type { Experience } from "@/lib/content/schema";
-import { ITINERARY_CATEGORIES } from "@/lib/itineraries/categories";
+import {
+  ITINERARY_CATEGORIES,
+  type ItineraryCategory,
+} from "@/lib/itineraries/categories";
 import { StepHeading } from "./StepHeading";
 
 /**
@@ -15,17 +18,24 @@ import { StepHeading } from "./StepHeading";
 export function InterestsStep({
   value,
   onToggle,
+  categories,
   experiences,
   selectedExperiences,
   onToggleExperience,
 }: {
   value: string[];
   onToggle: (value: string) => void;
+  /** Which interests to offer, in order. From the wizard settings. */
+  categories?: readonly ItineraryCategory[];
   experiences: Experience[];
   selectedExperiences: string[];
   onToggleExperience: (slug: string) => void;
 }) {
   const t = useTranslations("customTour");
+
+  /* Falls back to every category, which is what this step offered before the
+     list became configurable. */
+  const offered = categories ?? ITINERARY_CATEGORIES.map((entry) => entry.id);
   /* The lightbox strings are shared with the testimonials, so they live in
      their own namespace rather than in this step's. */
   const g = useTranslations("gallery");
@@ -40,7 +50,7 @@ export function InterestsStep({
         <StepHeading title={t("interestsLabel")} hint={t("interestsHint")} />
 
         <div className="mt-6 flex flex-wrap gap-2.5">
-          {ITINERARY_CATEGORIES.map(({ id: key }) => {
+          {offered.map((key) => {
             const checked = value.includes(key);
             const inputId = `interest-${key}`;
             return (

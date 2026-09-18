@@ -1,7 +1,17 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
 import { isFirebaseConfigured } from "@/lib/firebase/admin";
-import { createRequest, getRequest, reviseRequest } from "@/lib/tourRequests/store";
-import { requestPayloadSchema } from "@/lib/tourRequests/types";
+import {
+  attachDocumentSnapshot,
+  createRequest,
+  getRequest,
+  reviseRequest,
+} from "@/lib/tourRequests/store";
+import {
+  documentSnapshotSchema,
+  requestDownloadSchema,
+  requestPayloadSchema,
+} from "@/lib/tourRequests/types";
 import { travellerFromRequest } from "@/lib/tourRequests/travellerSession";
 
 export const dynamic = "force-dynamic";
@@ -55,16 +65,23 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
 
-  const { payload, locale, reference } = (body ?? {}) as {
+  const { payload, locale, reference, documentSnapshot, downloads } = (body ?? {}) as {
     payload?: unknown;
     locale?: unknown;
     reference?: unknown;
+    documentSnapshot?: unknown;
+    downloads?: unknown;
   };
 
   const parsed = requestPayloadSchema.safeParse(payload);
   if (!parsed.success) {
     return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   }
+
+  /* Both are conveniences for the team, so a malformed one is dropped rather
+     than failing the enquiry. The enquiry itself is the thing that matters. */
+  const snapshot = documentSnapshotSchema.safeParse(documentSnapshot);
+  const savedCopies = z.array(requestDownloadSchema).max(25).safeParse(downloads);
 
   if (!isFirebaseConfigured()) {
     return NextResponse.json({ saved: false, reason: "not_configured" });
@@ -87,6 +104,12 @@ export async function POST(request: Request) {
 
     const revised = await reviseRequest(reference, parsed.data);
     if (!revised) return NextResponse.json({ error: "not_found" }, { status: 404 });
+
+    /* The amended enquiry is the one the team will work from, so its document
+       replaces the previous one. The superseded payload is still in
+       `revisions`, so nothing is lost. */
+    if (snapshot.success) await attachDocumentSnapshot(revised.reference, snapshot.data);
+
     return NextResponse.json({ saved: true, reference: revised.reference });
   }
 
@@ -94,6 +117,10 @@ export async function POST(request: Request) {
     const created = await createRequest(
       parsed.data,
       typeof locale === "string" ? locale : "en",
+      {
+        documentSnapshot: snapshot.success ? snapshot.data : undefined,
+        downloads: savedCopies.success ? savedCopies.data : undefined,
+      },
     );
     return NextResponse.json({ saved: true, reference: created.reference });
   } catch (error) {
