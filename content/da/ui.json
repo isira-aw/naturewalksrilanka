@@ -192,9 +192,7 @@
       "noticeTitle": "Om dette dokument",
       "notice": "Dette dokument er genereret automatisk ud fra de itineraries, du fortalte os, du var interesseret i. Det er et udgangspunkt, ikke en fast booking. Skal noget ændres — rækkefølgen af stop, hvor længe du bliver, eller selve itineraries — så skriv til vores team på WhatsApp. Bare rolig: de hjælper altid gerne.",
       "whatsappLabel": "WhatsApp"
-    },
-    "amending": "Du ændrer rejse {reference}. Send den igen, når du er færdig, så ser vi opdateringen.",
-    "amendFailed": "Vi kunne ikke åbne den rejse. Åbn den først fra din rejseside, og vælg så Ret denne rejse."
+    }
   },
   "nandana": {
     "introEyebrow": "Hvem er Nandana",
@@ -311,8 +309,6 @@
     "phone": "Telefon",
     "country": "Land",
     "requirements": "Ønsker",
-    "amend": "Ret denne rejse",
-    "changesHint": "Når du retter din rejse, sender du os den nye version. Vi gemmer den gamle, så intet går tabt.",
     "revisionNote": "Rettet {count, plural, one {én gang} other {# gange}}.",
     "status": {
       "received": "Modtaget",
@@ -320,7 +316,20 @@
       "quoted": "Tilbud sendt",
       "confirmed": "Bekræftet",
       "closed": "Afsluttet"
-    }
+    },
+    "editContact": "Opdatér dine kontaktoplysninger",
+    "editContactHint": "Dit navn, telefon, land og alt andet, vi bør vide. Vil du ændre selve rejsen — ruterne, datoerne, hvor mange I er — så skriv til os på WhatsApp, så finder vi ud af det sammen.",
+    "saveContact": "Gem ændringer",
+    "savingContact": "Gemmer…",
+    "contactSaved": "Gemt.",
+    "contactFailed": "Det kunne ikke gemmes. Prøv igen om lidt.",
+    "tripsTitle": "Dine rejser",
+    "tripsAccessBody": "Indtast din e-mailadresse, så sender vi dig et link til dine rejser. Ingen adgangskode nødvendig.",
+    "tripsEmpty": "Ingen rejser på denne adresse endnu. Har du brugt en anden, så bed om et nyt link med den adresse.",
+    "tripsSignedIn": "Logget ind som {email}.",
+    "openTrip": "Åbn",
+    "tripsCount": "{count, plural, one {# rejse} other {# rejser}}",
+    "signOut": "Log ud"
   },
   "review": {
     "title": "Hvordan var din rejse?",

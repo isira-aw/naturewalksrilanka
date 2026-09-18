@@ -192,9 +192,7 @@
       "noticeTitle": "Tietoa tästä asiakirjasta",
       "notice": "Tämä asiakirja on luotu automaattisesti niistä itineraryistä, joista kerroit olevasi kiinnostunut. Se on lähtökohta, ei sitova varaus. Jos jotain pitää muuttaa — pysähdysten järjestystä, kestoa tai itsessään itineraryjä — ota yhteyttä tiimiimme WhatsAppissa. Ei huolta: he auttavat aina mielellään.",
       "whatsappLabel": "WhatsApp"
-    },
-    "amending": "Muutat matkaa {reference}. Lähetä se uudelleen, kun olet valmis, niin näemme muutoksen.",
-    "amendFailed": "Emme voineet avata matkaa. Avaa se ensin matkasivultasi ja valitse Muuta tätä matkaa."
+    }
   },
   "nandana": {
     "introEyebrow": "Kuka on Nandana",
@@ -311,8 +309,6 @@
     "phone": "Puhelin",
     "country": "Maa",
     "requirements": "Toiveet",
-    "amend": "Muuta tätä matkaa",
-    "changesHint": "Kun muutat matkaasi, lähetät meille uuden version. Säilytämme edellisen, joten mitään ei katoa.",
     "revisionNote": "Muutettu {count, plural, one {kerran} other {# kertaa}}.",
     "status": {
       "received": "Vastaanotettu",
@@ -320,7 +316,20 @@
       "quoted": "Tarjous lähetetty",
       "confirmed": "Vahvistettu",
       "closed": "Suljettu"
-    }
+    },
+    "editContact": "Päivitä yhteystietosi",
+    "editContactHint": "Nimesi, puhelinnumerosi, maasi ja kaikki muu, mitä meidän on hyvä tietää. Jos haluat muuttaa itse matkaa — reittejä, päiviä tai matkustajamäärää — laita viestiä WhatsAppissa, niin sovitaan yhdessä.",
+    "saveContact": "Tallenna muutokset",
+    "savingContact": "Tallennetaan…",
+    "contactSaved": "Tallennettu.",
+    "contactFailed": "Tallennus ei onnistunut. Yritä hetken kuluttua uudelleen.",
+    "tripsTitle": "Matkasi",
+    "tripsAccessBody": "Anna sähköpostiosoitteesi, niin lähetämme linkin matkoihisi. Salasanaa ei tarvita.",
+    "tripsEmpty": "Tällä osoitteella ei ole vielä matkoja. Jos käytit toista osoitetta, pyydä uusi linkki sillä.",
+    "tripsSignedIn": "Kirjautuneena: {email}.",
+    "openTrip": "Avaa",
+    "tripsCount": "{count, plural, one {# matka} other {# matkaa}}",
+    "signOut": "Kirjaudu ulos"
   },
   "review": {
     "title": "Millainen matkasi oli?",

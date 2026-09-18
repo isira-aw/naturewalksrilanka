@@ -1,14 +1,19 @@
 import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import type { TourRequest } from "@/lib/tourRequests/types";
+import { ContactForm } from "./ContactForm";
 
 /**
  * The trip as the traveller sent it.
  *
- * Read-only and plain: this page exists so somebody can check what they
- * asked for and see where it has got to, not to be a second wizard. The one
- * action is amending, which hands them back to the wizard they already
- * know rather than duplicating its editing here.
+ * Plain, and mostly read-only: this page exists so somebody can check what
+ * they asked for and see where it has got to, not to be a second wizard.
+ *
+ * The one thing they can change is their own contact details. It used to be
+ * everything — a link handed them back to the wizard to redo the whole
+ * enquiry — but the team may already have quoted against what was there, and
+ * a quote changing underneath them without a word is worse than a
+ * conversation. The trip itself is settled on WhatsApp now; a phone number
+ * that has gone out of date is not worth a message.
  */
 export async function TripSummary({ request }: { request: TourRequest }) {
   const t = await getTranslations("myTrip");
@@ -56,16 +61,7 @@ export async function TripSummary({ request }: { request: TourRequest }) {
         </p>
       )}
 
-      <div className="mt-8 flex flex-wrap gap-3">
-        <Link
-          href={{ pathname: "/custom-tour", query: { amend: request.reference } }}
-          className="inline-flex min-h-11 items-center justify-center rounded-full bg-forest px-6 text-sm font-medium text-warm-white transition-colors hover:bg-forest-dark"
-        >
-          {t("amend")}
-        </Link>
-      </div>
-
-      <p className="mt-6 text-xs leading-relaxed text-charcoal/50">{t("changesHint")}</p>
+      <ContactForm reference={request.reference} payload={payload} />
     </div>
   );
 }
