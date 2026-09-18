@@ -165,6 +165,7 @@
     "contactEmail": "Sähköposti",
     "contactPhone": "WhatsApp / puhelin",
     "contactCountry": "Maa",
+    "honeypot": "Yritys (jätä tämä tyhjäksi)",
     "contactHint": "Jotta voimme vastata sinulle. Säilytämme pyyntösi, jotta löydät sen myöhemmin uudelleen, ja vastauksesi menevät myös WhatsApp-viestiin, jonka lähetät itse.",
     "requirementsLabel": "Kerro meille ihannematkastasi…",
     "reviewTitle": "Tarkista matkasi",

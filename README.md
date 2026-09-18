@@ -152,6 +152,19 @@ The origin they all use is `SITE_URL` in `lib/seo/site.ts` — one constant, rea
 
 **[`docs/seo.md`](docs/seo.md)** has the detail, and the list of things only you can do after deployment: pasting the Google Search Console and Bing Webmaster Tools verification codes, and submitting the sitemap to both.
 
+## Security headers
+
+Four headers on every response, set in the `headers()` block of
+`next.config.ts`: HSTS, `Referrer-Policy`, `X-Content-Type-Options`, and a
+Content Security Policy that is still **report-only** — it reports what it
+would refuse and refuses nothing, because the flows most likely to trip it
+(admin sign-in, the traveller email link) cannot be exercised without the real
+Firebase project.
+
+**[`docs/security-headers.md`](docs/security-headers.md)** says what each one
+does, what has already been proved with the policy enforcing, and the four
+steps to turn it on.
+
 ## Deployment
 
 Deploy to Vercel as a standard Next.js app. Redirects from the old static site's URLs (`/single18.html` etc.) to the new locale-prefixed routes are configured in `next.config.ts` via `lib/seo/redirects.ts`.

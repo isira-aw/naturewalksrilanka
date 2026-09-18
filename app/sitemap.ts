@@ -41,9 +41,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...destinations.map((d) => `/destinations/${d.slug}`),
   ];
 
+  /* No `lastModified`. It used to be `new Date()`, which told every crawler
+     that every URL had changed the moment it asked — a claim that is never
+     true and that search engines discount accordingly, taking the rest of the
+     entry's credibility with it. Nothing here carries a real timestamp: the
+     content files have none, and a build date would be the same wrong answer
+     with extra steps. An omitted field is honest and is treated as "unknown",
+     which is what it is. Give it a real date only when the content it
+     describes starts carrying one. */
   return [...staticPaths, ...dynamicPaths].map((path) => ({
     ...withAlternates(path),
-    lastModified: new Date(),
     changeFrequency: path === "" ? "weekly" : "monthly",
     priority: path === "" ? 1 : 0.7,
   }));

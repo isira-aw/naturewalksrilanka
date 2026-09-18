@@ -1,11 +1,14 @@
 # Handoff — admin panel, customer documents, access control
 
-Branch: `claude/dazzling-ptolemy-jzkd32` · 13 commits ahead of `main`
-(`2951fea`) · 78 files, +5933 / −942 · open as
-[#34](https://github.com/isira-aw/naturewalksrilanka/pull/34).
+Branch: `claude/funny-lovelace-6jpkhk`, open as
+[#37](https://github.com/isira-aw/naturewalksrilanka/pull/37).
 
-Rounds **#25 to #33** have merged. *This round* is everything on the branch
-above; *Earlier rounds* keeps what is still worth knowing from before it.
+Rounds **#25 to #36** have merged, **#34, #35 and #36 among them** — so
+everything under *This round* below is shipped, not pending. It is kept
+because the reasoning behind it is still the reasoning the code runs on.
+
+#37 itself is small: the itinerary editor's *Planning* section removed as
+unwanted, then the three fixes described under *Known issues* §2 and §3.
 
 `PLAN.md`, on the same branch, carries the reasoning behind this round, the
 decisions taken and what is still unproven. This file is the shorter view.
@@ -97,6 +100,8 @@ New in this round:
 | `scripts/prune-auth-users.mjs` | Clears the accounts that accumulated before the guard existed. Dry-run by default |
 | `docs/admin-access.md` | The junk-account problem end to end, and the blocking function for Blaze |
 | `docs/llm.md` | The one LLM call: what is sent, what never is, what is not AI |
+| `lib/tourRequests/rateLimit.ts` | How often one caller may have an enquiry written. Fixed buckets, no addresses stored, fails open |
+| `docs/security-headers.md` | The four headers, and the four steps that turn the CSP on |
 
 New in the earlier work:
 
@@ -512,11 +517,33 @@ lawyer. The factual half (what the code stores) is written down above.
 
 ### 2. ~~The enquiry endpoint is unauthenticated and unbounded~~ — closed
 
-`requestPayloadSchema` bounds every free-text field and every array now, and
-the **Customers** section watches the collection again. It is still
+`requestPayloadSchema` bounds every free-text field and every array, and the
+**Customers** section watches the collection again. It is still
 unauthenticated, which is by design — a traveller must be able to send an
 enquiry without an account — but a single request can no longer push a
 megabyte into Firestore.
+
+The other half — nothing stopped a *loop* of bounded requests — is closed too:
+
+- **A honeypot**, the newsletter's pattern exactly. `company` is hidden from
+  people by CSS and out of the tab order; a bot that fills every input gives
+  itself away. It is answered before the payload is even validated, so a bot
+  cannot learn from the reply and costs nothing to turn away, and it is kept
+  out of `payload` so it never reaches a stored enquiry.
+- **A rate limit**, `lib/tourRequests/rateLimit.ts`: eight writes per caller
+  per hour, counted in Firestore because an in-process counter does not
+  survive a cold start (that counter was removed from this codebase once
+  already). Callers are hashed into a fixed 4096 buckets, so the collection
+  cannot grow however long it is abused, and no address or hash is stored.
+  Every failure path allows the write: the traveller is on their way to
+  WhatsApp regardless, and a counter that cannot be read must not be the
+  reason an enquiry is lost.
+
+Verified against a running production build: a filled honeypot answers
+`{ saved: false }` and never reaches validation, an empty one goes straight
+through, and the wizard sends the field. **The limiter's Firestore path has
+not run against the real project** — it was proved against a stub, and it is
+unreachable in a deployment with no Firebase variables.
 
 The original note follows, because the reasoning is still worth having.
 
@@ -534,12 +561,21 @@ unnoticed, and only `/my-trip/<reference>` would ever look at it.
 
 ### 3. Smaller items
 
-- **No Content-Security-Policy.** HSTS, `nosniff` and `Referrer-Policy` are
-  set in `next.config.ts`; CSP is not.
-- **`app/sitemap.ts` sends `lastModified: new Date()`** for every URL on
-  every request, so the signal is always "just changed" and search engines
-  discount it. The content files carry no timestamps, so the honest fix is
-  to omit the field.
+- ~~**No Content-Security-Policy.**~~ There is one now, sent
+  **report-only**: it reports what it would refuse and refuses nothing. That
+  is the remaining work, not a hedge — the two flows most likely to trip it
+  (admin Google sign-in, the traveller email link) need the real Firebase
+  project. Everything reachable without it was walked with the policy
+  *enforcing* and came back clean: every public page, both 404s, the wizard
+  end to end, and the PDF. One expected report: Zod's `Function("")` probe,
+  which it wraps in a `try`/`catch` for exactly this and falls back from.
+  `docs/security-headers.md` has what is proved, what is not, and the four
+  steps to turn it on.
+- ~~**`app/sitemap.ts` sends `lastModified: new Date()`**~~ — the field is
+  gone. It claimed every URL had changed the moment a crawler asked, which is
+  never true and which search engines discount. Nothing carries a real
+  timestamp, and a build date would be the same wrong answer, so an omitted
+  field — read as "unknown" — is the honest one.
 - **Three third-party runtime services, all of them easy to miss.**
   Cloudinary serves every photograph on the site. `tile.openstreetmap.org`
   serves the wizard's map (`components/custom-tour/steps/journey-plan/RouteMap.tsx`)
@@ -697,6 +733,9 @@ Firebase is connected, so the question is no longer whether the code paths
 Firestore or Firebase Auth has been run against the project; `PLAN.md` →
 *What is still not proven* lists it in priority order. The short version:
 
+0. Read `docs/security-headers.md` first if you are also promoting the CSP:
+   steps 3 and 4 below are two of the flows its reports are waiting on, so
+   doing them with devtools open costs nothing extra and closes that item.
 1. `firebase deploy --only firestore:indexes` — three composites, and two
    features fail outright without them.
 2. Set `SUPER_ADMIN_EMAIL` before anyone needs to edit the access list.
@@ -707,6 +746,10 @@ Firestore or Firebase Auth has been run against the project; `PLAN.md` →
    piece where a bug deletes something real.
 5. Press *Test the connection* in **AI**. `gemini-3.6-flash` has never run
    against a real key.
+6. Send two or three enquiries in a row and confirm each lands in
+   **Customers**. The enquiry rate limiter writes to Firestore and has only
+   ever run against a stub; eight per hour is well above anything a person
+   does, so a real traveller should never meet it.
 
 `scripts/grant-admin.mjs` remains for bootstrapping a deployment with no
 super admin configured; it doubles as the credential test, using the same
@@ -728,10 +771,18 @@ service account and touching both Auth and Firestore.
 
 ### 3. Fixes identified but not made
 
-The items under *Known issues* above. §2 (bounding and rate-limiting the
-enquiry endpoint) is small, self-contained and the obvious next commit, and
-it matters more now that nothing in the admin panel watches that collection;
-§1 needs business facts from Nandana before a line of it can be written.
+The items under *Known issues* above. §2 is fully closed now — bounded,
+honeypotted and rate-limited — and both codeable items under §3 are done: the
+sitemap no longer lies about `lastModified`, and there is a Content Security
+Policy waiting in report-only mode.
+
+What is left there is not code:
+
+- **Promote the CSP** once the reports are clean, which needs somebody to sign
+  in to the admin panel, upload a photograph and follow a traveller email link
+  with devtools open. `docs/security-headers.md`, *Turning it on*.
+- **§1, the privacy policy**, needs business facts from Nandana before a line
+  of it can be written.
 
 ### 4. Content still required before launch
 

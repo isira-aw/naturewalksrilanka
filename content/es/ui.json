@@ -165,6 +165,7 @@
     "contactEmail": "Correo electrónico",
     "contactPhone": "WhatsApp / teléfono",
     "contactCountry": "País",
+    "honeypot": "Empresa (deja esto vacío)",
     "contactHint": "Para poder responderte. Guardamos tu consulta para que puedas volver a consultarla más adelante, y tus respuestas también van en un mensaje de WhatsApp que envías tú.",
     "requirementsLabel": "Cuéntanos cómo sería tu viaje ideal…",
     "reviewTitle": "Revisa tu viaje",

@@ -165,6 +165,7 @@
     "contactEmail": "E-mail",
     "contactPhone": "WhatsApp / telefoon",
     "contactCountry": "Land",
+    "honeypot": "Bedrijf (laat dit leeg)",
     "contactHint": "Zodat we je kunnen antwoorden. We bewaren je aanvraag zodat je hem later kunt terugvinden, en je antwoorden gaan ook in een WhatsApp-bericht dat je zelf verstuurt.",
     "requirementsLabel": "Vertel ons over je ideale reis…",
     "reviewTitle": "Bekijk je reis",
