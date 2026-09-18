@@ -770,17 +770,22 @@ service account and touching both Auth and Firestore.
 
 ### 2. Decisions outstanding
 
-- **Analytics provider.** Requested, but not named. It changes the work:
-  Plausible or Vercel Analytics are cookieless, so no consent banner is needed
-  and UTMs become meaningful; GA4 sets cookies, so the banner becomes genuinely
-  required.
-- **Remaining vulnerabilities.** 1 high (`js-yaml`, build-time only) and 6
-  moderate, all transitive through `firebase-admin`'s storage chain. The
-  recommendation is to leave them: `firebase-admin` is what pins Node 22 and
-  the `jose` override, both of which have taken the site down before. The fix
-  currently carries more risk than the bugs.
-- **Analytics still governs the cookie-banner question**, and the privacy
-  policy has to be corrected either way — see *Known issues* §1.
+- ~~**Analytics provider.**~~ **Decided: none, for now.** Nothing is wired up
+  and nothing is to be. Two things follow, and both are already true rather
+  than planned: there is **no cookie banner to build**, because the site sets
+  no cookie at all until somebody signs in, and the privacy page can say
+  plainly that the site runs no analytics — which it now does, and which was
+  checked against the repository rather than assumed. Search Console still
+  gives search traffic; what is given up is on-site behaviour. Reopening this
+  means picking a provider first: a cookieless one (Plausible, Vercel
+  Analytics) stays banner-free, GA4 does not and brings the banner, the
+  pre-consent suppression and a cookie section with it.
+- **Remaining vulnerabilities.** Still open, with a standing recommendation to
+  leave them. 1 high (`js-yaml`, build-time only) and 6 moderate, all
+  transitive through `firebase-admin`'s storage chain. `firebase-admin` is
+  what pins Node 22 and the `jose` override, both of which have taken the site
+  down before, so the fix currently carries more risk than the bugs. This is
+  the one item here that needs no work unless somebody disagrees.
 
 ### 3. Fixes identified but not made
 
