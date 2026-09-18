@@ -112,15 +112,20 @@ export async function allowUnlockAttempt(request: Request): Promise<boolean> {
  * the same count and all decide they were within it.
  */
 async function consume(request: Request, collection: string, max: number): Promise<boolean> {
-  const db = adminDb();
-  if (!db) return true;
-
   const address = callerAddress(request);
   if (!address) return true;
 
-  const ref = db.collection(collection).doc(bucketOf(address));
-
   try {
+    /* Inside the `try`, because this throws rather than returning null when
+       the Firebase variables are all *present* but the private key will not
+       parse — the escaping accident `lib/firebase/admin.ts` documents. A
+       counter must never be the thing that turns a misconfigured deployment
+       into a failed enquiry. */
+    const db = adminDb();
+    if (!db) return true;
+
+    const ref = db.collection(collection).doc(bucketOf(address));
+
     return await db.runTransaction(async (transaction) => {
       const doc = await transaction.get(ref);
       const data = doc.exists

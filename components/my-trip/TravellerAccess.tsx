@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { firebaseAuth, isFirebaseClientConfigured } from "@/lib/firebase/client";
 import { Button } from "@/components/ui/Button";
+import { TravellerPassword } from "./TravellerPassword";
 
 /**
  * Proving you are the person who sent an enquiry.
@@ -52,6 +53,10 @@ export function TravellerAccess({
    * code has to be the one that arrived.
    */
   const [pendingLink, setPendingLink] = useState<string | null>(null);
+
+  /** Which way in is on screen. The link leads, because it needs nothing set
+      up first; a password is better only for somebody who comes back. */
+  const [usePassword, setUsePassword] = useState(false);
 
   /**
    * Whether the one-time code has already been handed to Firebase.
@@ -215,6 +220,10 @@ export function TravellerAccess({
     return <Notice>{t("signingIn")}</Notice>;
   }
 
+  if (usePassword && phase !== "confirm") {
+    return <TravellerPassword onUseLink={() => setUsePassword(false)} />;
+  }
+
   /* The link is good; only the address is missing. A separate form from the
      one below, because this finishes the sign-in rather than starting a new
      one — asking for another link here is what made a working link look
@@ -265,7 +274,9 @@ export function TravellerAccess({
     >
       <h1 className="font-display text-2xl text-charcoal">{t("accessTitle")}</h1>
       <p className="mt-2 text-sm leading-relaxed text-charcoal/60">
-        {reference ? t("accessBody", { reference }) : t("tripsAccessBody")}
+        {reference
+          ? t(referenceAccess ? "accessBodyUnlock" : "accessBody", { reference })
+          : t("tripsAccessBody")}
       </p>
 
       <label className="mt-6 block">
@@ -321,6 +332,13 @@ export function TravellerAccess({
           {phase === "sending" ? t("sending") : t("sendLink")}
         </Button>
       )}
+      <button
+        type="button"
+        onClick={() => setUsePassword(true)}
+        className="mt-5 block w-full text-sm text-charcoal/60 underline underline-offset-4 transition-colors hover:text-forest"
+      >
+        {t("usePasswordInstead")}
+      </button>
     </form>
   );
 }

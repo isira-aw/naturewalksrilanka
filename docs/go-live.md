@@ -58,6 +58,12 @@ built it had no credentials. In priority order:
       ever run against a stub. Eight per hour is far above anything a person
       does, so a real traveller should never meet it — but nobody has watched
       it work.
+- [ ] **Walk all three ways into `/my-trip`.** The emailed link (open it on a
+      *different* device too — that path exists now and had been a dead end);
+      a password account, which needs its one confirmation email before it can
+      open anything; and opening a single trip by reference and address, which
+      needs `TRAVELLER_LINK_SECRET` set. Check that the reference route shows
+      the trip read-only and offers nothing at `/my-trip` itself.
 - [ ] **Press *Test the connection* in the AI section.** `gemini-3.6-flash`
       has never run against a real key.
 - [ ] Confirm the snapshot write: an enquiry that records no
