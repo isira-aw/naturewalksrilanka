@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin/auth";
-import { deleteRecord, saveRecord, writeAll } from "@/lib/itineraries/store";
-import { itineraryArchiveSchema, itineraryRecordSchema } from "@/lib/itineraries/types";
+import { deleteRecord, saveRecord } from "@/lib/itineraries/store";
+import { itineraryRecordSchema } from "@/lib/itineraries/types";
 
 export const dynamic = "force-dynamic";
 
@@ -26,38 +26,7 @@ export async function POST(request: Request) {
   return NextResponse.json(await saveRecord(parsed.data));
 }
 
-/** Replaces or merges the whole archive — the *Data and migration* import. */
-export async function PUT(request: Request) {
-  if (!(await requireAdmin(request))) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
-
-  let body: unknown;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: "invalid_json" }, { status: 400 });
-  }
-
-  const { archive, mode } = (body ?? {}) as { archive?: unknown; mode?: unknown };
-  const parsed = itineraryArchiveSchema.safeParse(archive);
-  if (!parsed.success) {
-    return NextResponse.json({ error: "invalid_archive" }, { status: 400 });
-  }
-
-  try {
-    const records = await writeAll(parsed.data.records, mode === "merge" ? "merge" : "replace");
-    return NextResponse.json({ schemaVersion: parsed.data.schemaVersion, records });
-  } catch (error) {
-    /* An oversized import is refused rather than half-applied; say so, since
-       the admin panel shows this message to whoever pressed the button. */
-    return NextResponse.json(
-      { error: error instanceof Error ? error.message : "import_failed" },
-      { status: 400 },
-    );
-  }
-}
-
+/** Removes one itinerary for good. */
 export async function DELETE(request: Request) {
   if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });

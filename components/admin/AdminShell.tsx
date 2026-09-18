@@ -24,7 +24,6 @@ const SECTIONS = [
   { href: "/admin/settings", label: "Wizard settings" },
   { href: "/admin/ai", label: "AI" },
   { href: "/admin/access", label: "Access" },
-  { href: "/admin/data", label: "Data and migration" },
 ] as const;
 
 export function AdminShell({ children }: { children: React.ReactNode }) {

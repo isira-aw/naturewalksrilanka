@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  itineraryArchiveSchema,
-  type ItineraryArchive,
-  type ItineraryRecord,
-} from "./types";
+import { itineraryArchiveSchema, type ItineraryArchive, type ItineraryRecord } from "./types";
 
 /**
  * The browser's view of the itineraries.
@@ -67,30 +63,6 @@ export const itineraryStore = {
     });
     if (!response.ok) throw new Error("Could not delete.");
     notify();
-  },
-
-  async exportArchive() {
-    return fetchArchive();
-  },
-
-  async importArchive(
-    archive: unknown,
-    /** `replace` deletes anything absent from the file. */
-    mode: "replace" | "merge" = "replace",
-  ): Promise<ItineraryRecord[]> {
-    const parsed = itineraryArchiveSchema.safeParse(archive);
-    if (!parsed.success) throw new Error("That file is not an itinerary export.");
-
-    const response = await fetch("/api/admin/itineraries", {
-      method: "PUT",
-      credentials: "same-origin",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ archive: parsed.data, mode }),
-    });
-    if (!response.ok) throw new Error("Could not import.");
-    const written = (await response.json()) as ItineraryArchive;
-    notify();
-    return written.records;
   },
 
   subscribe(listener: () => void) {
