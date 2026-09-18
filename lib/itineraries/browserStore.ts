@@ -1,6 +1,7 @@
 "use client";
 
 import { itineraryArchiveSchema, type ItineraryArchive, type ItineraryRecord } from "./types";
+import type { ItineraryPage } from "./store";
 
 /**
  * The browser's view of the itineraries.
@@ -32,6 +33,51 @@ async function fetchArchive(): Promise<ItineraryArchive> {
 }
 
 export const itineraryStore = {
+  /**
+   * One page of the admin list, as summaries.
+   *
+   * Separate from `list()`, which the wizard uses and which needs whole
+   * records so it can filter and render them. This one is the admin list, and
+   * asks only for what a row shows.
+   */
+  async page(cursor?: string): Promise<ItineraryPage | { error: string }> {
+    try {
+      const params = new URLSearchParams();
+      if (cursor) params.set("cursor", cursor);
+
+      const response = await fetch(`/api/admin/itineraries?${params}`, {
+        credentials: "same-origin",
+        cache: "no-store",
+      });
+      if (!response.ok) {
+        return {
+          error:
+            response.status === 503
+              ? "Firebase is not reachable, so itineraries cannot be listed."
+              : "Could not load itineraries.",
+        };
+      }
+      return (await response.json()) as ItineraryPage;
+    } catch {
+      return { error: "Could not reach the server." };
+    }
+  },
+
+  /** One record in full, for the editor. */
+  async get(id: string): Promise<ItineraryRecord | null> {
+    try {
+      const response = await fetch(`/api/admin/itineraries?id=${encodeURIComponent(id)}`, {
+        credentials: "same-origin",
+        cache: "no-store",
+      });
+      if (!response.ok) return null;
+      const { record } = (await response.json()) as { record: ItineraryRecord };
+      return record;
+    } catch {
+      return null;
+    }
+  },
+
   /* Already ordered by `head` in `store.ts`, where the records come from
      Firestore; re-sorting the same list here would be one ordering rule kept
      in two places, waiting to disagree. */

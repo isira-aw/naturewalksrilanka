@@ -204,17 +204,73 @@ export async function submitReview(
 
 /* ---- moderation -------------------------------------------------------- */
 
-export async function listReviews(status?: ReviewStatus, limit = 100): Promise<Review[]> {
-  let query = reviews().orderBy("createdAt", "desc").limit(limit);
-  if (status) query = reviews().where("status", "==", status).orderBy("createdAt", "desc").limit(limit);
+/** How many reviews one page of the moderation list holds. */
+export const REVIEW_PAGE_SIZE = 25;
 
-  const snapshot = await query.get();
+export type ReviewPage = {
+  reviews: Review[];
+  /** Pass back as `cursor` for the next page; absent when there are no more. */
+  nextCursor?: string;
+};
+
+/**
+ * One page of reviews, newest first, optionally narrowed to one status.
+ *
+ * The cursor is the last row's `createdAt` rather than an offset: an offset
+ * re-reads and re-bills every document it skips, and shifts under you when a
+ * new review arrives mid-paging.
+ *
+ * Narrowing by status needs the `status` + `createdAt` composite index in
+ * `firestore.indexes.json`; ordering by `createdAt` alone needs none, because
+ * Firestore indexes every single field in both directions by itself.
+ */
+export async function listReviewsPage({
+  status,
+  cursor,
+  limit = REVIEW_PAGE_SIZE,
+}: {
+  status?: ReviewStatus;
+  cursor?: string;
+  limit?: number;
+} = {}): Promise<ReviewPage> {
+  const size = Math.min(Math.max(Math.trunc(limit) || REVIEW_PAGE_SIZE, 1), 100);
+
+  /* Built in one pass: applying `where` after an `orderBy` and then ordering
+     again would order by `createdAt` twice, which Firestore rejects. */
+  const base: FirebaseFirestore.Query = status
+    ? reviews().where("status", "==", status)
+    : reviews();
+
+  let query = base.orderBy("createdAt", "desc");
+  if (cursor) query = query.startAfter(cursor);
+
+  /* One more than asked for, so "is there another page" needs no second read. */
+  const snapshot = await query.limit(size + 1).get();
+  const page = snapshot.docs.slice(0, size);
+
   const found: Review[] = [];
-  for (const doc of snapshot.docs) {
+  for (const doc of page) {
     const parsed = reviewSchema.safeParse(doc.data());
     if (parsed.success) found.push(parsed.data);
     else console.error(`Skipping malformed review ${doc.id}`);
   }
+
+  /* From the last document read, not the last one parsed: a page where
+     everything failed to parse would otherwise stop the listing dead. */
+  const last = page[page.length - 1]?.data() as { createdAt?: unknown } | undefined;
+
+  return {
+    reviews: found,
+    nextCursor:
+      snapshot.docs.length > size && typeof last?.createdAt === "string"
+        ? last.createdAt
+        : undefined,
+  };
+}
+
+/** Everything matching, up to a cap. Used where a page makes no sense. */
+export async function listReviews(status?: ReviewStatus, limit = 100): Promise<Review[]> {
+  const { reviews: found } = await listReviewsPage({ status, limit });
   return found;
 }
 

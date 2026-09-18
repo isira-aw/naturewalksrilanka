@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 import { adminIdentity, requireAdmin } from "@/lib/admin/auth";
 import { isFirebaseConfigured } from "@/lib/firebase/admin";
-import { deleteReview, listReviews, moderateReview } from "@/lib/reviews/store";
+import {
+  REVIEW_PAGE_SIZE,
+  deleteReview,
+  listReviewsPage,
+  moderateReview,
+} from "@/lib/reviews/store";
 import { reviewStatusSchema } from "@/lib/reviews/types";
 
 export const dynamic = "force-dynamic";
@@ -21,7 +26,14 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "invalid_status" }, { status: 400 });
   }
 
-  return NextResponse.json({ reviews: await listReviews(status?.data) });
+  const params = new URL(request.url).searchParams;
+  return NextResponse.json(
+    await listReviewsPage({
+      status: status?.data,
+      cursor: params.get("cursor") ?? undefined,
+      limit: Number(params.get("limit")) || REVIEW_PAGE_SIZE,
+    }),
+  );
 }
 
 /**

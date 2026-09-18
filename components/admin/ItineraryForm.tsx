@@ -5,7 +5,6 @@ import { ITINERARY_CATEGORIES } from "@/lib/itineraries/categories";
 import { PROVINCES } from "@/lib/geo/sriLanka";
 import {
   emptyRecord,
-  uniqueSlug,
   type ItineraryHighlight,
   type ItineraryRecord,
 } from "@/lib/itineraries/types";
@@ -50,12 +49,10 @@ function withBlur(current: Record<string, string>, prepared: PreparedImage[]) {
  */
 export function ItineraryForm({
   initial,
-  existing,
   onSave,
   onCancel,
 }: {
   initial?: ItineraryRecord;
-  existing: ItineraryRecord[];
   onSave: (record: ItineraryRecord) => Promise<void>;
   onCancel: () => void;
 }) {
@@ -197,7 +194,8 @@ export function ItineraryForm({
     const record: ItineraryRecord = {
       ...draft,
       head: draft.head.trim(),
-      slug: uniqueSlug(draft.head, existing, draft.id),
+      /* The server decides the slug: it is the only place that can see every
+         itinerary, and the list here is one page of them. */
       highlights: draft.highlights
         .filter((highlight) => highlight.name.trim())
         .map((highlight) => ({
