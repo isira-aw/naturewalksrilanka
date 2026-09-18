@@ -165,6 +165,7 @@
     "contactEmail": "Email",
     "contactPhone": "WhatsApp / Phone",
     "contactCountry": "Country",
+    "honeypot": "Company (leave this empty)",
     "contactHint": "So we can reply to you. We keep your enquiry so you can look it up again later, and your answers also go into a WhatsApp message you send yourself.",
     "requirementsLabel": "Tell us about your ideal journey…",
     "reviewTitle": "Review your journey",

@@ -61,15 +61,6 @@ export function ItineraryForm({
   const [busy, setBusy] = useState(false);
 
   /**
-   * The coordinate boxes keep their own text.
-   *
-   * A coordinate pair means nothing by halves: patching the record on each
-   * keystroke would mean that typing a latitude and stopping saves a longitude
-   * of zero, which is a real place in the Atlantic and not an obvious mistake
-   * to spot on a map of Sri Lanka. The record is only given a pair once both
-   * boxes hold a number, and the pair is dropped the moment either does not.
-   */
-  /**
    * The English that `draft.translations` were made from, or `null` when
    * there are none.
    *
@@ -80,32 +71,6 @@ export function ItineraryForm({
   const [translationBase, setTranslationBase] = useState<string | null>(() =>
     initial && Object.keys(initial.translations).length > 0 ? englishOf(initial) : null,
   );
-
-  const [latText, setLatText] = useState(() =>
-    initial?.coordinates ? String(initial.coordinates.lat) : "",
-  );
-  const [lngText, setLngText] = useState(() =>
-    initial?.coordinates ? String(initial.coordinates.lng) : "",
-  );
-
-  function setCoordinate(axis: "lat" | "lng", value: string) {
-    const lat = axis === "lat" ? value : latText;
-    const lng = axis === "lng" ? value : lngText;
-    if (axis === "lat") setLatText(value);
-    else setLngText(value);
-
-    const parsedLat = Number(lat.trim());
-    const parsedLng = Number(lng.trim());
-    const complete =
-      lat.trim() !== "" &&
-      lng.trim() !== "" &&
-      Number.isFinite(parsedLat) &&
-      Number.isFinite(parsedLng) &&
-      Math.abs(parsedLat) <= 90 &&
-      Math.abs(parsedLng) <= 180;
-
-    patch({ coordinates: complete ? { lat: parsedLat, lng: parsedLng } : undefined });
-  }
 
   const isEdit = Boolean(initial);
 
@@ -368,81 +333,16 @@ export function ItineraryForm({
         </Field>
       </div>
 
-      {/* ---- how this itinerary is planned ----------------------------- */}
-      <section className="mt-8 rounded-2xl border border-stone-dark bg-stone/30 p-5">
-        <h3 className="font-display text-lg text-charcoal">Planning</h3>
-        <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-charcoal/55">
-          How the custom-tour wizard treats this itinerary: where it puts it on
-          the map, how long it allows for it, and where it appears in the list.
-          Every field is optional, and leaving one blank keeps the behaviour
-          this itinerary has today.
-        </p>
-
-        <div className="mt-5 grid gap-5 sm:grid-cols-2">
-          <Field
-            label="Latitude"
-            hint="optional"
-          >
-            <TextInput
-              value={latText}
-              onChange={(value) => setCoordinate("lat", value)}
-              placeholder="6.3725"
-            />
-          </Field>
-          <Field label="Longitude" hint="optional">
-            <TextInput
-              value={lngText}
-              onChange={(value) => setCoordinate("lng", value)}
-              placeholder="81.5185"
-            />
-          </Field>
-        </div>
-        {(latText.trim() === "") !== (lngText.trim() === "") && (
-          <p className="mt-2 text-xs leading-relaxed text-clay">
-            Both boxes are needed. Until then this itinerary is still placed by
-            its province.
-          </p>
-        )}
-        <p className="mt-2 text-xs leading-relaxed text-charcoal/45">
-          Without these the plan guesses from the location text and, failing
-          that, uses the centre of the province — which can be tens of
-          kilometres out, on the wizard&rsquo;s map and in the traveller&rsquo;s
-          PDF. Right-click the spot in Google Maps to copy them.
-        </p>
-
-        <div className="mt-5 grid gap-5 sm:grid-cols-2">
-          <Field label="Days to allow" hint="optional">
-            <TextInput
-              value={draft.stayDays ? String(draft.stayDays) : ""}
-              onChange={(value) => patch({ stayDays: positiveInteger(value) })}
-              placeholder="3"
-            />
-          </Field>
-          <Field label="Position in the list" hint="optional">
-            <TextInput
-              value={draft.sortOrder !== undefined ? String(draft.sortOrder) : ""}
-              onChange={(value) => patch({ sortOrder: positiveInteger(value) })}
-              placeholder="10"
-            />
-          </Field>
-        </div>
-        <p className="mt-2 text-xs leading-relaxed text-charcoal/45">
-          &ldquo;Days to allow&rdquo; overrides the number the planner reads out
-          of the suggested length — set it when that text is not a plain number.
-          Lower positions come first; itineraries without one stay alphabetical,
-          after those that have one.
-        </p>
-
-        <label className="mt-5 flex items-center gap-3 text-sm text-charcoal">
-          <input
-            type="checkbox"
-            checked={draft.featured}
-            onChange={(event) => patch({ featured: event.target.checked })}
-            className="size-4 accent-forest"
-          />
-          Show this first, above the ordinary order
-        </label>
-      </section>
+      {/* ---- the team's own picks ------------------------------------- */}
+      <label className="mt-8 flex items-center gap-3 text-sm text-charcoal">
+        <input
+          type="checkbox"
+          checked={draft.featured}
+          onChange={(event) => patch({ featured: event.target.checked })}
+          className="size-4 accent-forest"
+        />
+        Show this first, above the ordinary order
+      </label>
 
       <Field label="Content 1" required className="mt-5">
         <TextArea
@@ -583,12 +483,3 @@ export function ItineraryForm({
   );
 }
 
-/** Blank clears the field; anything that is not a whole number above zero is
-    ignored, so a half-typed value never becomes a saved one. */
-function positiveInteger(value: string): number | undefined {
-  const trimmed = value.trim();
-  if (!trimmed) return undefined;
-  const parsed = Number(trimmed);
-  if (!Number.isInteger(parsed) || parsed < 1) return undefined;
-  return parsed;
-}

@@ -196,6 +196,13 @@ export function WizardShell({
   const [restoreSettled, setRestoreSettled] = useState(false);
   const [sent, setSent] = useState(false);
 
+  /* The honeypot on the contact step. Held here rather than in the wizard's
+     reducer state for two reasons: the reducer state is what is drafted to
+     localStorage and sent as the enquiry `payload`, and neither is a place
+     for a field that only a bot ever fills. It also has to outlive the
+     contact step, which unmounts on the way to review. */
+  const [company, setCompany] = useState("");
+
   /* Reading storage in an effect, not during render: this page is prerendered
      per locale, localStorage does not exist on the server, and a lazy
      `useState` initialiser would therefore see null on the server and a draft
@@ -265,6 +272,10 @@ export function WizardShell({
       body: JSON.stringify({
         payload,
         locale,
+        /* Empty for every traveller; filled only by something that fills every
+           input it finds. The route drops those and answers as it would
+           otherwise — see `app/api/custom-tour/requests/route.ts`. */
+        company,
         /* Pinned so the admin panel can reproduce *this* document later. A
            rebuild from the payload alone would use the itineraries as they
            stand then, which is not what the traveller is holding. */
@@ -485,6 +496,8 @@ export function WizardShell({
                   country={state.country}
                   requirements={state.requirements}
                   onChange={(field, value) => dispatch({ type: "SET_FIELD", field, value })}
+                  company={company}
+                  onCompanyChange={setCompany}
                 />
               )}
               {currentStepKey === "review" && (

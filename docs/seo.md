@@ -151,7 +151,11 @@ honestly. None of them blocks launch.
   email come from `content/<locale>/navigation.json` and are real. Opening
   hours, a price range and geo coordinates are not set, because nobody has
   supplied them.
-- **Analytics.** Nothing is wired up. Search Console gives you search traffic;
-  it does not give you on-site behaviour.
+- **Analytics.** Nothing is wired up, and that is a decision rather than an
+  omission: Search Console gives you search traffic, and the site sets no
+  cookie at all until somebody signs in, so there is no consent banner to
+  build. What is given up is on-site behaviour. Picking a cookieless provider
+  later (Plausible, Vercel Analytics) keeps it that way; GA4 would bring a
+  consent banner with it.
 - **A localized privacy policy.** The page is English-only and is marked in the
   copy as pending legal review.

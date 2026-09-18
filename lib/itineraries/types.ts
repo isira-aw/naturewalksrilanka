@@ -71,27 +71,6 @@ export const itineraryRecordSchema = z.object({
   imageBlur: z.record(z.string(), z.string()).default({}),
   bestTime: z.string().optional(),
   suggestedLength: z.string().optional(),
-  /**
-   * Where this itinerary is, if somebody has said so.
-   *
-   * The journey plan otherwise matches `location` text against a place list
-   * and falls back to the centre of the province — which is the largest
-   * source of error in the route, the distances and the printed map.
-   */
-  coordinates: z
-    .object({ lat: z.number().min(-90).max(90), lng: z.number().min(-180).max(180) })
-    .optional(),
-  /**
-   * Days the plan should allow here, when `suggestedLength` prose is not a
-   * number the planner can read.
-   */
-  stayDays: z.number().int().min(1).max(30).optional(),
-  /**
-   * Where this sits in the wizard's list of suggestions. Lower comes first;
-   * anything without one sorts after everything that has one, alphabetically,
-   * which is how the whole list behaved before this field existed.
-   */
-  sortOrder: z.number().int().optional(),
   /** Shown first, above the ordinary order. The team's own picks. */
   featured: z.boolean().default(false),
   content1: z.string().default(""),

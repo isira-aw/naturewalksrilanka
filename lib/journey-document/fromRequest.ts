@@ -31,6 +31,14 @@ import type { JourneyDocument } from "./model";
  *
  * Enquiries sent before snapshots existed have no snapshot, which is why
  * path 2 is not merely a fallback for corruption.
+ *
+ * A third option was considered and **rejected**: storing the rendered PDF
+ * itself. It would be byte-identical, which neither of the above quite is,
+ * but the file is produced in the traveller's browser and they are not signed
+ * in — so keeping it means accepting an upload from an unauthenticated
+ * visitor. That is a security surface worth more than byte-fidelity, and the
+ * snapshot is a few tens of kilobytes of JSON against a binary nobody can
+ * inspect. Do not reintroduce it without solving the upload problem first.
  */
 
 /** Same list, and same order, as the wizard's own accommodation step. */

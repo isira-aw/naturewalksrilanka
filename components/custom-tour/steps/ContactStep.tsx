@@ -15,6 +15,8 @@ export function ContactStep({
   country,
   requirements,
   onChange,
+  company,
+  onCompanyChange,
 }: {
   name: string;
   email: string;
@@ -22,12 +24,33 @@ export function ContactStep({
   country: string;
   requirements: string;
   onChange: (field: ContactField, value: string) => void;
+  /** The honeypot's value. Not part of the enquiry — see `WizardShell`. */
+  company: string;
+  onCompanyChange: (value: string) => void;
 }) {
   const t = useTranslations("customTour");
 
   return (
     <fieldset>
       <StepHeading as="legend" title={t("steps.contact")} hint={t("contactHint")} />
+
+      {/* The honeypot. Hidden from people, left empty by them, and a giveaway
+          when a bot fills it. `aria-hidden` plus tabIndex -1 keeps it out of
+          the keyboard path too. Same pattern as the newsletter sign-up. */}
+      <div
+        className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden"
+        aria-hidden="true"
+      >
+        <label htmlFor="contact-company">{t("honeypot")}</label>
+        <input
+          id="contact-company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={company}
+          onChange={(e) => onCompanyChange(e.target.value)}
+        />
+      </div>
 
       {/* The four short fields keep their two-up grid and the long free-text
           box moves alongside them on desktop, so the step fits one screen. */}

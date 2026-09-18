@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { isFirebaseConfigured } from "@/lib/firebase/admin";
+import { allowEnquiry } from "@/lib/tourRequests/rateLimit";
 import { createRequest } from "@/lib/tourRequests/store";
 import {
   documentSnapshotSchema,
@@ -19,6 +20,19 @@ export const dynamic = "force-dynamic";
  * a Firestore outage must not stop a traveller reaching the team. So when
  * Firebase is unconfigured this returns 200 with `saved: false`, and the
  * client carries on to WhatsApp exactly as before.
+ *
+ * Unauthenticated, and it has to stay that way. Three things keep it from
+ * being a spam sink, none of which a traveller ever meets:
+ *
+ * 1. **`requestPayloadSchema` bounds every field**, so no single request can
+ *    push a megabyte into Firestore.
+ * 2. **A honeypot.** `company` is hidden from people by CSS and left empty by
+ *    them; a bot that fills every input gives itself away. A filled honeypot
+ *    gets the same answer a real enquiry gets and is quietly dropped, because
+ *    telling a bot it failed only teaches it to try again. Same pattern, and
+ *    the same reasoning, as `app/api/newsletter/route.ts`.
+ * 3. **A rate limit**, on how many enquiries one caller may have written per
+ *    hour. It drops the saved copy only — see `lib/tourRequests/rateLimit.ts`.
  */
 export async function POST(request: Request) {
   let body: unknown;
@@ -28,12 +42,26 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
 
-  const { payload, locale, documentSnapshot, downloads } = (body ?? {}) as {
+  const { payload, locale, documentSnapshot, downloads, company } = (body ?? {}) as {
     payload?: unknown;
     locale?: unknown;
     documentSnapshot?: unknown;
     downloads?: unknown;
+    company?: unknown;
   };
+
+  /* The honeypot. Kept out of `payload` on purpose — the payload is what gets
+     stored and read back, and a field no traveller ever fills has no business
+     in a saved enquiry.
+
+     Answered before the payload is even validated, so a bot learns nothing
+     from the reply and costs nothing to turn away. `{ saved: false }` is what
+     several ordinary outcomes below answer too, and is true: nothing was
+     written. Inventing a reference to make it look saved would put a
+     fabricated one in the reply. */
+  if (typeof company === "string" && company.trim() !== "") {
+    return NextResponse.json({ saved: false });
+  }
 
   const parsed = requestPayloadSchema.safeParse(payload);
   if (!parsed.success) {
@@ -47,6 +75,14 @@ export async function POST(request: Request) {
 
   if (!isFirebaseConfigured()) {
     return NextResponse.json({ saved: false, reason: "not_configured" });
+  }
+
+  /* The caller is one click from WhatsApp whatever this answers — the client
+     sends this without awaiting it — so 429 here costs a traveller nothing
+     and says plainly in the logs that a copy was dropped rather than lost.
+     `app/api/admin/session/route.ts` answers its own limit the same way. */
+  if (!(await allowEnquiry(request))) {
+    return NextResponse.json({ saved: false, reason: "rate_limited" }, { status: 429 });
   }
 
   try {

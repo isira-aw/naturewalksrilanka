@@ -165,6 +165,7 @@
     "contactEmail": "E-mail",
     "contactPhone": "WhatsApp / telefon",
     "contactCountry": "Land",
+    "honeypot": "Virksomhed (lad dette stå tomt)",
     "contactHint": "Så vi kan svare dig. Vi gemmer din henvendelse, så du kan finde den frem igen senere, og dine svar går også ind i en WhatsApp-besked, du selv sender.",
     "requirementsLabel": "Fortæl os om din ideelle rejse…",
     "reviewTitle": "Se din rejse igennem",

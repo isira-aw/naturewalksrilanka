@@ -16,9 +16,9 @@ import { cn } from "@/lib/utils/cn";
  * four inline translations that make up most of a record. The editor fetches
  * the one it is opening.
  *
- * Alphabetical, because Firestore cannot order by `featured` or `sortOrder`
- * without dropping every record that lacks the field. Placement is shown as a
- * label instead — see `listRecordsPage`.
+ * Alphabetical, because Firestore cannot order by `featured` without dropping
+ * every record that lacks the field. It is shown as a label instead — see
+ * `listRecordsPage`.
  */
 export function ItineraryList({
   items,
@@ -102,7 +102,6 @@ export function ItineraryList({
                   </h3>
                   <p className="mt-1 font-utility text-[11px] text-charcoal/45">
                     {readyCount(record)}/{TRANSLATION_LOCALES.length} languages
-                    {record.sortOrder !== undefined && ` · position ${record.sortOrder}`}
                   </p>
                 </div>
 

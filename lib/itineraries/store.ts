@@ -60,18 +60,10 @@ export async function listRecords(): Promise<ItineraryRecord[]> {
  * The order the wizard offers itineraries in, and the order the admin list
  * shows them in — one rule, so the team sees what a traveller will.
  *
- * Featured first, then anything with an explicit position, then everything
- * else alphabetically. An itinerary with no position sorts after every
- * itinerary that has one, which is how the whole list behaved before
- * positions existed: set none and nothing moves.
+ * Featured first, then everything else alphabetically.
  */
 function byPlacement(a: ItineraryRecord, b: ItineraryRecord) {
   if (a.featured !== b.featured) return a.featured ? -1 : 1;
-
-  const left = a.sortOrder ?? Number.POSITIVE_INFINITY;
-  const right = b.sortOrder ?? Number.POSITIVE_INFINITY;
-  if (left !== right) return left - right;
-
   return a.head.localeCompare(b.head);
 }
 
@@ -157,7 +149,6 @@ export type ItinerarySummary = {
   province: ItineraryRecord["province"];
   hidden: boolean;
   featured: boolean;
-  sortOrder?: number;
   updatedAt: string;
   /** First photograph only — the list shows one thumbnail at most. */
   image?: string;
@@ -184,7 +175,6 @@ function summarise(record: ItineraryRecord): ItinerarySummary {
     province: record.province,
     hidden: record.hidden,
     featured: record.featured,
-    sortOrder: record.sortOrder,
     updatedAt: record.updatedAt,
     image: record.images[0],
     translations,
@@ -195,15 +185,14 @@ function summarise(record: ItineraryRecord): ItinerarySummary {
  * One page of the admin list, alphabetically by title.
  *
  * Ordered by `head` rather than by the placement rule the wizard uses, and
- * that is a deliberate limitation worth knowing about: `featured` and
- * `sortOrder` cannot drive a Firestore ordering here because **a document
- * missing the field is left out of an `orderBy` on it entirely** — every
- * itinerary written before those fields existed would vanish from the list.
- * `head` is on every record, always.
+ * that is a deliberate limitation worth knowing about: `featured` cannot drive
+ * a Firestore ordering here because **a document missing the field is left out
+ * of an `orderBy` on it entirely** — every itinerary written before that field
+ * existed would vanish from the list. `head` is on every record, always.
  *
- * So the list is alphabetical and shows each itinerary's placement as a
- * label instead. The wizard still offers them in placement order; that read
- * is the whole (small) collection and sorts in memory.
+ * So the list is alphabetical and shows `Featured` as a label instead. The
+ * wizard still offers them in placement order; that read is the whole (small)
+ * collection and sorts in memory.
  */
 export async function listRecordsPage({
   cursor,

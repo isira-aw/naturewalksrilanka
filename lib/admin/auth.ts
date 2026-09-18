@@ -118,6 +118,14 @@ export async function isAdminSession(): Promise<boolean> {
  * The claim alone is never enough — it could outlive somebody's employment —
  * so removal goes through the list, which also clears the claim and revokes
  * the tokens. See `/api/admin/access`.
+ *
+ * Verifying the session cookie costs a round trip to Google on every admin
+ * request, and caching the result for a minute was proposed to remove it.
+ * **Declined, deliberately.** It would put a delay of up to that minute
+ * between removing somebody's access and their losing it, and revocation
+ * being immediate is worth more than the latency. The speed work went into
+ * sending less code and making fewer requests instead. Do not add the cache
+ * back without deciding that trade again, out loud.
  */
 export async function createAdminSession(
   idToken: string,

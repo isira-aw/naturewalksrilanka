@@ -26,6 +26,14 @@ export const COLLECTIONS = {
    * limits repeated attempts — see `lib/admin/signInGuard.ts`.
    */
   adminSignInAttempts: "adminSignInAttempts",
+  /**
+   * The enquiry spam counters, one document per hash bucket.
+   *
+   * A fixed set of buckets rather than one document per caller, so the
+   * collection cannot grow — see `lib/tourRequests/rateLimit.ts`. No address
+   * or hash is stored in them.
+   */
+  enquiryRateLimits: "enquiryRateLimits",
   /** Configuration the team edits in the panel. One document per area. */
   settings: "settings",
 } as const;
