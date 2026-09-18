@@ -198,17 +198,26 @@ export async function listRequests({
      a second query — and then dropped before anyone sees it. */
   const snapshot = await query.limit(size + 1).get();
 
+  const page = snapshot.docs.slice(0, size);
+
   const requests: TourRequest[] = [];
-  for (const doc of snapshot.docs.slice(0, size)) {
+  for (const doc of page) {
     const parsed = tourRequestSchema.safeParse(doc.data());
     if (parsed.success) requests.push(parsed.data);
     else console.error(`Skipping malformed tour request ${doc.id}`);
   }
 
+  /* Taken from the last document read, not the last one successfully parsed.
+     A page where everything failed to parse would otherwise produce no cursor
+     and stop the listing dead, hiding every enquiry behind the bad ones. */
+  const last = page[page.length - 1]?.data() as { createdAt?: unknown } | undefined;
+
   return {
     requests,
     nextCursor:
-      snapshot.docs.length > size ? requests[requests.length - 1]?.createdAt : undefined,
+      snapshot.docs.length > size && typeof last?.createdAt === "string"
+        ? last.createdAt
+        : undefined,
   };
 }
 

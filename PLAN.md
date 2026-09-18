@@ -410,3 +410,66 @@ Two consequences worth stating plainly:
 - **A4 being dropped means the Google round trip per request stays.** The
   panel will still be markedly faster from A1–A3 (less code, fewer bytes,
   fewer requests), but the per-request auth latency is unchanged, by choice.
+
+---
+
+## What shipped
+
+All six phases are on `claude/dazzling-ptolemy-jzkd32`. `tsc --noEmit`,
+`eslint` and `next build` are clean after every commit, and
+`packages[""].overrides` in `package-lock.json` was checked each time.
+
+| Phase | Commit | State |
+|---|---|---|
+| A1–A3 | Route split, lazy data | **Measured.** One 36 KB admin chunk became four; a section loads only its own (Reviews 12 KB, Data 16, Translations 16, Itineraries 28). Reviews makes no itinerary request at all |
+| B1–B4, B7 | Customers section and the document rebuild | **Rebuild proven** by running `documentFromRequest` against fabricated records. Firestore reads and writes compiled only |
+| B5 | Document snapshot and download log | Compiled only |
+| C1, C2, C4, C5 | Refused-account deletion, throttle, Access section, prune script | Compiled only; the script's syntax is checked |
+| D1–D4 | Coordinates, stay length, ordering, wizard settings | **Measured.** See below |
+| E1–E3 | `docs/llm.md`, AI section, `GOOGLE_AI_MODEL` | Docs done; the model id still needs the test button against a real key |
+| A4 | — | **Dropped**, as decided. Revocation stays immediate |
+
+### The coordinate fix, measured
+
+Running the planner over Sinharaja both ways:
+
+```
+guessed  position 6.7200,80.4000  days 2  drive from airport 104 km
+told     position 6.4059,80.4569  days 4  drive from airport 145 km
+```
+
+The province-centre guess is 35 km from the real place and the drive estimate
+is 41 km short, and "a long weekend" silently became two days instead of four.
+That error was reaching the driving order, the wizard's map and the printed
+PDF alike.
+
+## What is still not proven
+
+Everything that touches Firestore or Firebase Auth has been compiled and
+typechecked but never run against the project, because this session has no
+credentials for it. In rough order of how much it matters:
+
+1. **The document rebuild end to end.** The pure part is proven; reading a real
+   `tourRequest` and handing it to the renderer is not.
+2. **The snapshot write.** If it fails silently, enquiries record no snapshot
+   and every rebuild falls back to today's itineraries — which still works, and
+   still warns, but is not the intent.
+3. **`discardProbeAccount`.** Worth testing deliberately, with a throwaway
+   Google account, before trusting that it deletes the right thing and only
+   the right thing.
+4. **The composite index** on `tourRequests` (`status` + `createdAt`) must be
+   deployed, or filtering by status fails with a link to create it.
+5. **`GOOGLE_AI_MODEL`.** Press *Test the connection* in the AI section.
+
+## Follow-ups not taken
+
+- **`handoff.md` Known issues §1** — the privacy policy still contradicts the
+  code, and now contradicts it further: this work adds a stored document
+  snapshot and a download log to what is kept about an enquiry. It needs
+  business facts nobody here can invent.
+- **A server-side renderer** for the journey document, which is what emailing
+  one would need. Out of scope; the browser-side rebuild reuses the proven
+  renderer and cannot drift from what the traveller got.
+- **A real search** across enquiries. The Customers filter works over the
+  pages already loaded, which Firestore cannot improve on without a search
+  index.
