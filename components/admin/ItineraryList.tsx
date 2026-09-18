@@ -3,7 +3,6 @@
 import { categoryLabel } from "@/lib/itineraries/categories";
 import { provinceLabel } from "@/lib/geo/sriLanka";
 import { TRANSLATION_LOCALES, type ItineraryRecord } from "@/lib/itineraries/types";
-import { localeNames } from "@/i18n/routing";
 import { cn } from "@/lib/utils/cn";
 
 /**
@@ -108,10 +107,6 @@ export function ItineraryList({
 export function readyCount(record: ItineraryRecord) {
   return TRANSLATION_LOCALES.filter((locale) => record.translations[locale]?.status === "ready")
     .length;
-}
-
-export function localeName(locale: string) {
-  return localeNames[locale as keyof typeof localeNames] ?? locale;
 }
 
 function RowButton({

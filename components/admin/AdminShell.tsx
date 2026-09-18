@@ -20,7 +20,6 @@ const SECTIONS = [
   { href: "/admin/itineraries", label: "Custom tour optimisation" },
   { href: "/admin/customers", label: "Customers" },
   { href: "/admin/reviews", label: "Reviews" },
-  { href: "/admin/translations", label: "Translations" },
   { href: "/admin/settings", label: "Wizard settings" },
   { href: "/admin/ai", label: "AI" },
   { href: "/admin/access", label: "Access" },
