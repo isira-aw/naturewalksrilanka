@@ -45,7 +45,16 @@ export async function adminIdentity(request: Request): Promise<string | null> {
        immediately: revoking their refresh tokens invalidates the cookie on
        its very next use, rather than up to eight hours later. */
     const decoded = await auth.verifySessionCookie(cookie, true);
-    return decoded.admin === true ? (decoded.email ?? null) : null;
+    if (decoded.admin !== true) return null;
+
+    /* Normalised, because every other use of an address in this codebase is:
+       the `staff` document id, the allowlist lookup, the refusal counter. An
+       un-normalised one read back here would compare unequal to all of them —
+       and the comparison that matters most is `/api/admin/access` refusing to
+       let somebody remove their own access. An admin whose Google address
+       carries a capital letter could otherwise walk straight past that guard
+       and, if they were the last admin, lock everybody out. */
+    return decoded.email?.trim().toLowerCase() ?? null;
   } catch {
     return null;
   }

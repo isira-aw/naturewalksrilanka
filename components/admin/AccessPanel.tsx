@@ -17,14 +17,15 @@ type StaffEntry = {
   addedAt?: string;
   addedBy?: string;
   hasAccount: boolean;
-  hasClaim: boolean;
 };
 
 type RefusedAttempt = { email: string; at: string; reason: string };
 
+/* Only one refusal reason can actually occur. Being on the list without the
+   claim is no longer a refusal — the claim is granted on first sign-in — so
+   there is no entry for it. Anything unrecognised is shown verbatim. */
 const REASONS: Record<string, string> = {
   not_staff: "Not on the staff list",
-  not_admin: "On the list, but the claim was missing",
 };
 
 export function AccessPanel() {

@@ -30,9 +30,6 @@ import {
  * renderer that could quietly drift from the first.
  */
 
-/** Printed under the closing notice. Matches `content/en/navigation.json`. */
-const WHATSAPP_NUMBER = "94779669367";
-
 const STATUS_LABELS: Record<RequestStatus, string> = {
   received: "Received",
   "in-progress": "In progress",
@@ -136,15 +133,20 @@ export function RequestDetail({
         /* Only the one language's strings are fetched, and only when a
            document is actually asked for — the panel itself runs in English
            and has no reason to carry five locales of messages. */
-        const messages = (await import(`@/content/${documentLocale}/ui.json`))
-          .default as UiMessages;
+        const [messages, navigation] = await Promise.all([
+          import(`@/content/${documentLocale}/ui.json`),
+          /* The number comes from the content files, like everywhere else on
+             the site. Copying it into a constant here would be a second place
+             for it to be right, and eventually one place for it to be wrong. */
+          import(`@/content/${documentLocale}/navigation.json`),
+        ]);
 
         const built = documentFromRequest({
           request: data.request,
           records,
           locale: documentLocale,
-          messages,
-          whatsappNumber: WHATSAPP_NUMBER,
+          messages: messages.default as UiMessages,
+          whatsappNumber: navigation.default.contact.whatsappNumber,
         });
         setLastBuild(built);
         await downloadJourneyDocument(built.document, kind);

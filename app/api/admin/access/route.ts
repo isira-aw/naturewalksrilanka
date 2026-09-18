@@ -24,9 +24,15 @@ type StaffEntry = {
   email: string;
   addedAt?: string;
   addedBy?: string;
-  /** Whether a Firebase account exists, and whether it carries the claim. */
+  /**
+   * Whether a Firebase account exists yet. Staff are usually added before
+   * their first sign-in, and the panel says so rather than looking broken.
+   *
+   * The `admin` claim is deliberately not reported. It is a cache of this
+   * list now, granted on first sign-in, so it can only ever disagree with
+   * the list for as long as it takes them to sign in once.
+   */
   hasAccount: boolean;
-  hasClaim: boolean;
 };
 
 async function requireIdentity(request: Request) {
@@ -55,13 +61,12 @@ export async function GET(request: Request) {
       snapshot.docs.map(async (doc) => {
         const data = doc.data() as { addedAt?: string; addedBy?: string };
         try {
-          const user = await auth.getUserByEmail(doc.id);
+          await auth.getUserByEmail(doc.id);
           return {
             email: doc.id,
             addedAt: data.addedAt,
             addedBy: data.addedBy,
             hasAccount: true,
-            hasClaim: user.customClaims?.admin === true,
           };
         } catch {
           /* No Firebase account yet — they have been added but have not
@@ -71,7 +76,6 @@ export async function GET(request: Request) {
             addedAt: data.addedAt,
             addedBy: data.addedBy,
             hasAccount: false,
-            hasClaim: false,
           };
         }
       }),
