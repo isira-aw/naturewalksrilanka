@@ -6,7 +6,8 @@ Next.js (App Router, TypeScript) rebuild of naturewalksrilanka.com — the priva
 
 ```
 Next.js (this repo)
-  └── Firebase          Authentication · Firestore · Storage
+  └── Firebase          Authentication · Firestore
+  └── Cloudinary        every photograph
         └── deployed on Vercel
 ```
 
@@ -37,22 +38,39 @@ There is no separate admin credential. Admin access is a Firebase account carryi
 
 ## Dynamic features (Firebase)
 
-Firestore, Firebase Auth and Firebase Storage back the admin panel, the itineraries it authors, custom-tour enquiries and the invited-and-moderated customer reviews.
+Firestore and Firebase Auth back the admin panel, the itineraries it authors, custom-tour enquiries and the invited-and-moderated customer reviews. Photographs live on Cloudinary.
 
 | Concern | Implementation |
 |---|---|
 | Staff sign-in | Firebase Auth, Google provider, `admin` claim + `staff` allowlist |
 | Traveller sign-in | Firebase Auth, email link |
 | All data | Firestore, via route handlers only — `firestore.rules` denies client access |
-| Photographs | Firebase Storage, uploaded direct from the browser under `storage.rules` |
+| Photographs | Cloudinary. Firebase holds no files, and there is no `storage.rules` |
 
 - **[`docs/FIREBASE_INTEGRATION.md`](docs/FIREBASE_INTEGRATION.md)** — how it all works, every variable, and troubleshooting.
 - **[`docs/FIREBASE_SETUP_CHECKLIST.md`](docs/FIREBASE_SETUP_CHECKLIST.md)** — the same steps as a tick-list.
 - **[`docs/itinerary-storage.md`](docs/itinerary-storage.md)** — where itinerary records live and how to move them.
 
-> **No Firebase project exists yet.** The code is written and merged but has never run against one, so treat all of it as unvalidated until `/api/admin/firebase-status` returns `{"configured": true, "reachable": true}`. The checklist is the order to do that in. Since admin sign-in is Firebase-only, the panel cannot be opened until this is done.
+> **The Firebase project is connected, on the Spark (free) plan, but nothing that touches Firestore or Firebase Auth has ever been run against it.** It is all compiled and typechecked; every session that wrote it worked without credentials. Treat those paths as unvalidated until somebody has actually used them — [`docs/go-live.md`](docs/go-live.md) §2 is that list, in priority order. Spark means no Blaze, so no blocking functions; [`docs/admin-access.md`](docs/admin-access.md) explains what that costs.
 
-**Before deploying, read [`handoff.md`](handoff.md).** It carries the two open blockers — the unverified itinerary migration and the unconnected Firebase project — plus the traps worth knowing about before touching the lockfile or adding a `loading.tsx`. It is temporary; delete it once those are closed.
+**Before deploying, work through [`docs/go-live.md`](docs/go-live.md).** It is the whole launch checklist: what must be set before the first deploy, what has to be proved against the real project, how to promote the Content Security Policy, the content only Nandana can supply, and the standing decisions that should not be re-proposed as if they were oversights.
+
+**Before changing anything, skim [`docs/gotchas.md`](docs/gotchas.md).** Ten faults this project has already paid for once — several of them clean under `tsc`, `eslint` *and* `next build`, and visible only in a browser. The lockfile `overrides` block and `loading.tsx` are the two that have taken the site down.
+
+### Load-bearing files
+
+Worth understanding before changing anything near them.
+
+| File | Why it matters |
+|---|---|
+| `lib/admin/auth.ts` | The **only** authorisation point. `requireAdmin` is async — a forgotten `await` returns a truthy Promise and admits everyone |
+| `lib/firebase/admin.ts` | The only door to Firestore. Returns `null` rather than throwing when unconfigured |
+| `lib/itineraries/store.ts` | The only itinerary store (Firestore). Route handlers call it directly. The browser's fetch wrapper is `browserStore.ts` |
+| `firestore.rules` | Denies all client access on purpose — everything goes through route handlers |
+| `lib/cloudinary/media.ts` | Every photograph in and out. Admin uploads go direct from the browser under a signature; review photographs go through the server so the size and type limits are enforced somewhere the submitter does not control |
+| `lib/reviews/store.ts` | Review links, redemption inside a transaction, moderation, and the deletes that take photographs with them |
+| `lib/tourRequests/rateLimit.ts` | How often one caller may have an enquiry written. Fixed hash buckets, no addresses stored, and it fails open on purpose |
+| `package.json` → `overrides` | Pins `jwks-rsa`'s `jose` to 5.x. Removing it takes the whole site down on Node 20 — see `docs/gotchas.md` §2 |
 
 ## Editing content
 
@@ -101,7 +119,7 @@ One prebuilt itinerary idea belongs to **exactly one** interest category (`birdi
 
 **These are now authored in the admin panel, not in the content files.** Each one is a Firestore record, translated from the panel through Gemini, and rendered as an `Experience` by `lib/itineraries/toExperience.ts`. `content/<locale>/experiences.json` still exists, is still validated and is still merged in — but it is empty in every locale, and the wizard is fed from the admin panel instead. Add an entry there only if you want a journey idea that cannot be edited without a deploy.
 
-Per-highlight photographs are supported either way: a highlight with an `image` renders it beside the name in the dialog, and one without renders as a lettered tile. Photographs attached in the admin panel go to Firebase Storage; a highlight authored in a content file names a path under `public/` — see [`docs/photography.md`](docs/photography.md).
+Per-highlight photographs are supported either way: a highlight with an `image` renders it beside the name in the dialog, and one without renders as a lettered tile. Photographs attached in the admin panel go to Cloudinary; a highlight authored in a content file names a path under `public/` — see [`docs/photography.md`](docs/photography.md).
 
 ### Generated translations
 

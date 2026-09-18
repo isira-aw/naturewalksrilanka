@@ -2,6 +2,22 @@
 
 Branch: `claude/dazzling-ptolemy-jzkd32`, from `main` (`2951fea`).
 
+> **Note added later.** This plan is the reasoning behind a round that has
+> since merged, and `handoff.md` — which it refers to throughout — no longer
+> exists. Its durable content was folded into `docs/gotchas.md` (the *Failed
+> attempts* sections, same numbering, so a reference to *Failed attempts* §1
+> is now `docs/gotchas.md` §1) and `docs/go-live.md` (everything still to be
+> done before launch, including *What is still not proven* below). The
+> references are left as written rather than rewritten, because this is a
+> record of what was decided and when.
+>
+> **Read every statement below as "true when this was written".** Two are
+> conspicuously no longer true: Firebase *is* connected now (Spark plan), and
+> the privacy policy no longer contradicts the code — its description of what
+> is stored was rewritten and checked against the code, and only the business
+> questions on it remain open. `README.md` and `docs/go-live.md` are the
+> current state; this file is not.
+
 This plan continues from `handoff.md`. Read that first; everything below
 assumes its **Known issues** and **Failed attempts** sections are still true.
 

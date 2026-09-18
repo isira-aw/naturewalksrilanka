@@ -59,7 +59,7 @@ The whole surface needed here is "upload one image" and "delete one image",
 which is two signed POSTs. The `cloudinary` package would add a dependency
 tree for that, and this repository has twice been taken down by a lockfile
 that shifted underneath it — see the `jose` override in `package.json` and
-*Failed attempts* in `handoff.md`. `node:crypto` signs the requests instead.
+`gotchas.md` §2. `node:crypto` signs the requests instead.
 
 Signing is Cloudinary's documented recipe, in `lib/cloudinary/sign.ts`: take
 every parameter that will be sent except `file`, `api_key` and
