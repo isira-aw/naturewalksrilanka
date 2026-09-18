@@ -8,6 +8,7 @@ import { getContent } from "@/lib/content/loader";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { PageHero } from "@/components/ui/PageHero";
 import { WizardShell } from "@/components/custom-tour/WizardShell";
+import { readCustomTourSettings } from "@/lib/settings/store";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -41,10 +42,14 @@ export default async function CustomTourPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, navigation, experiences] = await Promise.all([
+  const [t, navigation, experiences, settings] = await Promise.all([
     getTranslations({ locale: l, namespace: "customTour" }),
     getContent(l, "navigation"),
     getContent(l, "experiences"),
+    /* Never rejects: an unreadable settings document yields the defaults, so
+       a Firestore outage leaves this public page working exactly as it did
+       before any of it was configurable. */
+    readCustomTourSettings(),
   ]);
 
   return (
@@ -72,6 +77,7 @@ export default async function CustomTourPage({
             locale={l}
             whatsappNumber={navigation.contact.whatsappNumber}
             experiences={experiences}
+            settings={settings}
           />
         </div>
       </section>

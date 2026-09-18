@@ -26,9 +26,16 @@ export const COLLECTIONS = {
    * limits repeated attempts — see `lib/admin/signInGuard.ts`.
    */
   adminSignInAttempts: "adminSignInAttempts",
+  /** Configuration the team edits in the panel. One document per area. */
+  settings: "settings",
 } as const;
 
 export type CollectionName = (typeof COLLECTIONS)[keyof typeof COLLECTIONS];
+
+/** The documents inside `settings`, named here for the same reason. */
+export const SETTINGS_DOCS = {
+  customTour: "customTour",
+} as const;
 
 /** Revisions hang off a request, so the history cannot outlive its parent. */
 export const REVISIONS_SUBCOLLECTION = "revisions";

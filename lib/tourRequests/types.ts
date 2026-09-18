@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TRAVELLER_CEILING } from "@/lib/settings/customTour";
 
 /**
  * A custom tour enquiry, as recorded when the traveller sends it.
@@ -51,7 +52,11 @@ export const FIELD_LIMITS = {
 
 /** What the wizard sends. Mirrors `WizardState` without the step counter. */
 export const requestPayloadSchema = z.object({
-  travelers: z.number().int().min(1).max(12),
+  /* The hard ceiling, not the configurable limit the wizard offers. This
+     endpoint is unauthenticated, so its validation cannot depend on a
+     Firestore read that might fail — and must not be widened by anything the
+     caller controls. `lib/settings/customTour.ts` explains the two. */
+  travelers: z.number().int().min(1).max(TRAVELLER_CEILING),
   dateRange: z.object({
     start: z.string().nullable(),
     end: z.string().nullable(),

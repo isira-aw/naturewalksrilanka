@@ -2,25 +2,23 @@
 
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils/cn";
+import {
+  ACCOMMODATION_KEYS,
+  type AccommodationKey,
+} from "@/lib/settings/customTour";
 import { StepHeading } from "./StepHeading";
-
-const ACCOMMODATION_KEYS = [
-  "budget",
-  "comfortable",
-  "boutique",
-  "luxury",
-  "ecoLodge",
-  "recommend",
-] as const;
 
 export function AccommodationStep({
   value,
   onToggle,
+  options = ACCOMMODATION_KEYS,
   notes,
   onNotesChange,
 }: {
   value: string[];
   onToggle: (value: string) => void;
+  /** Which styles to offer, in order. From the wizard settings. */
+  options?: readonly AccommodationKey[];
   notes: string;
   onNotesChange: (value: string) => void;
 }) {
@@ -39,7 +37,7 @@ export function AccommodationStep({
             optional, so it should not push the choices up the page. */}
         <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:items-start lg:gap-8">
           <div className="grid gap-3 sm:grid-cols-2 xl:gap-4">
-            {ACCOMMODATION_KEYS.map((key) => {
+            {options.map((key) => {
               const checked = value.includes(key);
               const inputId = `accommodation-${key}`;
               return (
