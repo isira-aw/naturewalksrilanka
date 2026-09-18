@@ -287,6 +287,7 @@
     "accessBody": "Enter the email address you used for trip {reference} and we will send you a link to open it. No password needed.",
     "accessBodyUnlock": "Enter the email address you used for trip {reference} and we will open it. You can have a link emailed instead, or use a password.",
     "emailLabel": "Email",
+    "emailNeeded": "Enter your email address first.",
     "sendLink": "Email me a link",
     "sending": "Sending…",
     "linkSent": "We have sent a link to {email}.",

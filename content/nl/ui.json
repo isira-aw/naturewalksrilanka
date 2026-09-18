@@ -288,6 +288,7 @@
     "accessBody": "Vul het e-mailadres in dat je gebruikte voor reis {reference}, dan sturen we je een link om hem te openen. Geen wachtwoord nodig.",
     "accessBodyUnlock": "Voer het e-mailadres in dat je voor reis {reference} hebt gebruikt, dan openen we hem. Je kunt ook een link laten mailen of een wachtwoord gebruiken.",
     "emailLabel": "E-mail",
+    "emailNeeded": "Vul eerst je e-mailadres in.",
     "sendLink": "Stuur mij een link",
     "sending": "Versturen…",
     "linkSent": "We hebben een link naar {email} gestuurd.",

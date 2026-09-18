@@ -288,6 +288,7 @@
     "accessBody": "Skriv den e-mailadresse, du brugte til rejse {reference}, så sender vi dig et link til at åbne den. Ingen adgangskode.",
     "accessBodyUnlock": "Indtast den e-mailadresse, du brugte til rejse {reference}, så åbner vi den. Du kan også få tilsendt et link eller bruge en adgangskode.",
     "emailLabel": "E-mail",
+    "emailNeeded": "Indtast din e-mailadresse først.",
     "sendLink": "Send mig et link",
     "sending": "Sender…",
     "linkSent": "Vi har sendt et link til {email}.",

@@ -288,6 +288,7 @@
     "accessBody": "Introduce el correo que usaste para el viaje {reference} y te enviaremos un enlace para abrirlo. Sin contraseña.",
     "accessBodyUnlock": "Introduce la dirección de correo que usaste para el viaje {reference} y lo abriremos. También puedes pedir un enlace por correo o usar una contraseña.",
     "emailLabel": "Correo electrónico",
+    "emailNeeded": "Introduce primero tu dirección de correo.",
     "sendLink": "Enviarme un enlace",
     "sending": "Enviando…",
     "linkSent": "Hemos enviado un enlace a {email}.",

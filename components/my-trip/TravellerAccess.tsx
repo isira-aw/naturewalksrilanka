@@ -161,7 +161,14 @@ export function TravellerAccess({
    * the whole of what it can open — see `lib/tourRequests/referenceAccess.ts`.
    */
   async function unlock() {
-    if (!reference || !email.trim()) return;
+    if (!reference) return;
+    /* This button is outside the form's own validation — it has to be, or
+       pressing it would submit the form and send a link instead — so the
+       empty case is caught here rather than looking like a dead button. */
+    if (!email.trim()) {
+      setMessage(t("emailNeeded"));
+      return;
+    }
     setPhase("sending");
     setMessage(null);
     try {

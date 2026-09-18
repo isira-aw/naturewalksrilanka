@@ -162,11 +162,12 @@ export function TravellerPassword({ onUseLink }: { onUseLink: () => void }) {
         </p>
       )}
 
-      {phase !== "sent" && phase !== "unverified" && (
-        <Button type="submit" variant="primary" disabled={phase === "working"} className="mt-6 w-full">
-          {phase === "working" ? t("sending") : submitLabel}
-        </Button>
-      )}
+      {/* Always offered, including after "confirm your address": somebody who
+          has just done so in another tab needs to press this again, and
+          hiding it left them with a message and no way forward. */}
+      <Button type="submit" variant="primary" disabled={phase === "working"} className="mt-6 w-full">
+        {phase === "working" ? t("sending") : submitLabel}
+      </Button>
 
       <div className="mt-5 space-y-2 text-sm">
         {mode === "signIn" && (

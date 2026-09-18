@@ -288,6 +288,7 @@
     "accessBody": "Anna sähköpostiosoite, jota käytit matkaan {reference}, niin lähetämme sinulle linkin sen avaamiseen. Salasanaa ei tarvita.",
     "accessBodyUnlock": "Anna sähköpostiosoite, jolla teit matkan {reference}, niin avaamme sen. Voit myös pyytää linkin sähköpostiin tai käyttää salasanaa.",
     "emailLabel": "Sähköposti",
+    "emailNeeded": "Anna ensin sähköpostiosoitteesi.",
     "sendLink": "Lähetä minulle linkki",
     "sending": "Lähetetään…",
     "linkSent": "Lähetimme linkin osoitteeseen {email}.",
