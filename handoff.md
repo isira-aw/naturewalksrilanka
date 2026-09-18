@@ -493,27 +493,40 @@ against a real one in the same way every Firebase path is.
 Found by review, roughly in priority order. §2 was closed this round; the
 rest outlive it and are **still not fixed**.
 
-### 1. The privacy policy contradicts the code — and now more so
+### 1. The privacy policy — the false half is fixed, the business half is not
 
-Unchanged and still the most serious thing here. Note that this has grown:
-an enquiry now also stores a snapshot of the journey document and a log of
-which files the traveller downloaded. Both are covered by the same false
-sentences.
+**The lie is gone.** `app/[locale]/privacy/page.tsx` used to say the site
+"does not run a server-side database of visitor or customer information" and
+that enquiry details are "not stored on, or transmitted through, a server or
+database operated by this website". Both were flatly false, the site is sold
+into four EU markets, and a "pending legal review" banner does not cure an
+affirmative false statement. It has been rewritten to say what the code
+actually does.
 
+This was previously filed as needing Nandana before a line of it could be
+written. That was half right. Retention, legal basis and the controller are
+his; **describing what the code stores is not a business fact, it is a fact
+about the code**, and leaving a falsehood up while waiting for him was the
+worse of the two states.
 
-`app/[locale]/privacy/page.tsx` says the site "does not run a server-side
-database of visitor or customer information" and that enquiry details are
-"not stored on, or transmitted through, a server or database operated by
-this website". Both are false: `WizardShell.handleSent()` POSTs to
-`/api/custom-tour/requests`, which writes name, email, phone, country and
-requirements to Firestore. Newsletter sign-ups and reviews store personal
-data too.
+What the page now says, each point checked against the code that does it:
+the enquiry copy in `tourRequests` and its revisions, the document snapshot
+and the download log, the newsletter address, the review invitation and the
+review itself, the traveller account and its fortnight-long cookie, the
+`localStorage` draft, and the bucket counters that store no address. It
+names Vercel, Firebase, Cloudinary, OpenStreetMap and OSRM, and it states —
+from `docs/llm.md` — that no customer data has ever been sent to a model.
+Two claims were verified in a browser rather than asserted: a plain visit
+sets no cookie at all, and there is no analytics code anywhere in the repo.
 
-The "placeholder pending legal review" banner does not cure an affirmative
-false statement, and the site is sold into four EU markets. Correcting it
-needs business facts nobody here can invent — retention, legal basis,
-controller, data-subject rights — so it needs Nandana and, ideally, a
-lawyer. The factual half (what the code stores) is written down above.
+**What is still open** is business fact, and the page says so in its own
+section rather than inventing it: who is formally responsible and where to
+write, how long each thing is kept, the legal basis, and how an EU or UK
+visitor exercises their rights. Nandana and a lawyer. Until then the page
+points them at the Contact page and promises the request will be honoured —
+somebody has to actually honour it.
+
+The page is still English-only, and still says so.
 
 ### 2. ~~The enquiry endpoint is unauthenticated and unbounded~~ — closed
 
@@ -781,18 +794,21 @@ What is left there is not code:
 - **Promote the CSP** once the reports are clean, which needs somebody to sign
   in to the admin panel, upload a photograph and follow a traveller email link
   with devtools open. `docs/security-headers.md`, *Turning it on*.
-- **§1, the privacy policy**, needs business facts from Nandana before a line
-  of it can be written.
+- **§1, the privacy policy** — the false statements are gone and what the
+  site stores is described accurately. The four business questions left on
+  the page need Nandana and a lawyer.
 
 ### 4. Content still required before launch
 
 - **FAQ** — "what is included in the price" and "how and when do I pay" carry
   `contentRequired: true` in `content/<locale>/faq.json` and do not render.
   Only Nandana can answer them.
-- **Privacy policy** — materially wrong, and the most serious thing on this
-  list. See *Known issues* §1 for exactly which sentences are false and what
-  the code actually stores. Only Nandana, with legal advice, can supply the
-  rest.
+- **Privacy policy** — no longer wrong, but not finished. The description of
+  what the site stores is accurate now; the four business questions at the
+  bottom of the page (controller, retention, legal basis, how to exercise
+  rights) are still blank and marked as such. Only Nandana, with legal
+  advice, can answer them. A localized version in the other four languages
+  is still pending too.
 - **Search Console and Bing verification codes** — `docs/seo.md` has the
   step-by-step.
 - **Native-speaker review** of the Dutch, Spanish, Danish and Finnish copy,
