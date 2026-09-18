@@ -15,7 +15,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "optimize-images": "node scripts/optimize-images.mjs"
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "prune-auth-users": "node --env-file=.env scripts/prune-auth-users.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.21.0",

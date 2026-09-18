@@ -19,6 +19,13 @@ export const COLLECTIONS = {
   staff: "staff",
   /** Newsletter sign-ups, keyed by the subscriber's own email address. */
   newsletterSubscribers: "newsletterSubscribers",
+  /**
+   * Refused admin sign-ins, keyed by the address that was refused.
+   *
+   * Both an audit line the Access section shows and the counter that rate
+   * limits repeated attempts — see `lib/admin/signInGuard.ts`.
+   */
+  adminSignInAttempts: "adminSignInAttempts",
 } as const;
 
 export type CollectionName = (typeof COLLECTIONS)[keyof typeof COLLECTIONS];

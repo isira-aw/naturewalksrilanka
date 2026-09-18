@@ -58,6 +58,15 @@ function Unavailable() {
   );
 }
 
+function postToken(idToken: string) {
+  return fetch("/api/admin/session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    body: JSON.stringify({ idToken }),
+  });
+}
+
 function GoogleSignIn() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
@@ -77,12 +86,14 @@ function GoogleSignIn() {
       const credential = await signInWithPopup(auth, new GoogleAuthProvider());
       const idToken = await credential.user.getIdToken();
 
-      const response = await fetch("/api/admin/session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "same-origin",
-        body: JSON.stringify({ idToken }),
-      });
+      let response = await postToken(idToken);
+
+      /* First sign-in since being added to the staff list: the server has
+         just granted the admin claim, but this token was minted before it
+         existed. A fresh one carries it. Once, ever, per staff member. */
+      if (response.status === 409) {
+        response = await postToken(await credential.user.getIdToken(true));
+      }
 
       if (!response.ok) {
         /* Signed in to Google but not admitted here. Sign back out of
@@ -92,7 +103,9 @@ function GoogleSignIn() {
         setError(
           response.status === 403
             ? "That account is not on the staff list."
-            : "Could not sign in. Try again shortly.",
+            : response.status === 429
+              ? "Too many attempts from this account. Wait fifteen minutes and try again."
+              : "Could not sign in. Try again shortly.",
         );
         return;
       }

@@ -69,9 +69,25 @@ export async function POST(request: Request) {
 
   const result = await createAdminSession(idToken);
   if ("error" in result) {
-    /* Deliberately vague to the caller: whether an address is on the staff
-       list is not something an unauthenticated stranger should learn. The
-       specific reason goes to the server log instead. */
+    /* Being throttled is worth saying out loud. It is not a hint about who is
+       on the staff list — the caller already knows they have been refused
+       several times — and a staff member who mistyped their way into the
+       limit otherwise sees "not on the staff list" and believes it. */
+    if (result.error === "too_many_attempts") {
+      return NextResponse.json({ error: "too_many_attempts" }, { status: 429 });
+    }
+
+    /* Not a refusal: the caller is staff, the claim has just been granted,
+       and the token they sent predates it. 409 rather than 401 because
+       nothing is wrong with their credentials — the state changed underneath
+       them, and retrying with a fresh token succeeds. */
+    if (result.error === "claim_granted_retry") {
+      return NextResponse.json({ error: "claim_granted_retry" }, { status: 409 });
+    }
+
+    /* Deliberately vague otherwise: whether an address is on the staff list
+       is not something an unauthenticated stranger should learn. The specific
+       reason goes to the server log instead. */
     console.warn(`Admin sign-in refused: ${result.error}`);
     return NextResponse.json({ error: "not_authorised" }, { status: 403 });
   }

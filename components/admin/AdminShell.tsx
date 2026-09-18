@@ -21,6 +21,7 @@ const SECTIONS = [
   { href: "/admin/customers", label: "Customers" },
   { href: "/admin/reviews", label: "Reviews" },
   { href: "/admin/translations", label: "Translations" },
+  { href: "/admin/access", label: "Access" },
   { href: "/admin/data", label: "Data and migration" },
 ] as const;
 
