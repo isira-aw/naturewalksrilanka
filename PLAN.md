@@ -386,3 +386,27 @@ lands, and — per *Failed attempts* §2 — `packages[""].overrides` in
 5. **A4's trade-off** — is a 60-second delay on revoking someone's read
    access acceptable in exchange for cutting a network round trip from every
    admin request? If not, it is dropped and nothing else changes.
+
+---
+
+## Decisions taken
+
+Answered 2026-09-18. These are settled; the options they replace are struck
+out above rather than deleted, so the reasoning stays readable.
+
+| Question | Answer | What it changes |
+|---|---|---|
+| Firebase | **Connected, Spark (free) plan** | **C3 is off the table.** Blocking functions need Identity Platform, which needs Blaze. C1 — deleting the account immediately after it is refused — becomes the fix rather than the cleanup. `docs/` will still carry the blocking-function recipe, marked as what to do if the project ever moves to Blaze |
+| Document fidelity | **Snapshot the document JSON** | B5 builds the snapshot. The rebuild is faithful even after an itinerary is edited or deleted, and no binary is stored anywhere |
+| `/custom-tour` options | **All four**: coordinates, stay-length, ordering/featured, wizard settings | D1–D4 are all in scope. D5 (draft preview) was not asked for and is dropped |
+| Session cache | **Safe option — skip it** | **A4 is dropped.** Revoking access stays immediate. A1–A3 carry the speed work on their own |
+
+Two consequences worth stating plainly:
+
+- **Spark means each refused attempt still creates an account for a moment.**
+  C1 deletes it within the same request, so it does not persist in the
+  Authentication list — but it is a deletion after the fact, not a refusal
+  before the fact. That is the best available on this plan.
+- **A4 being dropped means the Google round trip per request stays.** The
+  panel will still be markedly faster from A1–A3 (less code, fewer bytes,
+  fewer requests), but the per-request auth latency is unchanged, by choice.
