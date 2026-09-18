@@ -2,6 +2,7 @@ import "server-only";
 import type { Auth } from "firebase-admin/auth";
 import { adminDb } from "@/lib/firebase/admin";
 import { COLLECTIONS } from "@/lib/firebase/collections";
+import { isSuperAdmin } from "./superAdmin";
 
 /**
  * Keeping strangers out of the Firebase project's user list.
@@ -201,6 +202,10 @@ async function hasOtherStanding(email: string): Promise<boolean> {
   if (!db) return true;
 
   const address = email.trim().toLowerCase();
+
+  /* Checked before anything that can fail: a super admin's account must
+     never be deleted, and that must not depend on a Firestore read. */
+  if (isSuperAdmin(address)) return true;
 
   try {
     const [staff, subscriber, enquiries] = await Promise.all([

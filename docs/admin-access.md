@@ -26,6 +26,8 @@ list. The list fills up with people who were never let in.
 it can show was created by the attempt being refused. Every condition has to
 hold:
 
+- not a super admin (checked first, and without touching Firestore, so it
+  cannot depend on a read that might fail);
 - exactly one sign-in provider, and it is `google.com`;
 - created within the last five minutes;
 - not on the `staff` list;
@@ -51,11 +53,30 @@ It **fails open**. A counter that cannot be read must not lock the real staff
 out of their own panel, and Firebase throttles its own sign-ins underneath
 this regardless.
 
-### 3. Staff are managed from the panel
+### 3. Staff are managed from the panel, by a super admin
 
-The **Access** section lists the allowlist, adds and removes addresses, and
-shows recent refusals. `scripts/grant-admin.mjs` is still needed for the very
-first admin — somebody has to be able to press the button before anybody can.
+The **Access** section lists the allowlist and shows recent refusals. Every
+admin can read it — knowing who has access, and who has been trying to get in,
+is useful to anyone running the site. **Only a super admin can change it**,
+because adding an admin is handing out the keys, and an admin who can add
+admins can promote anyone.
+
+Super admins come from `SUPER_ADMIN_EMAIL`, comma-separated. Kept in the
+environment rather than in Firestore deliberately: a super admin recorded in
+the database it administers can be edited by whatever can write to that
+database, while one in the environment can only be changed by whoever can
+deploy.
+
+It is also **the recovery path**. A super admin is admitted without a `staff`
+document, so an emptied or badly-written list no longer locks everybody out —
+previously the only way back was a command line and a service-account key.
+Their own row cannot be removed from the list either: their access does not
+come from it, so removing it would only make the list disagree with reality.
+
+Set more than one. With exactly one, losing that account means a redeploy.
+
+`scripts/grant-admin.mjs` remains for bootstrapping a deployment that has no
+super admin configured.
 
 ### 4. The accounts that already accumulated
 

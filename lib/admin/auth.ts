@@ -2,6 +2,7 @@ import "server-only";
 import { adminAuth, adminDb, isFirebaseConfigured } from "@/lib/firebase/admin";
 import { COLLECTIONS } from "@/lib/firebase/collections";
 import { discardProbeAccount, isRateLimited, recordRefusal } from "./signInGuard";
+import { isSuperAdmin } from "./superAdmin";
 
 /**
  * Who is allowed into the admin panel.
@@ -149,10 +150,17 @@ export async function createAdminSession(
      threat. What the claim is really for is speed: it rides in the session
      cookie, so `requireAdmin` answers without a Firestore read on every
      single request. Treat it as a cache of this list, kept in step below. */
-  const entry = await db.collection(COLLECTIONS.staff).doc(email).get();
-  if (!entry.exists) {
-    await refuse(email, "not_staff", auth, decoded.uid);
-    return { error: "not_staff" };
+  /* A super admin is admitted whether or not the list says so. The list is
+     the authority for everyone else, but somebody has to be able to get in
+     when it is wrong — an admin who removed the last entry, or a bad write,
+     would otherwise lock everybody out of the panel with no way back except
+     a command line and a service-account key. */
+  if (!isSuperAdmin(email)) {
+    const entry = await db.collection(COLLECTIONS.staff).doc(email).get();
+    if (!entry.exists) {
+      await refuse(email, "not_staff", auth, decoded.uid);
+      return { error: "not_staff" };
+    }
   }
 
   if (decoded.admin !== true) {
