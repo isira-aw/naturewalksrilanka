@@ -102,6 +102,17 @@ export const ARRIVAL_POINT: LatLng & { name: string } = {
 /**
  * Best coordinate for an itinerary: a named place inside its location text if
  * there is one, otherwise the centre of the province the admin filed it under.
+ *
+ * **The province fallback is measurably wrong, and knowingly so.** Measured on
+ * Sinharaja: the centre of its province is `6.7200, 80.4000`, the place itself
+ * is `6.4059, 80.4569` — 35 km apart, and the drive estimate from the airport
+ * comes out 41 km short as a result. That error reaches the driving order, the
+ * wizard's map and the printed PDF alike.
+ *
+ * The fix was tried and withdrawn: an editor field for per-itinerary
+ * coordinates shipped and was then removed as unwanted. So the cheap
+ * improvement is `PLACES` — an itinerary whose location text names a place in
+ * that list is placed properly, and adding a row is a one-line change.
  */
 export function locateItinerary(location: string, province: ProvinceId): LatLng {
   const haystack = location.toLowerCase();
