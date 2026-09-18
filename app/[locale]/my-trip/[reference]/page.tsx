@@ -6,6 +6,10 @@ import { routing } from "@/i18n/routing";
 import { isFirebaseConfigured } from "@/lib/firebase/admin";
 import { getRequest } from "@/lib/tourRequests/store";
 import { travellerFromCookies } from "@/lib/tourRequests/travellerSession";
+import {
+  isReferenceAccessConfigured,
+  referenceOpenFromCookies,
+} from "@/lib/tourRequests/referenceAccess";
 import { TravellerAccess } from "@/components/my-trip/TravellerAccess";
 import { TripSummary } from "@/components/my-trip/TripSummary";
 
@@ -21,10 +25,18 @@ export const metadata: Metadata = {
 /**
  * One traveller's saved enquiry.
  *
- * Two things must both hold to see it: the reference in the URL, and a
- * verified email-link sign-in as the address on that enquiry. The reference
- * alone is deliberately not enough — it is short and readable so it can be
- * quoted over the phone, which also makes neighbouring codes guessable.
+ * There are two ways to be let in, and the reference alone is neither of
+ * them — it is short and readable so it can be quoted over the phone, which
+ * also makes neighbouring codes guessable.
+ *
+ * 1. **A traveller session.** A verified sign-in as the address on the
+ *    enquiry, by emailed link or by password. It opens any trip filed under
+ *    that address, and allows editing.
+ * 2. **A reference unlock.** The reference *and* the address on it, proved
+ *    to `/api/traveller/unlock`, which hands back a signed cookie naming
+ *    this one reference. Read-only, and it says nothing about any other
+ *    trip — guessing one reference must not become reading everything filed
+ *    under that address.
  *
  * A reference that does not exist and one belonging to somebody else give
  * the same answer, so the page cannot be used to discover which references
@@ -52,23 +64,32 @@ export default async function MyTripPage({
   }
 
   const email = await travellerFromCookies();
-  if (!email) {
+  const unlocked = await referenceOpenFromCookies(reference);
+
+  if (!email && !unlocked) {
     return (
       <Shell>
-        <TravellerAccess reference={reference} />
+        <TravellerAccess reference={reference} referenceAccess={isReferenceAccessConfigured()} />
       </Shell>
     );
   }
 
   const request = await getRequest(reference);
-  if (!request || request.email !== email) {
+
+  /* A session opens the trips filed under its address and no others. An
+     unlock opens the one reference it was issued for, which this is. */
+  const mine = Boolean(request) && (unlocked || (email !== null && request!.email === email));
+
+  if (!request || !mine) {
     return (
       <Shell>
         <div className="mx-auto max-w-md rounded-2xl border border-stone-dark bg-stone/20 p-6">
           <p className="text-sm leading-relaxed text-charcoal">{t("notYours")}</p>
-          <p className="mt-2 text-sm leading-relaxed text-charcoal/55">
-            {t("notYoursHint", { email })}
-          </p>
+          {email && (
+            <p className="mt-2 text-sm leading-relaxed text-charcoal/55">
+              {t("notYoursHint", { email })}
+            </p>
+          )}
         </div>
       </Shell>
     );
@@ -76,7 +97,7 @@ export default async function MyTripPage({
 
   return (
     <Shell>
-      <TripSummary request={request} />
+      <TripSummary request={request} canEdit={email !== null} />
     </Shell>
   );
 }

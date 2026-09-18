@@ -29,6 +29,11 @@ Firebase-backed features report themselves unavailable rather than failing.
       from Vercel.** The shared-password login they belonged to is gone and
       nothing reads them. A live secret nobody uses is a secret nobody
       rotates.
+- [ ] **Set `TRAVELLER_LINK_SECRET`** — 32 characters or more, random. It
+      signs the cookie that opens one trip by reference. Without it that way
+      in is simply not offered: the page falls back to the emailed link and
+      says nothing is broken, because an unsigned cookie would be a way in
+      for anybody. Short values are treated as unset for the same reason.
 - [ ] Optionally set `GOOGLE_AI_MODEL`. The default is `gemini-3.6-flash`.
 
 `scripts/grant-admin.mjs` bootstraps a deployment with no super admin

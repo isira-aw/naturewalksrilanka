@@ -14,8 +14,20 @@ import { ContactForm } from "./ContactForm";
  * a quote changing underneath them without a word is worse than a
  * conversation. The trip itself is settled on WhatsApp now; a phone number
  * that has gone out of date is not worth a message.
+ *
+ * `canEdit` is false for somebody who opened this with the reference and the
+ * address rather than by proving the address is theirs. Reading their own
+ * enquiry on that evidence is a reasonable trade; *changing* the phone number
+ * the team will ring is not, so the form is replaced by a line saying how to
+ * get it.
  */
-export async function TripSummary({ request }: { request: TourRequest }) {
+export async function TripSummary({
+  request,
+  canEdit = true,
+}: {
+  request: TourRequest;
+  canEdit?: boolean;
+}) {
   const t = await getTranslations("myTrip");
   const { payload } = request;
 
@@ -61,7 +73,13 @@ export async function TripSummary({ request }: { request: TourRequest }) {
         </p>
       )}
 
-      <ContactForm reference={request.reference} payload={payload} />
+      {canEdit ? (
+        <ContactForm reference={request.reference} payload={payload} />
+      ) : (
+        <p className="mt-10 rounded-2xl border border-stone-dark bg-stone/20 p-6 text-sm leading-relaxed text-charcoal/70">
+          {t("editNeedsSignIn")}
+        </p>
+      )}
     </div>
   );
 }

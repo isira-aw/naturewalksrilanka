@@ -138,10 +138,12 @@ export default async function PrivacyPage({
             </p>
             <p className="mt-3 leading-relaxed">
               <strong>Spam protection.</strong> To stop the enquiry form being
-              used in bulk, the site counts how many enquiries have recently
-              come from a given internet connection. It stores counts only:
-              your IP address is not written down, and neither is anything from
-              which it could be worked out.
+              used in bulk, and to stop anyone guessing their way into other
+              people&rsquo;s trips, the site counts how many enquiries and how
+              many attempts to open a trip have recently come from a given
+              internet connection. It stores counts only: your IP address is
+              not written down, and neither is anything from which it could be
+              worked out.
             </p>
           </Rise>
 

@@ -31,7 +31,14 @@ const PENDING_EMAIL_KEY = "nwsl_pending_email";
 
 type Phase = "idle" | "sending" | "sent" | "completing" | "confirm" | "error";
 
-export function TravellerAccess({ reference }: { reference?: string }) {
+export function TravellerAccess({
+  reference,
+  referenceAccess = false,
+}: {
+  reference?: string;
+  /** Whether this deployment can open a trip by reference at all. */
+  referenceAccess?: boolean;
+}) {
   const t = useTranslations("myTrip");
   const [email, setEmail] = useState("");
   const [phase, setPhase] = useState<Phase>("idle");
@@ -140,6 +147,36 @@ export function TravellerAccess({ reference }: { reference?: string }) {
     if (!pendingLink || spent.current) return;
     spent.current = true;
     void complete(email.trim(), pendingLink);
+  }
+
+  /**
+   * Opening this one trip with the reference and the address, no email.
+   *
+   * Only offered on a page that already names a reference, because that is
+   * the whole of what it can open — see `lib/tourRequests/referenceAccess.ts`.
+   */
+  async function unlock() {
+    if (!reference || !email.trim()) return;
+    setPhase("sending");
+    setMessage(null);
+    try {
+      const response = await fetch("/api/traveller/unlock", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ reference, email: email.trim() }),
+      });
+      if (response.ok) {
+        /* The server renders the trip once the cookie is set. */
+        window.location.reload();
+        return;
+      }
+      setPhase("idle");
+      setMessage(response.status === 429 ? t("unlockThrottled") : t("unlockFailed"));
+    } catch {
+      setPhase("idle");
+      setMessage(t("unlockFailed"));
+    }
   }
 
   async function sendLink(event: React.FormEvent) {
@@ -251,9 +288,39 @@ export function TravellerAccess({ reference }: { reference?: string }) {
         </p>
       )}
 
-      <Button type="submit" variant="primary" disabled={phase === "sending"} className="mt-6 w-full">
-        {phase === "sending" ? t("sending") : t("sendLink")}
-      </Button>
+      {/* With a reference on the page there is a way in that needs no email
+          at all, so it leads. The emailed link stays underneath it: it proves
+          more, and it is the only way to reach the full list of trips. */}
+      {reference && referenceAccess ? (
+        <>
+          <Button
+            type="button"
+            variant="primary"
+            disabled={phase === "sending"}
+            onClick={() => void unlock()}
+            className="mt-6 w-full"
+          >
+            {t("unlockSubmit")}
+          </Button>
+          <p className="mt-2 text-xs leading-relaxed text-charcoal/50">{t("unlockHint")}</p>
+          <button
+            type="submit"
+            disabled={phase === "sending"}
+            className="mt-4 w-full text-sm text-charcoal/60 underline underline-offset-4 transition-colors hover:text-forest disabled:opacity-50"
+          >
+            {phase === "sending" ? t("sending") : t("sendLink")}
+          </button>
+        </>
+      ) : (
+        <Button
+          type="submit"
+          variant="primary"
+          disabled={phase === "sending"}
+          className="mt-6 w-full"
+        >
+          {phase === "sending" ? t("sending") : t("sendLink")}
+        </Button>
+      )}
     </form>
   );
 }
