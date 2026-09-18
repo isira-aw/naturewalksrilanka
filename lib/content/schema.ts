@@ -132,10 +132,28 @@ export const experienceSchema = z.object({
    * is the answer whenever `location` names nowhere it recognises.
    */
   province: z.enum(PROVINCE_IDS).optional(),
+  /**
+   * Where this actually is, when somebody has said so.
+   *
+   * Without it the journey plan falls back to matching `location` against a
+   * list of known places and, failing that, to the centre of the province —
+   * which can put a stop tens of kilometres from the real one, on the wizard's
+   * map and in the printed document alike. Set on the itinerary in the admin
+   * page; absent on itineraries that predate the field.
+   */
+  coordinates: z.object({ lat: z.number(), lng: z.number() }).optional(),
   /** Season the idea is written for, e.g. "December – April". */
   bestTime: z.string(),
   /** How long the idea runs, e.g. "2 days". */
   duration: z.string(),
+  /**
+   * How many days the plan should actually allow here.
+   *
+   * `duration` is prose written for travellers, and the planner reads a number
+   * out of it — "a long weekend" yields nothing and silently becomes two days.
+   * This says what was meant.
+   */
+  stayDays: z.number().int().min(1).max(30).optional(),
   /** One line, shown on the card in the wizard. */
   summary: z.string(),
   /** Full text, shown only inside the dialog. */

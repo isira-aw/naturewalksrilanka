@@ -67,7 +67,8 @@ export function buildJourneyPlan(
   const stops: PlannedStop[] = ordered.map((experience, index) => {
     const position = positionOf(experience);
     const leg = roadEstimate(previous, position);
-    const days = stopDays(experience.duration);
+    /* An explicit day count wins over reading one out of the prose. */
+    const days = experience.stayDays ?? stopDays(experience.duration);
 
     const stop: PlannedStop = {
       experience,
@@ -98,8 +99,19 @@ export function buildJourneyPlan(
   };
 }
 
+/**
+ * Where to put this stop.
+ *
+ * An itinerary that carries its own coordinates is believed. Everything else
+ * is guessed: `locateItinerary` matches the location text against a list of
+ * known places, and when that fails it returns the centre of the province —
+ * which can be tens of kilometres out, and is wrong in the same way on the
+ * wizard's map, in the driving order, in the distances and in the PDF.
+ */
 function positionOf(experience: Experience): LatLng {
-  return locateItinerary(experience.location, experience.province ?? "western");
+  return (
+    experience.coordinates ?? locateItinerary(experience.location, experience.province ?? "western")
+  );
 }
 
 /**
