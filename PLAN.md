@@ -398,7 +398,7 @@ out above rather than deleted, so the reasoning stays readable.
 |---|---|---|
 | Firebase | **Connected, Spark (free) plan** | **C3 is off the table.** Blocking functions need Identity Platform, which needs Blaze. C1 — deleting the account immediately after it is refused — becomes the fix rather than the cleanup. `docs/` will still carry the blocking-function recipe, marked as what to do if the project ever moves to Blaze |
 | Document fidelity | **Snapshot the document JSON** | B5 builds the snapshot. The rebuild is faithful even after an itinerary is edited or deleted, and no binary is stored anywhere |
-| `/custom-tour` options | **All four**: coordinates, stay-length, ordering/featured, wizard settings | D1–D4 are all in scope. D5 (draft preview) was not asked for and is dropped |
+| `/custom-tour` options | **All four**: coordinates, stay-length, ordering/featured, wizard settings | D1–D4 were all in scope. D5 (draft preview) was not asked for and is dropped. **Superseded:** the per-itinerary half of D1–D3 — the editor's *Planning* section, with its latitude, longitude, days-to-allow and position boxes — was removed afterwards as unwanted. The `featured` flag and D4's wizard settings stay; stops are placed by `locateItinerary` and their length read out of the prose again |
 | Session cache | **Safe option — skip it** | **A4 is dropped.** Revoking access stays immediate. A1–A3 carry the speed work on their own |
 
 Two consequences worth stating plainly:

@@ -34,10 +34,6 @@ export function recordToExperience(record: ItineraryRecord, locale: string): Exp
     province: record.province,
     bestTime: fields?.bestTime ?? record.bestTime ?? "",
     duration: fields?.suggestedLength ?? record.suggestedLength ?? "",
-    /* Language-neutral, like the province and the photographs: a translation
-       never moves an itinerary or changes how long it takes. */
-    ...(record.coordinates ? { coordinates: record.coordinates } : {}),
-    ...(record.stayDays ? { stayDays: record.stayDays } : {}),
     summary: firstSentence(content1),
     description,
     images: record.images.length > 0 ? record.images : [ITINERARY_FALLBACK_IMAGE],

@@ -303,10 +303,16 @@ printed documents key on, so `saveRecord` decides it on the server now.
 
 ### More of the wizard is configurable
 
-Per itinerary: explicit **coordinates**, an explicit **stay length**, a
-position and a featured flag. The first two were being guessed, and measurably
-badly — on Sinharaja the province-centre fallback lands 35 km out and the
-drive estimate 41 km short, while "a long weekend" silently became two days.
+Per itinerary: a **featured** flag, which lifts an itinerary above the
+alphabetical order in both the wizard and the admin list.
+
+The editor briefly also carried a *Planning* section — per-itinerary
+coordinates, an explicit stay length and a list position. It has been removed
+as unwanted, along with its fields on the record, on `Experience` and in the
+admin list. Stops are placed by `locateItinerary` (location text, then the
+province centre) and their length read out of the `duration` prose by
+`stopDays`, which is how it worked before: known to be imprecise — the
+province-centre fallback lands 35 km out on Sinharaja — and accepted.
 
 Per deployment, in `settings/customTour`: group-size ceiling, which interests
 and accommodation styles are offered, and the notice printed on the document.
@@ -636,14 +642,14 @@ references that were really matches inside `node_modules` and `.next`.
 
 ### 8. Firestore drops documents that lack the field you order by
 
-The admin itinerary list is alphabetical rather than in featured/position
-order, and not by preference. `orderBy("sortOrder")` **excludes every document
-that has no `sortOrder`** — which is every itinerary written before the field
-existed. The list would have silently lost most of its rows, and looked like a
-data-loss bug rather than a query one.
+The admin itinerary list is alphabetical rather than featured-first, and not
+by preference. `orderBy("featured")` **excludes every document that has no
+`featured`** — which is every itinerary written before the field existed. The
+list would have silently lost most of its rows, and looked like a data-loss
+bug rather than a query one.
 
-`head` is on every record, so the list sorts by that and shows placement as a
-label. The wizard still offers them in placement order: that read is the whole
+`head` is on every record, so the list sorts by that and shows `Featured` as a
+label. The wizard still offers them featured-first: that read is the whole
 (small) collection, sorted in memory, where the rule does not apply.
 
 **Rule:** before ordering by a field in Firestore, ask whether every document
