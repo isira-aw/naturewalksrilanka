@@ -1,18 +1,21 @@
-# Handoff — production cleanup, Firebase consolidation, launch polish
+# Handoff — admin panel, customer documents, access control
 
-Branch: `claude/clever-volta-i7bo35` · one commit ahead of `main`
-(`a9df9c1`) · 9 files, +263 / −308.
+Branch: `claude/dazzling-ptolemy-jzkd32` · 13 commits ahead of `main`
+(`2951fea`) · 78 files, +5933 / −942 · open as
+[#34](https://github.com/isira-aw/naturewalksrilanka/pull/34).
 
-Rounds **#25 to #29** have merged. What follows describes the whole effort;
-*This round* is what is new since #29, and *Earlier rounds* keeps what is
-still worth knowing from the ones before it.
+Rounds **#25 to #33** have merged. *This round* is everything on the branch
+above; *Earlier rounds* keeps what is still worth knowing from before it.
+
+`PLAN.md`, on the same branch, carries the reasoning behind this round, the
+decisions taken and what is still unproven. This file is the shorter view.
 
 > **This file is temporary.** A previous `handoff.md` was deleted in `2e25aa2`
 > because it had grown into a 967-line log of a migration that had already
 > merged, and every live fact in it was duplicated in `docs/`. Do not let this
-> one go the same way. When Firebase is connected and the items under **Known
-> issues** are closed, fold anything still true into `README.md` or `docs/`
-> and delete this file.
+> one go the same way. Firebase is now connected, so the first of its two exit
+> conditions is met; when the items under **Known issues** are closed, fold
+> anything still true into `README.md` or `docs/` and delete this file.
 
 ---
 
@@ -37,42 +40,65 @@ Take a finished UI to a launchable production site, in four passes:
 ## Current state
 
 **Green.** `tsc --noEmit`, `eslint` and `next build` all pass with zero
-warnings. Verified in headless Chromium at 1280px and 390px: no JS exceptions,
-no broken images, no missing `alt`, no horizontal overflow, no password inputs
-anywhere on the site.
+warnings, on every commit of this branch.
 
 | | |
 |---|---|
-| Next.js | **16.3.5** (was 16.3.1 — two unauthenticated RCE advisories) |
+| Next.js | **16.3.5** |
 | `npm audit` | 0 critical, 1 high, 6 moderate — all transitive, see Next steps |
-| `jose` | 5.10.0, override intact and proven (see Failed attempts) |
-| Admin auth | Firebase Google sign-in only. `admin` custom claim **and** a `staff` Firestore document, both required |
-| Traveller auth | Firebase email-link only |
-| Data | Firestore only |
+| `jose` | 5.10.0, override intact and checked after every install (see Failed attempts) |
+| Firebase | **Connected, Spark (free) plan.** No Blaze, so no blocking functions — see `docs/admin-access.md` |
+| Admin auth | Google sign-in. The `staff` allowlist decides; the `admin` claim is a **cache** of it, granted on first sign-in. `SUPER_ADMIN_EMAIL` admits without a `staff` document and is the recovery path |
+| Traveller auth | Firebase email-link only. `/my-trip` lists their own trips; contact details are editable, nothing else |
+| Data | Firestore only. **No export or import** — backups are Firestore's own |
 | Files | **Cloudinary** only, since #27. Firebase Storage is gone; `storage.rules` with it |
 | Deployment | Vercel only |
-| Third-party hosts | Fonts are self-hosted by `next/font` and flags are local. Three services are reached at runtime: Cloudinary for every photograph, and OpenStreetMap tiles plus OSRM routing for the journey map — see *Known issues* §3 |
+| Admin sections | Itineraries (translations live inside the editor), Customers, Reviews, Wizard settings, AI, Access. Every list is paged |
+| Third-party hosts | Fonts self-hosted by `next/font`, flags local. Three services at runtime: Cloudinary for every photograph, OpenStreetMap tiles and OSRM routing for the journey map — see *Known issues* §3 |
 
-**Firebase is now connected, on the Spark (free) plan.** The paragraph below
-is kept because it still describes every code path written before that, none
-of which has been exercised against the real project yet — and because the
-setup checklist is still the order to work through. See `PLAN.md` →
-*What is still not proven* for the current list.
-
-1. **No Firebase project had ever been connected.** Every Firebase code path
-   in this repository is still unproven against a real project. Since admin
-   sign-in is now Firebase-only, the panel cannot be opened at all until the
-   project exists — `docs/FIREBASE_SETUP_CHECKLIST.md` is the order to do it
-   in.
+**Nothing that touches Firestore or Firebase Auth on this branch has been run
+against the real project.** It is all compiled and typechecked; the session
+that wrote it had no credentials. `PLAN.md` → *What is still not proven* has
+the list in priority order, and `discardProbeAccount` is the one to test
+deliberately, because it deletes Firebase accounts.
 
 A deployment with no Firebase variables still builds and serves every public
 page; the Firebase-backed features report themselves unavailable.
+
+### Before this branch is deployed
+
+1. **`firebase deploy --only firestore:indexes`.** Three composites matter:
+   `tourRequests` on `status` + `createdAt`, `tourRequests` on `email` +
+   `createdAt`, and the reviews one. Without them the Customers status filter
+   and the traveller's own trip list fail outright.
+2. **Set `SUPER_ADMIN_EMAIL`**, comma-separated, more than one. Until it is
+   set nobody can edit the access list — the panel says so rather than failing
+   silently.
+3. Optionally set `GOOGLE_AI_MODEL`, then press *Test the connection* in the
+   **AI** section. The default `gemini-3.6-flash` has still never run against
+   a real key.
 
 ---
 
 ## Active files
 
-New in this work:
+New in this round:
+
+| File | What |
+|---|---|
+| `app/[locale]/admin/layout.tsx` | The gate and the frame. One session check per navigation; **no `loading.tsx` may sit beside it** |
+| `lib/journey-document/fromRequest.ts` | A stored enquiry back into a `JourneyDocument`, by snapshot or by rebuild, saying which |
+| `lib/admin/superAdmin.ts` | `SUPER_ADMIN_EMAIL`. Who may change access, and the lockout recovery path |
+| `lib/admin/signInGuard.ts` | Deletes the account a refused sign-in just created; rate limits and records refusals |
+| `lib/settings/customTour.ts` | What the wizard offers, and `TRAVELLER_CEILING` — the hard limit, distinct from the configurable one |
+| `components/admin/TranslationsField.tsx` | The four other languages, inside the itinerary editor |
+| `components/my-trip/ContactForm.tsx` | The only thing a traveller may change after sending |
+| `app/[locale]/my-trip/page.tsx` | Their trips, found by session rather than by reference |
+| `scripts/prune-auth-users.mjs` | Clears the accounts that accumulated before the guard existed. Dry-run by default |
+| `docs/admin-access.md` | The junk-account problem end to end, and the blocking function for Blaze |
+| `docs/llm.md` | The one LLM call: what is sent, what never is, what is not AI |
+
+New in the earlier work:
 
 | File | What |
 |---|---|
@@ -159,11 +185,157 @@ Load-bearing files to understand before changing anything:
 
 ---
 
-## This round (branch `claude/clever-volta-i7bo35`)
+## This round (branch `claude/dazzling-ptolemy-jzkd32`)
 
-One commit on top of #29, and the two rounds before it (#28, #29) are
-described here too because they landed in the same sitting and the pieces
-refer to each other.
+Eleven pieces of work in two sittings. `PLAN.md` has the reasoning; this is
+what changed and what to know about it.
+
+### The admin panel is a set of routes now
+
+`AdminApp` was one client component statically importing every panel, so
+opening the panel to answer a review also downloaded the itinerary editor, the
+image-upload code and the translation grid. It also fetched the entire
+itinerary archive on mount — every record's prose, highlights and all five
+locales of translation — before you had chosen a section.
+
+Each section is its own route under `app/[locale]/admin/`, with the session
+check and the sidebar in a shared layout. Measured: one 36 KB admin chunk
+became four, and a section loads only its own (Reviews 12 KB, Itineraries
+28 KB). Reviews makes no itinerary request at all.
+
+**There is deliberately no `loading.tsx` anywhere under `admin/`.** Every one
+of those pages calls `notFound()` on a bad locale, and a `loading.tsx` above
+such a page is the soft-404 in *Failed attempts* §1. Section loading UI goes
+in a `<Suspense>` inside a page, under the `notFound()` check.
+
+### Customers, and the traveller's document
+
+The admin view of enquiries had been removed in #29, and the journey document
+was built only in the traveller's browser — once they closed the tab there was
+no copy to reprint, send on, or open in Word.
+
+`buildJourneyPlan` is arithmetic over the traveller's own choices and all of
+them are in the stored payload, so the document reproduces exactly. Two paths,
+and `RequestDetail` says which it used: a **snapshot** pinned when the enquiry
+is sent (the traveller's own file, surviving later itinerary edits), or a
+**rebuild** for enquiries predating snapshots, which resolves itineraries as
+they stand today and therefore names any since deleted or edited.
+
+Rendering stays in the browser, through the same `downloadJourneyDocument` the
+wizard uses. There is no second renderer to drift from the first, and that is
+the point.
+
+### Refused admin sign-ins no longer accumulate
+
+`signInWithPopup` makes Firebase create the account the instant the Google
+consent completes, before the server checks anything — so everyone who found
+`/admin` and pressed the button once became a permanent row. The account is
+now deleted in the same request that refuses it, under conditions narrow
+enough to be sure it was created by that attempt. `docs/admin-access.md` is
+the full account, including the blocking function to deploy if this ever moves
+to Blaze.
+
+**The allowlist and the claim were described as two independent factors. They
+are not, and the code now says so.** `firestore.rules` denies all client
+access, so a `staff` document can only be written by an authenticated admin or
+by someone holding the service account — who could set claims directly anyway.
+The claim is a cache of the list, kept so `requireAdmin` answers from the
+cookie without a Firestore read, and it is brought into line on first sign-in.
+
+### Only a super admin may change access
+
+`SUPER_ADMIN_EMAIL`, comma-separated, in the environment rather than
+Firestore: a super admin recorded in the database it administers can be edited
+by whatever can write to that database. Every admin reads the list; only a
+super admin changes it.
+
+It is also the recovery path — a super admin is admitted without a `staff`
+document, so an emptied or badly written list no longer locks everybody out.
+
+### Travellers can sign in
+
+`/my-trip` lists every trip under the signed-in address, with its status. The
+address comes from the session cookie and nowhere else: no parameter on the
+page, none on the endpoint, nothing to tamper with.
+
+Contact details are editable; nothing else is. The old "change this trip" link
+handed them back into the wizard to redo the whole enquiry, and the team may
+already have quoted against what was there. With that entry point gone, the
+wizard's amend branch, `reviseRequest`, `attachDocumentSnapshot` and the `GET`
+on `/api/custom-tour/requests` went too.
+
+### Sending no longer downloads a file
+
+The WhatsApp link fired `onDownload("doc")` alongside recording the enquiry,
+so a Word file landed in the traveller's downloads for an action labelled
+"submit", with no way to decline. Only the enquiry is recorded now. The button
+is **"Submit and contact on WhatsApp"** in all five languages, and the hint
+under it was rewritten — every locale promised a Word copy that no longer
+happens.
+
+### Two sections removed
+
+**Data and migration**, entirely. With it went `writeAll`: a bulk "replace"
+that deleted every record absent from an uploaded file, reachable by anyone
+who could open the panel. Backups are Firestore's own — point-in-time recovery
+and scheduled exports. `docs/itinerary-storage.md` says so now.
+
+**Translations**, into the itinerary editor. One row per language with its own
+button, next to the English it comes from. The old page offered to convert
+everything outstanding, which is itineraries × four languages against a
+service that fails intermittently, where one bad response mid-way leaves you
+guessing what landed.
+
+### Everything is paged
+
+Customers already was; itineraries and reviews now are. The itinerary list
+reads **summaries** — it shows a title, a category and status dots, and was
+being handed two content blocks, every highlight, a blur map and four inline
+translations to do it.
+
+**The admin itinerary list is alphabetical, not in placement order**, and that
+is forced rather than chosen: see *Failed attempts* §8.
+
+Paging also forced a fix. The editor picked a record's slug by scanning every
+itinerary the browser had loaded — with a paged list it sees one page and
+would hand out a slug taken further down. The slug is what the wizard and the
+printed documents key on, so `saveRecord` decides it on the server now.
+
+### More of the wizard is configurable
+
+Per itinerary: explicit **coordinates**, an explicit **stay length**, a
+position and a featured flag. The first two were being guessed, and measurably
+badly — on Sinharaja the province-centre fallback lands 35 km out and the
+drive estimate 41 km short, while "a long weekend" silently became two days.
+
+Per deployment, in `settings/customTour`: group-size ceiling, which interests
+and accommodation styles are offered, and the notice printed on the document.
+Reading them never fails — an unreachable document yields the built-in
+defaults, which are exactly the previous behaviour.
+
+The traveller ceiling is deliberately two numbers. The configurable one is
+what the wizard offers; a hard `TRAVELLER_CEILING` of 40 is what the server
+accepts, because the enquiry endpoint is unauthenticated and its validation
+must not depend on a Firestore read or on anything a caller controls.
+
+### The LLM is written down
+
+There is exactly one language-model call in the repository. `docs/llm.md` and
+the **AI** section say what is sent (itinerary prose, already public), what is
+never sent (any customer data at all — no code path exists that could), and
+what is not AI: the journey plan is arithmetic, the suggestions are a filter,
+there is no chatbot, nothing on the public site calls a model.
+
+The model id is `GOOGLE_AI_MODEL` now, because Google retires ids on its own
+schedule and a wrong one fails every translation with an error that reads like
+an outage.
+
+---
+
+## Earlier round — merged as #29
+
+#28 and #29 landed in the same sitting and the pieces refer to each other, so
+they are described together.
 
 ### The take-away documents carry a real map (#28)
 
@@ -195,7 +367,7 @@ testimonials. Its strings live in the shared `gallery` namespace in
 The download buttons left the journey-plan step. The PDF is offered once, at
 the end, on the review step.
 
-### Reviews stopped depending on enquiries (#29, and this commit)
+### Reviews stopped depending on enquiries (#29)
 
 A review link no longer comes from a custom-tour enquiry. The team meets
 travellers who never filled the form in — an agent's group, a repeat guest —
@@ -212,7 +384,7 @@ and their reviews are worth as much as anyone's.
   page. They always existed and moderation always showed them;
   `publishedTestimonials` was dropping them on the way out.
 
-**This commit removed the enquiry queue from the admin side entirely** — the
+**#29 removed the enquiry queue from the admin side entirely** — the
 `Enquiries` section, `/api/admin/requests`, `listRequests`,
 `invitesForReference` and its Firestore index, and the branch of the invite
 endpoint that built a link out of an enquiry.
@@ -224,6 +396,10 @@ invitations came from enquiries still carry a reference, and the panel still
 shows it, so an old one can be placed. Note what this means for *Known
 issues* §2: that endpoint is still unauthenticated and unbounded, and nothing
 in the admin panel looks at what it writes any more.
+
+> **Superseded by this round.** The admin list is back as **Customers**, and
+> paged. The endpoint is bounded. `/my-trip` no longer amends an enquiry —
+> contact details are all a traveller can change.
 
 ### The testimonials are a rotating rail
 
@@ -303,8 +479,8 @@ against a real one in the same way every Firebase path is.
 
 ## Known issues
 
-Found by review, **still not fixed**, roughly in priority order. None of them
-is new this round; all of them outlive it.
+Found by review, roughly in priority order. §2 was closed this round; the
+rest outlive it and are **still not fixed**.
 
 ### 1. The privacy policy contradicts the code — and now more so
 
@@ -328,13 +504,17 @@ needs business facts nobody here can invent — retention, legal basis,
 controller, data-subject rights — so it needs Nandana and, ideally, a
 lawyer. The factual half (what the code stores) is written down above.
 
-### 2. ~~The enquiry endpoint is unauthenticated and unbounded~~ — fixed
+### 2. ~~The enquiry endpoint is unauthenticated and unbounded~~ — closed
 
-`requestPayloadSchema` now bounds every free-text field and every array, and
-the admin **Customers** section watches the collection again. The original
-note follows, for the reasoning.
+`requestPayloadSchema` bounds every free-text field and every array now, and
+the **Customers** section watches the collection again. It is still
+unauthenticated, which is by design — a traveller must be able to send an
+enquiry without an account — but a single request can no longer push a
+megabyte into Firestore.
 
-### 2a. The original note
+The original note follows, because the reasoning is still worth having.
+
+#### The original note
 
 `POST /api/custom-tour/requests` has no auth, no rate limit and no honeypot,
 and `requestPayloadSchema` puts no `.max()` on `name`, `requirements` or
@@ -454,16 +634,77 @@ references that were really matches inside `node_modules` and `.next`.
 
 **Rule:** for "is it gone", use `git grep`, which only sees tracked files.
 
+### 8. Firestore drops documents that lack the field you order by
+
+The admin itinerary list is alphabetical rather than in featured/position
+order, and not by preference. `orderBy("sortOrder")` **excludes every document
+that has no `sortOrder`** — which is every itinerary written before the field
+existed. The list would have silently lost most of its rows, and looked like a
+data-loss bug rather than a query one.
+
+`head` is on every record, so the list sorts by that and shows placement as a
+label. The wizard still offers them in placement order: that read is the whole
+(small) collection, sorted in memory, where the rule does not apply.
+
+**Rule:** before ordering by a field in Firestore, ask whether every document
+has it. Optional fields and `orderBy` do not mix.
+
+### 9. Playwright's `has-text` is a case-insensitive substring match
+
+A script driving the custom-tour wizard used
+`:has-text("Continue"), :has-text("Review")` to find the forward button. The
+`"Review"` half matched the progress rail's disabled **"07 REVIEW"** step, so
+the run timed out clicking a button that can never be enabled — and read
+exactly like the wizard being broken.
+
+This is *Failed attempts* §4 again, in a new costume: the site's duplicated
+responsive controls punish loose selectors. `getByRole("button", { name, exact: true })`
+does not have the problem.
+
+**Rule:** exact role-and-name selectors, and filter by visibility, on this
+site especially.
+
+### 10. §6 bites again — and the way that actually works
+
+Killing the dev server with a command whose own text contains `next-server`
+kills the shell running it, because the pattern matches the shell's `cmdline`.
+That is §6, already written down, and it still happened.
+
+What works is finding the process by what is **listening**, not by its name:
+
+```sh
+port_hex=$(printf '%04X' 3000)
+inode=$(awk -v p=":$port_hex" 'NR>1 && $2 ~ p"$" && $4=="0A" {print $10; exit}' /proc/net/tcp)
+# then find the pid holding that socket inode in /proc/*/fd, skipping your own
+```
+
+**Rule:** never pattern-match a process by a string your own command contains.
+
 ---
 
 ## Next steps
 
-### 1. Connect Firebase
+### 1. Prove this branch against the real project
 
-`docs/FIREBASE_SETUP_CHECKLIST.md`, in order. Note the bootstrap: there is no
-password to sign in with any more, so the **first admin is granted from the
-command line**, and `scripts/grant-admin.mjs` doubles as the credential test —
-it uses the same service account and touches both Auth and Firestore.
+Firebase is connected, so the question is no longer whether the code paths
+*can* run — it is whether they do. Nothing on this branch that touches
+Firestore or Firebase Auth has been run against the project; `PLAN.md` →
+*What is still not proven* lists it in priority order. The short version:
+
+1. `firebase deploy --only firestore:indexes` — three composites, and two
+   features fail outright without them.
+2. Set `SUPER_ADMIN_EMAIL` before anyone needs to edit the access list.
+3. Open a real enquiry in **Customers** and press *Download PDF*. That is the
+   feature the round was built for and the one most worth seeing work.
+4. Test `discardProbeAccount` deliberately, with a throwaway Google account:
+   confirm it is refused **and** that the account is gone. This is the one
+   piece where a bug deletes something real.
+5. Press *Test the connection* in **AI**. `gemini-3.6-flash` has never run
+   against a real key.
+
+`scripts/grant-admin.mjs` remains for bootstrapping a deployment with no
+super admin configured; it doubles as the credential test, using the same
+service account and touching both Auth and Firestore.
 
 ### 2. Decisions outstanding
 

@@ -2,29 +2,44 @@
 
 import { categoryLabel } from "@/lib/itineraries/categories";
 import { provinceLabel } from "@/lib/geo/sriLanka";
-import { TRANSLATION_LOCALES, type ItineraryRecord } from "@/lib/itineraries/types";
-import { localeNames } from "@/i18n/routing";
+import { TRANSLATION_LOCALES } from "@/lib/itineraries/types";
+import type { ItinerarySummary } from "@/lib/itineraries/store";
 import { cn } from "@/lib/utils/cn";
 
 /**
  * Every itinerary that exists, whether or not travellers can see it. Hidden
  * ones stay listed and greyed rather than disappearing — an itinerary out of
  * season should be easy to bring back, and easy to notice is missing.
+ *
+ * A page at a time, and summaries rather than whole records: this shows a
+ * title, a category and some status dots, and has no use for the prose or the
+ * four inline translations that make up most of a record. The editor fetches
+ * the one it is opening.
+ *
+ * Alphabetical, because Firestore cannot order by `featured` or `sortOrder`
+ * without dropping every record that lacks the field. Placement is shown as a
+ * label instead — see `listRecordsPage`.
  */
 export function ItineraryList({
-  records,
+  items,
   loaded,
+  loadingMore,
+  hasMore,
   onAdd,
   onEdit,
   onToggleHidden,
   onDelete,
+  onLoadMore,
 }: {
-  records: ItineraryRecord[];
+  items: ItinerarySummary[];
   loaded: boolean;
+  loadingMore: boolean;
+  hasMore: boolean;
   onAdd: () => void;
-  onEdit: (record: ItineraryRecord) => void;
-  onToggleHidden: (record: ItineraryRecord) => void;
-  onDelete: (record: ItineraryRecord) => void;
+  onEdit: (id: string) => void;
+  onToggleHidden: (item: ItinerarySummary) => void;
+  onDelete: (item: ItinerarySummary) => void;
+  onLoadMore: () => void;
 }) {
   return (
     <div>
@@ -46,13 +61,13 @@ export function ItineraryList({
 
       {!loaded ? (
         <p className="mt-10 text-sm text-charcoal/45">Loading…</p>
-      ) : records.length === 0 ? (
+      ) : items.length === 0 ? (
         <p className="mt-10 max-w-lg rounded-2xl border border-dashed border-stone-dark px-6 py-10 text-center text-sm leading-relaxed text-charcoal/50">
           No itineraries yet. Add the first one and it appears in the wizard straight away.
         </p>
       ) : (
         <ul className="mt-7 space-y-3">
-          {records.map((record) => (
+          {items.map((record) => (
             <li
               key={record.id}
               className={cn(
@@ -62,9 +77,9 @@ export function ItineraryList({
             >
               <div className="flex flex-wrap items-start gap-4">
                 <div className="relative h-20 w-28 shrink-0 overflow-hidden rounded-xl bg-stone">
-                  {record.images[0] ? (
+                  {record.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={record.images[0]} alt="" className="h-full w-full object-cover" />
+                    <img src={record.image} alt="" className="h-full w-full object-cover" />
                   ) : null}
                 </div>
 
@@ -79,16 +94,20 @@ export function ItineraryList({
                         Hidden
                       </span>
                     )}
+                    {record.featured && (
+                      <span className="ml-2 rounded-full bg-forest/15 px-2 py-0.5 align-middle font-utility text-[10px] uppercase tracking-wide text-forest">
+                        Featured
+                      </span>
+                    )}
                   </h3>
                   <p className="mt-1 font-utility text-[11px] text-charcoal/45">
-                    {record.images.length} photo{record.images.length === 1 ? "" : "s"} ·{" "}
-                    {record.highlights.length} what-you-might-see ·{" "}
                     {readyCount(record)}/{TRANSLATION_LOCALES.length} languages
+                    {record.sortOrder !== undefined && ` · position ${record.sortOrder}`}
                   </p>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
-                  <RowButton onClick={() => onEdit(record)}>Edit</RowButton>
+                  <RowButton onClick={() => onEdit(record.id)}>Edit</RowButton>
                   <RowButton onClick={() => onToggleHidden(record)}>
                     {record.hidden ? "Show" : "Hide"}
                   </RowButton>
@@ -101,17 +120,23 @@ export function ItineraryList({
           ))}
         </ul>
       )}
+
+      {hasMore && (
+        <button
+          type="button"
+          disabled={loadingMore}
+          onClick={onLoadMore}
+          className="mt-6 min-h-10 rounded-full border border-stone-dark px-5 text-sm text-charcoal/70 transition-colors hover:border-forest hover:text-forest disabled:opacity-60"
+        >
+          {loadingMore ? "Loading…" : "Load more"}
+        </button>
+      )}
     </div>
   );
 }
 
-export function readyCount(record: ItineraryRecord) {
-  return TRANSLATION_LOCALES.filter((locale) => record.translations[locale]?.status === "ready")
-    .length;
-}
-
-export function localeName(locale: string) {
-  return localeNames[locale as keyof typeof localeNames] ?? locale;
+export function readyCount(record: ItinerarySummary) {
+  return TRANSLATION_LOCALES.filter((locale) => record.translations[locale] === "ready").length;
 }
 
 function RowButton({

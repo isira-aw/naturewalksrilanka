@@ -21,6 +21,17 @@ type StaffEntry = {
 
 type RefusedAttempt = { email: string; at: string; reason: string };
 
+type Access = {
+  staff: StaffEntry[];
+  refusals: RefusedAttempt[];
+  /** Whether this admin may change the list, not merely read it. */
+  canEdit: boolean;
+  /** Whether SUPER_ADMIN_EMAIL is set at all on this deployment. */
+  superAdminConfigured: boolean;
+  /** Only sent to a super admin; empty otherwise. */
+  superAdmins: string[];
+};
+
 /* Only one refusal reason can actually occur. Being on the list without the
    claim is no longer a refusal — the claim is granted on first sign-in — so
    there is no entry for it. Anything unrecognised is shown verbatim. */
@@ -31,6 +42,9 @@ const REASONS: Record<string, string> = {
 export function AccessPanel() {
   const [staff, setStaff] = useState<StaffEntry[]>([]);
   const [refusals, setRefusals] = useState<RefusedAttempt[]>([]);
+  const [canEdit, setCanEdit] = useState(false);
+  const [superAdminConfigured, setSuperAdminConfigured] = useState(true);
+  const [superAdmins, setSuperAdmins] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState("");
@@ -56,13 +70,13 @@ export function AccessPanel() {
           setLoading(false);
           return;
         }
-        const data = (await response.json()) as {
-          staff: StaffEntry[];
-          refusals: RefusedAttempt[];
-        };
+        const data = (await response.json()) as Access;
         if (cancelled) return;
         setStaff(data.staff);
         setRefusals(data.refusals);
+        setCanEdit(data.canEdit);
+        setSuperAdminConfigured(data.superAdminConfigured);
+        setSuperAdmins(data.superAdmins);
         setError(null);
         setLoading(false);
       } catch {
@@ -130,7 +144,9 @@ export function AccessPanel() {
         setError(
           body.error === "cannot_remove_self"
             ? "You cannot remove your own access from here."
-            : "Could not remove that address.",
+            : body.error === "cannot_remove_super_admin"
+              ? "That is a super admin. Their access comes from the deployment's settings, not from this list."
+              : "Could not remove that address.",
         );
         return;
       }
@@ -150,12 +166,29 @@ export function AccessPanel() {
         the permission it needs is granted the first time they sign in.
       </p>
 
+      {!loading && !canEdit && (
+        <p className="mt-5 max-w-2xl rounded-xl bg-stone px-4 py-3 text-sm leading-relaxed text-charcoal/70">
+          {superAdminConfigured
+            ? "You can see this list but not change it. Adding an admin hands out the keys, so it is kept to the super admin set in the deployment's settings."
+            : "This list cannot be changed: no super admin is configured. Set SUPER_ADMIN_EMAIL on the deployment and redeploy."}
+        </p>
+      )}
+
+      {canEdit && superAdmins.length === 1 && (
+        <p className="mt-5 max-w-2xl rounded-xl bg-stone px-4 py-3 text-sm leading-relaxed text-charcoal/70">
+          You are the only super admin. If this account is lost, changing the
+          access list needs a redeploy — SUPER_ADMIN_EMAIL takes a
+          comma-separated list, so consider adding a second.
+        </p>
+      )}
+
       {error && (
         <p role="alert" className="mt-6 rounded-xl bg-clay/10 px-4 py-3 text-sm text-charcoal">
           {error}
         </p>
       )}
 
+      {canEdit && (
       <form onSubmit={(event) => void add(event)} className="mt-6 flex flex-wrap gap-3">
         <label className="sr-only" htmlFor="staff-email">
           Email address to add
@@ -176,6 +209,7 @@ export function AccessPanel() {
           Add
         </button>
       </form>
+      )}
 
       {loading ? (
         <p className="mt-8 text-sm text-charcoal/45">Loading…</p>
@@ -198,14 +232,16 @@ export function AccessPanel() {
                   {entry.addedAt ? ` on ${entry.addedAt.slice(0, 10)}` : ""}
                 </span>
               )}
-              <button
-                type="button"
-                disabled={busy}
-                onClick={() => void remove(entry.email)}
-                className="ml-auto font-utility text-xs uppercase tracking-wide text-charcoal/50 transition-colors hover:text-clay disabled:opacity-60"
-              >
-                Remove
-              </button>
+              {canEdit && (
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => void remove(entry.email)}
+                  className="ml-auto font-utility text-xs uppercase tracking-wide text-charcoal/50 transition-colors hover:text-clay disabled:opacity-60"
+                >
+                  Remove
+                </button>
+              )}
             </li>
           ))}
         </ul>

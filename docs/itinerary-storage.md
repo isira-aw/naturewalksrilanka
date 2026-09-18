@@ -75,7 +75,14 @@ record.
 
 ## Backups
 
-*Data and migration* → *Export everything* wraps the records in
-`{ schemaVersion, exportedAt, records }`. `SCHEMA_VERSION` is bumped whenever
-the record shape changes, and old exports keep importing. Take one before any
-bulk import — `replace` deletes anything absent from the file.
+**There is no export or import in the panel any more.** The *Data and
+migration* section is gone, and with it the bulk `replace` that deleted
+anything absent from an uploaded file — a destructive operation behind a
+button nobody was using.
+
+Backups are Firestore's job, which does them properly: point-in-time recovery
+and scheduled exports to Cloud Storage, configured in the Firebase console
+rather than taken by hand from a browser.
+
+`{ schemaVersion, exportedAt, records }` survives as the shape
+`GET /api/itineraries` answers in, because the browser store parses it.

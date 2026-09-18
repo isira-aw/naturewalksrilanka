@@ -2,11 +2,11 @@ import "server-only";
 import { requireFirebase } from "@/lib/firebase/admin";
 import { COLLECTIONS, REVISIONS_SUBCOLLECTION } from "@/lib/firebase/collections";
 import {
-  documentSnapshotSchema,
   newReference,
   normaliseEmail,
   requestRevisionSchema,
   tourRequestSchema,
+  type ContactUpdate,
   type DocumentSnapshot,
   type RequestDownload,
   type RequestPayload,
@@ -97,20 +97,24 @@ export async function getRequest(reference: string): Promise<TourRequest | null>
 }
 
 /**
- * Replaces the traveller's answers, keeping the previous version.
+ * Changes the contact details on an enquiry, keeping the previous version.
  *
- * The old payload is copied into a `revisions` subcollection first. The team
- * may already have quoted against what was there, so an amendment must never
- * be the only record — being able to see what changed is the whole point of
- * letting someone amend at all.
+ * Only the four contact fields move. This replaced a general "revise
+ * everything" path that handed the traveller back to the wizard: the team may
+ * already have quoted against what was there, and a quote that changes
+ * underneath them without a word is worse than one that has to be discussed.
  *
- * The email is deliberately *not* updated from the new payload: it is the
- * key a returning traveller is matched against, and letting a revision
- * change it would let anyone who can reach the page hand it to someone else.
+ * The previous payload is still copied into `revisions` first. A correction
+ * to a phone number is not dramatic, but knowing what an enquiry said when it
+ * was quoted is the whole reason that subcollection exists.
+ *
+ * The email is deliberately not updated: it is the key a returning traveller
+ * is matched against, and changing it would let whoever holds the session
+ * hand the enquiry to somebody else.
  */
-export async function reviseRequest(
+export async function updateContact(
   reference: string,
-  payload: RequestPayload,
+  contact: ContactUpdate,
 ): Promise<TourRequest | null> {
   const { db } = requireFirebase();
   const ref = collection().doc(reference.trim().toUpperCase());
@@ -134,7 +138,13 @@ export async function reviseRequest(
 
     const next: TourRequest = {
       ...current.data,
-      payload: { ...payload, email: current.data.email },
+      payload: {
+        ...current.data.payload,
+        name: contact.name,
+        phone: contact.phone,
+        country: contact.country,
+        requirements: contact.requirements,
+      },
       updatedAt: now,
       revision,
     };
@@ -142,6 +152,32 @@ export async function reviseRequest(
     transaction.set(ref, next);
     return next;
   });
+}
+
+/**
+ * Every enquiry belonging to one address, newest first.
+ *
+ * The address comes from the session cookie at the call site, never from
+ * anything the caller sent — see `/api/traveller/requests`. Needs the
+ * `email` + `createdAt` composite index.
+ */
+export async function listRequestsForEmail(
+  email: string,
+  limit = 25,
+): Promise<TourRequest[]> {
+  const snapshot = await collection()
+    .where("email", "==", normaliseEmail(email))
+    .orderBy("createdAt", "desc")
+    .limit(Math.min(Math.max(Math.trunc(limit) || 25, 1), 100))
+    .get();
+
+  const found: TourRequest[] = [];
+  for (const doc of snapshot.docs) {
+    const parsed = tourRequestSchema.safeParse(doc.data());
+    if (parsed.success) found.push(parsed.data);
+    else console.error(`Skipping malformed tour request ${doc.id}`);
+  }
+  return found;
 }
 
 /* ---- the admin side ---------------------------------------------------- */
@@ -269,33 +305,4 @@ export async function listRevisions(reference: string): Promise<RequestRevision[
     else console.error(`Skipping malformed revision ${reference}/${doc.id}`);
   }
   return revisions;
-}
-
-/* ---- what the traveller took away -------------------------------------- */
-
-/**
- * Pins the journey document as the traveller's browser built it.
- *
- * Written once, when the enquiry is sent. A later amendment replaces it,
- * because the amended enquiry is the one the team will work from — the
- * previous document is still reachable through the payload kept in
- * `revisions`.
- *
- * Failing here must never fail the enquiry: the snapshot is a convenience
- * for the team, and the traveller is one click from WhatsApp.
- */
-export async function attachDocumentSnapshot(
-  reference: string,
-  snapshot: DocumentSnapshot,
-): Promise<void> {
-  const parsed = documentSnapshotSchema.safeParse(snapshot);
-  if (!parsed.success) return;
-
-  try {
-    await collection()
-      .doc(reference.trim().toUpperCase())
-      .update({ documentSnapshot: parsed.data });
-  } catch (error) {
-    console.error(`Could not attach a document snapshot to ${reference}:`, error);
-  }
 }

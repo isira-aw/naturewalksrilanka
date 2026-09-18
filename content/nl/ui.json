@@ -169,14 +169,14 @@
     "requirementsLabel": "Vertel ons over je ideale reis…",
     "reviewTitle": "Bekijk je reis",
     "reviewHint": "Controleer of alles klopt en stuur het daarna via WhatsApp.",
-    "submit": "Bespreek mijn reis via WhatsApp",
+    "submit": "Versturen en contact via WhatsApp",
     "errorTravelers": "Vul minstens één reiziger in.",
     "errorInterests": "Kies minstens één interesse.",
     "errorContact": "Vul je naam, een geldig e-mailadres en een telefoonnummer in.",
     "downloadPdf": "Downloaden als PDF",
     "downloadPreparing": "Bezig met voorbereiden…",
     "downloadError": "We konden het document niet maken. Probeer het opnieuw.",
-    "submitHint": "Als je het via WhatsApp verstuurt, wordt er ook een Word-kopie van je reis op je apparaat opgeslagen, zodat je die aan het gesprek kunt toevoegen.",
+    "submitHint": "Je aanvraag wordt opgeslagen en de chat gaat open, zodat je alles met het team kunt doorspreken.",
     "document": {
       "title": "Jouw reis door Sri Lanka",
       "tagline": "Samengesteld door Nature Walk Sri Lanka",
@@ -192,9 +192,7 @@
       "noticeTitle": "Over dit document",
       "notice": "Dit document is automatisch samengesteld uit de itineraries waarin u aangaf geïnteresseerd te zijn. Het is een startpunt, geen vaste boeking. Moet er iets veranderen — de volgorde van de stops, de duur, of de itineraries zelf — neem dan contact op met ons team via WhatsApp. Geen zorgen: ze helpen u graag.",
       "whatsappLabel": "WhatsApp"
-    },
-    "amending": "Je wijzigt reis {reference}. Verstuur hem opnieuw als je klaar bent, dan zien wij de wijziging.",
-    "amendFailed": "We konden die reis niet openen. Open hem eerst via je reispagina en kies dan Deze reis wijzigen."
+    }
   },
   "nandana": {
     "introEyebrow": "Wie is Nandana",
@@ -311,8 +309,6 @@
     "phone": "Telefoon",
     "country": "Land",
     "requirements": "Wensen",
-    "amend": "Deze reis wijzigen",
-    "changesHint": "Als je je reis wijzigt, sturen we ons de nieuwe versie. We bewaren de vorige, dus er gaat niets verloren.",
     "revisionNote": "{count, plural, one {Eén keer} other {# keer}} gewijzigd.",
     "status": {
       "received": "Ontvangen",
@@ -320,7 +316,20 @@
       "quoted": "Offerte verstuurd",
       "confirmed": "Bevestigd",
       "closed": "Afgesloten"
-    }
+    },
+    "editContact": "Je contactgegevens bijwerken",
+    "editContactHint": "Je naam, telefoon, land en al het andere dat we moeten weten. Wil je de reis zelf wijzigen — de routes, de data, met hoeveel jullie zijn — stuur ons dan een bericht op WhatsApp en we regelen het samen.",
+    "saveContact": "Wijzigingen opslaan",
+    "savingContact": "Opslaan…",
+    "contactSaved": "Opgeslagen.",
+    "contactFailed": "Dat kon niet worden opgeslagen. Probeer het zo opnieuw.",
+    "tripsTitle": "Jouw reizen",
+    "tripsAccessBody": "Vul je e-mailadres in en we sturen je een link om je reizen te bekijken. Geen wachtwoord nodig.",
+    "tripsEmpty": "Nog geen reizen voor dit adres. Heb je een ander adres gebruikt, vraag dan een nieuwe link aan met dat adres.",
+    "tripsSignedIn": "Ingelogd als {email}.",
+    "openTrip": "Openen",
+    "tripsCount": "{count, plural, one {# reis} other {# reizen}}",
+    "signOut": "Uitloggen"
   },
   "review": {
     "title": "Hoe was je reis?",

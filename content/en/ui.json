@@ -169,14 +169,14 @@
     "requirementsLabel": "Tell us about your ideal journey…",
     "reviewTitle": "Review your journey",
     "reviewHint": "Check everything reads right, then send it over on WhatsApp.",
-    "submit": "Discuss My Journey on WhatsApp",
+    "submit": "Submit and contact on WhatsApp",
     "errorTravelers": "Please enter at least one traveller.",
     "errorInterests": "Please choose at least one interest.",
     "errorContact": "Please add your name, a valid email address and a phone number.",
     "downloadPdf": "Download as PDF",
     "downloadPreparing": "Preparing…",
     "downloadError": "We couldn't build the document. Please try again.",
-    "submitHint": "Sending on WhatsApp also saves a Word copy of this journey to your device, so you can attach it to the chat.",
+    "submitHint": "Your enquiry is saved and the chat opens, so you can talk it through with the team.",
     "document": {
       "title": "Your Sri Lanka journey",
       "tagline": "Prepared by Nature Walk Sri Lanka",
@@ -192,9 +192,7 @@
       "noticeTitle": "About this document",
       "notice": "This document was generated automatically from the itineraries you told us you were interested in. It is a starting point, not a fixed booking. If anything needs changing — the order of the stops, how long you stay, or the itineraries themselves — talk to our team on WhatsApp. Don't worry: they are always happy to help.",
       "whatsappLabel": "WhatsApp"
-    },
-    "amending": "You are changing trip {reference}. Send it again when you are done and we will see the update.",
-    "amendFailed": "We could not open that trip. Open it from your trip page first, then choose Change this trip."
+    }
   },
   "nandana": {
     "introEyebrow": "Who is Nandana",
@@ -310,8 +308,6 @@
     "phone": "Phone",
     "country": "Country",
     "requirements": "Requirements",
-    "amend": "Change this trip",
-    "changesHint": "Changing your trip sends us the new version. We keep the previous one, so nothing is lost.",
     "revisionNote": "Changed {count, plural, one {once} other {# times}}.",
     "status": {
       "received": "Received",
@@ -319,7 +315,20 @@
       "quoted": "Quote sent",
       "confirmed": "Confirmed",
       "closed": "Closed"
-    }
+    },
+    "editContact": "Update your contact details",
+    "editContactHint": "Your name, phone, country and anything else we should know. To change the trip itself — the itineraries, the dates, how many of you — message us on WhatsApp and we will sort it out together.",
+    "saveContact": "Save changes",
+    "savingContact": "Saving…",
+    "contactSaved": "Saved.",
+    "contactFailed": "Could not save that. Try again shortly.",
+    "tripsTitle": "Your trips",
+    "tripsAccessBody": "Enter your email address and we will send you a link to see your trips. No password needed.",
+    "tripsEmpty": "No trips yet for this address. If you used a different one, ask for a new link with that address.",
+    "tripsSignedIn": "Signed in as {email}.",
+    "openTrip": "Open",
+    "tripsCount": "{count, plural, one {# trip} other {# trips}}",
+    "signOut": "Sign out"
   },
   "review": {
     "title": "How was your trip?",

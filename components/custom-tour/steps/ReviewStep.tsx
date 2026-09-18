@@ -113,16 +113,16 @@ export function ReviewStep({
         </dl>
 
         <div className="mt-8 lg:sticky lg:top-28 lg:mt-0">
-          {/* WhatsApp opens in its own tab while the Word copy saves in the
-              background, so the traveller can attach it to the chat. */}
+          {/* Sending records the enquiry and opens the chat. It deliberately
+              does **not** save a file: a Word document appearing in the
+              traveller's downloads for an action labelled "submit" is not
+              something they asked for, and it happened whether or not they
+              wanted a copy. The PDF below is how you get one, by choosing to. */}
           <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => {
-              onDownload("doc");
-              onSent();
-            }}
+            onClick={() => onSent()}
             className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-forest px-8 py-4 text-base font-medium tracking-wide text-warm-white transition-colors duration-200 hover:bg-forest-dark sm:w-auto lg:w-full"
           >
             <WhatsAppIcon className="h-4 w-4" />

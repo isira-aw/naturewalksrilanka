@@ -1,51 +1,14 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { isFirebaseConfigured } from "@/lib/firebase/admin";
-import {
-  attachDocumentSnapshot,
-  createRequest,
-  getRequest,
-  reviseRequest,
-} from "@/lib/tourRequests/store";
+import { createRequest } from "@/lib/tourRequests/store";
 import {
   documentSnapshotSchema,
   requestDownloadSchema,
   requestPayloadSchema,
 } from "@/lib/tourRequests/types";
-import { travellerFromRequest } from "@/lib/tourRequests/travellerSession";
 
 export const dynamic = "force-dynamic";
-
-/**
- * One enquiry, for the traveller who owns it.
- *
- * Used by the wizard when amending, so it can be seeded with what was sent
- * before. Ownership is checked here rather than trusted from the URL.
- */
-export async function GET(request: Request) {
-  const reference = new URL(request.url).searchParams.get("reference");
-  if (!reference) return NextResponse.json({ error: "missing_reference" }, { status: 400 });
-
-  if (!isFirebaseConfigured()) {
-    return NextResponse.json({ error: "not_configured" }, { status: 503 });
-  }
-
-  const email = await travellerFromRequest(request);
-  if (!email) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-
-  const existing = await getRequest(reference);
-  if (!existing || existing.email !== email) {
-    return NextResponse.json({ error: "not_found" }, { status: 404 });
-  }
-
-  return NextResponse.json({
-    reference: existing.reference,
-    status: existing.status,
-    payload: existing.payload,
-    updatedAt: existing.updatedAt,
-    revision: existing.revision,
-  });
-}
 
 /**
  * Records a custom tour enquiry.
@@ -65,10 +28,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
 
-  const { payload, locale, reference, documentSnapshot, downloads } = (body ?? {}) as {
+  const { payload, locale, documentSnapshot, downloads } = (body ?? {}) as {
     payload?: unknown;
     locale?: unknown;
-    reference?: unknown;
     documentSnapshot?: unknown;
     downloads?: unknown;
   };
@@ -85,32 +47,6 @@ export async function POST(request: Request) {
 
   if (!isFirebaseConfigured()) {
     return NextResponse.json({ saved: false, reason: "not_configured" });
-  }
-
-  /* An amendment, rather than a new enquiry. Only the traveller who proved
-     they hold the address on the request may revise it — the reference is a
-     label, not a credential. */
-  if (typeof reference === "string" && reference) {
-    const email = await travellerFromRequest(request);
-    if (!email) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-
-    const existing = await getRequest(reference);
-    if (!existing || existing.email !== email) {
-      /* Same answer whether it does not exist or is not theirs: telling a
-         stranger which references are real is a small gift to somebody
-         enumerating them. */
-      return NextResponse.json({ error: "not_found" }, { status: 404 });
-    }
-
-    const revised = await reviseRequest(reference, parsed.data);
-    if (!revised) return NextResponse.json({ error: "not_found" }, { status: 404 });
-
-    /* The amended enquiry is the one the team will work from, so its document
-       replaces the previous one. The superseded payload is still in
-       `revisions`, so nothing is lost. */
-    if (snapshot.success) await attachDocumentSnapshot(revised.reference, snapshot.data);
-
-    return NextResponse.json({ saved: true, reference: revised.reference });
   }
 
   try {

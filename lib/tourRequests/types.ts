@@ -78,6 +78,27 @@ export const requestPayloadSchema = z.object({
 export type RequestPayload = z.infer<typeof requestPayloadSchema>;
 
 /**
+ * What a traveller may change about their own enquiry after sending it.
+ *
+ * Contact details, and nothing else. The itineraries, the dates and the group
+ * size are what a quote is built from, so they are not something to move
+ * silently underneath the team — changing those is a conversation, which is
+ * what the WhatsApp thread is for. An address or a phone number going out of
+ * date is different: it costs nothing to fix and everything to get wrong.
+ *
+ * The email is absent on purpose. It is the key a returning traveller is
+ * matched against, and letting a form change it would let whoever holds the
+ * session hand the enquiry to someone else.
+ */
+export const contactUpdateSchema = z.object({
+  name: z.string().min(1).max(FIELD_LIMITS.name),
+  phone: z.string().min(1).max(FIELD_LIMITS.phone),
+  country: z.string().max(FIELD_LIMITS.country),
+  requirements: z.string().max(FIELD_LIMITS.requirements),
+});
+export type ContactUpdate = z.infer<typeof contactUpdateSchema>;
+
+/**
  * A take-away document the traveller actually saved, recorded when the
  * download succeeds.
  *

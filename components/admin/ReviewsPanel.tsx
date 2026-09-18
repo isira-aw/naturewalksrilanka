@@ -25,6 +25,12 @@ export function ReviewsPanel() {
   const [status, setStatus] = useState<"loading" | "ready" | "unavailable">("loading");
   const [error, setError] = useState<string | null>(null);
 
+  /* Both lists are paged. The first page arrives with everything else; these
+     hold the cursor for the next one, and are absent when there is none. */
+  const [pendingCursor, setPendingCursor] = useState<string | undefined>();
+  const [publishedCursor, setPublishedCursor] = useState<string | undefined>();
+  const [extending, setExtending] = useState<"pending" | "approved" | null>(null);
+
   const load = useCallback(async () => {
     try {
       const [waiting, live, sent] = await Promise.all([
@@ -45,8 +51,13 @@ export function ReviewsPanel() {
       }
       if (![waiting, live, sent].every((response) => response.ok)) throw new Error("load");
 
-      setPending((await waiting.json()).reviews ?? []);
-      setPublished((await live.json()).reviews ?? []);
+      const waitingPage = await waiting.json();
+      const livePage = await live.json();
+
+      setPending(waitingPage.reviews ?? []);
+      setPendingCursor(waitingPage.nextCursor);
+      setPublished(livePage.reviews ?? []);
+      setPublishedCursor(livePage.nextCursor);
       setInvites((await sent.json()).invites ?? []);
       setStatus("ready");
     } catch {
@@ -64,6 +75,43 @@ export function ReviewsPanel() {
     void load();
   }, [load]);
   /* eslint-enable react-hooks/set-state-in-effect */
+
+  /**
+   * The next page of one of the two lists.
+   *
+   * Appends rather than replaces, and leaves the other list alone — they are
+   * separate queries with separate cursors, and moderating from one while the
+   * other is half-loaded should not disturb it.
+   */
+  async function loadMore(which: "pending" | "approved") {
+    const cursor = which === "pending" ? pendingCursor : publishedCursor;
+    if (!cursor) return;
+
+    setExtending(which);
+    try {
+      const response = await fetch(
+        `/api/admin/reviews?status=${which}&cursor=${encodeURIComponent(cursor)}`,
+        { credentials: "same-origin", cache: "no-store" },
+      );
+      if (!response.ok) {
+        setError("Could not load more reviews.");
+        return;
+      }
+      const page = (await response.json()) as { reviews?: Review[]; nextCursor?: string };
+
+      if (which === "pending") {
+        setPending((current) => [...current, ...(page.reviews ?? [])]);
+        setPendingCursor(page.nextCursor);
+      } else {
+        setPublished((current) => [...current, ...(page.reviews ?? [])]);
+        setPublishedCursor(page.nextCursor);
+      }
+    } catch {
+      setError("Could not reach the server.");
+    } finally {
+      setExtending(null);
+    }
+  }
 
   async function createInvite(body: Record<string, string>) {
     const response = await fetch("/api/admin/reviews/invites", {
@@ -179,6 +227,13 @@ export function ReviewsPanel() {
             ))}
           </ul>
         )}
+
+        {pendingCursor && (
+          <MoreButton
+            busy={extending === "pending"}
+            onClick={() => void loadMore("pending")}
+          />
+        )}
       </section>
 
       <section>
@@ -201,6 +256,13 @@ export function ReviewsPanel() {
               </ReviewCard>
             ))}
           </ul>
+        )}
+
+        {publishedCursor && (
+          <MoreButton
+            busy={extending === "approved"}
+            onClick={() => void loadMore("approved")}
+          />
         )}
       </section>
 
@@ -397,4 +459,17 @@ function linkFor(invite: ReviewInvite) {
 function inviteState(invite: ReviewInvite) {
   if (invite.usedAt) return "Review received";
   return new Date(invite.expiresAt) > new Date() ? "Waiting" : "Expired";
+}
+
+function MoreButton({ busy, onClick }: { busy: boolean; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      disabled={busy}
+      onClick={onClick}
+      className="mt-5 min-h-10 rounded-full border border-stone-dark px-5 text-sm text-charcoal/70 transition-colors hover:border-forest hover:text-forest disabled:opacity-60"
+    >
+      {busy ? "Loading…" : "Load more"}
+    </button>
+  );
 }

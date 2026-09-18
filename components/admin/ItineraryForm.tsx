@@ -5,7 +5,6 @@ import { ITINERARY_CATEGORIES } from "@/lib/itineraries/categories";
 import { PROVINCES } from "@/lib/geo/sriLanka";
 import {
   emptyRecord,
-  uniqueSlug,
   type ItineraryHighlight,
   type ItineraryRecord,
 } from "@/lib/itineraries/types";
@@ -20,6 +19,7 @@ import {
   type PreparedImage,
 } from "@/lib/itineraries/imageUpload";
 import { Field, Label, TextArea, TextInput } from "./controls";
+import { TranslationsField, englishOf } from "./TranslationsField";
 
 const MAX_IMAGES = 3;
 
@@ -49,12 +49,10 @@ function withBlur(current: Record<string, string>, prepared: PreparedImage[]) {
  */
 export function ItineraryForm({
   initial,
-  existing,
   onSave,
   onCancel,
 }: {
   initial?: ItineraryRecord;
-  existing: ItineraryRecord[];
   onSave: (record: ItineraryRecord) => Promise<void>;
   onCancel: () => void;
 }) {
@@ -71,6 +69,18 @@ export function ItineraryForm({
    * to spot on a map of Sri Lanka. The record is only given a pair once both
    * boxes hold a number, and the pair is dropped the moment either does not.
    */
+  /**
+   * The English that `draft.translations` were made from, or `null` when
+   * there are none.
+   *
+   * Comparing against `initial` is not enough: a brand-new itinerary has no
+   * `initial`, so translating one before its first save would have counted as
+   * "the English changed" and thrown the translations away on the way out.
+   */
+  const [translationBase, setTranslationBase] = useState<string | null>(() =>
+    initial && Object.keys(initial.translations).length > 0 ? englishOf(initial) : null,
+  );
+
   const [latText, setLatText] = useState(() =>
     initial?.coordinates ? String(initial.coordinates.lat) : "",
   );
@@ -173,21 +183,19 @@ export function ItineraryForm({
     /* Changing the English invalidates whatever was translated from it, so the
        translations go back to "missing" and the Translations panel asks for
        them again — rather than leaving four locales quietly showing the old
-       wording. */
-    const englishChanged =
-      !initial ||
-      initial.head !== draft.head ||
-      initial.content1 !== draft.content1 ||
-      initial.content2 !== draft.content2 ||
-      initial.bestTime !== draft.bestTime ||
-      initial.suggestedLength !== draft.suggestedLength ||
-      JSON.stringify(initial.highlights.map((h) => [h.name, h.description])) !==
-        JSON.stringify(draft.highlights.map((h) => [h.name, h.description]));
+       wording.
+
+       Measured against the English the translations were actually made from,
+       which the editor tracks, rather than against the record as it was
+       loaded: an itinerary translated before its first save has no loaded
+       version to compare with. */
+    const englishChanged = englishOf(draft) !== translationBase;
 
     const record: ItineraryRecord = {
       ...draft,
       head: draft.head.trim(),
-      slug: uniqueSlug(draft.head, existing, draft.id),
+      /* The server decides the slug: it is the only place that can see every
+         itinerary, and the list here is one page of them. */
       highlights: draft.highlights
         .filter((highlight) => highlight.name.trim())
         .map((highlight) => ({
@@ -207,6 +215,27 @@ export function ItineraryForm({
       setBusy(false);
     }
   }
+
+  const translationsSection = (
+    <TranslationsField
+      draft={draft}
+      base={translationBase}
+      onTranslated={(locale, translation) => {
+        /* A translation that arrives while the English is out of step with
+           the rest replaces them rather than joining them: the others
+           describe wording that has since changed. */
+        const fresh = englishOf(draft);
+        setDraft((current) => ({
+          ...current,
+          translations:
+            fresh === translationBase
+              ? { ...current.translations, [locale]: translation }
+              : { [locale]: translation },
+        }));
+        setTranslationBase(fresh);
+      }}
+    />
+  );
 
   /* Only images still held inline cost anything here — one uploaded to
      Storage is a short URL, so counting it would report a size the record
@@ -519,6 +548,8 @@ export function ItineraryForm({
           Add an entry
         </button>
       </section>
+
+      {translationsSection}
 
       {totalBytes > 0 && (
         <p className="mt-6 font-utility text-[11px] uppercase tracking-wide text-charcoal/40">

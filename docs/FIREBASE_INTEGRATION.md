@@ -463,7 +463,7 @@ Run through this after connecting, and again after touching auth.
 - [ ] Google sign-in refused before `grant-admin.mjs` has been run
 - [ ] Accepted after granting, and after signing out and back in
 - [ ] `/en/admin` signed out returns the sign-in form and **no panel markup**
-      (grep the HTML for "Custom tour optimisation" and "Data and migration")
+      (grep the HTML for "Custom tour optimisation" and "Customers")
 - [ ] **The awaited-`requireAdmin` test:** signed in, `DELETE
       /api/admin/itineraries` with no id returns 400 `missing_id`; after
       signing out the same call returns 401. Had an `await` been forgotten, the

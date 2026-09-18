@@ -31,7 +31,7 @@ const PENDING_EMAIL_KEY = "nwsl_pending_email";
 
 type Phase = "idle" | "sending" | "sent" | "completing" | "error";
 
-export function TravellerAccess({ reference }: { reference: string }) {
+export function TravellerAccess({ reference }: { reference?: string }) {
   const t = useTranslations("myTrip");
   const [email, setEmail] = useState("");
   const [phase, setPhase] = useState<Phase>("idle");
@@ -142,7 +142,7 @@ export function TravellerAccess({ reference }: { reference: string }) {
     >
       <h1 className="font-display text-2xl text-charcoal">{t("accessTitle")}</h1>
       <p className="mt-2 text-sm leading-relaxed text-charcoal/60">
-        {t("accessBody", { reference })}
+        {reference ? t("accessBody", { reference }) : t("tripsAccessBody")}
       </p>
 
       <label className="mt-6 block">

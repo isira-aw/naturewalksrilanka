@@ -156,16 +156,6 @@ export function slugify(value: string) {
     .slice(0, 64);
 }
 
-/** A slug no other record is already using. */
-export function uniqueSlug(base: string, records: ItineraryRecord[], selfId: string) {
-  const root = slugify(base) || "itinerary";
-  const taken = new Set(records.filter((r) => r.id !== selfId).map((r) => r.slug));
-  if (!taken.has(root)) return root;
-  let n = 2;
-  while (taken.has(`${root}-${n}`)) n += 1;
-  return `${root}-${n}`;
-}
-
 export function translatableOf(record: ItineraryRecord): TranslatableFields {
   return {
     head: record.head,

@@ -20,11 +20,9 @@ const SECTIONS = [
   { href: "/admin/itineraries", label: "Custom tour optimisation" },
   { href: "/admin/customers", label: "Customers" },
   { href: "/admin/reviews", label: "Reviews" },
-  { href: "/admin/translations", label: "Translations" },
   { href: "/admin/settings", label: "Wizard settings" },
   { href: "/admin/ai", label: "AI" },
   { href: "/admin/access", label: "Access" },
-  { href: "/admin/data", label: "Data and migration" },
 ] as const;
 
 export function AdminShell({ children }: { children: React.ReactNode }) {

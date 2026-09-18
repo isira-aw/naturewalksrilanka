@@ -3,6 +3,7 @@ import { adminAuth, adminDb, isFirebaseConfigured } from "@/lib/firebase/admin";
 import { COLLECTIONS } from "@/lib/firebase/collections";
 import { adminIdentity } from "@/lib/admin/auth";
 import { listRefusals } from "@/lib/admin/signInGuard";
+import { hasSuperAdmin, isSuperAdmin, superAdmins } from "@/lib/admin/superAdmin";
 
 export const dynamic = "force-dynamic";
 
@@ -40,6 +41,17 @@ async function requireIdentity(request: Request) {
   const email = await adminIdentity(request);
   if (!email) return { error: "unauthorized" as const, status: 401 };
   return { email };
+}
+
+/**
+ * Editing the access list is a super admin's job — see
+ * `lib/admin/superAdmin.ts`. Every admin may read it.
+ */
+async function requireSuperAdmin(request: Request) {
+  const who = await requireIdentity(request);
+  if ("error" in who) return who;
+  if (!isSuperAdmin(who.email)) return { error: "forbidden" as const, status: 403 };
+  return who;
 }
 
 export async function GET(request: Request) {
@@ -83,7 +95,17 @@ export async function GET(request: Request) {
 
     staff.sort((a, b) => a.email.localeCompare(b.email));
 
-    return NextResponse.json({ staff, refusals: await listRefusals() });
+    return NextResponse.json({
+      staff,
+      refusals: await listRefusals(),
+      /* The panel hides its editing controls off this rather than guessing
+         from the address, and says *why* they are hidden — an unset
+         SUPER_ADMIN_EMAIL and a deliberate read-only view look identical
+         otherwise, and only one of them is intended. */
+      canEdit: isSuperAdmin(who.email),
+      superAdminConfigured: hasSuperAdmin(),
+      superAdmins: isSuperAdmin(who.email) ? superAdmins() : [],
+    });
   } catch (error) {
     console.error("Could not read the access list:", error);
     return NextResponse.json({ error: "unavailable" }, { status: 503 });
@@ -92,7 +114,7 @@ export async function GET(request: Request) {
 
 /** Adds an address to the staff list, and grants the claim if they exist. */
 export async function POST(request: Request) {
-  const who = await requireIdentity(request);
+  const who = await requireSuperAdmin(request);
   if ("error" in who) {
     return NextResponse.json({ error: who.error }, { status: who.status });
   }
@@ -151,7 +173,7 @@ export async function POST(request: Request) {
  * anyone re-adds the address.
  */
 export async function DELETE(request: Request) {
-  const who = await requireIdentity(request);
+  const who = await requireSuperAdmin(request);
   if ("error" in who) {
     return NextResponse.json({ error: who.error }, { status: who.status });
   }
@@ -159,11 +181,16 @@ export async function DELETE(request: Request) {
   const email = new URL(request.url).searchParams.get("email")?.trim().toLowerCase();
   if (!email) return NextResponse.json({ error: "invalid_email" }, { status: 400 });
 
-  /* Removing your own access locks you out of the panel you are standing in,
-     and if you are the last admin it locks everyone out until somebody runs
-     the CLI script again. */
+  /* Removing your own access locks you out of the panel you are standing in. */
   if (email === who.email) {
     return NextResponse.json({ error: "cannot_remove_self" }, { status: 400 });
+  }
+
+  /* A super admin's access does not come from this list, so removing their
+     row would not take it away — it would only make the list disagree with
+     reality. Refused, rather than doing something that looks like it worked. */
+  if (isSuperAdmin(email)) {
+    return NextResponse.json({ error: "cannot_remove_super_admin" }, { status: 400 });
   }
 
   const db = adminDb();
