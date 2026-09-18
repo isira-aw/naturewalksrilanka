@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
@@ -271,7 +271,20 @@ export function WizardShell({
       headers: { "Content-Type": "application/json" },
       credentials: "same-origin",
       keepalive: true,
-      body: JSON.stringify({ payload, locale, reference: amending ?? undefined }),
+      body: JSON.stringify({
+        payload,
+        locale,
+        reference: amending ?? undefined,
+        /* Pinned so the admin panel can reproduce *this* document later. A
+           rebuild from the payload alone would use the itineraries as they
+           stand then, which is not what the traveller is holding. */
+        documentSnapshot: {
+          at: new Date().toISOString(),
+          locale,
+          document: journeyDocument,
+        },
+        downloads: savedCopies.current,
+      }),
     }).catch(() => {
       /* Nothing to show: the traveller is already on their way to WhatsApp. */
     });
@@ -297,8 +310,40 @@ export function WizardShell({
     [selected, state.dateRange]
   );
 
-  const { download, pending, failed, interestLabels, accommodationLabels, datesValue, chosenIdeas } =
-    useJourneyDocument({ state, locale, plan, whatsappNumber });
+  const {
+    /* Renamed on the way out: an unqualified `document` in this scope would
+       shadow the global one, and this file reaches for `window.document`. */
+    document: journeyDocument,
+    download: downloadDocument,
+    pending,
+    failed,
+    interestLabels,
+    accommodationLabels,
+    datesValue,
+    chosenIdeas,
+  } = useJourneyDocument({ state, locale, plan, whatsappNumber });
+
+  /**
+   * Which take-away files the traveller has saved during this visit.
+   *
+   * Recorded here rather than server-side because a download almost always
+   * happens *before* they press send — at which point the enquiry does not
+   * exist yet and there is no reference to attach it to. The list rides
+   * along with the enquiry instead. A download after sending is therefore
+   * not counted, which is the honest limit of doing it this way.
+   */
+  const savedCopies = useRef<{ kind: "pdf" | "doc"; at: string; locale: string }[]>([]);
+
+  const download = useCallback(
+    async (kind: "pdf" | "doc") => {
+      await downloadDocument(kind);
+      savedCopies.current = [
+        ...savedCopies.current,
+        { kind, at: new Date().toISOString(), locale },
+      ].slice(-25);
+    },
+    [downloadDocument, locale]
+  );
 
   useEffect(() => {
     /* A step change swaps the whole panel; on a phone the new step would

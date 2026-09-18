@@ -1,5 +1,3 @@
-"use client";
-
 import type { Experience } from "@/lib/content/schema";
 import type { JourneyPlan } from "@/lib/journey/plan";
 import { formatDrive } from "@/lib/journey/plan";
@@ -26,7 +24,10 @@ export type JourneyDocumentInput = {
  *
  * Both the plan step and the review step offer a download, and they must
  * produce byte-for-byte the same document — so neither builds one itself; both
- * call this.
+ * call this. The admin panel's rebuild goes through it as well, by way of
+ * `fromRequest.ts`, which is why this file carries no `"use client"`: it is
+ * pure, it touches no browser API, and marking it otherwise would have forced
+ * a second copy of the same assembly to exist.
  */
 export function buildJourneyDocument(input: JourneyDocumentInput): JourneyDocument {
   const { plan } = input;

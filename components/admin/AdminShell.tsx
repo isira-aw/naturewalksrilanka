@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils/cn";
  */
 const SECTIONS = [
   { href: "/admin/itineraries", label: "Custom tour optimisation" },
+  { href: "/admin/customers", label: "Customers" },
   { href: "/admin/reviews", label: "Reviews" },
   { href: "/admin/translations", label: "Translations" },
   { href: "/admin/data", label: "Data and migration" },
