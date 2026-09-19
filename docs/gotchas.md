@@ -1,6 +1,6 @@
 # Things that have already gone wrong here
 
-Ten of them, each one paid for once. They are collected here rather than in a
+Twelve of them, each one paid for once. They are collected here rather than in a
 handoff file because §10 is what happens when a rule lives somewhere nobody
 re-reads: it is §6 happening a second time, to somebody who had already
 written §6 down.
@@ -137,3 +137,40 @@ done
 Confirm with a request afterwards before trusting any verification run.
 
 **Rule:** never pattern-match a process by a string your own command contains.
+
+## 11. `isFirebaseConfigured()` being true does not mean `adminDb()` will not throw
+
+With all three Firebase variables *present* but `FIREBASE_PRIVATE_KEY`
+malformed — the escaping accident `lib/firebase/admin.ts` documents —
+`isFirebaseConfigured()` answers true and `adminDb()` **throws** rather than
+returning null.
+
+The enquiry rate limiter called `adminDb()` outside its own `try`, so an
+endpoint contracted never to break sending an enquiry broke it: a 500 on
+`POST /api/custom-tour/requests`, in the one deployment state where the
+traveller has no idea anything is wrong with the configuration.
+
+Found by rendering the screens, not by reading the code. `tsc`, `eslint` and
+`next build` were green.
+
+**Rule:** treat `adminDb()` and `adminAuth()` as throwing calls. The
+configured check tells you the variables exist, not that they parse — so put
+the call inside the `try` that handles the failure, especially on any path
+that must degrade rather than fail.
+
+## 12. Deleting a feature leaves prose behind that nothing typechecks
+
+When the traveller's password accounts and reference-unlock flow were
+removed, the code came out cleanly and the toolchain stayed green — while the
+privacy page went on describing a password flow and a second cookie that no
+longer existed, five `content/<locale>/ui.json` files still carried their
+strings, `.env.example` still asked for a secret nothing read, and `docs/`
+still told a reader to enable a Firebase provider that nothing signs in
+through.
+
+A privacy policy describing storage that does not happen is worse than a
+stale comment: it is a published claim about what is done with people's data.
+
+**Rule:** a feature is not deleted until you have grepped `content/`, the
+privacy page, `.env.example` and `docs/` for it. Compile-green says nothing
+about prose — and the prose is the part a visitor and a regulator read.

@@ -1,7 +1,8 @@
 # Handoff
 
-Branch: `claude/festive-archimedes-4pr0wk`. Rounds **#37** and **#38** merged
-on 2026-09-19; `main` is at `ce3f220` plus whatever this branch adds.
+Branch: `claude/festive-archimedes-4pr0wk`. `main` is at `ce3f220` — rounds
+**#37** and **#38**, merged 2026-09-19. Round **#39** is this branch and is
+not merged yet.
 
 > **This file is a pointer, not a record.** Two predecessors were deleted for
 > growing into logs of already-merged work — one at 967 lines, one at 821 —
@@ -64,7 +65,7 @@ New this round, and worth reading before changing anything near them:
 | `app/api/traveller/requests/[reference]/route.ts` | The traveller deleting their own enquiry — the only destructive action either side has |
 | `lib/tourRequests/rateLimit.ts` | How often one caller may write an enquiry. Fixed hash buckets, no addresses stored, **fails open on purpose** |
 | `docs/go-live.md` | **The launch checklist.** Start here |
-| `docs/gotchas.md` | Ten faults already paid for once |
+| `docs/gotchas.md` | Twelve faults already paid for once; §11 and §12 are new |
 | `docs/security-headers.md` | The four headers, and the four steps that turn the CSP on |
 
 Load-bearing from before, unchanged: `lib/admin/auth.ts` (the only
@@ -76,52 +77,31 @@ authorisation point), `lib/firebase/admin.ts` (the only door to Firestore),
 
 ## Changes made
 
-**#37** — the itinerary editor's *Planning* section removed as unwanted;
-enquiry endpoint given a honeypot and a rate limit; `sitemap.ts` stopped
-claiming every URL had just changed; a Content Security Policy added
-report-only; the privacy policy rewritten to stop saying things that were
-false; analytics settled as *none*; `handoff.md` and `PLAN.md` folded into
-`docs/` and deleted.
+Only the unmerged round belongs here; everything before it is in `main`'s
+history, where each commit message carries its own reasoning.
 
-**#38** — the sign-in link that reported itself expired, fixed; opening one
-trip by reference and address added; password accounts added; and a
-malformed `FIREBASE_PRIVATE_KEY` no longer turns the enquiry endpoint into a
-500.
-
-**#39** — all three traveller doors from #38 removed and replaced by Google
-sign-in, the same mechanism the team uses. Editing an enquiry is gone with
-them, and the `revisions` subcollection it needed; a comment thread either
-side can write on took its place, and the traveller can delete an enquiry
-outright.
-
-Each commit message carries its own reasoning. Do not re-summarise them here.
+**#39** — the traveller's three ways in (emailed link, password account, and
+one trip unlocked by reference plus address) replaced by Google sign-in, the
+same mechanism the team uses. Editing an enquiry went with them, and the
+`revisions` subcollection it needed; a `comments` thread either side can
+write on took its place, and the traveller can now delete an enquiry
+outright. The privacy page and five locale files were corrected to match.
 
 ---
 
 ## Failed attempts
 
-`docs/gotchas.md` has the ten standing ones, numbered. Three worth knowing
-before touching the same ground:
+`docs/gotchas.md` has the twelve standing ones, numbered, and **§11 and §12
+are new** — the throwing `adminDb()`, and a deleted feature leaving prose
+behind that nothing typechecks. Read those two before touching Firebase
+initialisation or removing anything user-facing.
 
-1. **Three small doors cost more than one large one.** The emailed link, the
-   password account and the reference unlock were each a reasonable feature
-   on its own. Together they were the biggest thing in the codebase, three
-   sets of failure messages on one screen, three different amounts of access
-   to the same page to reason about on every change — and a traveller having
-   to *choose* before seeing anything. *Rule: count the doors, not the
-   features. A second way in is never only its own code.*
-2. **Rendering the screens found a 500 that reading them did not.** With all
-   three Firebase variables present but the private key malformed,
-   `adminDb()` throws rather than returning null; the rate limiter called it
-   outside its `try`, so an endpoint contracted never to break sending broke
-   it. *Rule: `isFirebaseConfigured()` being true does not mean `adminDb()`
-   will not throw.*
-3. **Deleting a feature leaves prose behind that nothing typechecks.** The
-   privacy page described a password flow and a reference cookie that no
-   longer existed, and five locale files still carried their strings.
-   `tsc`, `eslint` and `next build` were all green throughout. *Rule: when a
-   feature goes, grep `content/`, the privacy page and `.env.example` before
-   claiming it is gone.*
+One thing from #39 that is a design lesson rather than a fault, and lives in
+`docs/go-live.md`'s decisions table rather than here: **three small doors
+cost more than one large one.** The emailed link, the password account and
+the reference unlock were each defensible alone; together they were the
+largest thing in the codebase, and they granted three *different* amounts of
+access to the same page. *Count the doors, not the features.*
 
 ---
 
