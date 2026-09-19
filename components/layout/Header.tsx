@@ -8,26 +8,35 @@ import { LocaleSwitcher } from "./LocaleSwitcher";
 import { NavLinks } from "./NavLinks";
 import { MobileNav } from "./MobileNav";
 import { PersonIcon, type HeaderCta } from "./HeaderCta";
-import { hasSavedTour } from "@/lib/tourRequests/savedTour";
+import { visitorTourState } from "@/lib/tourRequests/savedTour";
 import { SiteSearch } from "@/components/search/SiteSearch";
 
 export async function Header({ locale }: { locale: Locale }) {
-  const [navigation, t, tSearch, tMyTrip, savedTour] = await Promise.all([
+  const [navigation, t, tSearch, tMyTrip, tourState] = await Promise.all([
     getContent(locale, "navigation"),
     getTranslations({ locale, namespace: "nav" }),
     getTranslations({ locale, namespace: "search" }),
     /* The label lives with the page it points at, so the header and that
        page's own heading cannot drift apart. */
     getTranslations({ locale, namespace: "myTrip" }),
-    hasSavedTour(),
+    visitorTourState(),
   ]);
 
-  /* One button, two jobs. Somebody with a tour saved is here to look at it;
-     everybody else is here to plan one. `navigation.json` still owns the
-     wizard's wording, so the business can reword its own call to action. */
-  const cta: HeaderCta = savedTour
-    ? { href: "/my-trip", label: tMyTrip("navLabel"), isTour: true }
-    : { href: navigation.primaryCta.href, label: navigation.primaryCta.label, isTour: false };
+  /* One button, two jobs — and the default is the tour.
+
+     Only a visitor we *know* has nothing gets the wizard: somebody signed
+     in with no enquiries, for whom the tour page would be a dead end.
+     Everybody else, signed out included, gets the way in, because a
+     returning traveller cannot be recognised until they sign in and the
+     header would otherwise have nothing for them.
+
+     The wizard keeps its own routes — `Custom Tour` in the main nav beside
+     this button, and the calls to action on the home page — so the site
+     never stops offering it. `navigation.json` still owns its wording. */
+  const cta: HeaderCta =
+    tourState === "none"
+      ? { href: navigation.primaryCta.href, label: navigation.primaryCta.label, isTour: false }
+      : { href: "/my-trip", label: tMyTrip("navLabel"), isTour: true };
 
   /* Read on the server so the dialog ships with its copy already translated —
      it is a client component and has no access to the message catalogue. */
