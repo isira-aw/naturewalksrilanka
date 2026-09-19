@@ -76,7 +76,19 @@
     "destinationsTitle": "Kohteet",
     "activitiesTitle": "Aktiviteetit",
     "customizeCta": "Muokkaa tätä matkaa",
-    "whatsappCta": "Kysy tästä matkasta"
+    "whatsappCta": "Kysy tästä matkasta",
+    "introTitle": "Matka, joka rakentuu Sri Lankan villien paikkojen ympärille.",
+    "birdingHighlights": "Lintuhavainnot",
+    "wildlifeHighlights": "Eläimet ja linnut",
+    "galleryEyebrow": "Matkan varrelta",
+    "galleryTitle": "Sri Lankan linnut",
+    "galleryLead": "Valikoima tämän matkan lintukuvausta.",
+    "onThisPage": "Tällä sivulla",
+    "navItinerary": "Matkaohjelma",
+    "navGallery": "Galleria",
+    "navContact": "Yhteystiedot",
+    "emailCta": "Lähetä sähköpostia",
+    "dayLabel": "Päivä"
   },
   "customTour": {
     "eyebrow": "Räätälöity matka",

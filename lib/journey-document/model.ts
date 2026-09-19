@@ -20,7 +20,7 @@ export type JourneyItinerary = {
   duration: string;
   summary: string;
   description: string;
-  /** Public paths, e.g. `/images/story-1.jpg`, or base64 data URLs from the admin page. */
+  /** Public paths, e.g. `/images/hero-2.jpg`, or base64 data URLs from the admin page. */
   images: string[];
   highlights: JourneyHighlight[];
   /**

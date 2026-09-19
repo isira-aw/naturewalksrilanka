@@ -4,15 +4,19 @@ import { setRequestLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
 import { getContent, getTourBySlug } from "@/lib/content/loader";
-import { PageHero } from "@/components/ui/PageHero";
-import { ArrowLink, Kicker, Rise } from "@/components/ui/motion";
+import { tourGallery } from "@/lib/content/tourGallery";
+import { Container } from "@/components/ui/Container";
+import { ArrowLink, Kicker } from "@/components/ui/motion";
 import { EditorialList } from "@/components/ui/EditorialList";
 import { WhatsAppCTA } from "@/components/whatsapp/WhatsAppCTA";
 import { buildTourInquiryMessage } from "@/lib/whatsapp/buildMessage";
-import { ItineraryTimeline } from "@/components/itinerary/ItineraryTimeline";
-import { PlanCta } from "@/components/whatsapp/PlanCta";
+import { TourHero } from "@/components/tours/detail/TourHero";
+import { TourIntro } from "@/components/tours/detail/TourIntro";
+import { TourItinerary } from "@/components/tours/detail/TourItinerary";
+import { TourGallery } from "@/components/tours/detail/TourGallery";
+import { TourCta } from "@/components/tours/detail/TourCta";
+import { TourPageNav } from "@/components/tours/detail/TourPageNav";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildTouristTripJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/jsonld";
 import { buildPageMetadata } from "@/lib/seo/metadata";
@@ -59,15 +63,18 @@ export default async function TourDetailPage({
   setRequestLocale(locale);
   const l = locale as Locale;
 
-  const [t, tCommon, tAll, tour, destinations, activities, navigation] = await Promise.all([
-    getTranslations({ locale: l, namespace: "tours" }),
-    getTranslations({ locale: l, namespace: "common" }),
-    getTranslations({ locale: l }),
-    getTourBySlug(l, slug),
-    getContent(l, "destinations"),
-    getContent(l, "activities"),
-    getContent(l, "navigation"),
-  ]);
+  const [t, tCommon, tGallery, tAll, tour, destinations, activities, navigation, seo] =
+    await Promise.all([
+      getTranslations({ locale: l, namespace: "tours" }),
+      getTranslations({ locale: l, namespace: "common" }),
+      getTranslations({ locale: l, namespace: "gallery" }),
+      getTranslations({ locale: l }),
+      getTourBySlug(l, slug),
+      getContent(l, "destinations"),
+      getContent(l, "activities"),
+      getContent(l, "navigation"),
+      getContent(l, "seo"),
+    ]);
 
   if (!tour) notFound();
 
@@ -81,6 +88,14 @@ export default async function TourDetailPage({
 
   const whatsappMessage = buildTourInquiryMessage(tour.title);
 
+  /* Only the sections this tour actually renders reach the in-page nav, so it
+     can never point at an anchor that is not on the page. */
+  const navSections = [
+    tour.itinerary.length > 0 && { id: "itinerary", label: t("navItinerary") },
+    tourGallery.length > 0 && { id: "gallery", label: t("navGallery") },
+    { id: "contact", label: t("navContact") },
+  ].filter((section): section is { id: string; label: string } => Boolean(section));
+
   return (
     <>
       <JsonLd data={buildTouristTripJsonLd({ tour, locale: l })} />
@@ -92,107 +107,61 @@ export default async function TourDetailPage({
         ])}
       />
 
-      <PageHero
-        eyebrow={`${tour.durationDays} ${t("daysLabel")}`}
+      <TourPageNav sections={navSections} label={t("onThisPage")} />
+
+      <TourHero
+        eyebrow={`${seo.siteName} · ${tour.durationDays} ${t("daysLabel")}`}
         title={tour.title}
         lead={tour.tagline}
-        image={{ src: tour.heroImage, alt: tour.title }}
         meta={[
-          `${tourDestinations.length} ${t("destinationsTitle")}`,
+          `${tour.durationDays} ${t("daysLabel")}`,
           ...tourActivities.slice(0, 3).map((activity) => activity.name),
         ]}
+        image={{ src: tour.heroImage, alt: tour.title }}
         actions={
           <>
             <WhatsAppCTA
               phone={navigation.contact.whatsappNumber}
               message={whatsappMessage}
-              variant="inverted"
-              size="lg"
+              variant="secondary"
+              size="md"
             >
               {t("whatsappCta")}
             </WhatsAppCTA>
-            <ArrowLink href="/custom-tour" tone="light">
-              {t("customizeCta")}
-            </ArrowLink>
+            <ArrowLink href="/custom-tour">{t("customizeCta")}</ArrowLink>
           </>
         }
       />
 
-      {/* Summary and the route at a glance, before the day-by-day detail. */}
-      <section className="bg-warm-white py-20 md:py-28">
-        <div className="mx-auto grid w-full max-w-7xl gap-12 px-4 sm:px-6 md:grid-cols-12 md:gap-16 md:px-10">
-          <div className="md:col-span-7">
-            <Kicker>{t("sectionEyebrow")}</Kicker>
-            <Rise delay={0.1}>
-              <p className="mt-8 text-xl leading-relaxed text-charcoal/80 md:text-2xl md:leading-[1.5]">
-                {tour.summary}
-              </p>
-            </Rise>
+      <TourIntro
+        title={t("introTitle")}
+        summary={tour.summary}
+        highlights={tour.highlights}
+        destinations={tourDestinations.map((destination) => ({
+          slug: destination.slug,
+          name: destination.name,
+          region: destination.region,
+        }))}
+        labels={{
+          highlightsTitle: t("highlightsTitle"),
+          destinationsTitle: t("destinationsTitle"),
+        }}
+      />
 
-            {tour.highlights.length > 0 && (
-              <div className="mt-12">
-                <p className="font-utility text-xs uppercase tracking-[0.2em] text-forest">
-                  {t("highlightsTitle")}
-                </p>
-                <EditorialList items={tour.highlights} numbered className="mt-6" />
-              </div>
-            )}
-          </div>
-
-          <div className="md:col-span-5 md:pt-4">
-            {tourDestinations.length > 0 && (
-              <div>
-                <p className="font-utility text-xs uppercase tracking-[0.2em] text-forest">
-                  {t("destinationsTitle")}
-                </p>
-                <ul className="mt-6 border-t border-charcoal/15">
-                  {tourDestinations.map((destination) => (
-                    <li key={destination.slug} className="border-b border-charcoal/15">
-                      <Link
-                        href={`/destinations/${destination.slug}`}
-                        className="group flex items-baseline justify-between gap-6 py-4"
-                      >
-                        <span className="text-charcoal/80 transition-colors group-hover:text-forest">
-                          {destination.name}
-                        </span>
-                        <span className="font-utility text-[11px] uppercase tracking-[0.15em] text-charcoal/45 transition-colors group-hover:text-forest">
-                          {destination.region}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {tourActivities.length > 0 && (
-              <div className="mt-12">
-                <p className="font-utility text-xs uppercase tracking-[0.2em] text-forest">
-                  {t("activitiesTitle")}
-                </p>
-                <EditorialList
-                  items={tourActivities.map((activity) => activity.name)}
-                  className="mt-6"
-                />
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-stone py-20 md:py-28">
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
-          <ItineraryTimeline
-            days={tour.itinerary}
-            itineraryTitle={t("itineraryTitle")}
-            contentRequiredLabel={tCommon("contentRequired")}
-          />
-        </div>
-      </section>
+      <TourItinerary
+        days={tour.itinerary}
+        title={t("itineraryTitle")}
+        labels={{
+          dayLabel: t("dayLabel"),
+          birdingHighlights: t("birdingHighlights"),
+          wildlifeHighlights: t("wildlifeHighlights"),
+          contentRequired: tCommon("contentRequired"),
+        }}
+      />
 
       {(tour.included.length > 0 || tour.excluded.length > 0) && (
-        <section className="bg-warm-white py-20 md:py-28">
-          <div className="mx-auto grid w-full max-w-7xl gap-14 px-4 sm:px-6 md:grid-cols-2 md:gap-16 md:px-10">
+        <section className="border-t border-line bg-warm-white py-20 md:py-24">
+          <Container className="grid gap-14 md:grid-cols-2 md:gap-16">
             {tour.included.length > 0 && (
               <div>
                 <Kicker>{t("included")}</Kicker>
@@ -205,19 +174,37 @@ export default async function TourDetailPage({
                 <EditorialList items={tour.excluded} className="mt-8" />
               </div>
             )}
-          </div>
+          </Container>
         </section>
       )}
 
-      <PlanCta
+      <TourGallery
+        images={tourGallery}
+        labels={{
+          eyebrow: t("galleryEyebrow"),
+          title: t("galleryTitle"),
+          lead: t("galleryLead"),
+          lightbox: {
+            label: tGallery("label"),
+            close: tGallery("close"),
+            previous: tGallery("previous"),
+            next: tGallery("next"),
+          },
+        }}
+      />
+
+      <TourCta
         whatsappNumber={navigation.contact.whatsappNumber}
+        whatsappMessage={whatsappMessage}
+        email={navigation.contact.email}
         labels={{
           eyebrow: tAll("finalCta.eyebrow"),
           title: tAll("finalCta.title"),
           subtitle: tAll("finalCta.subtitle"),
-          cta: t("whatsappCta"),
+          whatsappCta: t("whatsappCta"),
+          emailCta: t("emailCta"),
+          customizeCta: t("customizeCta"),
         }}
-        secondary={{ href: "/tours", label: t("sectionEyebrow") }}
       />
     </>
   );

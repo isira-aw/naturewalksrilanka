@@ -34,10 +34,10 @@ export async function Footer({ locale }: { locale: Locale }) {
       <Container className="grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 sm:gap-8 md:grid-cols-4 md:gap-12">
         <div className="sm:col-span-2">
           <Image
-            src="/logo.svg"
+            src="/logo.png"
             alt="Nature Walks Sri Lanka"
-            width={200}
-            height={40}
+            width={441}
+            height={200}
             /* brightness-0 first, so the mark goes white rather than
                inverting green to magenta on the dark footer. */
             className="h-8 w-auto brightness-0 invert"

@@ -15,16 +15,56 @@
       "Observación de aves en el bosque lluvioso de Sinharaja, Patrimonio de la Humanidad"
     ],
     "itinerary": [
-      { "location": "Negombo", "title": "Llegada y paseo en barca por el canal holandés", "description": "Llegada al aeropuerto de Colombo y traslado a Negombo (alrededor de media hora)." },
-      { "location": "Negombo → Anuradhapura", "title": "Wilpattu y la ciudad antigua", "description": "La lonja de Negombo, el Parque Nacional de Wilpattu, una visita a la ciudad antigua de Anuradhapura y el templo de Mihintale. Wilpattu es el parque nacional más grande de Sri Lanka, conocido por sus leopardos, osos bezudos y elefantes, sus lagos naturales (villus) y las aves de la zona seca." },
-      { "location": "Trincomalee", "title": "Costa, arrecife y delfines", "description": "Visita a la ciudad de Trincomalee, Pigeon Island y avistamiento de delfines." },
-      { "location": "Sigiriya", "title": "La Roca del León y la antigua Polonnaruwa", "description": "La Fortaleza de la Roca del León, el templo de Pidurangala, una visita a la ciudad antigua de Polonnaruwa, un recorrido opcional por una aldea y el Parque Nacional de Minneriya." },
-      { "location": "Kandy", "title": "Templo, té y cultura", "description": "El templo rupestre de Dambulla, un jardín de hierbas y especias, un espectáculo cultural en Kandy, el Templo del Diente Sagrado, la visita a una fábrica de té y un recorrido por la ciudad de Kandy." },
-      { "location": "Kithulgala", "title": "En tren hacia las montañas y deportes de aventura", "description": "Trayecto en tren hacia Nuwara Eliya, observación de aves y caminata por la naturaleza, además de deportes de aventura: rafting, barranquismo y tirolina." },
-      { "location": "Ella", "title": "El tren de Ella y los senderos de montaña", "description": "Trayecto en tren hasta Ella, el Puente de los Nueve Arcos, Little Adam's Peak, la cascada de Ravana y Nildiya Pokuna, con Ella Rock y la tirolina como opcionales." },
-      { "location": "Parque Nacional de Yala / Tissamaharama", "title": "Safari en Yala", "description": "Un día completo de safari en el Parque Nacional de Yala." },
-      { "location": "Bosque lluvioso de Sinharaja", "title": "Aves en el bosque lluvioso", "description": "Observación de aves y caminata por el bosque lluvioso de Sinharaja, Patrimonio de la Humanidad de la UNESCO y el bosque de tierras bajas más rico en especies endémicas de Sri Lanka." },
-      { "location": "Salida", "title": "Salida", "description": "Traslado al aeropuerto para el vuelo de regreso." }
+      {
+        "location": "Negombo",
+        "title": "Llegada y paseo en barca por el canal holandés",
+        "description": "Llegada al aeropuerto de Colombo y traslado a Negombo (alrededor de media hora)."
+      },
+      {
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu y la ciudad antigua",
+        "description": "La lonja de Negombo, el Parque Nacional de Wilpattu, una visita a la ciudad antigua de Anuradhapura y el templo de Mihintale. Wilpattu es el parque nacional más grande de Sri Lanka, conocido por sus leopardos, osos bezudos y elefantes, sus lagos naturales (villus) y las aves de la zona seca."
+      },
+      {
+        "location": "Trincomalee",
+        "title": "Costa, arrecife y delfines",
+        "description": "Visita a la ciudad de Trincomalee, Pigeon Island y avistamiento de delfines."
+      },
+      {
+        "location": "Sigiriya",
+        "title": "La Roca del León y la antigua Polonnaruwa",
+        "description": "La Fortaleza de la Roca del León, el templo de Pidurangala, una visita a la ciudad antigua de Polonnaruwa, un recorrido opcional por una aldea y el Parque Nacional de Minneriya."
+      },
+      {
+        "location": "Kandy",
+        "title": "Templo, té y cultura",
+        "description": "El templo rupestre de Dambulla, un jardín de hierbas y especias, un espectáculo cultural en Kandy, el Templo del Diente Sagrado, la visita a una fábrica de té y un recorrido por la ciudad de Kandy."
+      },
+      {
+        "location": "Kithulgala",
+        "title": "En tren hacia las montañas y deportes de aventura",
+        "description": "Trayecto en tren hacia Nuwara Eliya, observación de aves y caminata por la naturaleza, además de deportes de aventura: rafting, barranquismo y tirolina."
+      },
+      {
+        "location": "Ella",
+        "title": "El tren de Ella y los senderos de montaña",
+        "description": "Trayecto en tren hasta Ella, el Puente de los Nueve Arcos, Little Adam's Peak, la cascada de Ravana y Nildiya Pokuna, con Ella Rock y la tirolina como opcionales."
+      },
+      {
+        "location": "Parque Nacional de Yala / Tissamaharama",
+        "title": "Safari en Yala",
+        "description": "Un día completo de safari en el Parque Nacional de Yala."
+      },
+      {
+        "location": "Bosque lluvioso de Sinharaja",
+        "title": "Aves en el bosque lluvioso",
+        "description": "Observación de aves y caminata por el bosque lluvioso de Sinharaja, Patrimonio de la Humanidad de la UNESCO y el bosque de tierras bajas más rico en especies endémicas de Sri Lanka."
+      },
+      {
+        "location": "Salida",
+        "title": "Salida",
+        "description": "Traslado al aeropuerto para el vuelo de regreso."
+      }
     ]
   },
   "16-days": {
@@ -42,16 +82,135 @@
       "La playa de Mirissa y el fuerte holandés de Galle"
     ],
     "itinerary": [
-      { "location": "Negombo", "title": "Llegada y paseo en barca por el canal holandés", "description": "Llegada al aeropuerto de Colombo y traslado a Negombo (alrededor de media hora)." },
-      { "location": "Negombo → Anuradhapura", "title": "Wilpattu y la ciudad antigua", "description": "La lonja de Negombo, el Parque Nacional de Wilpattu, una visita a la ciudad antigua de Anuradhapura y el templo de Mihintale." },
-      { "location": "Trincomalee", "title": "Costa, arrecife y delfines", "description": "Visita a la ciudad de Trincomalee, Pigeon Island y avistamiento de delfines." },
-      { "location": "Sigiriya", "title": "La Roca del León y la antigua Polonnaruwa", "description": "La Fortaleza de la Roca del León, el templo de Pidurangala, una visita a la ciudad antigua de Polonnaruwa, un recorrido opcional por una aldea y el Parque Nacional de Minneriya." },
-      { "location": "Kandy", "title": "Templo, té y cultura", "description": "El templo rupestre de Dambulla, un jardín de hierbas y especias, un espectáculo cultural en Kandy, el Templo del Diente Sagrado, la visita a una fábrica de té y un recorrido por la ciudad de Kandy." },
-      { "location": "Nuwara Eliya", "title": "Parque Nacional de Horton Plains", "description": "Un día recorriendo las praderas de montaña y el bosque nuboso del Parque Nacional de Horton Plains." },
-      { "location": "Ella", "title": "El tren de Ella y los senderos de montaña", "description": "Trayecto en tren hasta Ella, el Puente de los Nueve Arcos, Little Adam's Peak, la cascada de Ravana y Nildiya Pokuna, con Ella Rock y la tirolina como opcionales." },
-      { "location": "Parque Nacional de Yala / Tissamaharama", "title": "Safari en Yala", "description": "Un día completo de safari en el Parque Nacional de Yala." },
-      { "location": "Playa de Mirissa", "title": "Descanso en la costa y el fuerte de Galle", "description": "Tiempo libre en la playa y visita al fuerte holandés de Galle." },
-      { "location": "Salida", "title": "Salida", "description": "Traslado al aeropuerto para el vuelo de regreso." }
+      {
+        "location": "Negombo",
+        "title": "Llegada y paseo en barca por el canal holandés",
+        "description": "Llegada al aeropuerto de Colombo y traslado a Negombo (alrededor de media hora)."
+      },
+      {
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu y la ciudad antigua",
+        "description": "La lonja de Negombo, el Parque Nacional de Wilpattu, una visita a la ciudad antigua de Anuradhapura y el templo de Mihintale."
+      },
+      {
+        "location": "Trincomalee",
+        "title": "Costa, arrecife y delfines",
+        "description": "Visita a la ciudad de Trincomalee, Pigeon Island y avistamiento de delfines."
+      },
+      {
+        "location": "Sigiriya",
+        "title": "La Roca del León y la antigua Polonnaruwa",
+        "description": "La Fortaleza de la Roca del León, el templo de Pidurangala, una visita a la ciudad antigua de Polonnaruwa, un recorrido opcional por una aldea y el Parque Nacional de Minneriya."
+      },
+      {
+        "location": "Kandy",
+        "title": "Templo, té y cultura",
+        "description": "El templo rupestre de Dambulla, un jardín de hierbas y especias, un espectáculo cultural en Kandy, el Templo del Diente Sagrado, la visita a una fábrica de té y un recorrido por la ciudad de Kandy."
+      },
+      {
+        "location": "Nuwara Eliya",
+        "title": "Parque Nacional de Horton Plains",
+        "description": "Un día recorriendo las praderas de montaña y el bosque nuboso del Parque Nacional de Horton Plains."
+      },
+      {
+        "location": "Ella",
+        "title": "El tren de Ella y los senderos de montaña",
+        "description": "Trayecto en tren hasta Ella, el Puente de los Nueve Arcos, Little Adam's Peak, la cascada de Ravana y Nildiya Pokuna, con Ella Rock y la tirolina como opcionales."
+      },
+      {
+        "location": "Parque Nacional de Yala / Tissamaharama",
+        "title": "Safari en Yala",
+        "description": "Un día completo de safari en el Parque Nacional de Yala."
+      },
+      {
+        "location": "Playa de Mirissa",
+        "title": "Descanso en la costa y el fuerte de Galle",
+        "description": "Tiempo libre en la playa y visita al fuerte holandés de Galle."
+      },
+      {
+        "location": "Salida",
+        "title": "Salida",
+        "description": "Traslado al aeropuerto para el vuelo de regreso."
+      }
+    ]
+  },
+  "14-days": {
+    "title": "Dos semanas",
+    "tagline": "Observación de aves, fauna y cultura",
+    "summary": "La isla de punta a punta al ritmo de un observador de aves: las ciudades antiguas y Sigiriya, Kandy y el bosque de Udawatta Kele, el bosque lluvioso de Kithulgala, las tierras altas de Nuwara Eliya y Horton Plains, y después tres parques de zona seca seguidos — Yala, Bundala y Udawalawe — antes de Sinharaja y un último día en Mirissa.",
+    "highlights": [
+      "Parque Nacional de Minneriya y aves al amanecer en Sigiriya",
+      "La Roca del León de Sigiriya y la capital medieval de Polonnaruwa",
+      "El templo rupestre de Dambulla y el Templo del Diente en Kandy",
+      "Los búhos del bosque de Udawatta Kele y el río Kelani en Kithulgala",
+      "Victoria Park en Nuwara Eliya y el bosque nuboso de Horton Plains",
+      "Parque Nacional de Yala: leopardo y oso bezudo",
+      "Limícolas y flamencos del humedal Ramsar de Bundala",
+      "Las manadas de elefantes de Udawalawe de cerca",
+      "Bosque lluvioso de Sinharaja: Patrimonio de la Humanidad de la UNESCO",
+      "La playa de Mirissa y avistamiento de ballena azul"
+    ],
+    "itinerary": [
+      {
+        "location": "Sigiriya",
+        "title": "Llegada y Parque Nacional de Minneriya",
+        "description": "Llegada al aeropuerto de Colombo y viaje a Sigiriya (unas tres horas y media). Por la tarde, observación de aves y safari de fauna en el Parque Nacional de Minneriya. Noche en Sigiriya."
+      },
+      {
+        "location": "Sigiriya → Polonnaruwa",
+        "title": "Aves al amanecer, la Roca del León y la capital medieval",
+        "description": "Observación de aves temprano alrededor de Sigiriya. Después del desayuno, ascenso a la roca de Sigiriya, una gigantesca fortaleza rocosa con los frescos de las doncellas celestiales a media altura y una vista de toda la llanura desde la cima. Por la tarde, visita a la ciudad antigua de Polonnaruwa, capital medieval del país entre los siglos X y XI, con sus palacios y salas públicas, santuarios, templos, pagodas y esculturas en granito. Noche en Sigiriya."
+      },
+      {
+        "location": "Kandy",
+        "title": "Dambulla, jardín de especias y el Templo del Diente",
+        "description": "Después del desayuno, viaje a Kandy. En ruta, visita al templo rupestre de Dambulla y a un jardín de especias, y por la tarde al Templo de la Reliquia del Diente Sagrado. Noche en Kandy."
+      },
+      {
+        "location": "Udawatta Kele → Kithulgala",
+        "title": "Búhos del bosque y el río Kelani",
+        "description": "Observación de aves temprano en el bosque de Udawatta Kele y, después del desayuno, viaje a Kithulgala. Cruzar el hermoso río Kelani lleva a un bosque lluvioso denso; el pueblo está rodeado de selva que atrae a muchas especies de aves, y el río es famoso por el rafting. Noche en Kithulgala."
+      },
+      {
+        "location": "Nuwara Eliya",
+        "title": "Victoria Park",
+        "description": "Un pequeño parque en el centro de Nuwara Eliya y uno de los lugares más fiables del país para ver migratorias de altura invernantes. Noche en Nuwara Eliya."
+      },
+      {
+        "location": "Horton Plains",
+        "title": "Bosque de montaña y de nubes",
+        "description": "Un día en el hábitat de montaña y bosque nuboso de Horton Plains. Noche en Nuwara Eliya."
+      },
+      {
+        "location": "Tissamaharama",
+        "title": "Aves en ruta y los embalses",
+        "description": "Después del desayuno, viaje a Tissamaharama con una breve parada para observar aves en un santuario del camino. Por la tarde, observación de aves alrededor de los embalses de Tissamaharama. Noche en Tissamaharama."
+      },
+      {
+        "location": "Parque Nacional de Yala",
+        "title": "Safari de día completo",
+        "description": "El Parque Nacional de Yala se encuentra en la zona seca y reúne hábitats muy diversos: matorral, embalses, lagunas salobres y bosque de ribera. Es el mejor parque del país para ver leopardo y oso bezudo. Noche en Tissamaharama."
+      },
+      {
+        "location": "Parque Nacional de Bundala",
+        "title": "El humedal Ramsar de Bundala",
+        "description": "Bundala limita con el mar y está formado por matorral y salinas: una zona excelente para observar aves acuáticas y limícolas migratorias durante el invierno boreal. Noche en Udawalawe."
+      },
+      {
+        "location": "Parque Nacional de Udawalawe",
+        "title": "Elefantes de cerca",
+        "description": "Safari a primera hora en el Parque Nacional de Udawalawe y después viaje a Sinharaja. Udawalawe está en la zona seca y reúne matorral, praderas, embalses y riberas fluviales: el mejor parque del país para ver manadas de elefantes salvajes de cerca. Noche en Sinharaja."
+      },
+      {
+        "location": "Bosque lluvioso de Sinharaja",
+        "title": "Aves del bosque lluvioso de tierras bajas",
+        "description": "Dos días de observación de aves en el bosque lluvioso de Sinharaja, Patrimonio de la Humanidad de la UNESCO con la mayor biodiversidad de Asia y hogar de casi toda la flora y fauna endémica de Sri Lanka: endemismos de tierras bajas y bandos mixtos. Noche en Sinharaja."
+      },
+      {
+        "location": "Playa de Mirissa",
+        "title": "La costa sur",
+        "description": "Mirissa es una de las playas más bellas y amplias de Sri Lanka y se ha convertido en un lugar conocido para el avistamiento de ballena azul. Noche en Mirissa."
+      }
     ]
   },
   "12-days": {
@@ -66,13 +225,41 @@
       "Safari en el Parque Nacional de Yala"
     ],
     "itinerary": [
-      { "location": "Negombo", "title": "Llegada y paseo en barca por el canal holandés", "description": "Llegada al aeropuerto de Colombo y traslado a Negombo (alrededor de media hora)." },
-      { "location": "Negombo → Anuradhapura", "title": "Wilpattu y la ciudad antigua", "description": "La lonja de Negombo, el Parque Nacional de Wilpattu, una visita a la ciudad antigua de Anuradhapura y el templo de Mihintale." },
-      { "location": "Sigiriya", "title": "La Roca del León y la antigua Polonnaruwa", "description": "La Fortaleza de la Roca del León, el templo de Pidurangala, una visita a la ciudad antigua de Polonnaruwa y el Parque Nacional de Minneriya." },
-      { "location": "Kandy", "title": "Templo, té y cultura", "description": "El templo rupestre de Dambulla, un jardín de hierbas y especias, un espectáculo cultural en Kandy, el Templo del Diente Sagrado, la visita a una fábrica de té y un recorrido por la ciudad de Kandy." },
-      { "location": "Ella", "title": "El tren de Ella y los senderos de montaña", "description": "Trayecto en tren hasta Ella, el Puente de los Nueve Arcos, Little Adam's Peak y la cascada de Ravana." },
-      { "location": "Parque Nacional de Yala / Tissamaharama", "title": "Safari en Yala", "description": "Un día completo de safari en el Parque Nacional de Yala." },
-      { "location": "Bosque lluvioso de Sinharaja", "title": "Aves en el bosque lluvioso y salida", "description": "Observación de aves y caminata por el bosque lluvioso de Sinharaja antes del traslado al aeropuerto para el vuelo de regreso." }
+      {
+        "location": "Negombo",
+        "title": "Llegada y paseo en barca por el canal holandés",
+        "description": "Llegada al aeropuerto de Colombo y traslado a Negombo (alrededor de media hora)."
+      },
+      {
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu y la ciudad antigua",
+        "description": "La lonja de Negombo, el Parque Nacional de Wilpattu, una visita a la ciudad antigua de Anuradhapura y el templo de Mihintale."
+      },
+      {
+        "location": "Sigiriya",
+        "title": "La Roca del León y la antigua Polonnaruwa",
+        "description": "La Fortaleza de la Roca del León, el templo de Pidurangala, una visita a la ciudad antigua de Polonnaruwa y el Parque Nacional de Minneriya."
+      },
+      {
+        "location": "Kandy",
+        "title": "Templo, té y cultura",
+        "description": "El templo rupestre de Dambulla, un jardín de hierbas y especias, un espectáculo cultural en Kandy, el Templo del Diente Sagrado, la visita a una fábrica de té y un recorrido por la ciudad de Kandy."
+      },
+      {
+        "location": "Ella",
+        "title": "El tren de Ella y los senderos de montaña",
+        "description": "Trayecto en tren hasta Ella, el Puente de los Nueve Arcos, Little Adam's Peak y la cascada de Ravana."
+      },
+      {
+        "location": "Parque Nacional de Yala / Tissamaharama",
+        "title": "Safari en Yala",
+        "description": "Un día completo de safari en el Parque Nacional de Yala."
+      },
+      {
+        "location": "Bosque lluvioso de Sinharaja",
+        "title": "Aves en el bosque lluvioso y salida",
+        "description": "Observación de aves y caminata por el bosque lluvioso de Sinharaja antes del traslado al aeropuerto para el vuelo de regreso."
+      }
     ]
   },
   "10-days": {
@@ -87,12 +274,70 @@
       "Bosque lluvioso de Sinharaja, Patrimonio de la Humanidad de la UNESCO"
     ],
     "itinerary": [
-      { "location": "Kithulgala", "title": "El borde del bosque lluvioso y el río Kelani", "description": "Llegada al aeropuerto y traslado a Kithulgala. Al cruzar el río Kelani se entra en un bosque lluvioso muy denso; el pueblo está rodeado de selva que atrae a numerosas especies de aves, y el propio río es conocido por el rafting. Noche en Forest Edge Kithulgala." },
-      { "location": "Nuwara Eliya", "title": "Victoria Park", "description": "Un pequeño parque en pleno centro de Nuwara Eliya. Noche en Nuwara Eliya." },
-      { "location": "Horton Plains", "title": "Montaña y bosque nuboso", "description": "Un día en el hábitat de montaña y bosque nuboso de Horton Plains. Noche en Nuwara Eliya." },
-      { "location": "Tissamaharama", "title": "Aves en ruta", "description": "Después del desayuno, viaje a Tissamaharama con una parada para observar aves en un santuario del camino. Por la tarde, observación de aves alrededor de los embalses de Tissamaharama. Noche en un hotel de Tissamaharama." },
-      { "location": "Parque Nacional de Yala", "title": "Safari de día completo", "description": "Salida temprano para un día completo de observación de aves y mamíferos en el Parque Nacional de Yala, un parque de zona seca con matorral, embalses, lagunas salobres y riberas fluviales: el mejor del país para ver leopardo y oso bezudo. Noche en un hotel de Tissamaharama." },
-      { "location": "Bosque lluvioso de Sinharaja", "title": "Aves del bosque lluvioso de tierras bajas", "description": "Viaje al bosque lluvioso de Sinharaja, Patrimonio de la Humanidad de la UNESCO con la mayor biodiversidad de Asia y hogar de casi toda la flora y fauna endémica de Sri Lanka. Observación de aves por la tarde y los días siguientes. Noche en un hotel cerca de Sinharaja. La última tarde, traslado al aeropuerto para el vuelo de regreso." }
+      {
+        "location": "Kithulgala",
+        "title": "El borde del bosque lluvioso y el río Kelani",
+        "description": "Llegada al aeropuerto y traslado a Kithulgala. Al cruzar el río Kelani se entra en un bosque lluvioso muy denso; el pueblo está rodeado de selva que atrae a numerosas especies de aves, y el propio río es conocido por el rafting. Noche en Forest Edge Kithulgala."
+      },
+      {
+        "location": "Nuwara Eliya",
+        "title": "Victoria Park",
+        "description": "Un pequeño parque en pleno centro de Nuwara Eliya. Noche en Nuwara Eliya."
+      },
+      {
+        "location": "Horton Plains",
+        "title": "Montaña y bosque nuboso",
+        "description": "Un día en el hábitat de montaña y bosque nuboso de Horton Plains. Noche en Nuwara Eliya."
+      },
+      {
+        "location": "Tissamaharama",
+        "title": "Aves en ruta",
+        "description": "Después del desayuno, viaje a Tissamaharama con una parada para observar aves en un santuario del camino. Por la tarde, observación de aves alrededor de los embalses de Tissamaharama. Noche en un hotel de Tissamaharama."
+      },
+      {
+        "location": "Parque Nacional de Yala",
+        "title": "Safari de día completo",
+        "description": "Salida temprano para un día completo de observación de aves y mamíferos en el Parque Nacional de Yala, un parque de zona seca con matorral, embalses, lagunas salobres y riberas fluviales: el mejor del país para ver leopardo y oso bezudo. Noche en un hotel de Tissamaharama."
+      },
+      {
+        "location": "Bosque lluvioso de Sinharaja",
+        "title": "Aves del bosque lluvioso de tierras bajas",
+        "description": "Viaje al bosque lluvioso de Sinharaja, Patrimonio de la Humanidad de la UNESCO con la mayor biodiversidad de Asia y hogar de casi toda la flora y fauna endémica de Sri Lanka. Observación de aves por la tarde y los días siguientes. Noche en un hotel cerca de Sinharaja. La última tarde, traslado al aeropuerto para el vuelo de regreso."
+      }
+    ]
+  },
+  "7-days": {
+    "title": "Una semana",
+    "tagline": "Observación de aves, fauna y cultura",
+    "summary": "La semana corta en la isla: el bosque lluvioso de Kithulgala y el tren de montaña, las migratorias de Victoria Park en Nuwara Eliya, un safari en Udawalawe con elefantes de cerca, y dos días finales de aves endémicas en Sinharaja.",
+    "highlights": [
+      "Bosque lluvioso de Kithulgala: rafting, barranquismo y tirolina",
+      "El tren de montaña hacia Nuwara Eliya",
+      "Victoria Park, Nuwara Eliya: migratorias de altura",
+      "Parque Nacional de Udawalawe: manadas de elefantes de cerca",
+      "Bosque lluvioso de Sinharaja: Patrimonio de la Humanidad de la UNESCO"
+    ],
+    "itinerary": [
+      {
+        "location": "Kithulgala",
+        "title": "Bosque lluvioso, tren y deportes de aventura",
+        "description": "Viaje en tren hacia Nuwara Eliya, observación de aves y paseo por la naturaleza, y deportes de aventura en el río Kelani: rafting, barranquismo y tirolina."
+      },
+      {
+        "location": "Nuwara Eliya",
+        "title": "Victoria Park",
+        "description": "Un pequeño parque en el centro de Nuwara Eliya y uno de los lugares más fiables del país para ver migratorias de altura invernantes. Noche en Nuwara Eliya."
+      },
+      {
+        "location": "Parque Nacional de Udawalawe",
+        "title": "Safari y camino a Sinharaja",
+        "description": "Safari a primera hora en el Parque Nacional de Udawalawe y después viaje a Sinharaja. Udawalawe está en la zona seca y reúne matorral, praderas, embalses y riberas fluviales: el mejor parque del país para ver manadas de elefantes salvajes de cerca. Noche en Sinharaja."
+      },
+      {
+        "location": "Bosque lluvioso de Sinharaja",
+        "title": "Aves del bosque lluvioso de tierras bajas",
+        "description": "Dos días de observación de aves en el bosque lluvioso de Sinharaja, Patrimonio de la Humanidad de la UNESCO con la mayor biodiversidad de Asia y hogar de casi toda la flora y fauna endémica de Sri Lanka: endemismos de tierras bajas y bandos mixtos. Noche en Sinharaja."
+      }
     ]
   }
 }

@@ -57,8 +57,8 @@ export default async function ToursPage({
         title={t("tours.sectionTitle")}
         lead={seo.pages.tours.description}
         image={{
-          src: "/images/tours/tour-16-days.jpg",
-          alt: "Travellers at the Lion Rock stairway, Sigiriya",
+          src: "/images/tours/tours-hero.jpg",
+          alt: "A traveller looking out over Sri Lanka's forest, rock outcrops and coast at sunrise",
         }}
         meta={tours.map((tour) => `${tour.durationDays} ${t("tours.daysLabel")}`)}
       />

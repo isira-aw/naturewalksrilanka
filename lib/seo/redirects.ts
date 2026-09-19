@@ -11,11 +11,10 @@ export const legacyRedirects = [
   { source: "/single12.html", destination: "/en/tours/12-days" },
   { source: "/single10.html", destination: "/en/tours/10-days" },
   // The old site's 2-week ("single.html") and 1-week ("single7.html") tours
-  // have no equivalent in the new tour lineup (18/16/12/10 days only) — send
-  // them to the tours overview rather than a 404 until/unless Nandana wants
-  // those durations reinstated as their own pages.
-  { source: "/single.html", destination: "/en/tours" },
-  { source: "/single7.html", destination: "/en/tours" },
+  // are back in the lineup as their own pages, so these now land on the
+  // journey they were about rather than the overview.
+  { source: "/single.html", destination: "/en/tours/14-days" },
+  { source: "/single7.html", destination: "/en/tours/7-days" },
   // German and French were dropped in favour of Dutch, Spanish, Danish and
   // Finnish; anything still pointing at the old locale prefixes lands on the
   // same page in English rather than a 404.

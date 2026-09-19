@@ -76,7 +76,19 @@
     "destinationsTitle": "Destinations",
     "activitiesTitle": "Activities",
     "customizeCta": "Customize This Journey",
-    "whatsappCta": "Discuss This Journey"
+    "whatsappCta": "Discuss This Journey",
+    "introTitle": "A journey built around Sri Lanka's wild places.",
+    "birdingHighlights": "Birding highlights",
+    "wildlifeHighlights": "Wildlife & birding",
+    "galleryEyebrow": "From the journey",
+    "galleryTitle": "Birds of Sri Lanka",
+    "galleryLead": "A selection of the bird photography from this journey.",
+    "onThisPage": "On this page",
+    "navItinerary": "Itinerary",
+    "navGallery": "Gallery",
+    "navContact": "Contact",
+    "emailCta": "Email us",
+    "dayLabel": "Day"
   },
   "customTour": {
     "eyebrow": "Custom Tour",

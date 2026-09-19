@@ -22,7 +22,20 @@ export const itineraryDaySchema = z.object({
   location: z.string(),
   title: z.string(),
   description: z.string(),
+  /**
+   * The photograph this stop is shown with — the tour page is built around
+   * it. Structural, so it is authored once in English and carried into every
+   * locale by `scripts/build-translations.mjs`. A day without one (a
+   * departure transfer, say) simply renders as text.
+   */
+  image: z.string().optional(),
   highlights: z.array(z.string()).optional(),
+  /**
+   * Which heading the highlights sit under. Species names stay as written —
+   * they are proper nouns — but the label above them is translated, so it is
+   * chosen here by kind rather than spelled out in the content file.
+   */
+  highlightsKind: z.enum(["birding", "wildlife"]).optional(),
   contentRequired: z.boolean().optional(),
   note: z.string().optional(),
 });

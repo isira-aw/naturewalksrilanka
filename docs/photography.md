@@ -26,9 +26,12 @@ drop the file in and redeploy.
 |---|---|---|
 | Hero carousel on the home page | `public/images/hero/hero-1.jpg` … `hero-3.jpg` | The `SLIDES` list in `components/home/HeroShowcase.tsx` |
 | Destination hero, cover and gallery | `public/images/destinations/<slug>/` | `content/<locale>/destinations.json` |
-| Tour cards | `public/images/tours/` | `content/<locale>/tours.json` |
-| Section headers reused across pages | `public/images/story-1.jpg`, `story-2.jpg`, `hero-2.jpg` | The page that uses them |
+| Tour heroes and day-by-day stops | `public/images/tours/places/` | `content/<locale>/tours.json` — `heroImage` and `itinerary[].image` |
+| The bird gallery on every tour page | `public/images/tours/birds/` | `tourGallery` in `lib/content/tourGallery.ts` |
+| Section heroes | `public/images/<page>-hero.jpg` | The page that uses them — `tours`, `about-nandana`, `custom-tour` |
+| Section headers reused across pages | `public/images/story-2.jpg`, `hero-2.jpg` | The page that uses them |
 | Nandana's portrait | `public/images/nandana-portrait.jpg` | `content/<locale>/profile.json` |
+| The logo | `public/logo.png` | `components/layout/Header.tsx` and `Footer.tsx` |
 | The social sharing card | `public/images/og-default.jpg` | `content/<locale>/seo.json` → `ogImage` |
 | Itinerary photographs | Cloudinary | Uploaded in the admin panel; see [`cloudinary.md`](cloudinary.md) |
 | Review photographs | Cloudinary | Submitted with a review, uploaded server-side after validation; see [`cloudinary.md`](cloudinary.md) |
@@ -109,22 +112,31 @@ characters that need escaping in a URL (spaces and brackets, for instance).
 
 ## Provenance of the images currently in the repository
 
-These are placeholders taken from the old static site, or generic stand-ins.
-Every one of them should be replaced with the company's own photography before
-launch.
+Still placeholders taken from the old static site, or generic stand-ins. Each
+of these should be replaced with the company's own photography before launch.
 
 | File | Taken from |
 |---|---|
 | `hero-2.jpg` | `naturewalksrilanka.com/img/mycarousel-2.jpg` |
 | `nandana-portrait.jpg` | `naturewalksrilanka.com/img/me.jpg` |
-| `story-1.jpg` | `naturewalksrilanka.com/img/package-21.jpg` |
 | `story-2.jpg` | `naturewalksrilanka.com/img/package-12.jpg` |
 | `og-default.jpg` | `naturewalksrilanka.com/img/mycarousel-1.jpg`, recropped to 1200 × 630 |
 | `placeholder-destination.jpg` | `naturewalksrilanka.com/img/mycarousel-2.jpg` |
-| `tours/tour-18-days.jpg` | `naturewalksrilanka.com/img/package-61.jpg` |
-| `tours/tour-16-days.jpg` | `naturewalksrilanka.com/img/package-51.jpg` |
-| `tours/tour-12-days.jpg` | `naturewalksrilanka.com/img/package-41.jpg` |
-| `tours/tour-10-days.jpg` | `naturewalksrilanka.com/img/package-31.jpg` |
+
+Supplied by the company, and not placeholders:
+
+| File | Note |
+|---|---|
+| `logo.png` | The company mark, from `naturewalksrilanka.com/img/logo.png` |
+| `tours/places/*.jpg` | The old site's own tour photography, one per stop. Which stop each belongs to is set by `itinerary[].image` in `content/en/tours.json` — **that mapping is the point, so do not re-point one at a different day.** Two names are worth knowing: `sigiriya-birding.jpg` is the dawn-birding photograph, not the rock; `kitulgala-river.jpg` is the rafting frame and `kitulgala.jpg` the river crossing |
+| `tours/birds/*.jpg` | The six bird photographs the old site closed every tour page with |
+| `about-nandana-hero.jpg`, `custom-tour-hero.jpg` | Guided birding groups, supplied directly |
+| `tours-hero.jpg` | Supplied directly. **Note this one is a generated composite**, not a photograph — it places a leopard, a blue magpie, a dagoba and a beach in a single Sigiriya viewpoint. Swap it for a real frame when one is available |
 
 The photographs under `public/images/hero/` and `public/images/destinations/`
-are real and destination-specific, not from this list.
+are real and destination-specific, not from either list.
+
+Two of the old site's tour photographs are 404 on the live site and could not be
+recovered — `img/hotnpl.jpg` (16-day Horton Plains) and `img/tissa24.jpg`
+(10-day Tissamaharama). Both stops use the company's own photograph of the same
+place, taken from another tour page; see the `_note` on those tours.

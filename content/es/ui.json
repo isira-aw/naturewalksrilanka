@@ -76,7 +76,19 @@
     "destinationsTitle": "Destinos",
     "activitiesTitle": "Actividades",
     "customizeCta": "Personaliza este viaje",
-    "whatsappCta": "Consultar sobre este viaje"
+    "whatsappCta": "Consultar sobre este viaje",
+    "introTitle": "Un viaje construido en torno a los lugares salvajes de Sri Lanka.",
+    "birdingHighlights": "Aves destacadas",
+    "wildlifeHighlights": "Fauna y aves",
+    "galleryEyebrow": "Del viaje",
+    "galleryTitle": "Aves de Sri Lanka",
+    "galleryLead": "Una selección de la fotografía de aves de este viaje.",
+    "onThisPage": "En esta página",
+    "navItinerary": "Itinerario",
+    "navGallery": "Galería",
+    "navContact": "Contacto",
+    "emailCta": "Escríbenos",
+    "dayLabel": "Día"
   },
   "customTour": {
     "eyebrow": "Viaje a medida",

@@ -15,16 +15,56 @@
       "Lintujen tarkkailua Sinharajan sademetsässä, Unescon maailmanperintökohteessa"
     ],
     "itinerary": [
-      { "location": "Negombo", "title": "Saapuminen ja veneretki hollantilaiskanavalla", "description": "Saapuminen Colombon lentokentälle ja ajo Negomboon (noin puoli tuntia)." },
-      { "location": "Negombo → Anuradhapura", "title": "Wilpattu ja muinaiskaupunki", "description": "Negombon kalatori, Wilpattun kansallispuisto, kierros Anuradhapuran muinaiskaupungissa ja Mihintalen temppeli. Wilpattu on Sri Lankan suurin kansallispuisto, joka tunnetaan leopardeista, laiskakarhuista ja norsuista, luonnonjärvistään (villus) sekä kuivan vyöhykkeen linnustosta." },
-      { "location": "Trincomalee", "title": "Rannikko, riutta ja delfiinit", "description": "Kaupunkikierros Trincomaleessa, Pigeon Island ja delfiiniretki." },
-      { "location": "Sigiriya", "title": "Leijonakallio ja muinainen Polonnaruwa", "description": "Leijonakallion linnoitus, Pidurangalan temppeli, kierros Polonnaruwan muinaiskaupungissa, valinnainen kyläretki ja Minneriyan kansallispuisto." },
-      { "location": "Kandy", "title": "Temppeli, tee ja kulttuuri", "description": "Dambullan luolatemppeli, yrtti- ja maustepuutarha, kandylainen kulttuurinäytös, Hampaan temppeli, vierailu teetehtaalla ja kaupunkikierros Kandyssa." },
-      { "location": "Kithulgala", "title": "Junalla ylängöille ja seikkailulajien pariin", "description": "Junamatka kohti Nuwara Eliyaa, lintujen tarkkailua ja luontokävely sekä seikkailulajeja — koskenlaskua, canyoningia ja vaijeriliukuja." },
-      { "location": "Ella", "title": "Ellan juna ja ylänköjen polut", "description": "Junamatka Ellaan, Nine Arch -silta, Little Adam's Peak, Ravanan vesiputous ja Nildiya Pokuna. Ella Rock ja vaijeriliuku ovat saatavilla lisäohjelmana." },
-      { "location": "Yalan kansallispuisto / Tissamaharama", "title": "Safari Yalassa", "description": "Kokonainen safaripäivä Yalan kansallispuistossa." },
-      { "location": "Sinharajan sademetsä", "title": "Lintujen tarkkailua sademetsässä", "description": "Lintujen tarkkailua ja luontokävely Sinharajan sademetsässä, joka on Unescon maailmanperintökohde ja Sri Lankan kotoperäisimmille lajeille rikkain alamaan sademetsä." },
-      { "location": "Lähtö", "title": "Lähtö", "description": "Kuljetus lentokentälle paluumatkaa varten." }
+      {
+        "location": "Negombo",
+        "title": "Saapuminen ja veneretki hollantilaiskanavalla",
+        "description": "Saapuminen Colombon lentokentälle ja ajo Negomboon (noin puoli tuntia)."
+      },
+      {
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu ja muinaiskaupunki",
+        "description": "Negombon kalatori, Wilpattun kansallispuisto, kierros Anuradhapuran muinaiskaupungissa ja Mihintalen temppeli. Wilpattu on Sri Lankan suurin kansallispuisto, joka tunnetaan leopardeista, laiskakarhuista ja norsuista, luonnonjärvistään (villus) sekä kuivan vyöhykkeen linnustosta."
+      },
+      {
+        "location": "Trincomalee",
+        "title": "Rannikko, riutta ja delfiinit",
+        "description": "Kaupunkikierros Trincomaleessa, Pigeon Island ja delfiiniretki."
+      },
+      {
+        "location": "Sigiriya",
+        "title": "Leijonakallio ja muinainen Polonnaruwa",
+        "description": "Leijonakallion linnoitus, Pidurangalan temppeli, kierros Polonnaruwan muinaiskaupungissa, valinnainen kyläretki ja Minneriyan kansallispuisto."
+      },
+      {
+        "location": "Kandy",
+        "title": "Temppeli, tee ja kulttuuri",
+        "description": "Dambullan luolatemppeli, yrtti- ja maustepuutarha, kandylainen kulttuurinäytös, Hampaan temppeli, vierailu teetehtaalla ja kaupunkikierros Kandyssa."
+      },
+      {
+        "location": "Kithulgala",
+        "title": "Junalla ylängöille ja seikkailulajien pariin",
+        "description": "Junamatka kohti Nuwara Eliyaa, lintujen tarkkailua ja luontokävely sekä seikkailulajeja — koskenlaskua, canyoningia ja vaijeriliukuja."
+      },
+      {
+        "location": "Ella",
+        "title": "Ellan juna ja ylänköjen polut",
+        "description": "Junamatka Ellaan, Nine Arch -silta, Little Adam's Peak, Ravanan vesiputous ja Nildiya Pokuna. Ella Rock ja vaijeriliuku ovat saatavilla lisäohjelmana."
+      },
+      {
+        "location": "Yalan kansallispuisto / Tissamaharama",
+        "title": "Safari Yalassa",
+        "description": "Kokonainen safaripäivä Yalan kansallispuistossa."
+      },
+      {
+        "location": "Sinharajan sademetsä",
+        "title": "Lintujen tarkkailua sademetsässä",
+        "description": "Lintujen tarkkailua ja luontokävely Sinharajan sademetsässä, joka on Unescon maailmanperintökohde ja Sri Lankan kotoperäisimmille lajeille rikkain alamaan sademetsä."
+      },
+      {
+        "location": "Lähtö",
+        "title": "Lähtö",
+        "description": "Kuljetus lentokentälle paluumatkaa varten."
+      }
     ]
   },
   "16-days": {
@@ -42,16 +82,135 @@
       "Mirissan ranta ja Gallen hollantilaislinnoitus"
     ],
     "itinerary": [
-      { "location": "Negombo", "title": "Saapuminen ja veneretki hollantilaiskanavalla", "description": "Saapuminen Colombon lentokentälle ja ajo Negomboon (noin puoli tuntia)." },
-      { "location": "Negombo → Anuradhapura", "title": "Wilpattu ja muinaiskaupunki", "description": "Negombon kalatori, Wilpattun kansallispuisto, kierros Anuradhapuran muinaiskaupungissa ja Mihintalen temppeli." },
-      { "location": "Trincomalee", "title": "Rannikko, riutta ja delfiinit", "description": "Kaupunkikierros Trincomaleessa, Pigeon Island ja delfiiniretki." },
-      { "location": "Sigiriya", "title": "Leijonakallio ja muinainen Polonnaruwa", "description": "Leijonakallion linnoitus, Pidurangalan temppeli, kierros Polonnaruwan muinaiskaupungissa, valinnainen kyläretki ja Minneriyan kansallispuisto." },
-      { "location": "Kandy", "title": "Temppeli, tee ja kulttuuri", "description": "Dambullan luolatemppeli, yrtti- ja maustepuutarha, kandylainen kulttuurinäytös, Hampaan temppeli, vierailu teetehtaalla ja kaupunkikierros Kandyssa." },
-      { "location": "Nuwara Eliya", "title": "Horton Plainsin kansallispuisto", "description": "Päivä Horton Plainsin kansallispuiston vuoristoniityillä ja sumumetsässä." },
-      { "location": "Ella", "title": "Ellan juna ja ylänköjen polut", "description": "Junamatka Ellaan, Nine Arch -silta, Little Adam's Peak, Ravanan vesiputous ja Nildiya Pokuna. Ella Rock ja vaijeriliuku ovat saatavilla lisäohjelmana." },
-      { "location": "Yalan kansallispuisto / Tissamaharama", "title": "Safari Yalassa", "description": "Kokonainen safaripäivä Yalan kansallispuistossa." },
-      { "location": "Mirissan ranta", "title": "Rantapäiviä ja Gallen linnoitus", "description": "Vapaata aikaa rannalla ja vierailu Gallen hollantilaislinnoituksessa." },
-      { "location": "Lähtö", "title": "Lähtö", "description": "Kuljetus lentokentälle paluumatkaa varten." }
+      {
+        "location": "Negombo",
+        "title": "Saapuminen ja veneretki hollantilaiskanavalla",
+        "description": "Saapuminen Colombon lentokentälle ja ajo Negomboon (noin puoli tuntia)."
+      },
+      {
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu ja muinaiskaupunki",
+        "description": "Negombon kalatori, Wilpattun kansallispuisto, kierros Anuradhapuran muinaiskaupungissa ja Mihintalen temppeli."
+      },
+      {
+        "location": "Trincomalee",
+        "title": "Rannikko, riutta ja delfiinit",
+        "description": "Kaupunkikierros Trincomaleessa, Pigeon Island ja delfiiniretki."
+      },
+      {
+        "location": "Sigiriya",
+        "title": "Leijonakallio ja muinainen Polonnaruwa",
+        "description": "Leijonakallion linnoitus, Pidurangalan temppeli, kierros Polonnaruwan muinaiskaupungissa, valinnainen kyläretki ja Minneriyan kansallispuisto."
+      },
+      {
+        "location": "Kandy",
+        "title": "Temppeli, tee ja kulttuuri",
+        "description": "Dambullan luolatemppeli, yrtti- ja maustepuutarha, kandylainen kulttuurinäytös, Hampaan temppeli, vierailu teetehtaalla ja kaupunkikierros Kandyssa."
+      },
+      {
+        "location": "Nuwara Eliya",
+        "title": "Horton Plainsin kansallispuisto",
+        "description": "Päivä Horton Plainsin kansallispuiston vuoristoniityillä ja sumumetsässä."
+      },
+      {
+        "location": "Ella",
+        "title": "Ellan juna ja ylänköjen polut",
+        "description": "Junamatka Ellaan, Nine Arch -silta, Little Adam's Peak, Ravanan vesiputous ja Nildiya Pokuna. Ella Rock ja vaijeriliuku ovat saatavilla lisäohjelmana."
+      },
+      {
+        "location": "Yalan kansallispuisto / Tissamaharama",
+        "title": "Safari Yalassa",
+        "description": "Kokonainen safaripäivä Yalan kansallispuistossa."
+      },
+      {
+        "location": "Mirissan ranta",
+        "title": "Rantapäiviä ja Gallen linnoitus",
+        "description": "Vapaata aikaa rannalla ja vierailu Gallen hollantilaislinnoituksessa."
+      },
+      {
+        "location": "Lähtö",
+        "title": "Lähtö",
+        "description": "Kuljetus lentokentälle paluumatkaa varten."
+      }
+    ]
+  },
+  "14-days": {
+    "title": "Kaksi viikkoa",
+    "tagline": "Lintujen tarkkailua, luontoa ja kulttuuria",
+    "summary": "Saari päästä päähän lintuharrastajan tahtiin: muinaiset kaupungit ja Sigiriya, Kandy ja Udawatta Kelen metsä, Kithulgalan sademetsä, Nuwara Eliyan ylängöt ja Horton Plains, sitten kolme kuivan vyöhykkeen puistoa peräkkäin — Yala, Bundala ja Udawalawe — ennen Sinharajaa ja viimeistä päivää Mirissassa.",
+    "highlights": [
+      "Minneriyan kansallispuisto ja aamunkoiton linnut Sigiriyan ympärillä",
+      "Sigiriyan Leijonakallio ja keskiaikainen pääkaupunki Polonnaruwa",
+      "Dambullan luolatemppeli ja Kandyn Hammastemppeli",
+      "Udawatta Kelen metsän pöllöt ja Kithulgalan Kelani-joki",
+      "Victoria Park Nuwara Eliyassa ja Horton Plainsin pilvimetsä",
+      "Yalan kansallispuisto — leopardi ja laiskakarhu",
+      "Bundalan Ramsar-kosteikon kahlaajat ja flamingot",
+      "Udawalawen norsulaumat läheltä",
+      "Sinharajan sademetsä — Unescon maailmanperintökohde",
+      "Mirissan ranta ja sinivalaiden katselu"
+    ],
+    "itinerary": [
+      {
+        "location": "Sigiriya",
+        "title": "Saapuminen ja Minneriyan kansallispuisto",
+        "description": "Saapuminen Colombon lentokentälle ja ajo Sigiriyaan (noin kolme ja puoli tuntia). Iltapäivällä lintujen tarkkailua ja safari Minneriyan kansallispuistossa. Yöpyminen Sigiriyassa."
+      },
+      {
+        "location": "Sigiriya → Polonnaruwa",
+        "title": "Aamunkoiton linnut, Leijonakallio ja keskiaikainen pääkaupunki",
+        "description": "Varhaisaamun lintujen tarkkailua Sigiriyan ympäristössä. Aamiaisen jälkeen nousu Sigiriyan kalliolle — jättimäiselle kalliolinnoitukselle, jonka puolivälissä ovat taivaallisten neitojen freskot ja jonka huipulta avautuu näkymä yli koko tasangon. Iltapäivällä vierailu Polonnaruwan muinaiskaupungissa, maan keskiaikaisessa pääkaupungissa 900-luvulta 1000-luvulle, jossa on palatsirakennuksia ja julkisia saleja, pyhäkköjä, temppeleitä, pagodeja ja graniittiveistoksia. Yöpyminen Sigiriyassa."
+      },
+      {
+        "location": "Kandy",
+        "title": "Dambulla, maustepuutarha ja Hammastemppeli",
+        "description": "Aamiaisen jälkeen ajo Kandyyn. Matkalla vierailu Dambullan luolatemppelissä ja maustepuutarhassa, ja iltapäivällä Pyhän hampaan temppelissä. Yöpyminen Kandyssa."
+      },
+      {
+        "location": "Udawatta Kele → Kithulgala",
+        "title": "Metsän pöllöt ja Kelani-joki",
+        "description": "Varhaisaamun lintujen tarkkailua Udawatta Kelen metsässä ja aamiaisen jälkeen ajo Kithulgalaan. Kauniin Kelani-joen ylitys vie tiheään sademetsään; kylää ympäröi metsä, joka houkuttelee runsaasti lintulajeja, ja joki itsessään on kuuluisa koskenlaskusta. Yöpyminen Kithulgalassa."
+      },
+      {
+        "location": "Nuwara Eliya",
+        "title": "Victoria Park",
+        "description": "Pieni puisto Nuwara Eliyan keskustassa ja yksi maan varmimmista paikoista talvehtiville ylänkömuuttajille. Yöpyminen Nuwara Eliyassa."
+      },
+      {
+        "location": "Horton Plains",
+        "title": "Vuori- ja pilvimetsä",
+        "description": "Päivä Horton Plainsin vuori- ja pilvimetsässä. Yöpyminen Nuwara Eliyassa."
+      },
+      {
+        "location": "Tissamaharama",
+        "title": "Lintuja matkan varrella ja tekoaltailla",
+        "description": "Aamiaisen jälkeen ajo Tissamaharamaan, matkalla lyhyt pysähdys lintujen tarkkailuun lintusuojelualueella. Iltapäivällä lintujen tarkkailua Tissamaharaman tekoaltaiden ympärillä. Yöpyminen Tissamaharamassa."
+      },
+      {
+        "location": "Yalan kansallispuisto",
+        "title": "Koko päivän safari",
+        "description": "Yalan kansallispuisto sijaitsee kuivalla vyöhykkeellä ja kokoaa yhteen hyvin erilaisia elinympäristöjä — pensaikkoviidakkoa, tekoaltaita, murtovesilaguuneja ja jokivarsimetsää. Se on maan paras puisto leopardin ja laiskakarhun näkemiseen. Yöpyminen Tissamaharamassa."
+      },
+      {
+        "location": "Bundalan kansallispuisto",
+        "title": "Bundalan Ramsar-kosteikko",
+        "description": "Bundala rajautuu mereen ja koostuu pensaikkoviidakosta ja suola-altaista — erinomainen alue vesilintujen ja muuttavien kahlaajien tarkkailuun pohjoisen talven aikana. Yöpyminen Udawalawessa."
+      },
+      {
+        "location": "Udawalawen kansallispuisto",
+        "title": "Norsut läheltä",
+        "description": "Varhaisaamun safari Udawalawen kansallispuistossa ja sen jälkeen matka Sinharajaan. Udawalawe sijaitsee kuivalla vyöhykkeellä ja kokoaa yhteen pensaikkoviidakkoa, ruohotasankoja, tekoaltaita ja jokivarsia — maan paras puisto villinorsulaumojen katseluun läheltä. Yöpyminen Sinharajassa."
+      },
+      {
+        "location": "Sinharajan sademetsä",
+        "title": "Lintujen tarkkailua alamaan sademetsässä",
+        "description": "Kaksi päivää lintujen tarkkailua Sinharajan sademetsässä, joka on Unescon maailmanperintökohde, Aasian monimuotoisin alue ja lähes koko Sri Lankan kotoperäisen kasviston ja eläimistön koti — alamaan kotoperäisiä lajeja ja sekaparvia. Yöpyminen Sinharajassa."
+      },
+      {
+        "location": "Mirissan ranta",
+        "title": "Etelärannikko",
+        "description": "Mirissa on yksi Sri Lankan kauneimmista ja leveimmistä rannoista ja siitä on tullut tunnettu sinivalaiden katselupaikka. Yöpyminen Mirissassa."
+      }
     ]
   },
   "12-days": {
@@ -66,13 +225,41 @@
       "Safari Yalan kansallispuistossa"
     ],
     "itinerary": [
-      { "location": "Negombo", "title": "Saapuminen ja veneretki hollantilaiskanavalla", "description": "Saapuminen Colombon lentokentälle ja ajo Negomboon (noin puoli tuntia)." },
-      { "location": "Negombo → Anuradhapura", "title": "Wilpattu ja muinaiskaupunki", "description": "Negombon kalatori, Wilpattun kansallispuisto, kierros Anuradhapuran muinaiskaupungissa ja Mihintalen temppeli." },
-      { "location": "Sigiriya", "title": "Leijonakallio ja muinainen Polonnaruwa", "description": "Leijonakallion linnoitus, Pidurangalan temppeli, kierros Polonnaruwan muinaiskaupungissa ja Minneriyan kansallispuisto." },
-      { "location": "Kandy", "title": "Temppeli, tee ja kulttuuri", "description": "Dambullan luolatemppeli, yrtti- ja maustepuutarha, kandylainen kulttuurinäytös, Hampaan temppeli, vierailu teetehtaalla ja kaupunkikierros Kandyssa." },
-      { "location": "Ella", "title": "Ellan juna ja ylänköjen polut", "description": "Junamatka Ellaan, Nine Arch -silta, Little Adam's Peak ja Ravanan vesiputous." },
-      { "location": "Yalan kansallispuisto / Tissamaharama", "title": "Safari Yalassa", "description": "Kokonainen safaripäivä Yalan kansallispuistossa." },
-      { "location": "Sinharajan sademetsä", "title": "Lintujen tarkkailua sademetsässä ja lähtö", "description": "Lintujen tarkkailua ja luontokävely Sinharajan sademetsässä ennen kuljetusta lentokentälle paluumatkaa varten." }
+      {
+        "location": "Negombo",
+        "title": "Saapuminen ja veneretki hollantilaiskanavalla",
+        "description": "Saapuminen Colombon lentokentälle ja ajo Negomboon (noin puoli tuntia)."
+      },
+      {
+        "location": "Negombo → Anuradhapura",
+        "title": "Wilpattu ja muinaiskaupunki",
+        "description": "Negombon kalatori, Wilpattun kansallispuisto, kierros Anuradhapuran muinaiskaupungissa ja Mihintalen temppeli."
+      },
+      {
+        "location": "Sigiriya",
+        "title": "Leijonakallio ja muinainen Polonnaruwa",
+        "description": "Leijonakallion linnoitus, Pidurangalan temppeli, kierros Polonnaruwan muinaiskaupungissa ja Minneriyan kansallispuisto."
+      },
+      {
+        "location": "Kandy",
+        "title": "Temppeli, tee ja kulttuuri",
+        "description": "Dambullan luolatemppeli, yrtti- ja maustepuutarha, kandylainen kulttuurinäytös, Hampaan temppeli, vierailu teetehtaalla ja kaupunkikierros Kandyssa."
+      },
+      {
+        "location": "Ella",
+        "title": "Ellan juna ja ylänköjen polut",
+        "description": "Junamatka Ellaan, Nine Arch -silta, Little Adam's Peak ja Ravanan vesiputous."
+      },
+      {
+        "location": "Yalan kansallispuisto / Tissamaharama",
+        "title": "Safari Yalassa",
+        "description": "Kokonainen safaripäivä Yalan kansallispuistossa."
+      },
+      {
+        "location": "Sinharajan sademetsä",
+        "title": "Lintujen tarkkailua sademetsässä ja lähtö",
+        "description": "Lintujen tarkkailua ja luontokävely Sinharajan sademetsässä ennen kuljetusta lentokentälle paluumatkaa varten."
+      }
     ]
   },
   "10-days": {
@@ -87,12 +274,70 @@
       "Sinharajan sademetsä — Unescon maailmanperintökohde"
     ],
     "itinerary": [
-      { "location": "Kithulgala", "title": "Sademetsän reuna ja Kelani-joki", "description": "Saapuminen lentokentälle ja ajo Kithulgalaan. Kelani-joen ylitys johtaa tiheään sademetsään; kylää ympäröi metsä, joka houkuttelee runsaasti lintulajeja, ja joki itsessään tunnetaan koskenlaskusta. Yöpyminen Forest Edge Kithulgalassa." },
-      { "location": "Nuwara Eliya", "title": "Victoria Park", "description": "Pieni puisto aivan Nuwara Eliyan keskustassa. Yöpyminen Nuwara Eliyassa." },
-      { "location": "Horton Plains", "title": "Vuoristo ja sumumetsä", "description": "Päivä Horton Plainsin vuoristo- ja sumumetsäympäristössä. Yöpyminen Nuwara Eliyassa." },
-      { "location": "Tissamaharama", "title": "Lintujen tarkkailua matkan varrella", "description": "Aamiaisen jälkeen ajo Tissamaharamaan pysähtyen matkalla lintusuojelualueelle. Iltapäivällä lintujen tarkkailua Tissamaharaman tekoaltaiden ympärillä. Yöpyminen hotellissa Tissamaharamassa." },
-      { "location": "Yalan kansallispuisto", "title": "Koko päivän safari", "description": "Aikainen lähtö koko päivän lintu- ja nisäkässafarille Yalan kansallispuistoon, joka on kuivan vyöhykkeen puisto pensaikkoviidakkoineen, tekojärvineen, murtovesilaguuneineen ja jokivarsineen — maan paras puisto leopardin ja laiskakarhun näkemiseen. Yöpyminen hotellissa Tissamaharamassa." },
-      { "location": "Sinharajan sademetsä", "title": "Lintujen tarkkailua alamaan sademetsässä", "description": "Ajo Sinharajan sademetsään, joka on Unescon maailmanperintökohde, Aasian monimuotoisin alue ja lähes koko Sri Lankan kotoperäisen kasviston ja eläimistön koti. Lintujen tarkkailua iltapäivällä ja seuraavina päivinä. Yöpyminen hotellissa lähellä Sinharajaa. Viimeisenä iltana ajo lentokentälle paluumatkaa varten." }
+      {
+        "location": "Kithulgala",
+        "title": "Sademetsän reuna ja Kelani-joki",
+        "description": "Saapuminen lentokentälle ja ajo Kithulgalaan. Kelani-joen ylitys johtaa tiheään sademetsään; kylää ympäröi metsä, joka houkuttelee runsaasti lintulajeja, ja joki itsessään tunnetaan koskenlaskusta. Yöpyminen Forest Edge Kithulgalassa."
+      },
+      {
+        "location": "Nuwara Eliya",
+        "title": "Victoria Park",
+        "description": "Pieni puisto aivan Nuwara Eliyan keskustassa. Yöpyminen Nuwara Eliyassa."
+      },
+      {
+        "location": "Horton Plains",
+        "title": "Vuoristo ja sumumetsä",
+        "description": "Päivä Horton Plainsin vuoristo- ja sumumetsäympäristössä. Yöpyminen Nuwara Eliyassa."
+      },
+      {
+        "location": "Tissamaharama",
+        "title": "Lintujen tarkkailua matkan varrella",
+        "description": "Aamiaisen jälkeen ajo Tissamaharamaan pysähtyen matkalla lintusuojelualueelle. Iltapäivällä lintujen tarkkailua Tissamaharaman tekoaltaiden ympärillä. Yöpyminen hotellissa Tissamaharamassa."
+      },
+      {
+        "location": "Yalan kansallispuisto",
+        "title": "Koko päivän safari",
+        "description": "Aikainen lähtö koko päivän lintu- ja nisäkässafarille Yalan kansallispuistoon, joka on kuivan vyöhykkeen puisto pensaikkoviidakkoineen, tekojärvineen, murtovesilaguuneineen ja jokivarsineen — maan paras puisto leopardin ja laiskakarhun näkemiseen. Yöpyminen hotellissa Tissamaharamassa."
+      },
+      {
+        "location": "Sinharajan sademetsä",
+        "title": "Lintujen tarkkailua alamaan sademetsässä",
+        "description": "Ajo Sinharajan sademetsään, joka on Unescon maailmanperintökohde, Aasian monimuotoisin alue ja lähes koko Sri Lankan kotoperäisen kasviston ja eläimistön koti. Lintujen tarkkailua iltapäivällä ja seuraavina päivinä. Yöpyminen hotellissa lähellä Sinharajaa. Viimeisenä iltana ajo lentokentälle paluumatkaa varten."
+      }
+    ]
+  },
+  "7-days": {
+    "title": "Yksi viikko",
+    "tagline": "Lintujen tarkkailua, luontoa ja kulttuuria",
+    "summary": "Lyhyt viikko saarella: Kithulgalan sademetsä ja ylänköjuna, Victoria Parkin muuttolinnut Nuwara Eliyassa, safari Udawalawessa norsujen läheltä ja kaksi päättävää päivää kotoperäisten lintujen parissa Sinharajassa.",
+    "highlights": [
+      "Kithulgalan sademetsä — koskenlaskua, canyoningia ja vaijeriliukua",
+      "Juna ylänköjen halki kohti Nuwara Eliyaa",
+      "Victoria Park, Nuwara Eliya — ylänkömuuttajat",
+      "Udawalawen kansallispuisto — norsulaumat läheltä",
+      "Sinharajan sademetsä — Unescon maailmanperintökohde"
+    ],
+    "itinerary": [
+      {
+        "location": "Kithulgala",
+        "title": "Sademetsä, juna ja seikkailulajit",
+        "description": "Junamatka kohti Nuwara Eliyaa, lintujen tarkkailua ja luontokävely sekä seikkailulajeja Kelani-joella — koskenlaskua, canyoningia ja vaijeriliukua."
+      },
+      {
+        "location": "Nuwara Eliya",
+        "title": "Victoria Park",
+        "description": "Pieni puisto Nuwara Eliyan keskustassa ja yksi maan varmimmista paikoista talvehtiville ylänkömuuttajille. Yöpyminen Nuwara Eliyassa."
+      },
+      {
+        "location": "Udawalawen kansallispuisto",
+        "title": "Safari ja matka Sinharajaan",
+        "description": "Varhaisaamun safari Udawalawen kansallispuistossa ja sen jälkeen matka Sinharajaan. Udawalawe sijaitsee kuivalla vyöhykkeellä ja kokoaa yhteen pensaikkoviidakkoa, ruohotasankoja, tekoaltaita ja jokivarsia — maan paras puisto villinorsulaumojen katseluun läheltä. Yöpyminen Sinharajassa."
+      },
+      {
+        "location": "Sinharajan sademetsä",
+        "title": "Lintujen tarkkailua alamaan sademetsässä",
+        "description": "Kaksi päivää lintujen tarkkailua Sinharajan sademetsässä, joka on Unescon maailmanperintökohde, Aasian monimuotoisin alue ja lähes koko Sri Lankan kotoperäisen kasviston ja eläimistön koti — alamaan kotoperäisiä lajeja ja sekaparvia. Yöpyminen Sinharajassa."
+      }
     ]
   }
 }

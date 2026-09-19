@@ -65,10 +65,14 @@ export async function Header({ locale }: { locale: Locale }) {
           aria-label="Nature Walks Sri Lanka — home"
         >
           <Image
-            src="/logo.svg"
+            src="/logo.png"
             alt="Nature Walks Sri Lanka"
-            width={200}
-            height={40}
+            /* The real mark, taken from the original site. The intrinsic file
+               is 4961×2250; these are that ratio, not the file's pixels, so
+               `w-auto` below computes the right width and `next/image` still
+               serves a resized copy. */
+            width={441}
+            height={200}
             priority
             className="h-7 w-auto lg:h-10"
           />

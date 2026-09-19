@@ -76,7 +76,19 @@
     "destinationsTitle": "Destinationer",
     "activitiesTitle": "Aktiviteter",
     "customizeCta": "Tilpas denne rejse",
-    "whatsappCta": "Spørg om denne rejse"
+    "whatsappCta": "Spørg om denne rejse",
+    "introTitle": "En rejse bygget op om Sri Lankas vilde steder.",
+    "birdingHighlights": "Fuglehøjdepunkter",
+    "wildlifeHighlights": "Dyreliv og fugle",
+    "galleryEyebrow": "Fra rejsen",
+    "galleryTitle": "Sri Lankas fugle",
+    "galleryLead": "Et udvalg af fuglefotografierne fra denne rejse.",
+    "onThisPage": "På denne side",
+    "navItinerary": "Rejseplan",
+    "navGallery": "Galleri",
+    "navContact": "Kontakt",
+    "emailCta": "Skriv til os",
+    "dayLabel": "Dag"
   },
   "customTour": {
     "eyebrow": "Skræddersyet rejse",

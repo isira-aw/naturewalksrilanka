@@ -61,8 +61,8 @@ export default async function CustomTourPage({
         title={`${t("titleLine1")}\n${t("titleLine2")}`}
         lead={t("intro")}
         image={{
-          src: "/images/story-1.jpg",
-          alt: "Birding on a forest trail in Sri Lanka's highlands",
+          src: "/images/custom-tour-hero.jpg",
+          alt: "Birders with spotting scopes on the grass beside a dry-zone tank",
         }}
         height="short"
       />

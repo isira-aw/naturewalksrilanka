@@ -9,6 +9,17 @@
   --color-clay: #b08968;
   --color-stone: #e8e3d8;
   --color-stone-dark: #d9d2c1;
+
+  /* The editorial palette the tour pages are set in. `warm-white` above is
+     already the cream the design asks for; these four are the rest of it —
+     a softer body colour than `charcoal`, the hairline the white cards are
+     ruled with, the secondary grey, and the muted green the small markers
+     use. They are additive: nothing outside components/tours/detail/ reads
+     them, so the rest of the site is untouched. */
+  --color-ink: #4c4d49;
+  --color-line: #e7e2d8;
+  --color-muted: #74756f;
+  --color-sage: #7c806b;
 }
 
 @theme inline {
@@ -20,6 +31,10 @@
   --color-clay: var(--color-clay);
   --color-stone: var(--color-stone);
   --color-stone-dark: var(--color-stone-dark);
+  --color-ink: var(--color-ink);
+  --color-line: var(--color-line);
+  --color-muted: var(--color-muted);
+  --color-sage: var(--color-sage);
 
   --font-display: var(--font-display), ui-serif, Georgia, serif;
   --font-body: var(--font-body), ui-sans-serif, system-ui, sans-serif;

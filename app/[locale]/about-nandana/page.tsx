@@ -74,8 +74,8 @@ export default async function AboutNandanaPage({
         title={profile.name}
         lead={profile.philosophy}
         image={{
-          src: "/images/hero-2.jpg",
-          alt: "Birdwatching with spotting scopes beside a dry-zone lagoon",
+          src: "/images/about-nandana-hero.jpg",
+          alt: "A guided birding group with binoculars and spotting scopes beside a dry-zone lagoon",
         }}
         meta={[profile.experience, profile.certification]}
       />

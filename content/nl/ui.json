@@ -76,7 +76,19 @@
     "destinationsTitle": "Bestemmingen",
     "activitiesTitle": "Activiteiten",
     "customizeCta": "Pas deze reis aan",
-    "whatsappCta": "Bespreek deze reis"
+    "whatsappCta": "Bespreek deze reis",
+    "introTitle": "Een reis rond de wilde plekken van Sri Lanka.",
+    "birdingHighlights": "Vogelhoogtepunten",
+    "wildlifeHighlights": "Dieren en vogels",
+    "galleryEyebrow": "Van onderweg",
+    "galleryTitle": "Vogels van Sri Lanka",
+    "galleryLead": "Een selectie uit de vogelfotografie van deze reis.",
+    "onThisPage": "Op deze pagina",
+    "navItinerary": "Reisschema",
+    "navGallery": "Galerij",
+    "navContact": "Contact",
+    "emailCta": "Mail ons",
+    "dayLabel": "Dag"
   },
   "customTour": {
     "eyebrow": "Reis op maat",
