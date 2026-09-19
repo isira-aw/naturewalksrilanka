@@ -27,6 +27,10 @@
   },
   "footerLinks": [
     {
+      "label": "Your trips",
+      "href": "/my-trip"
+    },
+    {
       "label": "Contact",
       "href": "/contact"
     },

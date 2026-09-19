@@ -42,10 +42,15 @@ function cookieValue(request: Request, name: string) {
 /** The verified email address of the current visitor, or `null`. */
 export async function travellerEmail(cookie: string | undefined): Promise<string | null> {
   if (!isFirebaseConfigured() || !cookie) return null;
-  const auth = adminAuth();
-  if (!auth) return null;
 
   try {
+    /* Inside the `try`. `adminAuth()` *throws* rather than returning null
+       when the Firebase variables are all present but the private key will
+       not parse — gotchas §11 — and this runs in a server component, where
+       a throw is a blank 500 page rather than a handled error. */
+    const auth = adminAuth();
+    if (!auth) return null;
+
     const decoded = await auth.verifySessionCookie(cookie, true);
     /* An unverified address proves nothing, and matching an enquiry is the
        only thing this session is for. Google marks the address verified by

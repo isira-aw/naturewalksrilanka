@@ -193,7 +193,8 @@
       "noticeTitle": "Om dette dokument",
       "notice": "Dette dokument er genereret automatisk ud fra de itineraries, du fortalte os, du var interesseret i. Det er et udgangspunkt, ikke en fast booking. Skal noget ændres — rækkefølgen af stop, hvor længe du bliver, eller selve itineraries — så skriv til vores team på WhatsApp. Bare rolig: de hjælper altid gerne.",
       "whatsappLabel": "WhatsApp"
-    }
+    },
+    "savedHint": "Vi gemmer en kopi under den e-mailadresse, der står ovenfor. Log ind på Dine rejser med den adresse for at læse den igen og skrive til os om den."
   },
   "nandana": {
     "introEyebrow": "Hvem er Nandana",
@@ -253,7 +254,6 @@
     "journeys": "Rejser",
     "contact": "Kontakt",
     "language": "Sprog",
-    "privacy": "Privatlivspolitik",
     "terms": "Vilkår",
     "rights": "Alle rettigheder forbeholdes."
   },
@@ -338,7 +338,8 @@
     "deleteConfirm": "Ja, slet den",
     "deleteCancel": "Behold den",
     "deleting": "Sletter…",
-    "deleteFailed": "Vi kunne ikke slette den. Prøv igen om lidt."
+    "deleteFailed": "Vi kunne ikke slette den. Prøv igen om lidt.",
+    "loadFailed": "Vi kunne ikke indlæse dine rejser lige nu. Det er vores skyld, ikke din — prøv igen om lidt."
   },
   "review": {
     "title": "Hvordan var din rejse?",

@@ -193,7 +193,8 @@
       "noticeTitle": "Over dit document",
       "notice": "Dit document is automatisch samengesteld uit de itineraries waarin u aangaf geïnteresseerd te zijn. Het is een startpunt, geen vaste boeking. Moet er iets veranderen — de volgorde van de stops, de duur, of de itineraries zelf — neem dan contact op met ons team via WhatsApp. Geen zorgen: ze helpen u graag.",
       "whatsappLabel": "WhatsApp"
-    }
+    },
+    "savedHint": "We bewaren een kopie onder het e-mailadres hierboven. Meld u met dat adres aan bij Uw reizen om die terug te lezen en ons erover te berichten."
   },
   "nandana": {
     "introEyebrow": "Wie is Nandana",
@@ -253,7 +254,6 @@
     "journeys": "Reizen",
     "contact": "Contact",
     "language": "Taal",
-    "privacy": "Privacybeleid",
     "terms": "Voorwaarden",
     "rights": "Alle rechten voorbehouden."
   },
@@ -338,7 +338,8 @@
     "deleteConfirm": "Ja, verwijderen",
     "deleteCancel": "Behouden",
     "deleting": "Bezig met verwijderen…",
-    "deleteFailed": "Verwijderen is niet gelukt. Probeer het zo meteen opnieuw."
+    "deleteFailed": "Verwijderen is niet gelukt. Probeer het zo meteen opnieuw.",
+    "loadFailed": "We konden uw reizen nu niet laden. Dit ligt aan ons, niet aan u — probeer het zo meteen opnieuw."
   },
   "review": {
     "title": "Hoe was je reis?",

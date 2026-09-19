@@ -27,6 +27,10 @@
   },
   "footerLinks": [
     {
+      "label": "Matkasi",
+      "href": "/my-trip"
+    },
+    {
       "label": "Yhteystiedot",
       "href": "/contact"
     },

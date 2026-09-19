@@ -63,7 +63,21 @@ export default async function MyTripPage({
     );
   }
 
-  const request = await getRequest(reference);
+  /* Caught for the same reason as the list page: a throw here is a blank
+     500 with nothing for the traveller and nothing for us. */
+  let request;
+  try {
+    request = await getRequest(reference);
+  } catch (error) {
+    console.error(`Could not read the trip ${reference}:`, error);
+    return (
+      <Shell>
+        <p className="mx-auto max-w-md rounded-2xl border border-stone-dark bg-stone/20 p-6 text-sm leading-relaxed text-charcoal">
+          {t("loadFailed")}
+        </p>
+      </Shell>
+    );
+  }
 
   if (!request || request.email !== email) {
     return (

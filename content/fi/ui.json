@@ -193,7 +193,8 @@
       "noticeTitle": "Tietoa tästä asiakirjasta",
       "notice": "Tämä asiakirja on luotu automaattisesti niistä itineraryistä, joista kerroit olevasi kiinnostunut. Se on lähtökohta, ei sitova varaus. Jos jotain pitää muuttaa — pysähdysten järjestystä, kestoa tai itsessään itineraryjä — ota yhteyttä tiimiimme WhatsAppissa. Ei huolta: he auttavat aina mielellään.",
       "whatsappLabel": "WhatsApp"
-    }
+    },
+    "savedHint": "Säilytämme kopion yllä olevalla sähköpostiosoitteella. Kirjaudu Matkasi-sivulle sillä osoitteella lukeaksesi sen ja kirjoittaaksesi meille siitä."
   },
   "nandana": {
     "introEyebrow": "Kuka on Nandana",
@@ -253,7 +254,6 @@
     "journeys": "Matkat",
     "contact": "Yhteystiedot",
     "language": "Kieli",
-    "privacy": "Tietosuojaseloste",
     "terms": "Ehdot",
     "rights": "Kaikki oikeudet pidätetään."
   },
@@ -338,7 +338,8 @@
     "deleteConfirm": "Kyllä, poista se",
     "deleteCancel": "Säilytä se",
     "deleting": "Poistetaan…",
-    "deleteFailed": "Poistaminen ei onnistunut. Yritä hetken kuluttua uudelleen."
+    "deleteFailed": "Poistaminen ei onnistunut. Yritä hetken kuluttua uudelleen.",
+    "loadFailed": "Matkojasi ei juuri nyt voitu ladata. Vika on meidän päässämme, ei sinun — yritä hetken kuluttua uudelleen."
   },
   "review": {
     "title": "Millainen matkasi oli?",

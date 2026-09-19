@@ -112,11 +112,18 @@ export async function Footer({ locale }: { locale: Locale }) {
           <p>
             © {year} Nature Walks Sri Lanka. {t("rights")}
           </p>
-          <div className="flex gap-4">
-            <Link href="/privacy" className="hover:text-warm-white/80">
-              {t("privacy")}
-            </Link>
-          </div>
+          {/* `footerLinks` was declared in the content schema and rendered
+              nowhere, while this bar hard-coded the one link it wanted. So
+              Contact was unreachable from the footer, and adding a link to
+              the content file did nothing at all — which is how `/my-trip`
+              came to exist with no way in. Render the authored list. */}
+          <nav className="flex flex-wrap justify-center gap-4">
+            {navigation.footerLinks.map((item) => (
+              <Link key={item.href} href={item.href} className="hover:text-warm-white/80">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </Container>
       </div>
     </footer>

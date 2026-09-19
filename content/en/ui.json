@@ -193,7 +193,8 @@
       "noticeTitle": "About this document",
       "notice": "This document was generated automatically from the itineraries you told us you were interested in. It is a starting point, not a fixed booking. If anything needs changing — the order of the stops, how long you stay, or the itineraries themselves — talk to our team on WhatsApp. Don't worry: they are always happy to help.",
       "whatsappLabel": "WhatsApp"
-    }
+    },
+    "savedHint": "We keep a copy under the email address above. Sign in at Your trips, with that address, to read it back and message us about it."
   },
   "nandana": {
     "introEyebrow": "Who is Nandana",
@@ -253,7 +254,6 @@
     "journeys": "Journeys",
     "contact": "Contact",
     "language": "Language",
-    "privacy": "Privacy Policy",
     "terms": "Terms",
     "rights": "All rights reserved."
   },
@@ -337,7 +337,8 @@
     "deleteConfirm": "Yes, delete it",
     "deleteCancel": "Keep it",
     "deleting": "Deleting…",
-    "deleteFailed": "Could not delete that. Try again shortly."
+    "deleteFailed": "Could not delete that. Try again shortly.",
+    "loadFailed": "We could not load your trips just now. This is our end, not yours — please try again shortly."
   },
   "review": {
     "title": "How was your trip?",

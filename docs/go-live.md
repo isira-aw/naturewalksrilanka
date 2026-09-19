@@ -19,6 +19,15 @@ Firebase-backed features report themselves unavailable rather than failing.
       `createdAt`, and the reviews one. Without them the Customers status
       filter and the traveller's own trip list **fail outright** — not
       degrade, fail.
+
+      **This is the first thing to suspect when a signed-in traveller sees
+      "we could not load your trips".** The `email` + `createdAt` composite
+      is what `listRequestsForEmail` needs, and a brand-new account with no
+      enquiries still runs that query — so the failure looks like "signing
+      up is broken" when it is the index. Firestore's own error names the
+      index and carries a console link that creates it; the deployment log
+      is where to read it, via the `Could not list the trips for …` line the
+      page logs before it gives up.
 - [ ] **Set `SUPER_ADMIN_EMAIL`**, comma-separated, more than one address.
       Until it is set nobody can edit the access list. The panel says so
       rather than failing silently, but it is still a lockout.
