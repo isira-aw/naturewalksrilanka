@@ -34,6 +34,12 @@ export const COLLECTIONS = {
    * or hash is stored in them.
    */
   enquiryRateLimits: "enquiryRateLimits",
+  /**
+   * Failed attempts to open a trip by its reference, in the same fixed
+   * buckets and storing no address either. Separate from the enquiry
+   * counters because the limits differ and so does what they are counting.
+   */
+  tripUnlockAttempts: "tripUnlockAttempts",
   /** Configuration the team edits in the panel. One document per area. */
   settings: "settings",
 } as const;

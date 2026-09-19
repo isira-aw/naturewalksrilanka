@@ -104,12 +104,16 @@ export default async function PrivacyPage({
             </h2>
             <p className="mt-3 leading-relaxed">
               You can sign in at <em>My trip</em> to see the enquiries sent from
-              your email address and to correct your contact details. Signing in
-              is by a one-time link sent to that address; doing so creates an
-              account for the address with Google&rsquo;s Firebase
-              Authentication and sets one cookie on your device, which lasts a
-              fortnight. Your email address is the key those enquiries are
-              matched against, which is why the form will not let you change it.
+              your email address and to correct your contact details. There are
+              two ways in, and both create an account for the address with
+              Google&rsquo;s Firebase Authentication and set one cookie on your
+              device, which lasts a fortnight: a one-time link sent to the
+              address, or a password you choose. If you choose a password,
+              Google stores it &mdash; this site never sees or keeps it &mdash;
+              and we email you once to confirm the address before the account
+              can open anything. Your email address is the key those enquiries
+              are matched against, which is why the form will not let you change
+              it.
             </p>
           </Rise>
 
@@ -131,6 +135,13 @@ export default async function PrivacyPage({
               An approved review is published on this site.
             </p>
             <p className="mt-3 leading-relaxed">
+              <strong>Opening a single trip.</strong> You can also open one trip
+              by entering its reference and the address on it, without signing
+              in. That sets a second cookie naming only that trip, for a week.
+              It cannot see any of your other trips and it cannot change
+              anything &mdash; it is a way to read what you sent, nothing more.
+            </p>
+            <p className="mt-3 leading-relaxed">
               <strong>While you are still typing.</strong> An unfinished plan is
               saved in your own browser, on your own device, so that a closed
               tab does not lose it. It is not sent anywhere until you send the
@@ -138,10 +149,12 @@ export default async function PrivacyPage({
             </p>
             <p className="mt-3 leading-relaxed">
               <strong>Spam protection.</strong> To stop the enquiry form being
-              used in bulk, the site counts how many enquiries have recently
-              come from a given internet connection. It stores counts only:
-              your IP address is not written down, and neither is anything from
-              which it could be worked out.
+              used in bulk, and to stop anyone guessing their way into other
+              people&rsquo;s trips, the site counts how many enquiries and how
+              many attempts to open a trip have recently come from a given
+              internet connection. It stores counts only: your IP address is
+              not written down, and neither is anything from which it could be
+              worked out.
             </p>
           </Rise>
 

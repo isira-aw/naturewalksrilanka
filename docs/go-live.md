@@ -29,6 +29,11 @@ Firebase-backed features report themselves unavailable rather than failing.
       from Vercel.** The shared-password login they belonged to is gone and
       nothing reads them. A live secret nobody uses is a secret nobody
       rotates.
+- [ ] **Set `TRAVELLER_LINK_SECRET`** — 32 characters or more, random. It
+      signs the cookie that opens one trip by reference. Without it that way
+      in is simply not offered: the page falls back to the emailed link and
+      says nothing is broken, because an unsigned cookie would be a way in
+      for anybody. Short values are treated as unset for the same reason.
 - [ ] Optionally set `GOOGLE_AI_MODEL`. The default is `gemini-3.6-flash`.
 
 `scripts/grant-admin.mjs` bootstraps a deployment with no super admin
@@ -53,6 +58,12 @@ built it had no credentials. In priority order:
       ever run against a stub. Eight per hour is far above anything a person
       does, so a real traveller should never meet it — but nobody has watched
       it work.
+- [ ] **Walk all three ways into `/my-trip`.** The emailed link (open it on a
+      *different* device too — that path exists now and had been a dead end);
+      a password account, which needs its one confirmation email before it can
+      open anything; and opening a single trip by reference and address, which
+      needs `TRAVELLER_LINK_SECRET` set. Check that the reference route shows
+      the trip read-only and offers nothing at `/my-trip` itself.
 - [ ] **Press *Test the connection* in the AI section.** `gemini-3.6-flash`
       has never run against a real key.
 - [ ] Confirm the snapshot write: an enquiry that records no
