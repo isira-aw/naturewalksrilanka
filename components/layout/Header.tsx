@@ -7,18 +7,27 @@ import { Container } from "@/components/ui/Container";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { NavLinks } from "./NavLinks";
 import { MobileNav } from "./MobileNav";
-import { MyTourLink } from "./MyTourLink";
+import { PersonIcon, type HeaderCta } from "./HeaderCta";
+import { hasSavedTour } from "@/lib/tourRequests/savedTour";
 import { SiteSearch } from "@/components/search/SiteSearch";
 
 export async function Header({ locale }: { locale: Locale }) {
-  const [navigation, t, tSearch, tMyTrip] = await Promise.all([
+  const [navigation, t, tSearch, tMyTrip, savedTour] = await Promise.all([
     getContent(locale, "navigation"),
     getTranslations({ locale, namespace: "nav" }),
     getTranslations({ locale, namespace: "search" }),
-    /* The link's label lives with the page it points at, so the header and
-       that page's own heading cannot drift apart. */
+    /* The label lives with the page it points at, so the header and that
+       page's own heading cannot drift apart. */
     getTranslations({ locale, namespace: "myTrip" }),
+    hasSavedTour(),
   ]);
+
+  /* One button, two jobs. Somebody with a tour saved is here to look at it;
+     everybody else is here to plan one. `navigation.json` still owns the
+     wizard's wording, so the business can reword its own call to action. */
+  const cta: HeaderCta = savedTour
+    ? { href: "/my-trip", label: tMyTrip("navLabel"), isTour: true }
+    : { href: navigation.primaryCta.href, label: navigation.primaryCta.label, isTour: false };
 
   /* Read on the server so the dialog ships with its copy already translated —
      it is a client component and has no access to the message catalogue. */
@@ -67,30 +76,26 @@ export async function Header({ locale }: { locale: Locale }) {
             mobile, which is where it is wanted in both cases. */}
         <div className="ml-auto flex items-center lg:ml-0">
           <SiteSearch locale={locale} labels={searchLabels} />
-          {/* Beside the search rather than in the desktop-only cluster below:
-              someone coming back to check their enquiry is at least as likely
-              to be on a phone as at a desk, and the mobile menu is the wrong
-              place for it — it is a destination, not a section of the site. */}
-          <MyTourLink label={tMyTrip("navLabel")} />
         </div>
 
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           <LocaleSwitcher label={t("language")} className="w-36" />
           <Link
-            href={navigation.primaryCta.href}
-            className="whitespace-nowrap rounded-full border border-forest px-4 py-2.5 font-utility text-xs uppercase tracking-wide text-forest transition-colors hover:bg-forest hover:text-warm-white xl:px-5"
+            href={cta.href}
+            className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-forest px-4 py-2.5 font-utility text-xs uppercase tracking-wide text-forest transition-colors hover:bg-forest hover:text-warm-white xl:px-5"
           >
-            {navigation.primaryCta.label}
+            {cta.isTour && <PersonIcon className="h-4 w-4" />}
+            {cta.label}
           </Link>
         </div>
 
         <div className="flex items-center lg:hidden">
           <MobileNav
             navigation={navigation}
+            cta={cta}
             labels={{
               menu: t("menu"),
               close: t("close"),
-              primaryCta: navigation.primaryCta.label,
               language: t("language"),
             }}
           />

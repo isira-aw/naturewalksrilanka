@@ -340,7 +340,8 @@
     "deleting": "Poistetaan…",
     "deleteFailed": "Poistaminen ei onnistunut. Yritä hetken kuluttua uudelleen.",
     "loadFailed": "Matkojasi ei juuri nyt voitu ladata. Vika on meidän päässämme, ei sinun — yritä hetken kuluttua uudelleen.",
-    "navLabel": "Matkani"
+    "navLabel": "Matkani",
+    "planOne": "Suunnittele matka"
   },
   "review": {
     "title": "Millainen matkasi oli?",

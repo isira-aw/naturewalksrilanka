@@ -340,7 +340,8 @@
     "deleting": "Eliminando…",
     "deleteFailed": "No se pudo eliminar. Inténtelo de nuevo en un momento.",
     "loadFailed": "No pudimos cargar sus viajes ahora mismo. Es cosa nuestra, no suya: inténtelo de nuevo en un momento.",
-    "navLabel": "Mi viaje"
+    "navLabel": "Mi viaje",
+    "planOne": "Planificar un viaje"
   },
   "review": {
     "title": "¿Qué tal tu viaje?",

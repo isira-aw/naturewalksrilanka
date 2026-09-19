@@ -101,9 +101,19 @@ export default async function MyTripsPage({
         </div>
 
         {requests.length === 0 ? (
-          <p className="mt-8 rounded-2xl border border-dashed border-stone-dark px-6 py-10 text-center text-sm leading-relaxed text-charcoal/55">
-            {t("tripsEmpty")}
-          </p>
+          /* Nobody should reach a dead end here. An address with nothing
+             filed under it is either somebody who enquired from a different
+             one — which the copy says — or somebody who has not enquired
+             yet, and the wizard is the only useful thing to offer them. */
+          <div className="mt-8 rounded-2xl border border-dashed border-stone-dark px-6 py-10 text-center">
+            <p className="text-sm leading-relaxed text-charcoal/55">{t("tripsEmpty")}</p>
+            <Link
+              href="/custom-tour"
+              className="mt-6 inline-flex min-h-11 items-center rounded-full bg-forest px-6 text-sm font-medium text-warm-white transition-colors hover:bg-forest-dark"
+            >
+              {t("planOne")}
+            </Link>
+          </div>
         ) : (
           <ul className="mt-8 divide-y divide-stone-dark border-y border-stone-dark">
             {requests.map((request) => (
