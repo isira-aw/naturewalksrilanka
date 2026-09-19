@@ -29,11 +29,18 @@ Firebase-backed features report themselves unavailable rather than failing.
       from Vercel.** The shared-password login they belonged to is gone and
       nothing reads them. A live secret nobody uses is a secret nobody
       rotates.
-- [ ] **Set `TRAVELLER_LINK_SECRET`** — 32 characters or more, random. It
-      signs the cookie that opens one trip by reference. Without it that way
-      in is simply not offered: the page falls back to the emailed link and
-      says nothing is broken, because an unsigned cookie would be a way in
-      for anybody. Short values are treated as unset for the same reason.
+- [ ] **Set `TRAVELLER_LINK_SECRET`** — 32 characters or more, random.
+      `openssl rand -base64 36` gives 48. It signs the cookie that opens one
+      trip by reference. Without it that way in is simply not offered: the
+      page falls back to the emailed link and says nothing is broken, because
+      an unsigned cookie would be a way in for anybody. Short values are
+      treated as unset for the same reason — and silently, so if the button
+      does not appear after setting this, check the length first.
+      **Generate it where it will live**, not in a chat window or a ticket,
+      and note that rotating it invalidates every cookie already issued:
+      travellers simply unlock again, but do not rotate it expecting nothing
+      to happen. Vercel injects variables at build time, so an existing
+      deployment needs a redeploy to see it.
 - [ ] Optionally set `GOOGLE_AI_MODEL`. The default is `gemini-3.6-flash`.
 
 `scripts/grant-admin.mjs` bootstraps a deployment with no super admin
@@ -126,4 +133,6 @@ Recorded so they are not re-proposed as if they were oversights.
 | **No search across enquiries** | The Customers filter works over the pages already loaded. Searching the whole collection is not something Firestore can do without a separate search index, which is not worth adding at this size. |
 | **No server-side renderer for the journey document** | Which is what emailing one would need. The browser-side rebuild reuses the renderer the traveller's own copy came from, and so cannot drift from it. Out of scope unless emailing documents becomes a requirement. |
 | **Admin access is revoked immediately, not cached** | Verifying the session cookie costs a round trip to Google per request, and a one-minute cache was proposed to remove it. Declined: it would delay revoking somebody's access by up to that minute. `lib/admin/auth.ts` says so where the decision bites. |
+| **Three ways into a saved trip, and they grant different things** | The emailed link and a password both *prove the address is yours*, so they open every trip filed under it and allow editing. Opening one trip by its reference plus that address proves less — a reference is five readable characters and a neighbouring code is guessable — so it grants less: that **one** reference, read-only, and `/my-trip` ignores its cookie entirely. That asymmetry is the feature, not an oversight. Widening it so a reference unlock lists an address's other trips, or lets contact details be edited, turns one guessed code into somebody's whole record. `lib/tourRequests/referenceAccess.ts` carries the reasoning. |
+| **A password account still needs one confirmation email** | `createTravellerSession` refuses any token whose address is unverified. That check is what stops somebody registering with another person's address and reading their enquiries, so it cannot be relaxed to spare the email. After that one confirmation the password is enough forever, which is the actual gain. |
 | **Three third-party services at runtime** | Cloudinary serves every photograph; `tile.openstreetmap.org` and `router.project-osrm.org` serve the journey map, in the wizard *and* inside the PDF and Word documents. The two map services are free, best-effort and rate-limited by policy rather than contract. Both degrade to a straight line rather than failing. A busy site should move to a keyed tile provider. None of the three is exercised by `next build`. |
