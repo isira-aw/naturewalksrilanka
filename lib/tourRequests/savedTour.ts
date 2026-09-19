@@ -3,33 +3,42 @@ import { listRequestsForEmail } from "./store";
 import { travellerFromCookies } from "./travellerSession";
 
 /**
- * Whether the visitor has a tour of their own to look at.
+ * What the header can say about the visitor's own tour.
  *
- * The header's one button used to always say *Plan Your Journey*. That is
- * right for somebody who has never sent anything and wrong for somebody who
- * has: they are not here to plan a second tour, they are here to see what
- * happened to the first. This is the question that lets one button do both.
+ * Three answers, not two, because "we do not know" and "we know there is
+ * nothing" want opposite buttons:
  *
- * **Anonymous visitors pay nothing for it.** With no traveller cookie,
+ * - `unknown` — nobody is signed in, so there may well be a tour filed
+ *   under an address we cannot see. The header offers the way in; the page
+ *   behind it asks them to sign in. This is also every anonymous visitor,
+ *   which is nearly all of them.
+ * - `has-tour` — signed in, with at least one enquiry. The obvious button.
+ * - `none` — signed in, and genuinely nothing filed under that address.
+ *   The only state where offering a tour page would be a dead end, so this
+ *   is the one that gets the wizard instead.
+ *
+ * **Anonymous visitors pay nothing for this.** With no traveller cookie,
  * `travellerFromCookies` returns before making any network call, so the
- * overwhelming majority of page views cost exactly what they did before. A
- * signed-in traveller costs one token verification and a Firestore read
+ * overwhelming majority of page views cost exactly what they did before.
+ * A signed-in traveller costs one token verification and a Firestore read
  * bounded to a single document — enough to answer "any?" and no more.
  *
- * Every failure answers `false`. The wizard is the safe thing to show
- * someone we cannot place: it is useful to everybody, whereas sending a
- * stranger to an empty tour page is not. This runs in the header, on every
- * page, so it must never be the reason one of them fails to render.
+ * A failure answers `unknown` rather than `none`: offering the way in is
+ * recoverable — worst case they land on a sign-in card — whereas telling
+ * somebody with a tour that they have none is not. This runs in the header
+ * on every page, so it is never allowed to throw.
  */
-export async function hasSavedTour(): Promise<boolean> {
+export type VisitorTourState = "unknown" | "has-tour" | "none";
+
+export async function visitorTourState(): Promise<VisitorTourState> {
   try {
     const email = await travellerFromCookies();
-    if (!email) return false;
+    if (!email) return "unknown";
 
     const saved = await listRequestsForEmail(email, 1);
-    return saved.length > 0;
+    return saved.length > 0 ? "has-tour" : "none";
   } catch (error) {
     console.error("Could not tell whether the visitor has a saved tour:", error);
-    return false;
+    return "unknown";
   }
 }
