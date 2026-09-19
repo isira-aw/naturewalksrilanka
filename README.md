@@ -43,7 +43,7 @@ Firestore and Firebase Auth back the admin panel, the itineraries it authors, cu
 | Concern | Implementation |
 |---|---|
 | Staff sign-in | Firebase Auth, Google provider, `admin` claim + `staff` allowlist |
-| Traveller sign-in | Firebase Auth, email link |
+| Traveller sign-in | Firebase Auth, Google — the same door the team uses |
 | All data | Firestore, via route handlers only — `firestore.rules` denies client access |
 | Photographs | Cloudinary. Firebase holds no files, and there is no `storage.rules` |
 
@@ -137,7 +137,7 @@ The script fails loudly if an overlay has the wrong number of highlights or itin
 
 There is no availability check: every journey is staffed from the company's own team of certified guides, so any date can be arranged. The custom-tour wizard collects the party size (1–12 travellers), arrival and departure dates from a month-grid calendar, interests, accommodation style and contact details, then hands the whole enquiry to WhatsApp.
 
-The enquiry is *also* recorded to Firestore under a short reference like `NW-7K3QD`, so the traveller can reopen it at `/[locale]/my-trip/[reference]` — proving who they are with an email-link sign-in — and amend it. **Recording never blocks sending:** the write is fired without being awaited, and WhatsApp opens whether or not it succeeds. WhatsApp has been how this business receives enquiries for years; trading that for a new dependency would be a bad bargain.
+The enquiry is *also* recorded to Firestore under a short reference like `NW-7K3QD`. Signing in at `/[locale]/my-trip` with the Google account for the address it was sent from lists every enquiry under that address; each opens read-only, with a comment thread the team answers on and a button to delete the whole thing. The enquiry itself is never edited — it is what a quote is built from — so anything that has changed since is said on the thread. **Recording never blocks sending:** the write is fired without being awaited, and WhatsApp opens whether or not it succeeds. WhatsApp has been how this business receives enquiries for years; trading that for a new dependency would be a bad bargain.
 
 Wizard progress is also autosaved to `localStorage` for 30 days, and offered back on return rather than restored silently.
 
@@ -178,7 +178,7 @@ Four headers on every response, set in the `headers()` block of
 `next.config.ts`: HSTS, `Referrer-Policy`, `X-Content-Type-Options`, and a
 Content Security Policy that is still **report-only** — it reports what it
 would refuse and refuses nothing, because the flows most likely to trip it
-(admin sign-in, the traveller email link) cannot be exercised without the real
+(admin sign-in, traveller sign-in) cannot be exercised without the real
 Firebase project.
 
 **[`docs/security-headers.md`](docs/security-headers.md)** says what each one

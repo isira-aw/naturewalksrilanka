@@ -1,7 +1,8 @@
 # Handoff
 
-Branch: `claude/funny-lovelace-6jpkhk`. Rounds **#37** and **#38** merged on
-2026-09-19; `main` is at `ce3f220` plus whatever this branch adds.
+Branch: `claude/festive-archimedes-4pr0wk`. `main` is at `ce3f220` — rounds
+**#37** and **#38**, merged 2026-09-19. Round **#39** is this branch and is
+not merged yet.
 
 > **This file is a pointer, not a record.** Two predecessors were deleted for
 > growing into logs of already-merged work — one at 967 lines, one at 821 —
@@ -38,7 +39,7 @@ Take a finished UI to a launchable production site:
 | Next.js | 16.3.5 |
 | Firebase | Connected, **Spark** plan. No Blaze, so no blocking functions — `docs/admin-access.md` |
 | Admin auth | Google sign-in; the `staff` allowlist decides, the `admin` claim caches it, `SUPER_ADMIN_EMAIL` is the recovery path |
-| Traveller auth | **Three ways in** — emailed link, password, or one trip by reference + address. They grant different things on purpose: `docs/go-live.md` §5 |
+| Traveller auth | **One way in** — Google sign-in, the same door the team uses. A traveller sees every enquiry under their address, read-only, with a comment thread and a delete button |
 | Data | Firestore only. No export or import; backups are Firestore's own |
 | Files | Cloudinary only |
 | Security headers | HSTS, `Referrer-Policy`, `nosniff` enforcing. **CSP is report-only** and promoting it is a real task — `docs/security-headers.md` |
@@ -58,13 +59,13 @@ New this round, and worth reading before changing anything near them:
 
 | File | What |
 |---|---|
-| `lib/tourRequests/rateLimit.ts` | How often one caller may write an enquiry, or attempt a trip unlock. Fixed hash buckets, no addresses stored, **fails open on purpose** |
-| `lib/tourRequests/referenceAccess.ts` | The signed cookie that opens **one** trip. Why its scope is small is the point of the file |
-| `app/api/traveller/unlock/route.ts` | Reference + address → that cookie. Counted before the lookup; one answer for every failure |
-| `components/my-trip/TravellerPassword.tsx` | Sign in, register, reset. The confirmation email is not optional — the comment says why |
-| `components/my-trip/TravellerAccess.tsx` | The emailed link, and the guard that stops it being spent twice |
+| `lib/tourRequests/travellerSession.ts` | The one traveller door, and why the other three are gone |
+| `lib/tourRequests/comments.ts` | The thread on an enquiry. What replaced editing |
+| `components/comments/CommentThread.tsx` | One thread component, both panels. Shares the store, deliberately not the authorisation |
+| `app/api/traveller/requests/[reference]/route.ts` | The traveller deleting their own enquiry — the only destructive action either side has |
+| `lib/tourRequests/rateLimit.ts` | How often one caller may write an enquiry. Fixed hash buckets, no addresses stored, **fails open on purpose** |
 | `docs/go-live.md` | **The launch checklist.** Start here |
-| `docs/gotchas.md` | Ten faults already paid for once |
+| `docs/gotchas.md` | Twelve faults already paid for once; §11 and §12 are new |
 | `docs/security-headers.md` | The four headers, and the four steps that turn the CSP on |
 
 Load-bearing from before, unchanged: `lib/admin/auth.ts` (the only
@@ -76,42 +77,31 @@ authorisation point), `lib/firebase/admin.ts` (the only door to Firestore),
 
 ## Changes made
 
-**#37** — the itinerary editor's *Planning* section removed as unwanted;
-enquiry endpoint given a honeypot and a rate limit; `sitemap.ts` stopped
-claiming every URL had just changed; a Content Security Policy added
-report-only; the privacy policy rewritten to stop saying things that were
-false; analytics settled as *none*; `handoff.md` and `PLAN.md` folded into
-`docs/` and deleted.
+Only the unmerged round belongs here; everything before it is in `main`'s
+history, where each commit message carries its own reasoning.
 
-**#38** — the sign-in link that reported itself expired, fixed; opening one
-trip by reference and address added; password accounts added; and a
-malformed `FIREBASE_PRIVATE_KEY` no longer turns the enquiry endpoint into a
-500.
-
-Each commit message carries its own reasoning. Do not re-summarise them here.
+**#39** — the traveller's three ways in (emailed link, password account, and
+one trip unlocked by reference plus address) replaced by Google sign-in, the
+same mechanism the team uses. Editing an enquiry went with them, and the
+`revisions` subcollection it needed; a `comments` thread either side can
+write on took its place, and the traveller can now delete an enquiry
+outright. The privacy page and five locale files were corrected to match.
 
 ---
 
 ## Failed attempts
 
-`docs/gotchas.md` has the ten standing ones, numbered. Three from this round
-are worth knowing before touching the same ground:
+`docs/gotchas.md` has the twelve standing ones, numbered, and **§11 and §12
+are new** — the throwing `adminDb()`, and a deleted feature leaving prose
+behind that nothing typechecks. Read those two before touching Firebase
+initialisation or removing anything user-facing.
 
-1. **A "flaky" sign-in link was our own bug, twice over.** The one-time code
-   was spent by a second run of the effect, and the "retype your address"
-   path the comment promised did not exist. Neither was visible to `tsc`,
-   `eslint` or `next build`. *Rule: when a one-time credential reports itself
-   already used, suspect the client before the provider.*
-2. **Rendering the screens found a 500 that reading them did not.** With all
-   three Firebase variables present but the private key malformed,
-   `adminDb()` throws rather than returning null; the rate limiter called it
-   outside its `try`, so an endpoint contracted never to break sending broke
-   it. *Rule: `isFirebaseConfigured()` being true does not mean `adminDb()`
-   will not throw.*
-3. **A new environment variable was documented in `docs/` but not in
-   `.env.example`.** The file somebody actually copies. Caught on a re-read,
-   not by anything failing. *Rule: a new variable lands in both, or it is
-   not really documented.*
+One thing from #39 that is a design lesson rather than a fault, and lives in
+`docs/go-live.md`'s decisions table rather than here: **three small doors
+cost more than one large one.** The emailed link, the password account and
+the reference unlock were each defensible alone; together they were the
+largest thing in the codebase, and they granted three *different* amounts of
+access to the same page. *Count the doors, not the features.*
 
 ---
 
@@ -121,12 +111,16 @@ are worth knowing before touching the same ground:
 credentials, a person, or a business fact. The short version:
 
 1. **Before the first deploy** — deploy the Firestore indexes (two features
-   fail outright without them), set `SUPER_ADMIN_EMAIL` and
-   `TRAVELLER_LINK_SECRET`, pin Node 22, and delete the three dead admin
-   secrets from Vercel.
-2. **Prove it against the real project** — §2. The traveller sign-in paths
-   and the enquiry rate limiter have never made a real Firestore call.
-3. **Promote the CSP** — §3. Do it while doing §2, with devtools open.
+   fail outright without them), set `SUPER_ADMIN_EMAIL`, pin Node 22, and
+   delete the four dead secrets from Vercel (`TRAVELLER_LINK_SECRET` is now
+   one of them).
+2. **Prove it against the real project** — §2. Traveller sign-in, the comment
+   thread and the delete have never made a real Firestore or Auth call; the
+   delete is a `recursiveDelete`, so it is the one that can destroy something
+   real if it is wrong.
+3. **Promote the CSP** — §3. Do it while doing §2, with devtools open. Both
+   populations now sign in through the same Google pop-up, so one pass proves
+   both.
 4. **Content only Nandana can supply** — §4. Two FAQ answers, the four
    privacy questions, verification codes, native-speaker review.
 

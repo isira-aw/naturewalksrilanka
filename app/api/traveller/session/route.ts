@@ -3,22 +3,38 @@ import {
   TRAVELLER_COOKIE,
   TRAVELLER_SESSION_MAX_AGE,
   createTravellerSession,
-  travellerFromRequest,
+  revokeTravellerSession,
 } from "@/lib/tourRequests/travellerSession";
 import { isFirebaseConfigured } from "@/lib/firebase/admin";
 
+/* Sign-in must never be answered from a cache. */
 export const dynamic = "force-dynamic";
 
-/** Who, if anyone, is signed in as a traveller. */
-export async function GET(request: Request) {
-  return NextResponse.json({
-    email: await travellerFromRequest(request),
-    available: isFirebaseConfigured(),
-  });
-}
+/**
+ * Traveller sign-in. Firebase Authentication, and nothing else.
+ *
+ * The shape of `/api/admin/session`, deliberately: the browser signs in with
+ * Google, posts the ID token here, and gets back an httpOnly session cookie.
+ * Two populations, two cookies, one mechanism — there is no second door on
+ * either side, and no weaker fallback for a deployment where Firebase is
+ * missing. It answers 503 and the page says why.
+ *
+ * What differs from the admin route is only what is *not* here: no allowlist
+ * and no custom claim, because anyone may have sent an enquiry. Signing in
+ * establishes which address somebody holds; whether that address owns a
+ * particular trip is decided where the trip is read.
+ *
+ * There is no `GET` here. Who is signed in is decided on the server, by the
+ * pages that need to know, from a cookie the browser cannot read — an
+ * endpoint answering the same question to the client would be a second
+ * source of truth for it, and the one that could disagree.
+ */
 
-/** Completes an email-link sign-in by exchanging the ID token for a cookie. */
 export async function POST(request: Request) {
+  if (!isFirebaseConfigured()) {
+    return NextResponse.json({ error: "firebase_unconfigured" }, { status: 503 });
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -37,12 +53,14 @@ export async function POST(request: Request) {
   const response = NextResponse.json({ email: session.email });
   response.cookies.set(TRAVELLER_COOKIE, session.cookie, {
     httpOnly: true,
-    /* `lax` rather than the admin cookie's `strict`: travellers arrive here
-       by clicking a link in their email, and a strict cookie would not be
-       sent on that first cross-site navigation — they would land signed out
-       having just signed in. There is no destructive action behind this
-       cookie, so the weaker setting costs little. */
-    sameSite: "lax",
+    /* `strict`, matching the admin cookie. It used to be `lax` because
+       travellers arrived by clicking a link in their email and a strict
+       cookie would not have been sent on that first cross-site navigation.
+       There is no such link any more — everyone reaches `/my-trip` by
+       following it from this site or typing it — so the weaker setting no
+       longer buys anything, and there is a delete button behind this cookie
+       now. */
+    sameSite: "strict",
     secure: process.env.NODE_ENV === "production",
     maxAge: TRAVELLER_SESSION_MAX_AGE,
     path: "/",
@@ -50,7 +68,11 @@ export async function POST(request: Request) {
   return response;
 }
 
-export async function DELETE() {
+export async function DELETE(request: Request) {
+  /* Revoke server-side first: clearing the cookie only stops *this* browser
+     from presenting it, and a copy taken elsewhere would keep working. */
+  await revokeTravellerSession(request);
+
   const response = NextResponse.json({ email: null });
   response.cookies.set(TRAVELLER_COOKIE, "", { path: "/", maxAge: 0 });
   return response;

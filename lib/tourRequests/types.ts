@@ -78,25 +78,40 @@ export const requestPayloadSchema = z.object({
 export type RequestPayload = z.infer<typeof requestPayloadSchema>;
 
 /**
- * What a traveller may change about their own enquiry after sending it.
+ * One message on an enquiry's thread.
  *
- * Contact details, and nothing else. The itineraries, the dates and the group
- * size are what a quote is built from, so they are not something to move
- * silently underneath the team — changing those is a conversation, which is
- * what the WhatsApp thread is for. An address or a phone number going out of
- * date is different: it costs nothing to fix and everything to get wrong.
+ * The enquiry itself is never edited after it is sent — not by the traveller
+ * and not by the team. What somebody asked for is the record a quote is
+ * built against, and a record that can be rewritten is not one. Everything
+ * that comes *after* it is said here instead, by either side, in order, and
+ * nothing said is ever changed or removed.
  *
- * The email is absent on purpose. It is the key a returning traveller is
- * matched against, and letting a form change it would let whoever holds the
- * session hand the enquiry to someone else.
+ * `author` is the side that wrote it, and is what the traveller's copy of
+ * the thread is labelled from. `authorEmail` is kept for the team's own
+ * audit and is never sent to the traveller — a staff member answering an
+ * enquiry should not be handing out their address with every reply.
  */
-export const contactUpdateSchema = z.object({
-  name: z.string().min(1).max(FIELD_LIMITS.name),
-  phone: z.string().min(1).max(FIELD_LIMITS.phone),
-  country: z.string().max(FIELD_LIMITS.country),
-  requirements: z.string().max(FIELD_LIMITS.requirements),
+export const COMMENT_AUTHORS = ["traveller", "staff"] as const;
+export const commentAuthorSchema = z.enum(COMMENT_AUTHORS);
+export type CommentAuthor = z.infer<typeof commentAuthorSchema>;
+
+/** Long enough for a paragraph of context; short enough to bound the doc. */
+export const COMMENT_BODY_LIMIT = 2000;
+
+export const tripCommentSchema = z.object({
+  id: z.string().min(1),
+  author: commentAuthorSchema,
+  /** Who wrote it, for the team. Stripped before a traveller sees it. */
+  authorEmail: z.string().email(),
+  body: z.string().min(1).max(COMMENT_BODY_LIMIT),
+  createdAt: z.string(),
 });
-export type ContactUpdate = z.infer<typeof contactUpdateSchema>;
+export type TripComment = z.infer<typeof tripCommentSchema>;
+
+/** What either side may post. The rest of a comment is the server's to set. */
+export const commentInputSchema = z.object({
+  body: z.string().trim().min(1).max(COMMENT_BODY_LIMIT),
+});
 
 /**
  * A take-away document the traveller actually saved, recorded when the
@@ -134,15 +149,6 @@ export const documentSnapshotSchema = z.object({
 });
 export type DocumentSnapshot = z.infer<typeof documentSnapshotSchema>;
 
-/** One superseded version of an enquiry, kept in the `revisions` subcollection. */
-export const requestRevisionSchema = z.object({
-  revision: z.number().int().min(0),
-  payload: requestPayloadSchema,
-  status: requestStatusSchema,
-  supersededAt: z.string(),
-});
-export type RequestRevision = z.infer<typeof requestRevisionSchema>;
-
 export const tourRequestSchema = z.object({
   /** Short, sayable over the phone, and printed on the WhatsApp message. */
   reference: z.string().min(1),
@@ -153,8 +159,6 @@ export const tourRequestSchema = z.object({
   payload: requestPayloadSchema,
   createdAt: z.string(),
   updatedAt: z.string(),
-  /** How many times the traveller has revised it. */
-  revision: z.number().int().min(0).default(0),
   /**
    * The journey document as the traveller's browser built it.
    *

@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/admin/auth";
 import { isFirebaseConfigured } from "@/lib/firebase/admin";
-import { getRequest, listRevisions, setRequestStatus } from "@/lib/tourRequests/store";
+import { listComments } from "@/lib/tourRequests/comments";
+import { getRequest, setRequestStatus } from "@/lib/tourRequests/store";
 import { requestStatusSchema } from "@/lib/tourRequests/types";
 
 export const dynamic = "force-dynamic";
 
-/** One enquiry in full, with every superseded version of it. */
+/** One enquiry in full, with the thread on it. */
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ reference: string }> },
@@ -26,7 +27,7 @@ export async function GET(
 
     return NextResponse.json({
       request: found,
-      revisions: await listRevisions(reference),
+      comments: await listComments(found.reference),
     });
   } catch (error) {
     console.error(`Could not read tour request ${reference}:`, error);
@@ -38,9 +39,9 @@ export async function GET(
  * Moves an enquiry along the pipeline.
  *
  * The status is the only thing this can change. The payload is the
- * traveller's own words; it is amended by them, through
- * `/my-trip/<reference>`, where the change is versioned. Letting the panel
- * rewrite it would destroy the record of what was actually asked for.
+ * traveller's own words, and letting the panel rewrite them would destroy
+ * the record of what was actually asked for. A correction belongs on the
+ * thread, where both sides can see it — see `./comments`.
  */
 export async function PATCH(
   request: Request,

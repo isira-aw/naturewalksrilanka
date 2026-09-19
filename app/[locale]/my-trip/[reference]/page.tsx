@@ -2,15 +2,12 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { isFirebaseConfigured } from "@/lib/firebase/admin";
 import { getRequest } from "@/lib/tourRequests/store";
 import { travellerFromCookies } from "@/lib/tourRequests/travellerSession";
-import {
-  isReferenceAccessConfigured,
-  referenceOpenFromCookies,
-} from "@/lib/tourRequests/referenceAccess";
-import { TravellerAccess } from "@/components/my-trip/TravellerAccess";
+import { TravellerSignIn } from "@/components/my-trip/TravellerSignIn";
 import { TripSummary } from "@/components/my-trip/TripSummary";
 
 /* Reads a session cookie and per-visitor data: never prerender or cache it,
@@ -23,20 +20,14 @@ export const metadata: Metadata = {
 };
 
 /**
- * One traveller's saved enquiry.
+ * One of the traveller's saved enquiries.
  *
- * There are two ways to be let in, and the reference alone is neither of
- * them — it is short and readable so it can be quoted over the phone, which
- * also makes neighbouring codes guessable.
- *
- * 1. **A traveller session.** A verified sign-in as the address on the
- *    enquiry, by emailed link or by password. It opens any trip filed under
- *    that address, and allows editing.
- * 2. **A reference unlock.** The reference *and* the address on it, proved
- *    to `/api/traveller/unlock`, which hands back a signed cookie naming
- *    this one reference. Read-only, and it says nothing about any other
- *    trip — guessing one reference must not become reading everything filed
- *    under that address.
+ * One way to be let in, and the reference is not it: the reference is short
+ * and readable so it can be quoted over the phone, which also makes
+ * neighbouring codes guessable. It says *which* trip and proves nothing
+ * about *who*. Proving who means a signed-in session as the address on the
+ * enquiry, and then every trip filed under that address opens — this one
+ * included.
  *
  * A reference that does not exist and one belonging to somebody else give
  * the same answer, so the page cannot be used to discover which references
@@ -64,32 +55,30 @@ export default async function MyTripPage({
   }
 
   const email = await travellerFromCookies();
-  const unlocked = await referenceOpenFromCookies(reference);
-
-  if (!email && !unlocked) {
+  if (!email) {
     return (
       <Shell>
-        <TravellerAccess reference={reference} referenceAccess={isReferenceAccessConfigured()} />
+        <TravellerSignIn />
       </Shell>
     );
   }
 
   const request = await getRequest(reference);
 
-  /* A session opens the trips filed under its address and no others. An
-     unlock opens the one reference it was issued for, which this is. */
-  const mine = Boolean(request) && (unlocked || (email !== null && request!.email === email));
-
-  if (!request || !mine) {
+  if (!request || request.email !== email) {
     return (
       <Shell>
         <div className="mx-auto max-w-md rounded-2xl border border-stone-dark bg-stone/20 p-6">
           <p className="text-sm leading-relaxed text-charcoal">{t("notYours")}</p>
-          {email && (
-            <p className="mt-2 text-sm leading-relaxed text-charcoal/55">
-              {t("notYoursHint", { email })}
-            </p>
-          )}
+          <p className="mt-2 text-sm leading-relaxed text-charcoal/55">
+            {t("notYoursHint", { email })}
+          </p>
+          <Link
+            href="/my-trip"
+            className="mt-4 inline-block font-utility text-xs uppercase tracking-wide text-forest hover:underline"
+          >
+            {t("allTrips")}
+          </Link>
         </div>
       </Shell>
     );
@@ -97,7 +86,15 @@ export default async function MyTripPage({
 
   return (
     <Shell>
-      <TripSummary request={request} canEdit={email !== null} />
+      <div className="mx-auto max-w-2xl">
+        <Link
+          href="/my-trip"
+          className="font-utility text-xs uppercase tracking-wide text-charcoal/50 transition-colors hover:text-forest"
+        >
+          &larr; {t("allTrips")}
+        </Link>
+      </div>
+      <TripSummary request={request} />
     </Shell>
   );
 }

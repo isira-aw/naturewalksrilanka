@@ -1,17 +1,14 @@
 import "server-only";
 import { requireFirebase } from "@/lib/firebase/admin";
-import { COLLECTIONS, REVISIONS_SUBCOLLECTION } from "@/lib/firebase/collections";
+import { COLLECTIONS } from "@/lib/firebase/collections";
 import {
   newReference,
   normaliseEmail,
-  requestRevisionSchema,
   tourRequestSchema,
-  type ContactUpdate,
   type DocumentSnapshot,
   type RequestDownload,
   type RequestPayload,
   type RequestStatus,
-  type RequestRevision,
   type TourRequest,
 } from "./types";
 
@@ -67,7 +64,6 @@ export async function createRequest(
       payload,
       createdAt: now,
       updatedAt: now,
-      revision: 0,
       downloads: (extras.downloads ?? []).slice(-MAX_DOWNLOADS),
       ...(extras.documentSnapshot ? { documentSnapshot: extras.documentSnapshot } : {}),
     };
@@ -97,61 +93,31 @@ export async function getRequest(reference: string): Promise<TourRequest | null>
 }
 
 /**
- * Changes the contact details on an enquiry, keeping the previous version.
+ * Removes an enquiry and everything hanging off it.
  *
- * Only the four contact fields move. This replaced a general "revise
- * everything" path that handed the traveller back to the wizard: the team may
- * already have quoted against what was there, and a quote that changes
- * underneath them without a word is worse than one that has to be discussed.
+ * The traveller's own button, and theirs alone — a staff member cannot
+ * delete somebody's enquiry from the panel, because a record the business
+ * can make disappear is not a record either side can rely on. The traveller
+ * asking for their data to be gone is a different thing, and is the one
+ * reason anything here is destroyed.
  *
- * The previous payload is still copied into `revisions` first. A correction
- * to a phone number is not dramatic, but knowing what an enquiry said when it
- * was quoted is the whole reason that subcollection exists.
+ * `recursiveDelete` rather than a plain `delete`: a deleted Firestore
+ * document leaves its subcollections behind, so the thread would survive
+ * the enquiry it belonged to — orphaned, unreachable, and still holding the
+ * traveller's words after they asked for them to go.
  *
- * The email is deliberately not updated: it is the key a returning traveller
- * is matched against, and changing it would let whoever holds the session
- * hand the enquiry to somebody else.
+ * Returns whether there was anything to delete, so the caller can answer
+ * 404 for a reference that never existed rather than pretending it worked.
  */
-export async function updateContact(
-  reference: string,
-  contact: ContactUpdate,
-): Promise<TourRequest | null> {
+export async function deleteRequest(reference: string): Promise<boolean> {
   const { db } = requireFirebase();
   const ref = collection().doc(reference.trim().toUpperCase());
 
-  return db.runTransaction(async (transaction) => {
-    const doc = await transaction.get(ref);
-    if (!doc.exists) return null;
+  const doc = await ref.get();
+  if (!doc.exists) return false;
 
-    const current = tourRequestSchema.safeParse(doc.data());
-    if (!current.success) return null;
-
-    const now = new Date().toISOString();
-    const revision = current.data.revision + 1;
-
-    transaction.set(ref.collection(REVISIONS_SUBCOLLECTION).doc(String(revision)), {
-      revision: current.data.revision,
-      payload: current.data.payload,
-      status: current.data.status,
-      supersededAt: now,
-    });
-
-    const next: TourRequest = {
-      ...current.data,
-      payload: {
-        ...current.data.payload,
-        name: contact.name,
-        phone: contact.phone,
-        country: contact.country,
-        requirements: contact.requirements,
-      },
-      updatedAt: now,
-      revision,
-    };
-
-    transaction.set(ref, next);
-    return next;
-  });
+  await db.recursiveDelete(ref);
+  return true;
 }
 
 /**
@@ -260,10 +226,10 @@ export async function listRequests({
 /**
  * Moves an enquiry along the pipeline.
  *
- * Only the status changes. The payload is the traveller's own words and is
- * never edited from the admin side — if it is wrong, the traveller amends it
- * through `/my-trip/<reference>` and the change is versioned. Nothing here
- * should be able to quietly rewrite what somebody asked for.
+ * Only the status changes. The payload is the traveller's own words, and
+ * nothing — in the panel or in `/my-trip` — can rewrite them after they are
+ * sent. A correction is a message on the thread, where both sides can see
+ * what was asked and what was said about it afterwards.
  */
 export async function setRequestStatus(
   reference: string,
@@ -283,26 +249,4 @@ export async function setRequestStatus(
   };
   await ref.set(next);
   return next;
-}
-
-/**
- * Every superseded version of an enquiry, oldest first.
- *
- * The team may have quoted against a version the traveller has since
- * replaced, so what changed matters as much as what it says now.
- */
-export async function listRevisions(reference: string): Promise<RequestRevision[]> {
-  const snapshot = await collection()
-    .doc(reference.trim().toUpperCase())
-    .collection(REVISIONS_SUBCOLLECTION)
-    .orderBy("revision", "asc")
-    .get();
-
-  const revisions: RequestRevision[] = [];
-  for (const doc of snapshot.docs) {
-    const parsed = requestRevisionSchema.safeParse(doc.data());
-    if (parsed.success) revisions.push(parsed.data);
-    else console.error(`Skipping malformed revision ${reference}/${doc.id}`);
-  }
-  return revisions;
 }

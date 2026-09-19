@@ -47,7 +47,8 @@ report-only:
 - Admin Google sign-in — the popup, and the auth handler it returns through on
   `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`. This is what `frame-src` is for, and the
   first place to look if sign-in shows up in the reports.
-- The traveller's email-link sign-in, and `/my-trip`.
+- The traveller's Google sign-in, and `/my-trip`. Same pop-up as the admin
+  one above, so the two stand or fall together.
 - The admin itinerary editor's Cloudinary upload (`connect-src`).
 
 ### One report is expected
@@ -62,8 +63,8 @@ enforcement — an empty required field is still rejected. Ignore it, or set
 ### Turning it on
 
 1. Deploy as it is and use the site normally for a few days — in particular,
-   sign in to the admin panel, upload a photograph to an itinerary, and follow
-   a traveller email link through to `/my-trip`.
+   sign in to the admin panel, upload a photograph to an itinerary, and sign
+   in to `/my-trip` as a traveller.
 2. Collect the reports. There is no reporting endpoint, so they appear in the
    browser console; the person doing step 1 should have devtools open, or add
    a `report-to` endpoint first.

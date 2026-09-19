@@ -9,12 +9,8 @@ import {
   type RebuiltDocument,
   type UiMessages,
 } from "@/lib/journey-document/fromRequest";
-import {
-  REQUEST_STATUSES,
-  type RequestRevision,
-  type RequestStatus,
-  type TourRequest,
-} from "@/lib/tourRequests/types";
+import { REQUEST_STATUSES, type RequestStatus, type TourRequest } from "@/lib/tourRequests/types";
+import { CommentThread } from "@/components/comments/CommentThread";
 
 /**
  * One enquiry in full, and the traveller's document rebuilt from it.
@@ -38,7 +34,7 @@ const STATUS_LABELS: Record<RequestStatus, string> = {
   closed: "Closed",
 };
 
-type Loaded = { request: TourRequest; revisions: RequestRevision[] };
+type Loaded = { request: TourRequest };
 
 export function RequestDetail({
   reference,
@@ -182,7 +178,7 @@ export function RequestDetail({
     );
   }
 
-  const { request, revisions } = data;
+  const { request } = data;
   const { payload } = request;
 
   return (
@@ -198,7 +194,6 @@ export function RequestDetail({
       <p className="mt-1.5 text-sm text-charcoal/55">
         Sent {request.createdAt.slice(0, 10)} in{" "}
         {localeNames[documentLocale] ?? request.locale}
-        {request.revision > 0 && ` · amended ${request.revision}×`}
       </p>
 
       {/* ---- the document ------------------------------------------------ */}
@@ -342,32 +337,25 @@ export function RequestDetail({
         </ul>
       </section>
 
-      {/* ---- history ----------------------------------------------------- */}
-      {revisions.length > 0 && (
-        <section className="mt-8">
-          <h3 className="font-display text-lg text-charcoal">Earlier versions</h3>
-          <p className="mt-1.5 text-sm text-charcoal/55">
-            Kept because the team may have quoted against a version the
-            traveller has since replaced.
-          </p>
-          <ul className="mt-3 divide-y divide-stone-dark border-y border-stone-dark">
-            {revisions.map((entry) => (
-              <li key={entry.revision} className="flex flex-wrap gap-x-4 gap-y-1 py-3 text-sm">
-                <span className="font-utility text-xs uppercase tracking-wide text-charcoal/40">
-                  rev {entry.revision}
-                </span>
-                <span className="text-charcoal/70">
-                  {entry.payload.travelers} travelling,{" "}
-                  {entry.payload.selectedExperiences.length} itineraries
-                </span>
-                <span className="ml-auto text-xs tabular-nums text-charcoal/40">
-                  replaced {entry.supersededAt.slice(0, 10)}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      {/* ---- the thread -------------------------------------------------- */}
+      <CommentThread
+        endpoint={`/api/admin/requests/${encodeURIComponent(reference)}/comments`}
+        showAuthorEmail
+        labels={{
+          title: "Conversation",
+          intro:
+            "Notes on this enquiry, visible to the traveller in their own panel — and their replies. The enquiry itself cannot be edited by either side, so anything that has changed since it was sent belongs here.",
+          placeholder: "Write to the traveller…",
+          submit: "Post",
+          submitting: "Posting…",
+          empty: "Nothing said yet.",
+          loading: "Loading the conversation…",
+          failed: "Could not reach the conversation. Try again shortly.",
+          full: "This thread is full. Carry on in WhatsApp.",
+          fromTraveller: "Traveller",
+          fromStaff: "Nature Walk",
+        }}
+      />
     </div>
   );
 }

@@ -1,33 +1,25 @@
 import { getTranslations } from "next-intl/server";
 import type { TourRequest } from "@/lib/tourRequests/types";
-import { ContactForm } from "./ContactForm";
+import { CommentThread } from "@/components/comments/CommentThread";
+import { DeleteTripButton } from "./DeleteTripButton";
 
 /**
- * The trip as the traveller sent it.
+ * One trip, as the traveller sent it.
  *
- * Plain, and mostly read-only: this page exists so somebody can check what
- * they asked for and see where it has got to, not to be a second wizard.
+ * Read-only, and that is the design rather than a limitation. What somebody
+ * asked for is the record a quote gets built against; a form that could
+ * change it after the fact would move the ground under a team who may
+ * already have priced it, and would leave neither side able to say what was
+ * actually agreed. This page used to carry a contact-details form for that
+ * reason — four fields, versioned, with a whole revisions subcollection
+ * behind it — and it is gone along with the versioning it needed.
  *
- * The one thing they can change is their own contact details. It used to be
- * everything — a link handed them back to the wizard to redo the whole
- * enquiry — but the team may already have quoted against what was there, and
- * a quote changing underneath them without a word is worse than a
- * conversation. The trip itself is settled on WhatsApp now; a phone number
- * that has gone out of date is not worth a message.
- *
- * `canEdit` is false for somebody who opened this with the reference and the
- * address rather than by proving the address is theirs. Reading their own
- * enquiry on that evidence is a reasonable trade; *changing* the phone number
- * the team will ring is not, so the form is replaced by a line saying how to
- * get it.
+ * Two things the traveller *can* do: say something, on the thread below,
+ * where the team sees it against this enquiry and can answer in the same
+ * place; and delete the whole enquiry, which is theirs to do and nobody
+ * else's.
  */
-export async function TripSummary({
-  request,
-  canEdit = true,
-}: {
-  request: TourRequest;
-  canEdit?: boolean;
-}) {
+export async function TripSummary({ request }: { request: TourRequest }) {
   const t = await getTranslations("myTrip");
   const { payload } = request;
 
@@ -67,19 +59,26 @@ export async function TripSummary({
         )}
       </dl>
 
-      {request.revision > 0 && (
-        <p className="mt-4 text-xs text-charcoal/50">
-          {t("revisionNote", { count: request.revision })}
-        </p>
-      )}
+      <p className="mt-4 text-xs leading-relaxed text-charcoal/50">{t("readOnlyNote")}</p>
 
-      {canEdit ? (
-        <ContactForm reference={request.reference} payload={payload} />
-      ) : (
-        <p className="mt-10 rounded-2xl border border-stone-dark bg-stone/20 p-6 text-sm leading-relaxed text-charcoal/70">
-          {t("editNeedsSignIn")}
-        </p>
-      )}
+      <CommentThread
+        endpoint={`/api/traveller/requests/${encodeURIComponent(request.reference)}/comments`}
+        labels={{
+          title: t("threadTitle"),
+          intro: t("threadIntro"),
+          placeholder: t("threadPlaceholder"),
+          submit: t("threadSubmit"),
+          submitting: t("threadSubmitting"),
+          empty: t("threadEmpty"),
+          loading: t("threadLoading"),
+          failed: t("threadFailed"),
+          full: t("threadFull"),
+          fromTraveller: t("threadFromYou"),
+          fromStaff: t("threadFromUs"),
+        }}
+      />
+
+      <DeleteTripButton reference={request.reference} />
     </div>
   );
 }
