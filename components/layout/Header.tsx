@@ -7,13 +7,17 @@ import { Container } from "@/components/ui/Container";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { NavLinks } from "./NavLinks";
 import { MobileNav } from "./MobileNav";
+import { MyTourLink } from "./MyTourLink";
 import { SiteSearch } from "@/components/search/SiteSearch";
 
 export async function Header({ locale }: { locale: Locale }) {
-  const [navigation, t, tSearch] = await Promise.all([
+  const [navigation, t, tSearch, tMyTrip] = await Promise.all([
     getContent(locale, "navigation"),
     getTranslations({ locale, namespace: "nav" }),
     getTranslations({ locale, namespace: "search" }),
+    /* The link's label lives with the page it points at, so the header and
+       that page's own heading cannot drift apart. */
+    getTranslations({ locale, namespace: "myTrip" }),
   ]);
 
   /* Read on the server so the dialog ships with its copy already translated —
@@ -63,6 +67,11 @@ export async function Header({ locale }: { locale: Locale }) {
             mobile, which is where it is wanted in both cases. */}
         <div className="ml-auto flex items-center lg:ml-0">
           <SiteSearch locale={locale} labels={searchLabels} />
+          {/* Beside the search rather than in the desktop-only cluster below:
+              someone coming back to check their enquiry is at least as likely
+              to be on a phone as at a desk, and the mobile menu is the wrong
+              place for it — it is a destination, not a section of the site. */}
+          <MyTourLink label={tMyTrip("navLabel")} />
         </div>
 
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">

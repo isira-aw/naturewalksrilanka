@@ -194,7 +194,7 @@
       "notice": "Dette dokument er genereret automatisk ud fra de itineraries, du fortalte os, du var interesseret i. Det er et udgangspunkt, ikke en fast booking. Skal noget ændres — rækkefølgen af stop, hvor længe du bliver, eller selve itineraries — så skriv til vores team på WhatsApp. Bare rolig: de hjælper altid gerne.",
       "whatsappLabel": "WhatsApp"
     },
-    "savedHint": "Vi gemmer en kopi under den e-mailadresse, der står ovenfor. Log ind på Dine rejser med den adresse for at læse den igen og skrive til os om den."
+    "savedHint": "Vi gemmer en kopi under den e-mailadresse, der står ovenfor. Log ind med den adresse for at læse den igen, skrive til os om den eller fjerne den:"
   },
   "nandana": {
     "introEyebrow": "Hvem er Nandana",
@@ -285,8 +285,8 @@
     "title": "Din rejse",
     "referenceLabel": "Reference",
     "unavailable": "Gemte rejser er ikke tilgængelige endnu. Din forespørgsel når os stadig på WhatsApp.",
-    "signInTitle": "Log ind på dine rejser",
-    "signInBody": "Brug Google-kontoen for den e-mailadresse, du sendte din forespørgsel fra, så finder du alt, der er registreret på den, her.",
+    "signInTitle": "Min rejse",
+    "signInBody": "Har du sendt os en forespørgsel? Log ind med Google-kontoen for den e-mailadresse, du sendte den fra, så finder du alt, der er registreret på den, her.",
     "signInHint": "Intet at huske og ingen adgangskode at oprette. Skrev du fra en anden adresse, så log ind med den.",
     "continueWithGoogle": "Fortsæt med Google",
     "signingIn": "Logger ind…",
@@ -294,10 +294,10 @@
     "signInFailed": "Vi kunne ikke logge dig ind. Prøv igen om lidt.",
     "popupBlocked": "Din browser blokerede login-vinduet. Tillad pop op-vinduer, og prøv igen.",
     "signOut": "Log ud",
-    "tripsTitle": "Dine rejser",
+    "tripsTitle": "Min rejse",
     "tripsSignedIn": "Logget ind som {email}.",
     "tripsEmpty": "Ingen rejser på denne adresse endnu. Skrev du fra en anden, så log ind med den adresse.",
-    "allTrips": "Alle dine rejser",
+    "allTrips": "Alle mine rejser",
     "notYours": "Vi kunne ikke finde den rejse på din e-mailadresse.",
     "notYoursHint": "Du er logget ind som {email}. Skrev du fra en anden adresse, så log ind med den.",
     "travellers": "Rejsende",
@@ -339,7 +339,8 @@
     "deleteCancel": "Behold den",
     "deleting": "Sletter…",
     "deleteFailed": "Vi kunne ikke slette den. Prøv igen om lidt.",
-    "loadFailed": "Vi kunne ikke indlæse dine rejser lige nu. Det er vores skyld, ikke din — prøv igen om lidt."
+    "loadFailed": "Vi kunne ikke indlæse dine rejser lige nu. Det er vores skyld, ikke din — prøv igen om lidt.",
+    "navLabel": "Min rejse"
   },
   "review": {
     "title": "Hvordan var din rejse?",

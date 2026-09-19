@@ -1,3 +1,5 @@
+import { SITE_URL } from "@/lib/seo/site";
+
 export type CustomTourWhatsAppInput = {
   travelers: number;
   startDate: string | null;
@@ -92,6 +94,23 @@ export function buildCustomTourMessage(input: CustomTourWhatsAppInput, locale: s
   }
 
   lines.push("I would like to discuss the itinerary with you.");
+
+  /* The traveller's own way back.
+   *
+   * This message ends up in the traveller's sent items, in a thread they
+   * return to — which makes it the one durable artefact they keep after
+   * leaving the site, and so the best place to put the link. A button in
+   * the header only helps somebody who has come back to the site already.
+   *
+   * No reference number, deliberately: it is minted server-side by
+   * `POST /api/custom-tour/requests`, which is fired without being awaited
+   * so that WhatsApp opens whether or not the copy is saved. Waiting for a
+   * reference to put here would make the save block the send, which is the
+   * one thing that write is designed never to do. The bare link is enough —
+   * signing in lists every enquiry under the address anyway. */
+  lines.push("");
+  lines.push(`See this enquiry any time at ${SITE_URL}/${locale}/my-trip`);
+  lines.push("(sign in with this email address)");
 
   return lines.join("\n");
 }
