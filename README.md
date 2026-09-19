@@ -53,6 +53,8 @@ Firestore and Firebase Auth back the admin panel, the itineraries it authors, cu
 
 > **The Firebase project is connected, on the Spark (free) plan, but nothing that touches Firestore or Firebase Auth has ever been run against it.** It is all compiled and typechecked; every session that wrote it worked without credentials. Treat those paths as unvalidated until somebody has actually used them — [`docs/go-live.md`](docs/go-live.md) §2 is that list, in priority order. Spark means no Blaze, so no blocking functions; [`docs/admin-access.md`](docs/admin-access.md) explains what that costs.
 
+**Picking this up mid-flight?** [`handoff.md`](handoff.md) is the short view: where things stand today and what the next session should take on. It is deliberately a pointer — the detail lives in `docs/`.
+
 **Before deploying, work through [`docs/go-live.md`](docs/go-live.md).** It is the whole launch checklist: what must be set before the first deploy, what has to be proved against the real project, how to promote the Content Security Policy, the content only Nandana can supply, and the standing decisions that should not be re-proposed as if they were oversights.
 
 **Before changing anything, skim [`docs/gotchas.md`](docs/gotchas.md).** Ten faults this project has already paid for once — several of them clean under `tsc`, `eslint` *and* `next build`, and visible only in a browser. The lockfile `overrides` block and `loading.tsx` are the two that have taken the site down.
