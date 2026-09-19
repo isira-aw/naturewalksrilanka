@@ -64,7 +64,30 @@ export default async function MyTripsPage({
     );
   }
 
-  const requests = await listRequestsForEmail(email);
+  /* A server component that throws is a blank "a server error occurred"
+     page with nothing on it for the traveller and nothing in it for us.
+     Every `/api/traveller/*` handler already catches and logs; these pages
+     did not, so the first real Firestore fault — a composite index that was
+     never deployed, most likely, since this query needs `email` +
+     `createdAt` — took the whole page down with no clue as to why. Catch it,
+     log the cause where a deployment log will show it, and say the same
+     thing an unconfigured deployment says. */
+  let requests;
+  try {
+    requests = await listRequestsForEmail(email);
+  } catch (error) {
+    console.error(`Could not list the trips for ${email}:`, error);
+    return (
+      <Shell>
+        <div className="mx-auto max-w-md rounded-2xl border border-stone-dark bg-stone/20 p-6">
+          <p className="text-sm leading-relaxed text-charcoal">{t("loadFailed")}</p>
+          <p className="mt-4">
+            <SignOutButton />
+          </p>
+        </div>
+      </Shell>
+    );
+  }
 
   return (
     <Shell>

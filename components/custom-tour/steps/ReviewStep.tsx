@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { buildCustomTourMessage, buildWhatsAppUrl } from "@/lib/whatsapp/buildMessage";
 import type { JourneyPlan } from "@/lib/journey/plan";
 import type { WizardState } from "../WizardShell";
@@ -44,6 +45,8 @@ export function ReviewStep({
   failed: boolean;
 }) {
   const t = useTranslations("customTour");
+  /* The link's label is the page's own title, so the two never drift. */
+  const tMyTrip = useTranslations("myTrip");
 
   /* The route in words, so the WhatsApp message and the on-screen summary say
      the same thing the PDF does. */
@@ -140,6 +143,23 @@ export function ReviewStep({
           </button>
 
           <p className="mt-3 text-xs leading-relaxed text-charcoal/50">{t("submitHint")}</p>
+
+          {/* The one moment a traveller has any reason to care that
+              `/my-trip` exists. Nothing else on the site pointed at it, so
+              the copy being kept was invisible to the person it was kept
+              for — and the page went unvisited because nobody knew to look.
+              Phrased as what we do rather than "saved!": the write is
+              fire-and-forget by design, so this must stay true even on the
+              run where it fails. */}
+          <p className="mt-2 text-xs leading-relaxed text-charcoal/50">
+            {t("savedHint")}{" "}
+            <Link
+              href="/my-trip"
+              className="font-medium text-forest underline underline-offset-2 hover:text-forest-dark"
+            >
+              {tMyTrip("tripsTitle")}
+            </Link>
+          </p>
 
           {failed && (
             <p role="alert" className="mt-2 text-xs leading-relaxed text-red-700">
