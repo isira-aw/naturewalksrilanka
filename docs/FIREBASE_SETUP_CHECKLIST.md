@@ -30,9 +30,11 @@ step 6.**
 
 - [ ] Create the project in the Firebase console
 - [ ] **Firestore** — create in native mode (the region cannot be changed later)
-- [ ] **Authentication → Google** — enable
-- [ ] **Authentication → Email link (passwordless)** — enable (separate from
-      Google, and from Email/Password)
+- [ ] **Authentication → Google** — enable. The only provider: staff sign in
+      to the panel with it and travellers sign in to `/my-trip` with it
+- [ ] **Authentication → Email link, Email/Password** — leave disabled, and
+      disable them if an earlier setup enabled them. Nothing signs in through
+      them now
 - [ ] **Authentication → Settings → Authorised domains** — add `localhost`, the
       Vercel preview domain and the production domain
 - [ ] **Storage** — create the default bucket, note its name
@@ -106,8 +108,10 @@ There is nothing to migrate from.
       open
 - [ ] **Enquiries** — send one, confirm a `tourRequests` document appears,
       confirm WhatsApp still opens
-- [ ] **Saved trips** — email-link sign-in at `/my-trip/<reference>`; amend it;
-      confirm a `revisions` document and the original payload survive
+- [ ] **Saved trips** — Google sign-in at `/my-trip` as a non-staff account;
+      confirm every enquiry from that address is listed; confirm a staff
+      account is refused; post a comment from each side; delete a trip and
+      confirm its `comments` subcollection goes with it
 - [ ] **Reviews** — invite yourself, submit with photographs, confirm the link
       cannot be reused, an expired one is refused, a rejected review's photos
       are gone from Storage, an approved one appears on the home page in the

@@ -29,18 +29,9 @@ Firebase-backed features report themselves unavailable rather than failing.
       from Vercel.** The shared-password login they belonged to is gone and
       nothing reads them. A live secret nobody uses is a secret nobody
       rotates.
-- [ ] **Set `TRAVELLER_LINK_SECRET`** — 32 characters or more, random.
-      `openssl rand -base64 36` gives 48. It signs the cookie that opens one
-      trip by reference. Without it that way in is simply not offered: the
-      page falls back to the emailed link and says nothing is broken, because
-      an unsigned cookie would be a way in for anybody. Short values are
-      treated as unset for the same reason — and silently, so if the button
-      does not appear after setting this, check the length first.
-      **Generate it where it will live**, not in a chat window or a ticket,
-      and note that rotating it invalidates every cookie already issued:
-      travellers simply unlock again, but do not rotate it expecting nothing
-      to happen. Vercel injects variables at build time, so an existing
-      deployment needs a redeploy to see it.
+- [ ] **Delete `TRAVELLER_LINK_SECRET` from Vercel** if it is set. It signed
+      the cookie for opening one trip by reference; that door is gone and
+      nothing reads it. Same reasoning as the three admin secrets above.
 - [ ] Optionally set `GOOGLE_AI_MODEL`. The default is `gemini-3.6-flash`.
 
 `scripts/grant-admin.mjs` bootstraps a deployment with no super admin
@@ -65,12 +56,23 @@ built it had no credentials. In priority order:
       ever run against a stub. Eight per hour is far above anything a person
       does, so a real traveller should never meet it — but nobody has watched
       it work.
-- [ ] **Walk all three ways into `/my-trip`.** The emailed link (open it on a
-      *different* device too — that path exists now and had been a dead end);
-      a password account, which needs its one confirmation email before it can
-      open anything; and opening a single trip by reference and address, which
-      needs `TRAVELLER_LINK_SECRET` set. Check that the reference route shows
-      the trip read-only and offers nothing at `/my-trip` itself.
+- [ ] **Sign in to `/my-trip` with Google**, as a traveller, from an account
+      that is *not* on the staff list. Confirm every enquiry sent from that
+      address is listed — send a second one first, so the list is proving it
+      handles more than one — and that opening a reference belonging to some
+      other address gives the same answer as a reference that does not exist.
+- [ ] **Confirm a staff account is refused at `/my-trip`.** The traveller
+      session route rejects any token carrying the `admin` claim, so the two
+      populations cannot overlap. Nobody has watched it refuse one.
+- [ ] **Post a comment from each side** — one from `/my-trip`, one from the
+      Customers panel — and confirm each appears on the other, that the
+      traveller's copy shows no staff email address, and that the panel's copy
+      does.
+- [ ] **Delete a trip from `/my-trip`.** Confirm the enquiry disappears from
+      the Customers panel *and* that its `comments` subcollection is gone in
+      the Firestore console. This is the one traveller-facing action that
+      destroys something, and `recursiveDelete` is the part of it that has
+      never run.
 - [ ] **Press *Test the connection* in the AI section.** `gemini-3.6-flash`
       has never run against a real key.
 - [ ] Confirm the snapshot write: an enquiry that records no
@@ -87,7 +89,8 @@ with it enforcing and came back clean.
 Do this while doing §2, with devtools open; it costs nothing extra.
 
 - [ ] Sign in to the admin panel, upload a photograph to an itinerary, and
-      follow a traveller email link through to `/my-trip`.
+      sign in to `/my-trip` as a traveller. Both use the same Google pop-up,
+      so if one trips the policy the other will too.
 - [ ] Collect the violation reports and add any missing host to the right
       directive in `next.config.ts`, with a comment saying what needs it.
 - [ ] Rename the header to `Content-Security-Policy`.
@@ -133,6 +136,7 @@ Recorded so they are not re-proposed as if they were oversights.
 | **No search across enquiries** | The Customers filter works over the pages already loaded. Searching the whole collection is not something Firestore can do without a separate search index, which is not worth adding at this size. |
 | **No server-side renderer for the journey document** | Which is what emailing one would need. The browser-side rebuild reuses the renderer the traveller's own copy came from, and so cannot drift from it. Out of scope unless emailing documents becomes a requirement. |
 | **Admin access is revoked immediately, not cached** | Verifying the session cookie costs a round trip to Google per request, and a one-minute cache was proposed to remove it. Declined: it would delay revoking somebody's access by up to that minute. `lib/admin/auth.ts` says so where the decision bites. |
-| **Three ways into a saved trip, and they grant different things** | The emailed link and a password both *prove the address is yours*, so they open every trip filed under it and allow editing. Opening one trip by its reference plus that address proves less — a reference is five readable characters and a neighbouring code is guessable — so it grants less: that **one** reference, read-only, and `/my-trip` ignores its cookie entirely. That asymmetry is the feature, not an oversight. Widening it so a reference unlock lists an address's other trips, or lets contact details be edited, turns one guessed code into somebody's whole record. `lib/tourRequests/referenceAccess.ts` carries the reasoning. |
-| **A password account still needs one confirmation email** | `createTravellerSession` refuses any token whose address is unverified. That check is what stops somebody registering with another person's address and reading their enquiries, so it cannot be relaxed to spare the email. After that one confirmation the password is enough forever, which is the actual gain. |
+| **One way into a saved trip, and it is the one the team uses** | Google sign-in, for both populations. There were three traveller doors — an emailed link, a password account with registration and reset, and a trip unlocked by reference plus address — each to be built, explained on screen and kept working, and each granting a *different* amount of access to the same page. Google proves the address at least as well as any of them, with nothing to remember, email or reset. The two sessions stay separate: different cookies, and `createTravellerSession` refuses any token carrying the `admin` claim, so proving you own an address is never a step towards the panel. Do not add a second door as a fallback — one that appears exactly when the main one is broken is the one an attacker arranges to meet. |
+| **An enquiry can never be edited, by either side** | It is the record a quote is built against. The traveller used to be able to amend four contact fields, which needed a `revisions` subcollection to keep the pre-quote version; both are gone. What changed afterwards is said on the enquiry's `comments` thread, where the team sees it against the trip and can answer in the same place, and where nothing said can be quietly rewritten later. |
+| **The traveller can delete an enquiry; the team cannot** | A record the business can make disappear is not one either side can rely on, so the panel has no delete — only a status of *closed*. Its author asking for it to be gone is a different thing, and is the one reason anything is destroyed. It is a `recursiveDelete`, so the thread goes with the enquiry rather than being orphaned under a missing parent. |
 | **Three third-party services at runtime** | Cloudinary serves every photograph; `tile.openstreetmap.org` and `router.project-osrm.org` serve the journey map, in the wizard *and* inside the PDF and Word documents. The two map services are free, best-effort and rate-limited by policy rather than contract. Both degrade to a straight line rather than failing. A busy site should move to a keyed tile provider. None of the three is exercised by `next build`. |

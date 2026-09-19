@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
-import { TravellerAccess } from "@/components/my-trip/TravellerAccess";
+import { SignOutButton } from "@/components/my-trip/SignOutButton";
+import { TravellerSignIn } from "@/components/my-trip/TravellerSignIn";
 import { isFirebaseConfigured } from "@/lib/firebase/admin";
 import { listRequestsForEmail } from "@/lib/tourRequests/store";
 import { travellerFromCookies } from "@/lib/tourRequests/travellerSession";
@@ -19,12 +20,15 @@ export const metadata: Metadata = {
 };
 
 /**
- * Everything this traveller has sent us.
+ * Every trip this traveller has sent us — the whole list, not one.
  *
- * Reaching a single trip has always needed its reference, which is printed on
- * the WhatsApp message and easily lost. This is the way in without one: sign
- * in with the address the enquiry was sent from and every trip under it is
- * here.
+ * That plural is the point of the page. Somebody who enquires about
+ * leopards in March and birds in September has two enquiries, each with its
+ * own reference, dates and thread, and both belong to the same address.
+ * Reaching them used to mean holding the right five-character reference for
+ * the one you wanted; now signing in shows all of them, and the reference is
+ * back to being what it always should have been — a label to quote on the
+ * phone, not a key.
  *
  * The address comes from the session cookie and from nowhere else. There is
  * no parameter on this page — nothing a visitor can change to see somebody
@@ -55,7 +59,7 @@ export default async function MyTripsPage({
   if (!email) {
     return (
       <Shell>
-        <TravellerAccess />
+        <TravellerSignIn />
       </Shell>
     );
   }
@@ -66,7 +70,12 @@ export default async function MyTripsPage({
     <Shell>
       <div className="mx-auto max-w-2xl">
         <h1 className="font-display text-3xl text-charcoal">{t("tripsTitle")}</h1>
-        <p className="mt-2 text-sm text-charcoal/55">{t("tripsSignedIn", { email })}</p>
+        <div className="mt-2 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <p className="text-sm text-charcoal/55">{t("tripsSignedIn", { email })}</p>
+          <span className="ml-auto">
+            <SignOutButton />
+          </span>
+        </div>
 
         {requests.length === 0 ? (
           <p className="mt-8 rounded-2xl border border-dashed border-stone-dark px-6 py-10 text-center text-sm leading-relaxed text-charcoal/55">

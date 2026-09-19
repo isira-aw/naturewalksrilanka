@@ -144,11 +144,13 @@ exports.staffOnly = beforeUserCreated(async (event) => {
 **This project is on the Spark (free) plan, so it cannot be deployed.**
 Blocking functions need Identity Platform, which needs Blaze.
 
-Note also that the site's own travellers sign in through Firebase (email-link,
-`/my-trip`), so a blocking function scoped this narrowly would lock *them* out
-too. Deploying it means either restricting it to the Google provider, or
-allowing any address that already holds an enquiry — the same standing test
-`discardProbeAccount` applies. Work that out before deploying it, not after.
+Note also that the site's own travellers sign in through the same Firebase
+project and the same Google provider (`/my-trip`), so a blocking function
+scoped to the staff list would lock *them* out too — and it can no longer be
+scoped by provider, because both populations now use Google. Deploying it
+means allowing any address that already holds an enquiry, the same standing
+test `discardProbeAccount` applies. Work that out before deploying it, not
+after.
 
 Until then the cleanup above is the honest best available, and it leaves no
 account behind in practice — only, briefly, during the request that refuses it.

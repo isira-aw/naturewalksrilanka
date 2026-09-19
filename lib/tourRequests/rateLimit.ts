@@ -30,18 +30,6 @@ const MAX_ENQUIRIES = 8;
 const WINDOW_MS = 60 * 60 * 1000;
 
 /**
- * Attempts to open a trip with its reference, per bucket per hour.
- *
- * Tighter than the enquiry limit, because the threat is different: an
- * enquiry flood is a nuisance, whereas repeated references are somebody
- * working through a five-character keyspace. Counted before the lookup
- * rather than after a mismatch, so a caller cannot spend unlimited Firestore
- * reads being told no. Ten an hour is far more than a traveller opening
- * their own trips, mistypes included.
- */
-const MAX_UNLOCK_ATTEMPTS = 10;
-
-/**
  * How many counter documents exist, ever.
  *
  * Callers are hashed into a fixed set of buckets rather than given a document
@@ -93,25 +81,15 @@ function callerAddress(request: Request): string | null {
   return real || null;
 }
 
-/** Counts this enquiry against the caller's allowance, and says whether to
-    write it. */
-export async function allowEnquiry(request: Request): Promise<boolean> {
-  return consume(request, COLLECTIONS.enquiryRateLimits, MAX_ENQUIRIES);
-}
-
-/** Counts one attempt to open a trip by reference, and says whether to look
-    it up at all. */
-export async function allowUnlockAttempt(request: Request): Promise<boolean> {
-  return consume(request, COLLECTIONS.tripUnlockAttempts, MAX_UNLOCK_ATTEMPTS);
-}
-
 /**
- * One transaction: read the bucket, decide, and write the new count.
+ * Counts this enquiry against the caller's allowance, and says whether to
+ * write it.
  *
- * A read followed by a write would let a burst arriving together each read
- * the same count and all decide they were within it.
+ * One transaction: read the bucket, decide, and write the new count. A read
+ * followed by a write would let a burst arriving together each read the same
+ * count and all decide they were within it.
  */
-async function consume(request: Request, collection: string, max: number): Promise<boolean> {
+export async function allowEnquiry(request: Request): Promise<boolean> {
   const address = callerAddress(request);
   if (!address) return true;
 
@@ -124,7 +102,7 @@ async function consume(request: Request, collection: string, max: number): Promi
     const db = adminDb();
     if (!db) return true;
 
-    const ref = db.collection(collection).doc(bucketOf(address));
+    const ref = db.collection(COLLECTIONS.enquiryRateLimits).doc(bucketOf(address));
 
     return await db.runTransaction(async (transaction) => {
       const doc = await transaction.get(ref);
@@ -136,7 +114,7 @@ async function consume(request: Request, collection: string, max: number): Promi
       const withinWindow = Number.isFinite(startedAt) && Date.now() - startedAt <= WINDOW_MS;
       const count = withinWindow ? (data?.count ?? 0) : 0;
 
-      if (count >= max) return false;
+      if (count >= MAX_ENQUIRIES) return false;
 
       const now = new Date().toISOString();
       transaction.set(ref, {
@@ -149,7 +127,7 @@ async function consume(request: Request, collection: string, max: number): Promi
       return true;
     });
   } catch (error) {
-    console.error(`Could not check the ${collection} rate limit; allowing it:`, error);
+    console.error("Could not check the enquiry rate limit; allowing it:", error);
     return true;
   }
 }

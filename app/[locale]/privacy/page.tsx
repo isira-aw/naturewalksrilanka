@@ -91,10 +91,10 @@ export default async function PrivacyPage({
               free-text box, the number of travellers, your dates, the
               itineraries you chose and your accommodation preferences. It also
               holds the itinerary document as it stood when you sent it, and a
-              note of which take-away files you downloaded and when. If you
-              later correct your contact details, the previous version is kept
-              alongside the new one, so the team can tell what the enquiry said
-              when they quoted against it.
+              note of which take-away files you downloaded and when. That copy
+              is never edited afterwards, by you or by us &mdash; it is what a
+              quote is built from, so it is kept exactly as you sent it. You
+              can delete it entirely; see below.
             </p>
           </Rise>
 
@@ -103,17 +103,22 @@ export default async function PrivacyPage({
               Looking up your own trip
             </h2>
             <p className="mt-3 leading-relaxed">
-              You can sign in at <em>My trip</em> to see the enquiries sent from
-              your email address and to correct your contact details. There are
-              two ways in, and both create an account for the address with
-              Google&rsquo;s Firebase Authentication and set one cookie on your
-              device, which lasts a fortnight: a one-time link sent to the
-              address, or a password you choose. If you choose a password,
-              Google stores it &mdash; this site never sees or keeps it &mdash;
-              and we email you once to confirm the address before the account
-              can open anything. Your email address is the key those enquiries
-              are matched against, which is why the form will not let you change
-              it.
+              You can sign in at <em>My trip</em> to see every enquiry sent from
+              your email address. There is one way in: signing in with the
+              Google account for that address, through Google&rsquo;s Firebase
+              Authentication, which sets one cookie on your device for a
+              fortnight. This site never sees your Google password. Your email
+              address is the key your enquiries are matched against, which is
+              why it is the address you have to sign in with.
+            </p>
+            <p className="mt-3 leading-relaxed">
+              What you can do there is read your enquiries, write messages about
+              them, and delete them. An enquiry cannot be edited &mdash; by you
+              or by us &mdash; because it is the record a quote is built
+              against. Anything that has changed since you sent it is said in
+              the messages instead. Those messages are stored with the enquiry:
+              what was written, which side wrote it, and when. Deleting an
+              enquiry deletes its messages with it, and we keep no copy.
             </p>
           </Rise>
 
@@ -135,13 +140,6 @@ export default async function PrivacyPage({
               An approved review is published on this site.
             </p>
             <p className="mt-3 leading-relaxed">
-              <strong>Opening a single trip.</strong> You can also open one trip
-              by entering its reference and the address on it, without signing
-              in. That sets a second cookie naming only that trip, for a week.
-              It cannot see any of your other trips and it cannot change
-              anything &mdash; it is a way to read what you sent, nothing more.
-            </p>
-            <p className="mt-3 leading-relaxed">
               <strong>While you are still typing.</strong> An unfinished plan is
               saved in your own browser, on your own device, so that a closed
               tab does not lose it. It is not sent anywhere until you send the
@@ -149,12 +147,10 @@ export default async function PrivacyPage({
             </p>
             <p className="mt-3 leading-relaxed">
               <strong>Spam protection.</strong> To stop the enquiry form being
-              used in bulk, and to stop anyone guessing their way into other
-              people&rsquo;s trips, the site counts how many enquiries and how
-              many attempts to open a trip have recently come from a given
-              internet connection. It stores counts only: your IP address is
-              not written down, and neither is anything from which it could be
-              worked out.
+              used in bulk, the site counts how many enquiries have recently
+              come from a given internet connection. It stores counts only:
+              your IP address is not written down, and neither is anything from
+              which it could be worked out.
             </p>
           </Rise>
 

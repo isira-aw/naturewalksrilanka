@@ -9,7 +9,7 @@
 export const COLLECTIONS = {
   /** One document per itinerary. */
   itineraries: "itineraries",
-  /** Custom tour enquiries, with a `revisions` subcollection per document. */
+  /** Custom tour enquiries, with a `comments` subcollection per document. */
   tourRequests: "tourRequests",
   /** One-time, expiring links that entitle a traveller to leave a review. */
   reviewInvites: "reviewInvites",
@@ -34,12 +34,6 @@ export const COLLECTIONS = {
    * or hash is stored in them.
    */
   enquiryRateLimits: "enquiryRateLimits",
-  /**
-   * Failed attempts to open a trip by its reference, in the same fixed
-   * buckets and storing no address either. Separate from the enquiry
-   * counters because the limits differ and so does what they are counting.
-   */
-  tripUnlockAttempts: "tripUnlockAttempts",
   /** Configuration the team edits in the panel. One document per area. */
   settings: "settings",
 } as const;
@@ -51,8 +45,11 @@ export const SETTINGS_DOCS = {
   customTour: "customTour",
 } as const;
 
-/** Revisions hang off a request, so the history cannot outlive its parent. */
-export const REVISIONS_SUBCOLLECTION = "revisions";
+/**
+ * The thread hangs off its enquiry, so it cannot outlive the thing it is
+ * about — deleting the enquiry deletes the conversation with it.
+ */
+export const COMMENTS_SUBCOLLECTION = "comments";
 
 /* Files are not Firebase's job. Photographs live on Cloudinary; the folders
    they are filed under are `CLOUDINARY_FOLDERS` in `lib/cloudinary/config.ts`. */

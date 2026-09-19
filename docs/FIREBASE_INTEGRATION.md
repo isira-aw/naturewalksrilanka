@@ -51,7 +51,7 @@ Three services, each with a specific job:
 | Service | What it holds |
 |---|---|
 | **Firestore** | Itineraries, tour enquiries, review invites, reviews, the staff allowlist |
-| **Authentication** | Staff sign-in (Google) and traveller sign-in (email link) |
+| **Authentication** | Staff and traveller sign-in, both Google |
 | **Storage** | Itinerary photographs and review photographs |
 
 ### The one architectural rule
@@ -149,11 +149,15 @@ Troubleshooting.
 2. **Firestore** — create the database in **native mode**. Pick a region close
    to your users and note that *the region cannot be changed later*.
 
-3. **Authentication** — enable **two** providers:
-   - **Google** — staff sign-in to the admin panel.
-   - **Email link (passwordless sign-in)** — traveller sign-in at `/my-trip`.
-     This is a separate provider from "Email/Password"; enable the email-link
-     option specifically.
+3. **Authentication** — enable **one** provider:
+   - **Google** — staff sign-in to the admin panel, *and* traveller sign-in at
+     `/my-trip`. Two populations, one provider; they are told apart by the
+     `admin` custom claim and kept in separate cookies, never by which
+     provider they came through.
+
+   Email link and Email/Password are **not** used. If either is still enabled
+   from an earlier setup, disable it: nothing signs in through them, and an
+   enabled provider is a way into the project that nobody is watching.
 
    Then add every domain the site is served from to
    **Authentication → Settings → Authorised domains**: `localhost`, your
@@ -297,13 +301,20 @@ The wizard's answers are one opaque `payload` map rather than columns,
 deliberately: the wizard changes often, and each change would otherwise mean a
 schema migration over live enquiry data.
 
-**`revisions` subcollection** — the previous version is copied here inside a
-transaction before an amendment lands, because the team may already have quoted
-against it. The email is deliberately **not** updatable by a revision.
+**`comments` subcollection** — the conversation on one enquiry, either side
+appending to it: `id`, `author` (`traveller` | `staff`), `authorEmail`, `body`,
+`createdAt`. Capped at 200. `authorEmail` is stripped before a traveller sees
+the thread, so staff addresses stay internal. Hanging it off the enquiry is
+what makes `deleteRequest`'s `recursiveDelete` take the thread with the trip.
+
+**An enquiry is never edited.** Not by the traveller and not by the panel: it
+is the record a quote is built against. A `revisions` subcollection used to
+version the traveller's contact-detail edits; both it and the edits are gone,
+and what changed afterwards is said on the thread instead.
 
 **The reference is not a credential.** Five characters from a 28-letter
 alphabet, printed on the WhatsApp message and readable over the phone, so
-neighbouring codes are guessable. It says *which* trip; the email-link sign-in
+neighbouring codes are guessable. It says *which* trip; the Google sign-in
 says *who*.
 
 ### `reviewInvites`
@@ -390,19 +401,25 @@ cookie *exists* — which proves nothing. Do not "restore" it.
 > the one genuinely dangerous mistake available in this code. The signed-out
 > test in the checklist exists to catch it.
 
-### Travellers — email link
+### Travellers — Google
 
-`components/my-trip/TravellerAccess.tsx` sends a sign-in link and exchanges it
-at `/api/traveller/session`.
+`components/my-trip/TravellerSignIn.tsx` signs in with a Google pop-up and
+exchanges the ID token at `/api/traveller/session`. The same shape as the
+admin gate, deliberately: one mechanism is a smaller thing to maintain and a
+smaller thing to get wrong.
 
-- Cookie: `nwsl_traveller`, 14 days, `sameSite: "lax"` — **not** strict.
-  Travellers arrive by clicking a link in their email, and a strict cookie
-  would not be sent on that first cross-site navigation: they would land
-  signed out having just signed in.
-- **No custom claim.** Proving you hold an email address must never be a step
-  towards the admin panel.
+- Cookie: `nwsl_traveller`, 14 days, `sameSite: "strict"`. It was `lax` while
+  travellers arrived by clicking a link in their email; nobody arrives that
+  way now, and there is a delete button behind this cookie.
+- **No custom claim, and the claim is a bar.** Proving you hold an email
+  address must never be a step towards the admin panel, so there is nothing to
+  grant here — and `createTravellerSession` refuses outright any token that
+  already carries `admin: true`, keeping the two populations from overlapping.
+- **No allowlist.** Anyone may sign in; signing in only establishes which
+  address somebody holds. Whether that address owns a given trip is decided
+  where the trip is read.
 
-Requires the email-link provider enabled and the domain on the authorised list.
+Requires the Google provider enabled and the domain on the authorised list.
 
 ---
 
@@ -443,11 +460,12 @@ Then verify in production, in this order:
 2. Sign in with Google as a granted staff member
 3. Save an itinerary with a photograph; confirm it loads from Storage
 4. Send a test enquiry; confirm a `tourRequests` document appears
-5. Open `/my-trip/<reference>`, sign in with the emailed link, amend it
+5. Sign in to `/my-trip` with Google as a non-staff account; open a trip,
+   comment on it, and delete one
 6. Send yourself a review invite, submit a review with photographs, approve it
 
-Add the production domain to Firebase's authorised domains, or the emailed
-links will be rejected.
+Add the production domain to Firebase's authorised domains, or the sign-in
+pop-up will be rejected — for staff and travellers alike.
 
 ---
 
@@ -481,10 +499,14 @@ Run through this after connecting, and again after touching auth.
 **Saved trips**
 - [ ] Sending an enquiry writes a `tourRequests` document
 - [ ] WhatsApp still opens even if the write fails
-- [ ] Email-link sign-in reaches `/my-trip/<reference>`
+- [ ] Google sign-in as a non-staff account reaches `/my-trip` and lists
+      every enquiry sent from that address
+- [ ] A staff account is refused at `/my-trip`
 - [ ] A reference belonging to someone else gives the same answer as one that
       does not exist
-- [ ] Amending writes a `revisions` document and preserves the original payload
+- [ ] A comment posted from each side appears on the other, with no staff
+      address in the traveller's copy
+- [ ] Deleting a trip removes its `comments` subcollection too
 
 **Reviews**
 - [ ] Link created from the panel's Review links section
@@ -529,8 +551,10 @@ in native mode.
 or they have not signed out and back in since being granted. The claim only
 reaches a fresh token.
 
-**Emailed sign-in link rejected** — the email-link provider is not enabled
-(separate from Google), or the domain is not on the authorised domains list.
+**Traveller sign-in refused** — a `403` from `/api/traveller/session` means
+the account carries the `admin` claim; staff use the panel, not `/my-trip`.
+A pop-up that fails to open at all usually means the domain is not on the
+authorised domains list.
 
 **Images do not render** — the host is not in `next.config.ts`
 `remotePatterns`. `next/image` refuses silently.
@@ -562,11 +586,11 @@ usage:
 - **Firestore reads** are the number to watch. Itineraries are read on every
   custom-tour page view. The 30-second poll that used to re-download the whole
   archive for every open tab is gone, replaced by a refetch on tab focus.
-- **Writes** are tiny: one per enquiry, one per amendment, one per review.
+- **Writes** are tiny: one per enquiry, one per comment, one per review.
 - **Storage** holds itinerary photographs (a few hundred KB each after the
   phase 6 re-encode) and review photographs (max 4 × 3 MB per review).
-- **Auth** is free at this scale. Note that email-link sign-in sends email
-  through Firebase's own quota.
+- **Auth** is free at this scale, and sends no email at all now that both
+  populations sign in with Google.
 
 Upgrading to Blaze is only needed for outbound networking or higher quotas; set
 a **budget alert** if you do. The one thing that could surprise you is an

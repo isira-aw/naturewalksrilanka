@@ -177,11 +177,6 @@ export function CustomersPanel() {
                       {entry.downloads.length}&times; saved
                     </span>
                   )}
-                  {entry.revision > 0 && (
-                    <span className="font-utility text-[11px] uppercase tracking-wide text-charcoal/40">
-                      rev {entry.revision}
-                    </span>
-                  )}
                   <span
                     className={cn(
                       "rounded-full px-3 py-1 font-utility text-[11px] uppercase tracking-wide",

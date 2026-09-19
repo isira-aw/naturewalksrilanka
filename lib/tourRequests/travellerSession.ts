@@ -5,16 +5,24 @@ import { normaliseEmail } from "./types";
 /**
  * Who is looking at a saved trip.
  *
- * Kept entirely separate from the admin session: a different cookie, no
- * custom claim, and no access to anything but the one enquiry whose email
- * matches. A traveller proving they own an address must never be a step
- * towards the admin panel, and keeping the two cookies distinct means a bug
- * in one cannot be mistaken for authority in the other.
+ * **One way in, and it is the same one the team uses:** the traveller signs
+ * in with their own Google account and the server takes the verified address
+ * off the token. Whatever enquiries were sent from that address are theirs.
  *
- * The reference alone is not enough to see a trip. It is short and readable
- * on purpose — five characters from a 28-letter alphabet — so neighbouring
- * codes are guessable. Access requires a Firebase email-link sign-in as the
- * address on the enquiry.
+ * There used to be three doors here — an emailed link, a password account
+ * with its own registration and reset flow, and a trip unlocked by quoting
+ * its reference and the address on it. Each of them had to be built,
+ * explained on screen, and kept working; each was a way for somebody to be
+ * lost between a form and an inbox; and the three together granted three
+ * different amounts of access to the same page, which was a thing to reason
+ * about every time the page changed. They are gone. Google's sign-in proves
+ * the address at least as well as any of them, and there is nothing to
+ * remember, nothing to email and nothing to reset.
+ *
+ * The session stays entirely separate from the admin one: a different
+ * cookie, no custom claim, and no authority over anything but the enquiries
+ * filed under that address. A traveller proving they own an address must
+ * never be a step towards the panel.
  */
 
 export const TRAVELLER_COOKIE = "nwsl_traveller";
@@ -39,9 +47,10 @@ export async function travellerEmail(cookie: string | undefined): Promise<string
 
   try {
     const decoded = await auth.verifySessionCookie(cookie, true);
-    /* An unverified address proves nothing. Email-link sign-in marks the
-       address verified by construction, so this only excludes accounts that
-       arrived some other way. */
+    /* An unverified address proves nothing, and matching an enquiry is the
+       only thing this session is for. Google marks the address verified by
+       construction, so this excludes only accounts that arrived some other
+       way. */
     if (decoded.email_verified !== true || !decoded.email) return null;
     return normaliseEmail(decoded.email);
   } catch {
@@ -61,7 +70,7 @@ export async function travellerFromCookies(): Promise<string | null> {
 }
 
 /**
- * Exchanges a freshly-completed email-link sign-in for a session cookie.
+ * Exchanges a freshly-completed Google sign-in for a session cookie.
  *
  * Note what is *not* checked here: whether the address has any enquiries.
  * Signing in succeeds for anyone; it only establishes which address they
@@ -87,5 +96,25 @@ export async function createTravellerSession(
     return { cookie, email: normaliseEmail(decoded.email) };
   } catch {
     return null;
+  }
+}
+
+/**
+ * Ends the session everywhere, not just in this browser.
+ *
+ * Clearing the cookie alone would leave a copy taken elsewhere working until
+ * it expired. The admin side has done this since it was written; the
+ * traveller side used only to drop the cookie, which is the weaker half of
+ * signing out and the half that matters least on a shared computer.
+ */
+export async function revokeTravellerSession(request: Request) {
+  const auth = adminAuth();
+  const cookie = cookieValue(request, TRAVELLER_COOKIE);
+  if (!auth || !cookie) return;
+  try {
+    const decoded = await auth.verifySessionCookie(cookie, false);
+    await auth.revokeRefreshTokens(decoded.sub);
+  } catch {
+    /* Already invalid, which is the desired end state anyway. */
   }
 }

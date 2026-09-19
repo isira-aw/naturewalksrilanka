@@ -214,8 +214,9 @@ export function WizardShell({
     /* This wizard only ever starts a new enquiry now. Re-running it to
        replace a sent one is gone: the team may already have quoted against
        what was there, and a quote changing underneath them without a word is
-       worse than a conversation. A traveller corrects their contact details
-       on `/my-trip`, and everything else on WhatsApp. */
+       worse than a conversation. A sent enquiry is read-only wherever it
+       appears; a traveller says what has changed on its thread at
+       `/my-trip`, and everything else on WhatsApp. */
     const saved = loadDraft();
     if (saved && isResumable(saved)) {
       setDraft(saved);
