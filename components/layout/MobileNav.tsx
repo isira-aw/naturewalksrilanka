@@ -7,13 +7,17 @@ import { cn } from "@/lib/utils/cn";
 import type { Navigation } from "@/lib/content/schema";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { NavLinks } from "./NavLinks";
+import { PersonIcon, type HeaderCta } from "./HeaderCta";
 
 export function MobileNav({
   navigation,
+  cta,
   labels,
 }: {
   navigation: Navigation;
-  labels: { menu: string; close: string; primaryCta: string; language: string };
+  /** The same adaptive button the desktop header shows — see `HeaderCta`. */
+  cta: HeaderCta;
+  labels: { menu: string; close: string; language: string };
 }) {
   const [open, setOpen] = useState(false);
 
@@ -72,13 +76,14 @@ export function MobileNav({
             </div>
 
             <Link
-              href={navigation.primaryCta.href}
+              href={cta.href}
               onClick={() => setOpen(false)}
               className={cn(
-                "mt-8 inline-flex min-h-14 items-center justify-center rounded-full bg-forest px-6 py-4 text-center font-medium text-warm-white"
+                "mt-8 inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-forest px-6 py-4 text-center font-medium text-warm-white"
               )}
             >
-              {labels.primaryCta}
+              {cta.isTour && <PersonIcon className="h-5 w-5" />}
+              {cta.label}
             </Link>
           </div>,
           document.body

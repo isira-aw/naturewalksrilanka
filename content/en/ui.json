@@ -339,7 +339,8 @@
     "deleting": "Deleting…",
     "deleteFailed": "Could not delete that. Try again shortly.",
     "loadFailed": "We could not load your trips just now. This is our end, not yours — please try again shortly.",
-    "navLabel": "My tour"
+    "navLabel": "My tour",
+    "planOne": "Plan a tour"
   },
   "review": {
     "title": "How was your trip?",

@@ -340,7 +340,8 @@
     "deleting": "Sletter…",
     "deleteFailed": "Vi kunne ikke slette den. Prøv igen om lidt.",
     "loadFailed": "Vi kunne ikke indlæse dine rejser lige nu. Det er vores skyld, ikke din — prøv igen om lidt.",
-    "navLabel": "Min rejse"
+    "navLabel": "Min rejse",
+    "planOne": "Planlæg en rejse"
   },
   "review": {
     "title": "Hvordan var din rejse?",

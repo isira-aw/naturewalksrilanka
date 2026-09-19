@@ -340,7 +340,8 @@
     "deleting": "Bezig met verwijderen…",
     "deleteFailed": "Verwijderen is niet gelukt. Probeer het zo meteen opnieuw.",
     "loadFailed": "We konden uw reizen nu niet laden. Dit ligt aan ons, niet aan u — probeer het zo meteen opnieuw.",
-    "navLabel": "Mijn reis"
+    "navLabel": "Mijn reis",
+    "planOne": "Een reis plannen"
   },
   "review": {
     "title": "Hoe was je reis?",
