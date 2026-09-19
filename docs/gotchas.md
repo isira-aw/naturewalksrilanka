@@ -1,6 +1,6 @@
 # Things that have already gone wrong here
 
-Twelve of them, each one paid for once. They are collected here rather than in a
+Fourteen of them, each one paid for once. They are collected here rather than in a
 handoff file because §10 is what happens when a rule lives somewhere nobody
 re-reads: it is §6 happening a second time, to somebody who had already
 written §6 down.
@@ -174,3 +174,50 @@ stale comment: it is a published claim about what is done with people's data.
 **Rule:** a feature is not deleted until you have grepped `content/`, the
 privacy page, `.env.example` and `docs/` for it. Compile-green says nothing
 about prose — and the prose is the part a visitor and a regulator read.
+
+## 13. One page working proves nothing about the query the other page runs
+
+Travellers signing in to `/my-trip` got a blank server error while staff
+signed in to the admin panel without trouble. That asymmetry looked like a
+fault in the new traveller code and was nothing of the kind: it was the
+`email` + `createdAt` composite index, declared in `firestore.indexes.json`
+but never deployed.
+
+The two pages run different queries, and only one of them needs a composite:
+
+| | Query | Composite |
+|---|---|---|
+| Admin list, default "All statuses" | `orderBy(createdAt)` | none — Firestore indexes single fields itself |
+| Traveller's own list | `where(email ==) .orderBy(createdAt)` | **required** |
+
+So the panel kept working and masked the missing index completely. Worse,
+the traveller query runs even for an address with no enquiries, so it failed
+on the simplest possible case — a brand-new sign-in — which reads exactly
+like "creating an account is broken".
+
+`firebase deploy --only firestore:indexes` returns as soon as the
+definitions are *accepted*; the query keeps failing until the index has
+finished **building**, which the console's Indexes tab reports separately.
+
+**Rule:** an equality filter plus an `orderBy` on a different field needs a
+composite index. When one page works and another does not, compare the
+queries before suspecting the code, and remember that "deployed" and "built"
+are two different states.
+
+## 14. A content field that nothing renders makes editing content a no-op
+
+`footerLinks` was declared in `lib/content/schema.ts`, authored in all five
+`navigation.json` files, and rendered **nowhere** — the footer bar
+hard-coded its own single privacy link instead. So Contact had been
+unreachable from the footer for as long as that bar existed, and adding
+`/my-trip` to the content file did exactly nothing.
+
+Nothing catches this. The schema validates, the files parse, `tsc` is happy
+because the field genuinely exists, and the site builds. The only symptom is
+that editing content does not change the page — which reads as a caching
+problem, not a missing `.map`.
+
+**Rule:** when a content change does not show up, check that something
+actually renders the field before debugging anything else. Adding a field to
+the schema is not the same as wiring it up, and a hard-coded copy of what a
+content file already describes is the thing to delete.

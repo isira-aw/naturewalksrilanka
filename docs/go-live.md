@@ -14,14 +14,16 @@ Firebase-backed features report themselves unavailable rather than failing.
 
 ## 1. Before the first deploy
 
-- [ ] **`firebase deploy --only firestore:indexes`.** Three composites matter:
+- [x] **`firebase deploy --only firestore:indexes`** — **done**, all three
+      deployed and built. Three composites matter:
       `tourRequests` on `status` + `createdAt`, `tourRequests` on `email` +
       `createdAt`, and the reviews one. Without them the Customers status
       filter and the traveller's own trip list **fail outright** — not
       degrade, fail.
 
-      **This is the first thing to suspect when a signed-in traveller sees
-      "we could not load your trips".** The `email` + `createdAt` composite
+      Kept here because it is the first thing to suspect if it ever recurs —
+      on a new Firebase project, say. **When a signed-in traveller sees "we
+      could not load your trips", look here first.** The `email` + `createdAt` composite
       is what `listRequestsForEmail` needs, and a brand-new account with no
       enquiries still runs that query — so the failure looks like "signing
       up is broken" when it is the index. Firestore's own error names the
@@ -65,8 +67,9 @@ built it had no credentials. In priority order:
       ever run against a stub. Eight per hour is far above anything a person
       does, so a real traveller should never meet it — but nobody has watched
       it work.
-- [ ] **Sign in to `/my-trip` with Google**, as a traveller, from an account
-      that is *not* on the staff list. Confirm every enquiry sent from that
+- [x] **Sign in to `/my-trip` with Google**, as a traveller, from an account
+      that is *not* on the staff list. **Done** — this works against the real
+      project. The rest of this item is still worth a pass: Confirm every enquiry sent from that
       address is listed — send a second one first, so the list is proving it
       handles more than one — and that opening a reference belonging to some
       other address gives the same answer as a reference that does not exist.
