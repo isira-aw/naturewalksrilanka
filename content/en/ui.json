@@ -194,7 +194,7 @@
       "notice": "This document was generated automatically from the itineraries you told us you were interested in. It is a starting point, not a fixed booking. If anything needs changing — the order of the stops, how long you stay, or the itineraries themselves — talk to our team on WhatsApp. Don't worry: they are always happy to help.",
       "whatsappLabel": "WhatsApp"
     },
-    "savedHint": "We keep a copy under the email address above. Sign in at Your trips, with that address, to read it back and message us about it."
+    "savedHint": "We keep a copy under the email address above. Sign in with that address to read it back, message us about it, or remove it:"
   },
   "nandana": {
     "introEyebrow": "Who is Nandana",
@@ -284,8 +284,8 @@
     "title": "Your trip",
     "referenceLabel": "Reference",
     "unavailable": "Saved trips are not available yet. Your enquiry still reaches us on WhatsApp.",
-    "signInTitle": "Sign in to your trips",
-    "signInBody": "Use the Google account for the email address you sent your enquiry from, and everything filed under it will be here.",
+    "signInTitle": "My tour",
+    "signInBody": "Sent us an enquiry? Sign in with the Google account for the email address you sent it from, and everything filed under it will be here.",
     "signInHint": "Nothing to remember and no password to set. If you enquired from a different address, sign in with that one.",
     "continueWithGoogle": "Continue with Google",
     "signingIn": "Signing in…",
@@ -293,10 +293,10 @@
     "signInFailed": "Could not sign in. Try again shortly.",
     "popupBlocked": "Your browser blocked the sign-in window. Allow pop-ups and try again.",
     "signOut": "Sign out",
-    "tripsTitle": "Your trips",
+    "tripsTitle": "My tour",
     "tripsSignedIn": "Signed in as {email}.",
     "tripsEmpty": "No trips yet for this address. If you enquired from a different one, sign in with that address.",
-    "allTrips": "All your trips",
+    "allTrips": "All my tours",
     "notYours": "We could not find that trip for your email address.",
     "notYoursHint": "You are signed in as {email}. If you enquired from a different address, sign in with that one.",
     "travellers": "Travellers",
@@ -338,7 +338,8 @@
     "deleteCancel": "Keep it",
     "deleting": "Deleting…",
     "deleteFailed": "Could not delete that. Try again shortly.",
-    "loadFailed": "We could not load your trips just now. This is our end, not yours — please try again shortly."
+    "loadFailed": "We could not load your trips just now. This is our end, not yours — please try again shortly.",
+    "navLabel": "My tour"
   },
   "review": {
     "title": "How was your trip?",

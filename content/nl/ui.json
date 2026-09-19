@@ -194,7 +194,7 @@
       "notice": "Dit document is automatisch samengesteld uit de itineraries waarin u aangaf geïnteresseerd te zijn. Het is een startpunt, geen vaste boeking. Moet er iets veranderen — de volgorde van de stops, de duur, of de itineraries zelf — neem dan contact op met ons team via WhatsApp. Geen zorgen: ze helpen u graag.",
       "whatsappLabel": "WhatsApp"
     },
-    "savedHint": "We bewaren een kopie onder het e-mailadres hierboven. Meld u met dat adres aan bij Uw reizen om die terug te lezen en ons erover te berichten."
+    "savedHint": "We bewaren een kopie onder het e-mailadres hierboven. Meld u met dat adres aan om die terug te lezen, ons erover te berichten of die te verwijderen:"
   },
   "nandana": {
     "introEyebrow": "Wie is Nandana",
@@ -285,8 +285,8 @@
     "title": "Uw reis",
     "referenceLabel": "Referentie",
     "unavailable": "Opgeslagen reizen zijn nog niet beschikbaar. Uw aanvraag bereikt ons nog steeds via WhatsApp.",
-    "signInTitle": "Aanmelden bij uw reizen",
-    "signInBody": "Gebruik het Google-account van het e-mailadres waarmee u uw aanvraag hebt verstuurd; alles wat daaronder staat vindt u hier.",
+    "signInTitle": "Mijn reis",
+    "signInBody": "Hebt u ons een aanvraag gestuurd? Meld u aan met het Google-account van het e-mailadres waarmee u die verstuurde; alles wat daaronder staat vindt u hier.",
     "signInHint": "Niets te onthouden en geen wachtwoord in te stellen. Hebt u vanaf een ander adres aangevraagd, meld u dan met dat adres aan.",
     "continueWithGoogle": "Doorgaan met Google",
     "signingIn": "Bezig met aanmelden…",
@@ -294,10 +294,10 @@
     "signInFailed": "Aanmelden is niet gelukt. Probeer het zo meteen opnieuw.",
     "popupBlocked": "Uw browser heeft het aanmeldvenster geblokkeerd. Sta pop-ups toe en probeer het opnieuw.",
     "signOut": "Afmelden",
-    "tripsTitle": "Uw reizen",
+    "tripsTitle": "Mijn reis",
     "tripsSignedIn": "Aangemeld als {email}.",
     "tripsEmpty": "Nog geen reizen voor dit adres. Hebt u vanaf een ander adres aangevraagd, meld u dan met dat adres aan.",
-    "allTrips": "Al uw reizen",
+    "allTrips": "Al mijn reizen",
     "notYours": "We konden die reis niet vinden bij uw e-mailadres.",
     "notYoursHint": "U bent aangemeld als {email}. Hebt u vanaf een ander adres aangevraagd, meld u dan met dat adres aan.",
     "travellers": "Reizigers",
@@ -339,7 +339,8 @@
     "deleteCancel": "Behouden",
     "deleting": "Bezig met verwijderen…",
     "deleteFailed": "Verwijderen is niet gelukt. Probeer het zo meteen opnieuw.",
-    "loadFailed": "We konden uw reizen nu niet laden. Dit ligt aan ons, niet aan u — probeer het zo meteen opnieuw."
+    "loadFailed": "We konden uw reizen nu niet laden. Dit ligt aan ons, niet aan u — probeer het zo meteen opnieuw.",
+    "navLabel": "Mijn reis"
   },
   "review": {
     "title": "Hoe was je reis?",
