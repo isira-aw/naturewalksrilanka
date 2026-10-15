@@ -6,7 +6,7 @@ import { MAX_TRAVELERS, MIN_TRAVELERS } from "../WizardShell";
 import { StepHeading } from "./StepHeading";
 
 /** Most enquiries are one of these; the counter covers everything in between. */
-const QUICK_PICKS = [1, 2, 4, 6];
+const QUICK_PICKS = [1, 2, 4, 6, 12];
 
 export function TravelersStep({
   value,
@@ -48,7 +48,7 @@ export function TravelersStep({
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {QUICK_PICKS.map((count) => (
+          {QUICK_PICKS.filter((count) => count <= max).map((count) => (
             <button
               key={count}
               type="button"
