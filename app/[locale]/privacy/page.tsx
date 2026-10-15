@@ -162,7 +162,7 @@ export default async function PrivacyPage({
               The site is hosted by Vercel, and the database and sign-in are
               Google&rsquo;s Firebase. Both log routine technical information,
               such as page requests, in the ordinary course of running a
-              website. Photographs are served by Cloudinary. The map in the
+              website. Photographs are stored and served by Google&rsquo;s Firebase. The map in the
               journey planner draws its tiles from OpenStreetMap and its
               driving routes from the OSRM routing service, so when you reach
               that step those two services see the request your browser makes

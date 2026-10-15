@@ -2,7 +2,7 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 import { requireFirebase } from "@/lib/firebase/admin";
 import { COLLECTIONS } from "@/lib/firebase/collections";
-import { destroyImage, uploadReviewPhoto } from "@/lib/cloudinary/media";
+import { destroyImage, uploadReviewPhoto } from "@/lib/firebase/storage";
 import {
   ACCEPTED_PHOTO_TYPES,
   MAX_PHOTO_BYTES,
@@ -125,9 +125,8 @@ async function storePhoto(dataUrl: string, reviewId: string, index: number): Pro
   if (buffer.byteLength > MAX_PHOTO_BYTES) throw new Error("photo_too_large");
   if (buffer.byteLength === 0) throw new Error("photo_empty");
 
-  /* The validated data URL is handed on as-is. Cloudinary accepts one
-     directly, so the bytes are not decoded and re-encoded a second time
-     purely to forward them. */
+  /* The validated data URL is handed on; the storage helper decodes it once
+     more to write the object. */
   const { url, publicId } = await uploadReviewPhoto(dataUrl, reviewId, index);
   return { url, publicId };
 }
@@ -339,10 +338,10 @@ export async function deleteReview(id: string): Promise<boolean> {
 /**
  * Removes the files behind a rejected review.
  *
- * A photo saved before images moved to Cloudinary carries no `publicId`, and
- * this cannot reach into the old bucket to delete it — that code is gone. It
- * says so rather than reporting a deletion that did not happen; the file has
- * to be removed by hand. Moderation itself never fails over tidying up.
+ * A photo without a `publicId` (saved by an earlier storage layer) cannot be
+ * deleted from here. It says so rather than reporting a deletion that did not
+ * happen; the file has to be removed by hand. Moderation itself never fails
+ * over tidying up.
  */
 async function deletePhotos(photos: ReviewPhoto[]) {
   if (photos.length === 0) return;
@@ -351,7 +350,7 @@ async function deletePhotos(photos: ReviewPhoto[]) {
     photos.map(async (photo) => {
       if (!photo.publicId) {
         console.error(
-          `Review photo ${photo.url} predates Cloudinary and was not deleted; remove it by hand.`,
+          `Review photo ${photo.url} has no storage path and was not deleted; remove it by hand.`,
         );
         return;
       }

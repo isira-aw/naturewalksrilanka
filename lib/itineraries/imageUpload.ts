@@ -3,10 +3,10 @@
 import { dataUrlToBlur, fileToDataUrl } from "./imageFile";
 
 /**
- * Takes a chosen photograph, uploads it to Cloudinary, and returns what
+ * Takes a chosen photograph, uploads it to Firebase Storage, and returns what
  * should be stored on the record: the delivery URL and a blur placeholder.
  *
- * Cloudinary is the only destination. There used to be a fallback that kept
+ * The bucket is the only destination. There used to be a fallback that kept
  * the image inline as a base64 data URL whenever the upload could not
  * happen — which meant a misconfigured deployment silently went on working
  * while quietly reinflating the itinerary JSON that every custom-tour
@@ -14,10 +14,10 @@ import { dataUrlToBlur, fileToDataUrl } from "./imageFile";
  * optimised, and impossible to cache separately from the data. Failing
  * visibly is better. The form catches what this throws and shows it.
  *
- * The file goes from this browser straight to Cloudinary. It never passes
- * through a route handler — only the signature does, from
- * `/api/admin/cloudinary-signature`, which is admin-only and decides the
- * folder and `public_id` itself. So the credential stays on the server and a
+ * The file goes from this browser straight to the bucket. It never passes
+ * through a route handler — only the signed URL does, from
+ * `/api/admin/storage-upload-url`, which is admin-only and decides the
+ * object path itself. So the credential stays on the server and a
  * multi-megabyte upload never has to fit inside a serverless request.
  *
  * Reading an inline image is still supported, because records written before
@@ -26,20 +26,17 @@ import { dataUrlToBlur, fileToDataUrl } from "./imageFile";
 
 /** What the record should store for one chosen photograph. */
 export type PreparedImage = {
-  /** The Cloudinary delivery URL. */
+  /** The Firebase Storage delivery URL. */
   src: string;
   /** A blur placeholder for `src`, held while the photograph loads. */
   blur?: string;
 };
 
-type SignatureResponse = {
-  cloudName: string;
-  folder: string;
-  publicId: string;
-  api_key: string;
-  signature: string;
-  timestamp: string;
-  public_id: string;
+type SignedUploadResponse = {
+  /** A short-lived URL to `PUT` the JPEG to. */
+  uploadUrl: string;
+  /** The public delivery URL the record should store. */
+  url: string;
 };
 
 export async function prepareItineraryImage(
@@ -48,9 +45,9 @@ export async function prepareItineraryImage(
   name: string,
 ): Promise<PreparedImage> {
   /* Ask first, upload second: if the session has lapsed or the deployment
-     has no Cloudinary configuration, that should be one clear sentence
+     has no Storage bucket configured, that should be one clear sentence
      before the browser spends anything sending the file. */
-  const signatureResponse = await fetch("/api/admin/cloudinary-signature", {
+  const signatureResponse = await fetch("/api/admin/storage-upload-url", {
     method: "POST",
     credentials: "same-origin",
     headers: { "Content-Type": "application/json" },
@@ -63,13 +60,13 @@ export async function prepareItineraryImage(
     }
     if (signatureResponse.status === 503) {
       throw new Error(
-        "Photograph uploads are unavailable: this deployment has no Cloudinary configuration.",
+        "Photograph uploads are unavailable: this deployment has no Firebase Storage bucket configured.",
       );
     }
     throw new Error("That photograph could not be uploaded. Try again shortly.");
   }
 
-  const signed = (await signatureResponse.json()) as SignatureResponse;
+  const signed = (await signatureResponse.json()) as SignedUploadResponse;
 
   /* `fileToDataUrl` resizes and re-encodes to JPEG in the browser, so a
      camera original is not what gets uploaded. */
@@ -77,30 +74,16 @@ export async function prepareItineraryImage(
 
   let src: string;
   try {
-    const form = new FormData();
-    form.append("file", dataUrl);
-    form.append("api_key", signed.api_key);
-    form.append("timestamp", signed.timestamp);
-    form.append("signature", signed.signature);
-    /* These two must be exactly what the server signed, or Cloudinary
-       rejects the request. They are echoed back rather than rebuilt here so
-       there is one place they can disagree, instead of two. */
-    form.append("folder", signed.folder);
-    form.append("public_id", signed.public_id);
-
-    const upload = await fetch(
-      `https://api.cloudinary.com/v1_1/${signed.cloudName}/image/upload`,
-      { method: "POST", body: form },
-    );
-
-    const result = (await upload.json().catch(() => ({}))) as {
-      secure_url?: string;
-      error?: { message?: string };
-    };
-    if (!upload.ok || !result.secure_url) {
-      throw new Error(result.error?.message ?? `HTTP ${upload.status}`);
-    }
-    src = result.secure_url;
+    /* The signature binds the object path and `image/jpeg`, so the type
+       header must be exactly that or the bucket rejects the request. */
+    const blob = await (await fetch(dataUrl)).blob();
+    const upload = await fetch(signed.uploadUrl, {
+      method: "PUT",
+      headers: { "Content-Type": "image/jpeg" },
+      body: blob,
+    });
+    if (!upload.ok) throw new Error(`HTTP ${upload.status}`);
+    src = signed.url;
   } catch (cause) {
     throw new Error(
       `That photograph could not be uploaded: ${
@@ -109,8 +92,8 @@ export async function prepareItineraryImage(
     );
   }
 
-  /* Outside the upload's try on purpose: by this point the photograph is on
-     Cloudinary, and no failure while making a decoration may throw that URL
+  /* Outside the upload's try on purpose: by this point the photograph is in
+     the bucket, and no failure while making a decoration may throw that URL
      away. The blur is taken from the same re-encoded copy that was uploaded,
      so the placeholder matches the photograph. */
   let blur: string | undefined;

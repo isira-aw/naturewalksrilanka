@@ -11,7 +11,7 @@ import { getAuth, type Auth } from "firebase/auth";
  * route handler using the Admin SDK (see `lib/firebase/admin.ts`), and
  * `firestore.rules` denies client access, so a `getFirestore` call from here
  * would simply be refused. It never uploads either: photographs go to
- * Cloudinary, signed by `app/api/admin/cloudinary-signature`.
+ * the bucket, under a signed URL from `app/api/admin/storage-upload-url`.
  *
  * The values below are public by design. A Firebase web API key identifies
  * the project; it is not a secret, and security comes from Auth plus the

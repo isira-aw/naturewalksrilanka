@@ -18,7 +18,7 @@ is merged to `main`; nothing is outstanding on the branch.
 Take a finished UI to a launchable production site:
 
 1. **One architecture** — Next.js → Firebase (Auth, Firestore) → Vercel, with
-   Cloudinary for photographs. One authentication method per population, one
+   Storage for photographs. One authentication method per population, one
    database, one file store. No offline, mock or password fallbacks.
 2. **No dead weight** — one README plus `docs/`, no unused dependencies, no
    duplicated logic. *(Met: the repository is now exactly that.)*
@@ -41,7 +41,7 @@ Take a finished UI to a launchable production site:
 | Traveller auth | **One way in** — Google sign-in, the same door the team uses. A traveller sees every enquiry under their address, read-only, with a comment thread and a delete button |
 | Reaching `/my-trip` | Four ways: the header button, the footer link, the line in the traveller's own WhatsApp message, and the review step. The header button shows **My Tour** to everyone *except* a visitor signed in with no enquiries, who gets the wizard instead |
 | Data | Firestore only. No export or import; backups are Firestore's own |
-| Files | Cloudinary only |
+| Files | Firebase Storage only |
 | Security headers | HSTS, `Referrer-Policy`, `nosniff` enforcing. **CSP is report-only** and promoting it is a real task — `docs/security-headers.md` |
 | Privacy page | Accurate about what the code stores. Four business questions still open on the page itself |
 

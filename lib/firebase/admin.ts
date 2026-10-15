@@ -2,6 +2,7 @@ import "server-only";
 import { cert, getApp, getApps, initializeApp, type App } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
+import { getStorage } from "firebase-admin/storage";
 
 /**
  * Firebase on the server, via the Admin SDK.
@@ -14,9 +15,8 @@ import { getFirestore } from "firebase-admin/firestore";
  * by design. Authorisation lives in the route handlers instead, where it can
  * be read in one place.
  *
- * Firebase holds no files. Photographs live on Cloudinary — see
- * `lib/cloudinary/` — so there is no Storage accessor here and no bucket to
- * configure.
+ * Photographs live in the Storage bucket named by `FIREBASE_STORAGE_BUCKET`;
+ * see `lib/firebase/storage.ts`.
  *
  * Nothing here throws at import time. The site has to keep building and
  * serving while the migration is only part-done, so an unconfigured
@@ -80,6 +80,24 @@ export function adminAuth() {
 export function adminDb() {
   const instance = app();
   return instance ? getFirestore(instance) : null;
+}
+
+const STORAGE_BUCKET = "FIREBASE_STORAGE_BUCKET";
+
+/** Whether the bucket name is set. Reported separately: the rest of Firebase works without it. */
+export function isStorageConfigured(): boolean {
+  return isFirebaseConfigured() && Boolean(process.env[STORAGE_BUCKET]);
+}
+
+export function missingStorageEnv(): string[] {
+  return [...missingAdminEnv(), STORAGE_BUCKET].filter((name) => !process.env[name]);
+}
+
+/** The photograph bucket, or `null` when Firebase or the bucket name is unset. */
+export function adminBucket() {
+  const instance = app();
+  const name = process.env[STORAGE_BUCKET];
+  return instance && name ? getStorage(instance).bucket(name) : null;
 }
 
 /**

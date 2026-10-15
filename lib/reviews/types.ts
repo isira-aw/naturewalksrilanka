@@ -59,14 +59,12 @@ export type ReviewInvite = z.infer<typeof reviewInviteSchema>;
 export const reviewPhotoSchema = z.object({
   url: z.string().url(),
   /**
-   * Cloudinary's handle for the file, so a rejected review's photos can be
-   * removed.
+   * The object path inside the Storage bucket, so a rejected review's photos
+   * can be removed.
    *
-   * Optional only because a review submitted before photographs moved to
-   * Cloudinary has no such handle — its file lives in the old Storage bucket
-   * and has to be deleted by hand. New photos always carry one. Nothing
-   * reads the old `path` field any more; a record still holding one simply
-   * ignores it.
+   * Optional only because a review saved by an earlier storage layer has no
+   * such handle and its file has to be deleted by hand. New photos always
+   * carry one.
    */
   publicId: z.string().min(1).optional(),
 });
