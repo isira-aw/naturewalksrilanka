@@ -96,6 +96,7 @@ export async function GET() {
       `- Address: ${navigation.contact.address}`,
     ]),
     section("Optional", [
+      `- [Full content](${SITE_URL}/llms-full.txt): every journey day by day, every destination and the answered questions, in one file.`,
       `- [Sitemap](${SITE_URL}/sitemap.xml): every page, in every language.`,
     ]),
   ].join("\n");

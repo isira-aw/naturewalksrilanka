@@ -1,6 +1,6 @@
 [
   {
-    "origin": ["https://YOUR-SITE-DOMAIN", "http://localhost:3000"],
+    "origin": ["https://naturewalksrilanka.com", "http://localhost:3000"],
     "method": ["PUT"],
     "responseHeader": ["Content-Type"],
     "maxAgeSeconds": 3600

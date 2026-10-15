@@ -1,0 +1,102 @@
+# Firebase App Hosting configuration — the one file that says how the site is
+# built and run. Read by App Hosting on every rollout.
+#
+# Before the first rollout, replace every REPLACE_ME below
+# (`grep REPLACE_ME apphosting.yaml` must print nothing) and create the one
+# secret. Step by step in docs/app-hosting.md.
+
+runConfig:
+  cpu: 1
+  # `next/image` re-encodes photographs to AVIF/WebP on demand, which is the
+  # memory-hungry part of this app. 512 MiB runs out on a large hero image.
+  memoryMiB: 1024
+  # 0 scales to nothing when idle, so a first visit after a quiet spell waits
+  # for a cold start. Almost every page is prerendered and cached at the CDN,
+  # which hides most of that. Raise to 1 (a small standing monthly cost) if
+  # Search Console's Core Web Vitals report ever blames server response time.
+  minInstances: 0
+  maxInstances: 4
+  concurrency: 80
+
+env:
+  # --- Site -----------------------------------------------------------------
+  # The one canonical origin. Read at BUILD time (canonical links, hreflang,
+  # sitemap, JSON-LD are all prerendered with it) and at RUNTIME (robots.txt,
+  # llms.txt, and the redirect of the default *.hosted.app and www hosts to it).
+  #
+  # Set to the real domain, which is the final state. For a test rollout BEFORE
+  # the domain has moved, set it to the backend's own https://…hosted.app address
+  # instead — otherwise the redirect sends every test visit to the old site.
+  # docs/app-hosting.md §2.
+  - variable: NEXT_PUBLIC_SITE_URL
+    value: https://naturewalksrilanka.com
+    availability:
+      - BUILD
+      - RUNTIME
+
+  # Search Console / Bing verification. Leave unset when verifying the domain by
+  # DNS TXT record instead (docs/seo.md). Uncomment and fill only for the
+  # HTML-tag method.
+  # - variable: NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+  #   value: REPLACE_ME
+  #   availability: [BUILD, RUNTIME]
+  # - variable: NEXT_PUBLIC_BING_SITE_VERIFICATION
+  #   value: REPLACE_ME
+  #   availability: [BUILD, RUNTIME]
+
+  # --- Firebase (browser) ---------------------------------------------------
+  # Public by design: a web API key identifies the project, it authorises
+  # nothing. Firebase console > Project settings > Your apps > Web app.
+  # NEXT_PUBLIC_ values are inlined into the browser bundle when the site is
+  # built, so they must be available at BUILD — RUNTIME alone is not enough.
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: REPLACE_ME
+    availability:
+      - BUILD
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    # Use the real domain only once the Auth handler is served from it
+    # (docs/app-hosting.md §4). Leave it at <project-id>.firebaseapp.com.
+    value: REPLACE_ME
+    availability:
+      - BUILD
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: REPLACE_ME
+    availability:
+      - BUILD
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: REPLACE_ME
+    availability:
+      - BUILD
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: REPLACE_ME
+    availability:
+      - BUILD
+
+  # --- Firebase (server) ----------------------------------------------------
+  # No service-account key here, on purpose. App Hosting runs as a service
+  # account of this project and the Admin SDK picks its credentials up from the
+  # environment (lib/firebase/admin.ts), so there is no private key to store,
+  # leak or rotate. Only the project and bucket names are needed.
+  - variable: FIREBASE_PROJECT_ID
+    value: REPLACE_ME
+    availability:
+      - RUNTIME
+  - variable: FIREBASE_STORAGE_BUCKET
+    value: REPLACE_ME
+    availability:
+      - RUNTIME
+
+  # Who may change the admin access list (docs/admin-access.md). Comma-separated.
+  - variable: SUPER_ADMIN_EMAIL
+    value: REPLACE_ME
+    availability:
+      - RUNTIME
+
+  # --- Translation (optional) -----------------------------------------------
+  # A real secret, so it lives in Cloud Secret Manager, not in this file:
+  #   firebase apphosting:secrets:set GOOGLE_AI_API_KEY
+  # Delete this entry if the admin translation panel is not wanted.
+  - variable: GOOGLE_AI_API_KEY
+    secret: GOOGLE_AI_API_KEY
+    availability:
+      - RUNTIME

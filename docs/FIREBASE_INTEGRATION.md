@@ -83,7 +83,8 @@ its Firebase variables degrades instead of going down.
 
 ## 2. Environment variables
 
-Names only. Fill the values in `.env` locally and in the Vercel dashboard.
+Names only. Fill the values in `.env` locally and in `apphosting.yaml` for the
+deployed site (secrets go in Cloud Secret Manager — see [`app-hosting.md`](app-hosting.md)).
 `.env.example` is the authoritative list and carries per-variable comments.
 
 ### Admin panel — nothing to set
@@ -98,7 +99,7 @@ and no way in, which is the intended behaviour — there is deliberately no
 weaker path that activates when the strong one is unavailable.
 
 If `ADMIN_EMAIL`, `ADMIN_PASSWORD` or `ADMIN_SESSION_SECRET` are still set in
-Vercel from before, delete them. Nothing reads them, and a live secret nobody
+the hosting environment from before, delete them. Nothing reads them, and a live secret nobody
 uses is a secret nobody rotates.
 
 ### Firebase, server side (Admin SDK) — from the service account key
@@ -136,7 +137,7 @@ authorise anything. Security comes from Auth and the rules files.
 ### The private key is the thing that goes wrong
 
 A PEM block survives an environment variable as **one line with literal `\n`**.
-Vercel and `.env` files disagree about whether the surrounding double quotes
+Hosting dashboards and `.env` files disagree about whether the surrounding double quotes
 are kept, so `lib/firebase/admin.ts` strips them if present and expands `\n`
 back to real newlines. It fails with an opaque error when this is wrong. See
 Troubleshooting.
@@ -161,8 +162,8 @@ Troubleshooting.
    enabled provider is a way into the project that nobody is watching.
 
    Then add every domain the site is served from to
-   **Authentication → Settings → Authorised domains**: `localhost`, your
-   Vercel preview domain, and the production domain. Emailed sign-in links are
+   **Authentication → Settings → Authorised domains**: `localhost`, the
+   backend's `hosted.app` address, and `naturewalksrilanka.com` with its `www.` form. Emailed sign-in links are
    rejected from any domain not on this list.
 
 4. **Service account key** — Project settings → Service accounts → Generate new
@@ -270,7 +271,7 @@ So if Google sign-in cannot work — wrong service-account key, staff entry
 missing, Firebase unreachable — the fix is to repair that, not to reach for
 another door. `/api/admin/firebase-status` (§4) is the first thing to check,
 and it is admin-gated, so a completely broken deployment is diagnosed from the
-Vercel logs: the refusal reason is written there by
+Cloud Run logs (Cloud Logging): the refusal reason is written there by
 `app/api/admin/session/route.ts`.
 
 ---
@@ -433,18 +434,21 @@ environment variable, the one-time Blaze/CORS/rules setup, how the admin form
 gets a signed URL, and why review photos are uploaded by the server while
 itinerary photos are not. Deploy the rules with `firebase deploy --only storage`.
 
-## 9. Vercel
+## 9. Firebase App Hosting
 
-Set **every** variable from section 2 in Project → Settings → Environment
-Variables, for Production (and Preview, if previews should work).
+The site is deployed on App Hosting; [`app-hosting.md`](app-hosting.md) is the
+whole procedure, and [`apphosting.yaml`](../apphosting.yaml) is where the
+variables live. Section 2's variables are set there, not in a dashboard.
 
-`FIREBASE_PRIVATE_KEY` is the one that goes wrong. Paste the PEM as a single
-line with literal `\n` sequences. If you paste a real multi-line block, or if
-the quotes are handled differently than you expect, the app fails with an
-opaque credential error — `lib/firebase/admin.ts` handles both quoted and
-unquoted forms, but not a value whose newlines were lost entirely.
+On App Hosting there is **no service-account key**: `FIREBASE_CLIENT_EMAIL` and
+`FIREBASE_PRIVATE_KEY` are left unset and `lib/firebase/admin.ts` uses the
+platform's own identity, so the project id is the only server credential
+variable needed. The key is still the way to run locally, and is still honoured
+anywhere it is set. If one is, paste the PEM as a single line with literal `\n`
+sequences — the code handles quoted and unquoted forms, but not a value whose
+newlines were lost entirely.
 
-Redeploy after changing variables; they are read at build and boot.
+Variables are read at build and boot; push to roll out a change.
 
 Then verify in production, in this order:
 
@@ -523,7 +527,8 @@ Run through this after connecting, and again after touching auth.
 ## 11. Troubleshooting
 
 **`configured: false`** — the named variables are not set, or the process did
-not reload. Restart `next dev`; redeploy on Vercel.
+not reload. Restart `next dev`; push a new rollout on App Hosting. (On App Hosting only
+`FIREBASE_PROJECT_ID` is required — no key.)
 
 **`reachable: false` with a credential error** — almost always the private key.
 It must be one line with literal `\n`. Check quickly:

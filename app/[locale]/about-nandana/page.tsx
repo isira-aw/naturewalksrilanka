@@ -61,7 +61,7 @@ export default async function AboutNandanaPage({
 
   return (
     <>
-      <JsonLd data={buildPersonJsonLd({ profile, locale: l })} />
+      <JsonLd data={buildPersonJsonLd({ profile, navigation, locale: l })} />
       <JsonLd
         data={buildBreadcrumbJsonLd([
           { name: t("nav.home"), url: `/${l}` },

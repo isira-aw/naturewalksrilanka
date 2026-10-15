@@ -63,7 +63,8 @@ function bucketOf(address: string): string {
 /**
  * The caller's address, as far as it can be known.
  *
- * `x-forwarded-for` is set by Vercel's proxy and is the only source here.
+ * `x-forwarded-for` is set by Google's front end in front of App Hosting and
+ * is the only source here.
  * It is a client-supplied header anywhere else, so this is a speed bump
  * against volume, not an identity check — which is all a spam counter needs
  * to be, and why nothing security-critical is decided from it.

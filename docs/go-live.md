@@ -5,7 +5,8 @@ Everything here needs either credentials, a person, or a business fact — none
 of it can be done from a code session, which is exactly why it is written
 down rather than done.
 
-The architecture itself is settled: Next.js on Vercel, Firestore for data,
+The architecture itself is settled: Next.js on Firebase App Hosting
+(`naturewalksrilanka.com` — see [`app-hosting.md`](app-hosting.md)), Firestore for data,
 Firebase Auth for sign-in, Firebase Storage for every photograph. A deployment with
 no Firebase variables still builds and serves every public page; the
 Firebase-backed features report themselves unavailable rather than failing.
@@ -33,14 +34,17 @@ Firebase-backed features report themselves unavailable rather than failing.
 - [ ] **Set `SUPER_ADMIN_EMAIL`**, comma-separated, more than one address.
       Until it is set nobody can edit the access list. The panel says so
       rather than failing silently, but it is still a lockout.
-- [ ] **Set the Vercel project's Node version to 22.** The `engines` field
-      does not rebuild a deployment that is already out there, and Node 20
-      returns 500 on *every* page — see `FIREBASE_INTEGRATION.md` §0.
-- [ ] **Delete `ADMIN_EMAIL`, `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET`
-      from Vercel.** The shared-password login they belonged to is gone and
-      nothing reads them. A live secret nobody uses is a secret nobody
-      rotates.
-- [ ] **Delete `TRAVELLER_LINK_SECRET` from Vercel** if it is set. It signed
+- [ ] **Do [`app-hosting.md`](app-hosting.md) end to end** — backend, secret,
+      service-account roles, the test rollout, then the domain cutover. Node 22
+      comes from `engines` in `package.json`; there is no separate project
+      setting to match, but Node 20 returns 500 on *every* page, so check the
+      build log says 22 — see `FIREBASE_INTEGRATION.md` §0.
+- [ ] **Make sure `ADMIN_EMAIL`, `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET`
+      are not set anywhere** — they are not in `apphosting.yaml`, and the old
+      Vercel project goes in `app-hosting.md` §5. The shared-password login
+      they belonged to is gone and nothing reads them. A live secret nobody
+      uses is a secret nobody rotates.
+- [ ] **`TRAVELLER_LINK_SECRET` likewise** if it was ever set. It signed
       the cookie for opening one trip by reference; that door is gone and
       nothing reads it. Same reasoning as the three admin secrets above.
 - [ ] Optionally set `GOOGLE_AI_MODEL`. The default is `gemini-3.6-flash`.
@@ -138,7 +142,7 @@ Recorded so they are not re-proposed as if they were oversights.
 
 | | |
 |---|---|
-| **Analytics** | None, deliberately. Search Console gives search traffic; on-site behaviour is what is given up. The site therefore sets **no cookie at all** until somebody signs in, so there is no consent banner to build. A cookieless provider later (Plausible, Vercel Analytics) keeps it that way; GA4 would bring a banner, pre-consent suppression and a cookie section with it. |
+| **Analytics** | None, deliberately. Search Console gives search traffic; on-site behaviour is what is given up. The site therefore sets **no cookie at all** until somebody signs in, so there is no consent banner to build. A cookieless provider later (Plausible, Fathom) keeps it that way; GA4 would bring a banner, pre-consent suppression and a cookie section with it. |
 | **The remaining `npm audit` findings** | Leave them. 1 high (`js-yaml`, build-time only) and 6 moderate, all transitive through `firebase-admin`'s storage chain. `firebase-admin` is what pins Node 22 and the `jose` override, and both have taken the site down before: the fix currently carries more risk than the bugs. |
 | **Data export/import** | There is none, on purpose. Backups are Firestore's own. |
 | **Dark mode** | Declined. |

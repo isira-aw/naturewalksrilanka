@@ -17,8 +17,8 @@ is merged to `main`; nothing is outstanding on the branch.
 
 Take a finished UI to a launchable production site:
 
-1. **One architecture** — Next.js → Firebase (Auth, Firestore) → Vercel, with
-   Storage for photographs. One authentication method per population, one
+1. **One architecture** — Next.js → Firebase (Auth, Firestore) → Firebase App Hosting
+   at naturewalksrilanka.com (`docs/app-hosting.md`), with Storage for photographs. One authentication method per population, one
    database, one file store. No offline, mock or password fallbacks.
 2. **No dead weight** — one README plus `docs/`, no unused dependencies, no
    duplicated logic. *(Met: the repository is now exactly that.)*
@@ -137,8 +137,10 @@ indexes are deployed, and the site is serving with admin and traveller
 sign-in both working against the real project.
 
 Not known either way from here, so check before assuming: whether
-`SUPER_ADMIN_EMAIL` is set, whether Node is pinned to 22 on Vercel, and
-whether the dead secrets have been deleted from it. `docs/go-live.md` §1
-still lists them.
+`SUPER_ADMIN_EMAIL` is set, whether the App Hosting build log says Node 22, and
+whether the old Vercel project (and the dead secrets in it) has been deleted.
+`docs/app-hosting.md` §5 and `docs/go-live.md` §1 list them. The App Hosting
+backend itself has not been created yet, and `apphosting.yaml` still carries
+`REPLACE_ME` placeholders.
 
 Nothing is waiting on code.

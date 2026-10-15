@@ -11,6 +11,8 @@ import { ArrowLink, Kicker, Rise } from "@/components/ui/motion";
 import { WhatsAppCTA } from "@/components/whatsapp/WhatsAppCTA";
 import { buildGeneralMessage } from "@/lib/whatsapp/buildMessage";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildBreadcrumbJsonLd, buildFaqJsonLd } from "@/lib/seo/jsonld";
 
 export async function generateMetadata({
   params,
@@ -48,9 +50,18 @@ export default async function ContactPage({
   ]);
 
   const page = seo.pages.contact;
+  const faqJsonLd = buildFaqJsonLd({ faq });
 
   return (
     <>
+      {faqJsonLd && <JsonLd data={faqJsonLd} />}
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: t("nav.home"), url: `/${l}` },
+          { name: page.title, url: `/${l}/contact` },
+        ])}
+      />
+
       <PageHero
         eyebrow={t("finalCta.eyebrow")}
         title={page.title}

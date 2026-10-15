@@ -23,7 +23,7 @@ is steps 2, 3 and 6 below. **Do them in order — you cannot sign in before
 step 6.**
 
 - [ ] Delete `ADMIN_EMAIL`, `ADMIN_PASSWORD` and `ADMIN_SESSION_SECRET` from
-      Vercel and from any local `.env` if they are still set. Nothing reads
+      the hosting environment and from any local `.env` if they are still set. Nothing reads
       them.
 
 ## 2. Create the Firebase project
@@ -36,9 +36,9 @@ step 6.**
       disable them if an earlier setup enabled them. Nothing signs in through
       them now
 - [ ] **Authentication → Settings → Authorised domains** — add `localhost`, the
-      Vercel preview domain and the production domain
+      backend's `hosted.app` address and `naturewalksrilanka.com` (and `www.`)
 - [ ] **Storage** — create the default bucket, note its name
-- [ ] **Service account key** — Project settings → Service accounts → Generate
+- [ ] **Service account key** (for running locally — App Hosting needs none) — Project settings → Service accounts → Generate
       new private key. Do not commit the JSON
 
 ## 3. Environment variables
@@ -119,11 +119,14 @@ There is nothing to migrate from.
 - [ ] **Rules** — a browser Firestore read is denied; a browser write to
       `reviews/` in Storage is denied
 
-## 9. Vercel
+## 9. Firebase App Hosting
 
-- [ ] Every variable from step 3 set for Production (and Preview if wanted)
+Follow [`app-hosting.md`](app-hosting.md); in short:
+
+- [ ] Every `REPLACE_ME` in `apphosting.yaml` filled in
+- [ ] The runtime service account holds the four roles listed there
 - [ ] Production domain added to Firebase authorised domains
-- [ ] Redeploy
+- [ ] New rollout
 - [ ] `/api/admin/firebase-status` green **in production**
 - [ ] Repeat step 8 against production
 
@@ -132,8 +135,8 @@ There is nothing to migrate from.
 The shared-password path has been removed from the code. Check nothing is left
 behind it:
 
-- [ ] `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET` deleted from
-      Vercel
+- [ ] `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET` absent from
+      the deployed environment
 - [ ] Signing out and reloading `/en/admin` offers **only** "Continue with
       Google"
 - [ ] An account that is not on the staff list is refused

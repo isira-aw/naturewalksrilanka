@@ -1,6 +1,6 @@
 # Nature Walks Sri Lanka
 
-Next.js (App Router, TypeScript) rebuild of naturewalksrilanka.com — the private nature and wildlife tour company founded by Nandana Hewagamage, which supplies its own Sri Lanka Tourism Board certified guides and arranges accommodation and transport for every journey. English / Dutch / Spanish / Danish / Finnish, deployed to Vercel.
+Next.js (App Router, TypeScript) rebuild of naturewalksrilanka.com — the private nature and wildlife tour company founded by Nandana Hewagamage, which supplies its own Sri Lanka Tourism Board certified guides and arranges accommodation and transport for every journey. English / Dutch / Spanish / Danish / Finnish, deployed on Firebase App Hosting at https://naturewalksrilanka.com.
 
 ## Architecture
 
@@ -8,7 +8,7 @@ Next.js (App Router, TypeScript) rebuild of naturewalksrilanka.com — the priva
 Next.js (this repo)
   └── Firebase          Authentication · Firestore
   └── Storage           every photograph
-        └── deployed on Vercel
+        └── deployed on Firebase App Hosting
 ```
 
 One authentication method, one database, one file store, one deployment target. There are no offline, mock or password fallbacks anywhere in the application: if Firebase is unavailable, the feature that needs it says so.
@@ -17,7 +17,7 @@ All the public content is file-based — per-locale JSON in `content/`, versione
 
 ## Getting started
 
-**Node 22 is required**, not merely recommended — `firebase-admin@14` asks for it, and running below it returns 500 on every page of a deployment. `package.json` declares `engines: { "node": "22.x" }`, and the hosting project's own Node setting has to match.
+**Node 22 is required**, not merely recommended — `firebase-admin@14` asks for it, and running below it returns 500 on every page of a deployment. `package.json` declares `engines: { "node": "22.x" }`, and App Hosting reads the same `engines` field, so there is no second setting to keep in step.
 
 ```bash
 npm install
@@ -164,9 +164,10 @@ Built in and generated from the content files, so a tour or destination added to
 |---|---|
 | Sitemap, all five locales, with hreflang alternates | `/sitemap.xml` |
 | robots.txt, pointing at the sitemap | `/robots.txt` |
-| llms.txt, so AI crawlers can summarise the site | `/llms.txt` |
+| llms.txt (index) and llms-full.txt (every itinerary and destination in full), for AI engines | `/llms.txt`, `/llms-full.txt` |
 | Per-page canonical, hreflang, Open Graph and Twitter card | every page |
-| JSON-LD (`TravelAgency`, `TouristTrip`, `TouristAttraction`, `Person`, breadcrumbs) | home, tours, destinations, about |
+| Linked JSON-LD graph (`TravelAgency` ↔ founder `Person` ↔ `WebSite` ↔ `TouristTrip` / `TouristAttraction`, `FAQPage`, breadcrumbs) | home, tours, destinations, about, contact |
+| `www.` and the default `*.hosted.app` address 301 to the one canonical domain | `proxy.ts` |
 
 The origin they all use is `SITE_URL` in `lib/seo/site.ts` — one constant, read from `NEXT_PUBLIC_SITE_URL`. Set that per environment (including previews, to the preview's own origin) and everything follows.
 
@@ -187,9 +188,11 @@ steps to turn it on.
 
 ## Deployment
 
-Deploy to Vercel as a standard Next.js app. Redirects from the old static site's URLs (`/single18.html` etc.) to the new locale-prefixed routes are configured in `next.config.ts` via `lib/seo/redirects.ts`.
+Deployed on **Firebase App Hosting**, built from `main` on every push and served at `https://naturewalksrilanka.com`. [`apphosting.yaml`](apphosting.yaml) holds the instance size and every environment variable; [`docs/app-hosting.md`](docs/app-hosting.md) is the whole procedure — creating the backend, the service-account roles, a test rollout, the DNS cutover, and retiring Vercel.
 
-**Set the project's Node version to 22.** The `engines` field does not rebuild a deployment that is already out there, and Node 20 returns 500 on every page — see [`docs/FIREBASE_INTEGRATION.md`](docs/FIREBASE_INTEGRATION.md) §0.
+Redirects from the old static site's URLs (`/single18.html` etc.) to the new locale-prefixed routes are configured in `next.config.ts` via `lib/seo/redirects.ts`.
+
+Node 22 comes from `engines` in `package.json`, and Node 20 returns 500 on every page — see [`docs/FIREBASE_INTEGRATION.md`](docs/FIREBASE_INTEGRATION.md) §0.
 
 ## What's out of scope for this build
 
