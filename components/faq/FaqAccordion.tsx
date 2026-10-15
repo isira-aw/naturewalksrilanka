@@ -12,9 +12,13 @@ import type { Faq } from "@/lib/content/schema";
  * closes the rest. Browsers without that attribute simply allow several open
  * at once, which is a perfectly good fallback rather than a broken one.
  *
- * No `FAQPage` JSON-LD. Google restricted that rich result to authoritative
- * government and health sites, so emitting it from a tour operator gains
- * nothing and is the kind of thing that attracts a manual review.
+ * The page that renders this also emits `FAQPage` JSON-LD (see
+ * `buildFaqJsonLd`). Google restricted the *rich result* to authoritative
+ * government and health sites, so it will not show an expandable snippet for
+ * this site and simply ignores the markup — it is not penalised, provided the
+ * markup matches what is visible. It is emitted anyway because Bing, voice
+ * assistants and language models do read it, and a question with its answer is
+ * exactly the unit they quote.
  *
  * An item still marked `contentRequired` is not rendered. A question with
  * "CONTENT_REQUIRED" where the answer should be would be worse than no

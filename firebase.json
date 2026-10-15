@@ -5,5 +5,18 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "apphosting": {
+    "backendId": "naturewalksrilanka",
+    "rootDir": "/",
+    "ignore": [
+      "node_modules",
+      ".git",
+      ".next",
+      "firebase-debug.*.log",
+      "functions",
+      ".env*",
+      "graphify-out"
+    ]
   }
 }

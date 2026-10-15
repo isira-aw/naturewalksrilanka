@@ -159,8 +159,8 @@ export default async function PrivacyPage({
               Who else is involved
             </h2>
             <p className="mt-3 leading-relaxed">
-              The site is hosted by Vercel, and the database and sign-in are
-              Google&rsquo;s Firebase. Both log routine technical information,
+              The site is hosted on Google&rsquo;s Firebase App Hosting, and the
+              database and sign-in are Google&rsquo;s Firebase too. They log routine technical information,
               such as page requests, in the ordinary course of running a
               website. Photographs are stored and served by Google&rsquo;s Firebase. The map in the
               journey planner draws its tiles from OpenStreetMap and its

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { getContent } from "@/lib/content/loader";
-import { SITE_URL } from "@/lib/seo/site";
+import { SITE_URL, absoluteUrl } from "@/lib/seo/site";
 
 const staticPaths = [
   "",
@@ -13,9 +13,13 @@ const staticPaths = [
   "/privacy",
 ];
 
-function withAlternates(path: string) {
+function withAlternates(path: string, image?: string) {
   return {
     url: `${SITE_URL}/${routing.defaultLocale}${path}`,
+    /* The page's own photograph, so it can be found in image search. For a
+       wildlife and landscape business that is a real source of visitors, and
+       it costs one line per page. */
+    ...(image ? { images: [absoluteUrl(image)] } : {}),
     alternates: {
       languages: {
         ...Object.fromEntries(
@@ -37,8 +41,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
 
   const dynamicPaths = [
-    ...tours.map((t) => `/tours/${t.slug}`),
-    ...destinations.map((d) => `/destinations/${d.slug}`),
+    ...tours.map((t) => ({ path: `/tours/${t.slug}`, image: t.heroImage })),
+    ...destinations.map((d) => ({
+      path: `/destinations/${d.slug}`,
+      image: d.heroImage ?? d.image,
+    })),
   ];
 
   /* No `lastModified`. It used to be `new Date()`, which told every crawler
@@ -49,9 +56,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
      with extra steps. An omitted field is honest and is treated as "unknown",
      which is what it is. Give it a real date only when the content it
      describes starts carrying one. */
-  return [...staticPaths, ...dynamicPaths].map((path) => ({
-    ...withAlternates(path),
-    changeFrequency: path === "" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : 0.7,
-  }));
+  return [...staticPaths.map((path) => ({ path, image: undefined })), ...dynamicPaths].map(
+    ({ path, image }) => ({
+      ...withAlternates(path, image),
+      changeFrequency: path === "" ? ("weekly" as const) : ("monthly" as const),
+      priority: path === "" ? 1 : 0.7,
+    }),
+  );
 }

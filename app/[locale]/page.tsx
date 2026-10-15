@@ -68,7 +68,7 @@ export default async function HomePage({
 
   return (
     <>
-      <JsonLd data={buildOrganizationJsonLd({ navigation, seo, locale: l, rating })} />
+      <JsonLd data={buildOrganizationJsonLd({ navigation, seo, profile, locale: l, rating })} />
       <JsonLd data={buildWebsiteJsonLd({ seo, locale: l })} />
 
       <HeroShowcase

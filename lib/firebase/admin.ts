@@ -1,5 +1,12 @@
 import "server-only";
-import { cert, getApp, getApps, initializeApp, type App } from "firebase-admin/app";
+import {
+  applicationDefault,
+  cert,
+  getApp,
+  getApps,
+  initializeApp,
+  type App,
+} from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
@@ -27,9 +34,33 @@ const PROJECT_ID = "FIREBASE_PROJECT_ID";
 const CLIENT_EMAIL = "FIREBASE_CLIENT_EMAIL";
 const PRIVATE_KEY = "FIREBASE_PRIVATE_KEY";
 
-/** Which of the required variables are missing, if any. */
+/**
+ * Whether the code is running on Cloud Run, which is what Firebase App Hosting
+ * deploys to (`K_SERVICE` is set by the platform, never by us). There the
+ * runtime service account supplies credentials on its own, so no key is needed.
+ */
+function runsOnGoogleCloud(): boolean {
+  return Boolean(process.env.K_SERVICE);
+}
+
+/** An explicit service-account key was supplied; it always wins over ambient credentials. */
+function hasServiceAccountKey(): boolean {
+  return Boolean(process.env[CLIENT_EMAIL] && process.env[PRIVATE_KEY]);
+}
+
+/**
+ * Which of the required variables are missing, if any.
+ *
+ * Locally, and anywhere off Google Cloud, all three are required: that is the
+ * service-account key. On App Hosting only the project id is, because the
+ * platform's own identity is used instead of a key sitting in the environment.
+ */
 export function missingAdminEnv(): string[] {
-  return [PROJECT_ID, CLIENT_EMAIL, PRIVATE_KEY].filter((name) => !process.env[name]);
+  const required =
+    runsOnGoogleCloud() && !hasServiceAccountKey()
+      ? [PROJECT_ID]
+      : [PROJECT_ID, CLIENT_EMAIL, PRIVATE_KEY];
+  return required.filter((name) => !process.env[name]);
 }
 
 export function isFirebaseConfigured(): boolean {
@@ -38,8 +69,8 @@ export function isFirebaseConfigured(): boolean {
 
 /**
  * A service-account private key survives an environment variable as a single
- * line with literal backslash-n in it. Vercel and .env files differ over
- * whether the value keeps its surrounding quotes, so both are handled.
+ * line with literal backslash-n in it. Hosting dashboards and .env files differ
+ * over whether the value keeps its surrounding quotes, so both are handled.
  */
 function privateKey(): string {
   const raw = process.env[PRIVATE_KEY] ?? "";
@@ -62,11 +93,14 @@ function app(): App | null {
 
   return initializeApp(
     {
-      credential: cert({
-        projectId: process.env[PROJECT_ID],
-        clientEmail: process.env[CLIENT_EMAIL],
-        privateKey: privateKey(),
-      }),
+      projectId: process.env[PROJECT_ID],
+      credential: hasServiceAccountKey()
+        ? cert({
+            projectId: process.env[PROJECT_ID],
+            clientEmail: process.env[CLIENT_EMAIL],
+            privateKey: privateKey(),
+          })
+        : applicationDefault(),
     },
     APP_NAME,
   );

@@ -51,6 +51,25 @@ export const metadata: Metadata = {
   title: "Nature Walks Sri Lanka",
   description:
     "Private nature and wildlife journeys through Sri Lanka, with certified guides, accommodation and transport arranged by Nature Walks Sri Lanka.",
+  applicationName: "Nature Walks Sri Lanka",
+  authors: [{ name: "Nandana Hewagamage", url: `${SITE_URL}/en/about-nandana` }],
+  category: "travel",
+  /* Tells Google it may show a large image preview and a full-length snippet.
+     The default is a small thumbnail and a clipped one, which on a business
+     that sells photographs of wildlife costs the click. It is also the setting
+     that lets the same content be quoted whole in AI-generated answers, rather
+     than cut to a sentence. */
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   /* One `verification` object or none: Next merges nothing here, so the two
      tokens have to be assembled together rather than in two spreads. */
   ...(googleSiteVerification || bingSiteVerification
