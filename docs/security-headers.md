@@ -49,7 +49,7 @@ report-only:
   first place to look if sign-in shows up in the reports.
 - The traveller's Google sign-in, and `/my-trip`. Same pop-up as the admin
   one above, so the two stand or fall together.
-- The admin itinerary editor's Cloudinary upload (`connect-src`).
+- The admin itinerary editor's signed Storage upload (`connect-src`, `storage.googleapis.com`).
 
 ### One report is expected
 

@@ -182,7 +182,7 @@ export const testimonialSchema = z.object({
      carry it. */
   rating: z.number().int().min(1).max(5).optional(),
   /* The traveller's own photographs, for a review left through the form —
-     absolute URLs, since they live in Cloudinary rather than `public/`. A
+     absolute URLs, since they live in Firebase Storage rather than `public/`. A
      hand-written entry has none. */
   photos: z.array(z.string()).default([]),
 });

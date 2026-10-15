@@ -48,17 +48,15 @@ const contentSecurityPolicy = [
   "font-src 'self'",
   [
     "img-src 'self' data: blob:",
-    /* Every photograph on the site. */
-    "https://res.cloudinary.com",
-    /* Itineraries written before #27 still hold absolute Storage URLs. */
+    /* Every photograph on the site, served from Firebase Storage. */
     "https://firebasestorage.googleapis.com https://*.firebasestorage.app",
     /* The wizard's map, and the one drawn into the PDF and Word documents. */
     "https://tile.openstreetmap.org",
   ].join(" "),
   [
     "connect-src 'self'",
-    /* Signed uploads from the admin itinerary editor. */
-    "https://api.cloudinary.com",
+    /* Signed uploads from the admin itinerary editor go to
+       `storage.googleapis.com`, covered by the wildcard below. */
     /* Driving geometry for the journey map. */
     "https://router.project-osrm.org",
     "https://tile.openstreetmap.org",
@@ -85,17 +83,10 @@ const contentSecurityPolicy = [
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
-    /* Photographs come from Cloudinary. `next/image` refuses any remote host
-       that is not listed here — silently, from the page's point of view — so
-       this is required, not an optimisation.
-
-       The two Firebase Storage hosts are still listed, and deliberately.
-       Nothing uploads to them any more, but a record written while images
-       still lived there stores an absolute Storage URL, and dropping the
-       host would blank those photographs rather than migrate them. They cost
-       nothing to keep and can be removed once no record references them. */
+    /* Photographs come from Firebase Storage. `next/image` refuses any remote
+       host that is not listed here — silently, from the page's point of view —
+       so this is required, not an optimisation. */
     remotePatterns: [
-      { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "firebasestorage.googleapis.com" },
       { protocol: "https", hostname: "*.firebasestorage.app" },
     ],

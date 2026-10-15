@@ -33,8 +33,8 @@ drop the file in and redeploy.
 | Nandana's portrait | `public/images/nandana-portrait.jpg` | `content/<locale>/profile.json` |
 | The logo | `public/logo.png` | `components/layout/Header.tsx` and `Footer.tsx` |
 | The social sharing card | `public/images/og-default.jpg` | `content/<locale>/seo.json` → `ogImage` |
-| Itinerary photographs | Cloudinary | Uploaded in the admin panel; see [`cloudinary.md`](cloudinary.md) |
-| Review photographs | Cloudinary | Submitted with a review, uploaded server-side after validation; see [`cloudinary.md`](cloudinary.md) |
+| Itinerary photographs | Firebase Storage | Uploaded in the admin panel; see [`firebase-storage.md`](firebase-storage.md) |
+| Review photographs | Firebase Storage | Submitted with a review, uploaded server-side after validation; see [`firebase-storage.md`](firebase-storage.md) |
 | Language switcher flags | `public/images/flags/<iso>.svg` | `localeCountries` in `components/layout/LocaleSwitcher.tsx`. Not photographs — vendored SVGs, see `LICENSE.txt` beside them |
 
 ### Destinations

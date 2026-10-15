@@ -51,5 +51,5 @@ export const SETTINGS_DOCS = {
  */
 export const COMMENTS_SUBCOLLECTION = "comments";
 
-/* Files are not Firebase's job. Photographs live on Cloudinary; the folders
-   they are filed under are `CLOUDINARY_FOLDERS` in `lib/cloudinary/config.ts`. */
+/* Files are not Firestore's job. Photographs live in Storage; the folders
+   they are filed under are `STORAGE_FOLDERS` in `lib/firebase/storage.ts`. */

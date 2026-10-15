@@ -1,0 +1,13 @@
+rules_version = '2';
+
+// Photographs are public to read. Every write goes through the Admin SDK or a
+// server-issued signed URL, neither of which is subject to these rules, so
+// client writes are denied outright.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

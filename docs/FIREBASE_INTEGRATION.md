@@ -65,9 +65,9 @@ per-collection rules to get subtly wrong, and one over-broad `allow read` on
 `tourRequests` would expose every traveller's name, email and phone number.
 Authorisation lives in the route handlers, where it can be read in one place.
 
-There is no `storage.rules`: Firebase holds no files. Photographs go direct
-from the browser to Cloudinary instead, under a signature this server issues —
-see [`cloudinary.md`](cloudinary.md).
+`storage.rules` is the same shape for photographs: public read, no client
+write. Uploads go direct from the browser to the bucket under a signed URL this
+server issues — see [`firebase-storage.md`](firebase-storage.md).
 
 If you ever need a client read, add a route handler. Do not open the rules.
 
@@ -108,9 +108,10 @@ uses is a secret nobody rotates.
 | `FIREBASE_PROJECT_ID` | Required |
 | `FIREBASE_CLIENT_EMAIL` | Required |
 | `FIREBASE_PRIVATE_KEY` | Required. **A genuine secret** — full administrative access, bypasses all security rules |
+| `FIREBASE_STORAGE_BUCKET` | Needed only for photograph uploads — see [`firebase-storage.md`](firebase-storage.md) |
 
-`isFirebaseConfigured()` checks all three. There is no storage bucket to set:
-photographs live on Cloudinary — see [`cloudinary.md`](cloudinary.md).
+`isFirebaseConfigured()` checks the first three; the bucket is checked
+separately so the rest of the site works without it.
 
 ### Firebase, browser side — from the web app config
 
@@ -425,21 +426,12 @@ Requires the Google provider enabled and the domain on the authorised list.
 
 ## 8. Photographs
 
-Firebase holds no files. Every uploaded image — itinerary photographs and
-review photographs alike — lives on **Cloudinary**, and
-[`cloudinary.md`](cloudinary.md) is the whole of that story: the three
-environment variables, how the admin form gets a signature, and why review
-photos are uploaded by the server while itinerary photos are not.
-
-There is no `storage.rules` and no bucket in `firebase.json`; Firebase is
-accounts and documents only.
-
-> **If images were uploaded before the switch**, their records hold absolute
-> `firebasestorage.googleapis.com` URLs. Those still render — the host is
-> still listed in `next.config.ts` `remotePatterns` for exactly that reason —
-> but nothing writes there any more, and rejecting such a review can no
-> longer delete its files. See [`cloudinary.md`](cloudinary.md) § *Images
-> from before the switch*.
+Every uploaded image — itinerary photographs and review photographs alike —
+lives in the **Firebase Storage** bucket, and
+[`firebase-storage.md`](firebase-storage.md) is the whole of that story: the
+environment variable, the one-time Blaze/CORS/rules setup, how the admin form
+gets a signed URL, and why review photos are uploaded by the server while
+itinerary photos are not. Deploy the rules with `firebase deploy --only storage`.
 
 ## 9. Vercel
 
@@ -563,9 +555,10 @@ authorised domains list.
 deployed. `firebase deploy --only firestore`.
 
 **Photograph upload refused** — uploads are signed by
-`/api/admin/cloudinary-signature`, which is admin-only. A 401 means the admin
-session has lapsed; a 503 means the three `CLOUDINARY_*` variables are not
-set on this deployment. `/api/admin/firebase-status` reports which.
+`/api/admin/storage-upload-url`, which is admin-only. A 401 means the admin
+session has lapsed; a 503 means `FIREBASE_STORAGE_BUCKET` is not set on this
+deployment. A browser-side CORS error on the `PUT` means the bucket's CORS
+config has not been applied (`storage-cors.json`). `/api/admin/firebase-status` reports which.
 
 **Every page returns 500 in production, with `ERR_REQUIRE_ESM` naming
 `jwks-rsa` and `jose` in the runtime log** — the deployment is running below
@@ -614,8 +607,8 @@ view to another.
   originals are off the admin's machine. Include the bucket in whatever backup
   regime you use.
 - **Recovery** — a lost Firestore is recoverable from a JSON export via the
-  admin panel's import. Photographs are not: they live in the Cloudinary
-  account and nothing in this repository backs them up.
+  admin panel's import. Photographs are not: they live in the Storage
+  bucket and nothing in this repository backs them up.
 - **Rules and indexes** are versioned in git (`firestore.rules`,
   `firestore.indexes.json`) and redeployed with
   `firebase deploy --only firestore`.
@@ -634,7 +627,7 @@ view to another.
 | `lib/tourRequests/store.ts` | Enquiries: create, get, revise |
 | `lib/reviews/store.ts` | Invites, photo limits, redemption, moderation |
 | `firestore.rules` | Security rules |
-| `lib/cloudinary/` | Photograph upload and deletion |
+| `lib/firebase/storage.ts` | Photograph upload, signed URLs and deletion |
 | `firestore.indexes.json` | Composite indexes |
 | `scripts/grant-admin.mjs` | Grant and revoke staff access |
 | `app/api/admin/firebase-status/route.ts` | The connectivity probe |
